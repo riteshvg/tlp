@@ -6,7 +6,7 @@ tags:
     topic1: inspiration
     topic2: fan
 thumbnailImagePosition: left
-thumbnailImage: https://ik.imagekit.io/hyegquogx/The_Learning_Project/Never_Forget.png?updatedAt=1689755480468
+thumbnailImage: https://ik.imagekit.io/hyegquogx/The_Learning_Project/Who%20Inspires%20You.png
 author:
      display_name: Ritesh Gupta
 ---
