@@ -15,6 +15,8 @@ I have always stayed away from idolising people. I found it an unnecessary incli
 
 <!--more-->
 
+{{ partial "breadcrumbs.html" .  }}
+
 But recently there are three individuals who with their actions have inspired me and change my view to look at them beyond just  actions and results. These three individuals are from three different fields - cinema, cricket and philosophy.
 
 The first person that really piqued my curiosity and made me turn into a huge fan is the movie director 'Christopher Nolan'. I am a great fan of his work, and I love how his movies challenges the human faculty to think. After having watched his creation, one doesn't go out of the theatre having felt cheated. You always learn something from his movies, even if the movies are based on just pure fantasy and no science. He ensures to give you a solid worth of your time. I love all his movies, but the ones that really stand above are:

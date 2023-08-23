@@ -6,7 +6,16 @@
     <description>Recent content in Posts on The Learning Project</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Wed, 19 Jul 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://thelearningproject.in/posts/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 23 Aug 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://thelearningproject.in/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Back to Basics : JavaScript : Part 1</title>
+      <link>https://thelearningproject.in/posts/back-to-basics-javascript-part-1/</link>
+      <pubDate>Wed, 23 Aug 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://thelearningproject.in/posts/back-to-basics-javascript-part-1/</guid>
+      <description>&lt;p&gt;Starting a new learning series on JavaScript basics based on my learning from Vanilla JS Academy by Chris Ferdinandi. This series will cover topics related to basics of JS that I am learning as part of Vanilla JS Academy.&lt;/p&gt;</description>
+    </item>
+    
     <item>
       <title>Who Inspires You?</title>
       <link>https://thelearningproject.in/posts/who-inspires-you/</link>

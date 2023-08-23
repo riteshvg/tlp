@@ -9,4 +9,5 @@ This is the reason behind 'Playground'. A well designed area for me to test out 
 
 _Topics: Here are the different topics that I am planning to cover_
 - Adobe Tags playground: [A Bootstrap 5 page](../samples/tagsplayground.html) to test out different implementation scenarios using Adobe Tags aka Launch(for people who know!) 
+- JavaScript Basics: [Another Bootstrap page](../samples/index.html) to work on my JavaScript learning skills in the format followed in Vanilla JS Academy
 - Fetch: A page that uses the Fetch...async/await combination to fetch data from APIs (Coming Soon!)
