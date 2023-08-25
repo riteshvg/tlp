@@ -6,7 +6,7 @@ tags:
     topic1: analysis workspace
     topic2: basics
 thumbnailImagePosition: left
-thumbnailImage: https://ik.imagekit.io/hyegquogx/The_Learning_Project/Back%20to%20Basics%20-%20JavaScript%20Part%201.png?
+thumbnailImage: https://ik.imagekit.io/hyegquogx/The_Learning_Project/AnalysisWorkspace.png
 author:
      display_name: Ritesh Gupta
 ---
