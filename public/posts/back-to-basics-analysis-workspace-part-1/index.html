@@ -280,40 +280,7 @@
               <p>As an Analytics Technical Consultant, I have always been piqued by the need to create wonderful looking, insightful dashboards using Adobe Analysis Workspace. This Back to Basics series will cover all my learning about Adobe Analysis Workspace and hopefully spur me on a different path later.</p>
 <p>Analysis Workspace is Adobe&rsquo;s premier data visualization and analysis engine. Analysis Workspace provides ability to visualize data and answer business questions that are critical to turn your company into an Analytics powerhouse.</p>
 <h4 id="setting-up-analysis-workspace">Setting up Analysis Workspace</h4>
-<p>To get an element in DOM, you need to use the document.querySelector method. The document.querySelector method gets the first item that matches the condition. The method can be combined with multiple attributes to get the desired result:</p>
-<pre tabindex="0"><code>//To get a class, we use the dot(.) notation and to get an ID we use the hash(#) notation
-
-// Uses the class :
-let btnClass = document.querySelctor(&#39;.services__item&#39;)
-console.log(btnClass);
-
-//Uses the ID
-let btnID = document.querySelector(&#39;#services&#39;);
-console.log(btnID);
-
-// Uses the data-* attribute available
-let btnDA = document.querySelector(&#39;[data-analytics = &#34;item1&#34;]&#39;);
-console.log(btnDA);
-</code></pre>
-<div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
-  <iframe src="https://www.youtube.com/embed/L3NykWlR4ME" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" allowfullscreen title="YouTube Video"></iframe>
-</div>
-
-<h4 id="listening-for-event-interactions">Listening for event interactions</h4>
-<p>To listen for event interactions, we use the element.addEventListener method. The addEventListener method listens for the interaction type such as &lsquo;click&rsquo; , &lsquo;hover&rsquo; &lsquo;keypress&rsquo; and passes a callback function to run for when the event happens. There is a bunch of event listener methods available on the MDN <a href="https://developer.mozilla.org/en-US/docs/Web/Events">link</a>.</p>
-<p>For our use case, we will listen for &lsquo;clicks&rsquo; on the services section of our page, and when the event occurs we fire a &lsquo;addEventListener&rsquo; method. In the callback function, we will pass the &rsquo;event&rsquo; object which will give us access to properties - related to the event that was clicked and other values. One of the most useful properties is the &rsquo;target&rsquo; property which will get us more details of the element that triggered the event.</p>
-<pre tabindex="0"><code>let btn = document.querySelector(&#39;#services&#39;);
-btn.addEventListener(&#39;click&#39;, function(event){
-   console.log(event);
-   console.log(event.target);
-   console.log(event.srcElement.outerText) // will return the text of the element that is clicked
-});
-</code></pre>
-<div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
-  <iframe src="https://www.youtube.com/embed/eihoummYYFk" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" allowfullscreen title="YouTube Video"></iframe>
-</div>
-
-<p>That is all for this blog post. Leave me a line on <a href="mailto:ritesh@thelearningproject.in">ritesh@thelearningproject.in</a> to share some JavaScript basics that you might be interested in sharing.</p>
+<p>More details coming soon!</p>
               
 
 
