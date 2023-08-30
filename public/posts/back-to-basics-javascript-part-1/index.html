@@ -313,6 +313,27 @@ btn.addEventListener(&#39;click&#39;, function(event){
   <iframe src="https://www.youtube.com/embed/ObG_9RqzTb8" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" allowfullscreen title="YouTube Video"></iframe>
 </div>
 
+<h4 id="project-toggle-password">Project Toggle Password</h4>
+<p>In this project, Chris talked about using the <code>document.querySelector</code> method to toggle password field to enable sort of a show/hide switch. The important thing to note is that the variables can be declared in a mixed fashion. Here is my script:</p>
+<pre tabindex="0"><code>      let toggle = document.querySelector(&#39;.toggle&#39;);
+      let password = document.querySelector(&#39;#password&#39;);
+
+      toggle.addEventListener(&#39;click&#39;, function(){
+        if(toggle.checked){
+          password.type = &#34;text&#34;
+        } else {
+          password.type = &#34;password&#34;
+        }
+      })
+    
+</code></pre><p>I declare the <code>toggle</code> variable with the class of <code>toggle</code> and the <code>password</code> variable with the ID of <code>password</code>.</p>
+<p>Then I add an <code>addEventListener</code> method to the <code>toggle</code> variable. The method is waiting on a <code>click</code> event to trigger. In the call back function, I check if the toggle.checked attribute is true or false. If <code>true</code> which means the user wants to see his password, we change the type of password field to <code>text</code> or else if we change it back to <code>password</code>.</p>
+<p>Here is the project in action:</p>
+
+<div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
+  <iframe src="https://www.youtube.com/embed/P2g7-LUOfPQ" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" allowfullscreen title="YouTube Video"></iframe>
+</div>
+
 <p>That is all for this blog post. Leave me a line on <a href="mailto:ritesh@thelearningproject.in">ritesh@thelearningproject.in</a> to share some JavaScript basics that you might be interested in sharing.</p>
               
 
