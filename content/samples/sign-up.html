@@ -167,6 +167,12 @@
                     <input type="password" id = "password" class="form-control input-lg" placeholder="Password">
                   </div>
                 </div>
+                <div class="col-sm-6">
+                  <div class="form-group">
+                    <label class="sr-only">Password</label>
+                    <input type="password" id = "password" class="form-control input-lg" placeholder="Re-enter Password">
+                  </div>
+                </div>
                 <!-- <div class="col-sm-6">
                   <div class="form-group">
                     <label class="sr-only">Repeat password</label>
@@ -300,16 +306,26 @@
 
     <!-- JavaScript Basics -->
     <script>
-      let toggle = document.querySelector('.toggle');
-      let password = document.querySelector('#password');
+      //Get the field
+      let passwordFields = document.querySelectorAll('[type="password"]')
+      let toggleBtn = document.querySelector('[type = "checkbox"]');
 
-      toggle.addEventListener('click', function(){
-        if(toggle.checked){
-          password.type = "text"
-        } else {
-          password.type = "password"
+      //add an event listener click to the toggle button
+      toggleBtn.addEventListener('click', function(){
+
+      //use a for...of loop to loop through the password fields and pick one by one
+        for (let password of passwordFields){
+
+          //listen for checked on the toggle button
+          if(toggleBtn.checked){
+
+            //set the password type to text or password based on the above
+            password.type = "text"
+          } else {
+            password.type = "password"
+          }
         }
-      })
+      });
     </script>
 
     <!-- JavaScript

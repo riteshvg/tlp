@@ -354,6 +354,94 @@ btn.addEventListener(&#39;click&#39;, function(event){
   <iframe src="https://www.youtube.com/embed/P2g7-LUOfPQ" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" allowfullscreen title="YouTube Video"></iframe>
 </div>
 
+<h4 id="objects-and-using-a-forof-loop">Objects and Using a for&hellip;of loop</h4>
+<h5 id="what-is-an-object">What is an object?</h5>
+<p>An object is a colletion of a properties. For e.g. a car is an object. It contains properties such as: car.name; car.color; car.weight; car.gearbox etc. The values are always written as name:value pairs. An object can contain a single property or a number of properties.</p>
+<p>In JavaScript, almost everything is an object like strings, arrays etc. Some of the important ones are listed below:</p>
+<ul>
+<li>Arrays: A set of values defined within a square bracke is called an <code>Array</code>. In JavaScript, Arrays are always objects</li>
+<li>Strings: A set of values defined in text form</li>
+<li>Booleans: A true/false value defined with the new keyword</li>
+<li>NodeList object: A <code>NodeList</code> object is a list of nodes extracted from a document
+<code>const buttons = document.querySelectorAll('buttons')</code> will return a NodeList of all the buttons in a page that can be iterated over</li>
+<li>HTMLCollection object: A <code>HTMLCollection</code> object is an array-like list of HTML elements
+<code>const HTMLColl = document.getElementsByClassName('services-item__caption')</code> will return a HTMLCollection of all the elements that have the specified class in it</li>
+</ul>
+<p>There are different ways to create an object in JavaScript:</p>
+<h6 id="using-object-literal">Using Object Literal</h6>
+<p><code>const car = {make: &quot;Honda&quot;, model: &quot;City&quot;, color: &quot;Metallic Brown&quot;}</code></p>
+<p><code>const carNew = {}; carNew.make = 'Honda'; carNew.brand = 'City'; carNew.color = 'Golden Brown';</code></p>
+<p>When you console.log the car object, you will see the three key value pairs being listed. What you have declared is a simple object.</p>
+<h6 id="using-the-new-keyword">Using the <code>new</code> keyword</h6>
+<p><code>const movies = new Object(); movies.firstChoice = 'Interstellar'; movies.secondChoice = 'Inception'; movies.thirdChoice = 'The Dark Knight' </code></p>
+<h5 id="extracting-values-from-an-object">Extracting values from an object</h5>
+<p>Since objects are comprised of a list of key-value pairs, we need to method to extract each key-value if we need to work with objects. There are different methods available.</p>
+<h6 id="the-forof-method">The <code>for...of</code> method</h6>
+<p>The <code>for...of</code> statement loops through the values of an iterable object. Iterable objects are objects that have iterable properties.</p>
+<p>The <code>for...of</code> loop doesn&rsquo;t iterate over plain objects. It can only iterate through objects such as strings, arrays, and other array-like objects such as NodeLists, HTMLCollections and HTMLFormControlsCollection. This is an important information to know to avoid code errors.</p>
+<p>For e.g: The loop will work over an array which is an iterable object</p>
+<pre tabindex="0"><code>let favMovies = [&#39;Interstellar&#39;,&#39;Inception&#39;,&#39;The Dark Knight&#39;];
+for (let favMovie of favMovies){
+    console.log(favMovie);
+};
+</code></pre><p>&hellip;but it will not work over a plain object</p>
+<pre tabindex="0"><code>`const car = {make: &#34;Honda&#34;, model: &#34;City&#34;, color: &#34;Metallic Brown&#34;}`
+for (let carProp of car){
+    console.log(carProp)
+}
+</code></pre><p>If you run the loop above, you will get a <code>car is not iterable</code> TypeError</p>
+<h6 id="the-arrayforeach-and-nodelistforeach-method">The <code>Array.forEach()</code> and <code>NodeList.forEach()</code> method</h6>
+<p>The <code>Array.forEach()</code> method provides a simple way to iterate over arays while still having access to the index. Here&rsquo;s how we can use it:</p>
+<pre tabindex="0"><code>let favMovies = [&#39;The Dark Knight&#39;,&#39;Inception&#39;,&#39;Interstellar&#39;,&#39;The Prestige&#39;];
+
+favMovies.forEach(function(favMovie, index){
+    console.log(favMovie);
+    console.log(index);
+});
+</code></pre><p>When you execute the above method, you will get a list of all the items as well as the index position that they are sitting on.</p>
+<p>The <code>NodeList.forEach()</code> method loops over the node list items without having to declare them first in a separate variable. Here&rsquo;s how we can use it:</p>
+<pre tabindex="0"><code>document.querySelectorAll(&#39;services__item&#39;).forEach(function(buttonName,index,buttons){
+    console.log(buttonName);
+    console.log(buttons);
+});
+</code></pre><p>We first use the <code>querySelectorAll</code> method to query the items with the class name <code>services__item</code>. We then immediately use the <code>forEach</code> method to loop over the items. In the callback function we return:</p>
+<ul>
+<li>the current item</li>
+<li>the index of the current item</li>
+<li>the entire NodeList</li>
+</ul>
+<p>The output is as below. We get to access individual buttons and also a node list of all the buttons available.</p>
+<figure><img src="https://ik.imagekit.io/hyegquogx/The_Learning_Project/NodeList.forEach%20method.png?updatedAt=1693550872716"/>
+</figure>
+
+<h4 id="project--show-multiple-password">Project : Show multiple password</h4>
+<p>In the first instance of this project, we saw how to have a checkbox which, when clicked, can show the password that the user has typed. In this enhancement, we will see how to show the password that the user has typed in both password and re-enter password field. Here is my code:</p>
+<pre tabindex="0"><code>//Get the field
+      let passwordFields = document.querySelectorAll(&#39;[type=&#34;password&#34;]&#39;)
+      let toggleBtn = document.querySelector(&#39;[type = &#34;checkbox&#34;]&#39;);
+
+      //add an event listener click to the toggle button
+      toggleBtn.addEventListener(&#39;click&#39;, function(){
+
+      //use a for...of loop to loop through the password fields and pick one by one
+        for (let password of passwordFields){
+
+          //listen for checked on the toggle button
+          if(toggleBtn.checked){
+
+            //set the password type to text or password based on the above
+            password.type = &#34;text&#34;
+          } else {
+            password.type = &#34;password&#34;
+          }
+        }
+      });
+</code></pre><p>Here is the project in action:</p>
+
+<div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
+  <iframe src="https://www.youtube.com/embed/mZjW6-EMhe0" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" allowfullscreen title="YouTube Video"></iframe>
+</div>
+
 <p>That is all for this blog post. Leave me a line on <a href="mailto:ritesh@thelearningproject.in">ritesh@thelearningproject.in</a> to share some JavaScript basics that you might be interested in sharing.</p>
               
 
