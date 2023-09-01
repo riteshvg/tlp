@@ -299,6 +299,26 @@ console.log(btnDA);
   <iframe src="https://www.youtube.com/embed/L3NykWlR4ME" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" allowfullscreen title="YouTube Video"></iframe>
 </div>
 
+<h4 id="getting-multiple-elements-in-dom">Getting multiple elements in DOM</h4>
+<p>Above, we saw how to use the <code>document.querySelector</code> method to get just one element from the DOM. If we need to get multiple elements, then we use the same logic, but we use the <code>document.querySelectorAll</code> method instead. This method gets you access to all the DOM elements that match the criteria.</p>
+<pre tabindex="0"><code>//To get a class, we use the dot(.) notation and to get an ID we use the hash(#) notation
+
+// Uses the class :
+let btnClass = document.querySelectorAll(&#39;.services__item&#39;)
+console.log(btnClass);
+
+//Uses the ID
+let btnID = document.querySelectorAll(&#39;#services&#39;);
+console.log(btnID);
+
+// Uses the data-* attribute available
+let btnDA = document.querySelectorAll(&#39;[data-analytics = &#34;item&#34;]&#39;);
+console.log(btnDA);
+</code></pre>
+<div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
+  <iframe src="https://www.youtube.com/embed/WZEC3Me8Z5g" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" allowfullscreen title="YouTube Video"></iframe>
+</div>
+
 <h4 id="listening-for-event-interactions">Listening for event interactions</h4>
 <p>To listen for event interactions, we use the <code>element.addEventListener</code> method. The <code>addEventListener</code> method listens for the interaction type such as <code>click</code> , <code>hover</code> <code>keypress</code> and passes a callback function to run for when the event happens. There is a bunch of event listener methods available on the MDN <a href="https://developer.mozilla.org/en-US/docs/Web/Events">link</a>.</p>
 <p>For our use case, we will listen for <code>clicks</code> on the services section of our page, and when the event occurs we fire an <code>addEventListener</code> method. In the callback function, we will pass the <code>event</code> object which will give us access to properties - related to the event that was clicked and other values. One of the most useful properties is the <code>target</code> property which will get us more details of the element that triggered the event.</p>
@@ -314,7 +334,7 @@ btn.addEventListener(&#39;click&#39;, function(event){
 </div>
 
 <h4 id="project-toggle-password">Project Toggle Password</h4>
-<p>In this project, Chris talked about using the <code>document.querySelector</code> method to toggle password field to enable sort of a show/hide switch. The important thing to note is that the variables can be declared in a mixed fashion. Here is my script:</p>
+<p>In this project, Chris talks about using the <code>document.querySelector</code> method to toggle password field to enable sort of a show/hide switch. The important thing to note is that the variables can be declared in a mixed fashion. Here is my script:</p>
 <pre tabindex="0"><code>      let toggle = document.querySelector(&#39;.toggle&#39;);
       let password = document.querySelector(&#39;#password&#39;);
 
