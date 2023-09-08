@@ -34,7 +34,7 @@
     }
     
   },
-  "description": "This is part 2 of the Back to Basics series covering my JavaScript learning journey. In this blog post, I will be covering how to check if an element matches a selector, working with multiple elements, data attributes and getting as well setting text in an element. These lessons are very well explained in the Vanilla JS Academy by Chris Ferdinandi.\n",
+  "description": "This is part 2 of the Back to Basics series covering my JavaScript learning journey. In this blog post, I will be covering how to check if an element matches a selector and working with multiple elements. These lessons are very well explained in the Vanilla JS Academy by Chris Ferdinandi.\n",
   "keywords": [, "adobe experience cloud, adobe launch, adobe analytics, adobe experience platform, multi solution architect, business analytics"]
 }
 
@@ -45,18 +45,18 @@
 <meta name="generator" content="Hugo 0.117.0 with theme Tranquilpeak 0.5.3-BETA">
 <meta name="author" content="Ritesh Gupta">
 <meta name="keywords" content=", adobe experience cloud, adobe launch, adobe analytics, adobe experience platform, multi solution architect, business analytics">
-<meta name="description" content="This is part 2 of the Back to Basics series covering my JavaScript learning journey. In this blog post, I will be covering how to check if an element matches a selector, working with multiple elements, data attributes and getting as well setting text in an element. These lessons are very well explained in the Vanilla JS Academy by Chris Ferdinandi.">
+<meta name="description" content="This is part 2 of the Back to Basics series covering my JavaScript learning journey. In this blog post, I will be covering how to check if an element matches a selector and working with multiple elements. These lessons are very well explained in the Vanilla JS Academy by Chris Ferdinandi.">
 
 
-<meta property="og:description" content="This is part 2 of the Back to Basics series covering my JavaScript learning journey. In this blog post, I will be covering how to check if an element matches a selector, working with multiple elements, data attributes and getting as well setting text in an element. These lessons are very well explained in the Vanilla JS Academy by Chris Ferdinandi.">
+<meta property="og:description" content="This is part 2 of the Back to Basics series covering my JavaScript learning journey. In this blog post, I will be covering how to check if an element matches a selector and working with multiple elements. These lessons are very well explained in the Vanilla JS Academy by Chris Ferdinandi.">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Back to Basics : JavaScript : Part 2">
 <meta name="twitter:title" content="Back to Basics : JavaScript : Part 2">
 <meta property="og:url" content="https://thelearningproject.in/posts/back-to-basics-javascript-part-2/">
 <meta property="twitter:url" content="https://thelearningproject.in/posts/back-to-basics-javascript-part-2/">
 <meta property="og:site_name" content="The Learning Project">
-<meta property="og:description" content="This is part 2 of the Back to Basics series covering my JavaScript learning journey. In this blog post, I will be covering how to check if an element matches a selector, working with multiple elements, data attributes and getting as well setting text in an element. These lessons are very well explained in the Vanilla JS Academy by Chris Ferdinandi.">
-<meta name="twitter:description" content="This is part 2 of the Back to Basics series covering my JavaScript learning journey. In this blog post, I will be covering how to check if an element matches a selector, working with multiple elements, data attributes and getting as well setting text in an element. These lessons are very well explained in the Vanilla JS Academy by Chris Ferdinandi.">
+<meta property="og:description" content="This is part 2 of the Back to Basics series covering my JavaScript learning journey. In this blog post, I will be covering how to check if an element matches a selector and working with multiple elements. These lessons are very well explained in the Vanilla JS Academy by Chris Ferdinandi.">
+<meta name="twitter:description" content="This is part 2 of the Back to Basics series covering my JavaScript learning journey. In this blog post, I will be covering how to check if an element matches a selector and working with multiple elements. These lessons are very well explained in the Vanilla JS Academy by Chris Ferdinandi.">
 <meta property="og:locale" content="en-us">
 
   
@@ -145,6 +145,24 @@
       
     
     </a>
+    <script src="https://www.thelearningproject.in/js/204118644db8/437cd1c7d72a/launch-39d64d92912c-development.min.js" async></script>
+    <script>
+      
+    var adobeDataLayer = window.adobeDataLayer = window.adobeDataLayer|| [];
+    adobeDataLayer.push({
+      page: 'Back to Basics : JavaScript : Part 2',
+      description: '',
+      url: ' https:\/\/thelearningproject.in\/posts\/back-to-basics-javascript-part-2\/',
+      publish: ' 2023-09-04 00:00:00 \u002b0000 UTC',
+      estimatedReadingTime: '3 minutes ', 
+      wordCount : '504',
+      contentType: ' posts',
+      pageKind: ' page',
+      date: ' 2023-09-04 00:00:00 \u002b0000 UTC',
+      baseURL: ' https:\/\/thelearningproject.in\/',
+      siteSection: ' Pages(1)'
+    });
+  </script>
   
 </header>
 
@@ -277,10 +295,10 @@
           
           <div class="post-content markdown">
             <div class="main-content-wrap">
-              <p>This is part 2 of the Back to Basics series covering my JavaScript learning journey. In this blog post, I will be covering how to check if an element matches a selector, working with multiple elements, data attributes and getting as well setting text in an element. These lessons are very well explained in the <a href="https://vanillajsacademy.com/">Vanilla JS Academy</a> by Chris Ferdinandi.</p>
+              <p>This is part 2 of the Back to Basics series covering my JavaScript learning journey. In this blog post, I will be covering how to check if an element matches a selector and working with multiple elements. These lessons are very well explained in the <a href="https://vanillajsacademy.com/">Vanilla JS Academy</a> by Chris Ferdinandi.</p>
 <p>The first part of the JavaScript learning series covered how to check for elements in DOM. We saw how to use the <code>document.querySelector</code> and <code>document.querySelectorAll</code> method to grab DOM elements and how to use <code>eventListener</code> method to attach events to the elements. In this blog post, we will be checking for <code>element.matches</code> method</p>
 <h4 id="check-if-an-element-matches-a-selector">Check if an Element matches a selector</h4>
-<p>According to <a href="https://developer.mozilla.org/en-US/docs/Web/API/Element/matches">MDN</a>the <code>element.matches</code> determines whether the element will be selected by the specified CSS selector or not.</p>
+<p>According to <a href="https://developer.mozilla.org/en-US/docs/Web/API/Element/matches">MDN</a> the <code>element.matches</code> determines whether the element will be selected by the specified CSS selector or not.</p>
 <p>To use the method, we query the element using the <code>document.querySelector</code> method. Then on the resulting variable, you will apply the <code>element.matches</code> method in a <code>if...else</code> condition. And in the condition, apply alternate paths based on the result</p>
 <pre tabindex="0"><code>let btn = document.querySelector(&#39;.col-sm-3&#39;);
 if btn.matches(&#39;.col-sm-3&#39;) {

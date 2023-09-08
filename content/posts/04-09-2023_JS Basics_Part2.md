@@ -5,12 +5,13 @@ tags:
     main: self learning
     topic1: javascript
     topic2: basics
+ 
 thumbnailImagePosition: left
 thumbnailImage: https://ik.imagekit.io/hyegquogx/The_Learning_Project/Back%20to%20basics%20%20Javascript%20Part%202.png
 author:
      display_name: Ritesh Gupta
 ---
-This is part 2 of the Back to Basics series covering my JavaScript learning journey. In this blog post, I will be covering how to check if an element matches a selector, working with multiple elements, data attributes and getting as well setting text in an element. These lessons are very well explained in the [Vanilla JS Academy](https://vanillajsacademy.com/) by Chris Ferdinandi. 
+This is part 2 of the Back to Basics series covering my JavaScript learning journey. In this blog post, I will be covering how to check if an element matches a selector and working with multiple elements. These lessons are very well explained in the [Vanilla JS Academy](https://vanillajsacademy.com/) by Chris Ferdinandi. 
 
 <!--more-->
 
@@ -18,7 +19,7 @@ The first part of the JavaScript learning series covered how to check for elemen
 
 #### Check if an Element matches a selector
 
-According to [MDN](https://developer.mozilla.org/en-US/docs/Web/API/Element/matches)the `element.matches` determines whether the element will be selected by the specified CSS selector or not. 
+According to [MDN](https://developer.mozilla.org/en-US/docs/Web/API/Element/matches) the `element.matches` determines whether the element will be selected by the specified CSS selector or not. 
 
 To use the method, we query the element using the `document.querySelector` method. Then on the resulting variable, you will apply the `element.matches` method in a `if...else` condition. And in the condition, apply alternate paths based on the result
 
