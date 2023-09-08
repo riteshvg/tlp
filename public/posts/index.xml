@@ -6,7 +6,16 @@
     <description>Recent content in Posts on The Learning Project</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 26 Aug 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://thelearningproject.in/posts/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 04 Sep 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://thelearningproject.in/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Back to Basics : JavaScript : Part 2</title>
+      <link>https://thelearningproject.in/posts/back-to-basics-javascript-part-2/</link>
+      <pubDate>Mon, 04 Sep 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://thelearningproject.in/posts/back-to-basics-javascript-part-2/</guid>
+      <description>&lt;p&gt;This is part 2 of the Back to Basics series covering my JavaScript learning journey. In this blog post, I will be covering how to check if an element matches a selector, working with multiple elements, data attributes and getting as well setting text in an element. These lessons are very well explained in the &lt;a href=&#34;https://vanillajsacademy.com/&#34;&gt;Vanilla JS Academy&lt;/a&gt; by Chris Ferdinandi.&lt;/p&gt;</description>
+    </item>
+    
     <item>
       <title>How to get Lucky? : Be the Best</title>
       <link>https://thelearningproject.in/posts/how-to-get-lucky-be-the-best/</link>
