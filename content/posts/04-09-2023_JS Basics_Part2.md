@@ -6,7 +6,7 @@ tags:
     topic1: javascript
     topic2: basics
 thumbnailImagePosition: left
-thumbnailImage: https://ik.imagekit.io/hyegquogx/The_Learning_Project/Back%20to%20Basics%20-%20JavaScript%20Part%201.png?
+thumbnailImage: https://ik.imagekit.io/hyegquogx/The_Learning_Project/Back%20to%20basics%20%20Javascript%20Part%202.png
 author:
      display_name: Ritesh Gupta
 ---
@@ -38,16 +38,16 @@ if btn.matches('.col-sm-3') {
 
 {{<figure src = "https://ik.imagekit.io/hyegquogx/The_Learning_Project/element_matches.png?updatedAt=1694066009595">}}
 
-#### Listening for an event on multiple elements
+#### Listening for event click on multiple elements
 
-The `EventTarget.addEventListener` method can only be attached to one individual element. But if you need to attach and listen for clicks on multiple elements, you are out of luck. To achieve click tracking you can use one of the below methods:
+The `eventTarget.addEventListener` method can only be attached to one individual element. But if you need to attach and listen for clicks on multiple elements, you are out of luck. To achieve click tracking on multiple elements, you can use one of the below methods:
 
-- using a for...of loop
-- using the event delegation method
+- Using a for...of loop
+- Using the event delegation method
 
-###### using the for...of loop
+###### Using the for...of Loop
 
-To achieve tracking of clicks on multiple elements, you can use the `for...of` loop. But Chris warns against using this method as it can cause performance issues having to force browser to loop through individual elements and attach event listeners to each element.
+To achieve tracking of clicks on multiple elements, you can use the `for...of` loop. But Chris warns against using this method as it can cause performance issues having to force browser to loop every time a `click` event occurs, and attach event listeners to each element.
 
 ```
 
@@ -61,13 +61,11 @@ for (let btn of btns){
 
 ```
 
-###### using event delegation 
+###### Using Event Delegation 
 
 According to (scaler.com)[https://www.scaler.com/topics/event-delegation-in-javascript/], event delegation is a pattern for efficiently handling events. Events can be added to parent element instead of adding to every single element. Because of the event bubbling phenomenon every time someone clicks on any element, the action bubbles up to its parent until it reaches the document element.
 
-This means we attach the `eventListener` method to the document object. Browser will listen for clicks on any element inside the document node. When a click occurs, it will bubble up the action to the parent until it reaches the document node. We can then use a callback function to listen for specific conditions using `event.target.matches` method. Here is how it works:
-
-We attach the event listener to the document node. In the call back function, we use CSS selector to check if the clicked element's CSS matches the condition and if it does then fire the method
+This means we attach the `eventListener` method to the document object. The browser will listen for clicks on any element inside the document node. When a click occurs, it will bubble up the action to the parent until it reaches the document node. We can then use a callback function to listen for specific conditions using `event.target.matches` method. Here is how it works:
 
 ```
 document.addEventListener('click', function (event){
@@ -80,5 +78,7 @@ document.addEventListener('click', function (event){
 });
 
 ```
+
+{{< youtube gmf-6w0ajsI >}}
 
 That is all for this blog post. Leave me a line on ritesh@thelearningproject.in to share some JavaScript basics that you might be interested in sharing.

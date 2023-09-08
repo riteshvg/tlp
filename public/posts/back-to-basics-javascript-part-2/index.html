@@ -9,7 +9,7 @@
   "@type": "BlogPosting",
   "headline": "Back to Basics : JavaScript : Part 2",
   
-  "image": "https://ik.imagekit.io/hyegquogx/The_Learning_Project/Back%20to%20Basics%20-%20JavaScript%20Part%201.png?",
+  "image": "https://ik.imagekit.io/hyegquogx/The_Learning_Project/Back%20to%20basics%20%20Javascript%20Part%202.png",
   
   "datePublished": "2023-09-04T00:00:00Z",
   "dateModified": "2023-09-04T00:00:00Z",
@@ -97,8 +97,8 @@
 
 
 
-  <meta property="og:image" content="https://ik.imagekit.io/hyegquogx/The_Learning_Project/Back%20to%20Basics%20-%20JavaScript%20Part%201.png?">
-  <meta property="twitter:image" content="https://ik.imagekit.io/hyegquogx/The_Learning_Project/Back%20to%20Basics%20-%20JavaScript%20Part%201.png?">
+  <meta property="og:image" content="https://ik.imagekit.io/hyegquogx/The_Learning_Project/Back%20to%20basics%20%20Javascript%20Part%202.png">
+  <meta property="twitter:image" content="https://ik.imagekit.io/hyegquogx/The_Learning_Project/Back%20to%20basics%20%20Javascript%20Part%202.png">
 
 
     <title>Back to Basics : JavaScript : Part 2</title>
@@ -295,14 +295,14 @@ if btn.matches(&#39;.col-sm-3&#39;) {
 </code></pre><figure><img src="https://ik.imagekit.io/hyegquogx/The_Learning_Project/element_matches.png?updatedAt=1694066009595"/>
 </figure>
 
-<h4 id="listening-for-an-event-on-multiple-elements">Listening for an event on multiple elements</h4>
-<p>The <code>EventTarget.addEventListener</code> method can only be attached to one individual element. But if you need to attach and listen for clicks on multiple elements, you are out of luck. To achieve click tracking you can use one of the below methods:</p>
+<h4 id="listening-for-event-click-on-multiple-elements">Listening for event click on multiple elements</h4>
+<p>The <code>eventTarget.addEventListener</code> method can only be attached to one individual element. But if you need to attach and listen for clicks on multiple elements, you are out of luck. To achieve click tracking on multiple elements, you can use one of the below methods:</p>
 <ul>
-<li>using a for&hellip;of loop</li>
-<li>using the event delegation method</li>
+<li>Using a for&hellip;of loop</li>
+<li>Using the event delegation method</li>
 </ul>
-<h6 id="using-the-forof-loop">using the for&hellip;of loop</h6>
-<p>To achieve tracking of clicks on multiple elements, you can use the <code>for...of</code> loop. But Chris warns against using this method as it can cause performance issues having to force browser to loop through individual elements and attach event listeners to each element.</p>
+<h6 id="using-the-forof-loop">Using the for&hellip;of Loop</h6>
+<p>To achieve tracking of clicks on multiple elements, you can use the <code>for...of</code> loop. But Chris warns against using this method as it can cause performance issues having to force browser to loop every time a <code>click</code> event occurs, and attach event listeners to each element.</p>
 <pre tabindex="0"><code>
 let btns = document.querySelectorAll(&#39;.services__item&#39;);
 for (let btn of btns){
@@ -311,10 +311,9 @@ for (let btn of btns){
     console.log(event.target);
   });
 }
-</code></pre><h6 id="using-event-delegation">using event delegation</h6>
+</code></pre><h6 id="using-event-delegation">Using Event Delegation</h6>
 <p>According to (scaler.com)[https://www.scaler.com/topics/event-delegation-in-javascript/], event delegation is a pattern for efficiently handling events. Events can be added to parent element instead of adding to every single element. Because of the event bubbling phenomenon every time someone clicks on any element, the action bubbles up to its parent until it reaches the document element.</p>
-<p>This means we attach the <code>eventListener</code> method to the document object. Browser will listen for clicks on any element inside the document node. When a click occurs, it will bubble up the action to the parent until it reaches the document node. We can then use a callback function to listen for specific conditions using <code>event.target.matches</code> method. Here is how it works:</p>
-<p>We attach the event listener to the document node. In the call back function, we use CSS selector to check if the clicked element&rsquo;s CSS matches the condition and if it does then fire the method</p>
+<p>This means we attach the <code>eventListener</code> method to the document object. The browser will listen for clicks on any element inside the document node. When a click occurs, it will bubble up the action to the parent until it reaches the document node. We can then use a callback function to listen for specific conditions using <code>event.target.matches</code> method. Here is how it works:</p>
 <pre tabindex="0"><code>document.addEventListener(&#39;click&#39;, function (event){
   if(event.target.matches(&#39;.services__item&#39;)){
     console.log(&#39;event triggered&#39;);
@@ -323,7 +322,12 @@ for (let btn of btns){
     console.log(&#39;event not found!&#39;);
   }
 });
-</code></pre><p>That is all for this blog post. Leave me a line on <a href="mailto:ritesh@thelearningproject.in">ritesh@thelearningproject.in</a> to share some JavaScript basics that you might be interested in sharing.</p>
+</code></pre>
+<div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
+  <iframe src="https://www.youtube.com/embed/gmf-6w0ajsI" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" allowfullscreen title="YouTube Video"></iframe>
+</div>
+
+<p>That is all for this blog post. Leave me a line on <a href="mailto:ritesh@thelearningproject.in">ritesh@thelearningproject.in</a> to share some JavaScript basics that you might be interested in sharing.</p>
               
 
 
