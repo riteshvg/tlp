@@ -145,7 +145,7 @@
       
     
     </a>
-    <script src="https://assets.adobedtm.com/204118644db8/437cd1c7d72a/launch-39d64d92912c-development.min.js" async></script>
+    <script src="https://assets.adobedtm.com/204118644db8/17528ee7e2a5/launch-bc210965e477-development.min.js" async></script>
     <script>
       
     var adobeDataLayer = window.adobeDataLayer = window.adobeDataLayer|| [];
@@ -154,8 +154,8 @@
       description: '',
       url: ' https:\/\/thelearningproject.in\/posts\/back-to-basics-javascript-part-2\/',
       publish: ' 2023-09-04 00:00:00 \u002b0000 UTC',
-      estimatedReadingTime: '3 minutes ', 
-      wordCount : '504',
+      estimatedReadingTime: '4 minutes ', 
+      wordCount : '754',
       contentType: ' posts',
       pageKind: ' page',
       date: ' 2023-09-04 00:00:00 \u002b0000 UTC',
@@ -345,6 +345,44 @@ for (let btn of btns){
   <iframe src="https://www.youtube.com/embed/gmf-6w0ajsI" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" allowfullscreen title="YouTube Video"></iframe>
 </div>
 
+<h6 id="working-with-attributes">Working with Attributes</h6>
+<p>Attributes refer to the elements that are added inside the code.</p>
+<p>For e.g.: In the below line,</p>
+<p><code>&lt;h5 id = 'movies' data-movies = 'inception' data-category = 'movies' data-nextMovie = 'interstellar'&gt;My Fav Movies&lt;/h5&gt;</code></p>
+<p>&lsquo;id&rsquo;, &lsquo;data-movies&rsquo;, &lsquo;data-category&rsquo; and &lsquo;data-nextMovie&rsquo; will be called as attributes of the <code>&lt;h5&gt;</code>tag. JavaScript provides a way to get, set, remove and check if an attribute exists. There are four methods:</p>
+<pre tabindex="0"><code>elem.getAttribute
+elem.setAttribute
+elem.removeAttribute
+elem.hasAttribute
+</code></pre><p>Let&rsquo;s see how we can use it:</p>
+<ul>
+<li>getAttribute: We first use the <code>document.querySelector</code> method to get the element and assign it to a variable. We then use the <code>getAttribute</code> method to get the value of <code>data-category</code></li>
+</ul>
+<pre tabindex="0"><code>let favMovie = document.querySelector(&#39;#movies&#39;);
+
+let movieExists  = favMovie.getAttribute(&#39;data-category&#39;);
+console.log(movieExists);
+</code></pre><ul>
+<li>setAttribute: We can use the <code>setAttribute</code> method to set a new value for the <code>data-category</code> from &lsquo;inception&rsquo; to say &rsquo;the dark knight&rsquo;.</li>
+</ul>
+<pre tabindex="0"><code>movieExists.setAttribute(&#39;data-category&#39;, &#39;the dark knight&#39;)
+</code></pre><ul>
+<li>removeAttribute: We can use the <code>removeAttribute</code> method to remove the attribute completely from the HTML code</li>
+</ul>
+<pre tabindex="0"><code>movieExists.removeAttribute(&#39;data-movies&#39;)
+</code></pre><ul>
+<li>hasAttribute: The <code>hasAttribute</code> method is used for checking if the particular attribute exists. If yes, the method returns true.</li>
+</ul>
+<pre tabindex="0"><code>if(movieExists.hasAttribute(&#39;data-movies&#39;){
+  console.log(&#39;you have a fav movie selected!&#39;)
+})
+</code></pre><p>Here&rsquo;s how it looks when applied to an HTML page:</p>
+<figure><img src="https://ik.imagekit.io/hyegquogx/The_Learning_Project/working%20with%20attributes.png?updatedAt=1694668824909"/>
+</figure>
+
+<h6 id="project-work">Project Work</h6>
+<p>Now, let&rsquo;s apply this learning into a live project. In the previous blog post, we saw how to use <code>querySelectorAll</code> method to toggle password in two different fields in a single form. In this post, we will see how to enable the toggle password button in two separate forms.</p>
+<p>More details coming soon!</p>
 <p>That is all for this blog post. Leave me a line on <a href="mailto:ritesh@thelearningproject.in">ritesh@thelearningproject.in</a> to share some JavaScript basics that you might be interested in sharing.</p>
               
 

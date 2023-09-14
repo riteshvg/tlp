@@ -82,4 +82,67 @@ document.addEventListener('click', function (event){
 
 {{< youtube gmf-6w0ajsI >}}
 
+###### Working with Attributes
+
+Attributes refer to the elements that are added inside the code. 
+
+For e.g.: In the below line, 
+
+`<h5 id = 'movies' data-movies = 'inception' data-category = 'movies' data-nextMovie = 'interstellar'>My Fav Movies</h5>`
+
+'id', 'data-movies', 'data-category' and 'data-nextMovie' will be called as attributes of the `<h5>`tag. JavaScript provides a way to get, set, remove and check if an attribute exists. There are four methods:
+
+```
+elem.getAttribute
+elem.setAttribute
+elem.removeAttribute
+elem.hasAttribute
+
+```
+
+Let's see how we can use it:
+
+- getAttribute: We first use the `document.querySelector` method to get the element and assign it to a variable. We then use the `getAttribute` method to get the value of `data-category` 
+
+```
+let favMovie = document.querySelector('#movies');
+
+let movieExists  = favMovie.getAttribute('data-category');
+console.log(movieExists);
+
+```
+
+- setAttribute: We can use the `setAttribute` method to set a new value for the `data-category` from 'inception' to say 'the dark knight'. 
+
+```
+movieExists.setAttribute('data-category', 'the dark knight')
+
+```
+
+- removeAttribute: We can use the `removeAttribute` method to remove the attribute completely from the HTML code
+
+```
+movieExists.removeAttribute('data-movies')
+
+```
+
+- hasAttribute: The `hasAttribute` method is used for checking if the particular attribute exists. If yes, the method returns true.
+
+```
+if(movieExists.hasAttribute('data-movies'){
+  console.log('you have a fav movie selected!')
+})
+
+```
+
+Here's how it looks when applied to an HTML page:
+
+{{<figure src = "https://ik.imagekit.io/hyegquogx/The_Learning_Project/working%20with%20attributes.png?updatedAt=1694668824909">}}
+
+###### Project Work
+
+Now, let's apply this learning into a live project. In the previous blog post, we saw how to use `querySelectorAll` method to toggle password in two different fields in a single form. In this post, we will see how to enable the toggle password button in two separate forms.
+
+More details coming soon!
+
 That is all for this blog post. Leave me a line on ritesh@thelearningproject.in to share some JavaScript basics that you might be interested in sharing.
