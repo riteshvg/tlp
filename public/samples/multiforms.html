@@ -118,7 +118,7 @@
         <div class="row">
           <div class="col-sm-4">
 
-            <h3>Sign Up</h3>
+            <h3>Multi Form Page</h3>
             
           </div>
           <div class="col-sm-8 hidden-xs">
@@ -144,7 +144,7 @@
           <div class="profile__sign-in">
 
             <h1 class="block-header alt">
-              <span>Create a new account</span>
+              <span>Form 1</span>
             </h1>
 
             <form>
@@ -164,13 +164,7 @@
                 <div class="col-sm-6">
                   <div class="form-group">
                     <label class="sr-only">Password</label>
-                    <input type="password" id = "password" class="form-control input-lg" placeholder="Password">
-                  </div>
-                </div>
-                <div class="col-sm-6">
-                  <div class="form-group">
-                    <label class="sr-only">Password</label>
-                    <input type="password" id = "password" class="form-control input-lg" placeholder="Re-enter Password">
+                    <input type="password" id = "password" class="form-control input-lg" placeholder="Password" >
                   </div>
                 </div>
                 <!-- <div class="col-sm-6">
@@ -181,8 +175,8 @@
                 </div> -->
               </div>
               <div class="checkbox">
-                <input type="checkbox" class = "toggle" id="profile-sign-in__remember" value="">
-                <label for="profile-sign-in__remember">
+                <input type="checkbox" class = "toggle" id="singlePassword" value="" data-pw-toggle = "#password">
+                <label for="singlePassword">
                   Show Password
                 </label>
               </div><br />
@@ -200,6 +194,57 @@
           </div> <!-- / .profile_sign-in -->
           
         </div>
+
+        <div class="col-sm-12 col-md-8 col-lg-6 col-md-offset-2 col-lg-offset-3">
+
+            <!-- Sign In form -->
+            <div class="profile__sign-in">
+  
+              <h1 class="block-header alt">
+                <span>Form 2</span>
+              </h1>
+  
+              <form>
+                <div class="row">
+                  <div class="col-sm-6">
+                    <div class="form-group">
+                      <label class="sr-only">Password</label>
+                      <input type="password" id = "passwordCurrent" class="form-control input-lg" placeholder="Password">
+                    </div>
+                  </div>
+                  <div class="col-sm-6">
+                    <div class="form-group">
+                      <label class="sr-only">Password</label>
+                      <input type="password" id = "passwordNew" class="form-control input-lg" placeholder="Re-enter Password">
+                    </div>
+                  </div>
+                  <!-- <div class="col-sm-6">
+                    <div class="form-group">
+                      <label class="sr-only">Repeat password</label>
+                      <input type="password" id = "password1" class="form-control input-lg" placeholder="Repeat password">
+                    </div> 
+                  </div> -->
+                </div>
+                <div class="checkbox">
+                  <input type="checkbox" class = "toggle" id="multi-passwords" value="" data-pw-toggle = "#passwordCurrent, #passwordNew">
+                  <label for="multi-passwords">
+                    Show Passwords
+                  </label>
+                </div><br />
+                <button type="submit" class="btn btn-lg btn-primary">
+                  Sign Up
+                </button>
+              </form>
+  
+              <hr>
+  
+              <p>
+                Already registered? <a href="sign-in.html">Sign in to your account</a>.
+              </p>
+  
+            </div> <!-- / .profile_sign-in -->
+            
+          </div>
       </div> <!-- / .row -->
     </div> <!-- / .container -->
 
@@ -304,7 +349,7 @@
       </div> <!-- / .container -->
     </footer>
 
-    <!-- JavaScript Basics -->
+    <!-- JavaScript Basics Chapter 2 
     <script>
       //Get the field
       let passwordFields = document.querySelectorAll('[type="password"]')
@@ -326,6 +371,34 @@
           }
         }
       });
+    </script> 
+    -->
+
+    <!-- JavaScript Basics Chapter 5 : Toggle Multiple Passwords Field -->
+
+    <script>
+        //Listen to all click events in the browser
+        document.addEventListener('click', function(event){
+            
+            //Check if clicked item is a password toggle
+            //If not, return and stop running the callback function
+            if(!event.target.matches('[data-pw-toggle]')) return;
+            
+            //Get the password fields
+            let selector = event.target.getAttribute('data-pw-toggle');
+            let passwords = document.querySelectorAll(selector);
+
+            //Loop through each password field
+            for(let password of passwords) {
+                
+                //If toggle is checked, change the type to 'text' else change to 'password'
+                if(event.target.checked){
+                    password.type = 'text'                    
+                } else {
+                    password.type = 'password'
+                }
+            }
+        })
     </script>
 
     <!-- JavaScript

@@ -143,6 +143,8 @@ Here's how it looks when applied to an HTML page:
 
 Now, let's apply this learning into a live project. In the previous blog post, we saw how to use `querySelectorAll` method to toggle password in two different fields in a single form. In this post, we will see how to enable the toggle password button in two separate forms.
 
-More details coming soon!
+Head over to the (Playground)[https://www.thelearningproject.in/samples/multiforms.html/] to check out the project. Don't forget to switch the debug logs. Meanwhile, here is a YouTube video recording that you can watch.
+
+{{< youtube DuTpJ45QCwE >}}
 
 That is all for this blog post. Leave me a line on ritesh@thelearningproject.in to share some JavaScript basics that you might be interested in sharing.
