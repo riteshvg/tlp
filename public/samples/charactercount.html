@@ -47,20 +47,20 @@
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="navbar_main">
 
-          <ul class="nav navbar-nav navbar-left">
-            <li><a href="index.html">Home</a></li>
-            <li class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">More Pages <span class="caret"></span></a>
-              <ul class="dropdown-menu">
-                <li><a href = "multiforms.html">Multi Forms</a></li>
-                <li><a href="charactercount.html" class="active">Character Count</a></li>
-                <li><a href="#">Error 404</a></li>
-                <li><a href="#">FAQ</a></li>
-                <li><a href="#">Our Team</a></li>
-                <li><a href="#">Pricing</a></li>
+            <ul class="nav navbar-nav navbar-left">
+                <li><a href="index.html">Home</a></li>
+                <li class="dropdown">
+                  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">More Pages <span class="caret"></span></a>
+                  <ul class="dropdown-menu">
+                    <li><a href = "multiforms.html">Multi Forms</a></li>
+                    <li><a href="charactercount.html" class="active">Character Count</a></li>
+                    <li><a href="#">Error 404</a></li>
+                    <li><a href="#">FAQ</a></li>
+                    <li><a href="#">Our Team</a></li>
+                    <li><a href="#">Pricing</a></li>
+                  </ul>
+                </li>
               </ul>
-            </li>
-          </ul>
 
           <ul class="nav navbar-nav navbar-right">
             <li>
@@ -90,14 +90,14 @@
         <div class="row">
           <div class="col-sm-4">
 
-            <h3>Multi Form Page</h3>
+            <h3>Character Count</h3>
             
           </div>
           <div class="col-sm-8 hidden-xs">
             
             <ol class="breadcrumb">
               <li><a href="#">Home</a></li>
-              <li class="active">Multi Forms</li>
+              <li class="active">Character Count</li>
             </ol>
 
           </div>
@@ -116,107 +116,24 @@
           <div class="profile__sign-in">
 
             <h1 class="block-header alt">
-              <span>Form 1</span>
+              <span>Character Count</span>
             </h1>
-
             <form>
               <div class="form-group">
-                <label class="sr-only">Full name</label>
-                <input type="text" class="form-control input-lg" placeholder="Full name">
+                <label class="sr-only">Text area</label>
+                <textarea id = "text" row = "12" cols = "50"></textarea>
               </div>
-              <div class="form-group">
-                <label class="sr-only">Username</label>
-                <input type="text" class="form-control input-lg" placeholder="Username">
-              </div>
-              <div class="form-group">
-                <label class="sr-only">E-mail</label>
-                <input type="email" class="form-control input-lg" placeholder="E-mail">
-              </div>
-              <div class="row">
-                <div class="col-sm-6">
-                  <div class="form-group">
-                    <label class="sr-only">Password</label>
-                    <input type="password" id = "password" class="form-control input-lg" placeholder="Password" >
-                  </div>
-                </div>
-                <!-- <div class="col-sm-6">
-                  <div class="form-group">
-                    <label class="sr-only">Repeat password</label>
-                    <input type="password" id = "password1" class="form-control input-lg" placeholder="Repeat password">
-                  </div> 
-                </div> -->
-              </div>
-              <div class="checkbox">
-                <input type="checkbox" class = "toggle" id="singlePassword" value="" data-pw-toggle = "#password">
-                <label for="singlePassword">
-                  Show Password
-                </label>
-              </div><br />
-              <button type="submit" class="btn btn-lg btn-primary">
-                Sign Up
-              </button>
             </form>
-
             <hr>
-
             <p>
-              Already registered? <a href="sign-in.html">Sign in to your account</a>.
+              You have typed <strong><span id = "character-count">0</span></strong>&nbsp;characters.
             </p>
 
           </div> <!-- / .profile_sign-in -->
           
         </div>
 
-        <div class="col-sm-12 col-md-8 col-lg-6 col-md-offset-2 col-lg-offset-3">
-
-            <!-- Sign In form -->
-            <div class="profile__sign-in">
-  
-              <h1 class="block-header alt">
-                <span>Form 2</span>
-              </h1>
-  
-              <form>
-                <div class="row">
-                  <div class="col-sm-6">
-                    <div class="form-group">
-                      <label class="sr-only">Password</label>
-                      <input type="password" id = "passwordCurrent" class="form-control input-lg" placeholder="Password">
-                    </div>
-                  </div>
-                  <div class="col-sm-6">
-                    <div class="form-group">
-                      <label class="sr-only">Password</label>
-                      <input type="password" id = "passwordNew" class="form-control input-lg" placeholder="Re-enter Password">
-                    </div>
-                  </div>
-                  <!-- <div class="col-sm-6">
-                    <div class="form-group">
-                      <label class="sr-only">Repeat password</label>
-                      <input type="password" id = "password1" class="form-control input-lg" placeholder="Repeat password">
-                    </div> 
-                  </div> -->
-                </div>
-                <div class="checkbox">
-                  <input type="checkbox" class = "toggle" id="multi-passwords" value="" data-pw-toggle = "#passwordCurrent, #passwordNew">
-                  <label for="multi-passwords">
-                    Show Passwords
-                  </label>
-                </div><br />
-                <button type="submit" class="btn btn-lg btn-primary">
-                  Sign Up
-                </button>
-              </form>
-  
-              <hr>
-  
-              <p>
-                Already registered? <a href="sign-in.html">Sign in to your account</a>.
-              </p>
-  
-            </div> <!-- / .profile_sign-in -->
-            
-          </div>
+        
       </div> <!-- / .row -->
     </div> <!-- / .container -->
 
@@ -321,55 +238,18 @@
       </div> <!-- / .container -->
     </footer>
 
-    <!-- JavaScript Basics Chapter 2 
-    <script>
-      //Get the field
-      let passwordFields = document.querySelectorAll('[type="password"]')
-      let toggleBtn = document.querySelector('[type = "checkbox"]');
-
-      //add an event listener click to the toggle button
-      toggleBtn.addEventListener('click', function(){
-
-      //use a for...of loop to loop through the password fields and pick one by one
-        for (let password of passwordFields){
-
-          //listen for checked on the toggle button
-          if(toggleBtn.checked){
-
-            //set the password type to text or password based on the above
-            password.type = "text"
-          } else {
-            password.type = "password"
-          }
-        }
-      });
-    </script> 
-    -->
-
-    <!-- JavaScript Basics Chapter 5 : Toggle Multiple Passwords Field -->
+    <!-- JavaScript Basics Chapter 6 : Character Count -->
 
     <script>
-        //Listen to all click events in the browser
-        document.addEventListener('click', function(event){
-            
-            //Check if clicked item is a password toggle
-            //If not, return and stop running the callback function
-            if(!event.target.matches('[data-pw-toggle]')) return;
-            
-            //Get the password fields
-            let selector = event.target.getAttribute('data-pw-toggle');
-            let passwords = document.querySelectorAll(selector);
+        //Get the elements
+        let text = document.querySelector('#text');
+        let charCount = document.querySelector('#character-count');
 
-            //Loop through each password field
-            for(let password of passwords) {
-                
-                //If toggle is checked, change the type to 'text' else change to 'password'
-                if(event.target.checked){
-                    password.type = 'text'                    
-                } else {
-                    password.type = 'password'
-                }
-            }
+        //Use the input method to listen for changes in the text variable
+        text.addEventListener('input', function(){
+
+            //Display the characters count
+            charCount.textContent=text.value.length;
         })
     </script>
 
