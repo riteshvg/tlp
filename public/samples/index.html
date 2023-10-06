@@ -18,7 +18,21 @@
 
     <!-- Google Fonts -->
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600italic,600,700,700italic,800,800italic' rel='stylesheet' type='text/css'>
+    
+    <!-- Data Layer -->
+  <script>
+    var adobeDataLayer = window.adobeDataLayer = window.adobeDataLayer|| [];
+    adobeDataLayer.push({
+      page: 'Playground Home Page',
+      description: 'A page for my testing purposes',
+      url: 'https://www.thelearningproject.in/',
+      contentType: ' Landing Page',
+      siteSection: 'Home'
+    });
+   </script> 
 
+  <!-- Launch Library Code -->
+    <script src="https://assets.adobedtm.com/204118644db8/437cd1c7d72a/launch-39d64d92912c-development.min.js" async></script>
   </head>
 
   <body>
@@ -40,7 +54,7 @@
             <span class="icon-bar"></span>
           </button>
 
-          <a class="navbar-brand" href="index.html">The Learning Project</a>
+          <a class="navbar-brand" href="../playground.md">The Learning Project</a>
 
         </div>
 
@@ -48,7 +62,7 @@
         <div class="collapse navbar-collapse" id="navbar_main">
 
           <ul class="nav navbar-nav navbar-left">
-            <li><a href="index.html">Home</a></li>
+            <li><a href="https://www.thelearningproject.in/">Home</a></li>
             <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">More Pages <span class="caret"></span></a>
               <ul class="dropdown-menu">
@@ -63,9 +77,6 @@
           </ul>
 
           <ul class="nav navbar-nav navbar-right">
-            <li>
-              <a href="#"><i class="fa fa-lock"></i> <span class="hidden-md">Sign In</span></a>
-            </li>
             <li>
               <a href="sign-up.html"><i class="fa fa-user"></i> <span class="hidden-md">Sign Up</span></a>
             </li>
