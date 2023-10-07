@@ -15,9 +15,9 @@ This is part 4 of the Back to Basics series covering my JavaScript learning jour
 
 <!--more-->
 
-#### using Split method and converting a string into an array
+#### Using Split method and converting a string into an array
 
-According to [MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/split), the `split` method of string takes a oattern and divides the string into an ordered list of substrings. 
+According to [MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/split), the `split` method of string takes a pattern and divides the string into an ordered list of substrings. 
 
 ```
     let str = 'the best things in life are rarely free'
