@@ -124,11 +124,11 @@
       <div class="row">
         <div class="col-sm-12 col-md-8 col-lg-6 col-md-offset-2 col-lg-offset-3">
 
-          <!-- Sign In form -->
+          <!-- Sign In form ONLY WORD Count-->
           <div class="profile__sign-in">
 
             <h1 class="block-header alt">
-              <span>Character Count</span>
+              <span>Character Count - ONLY Word</span>
             </h1>
             <form>
               <div class="form-group">
@@ -141,9 +141,37 @@
               You have typed <strong><span id = "character-count">0</span></strong>&nbsp;characters.
             </p>
 
+
             <hr>
             <p>
               <a href = "https://www.thelearningproject.in/posts/back-to-basics-javascript-part-3/">Go back</a>
+            </p>
+
+          </div> <!-- / .profile_sign-in -->
+
+           <!-- Sign In form WORD and CHARACTER Count-->
+
+          <div class="profile__sign-in">
+
+            <h1 class="block-header alt">
+              <span>Character Count - Words and Characters</span>
+            </h1>
+            <form>
+              <div class="form-group">
+                <label class="sr-only">Text area</label>
+                <textarea id = "textDisplay" row = "12" cols = "50"></textarea>
+              </div>
+            </form>
+            <hr>
+            <p>
+              You have typed 
+              <strong><span id = "characterCount">0</span></strong>&nbsp;characters and 
+              <strong><span id = "wordCount">0</span></strong>&nbsp;words.
+            </p>
+
+            <hr>
+            <p>
+              <a href = "https://www.thelearningproject.in/posts/back-to-basics-javascript-part-4/">Go back</a>
             </p>
 
           </div> <!-- / .profile_sign-in -->
@@ -269,6 +297,30 @@
             charCount.textContent=text.value.length;
         })
     </script>
+
+    <!-- JavaScript Basics Chapter 6 : Character and Word Count -->
+
+    <script>
+      //Get the elements
+      let textDisplay = document.querySelector('#textDisplay');
+      let characterCount = document.querySelector('#characterCount');
+      let wordCount = document.querySelector('#wordCount');
+
+      //Use the input method to listen for changes in the text variable
+      textDisplay.addEventListener('input', function(){
+
+          // Gets the word count
+          let words = textDisplay.value.split(/[\s]+/g).filter(function(num){
+            return num.length
+          });
+          
+          // Display the word count
+          wordCount.textContent = words.length;
+
+          //Display the characters count
+          characterCount.textContent=textDisplay.value.length;
+      })
+  </script>
 
     <!-- JavaScript
     ================================================== -->

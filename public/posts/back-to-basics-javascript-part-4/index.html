@@ -34,7 +34,7 @@
     }
     
   },
-  "description": "This is part 4 of the Back to Basics series covering my JavaScript learning journey. In this blog post, I will be how to convert a string into an array, filtering an array and more.\n",
+  "description": "This is part 4 of the Back to Basics series covering my JavaScript learning journey. In this blog post, I will be covering how Chris talked about converting a string into an array, filtering an array and more.\n",
   "keywords": [, "adobe experience cloud, adobe launch, adobe analytics, adobe experience platform, multi solution architect, business analytics"]
 }
 
@@ -45,18 +45,18 @@
 <meta name="generator" content="Hugo 0.117.0 with theme Tranquilpeak 0.5.3-BETA">
 <meta name="author" content="Ritesh Gupta">
 <meta name="keywords" content=", adobe experience cloud, adobe launch, adobe analytics, adobe experience platform, multi solution architect, business analytics">
-<meta name="description" content="This is part 4 of the Back to Basics series covering my JavaScript learning journey. In this blog post, I will be how to convert a string into an array, filtering an array and more.">
+<meta name="description" content="This is part 4 of the Back to Basics series covering my JavaScript learning journey. In this blog post, I will be covering how Chris talked about converting a string into an array, filtering an array and more.">
 
 
-<meta property="og:description" content="This is part 4 of the Back to Basics series covering my JavaScript learning journey. In this blog post, I will be how to convert a string into an array, filtering an array and more.">
+<meta property="og:description" content="This is part 4 of the Back to Basics series covering my JavaScript learning journey. In this blog post, I will be covering how Chris talked about converting a string into an array, filtering an array and more.">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Back to Basics : JavaScript : Part 4">
 <meta name="twitter:title" content="Back to Basics : JavaScript : Part 4">
 <meta property="og:url" content="https://thelearningproject.in/posts/back-to-basics-javascript-part-4/">
 <meta property="twitter:url" content="https://thelearningproject.in/posts/back-to-basics-javascript-part-4/">
 <meta property="og:site_name" content="The Learning Project">
-<meta property="og:description" content="This is part 4 of the Back to Basics series covering my JavaScript learning journey. In this blog post, I will be how to convert a string into an array, filtering an array and more.">
-<meta name="twitter:description" content="This is part 4 of the Back to Basics series covering my JavaScript learning journey. In this blog post, I will be how to convert a string into an array, filtering an array and more.">
+<meta property="og:description" content="This is part 4 of the Back to Basics series covering my JavaScript learning journey. In this blog post, I will be covering how Chris talked about converting a string into an array, filtering an array and more.">
+<meta name="twitter:description" content="This is part 4 of the Back to Basics series covering my JavaScript learning journey. In this blog post, I will be covering how Chris talked about converting a string into an array, filtering an array and more.">
 <meta property="og:locale" content="en-us">
 
   
@@ -153,7 +153,7 @@
       url: ' https:\/\/thelearningproject.in\/posts\/back-to-basics-javascript-part-4\/',
       publish: ' 2023-10-07 00:00:00 \u002b0000 UTC',
       estimatedReadingTime: '2 minutes ', 
-      wordCount : '343',
+      wordCount : '421',
       contentType: ' posts',
       pageKind: ' page',
       date: ' 2023-10-07 00:00:00 \u002b0000 UTC',
@@ -293,7 +293,7 @@
           
           <div class="post-content markdown">
             <div class="main-content-wrap">
-              <p>This is part 4 of the Back to Basics series covering my JavaScript learning journey. In this blog post, I will be how to convert a <code>string</code> into an <code>array</code>, <code>filtering an array</code> and more.</p>
+              <p>This is part 4 of the Back to Basics series covering my JavaScript learning journey. In this blog post, I will be covering how Chris talked about converting a <code>string</code> into an <code>array</code>, <code>filtering an array</code> and more.</p>
 <h4 id="using-split-method-and-converting-a-string-into-an-array">Using Split method and converting a string into an array</h4>
 <p>According to <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/split">MDN</a>, the <code>split</code> method of string takes a pattern and divides the string into an ordered list of substrings.</p>
 <pre tabindex="0"><code>    let str = &#39;the best things in life are rarely free&#39;
@@ -313,12 +313,12 @@
 <pre tabindex="0"><code>let moviesDirected = [&#39;the dark knight&#39;, &#39;the prestige&#39;, &#39;inception&#39;, &#39;interstellar&#39;];
 
 let myAllTimeFavMovie = moviesDirected.filter(function(movie){
-    console.log(movie);
     
     if (movie.includes(&#34;dark&#34;))
         console.log(&#39;your fav movie is: &#39; + movie)
 })
-</code></pre>
+</code></pre><p>Tip: If you copy the above code and execute it in the console, you will get the output. I have also tried adding a codepen below.</p>
+
 
 
 
@@ -336,6 +336,8 @@ let myAllTimeFavMovie = moviesDirected.filter(function(movie){
     src="//codepen.io/assets/embed/ei.js"
 ></script>
 <p>The <code>array.filter()</code> method takes creates a new array with the only elements that pass a test you include as a callback function. The callback accepts three arguments: the current item in the loop&rsquo;s value, its index, and the array itself.</p>
+<h4 id="project--counting-words-and-character">Project : Counting Words and Character</h4>
+<p>This project is in addition to what was covered in the previous blog post. We found a way of tracking number of characters. In addition, we will cover on how to track the number of words. Head over to <a href="https://www.thelearningproject.in/samples/charactercount.html">Playground</a> to check the addition.</p>
 <p>That is all for this blog post. Leave me a line on <a href="mailto:ritesh@thelearningproject.in">ritesh@thelearningproject.in</a> to share some JavaScript basics that you might be interested in sharing.</p>
               
 

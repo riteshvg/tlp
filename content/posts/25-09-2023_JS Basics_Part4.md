@@ -11,7 +11,7 @@ thumbnailImage: https://ik.imagekit.io/hyegquogx/The_Learning_Project/Back%20to%
 author:
      display_name: Ritesh Gupta
 ---
-This is part 4 of the Back to Basics series covering my JavaScript learning journey. In this blog post, I will be how to convert a `string` into an `array`, `filtering an array` and more.
+This is part 4 of the Back to Basics series covering my JavaScript learning journey. In this blog post, I will be covering how Chris talked about converting a `string` into an `array`, `filtering an array` and more.
 
 <!--more-->
 
@@ -48,7 +48,6 @@ I am a huge fan of Christopher Nolan, and have watched all his movies right from
 let moviesDirected = ['the dark knight', 'the prestige', 'inception', 'interstellar'];
 
 let myAllTimeFavMovie = moviesDirected.filter(function(movie){
-    console.log(movie);
     
     if (movie.includes("dark"))
         console.log('your fav movie is: ' + movie)
@@ -56,8 +55,14 @@ let myAllTimeFavMovie = moviesDirected.filter(function(movie){
 
 ```
 
+Tip: If you copy the above code and execute it in the console, you will get the output. I have also tried adding a codepen below.
+
 {{< codepen id = "abPPNrL?editors=1112" >}}
 
 The `array.filter()` method takes creates a new array with the only elements that pass a test you include as a callback function. The callback accepts three arguments: the current item in the loop's value, its index, and the array itself.
+
+#### Project : Counting Words and Character
+
+This project is in addition to what was covered in the previous blog post. We found a way of tracking number of characters. In addition, we will cover on how to track the number of words. Head over to [Playground](https://www.thelearningproject.in/samples/charactercount.html) to check the addition.
 
 That is all for this blog post. Leave me a line on ritesh@thelearningproject.in to share some JavaScript basics that you might be interested in sharing.
