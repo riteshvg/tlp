@@ -201,7 +201,7 @@ fetch('https://jsonplaceholder.typicode.com/post') //Removed 'posts' as the endp
 // {}
 
 ```
- I have created a page that combines the above methods and fetches response from 'The Stoic API', as well as 'The BhagavadGita API'. My next project will be to use the HAPI API to create a library of books. Head over to the [Playground]((https://www.thelearningproject.in/samples/promises.html)) to check for more details.
+ I have created a page that combines the above methods and fetches response from 'The Stoic API', as well as 'The BhagavadGita API'. My next project will be to use the HAPI API to create a library of books. Head over to the [Playground](https://www.thelearningproject.in/samples/promises.html) to check for more details.
 
  ### Array Methods
 
