@@ -13,7 +13,7 @@
       <pubDate>Mon, 13 Nov 2023 00:00:00 +0000</pubDate>
       
       <guid>https://thelearningproject.in/posts/back-to-basics-javascript-part-5/</guid>
-      <description>&lt;p&gt;This is part 5 of the Back to Basics series covering my JavaScript learning journey. In this blog post, I will be covering and explaining the concept of Promises, do a live project on how to fetch data from an API using standard and async/await function as well as cover different Array methods.&lt;/p&gt;</description>
+      <description>&lt;p&gt;This is part 5 of the Back to Basics series covering my JavaScript learning journey. In this blog post, I will be covering and explaining the concept of &lt;code&gt;Promises&lt;/code&gt;, do a live project on how to fetch data from an API using &lt;code&gt;standard&lt;/code&gt; and &lt;code&gt;async/await&lt;/code&gt; operators as well as cover different &lt;code&gt;array&lt;/code&gt; modification methods such as &lt;code&gt;array.shift()&lt;/code&gt;, &lt;code&gt;array.pop()&lt;/code&gt;, &lt;code&gt;array.slice()&lt;/code&gt; etc.&lt;/p&gt;</description>
     </item>
     
     <item>

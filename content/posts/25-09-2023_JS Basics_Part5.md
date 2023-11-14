@@ -11,7 +11,7 @@ thumbnailImage: https://ik.imagekit.io/hyegquogx/The_Learning_Project/Back%20to%
 author:
      display_name: Ritesh Gupta
 ---
-This is part 5 of the Back to Basics series covering my JavaScript learning journey. In this blog post, I will be covering and explaining the concept of Promises, do a live project on how to fetch data from an API using standard and async/await function as well as cover different Array methods.
+This is part 5 of the Back to Basics series covering my JavaScript learning journey. In this blog post, I will be covering and explaining the concept of `Promises`, do a live project on how to fetch data from an API using `standard` and `async/await` operators as well as cover different `array` modification methods such as `array.shift()`, `array.pop()`, `array.slice()` etc.
 
 <!--more-->
 
