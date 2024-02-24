@@ -8,7 +8,7 @@
     <meta name="author" content="">
     <link rel="shortcut icon" href="assets/favicon/favicon.ico">
 
-    <title>JavaScript : Promises and Array Methods</title>
+    <title>JavaScript : Array Manipulation</title>
 
     <!-- CSS Plugins -->
     <link href="assets/plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet" >
@@ -25,7 +25,7 @@
     adobeDataLayer.push({
       page: 'Promises',
       description: 'Promises',
-      url: 'https://www.thelearningproject.in/samples/promises',
+      url: 'https://www.thelearningproject.in/samples/arrayManipulation',
       contentType: 'JavaScript Promises',
       siteSection: 'Samples'
     });
@@ -69,8 +69,8 @@
                   <ul class="dropdown-menu">
                     <li><a href = "multiforms.html">Multi Forms</a></li>
                     <li><a href="charactercount.html">Character Count</a></li>
-                    <li><a href="promises.html"  class="active">Promises</a></li>
-                    <li><a href="arrayManipulation.html" >Array & String Manipulation</a></li>
+                    <li><a href="promises.html" >Promises</a></li>
+                    <li><a href="arrayManipulation.html"  class="active">Array & String Manipulation</a></li>
                   </ul>
                 </li>
               </ul>
@@ -100,14 +100,14 @@
         <div class="row">
           <div class="col-sm-4">
 
-            <h3>Promises</h3>
+            <h3>Array Manipulation</h3>
             
           </div>
           <div class="col-sm-8 hidden-xs">
             
             <ol class="breadcrumb">
               <li><a href="#">Home</a></li>
-              <li class="active">Promises</li>
+              <li class="active">Array Manipulation</li>
             </ol>
 
           </div>
@@ -126,47 +126,114 @@
           <div class="profile__sign-in">
 
             <h1 class="block-header alt">
-              <span>PROMISES</span>
+              <span>Injecting Array Data into HTML</span>
             </h1>
-            <!-- <p class="codepen" data-height="300" data-default-tab="html,result" data-slug-hash="abPYrJe" data-user="riteshvg" style="height: 300px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;">
-              <span>See the Pen <a href="https://codepen.io/riteshvg/pen/abPYrJe">
-              Toggle Multiple Password Field</a> by riteshvg (<a href="https://codepen.io/riteshvg">@riteshvg</a>)
-              on <a href="https://codepen.io">CodePen</a>.</span>
-            </p>
-            <script async src="https://cpwebassets.codepen.io/assets/embed/ei.js"></script> -->
-            
-            <p>
-              Your favorite movie is: <strong>
-                <span id = "promises"></span></strong>.
-            </p>
-            <!-- Script to capture my fav movie name-->
-            <script type = "text/javascript">
+            <h5>Task: Access the jsonplaceholder API and return the data in an ordered list</h5>
 
-              //Creating a new Promise
-              let myFavMovie = new Promise(function(resolve, reject) {
-                
-              //Defining the resolve parameter
-                setTimeout(function(){
-                  resolve ("The Dark Knight!")
-                },3000)
+            <div id = "orderedList"></div>
 
-              //Defining the reject parameter
-                setTimeout(function(){
-                  reject ("Interstellar!")
-                },2000)
-              });
+            <script>
+              let users;
+              let user;
 
-              //Creating a variable to store the span attribute
-              let favMovie = document.querySelector('#promises')
+              //fetching data via API
+              fetch('https://jsonplaceholder.typicode.com/users')
+              .then(function(response){
+              //fetching the response object and converting it into a json() object
+                return response.json();
+              }).then(function(data){
+              //storing the returned data in users variable
+                  users = data;
+                  console.log(users);
+                  
+              //accessing the app node via querySelector function
+                  let app = document.querySelector('#orderedList');
 
-              //Handle the Promise 
-              myFavMovie.then(function(msg){
-                favMovie.textContent = msg;
+                  //accessing the app's innerHTML property and using Array.prototype.map() 
+                  //and Array.prototype.join() method
+                  app.innerHTML = '<ul>' + users.map(function(user){
+                    return '<li>' + user.company.name + '</li>'
+                  }).join('')+ '</ul>'
+              
+              
+              //listening for errors 
               }).catch(function(error){
-                favMovie.textContent = error;
-              });
+                console.warn(error);
+              })
             </script>
-            <!-- Script ends -->
+
+            <hr>
+
+          <h5>Task: Use Template Literals</h5>
+          
+          <script>
+
+            // Using variables in strings 
+
+            let greeting = 'Hello!'
+            let message = 'How do you do?'
+
+            //Without Template Literal
+
+            let str2 = `<h1> ${greeting} </h1>
+                      <p> ${message} </p>`;
+            console.log(str2);
+
+            //Using conditions and functions 
+
+            let movies = ['the dark knight', 'interstellar' , 'inception']
+            let header = true;
+
+
+          </script>
+
+            <hr>
+
+            <h5>Task: Access the jsonplaceholder API and return the data in an ordered list</h5>
+
+            <!-- Table from Highland Business Template -->
+
+            <h1 class="block-header alt">
+              <span>JSON Placeholder</span>
+            </h1>
+
+            <div class="table-responsive">
+              <table class="table table-hover profile__inbox">
+                <tbody>
+                  <tr>
+                    <td>
+                      <div class="profile-inbox__img">
+                        <img src="assets/img/person_1.jpg" class="img-responsive" alt="...">
+                      </div>
+                    </td>
+                    <td>
+                      From: <a href="profile.html">John Doe</a> <br>
+                      1 hours ago
+                    </td>
+                    <td>
+                      <a href="inbox-dialog.html">
+                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iste pariatur nemo hic sunt. Minima amet repellendus magni placeat.
+                      </a>
+                    </td>
+                  </tr>
+                  
+                </tbody>
+              </table>
+            </div>
+
+            <script>
+              fetch('https://jsonplaceholder.typicode.com/users')
+              .then(function(res){
+                return res.json();
+              }).then(function(returnedData){
+                let userDetails = returnedData;
+                console.log(userDetails);
+
+              })
+              //fetching data via API
+              
+            </script>
+
             <hr>
 
             <p>
@@ -175,7 +242,7 @@
 
           </div> <!-- / .profile_sign-in -->
 
-          <hr>
+          
 
           <!-- Learning Examples -->
 

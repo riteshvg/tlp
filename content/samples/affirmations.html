@@ -8,7 +8,7 @@
     <meta name="author" content="">
     <link rel="shortcut icon" href="assets/favicon/favicon.ico">
 
-    <title>Highland: Sign Up</title>
+    <title>Daily Affirmations</title>
 
     <!-- CSS Plugins -->
     <link href="assets/plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet" >
@@ -23,10 +23,10 @@
   <script>
     var adobeDataLayer = window.adobeDataLayer = window.adobeDataLayer|| [];
     adobeDataLayer.push({
-      page: 'Sign Up',
-      description: 'Sign Up',
-      url: 'https://www.thelearningproject.in/samples/sign-up',
-      contentType: 'JavaScript Sign up Forms',
+      page: 'Promises',
+      description: 'Promises',
+      url: 'https://www.thelearningproject.in/samples/affirmations',
+      contentType: 'JavaScript Promises',
       siteSection: 'Samples'
     });
    </script> 
@@ -55,31 +55,30 @@
             <span class="icon-bar"></span>
           </button>
 
-          <a class="navbar-brand" href="index.html">Highland</a>
+          <a class="navbar-brand" href="https://www.thelearningproject.in">The Learning Project</a>
 
         </div>
 
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="navbar_main">
 
-          <ul class="nav navbar-nav navbar-left">
-            <li><a href="https://www.thelearningproject.in">Home</a></li>
-            <li class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">More Pages <span class="caret"></span></a>
-              <ul class="dropdown-menu">
-                <li><a href = "multiforms.html" class="active">Multi Forms</a></li>
-                <li><a href="charactercount.html">Character Count</a></li>
-                <li><a href="promises.html">Promises</a></li>
-                <li><a href="arrayManipulation.html">Array & String Manipulation</a></li>
+            <ul class="nav navbar-nav navbar-left">
+                <li><a href="https://www.thelearningproject.in" >Home</a></li>
+                <li class="dropdown">
+                  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">More Pages <span class="caret"></span></a>
+                  <ul class="dropdown-menu">
+                    <li><a href = "multiforms.html">Multi Forms</a></li>
+                    <li><a href="charactercount.html">Character Count</a></li>
+                    <li><a href="promises.html"  class="active">Promises</a></li>
+                    <li><a href="arrayManipulation.html" >Array & String Manipulation</a></li>
+                  </ul>
+                </li>
               </ul>
-            </li>
-          </ul>
 
           <ul class="nav navbar-nav navbar-right">
             <li>
               <a href="sign-up.html"><i class="fa fa-user"></i> <span class="hidden-md">Sign Up</span></a>
             </li>
-          </ul>
           </ul>
 
           <form class="navbar-form navbar-search navbar-right">
@@ -101,14 +100,14 @@
         <div class="row">
           <div class="col-sm-4">
 
-            <h3>Sign Up</h3>
+            <h3>Daily Affirmations</h3>
             
           </div>
           <div class="col-sm-8 hidden-xs">
             
             <ol class="breadcrumb">
               <li><a href="#">Home</a></li>
-              <li class="active">Sign Up</li>
+              <li class="active">Affirmations</li>
             </ol>
 
           </div>
@@ -120,71 +119,102 @@
     <!-- CONTENT
     ================================================== -->
     <div class="container">
-      <div class="row">
-        <div class="col-sm-12 col-md-8 col-lg-6 col-md-offset-2 col-lg-offset-3">
-
-          <!-- Sign In form -->
-          <div class="profile__sign-in">
-
+        <div class="row">
+          <div class="col-sm-9">
+  
             <h1 class="block-header alt">
-              <span>Create a new account</span>
+              <span>Get in touch with us!</span>
             </h1>
-
-            <form>
-              <div class="form-group">
-                <label class="sr-only">Full name</label>
-                <input type="text" class="form-control input-lg" placeholder="Full name">
-              </div>
-              <div class="form-group">
-                <label class="sr-only">Username</label>
-                <input type="text" class="form-control input-lg" placeholder="Username">
-              </div>
-              <div class="form-group">
-                <label class="sr-only">E-mail</label>
-                <input type="email" class="form-control input-lg" placeholder="E-mail">
-              </div>
+  
+            <p class="text-muted">
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente tenetur possimus, excepturi qui ab accusamus eos quis id. Obcaecati, voluptas harum blanditiis libero dolorem nemo quia, veniam distinctio ab esse. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reprehenderit explicabo aliquam non itaque enim officia facilis consequatur possimus. Possimus est beatae mollitia eum dolorum laboriosam inventore fugit placeat at expedita!
+            </p> <br />
+  
+            <div class="alert alert-info">
+              <strong>Heads up!</strong> The contact form below is fully functional. Please refer to README.md for setup instructions.
+            </div> <br />
+  
+            <!-- Alert message -->
+            <div class="alert" id="form_message" role="alert"></div>
+  
+            <!-- Please carefully read the README.txt file in order to setup
+                 the PHP contact form properly -->
+            <form id="form_sendemail">
               <div class="row">
                 <div class="col-sm-6">
                   <div class="form-group">
-                    <label class="sr-only">Password</label>
-                    <input type="password" id = "password" class="form-control input-lg" placeholder="Password">
+                    <label class="sr-only" for="email">Email address</label>
+                    <input type="email" name="email" class="input-lg form-control" id="email" placeholder="E-mail" data-original-title="" title="">
+                    <span class="help-block"></span>
                   </div>
                 </div>
                 <div class="col-sm-6">
                   <div class="form-group">
-                    <label class="sr-only">Password</label>
-                    <input type="password" id = "password" class="form-control input-lg" placeholder="Re-enter Password">
-                  </div>
+                    <label class="sr-only" for="name">Name</label>
+                    <input type="text" name="name" class="input-lg form-control" id="name" placeholder="Full Name" data-original-title="" title="">
+                    <span class="help-block"></span>
+                  </div>   
                 </div>
-                <!-- <div class="col-sm-6">
-                  <div class="form-group">
-                    <label class="sr-only">Repeat password</label>
-                    <input type="password" id = "password1" class="form-control input-lg" placeholder="Repeat password">
-                  </div> 
-                </div> -->
               </div>
-              <div class="checkbox">
-                <input type="checkbox" class = "toggle" id="profile-sign-in__remember" value="">
-                <label for="profile-sign-in__remember">
-                  Show Password
-                </label>
-              </div><br />
-              <button type="submit" class="btn btn-lg btn-primary">
-                Sign Up
-              </button>
+              <div class="form-group">
+                <label class="sr-only" for="message">Message</label>
+                <textarea name="message" class="input-lg form-control" rows="5" id="message" placeholder="Message"></textarea>
+                <span class="help-block"></span>
+              </div>
+              <!-- reCAPTCHA -->
+              <div class="form-group" id="form-captcha">
+                
+                <div class="g-recaptcha" data-sitekey="YOUR_SITE_KEY"></div>
+                <span class="help-block"></span>
+              </div>
+              <!-- /reCAPTCHA -->
+              <button type="submit" class="btn btn-lg btn-primary">Send Message</button>
             </form>
-
-            <hr>
-
-            <p>
-              Already registered? <a href="sign-in.html">Sign in to your account</a>.
+            
+          </div>
+          <div class="col-sm-3">
+            
+            <h1 class="block-header alt">
+              <span>Keep in touch</span>
+            </h1>
+  
+            <ul class="social-icons">
+              <li class="facebook">
+                <a href="#"><i class="fa fa-facebook"></i></a>
+              </li>
+              <li class="twitter">
+                <a href="#"><i class="fa fa-twitter"></i></a>
+              </li>
+              <li class="google-plus">
+                <a href="#"><i class="fa fa-google-plus"></i></a>
+              </li>
+              <li class="linkedin">
+                <a href="#"><i class="fa fa-linkedin"></i></a>
+              </li>
+              <li class="rss">
+                <a href="#"><i class="fa fa-rss"></i></a>
+              </li>
+            </ul>
+  
+            <h1 class="block-header alt">
+              <span>Contact info</span>
+            </h1>
+  
+            <p class="text-muted">
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Commodi, corrupti debitis.
             </p>
-
-          </div> <!-- / .profile_sign-in -->
-          
-        </div>
-      </div> <!-- / .row -->
-    </div> <!-- / .container -->
+            <p class="text-muted">
+              US & CAN: 1-234-56789 <br />
+              Worldwide: 1-234-56789
+            </p>
+            <p class="text-muted">
+              E-mail: info@domain.com <br />
+              Website: <a href="#">https://www.domain.com/</a>
+            </p>
+  
+          </div>
+        </div> <!-- / .row -->
+      </div> <!-- / .container -->
 
 
     <!-- FOOTER 
@@ -287,30 +317,11 @@
       </div> <!-- / .container -->
     </footer>
 
-    <!-- JavaScript Basics -->
-    <script>
-      //Get the field
-      let passwordFields = document.querySelectorAll('[type="password"]')
-      let toggleBtn = document.querySelector('[type = "checkbox"]');
+    <!-- JavaScript Basics Chapter 6 : Character Count -->
 
-      //add an event listener click to the toggle button
-      toggleBtn.addEventListener('click', function(){
+    
 
-      //use a for...of loop to loop through the password fields and pick one by one
-        for (let password of passwordFields){
-
-          //listen for checked on the toggle button
-          if(toggleBtn.checked){
-
-            //set the password type to text or password based on the above
-            password.type = "text"
-          } else {
-            password.type = "password"
-          }
-        }
-      });
-    </script>
-
+    
     <!-- JavaScript
     ================================================== -->
     

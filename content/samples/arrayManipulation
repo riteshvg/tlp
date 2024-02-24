@@ -8,7 +8,7 @@
     <meta name="author" content="">
     <link rel="shortcut icon" href="assets/favicon/favicon.ico">
 
-    <title>JavaScript : Promises and Array Methods</title>
+    <title>JavaScript : Array Manipulation</title>
 
     <!-- CSS Plugins -->
     <link href="assets/plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet" >
@@ -25,7 +25,7 @@
     adobeDataLayer.push({
       page: 'Promises',
       description: 'Promises',
-      url: 'https://www.thelearningproject.in/samples/promises',
+      url: 'https://www.thelearningproject.in/samples/arrayManipulation',
       contentType: 'JavaScript Promises',
       siteSection: 'Samples'
     });
@@ -55,7 +55,7 @@
             <span class="icon-bar"></span>
           </button>
 
-          <a class="navbar-brand" href="https://www.thelearningproject.in">The Learning Project</a>
+          <a class="navbar-brand" href="https://www.thelearningproject.in">Array Manipulation</a>
 
         </div>
 
@@ -69,8 +69,8 @@
                   <ul class="dropdown-menu">
                     <li><a href = "multiforms.html">Multi Forms</a></li>
                     <li><a href="charactercount.html">Character Count</a></li>
-                    <li><a href="promises.html"  class="active">Promises</a></li>
-                    <li><a href="arrayManipulation.html" >Array & String Manipulation</a></li>
+                    <li><a href="promises.html" >Promises</a></li>
+                    <li><a href="arrayManipulation.html"  class="active">Array Manipulation</a></li>
                   </ul>
                 </li>
               </ul>
@@ -107,7 +107,7 @@
             
             <ol class="breadcrumb">
               <li><a href="#">Home</a></li>
-              <li class="active">Promises</li>
+              <li class="active">Array Manipulation</li>
             </ol>
 
           </div>
@@ -126,7 +126,7 @@
           <div class="profile__sign-in">
 
             <h1 class="block-header alt">
-              <span>PROMISES</span>
+              <span>Array Manipulation</span>
             </h1>
             <!-- <p class="codepen" data-height="300" data-default-tab="html,result" data-slug-hash="abPYrJe" data-user="riteshvg" style="height: 300px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;">
               <span>See the Pen <a href="https://codepen.io/riteshvg/pen/abPYrJe">

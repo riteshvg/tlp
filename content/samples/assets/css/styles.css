@@ -8057,6 +8057,10 @@ p {
   background-image: url(../img/home_3.jpg);
   text-align: center;
 }
+.showcase .item.item_4 {
+  background-image: url(../img/blog_2.jpg);
+  text-align: center;
+}
 @media (max-width: 991px) {
   .showcase .item {
     height: 450px;
