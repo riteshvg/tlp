@@ -301,10 +301,9 @@
                   let studioData = data;
                   app.innerHTML = studioData.map(function(movies){
                     return `
-                    <h5><b>${movies.original_title}</b></h5>
-                    <p><em>${movies.director}</em></p>
-                      <p>${movies.description}</p>
-                      <p><a href = "${movies.url}">read more </p> 
+                    <h5><b>${movies.original_title}</b><b>${movies.title}</b></h5>
+                    <p>by<em>${movies.director}</em></p>
+                      <p>${movies.description}</p>                      
                     `
                   }).join('');
                 }).catch(function(error){
