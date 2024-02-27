@@ -129,6 +129,12 @@
               <span>Injecting Array Data into HTML</span>
             </h1>
             <h5>Task: Access the jsonplaceholder API and return the data in an ordered list</h5>
+            
+            <div class="info-board info-board-primary">
+              <p>
+                This task involves fetching a response from the jsonplaceholder API and returning back the user company name with the fetch() method.
+              </p>
+            </div>
 
             <div id = "orderedList"></div>
 
@@ -164,38 +170,16 @@
 
             <hr>
 
-          <h5>Task: Use Template Literals</h5>
-          
-          <script>
-
-            // Using variables in strings 
-
-            let greeting = 'Hello!'
-            let message = 'How do you do?'
-
-            //Without Template Literal
-
-            let str2 = `<h1> ${greeting} </h1>
-                      <p> ${message} </p>`;
-            console.log(str2);
-
-            //Using conditions and functions 
-
-            let movies = ['the dark knight', 'interstellar' , 'inception']
-            let header = true;
-
-
-          </script>
-
-            <hr>
-
             <h5>Task: Access the jsonplaceholder API and return the data in an ordered list</h5>
 
-            <!-- Table from Highland Business Template -->
+            <div class="info-board info-board-primary">
+              <p>
+                This task involves fetching multiple endpoints using promise.all() method and returning the value in the table below.
+                Currently, work in progress!
+              </p>
+            </div>
 
-            <h1 class="block-header alt">
-              <span>JSON Placeholder</span>
-            </h1>
+            <!-- Table from Highland Business Template -->
 
             <div class="table-responsive">
               <table class="table table-hover profile__inbox">
@@ -216,7 +200,6 @@
                       </a>
                     </td>
                   </tr>
-                  
                 </tbody>
               </table>
             </div>
@@ -228,13 +211,23 @@
               }).then(function(returnedData){
                 let userDetails = returnedData;
                 console.log(userDetails);
-
               })
               //fetching data via API
               
             </script>
 
             <hr>
+
+            <h5>Task: Access the dragonsmonthly api and create a list </h5>
+
+            <div class="info-board info-board-primary">
+              <p>
+                This task involves fetching multiple endpoints using promise.all() method and returning the value in the table below.
+                Currently, work in progress!
+              </p>
+            </div>
+
+
 
             <p>
               <a href = "https://www.thelearningproject.in/posts/back-to-basics-javascript-part-3/">Go back</a>
@@ -282,179 +275,45 @@
           <div class="profile__sign-in">
 
             <h1 class="block-header alt">
-              <span>The Stoicism API!</span>
+              <span>Injecting Array Data GoMakeThings Template!</span>
             </h1>
             <p>
-              <div>
-                <h4><span id = "stoicPunchLine">
-                  <em>
-                    Get a random Stoic quote on click of the below button!
-                  </em>
-                </span>
-                <span id = "stoicAuthor">
-                </span>
-              </h4> 
-              </div>
-              <p></p>
-            <button class = "btn btn-primary" id="stoicButton">Get your Daily Dose!</button>
-            </p>
 
-            <!-- Get a fresh quote from the Bhagvad Gita API and render it into the DOM - 
-              /**
-               * fetch() method is used to make Ajax requests such as calling API or fetching a remote resource
-              */
-            -->
-            <script>
+              <div id = "app"></div>
 
-            // Working Example - Async function to fetch data and display in the UI 
-            //Click the Get your daily dose button to get a random Stoic quote
-            // Rewritten based on Chris's chapter of error handling with async function
+              <script>
+                //Access the app div
+                let app = document.querySelector('#app')
+                // Hit the Studio Ghibli endpoint 'films'
+                /**
+                 * Render articles into the DOM
+                 * @param {Array} articles The articles to render
+                */
+                
 
-            async function fetchStoicAPI(){
-              try {
-                 //Get the endopoint
-                let response = await fetch('https://api.themotivate365.com/stoic-quote');
-
-                //If the call failed, throw an error
-                if(!response.ok){
-                  //throw(response.status);
-                  throw('Something went wrong!')
-                }
-
-                //Otherwise get the response. Don't forget to return the data. Else, you will get an error!
-                let data = await response.json();
-                return data;
-
-                //Log the data to console
-                console.log(data);
-
-              } catch (error) {
-                console.warn(error)
-              }
-            }
-
-            let stoicPunchLine = document.querySelector('#stoicPunchLine');
-            let stoicButton = document.querySelector('#stoicButton');
-            let stoicAuthor = document.querySelector('#stoicAuthor');
-
-            stoicButton.addEventListener('click', async function(){
-              let data = await fetchStoicAPI();
-              console.log(data);
-              stoicPunchLine.innerText = data.quote + '-'
-              stoicAuthor.innerText = data.author;
-            })
-
-            /* async function fetchJokeAPI() {
-                try {
-                  const url = 'https://api.themotivate365.com/stoic-quote'
-                    const response = await fetch(url); // Replace with your API endpoint
-                    if (response.ok) {
-                        const data = await response.json();
-                        //console.log(data);
-                        return data;
-                    } else {
-                        throw new Error('Network response was not ok.');
-                    }
-                } catch (error) {
-                    console.error('Error fetching data:', error);
-                }
-            } 
-
-            const jokePunchline = document.querySelector('#jokePunchline');
-            const jokeButton = document.querySelector('#jokeButton')
-            const author = document.querySelector('#author')
-
-             jokeButton.addEventListener('click', async function() {
-                const data = await fetchJokeAPI(); // Fetch data from the API
-                jokePunchline.innerText = data.quote + '..' 
-                author.innerText = data.author;
-            });*/
-            </script>
-            
-            <hr>
-            <!-- Stoic Module Ends -->
-            <p>
-              <a href = "https://www.thelearningproject.in/posts/back-to-basics-javascript-part-4/">Go back</a>
-            </p>
-
-          </div>
-
-          <!-- / .profile_sign-in -->
-
-          <hr>
-          <div class="profile__sign-in">
-
-            <h1 class="block-header alt">
-              <span>The Bhagavad Gita API</span>
-            </h1>
-            <p>
-              <h4>
-                Chapter Number : <span id = "chapterNumber"></span> </h4>
-              <blockquote id = "summaryOutput">
-                <em>Opening the Bhagvad Gita!</em>
-            </blockquote>
-            <button id = "summaryButton" class = "btn btn-primary">Show Next Chapter</button>
-            </p>
-  
-            <script> 
-              /**
-               * fetch() method is used to make Ajax requests such as calling API or fetching a remote resource
-              */
-  
-              //Trying on button click 
-              
-              //function getQuote () {       
-  
-            async function fetchData(){
-              const url = 'https://bhagavad-gita3.p.rapidapi.com/v2/chapters/';
-              const options = {
-              method: 'GET',
-              headers: {
-                'X-RapidAPI-Key': '3d4c716da3mshc3f13b8dd2f6b2ep1f4b7fjsndebb9f4a5fcf',
-                'X-RapidAPI-Host': 'bhagavad-gita3.p.rapidapi.com'
-                }
-              }
-              try{
-              const response = await fetch(url, options);
-              if(response.ok){
-                const data = await response.json();
-                //console.log(data);
-                return data;
-              } else {
-              throw new Error('Network response was not OK!')
-              }
-              } catch (error) {
-                console.error('Error fetching data:', error);
-              }
-            };
-  
-            let currentChapterIndex = 0;
-            
-            const chapterNumber = document.querySelector('#chapterNumber')
-            const buttonClick = document.querySelector('#summaryButton');
-            const summaryDisplay = document.querySelector('#summaryOutput')
-  
-            buttonClick.addEventListener('click', async function(){
-              const quotes = await fetchData();
-  
-              if(currentChapterIndex < quotes.length) {
-                chapterNumber.textContent = quotes[currentChapterIndex].chapter_number;
-                summaryDisplay.textContent = quotes[currentChapterIndex].chapter_summary_hindi;
-                currentChapterIndex ++;
-              } else {
-                console.log('no more quotes');
-                currentChapterIndex = 0;
-              }
-            });
-            
+                fetch('https://ghibliapi.vercel.app/films')
+                .then(function(response){
+                  if(response.ok){
+                    return response.json()
+                  }
+                    throw response.status;
+                }).then(function(data){
+                  //Render the films into DOM
+                  let studioData = data;
+                  app.innerHTML = studioData.map(function(movies){
+                    return `
+                    <h5><b>${movies.title}</b></h5>
+                    <p><em>${movies.director}</em></p>
+                      <p>${movies.description}</p>
+                    `
+                  }).join('');
+                }).catch(function(error){
+                  console.warn(error);
+                });
               </script>
-                            
-                <p>
-                  <a href = "https://www.thelearningproject.in/posts/back-to-basics-javascript-part-4/">Go back</a>
-                </p>
             </div>
             <hr>
-
+            
             <div class="profile__sign-in">
               <h1 class = "block-header alt">
                 <span>The Books API</span>
