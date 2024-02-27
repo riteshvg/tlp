@@ -289,7 +289,6 @@
                  * Render articles into the DOM
                  * @param {Array} articles The articles to render
                 */
-                
 
                 fetch('https://ghibliapi.vercel.app/films')
                 .then(function(response){
@@ -302,9 +301,10 @@
                   let studioData = data;
                   app.innerHTML = studioData.map(function(movies){
                     return `
-                    <h5><b>${movies.title}</b></h5>
+                    <h5><b>${movies.original_title}</b></h5>
                     <p><em>${movies.director}</em></p>
                       <p>${movies.description}</p>
+                      <p><a href = "${movies.url}">read more </p> 
                     `
                   }).join('');
                 }).catch(function(error){
