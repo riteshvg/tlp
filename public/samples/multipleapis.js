@@ -63,4 +63,36 @@ Promise.all([
 }).catch(function(error){
     console.warn(error);
 
+}) 
+
+/*Promise.all([
+    fetch('https://ghibliapi.vercel.app/films'),
+    fetch('https://ghibliapi.vercel.app/locations')
+]).then(function(responses){
+    //Get a JSON object from each of the response
+    return Promise.all(responses.map(function(response){
+        return response.json();
+    }))
+}).then(function(data){
+    const filmsData = data[0];
+    const locationData = data[1];
+    const mergedData = mergeData(filmsData, locationData, 'id');
+    displayMergedData(mergeData);
+}).catch(function(error){
+    console.warn('Error fetching data: ', error);
 })
+
+function mergeData(data1, data2, identifier){
+    const mergedData = [];
+
+    data1.forEach(function(item1){
+        const matchingItem = data2.find(function(item2){
+            return item1[identifier] === item2[identifier]
+        })
+        if(matchingItem){
+            mergedData.push(Object.assign({}, item1, matchingItem))
+        }
+    });
+}
+
+displayMergedData(mergedData);*/
