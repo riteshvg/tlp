@@ -15,9 +15,9 @@ Promise.all([
     let movieData = ('movies', data[0]);
     let currentPage = 1;
     const itemsPerPage = 10; 
-
-    movieData.forEach(function(movie){
     let app = document.querySelector('.blog__item')
+    
+    movieData.forEach(function(movie){
         app.innerHTML += 
         `
     <div class = "container">
@@ -41,6 +41,7 @@ Promise.all([
                 <div class = "blog__body">
                     <img class="img-responsive img-article pull-left" src = "${movie.movie_banner}">
                     <p class = "">${movie.description}</p>
+
                 </div>  
                 <div class="blog__footer">
                     <ul class="blog__tags">
@@ -53,12 +54,6 @@ Promise.all([
     <div>
         `
     })
-    
-    //accessing the location data[1] node and storing in a movieData variable
-
-    let locationData = ('location', data[1]);
-    console.log(locationData);   
-
 
 }).catch(function(error){
     console.warn(error);

@@ -1,54 +1,64 @@
-        document.addEventListener('DOMContentLoaded', function() {
-            // Fetch data from both /films and /locations endpoints simultaneously
-            Promise.all([
-                fetch('https://ghibliapi.herokuapp.com/films'),
-                fetch('https://ghibliapi.herokuapp.com/locations')
-            ])
-            .then(responses => Promise.all(responses.map(response => response.json())))
-            .then(data => {
-                const filmsData = data[0];
-                const locationsData = data[1];
+const url = 'https://ghibliapi.vercel.app'
 
-                // Merge films and locations data
-                const mergedData = mergeData(filmsData, locationsData, 'id');
+const result = 
 
-                // Display merged data
-                displayMergedData(mergedData);
-            })
-            .catch(error => {
-                console.error('Error fetching data:', error);
-            });
+fetch(`${url}/locations`)
+.then(function(response){
+    return response.json()
+}).then (function(locationData){
+  locationData.map(function(locationDetails){
+    console.log(locationDetails.name);
+    let films = locationDetails.films
+    films.forEach(function(filmsURL){
+        let filmsID = filmsURL.split('/')[4]
+        console.log('Films:' + filmsID);
+        return filmsID;
+    })
+  })
+})
 
-            // Merge data from two endpoints based on a common identifier
-            function mergeData(data1, data2, identifier) {
-                const mergedData = [];
+fetch(`${url}/films`)
+.then(function(response){
+    return response.json();
+}).then(function(data){
+    data.forEach(function(filmDetails){
+        console.log(filmDetails.id);
+    })
+})  
 
-                data1.forEach(item1 => {
-                    const matchingItem = data2.find(item2 => item1[identifier] === item2[identifier]);
-                    if (matchingItem) {
-                        mergedData.push({ ...item1, ...matchingItem });
-                    }
-                });
+/**
+ * 
+ * <div class = "container">
+        <div class="row">
+            <div class="col-sm-9">
+                <div class = "blog__header">
+                    <h5 class = "blog__title"><a href = "${movie.url}">${movie.title}</a></h5>
+                    ${movie.original_title}
+                    <ul class="blog__info">
+                        <li>
+                            <i class="fa fa-user"></i> Released in: <a href="#">${movie.release_date}</a>
+                        </li>
+                        <li>
+                            <i class="fa fa-calendar"></i>Length: <time>${movie.running_time} minutes</time>
+                        </li>
+                        <li>
+                            <i class="fa solid fa-thumbs-up"></i>${movie.rt_score}
+                        </li>
+                    </ul>
+                </div>
+                <div class = "blog__body">
+                    <img class="img-responsive img-article pull-left" src = "${movie.movie_banner}">
+                    <p class = "">${movie.description}</p>
 
-                return mergedData;
-            }
-
-            // Display merged data
-            function displayMergedData(mergedData) {
-                const container = document.getElementById('data-container');
-                container.innerHTML = '';
-
-                mergedData.forEach(item => {
-                    const card = document.createElement('div');
-                    card.classList.add('card', 'mb-3');
-                    card.innerHTML = `
-                        <div class="card-body">
-                            <h5 class="card-title">${item.title}</h5>
-                            <p class="card-text">Location: ${item.name}</p>
-                            <p class="card-text">Description: ${item.description}</p>
-                        </div>
-                    `;
-                    container.appendChild(card);
-                });
-            }
-        });
+                </div>  
+                <div class="blog__footer">
+                    <ul class="blog__tags">
+                        <li><a href="#">${movie.director}</a></li>
+                        <li><a href="#">${movie.producer}</a></li>
+                    </ul>
+                </div> <!-- / .blog__footer -->
+            </div>
+        </div>
+    <div>
+        `
+ */
