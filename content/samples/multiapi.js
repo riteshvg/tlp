@@ -1,4 +1,7 @@
 //https://www.youtube.com/watch?v=vvjaRIM4Bjs
+let locationURL = 'https://ghibliapi.vercel.app/locations';
+let filmURL = 'https://ghibliapi.vercel.app/films';
+
 
 fetch(locationURL)
   .then(function(response){
