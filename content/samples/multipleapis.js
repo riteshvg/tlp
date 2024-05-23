@@ -13,8 +13,6 @@ Promise.all([
     //accessing the films data[0] node and storing in a movieData variable
     
     let movieData = ('movies', data[0]);
-    let currentPage = 1;
-    const itemsPerPage = 10; 
     let app = document.querySelector('.blog__item')
     
     movieData.forEach(function(movie){
