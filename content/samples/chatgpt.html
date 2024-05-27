@@ -3,19 +3,149 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Location Data</title>
+  <title>Ghibli Locations and Films</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
   <style>
-    /* Style for the location div */
-    .location {
-      border: 1px solid #ccc;
-      margin-bottom: 10px;
-      padding: 10px;
+    body {
+      font-family: Arial, sans-serif;
+    }
+    .container {
+      margin: 20px;
+    }
+    .blog__header, .blog__body, .blog__footer {
+      margin-bottom: 20px;
+    }
+    .img-responsive {
+      max-width: 100%;
+      height: auto;
+    }
+    .blog__tags a {
+      margin-right: 10px;
+      text-decoration: none;
+      color: #007bff;
+    }
+    .blog__tags a:hover {
+      text-decoration: underline;
+    }
+    /* Loading screen styles */
+    #loading-screen {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(255, 255, 255, 0.8);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 24px;
+      color: #333;
+      z-index: 1000;
+    }
+    #loading-screen.hidden {
+      display: none;
     }
   </style>
 </head>
 <body>
-  <div id="data-container"></div>
+  <div id="loading-screen">Loading...</div>
+  <h1>Ghibli Locations and Films</h1>
+  <div class="blog__item"></div>
+  <script>
+    // Show the loading screen
+    var loadingScreen = document.getElementById('loading-screen');
+    loadingScreen.classList.remove('hidden');
 
-  <script src="chatgpt.js"></script> <!-- Include your JavaScript file -->
+    fetch('https://ghibliapi.vercel.app/locations')
+      .then(function(response) {
+        return response.json();
+      })
+      .then(function(locationData) {
+        // Select two different locations
+        var locationDetails1 = locationData[0];
+        var locationDetails2 = locationData[1];
+
+        var locationID1 = locationDetails1.films[0].split('/')[4];
+        var locationID2 = locationDetails2.films[0].split('/')[4];
+
+        console.log('Data from endpoint 1:', locationDetails1, locationDetails2);
+
+        // Fetch film data for both locations
+        var filmPromises = [
+          fetch(`https://ghibliapi.vercel.app/films/${locationID1}`)
+            .then(function(response) {
+              if (!response.ok) {
+                throw new Error('Network response was not OK ' + response.statusText);
+              }
+              return response.json().then(function(filmData) {
+                return { filmData: filmData, locationDetails: locationDetails1 };
+              });
+            }),
+          fetch(`https://ghibliapi.vercel.app/films/${locationID2}`)
+            .then(function(response) {
+              if (!response.ok) {
+                throw new Error('Network response was not OK ' + response.statusText);
+              }
+              return response.json().then(function(filmData) {
+                return { filmData: filmData, locationDetails: locationDetails2 };
+              });
+            })
+        ];
+
+        // Use Promise.all to handle all film fetch requests
+        return Promise.all(filmPromises);
+      })
+      .then(function(dataArray) {
+        dataArray.forEach(function(data) {
+          var filmData = data.filmData;
+          var locationDetails = data.locationDetails;
+          console.log('Film Data:', filmData);
+          var app = document.querySelector('.blog__item');
+          app.innerHTML += `
+            <div class="container">
+              <div class="row">
+                <div class="col-sm-9">
+                  <div class="blog__header">
+                    <h5 class="blog__title"><a href="${filmData.url}">${filmData.title}</a></h5>
+                    ${filmData.original_title}
+                    <ul class="blog__info">
+                      <li>
+                        <i class="fa fa-user"></i> Released in: <a href="#">${filmData.release_date}</a>
+                      </li>
+                      <li>
+                        <i class="fa fa-calendar"></i>Length: <time>${filmData.running_time} minutes</time>
+                      </li>
+                      <li>
+                        <i class="fa solid fa-thumbs-up"></i>${filmData.rt_score}
+                      </li>
+                      <li>
+                        <i class="fa solid fa-thumbs-up"></i>${locationDetails.name}
+                      </li>
+                    </ul>
+                  </div>
+                  <div class="blog__body">
+                    <img class="img-responsive img-article pull-left" src="${filmData.movie_banner}">
+                    <p>${filmData.description}</p>
+                  </div>
+                  <div class="blog__footer">
+                    <ul class="blog__tags">
+                      <li><a href="#">${filmData.director}</a></li>
+                      <li><a href="#">${filmData.producer}</a></li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+          `;
+        });
+        // Hide the loading screen after the data is processed
+        loadingScreen.classList.add('hidden');
+      })
+      .catch(function(error) {
+        console.log('Request Failed:', error);
+        // Hide the loading screen in case of an error
+        loadingScreen.classList.add('hidden');
+      });
+  </script>
 </body>
 </html>

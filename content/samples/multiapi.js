@@ -1,7 +1,7 @@
 //https://www.youtube.com/watch?v=vvjaRIM4Bjs
 let locationURL = 'https://ghibliapi.vercel.app/locations';
 let filmURL = 'https://ghibliapi.vercel.app/films';
-
+let locationDetails = ''
 
 fetch(locationURL)
   .then(function(response){
@@ -14,7 +14,8 @@ fetch(locationURL)
       return fetch(`https://ghibliapi.vercel.app/films/${locationID}`)
         .then(function(response){
           return response.json();
-        });
+        })
+        
     });
 
     //wait for all film detail requests to complete
@@ -22,10 +23,10 @@ fetch(locationURL)
   })
   .then(function(allFilmDetails){
     //now allFilmDetails contains an array of film details for each location
-    console.log(allFilmDetails);
+    //console.log(allFilmDetails);
     let app = document.querySelector('.blog__item')
     allFilmDetails.map(function(data){  
-        console.log(allFilmDetails);
+        //console.log(allFilmDetails);
         app.innerHTML += 
         `
     <div class = "container">
@@ -47,7 +48,6 @@ fetch(locationURL)
                         <li>
                             <i class="fa solid fa-thumbs-up"></i>${locationDetails.name}
                         </li>
-
                     </ul>
                 </div>
                 <div class = "blog__body">
@@ -72,3 +72,80 @@ fetch(locationURL)
   });
 
 
+/* fetch(locationURL)
+.then(function(response){
+  return response.json();
+}).then(function(locationData){
+  locationData.map(function(locationDetails){
+    locationID = locationDetails.id
+    //console.log("filmId:" + locationID);
+    return fetch(`https://ghibliapi.vercel.app/films/${locationID}`)
+  }).then(function(response){
+    console.log(response)
+    return response.json()
+
+  }).then(function(filmData){
+    filmData.map(function(filmDetails){
+      filmID = filmDetails.id
+      //console.log(filmID);
+    })
+  })
+}) 
+
+fetch(locationURL)
+.then(function(response){
+  return response.json();
+}).then(function(locationData){
+  locationData.map(function(locationDetails){
+    const locationID = locationDetails.films[0].split('/')[4];
+    console.log(locationID);
+    return fetch(`https://ghibliapi.vercel.app/films/${locationID}`)
+  })
+}).then(function(response){
+  console.log(response);
+  return response.json();
+});
+
+fetch('https://ghibliapi.vercel.app/locations')
+.then(function(response){
+  return response.json();
+}).then(function(locationData){
+  locationData.map(function(locationDetails){
+    //console.log(locationDetails);
+    const locationId = locationDetails.films[0].split('/')[4];
+    //console.log(locationId);
+    return fetch(`https://ghibliapi.vercel.app/films/${locationId}`)
+  }).then(function(response){
+    return response.json();
+  }).then(function(filmData){
+    filmData.forEach(function(element){
+      console.log(element);
+    })
+  })
+})
+
+fetch('https://ghibliapi.vercel.app/locations')
+  .then(function(response){
+    return response.json();
+  })
+  .then(function(locationData){
+    locationData.forEach(function(locationDetails){
+      const locationId = locationDetails.films[0].split('/')[4];
+      console.log('Data from endpoint 1:', locationId);
+      return fetch(`https://ghibliapi.vercel.app/films/${locationId}`)
+    }).then(function(response){
+      if(!response.ok){
+        throw new Error('Network response was not OK' + response.statusText)
+      } else {
+        return response.json();
+      }
+    }).then(function(filmData){
+      filmData.forEach(function(element){
+        return element;
+      })
+    }).catch(function(error){
+      console.log('request failed:', error)
+    })
+  })
+
+*/

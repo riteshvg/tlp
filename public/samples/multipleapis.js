@@ -11,12 +11,13 @@ Promise.all([
     }))
 }).then(function(data){
     //accessing the films data[0] node and storing in a movieData variable
-    
-    let movieData = ('movies', data[0]);
+    let movie = ('movies', data[0]);
+    console.log(movie);
+    let locationData = ('location', data[1])
+    console.log(locationData);
+    data.forEach(function(movie, locationData){
     let app = document.querySelector('.blog__item')
-    
-    movieData.forEach(function(movie){
-        app.innerHTML += 
+    app.innerHTML += 
         `
     <div class = "container">
         <div class="row">
@@ -33,6 +34,9 @@ Promise.all([
                         </li>
                         <li>
                             <i class="fa solid fa-thumbs-up"></i>${movie.rt_score}
+                        </li>
+                        <li>
+                            <i class="fa solid fa-thumbs-up"></i>${locationData.id}
                         </li>
                     </ul>
                 </div>
@@ -52,7 +56,6 @@ Promise.all([
     <div>
         `
     })
-
 }).catch(function(error){
     console.warn(error);
 
