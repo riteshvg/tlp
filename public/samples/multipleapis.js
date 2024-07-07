@@ -1,7 +1,23 @@
 
 //https://www.youtube.com/watch?v=vvjaRIM4Bjs
 
-Promise.all([
+fetch('https://ghibliapi.vercel.app/films')
+.then(function(response){
+    return response.json()
+}).then(function(filmData){
+    filmData.map(function(film){
+        console.log(film)
+        return fetch('https://ghibliapi.vercel.app/locations/')
+    }).then(function(response){
+        return response.json();
+        }).then(function(locationData){
+            locationData.map(function(location){
+                console.log(location);
+            })
+        })
+})
+
+/* Promise.all([
     fetch('https://ghibliapi.vercel.app/films'),
     fetch('https://ghibliapi.vercel.app/locations')
 ]).then(function(responses){
@@ -59,7 +75,7 @@ Promise.all([
 }).catch(function(error){
     console.warn(error);
 
-}) 
+})  */
 
 /*Promise.all([
     fetch('https://ghibliapi.vercel.app/films'),

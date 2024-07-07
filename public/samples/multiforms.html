@@ -72,6 +72,8 @@
                 <li><a href="promises.html" >Promises</a></li>
                 <li><a href="arraymanipulation.html">Array & String Manipulation</a></li>
                 <li><a href="multipleAPIs.html">Accessing Multiple API endpoints</a></li>
+                <li><a href="sign-up.html">Auto Save Form</a></li>
+                <li><a href="tagsplayground.html" >Adobe Tags Playground</a></li>
               </ul>
             </li>
           </ul>
@@ -104,6 +106,7 @@
             <h3>Multi Form Page</h3>
             
           </div>
+          
           <div class="col-sm-8 hidden-xs">
             
             <ol class="breadcrumb">
@@ -116,19 +119,27 @@
       </div> <!-- / .container -->
     </div>
 
-
     <!-- CONTENT
     ================================================== -->
     <div class="container">
       <div class="row">
-        <div class="col-sm-12 col-md-8 col-lg-6 col-md-offset-2 col-lg-offset-3">
 
+        <div class="col-sm-12">
+          <p class="lead">
+            This page is for displaying the ability to toggle password field to hide or show details.
+          </p>              
+        </div>
+
+        <div>
           <!-- Sign In form -->
+
           <div class="profile__sign-in">
 
             <h1 class="block-header alt">
               <span>Form 1</span>
             </h1>
+
+            
 
             <form>
               <div class="form-group">
@@ -178,7 +189,7 @@
           
         </div>
 
-        <div class="col-sm-12 col-md-8 col-lg-6 col-md-offset-2 col-lg-offset-3">
+        <div>
 
             <!-- Sign In form -->
             <div class="profile__sign-in">
@@ -187,7 +198,7 @@
                 <span>Form 2</span>
               </h1>
   
-              <form>
+              <form id = "form">
                 <div class="row">
                   <div class="col-sm-6">
                     <div class="form-group">
@@ -217,7 +228,30 @@
                 <button type="submit" class="btn btn-lg btn-primary">
                   Sign Up
                 </button>
+                <div id = "notification" aria-live="polite"></div>
               </form>
+
+              <script>
+
+                let form = document.querySelector('#form');
+                form.addEventListener('submit', function(event){
+
+                  //Stop event from reloading the page
+                  event.preventDefault();
+
+                  //Display a notification
+                  let notification = document.querySelector('#notification');
+                  notification.textContent = 'Your password is updated!';
+
+                  //disappear the message after 4 seconds using set timeout
+
+                  setTimeout(function(){
+                    notification.textContent = '';
+                  }, 4000);
+                  
+                });
+
+              </script>
   
               <hr>
   

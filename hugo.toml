@@ -111,7 +111,7 @@ canonifyurls = true
   identifier = "samples"
   name = "Playground"
   pre = "<i class=\"sidebar-button-icon fas fa-lg fa-pen-nib\" aria-hidden=\"true\"></i>"
-  url = "/samples/"
+  url = "/samples"
 
 
 [[menu.links]]
