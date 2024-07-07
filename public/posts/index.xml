@@ -6,7 +6,16 @@
     <description>Recent content in Posts on The Learning Project</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Fri, 26 Apr 2024 00:00:00 +0000</lastBuildDate><atom:link href="https://thelearningproject.in/posts/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 07 Jul 2024 00:00:00 +0000</lastBuildDate><atom:link href="https://thelearningproject.in/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Back to Basics : JavaScript : Part 7</title>
+      <link>https://thelearningproject.in/posts/back-to-basics-javascript-part-7/</link>
+      <pubDate>Sun, 07 Jul 2024 00:00:00 +0000</pubDate>
+      
+      <guid>https://thelearningproject.in/posts/back-to-basics-javascript-part-7/</guid>
+      <description>&lt;p&gt;Today we will be looking at how we can use localStorage to save form fields and use this feature to prefill forms or send the data to API for further processing!&lt;/p&gt;</description>
+    </item>
+    
     <item>
       <title>Vote for Yourself. Vote for your Child.</title>
       <link>https://thelearningproject.in/posts/vote-for-yourself.-vote-for-your-child./</link>
