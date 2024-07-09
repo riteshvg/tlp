@@ -75,8 +75,107 @@ sessionStorage.removeItem('dataKey');
 
 ##### Using local storage API to create auto save forms
 
-Objective: To create forms for a web app when reloaded automatically prefills the data
+Objective: To create forms for a web app when reloaded automatically prefills the data. We are going to use two methods : with form data and without form data. The FormData() constructor creates a FormData object which is populated with the form's current key-value pairs using the name property of each element for keys and their submitted value for the values. 
 
-Head over to the [Playground](https://www.thelearningproject.in/samples/sign-up.html) to check out the project. Don't forget to switch the debug logs.
+Here's a basic form with the id 'withoutFormData' and few fields. Each file has been provided a id
+
+```
+    <form id = "withoutFormData">
+        <div class="form-group">
+            <label class="sr-only">Full name</label>
+            <input type="text" class="form-control input-lg" placeholder="Full name" id = "wfd_name">
+        </div>
+        <div class="form-group">
+            <label class="sr-only">Username</label>
+            <input type="text" class="form-control input-lg" placeholder="Username" id = "wfd_username">
+        </div>
+        <div class="form-group">
+            <label class="sr-only">E-mail</label>
+            <input type="email" class="form-control input-lg" placeholder="E-mail" id = "wfd_email">
+        </div>
+        <button type="submit" class="btn btn-lg btn-primary">
+            Sign Up
+        </button>
+        <div id = "notification"></div>
+    </form>
+
+```
+
+We then assign the form to a variable. 
+
+```
+<script>
+//Get the form element
+let form = document.querySelector('#withoutFormData');
+
+//Assign a prefix for saving the data in localStorage
+let prefix = 'autosave_';
+
+//set the item to local storage in the inputHandler event
+//using the localStorage.setItem method
+
+function inputHandler(event){
+
+//save the field to a variable
+    let field = event.target;
+
+//Only save if the field has an id
+    if(!field.id) return;
+
+//Save the field to local storage using the prefix and field id as key
+// and the value from field value
+    localStorage.setItem(prefix + field.id, field.value)
+    };
+
+//Clear saved data from local storage
+    function clearStorage(){
+
+    //Get all the fields in the form
+    let fields = form.elements;
+
+    //Loop through each field and remove it from storage
+    for (let field of fields){
+        localStorage.removeItem(prefix + field.id);
+        }
+    };
+
+//load the saved item from local storage 
+//using localStorage.getItem method
+
+function loadSaved() {
+
+    //use the form elements property to 
+    //get all the fields inside the form
+    let fields = form.elements;
+
+    //Loop through each one and load saved data 
+    //from storage using a for...of loop
+    for(let field of fields){
+        let field = localStorage.getItem(prefix + field.id)
+        if(!saved) continue;
+        field.value = saved;
+    }
+}
+
+    //Load saved data from storage
+    loadSaved();
+
+
+
+
+/*Listen for DOM Events using event delegation method
+* on the form element and pass in a named function 
+* to run as callback function 
+*/
+
+//listen for input
+form.addEventListener('input', inputHandler);
+//listen for submit
+form.addEventListener('submit',clearStorage)
+
+</script>
+```
+
+Head over to the [Playground](https://www.thelearningproject.in/samples/sign-up.html) to check out the project. Don't forget to open the debug logs. 
 
 That is all for this blog post. Leave me a line on ritesh@thelearningproject.in to share some JavaScript basics that you might be interested in sharing.
