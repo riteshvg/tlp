@@ -100,20 +100,18 @@ canonifyurls = true
   name = "Tools"
   pre = "<i class=\"sidebar-button-icon fas fa-lg fa-anchor\" aria-hidden=\"true\"></i>"
   url = "/tools"
-#[[menu.main]]
-#  weight = 7
-#  identifier = "100 Days of..."
-#  name = "100 Days"
-#  pre = "<i class=\"sidebar-button-icon fas fa-lg fa-pen-nib\" aria-hidden=\"true\"></i>"
-#  url = "/100Days"
+[[menu.main]]
+  weight = 5
+  identifier = "gratitude"
+  name = "Gratitude"
+  pre = "<i class=\"sidebar-button-icon fas fa-lg fa-handshake\" aria-hidden=\"true\"></i>"
+  url = "/gratitude"
 [[menu.main]]
   weight = 4
   identifier = "samples"
   name = "Playground"
   pre = "<i class=\"sidebar-button-icon fas fa-lg fa-pen-nib\" aria-hidden=\"true\"></i>"
   url = "/samples"
-
-
 [[menu.links]]
   weight = 1
   identifier = "github"
