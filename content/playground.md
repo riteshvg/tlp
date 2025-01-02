@@ -7,7 +7,7 @@ As a Technical Architect, I come across various use cases where I need a ready t
 
 ##### Toggling Passwords
 
-<iframe height = '400' style = 'width: 100%' scrolling = 'yes' frameborder = 'no' allowtransparency = 'true' allowfullscreen = 'true' src="multiforms.html"></iframe>
+<iframe height = '400' style = 'width: 100%' scrolling = 'yes' frameborder = 'no' allowtransparency = 'true' allowfullscreen = 'true' src="https://www.thelearningproject.in/samples/multiforms"></iframe>
 
 ---
 
