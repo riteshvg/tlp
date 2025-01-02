@@ -13,14 +13,16 @@
 # For developpers, if you modify this theme, put your images in `source/images` folder and
 # use grunt task `build` to synchronize assets
 
-baseURL = "https://example.org/"
+# baseURL = "https://iridescent-daffodil-d91dcf.netlify.app/"
+baseURL = "https://thelearningproject.in/"
+relativeURLs = "True"
 languageCode = "en-us"
 defaultContentLanguage = "en-us"
-title = "Hugo tranquilpeak theme"
+title = "The Learning Project"
 theme = "hugo-tranquilpeak-theme"
-disqusShortname = "hugo-tranquilpeak-theme"
-# googleAnalytics = "UA-123-45"
-paginate = 7
+disqusShortname = "thelearningproject"
+# googleAnalytics = "UA-123-456"
+paginate = 6
 canonifyurls = true
 
 [permalinks]
