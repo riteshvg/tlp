@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="shortcut icon" href="assets/favicon/favicon.ico">
+
+    <title>Daily Affirmations</title>
+
+    <!-- CSS Plugins -->
+    <link href="assets/plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet" >
+
+    <!-- CSS Global -->
+    <link href="assets/css/styles.css" rel="stylesheet">
+
+    <!-- Google Fonts -->
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600italic,600,700,700italic,800,800italic' rel='stylesheet' type='text/css'>
+
+    <!-- Data Layer -->
+  <script>
+    var adobeDataLayer = window.adobeDataLayer = window.adobeDataLayer|| [];
+    adobeDataLayer.push({
+      page: 'Promises',
+      description: 'Promises',
+      url: 'https://www.thelearningproject.in/samples/affirmations',
+      contentType: 'JavaScript Promises',
+      siteSection: 'Samples'
+    });
+   </script> 
+
+  <!-- Launch Library Code -->
+    <script src="https://assets.adobedtm.com/204118644db8/437cd1c7d72a/launch-39d64d92912c-development.min.js" async></script>
+
+  </head>
+
+  <body>
+
+    <!-- NAVIGATION
+    ================================================== -->
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-default">
+      <div class="container">
+
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar_main" aria-expanded="false">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+
+          <a class="navbar-brand" href="https://www.thelearningproject.in">The Learning Project</a>
+
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="navbar_main">
+
+            <ul class="nav navbar-nav navbar-left">
+                <li><a href="https://www.thelearningproject.in" >Home</a></li>
+                <li class="dropdown">
+                  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">More Pages <span class="caret"></span></a>
+                  <ul class="dropdown-menu">
+                    <li><a href = "multiforms.html">Multi Forms</a></li>
+                    <li><a href="charactercount.html">Character Count</a></li>
+                    <li><a href="promises.html"  class="active">Promises</a></li>
+                    <li><a href="arraymanipulation.html" >Array & String Manipulation</a></li>
+                  </ul>
+                </li>
+              </ul>
+
+          <ul class="nav navbar-nav navbar-right">
+            <li>
+              <a href="sign-up.html"><i class="fa fa-user"></i> <span class="hidden-md">Sign Up</span></a>
+            </li>
+          </ul>
+
+          <form class="navbar-form navbar-search navbar-right">
+            <div class="form-group">
+              <input type="text" class="form-control" placeholder="&#xF002; &nbsp; Search">
+            </div>
+            <button type="submit" class="btn btn-default">
+              <i class="fa fa-search"></i> Search
+            </button>
+          </form>
+
+        </div><!-- /.navbar-collapse -->
+      </div><!-- /.container -->
+    </nav>
+
+    <!-- Header -->
+    <div class="page-topbar">
+      <div class="container">
+        <div class="row">
+          <div class="col-sm-4">
+
+            <h3>Daily Affirmations</h3>
+            
+          </div>
+          <div class="col-sm-8 hidden-xs">
+            
+            <ol class="breadcrumb">
+              <li><a href="#">Home</a></li>
+              <li class="active">Affirmations</li>
+            </ol>
+
+          </div>
+        </div> <!-- / .row -->
+      </div> <!-- / .container -->
+    </div>
+
+
+    <!-- CONTENT
+    ================================================== -->
+    <div class="container">
+        <div class="row">
+          <div class="col-sm-9">
+  
+            <h1 class="block-header alt">
+              <span>Get in touch with us!</span>
+            </h1>
+  
+            <p class="text-muted">
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente tenetur possimus, excepturi qui ab accusamus eos quis id. Obcaecati, voluptas harum blanditiis libero dolorem nemo quia, veniam distinctio ab esse. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reprehenderit explicabo aliquam non itaque enim officia facilis consequatur possimus. Possimus est beatae mollitia eum dolorum laboriosam inventore fugit placeat at expedita!
+            </p> <br />
+  
+            <div class="alert alert-info">
+              <strong>Heads up!</strong> The contact form below is fully functional. Please refer to README.md for setup instructions.
+            </div> <br />
+  
+            <!-- Alert message -->
+            <div class="alert" id="form_message" role="alert"></div>
+  
+            <!-- Please carefully read the README.txt file in order to setup
+                 the PHP contact form properly -->
+            <form id="form_sendemail">
+              <div class="row">
+                <div class="col-sm-6">
+                  <div class="form-group">
+                    <label class="sr-only" for="email">Email address</label>
+                    <input type="email" name="email" class="input-lg form-control" id="email" placeholder="E-mail" data-original-title="" title="">
+                    <span class="help-block"></span>
+                  </div>
+                </div>
+                <div class="col-sm-6">
+                  <div class="form-group">
+                    <label class="sr-only" for="name">Name</label>
+                    <input type="text" name="name" class="input-lg form-control" id="name" placeholder="Full Name" data-original-title="" title="">
+                    <span class="help-block"></span>
+                  </div>   
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="sr-only" for="message">Message</label>
+                <textarea name="message" class="input-lg form-control" rows="5" id="message" placeholder="Message"></textarea>
+                <span class="help-block"></span>
+              </div>
+              <!-- reCAPTCHA -->
+              <div class="form-group" id="form-captcha">
+                
+                <div class="g-recaptcha" data-sitekey="YOUR_SITE_KEY"></div>
+                <span class="help-block"></span>
+              </div>
+              <!-- /reCAPTCHA -->
+              <button type="submit" class="btn btn-lg btn-primary">Send Message</button>
+            </form>
+            
+          </div>
+          <div class="col-sm-3">
+            
+            <h1 class="block-header alt">
+              <span>Keep in touch</span>
+            </h1>
+  
+            <ul class="social-icons">
+              <li class="facebook">
+                <a href="#"><i class="fa fa-facebook"></i></a>
+              </li>
+              <li class="twitter">
+                <a href="#"><i class="fa fa-twitter"></i></a>
+              </li>
+              <li class="google-plus">
+                <a href="#"><i class="fa fa-google-plus"></i></a>
+              </li>
+              <li class="linkedin">
+                <a href="#"><i class="fa fa-linkedin"></i></a>
+              </li>
+              <li class="rss">
+                <a href="#"><i class="fa fa-rss"></i></a>
+              </li>
+            </ul>
+  
+            <h1 class="block-header alt">
+              <span>Contact info</span>
+            </h1>
+  
+            <p class="text-muted">
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Commodi, corrupti debitis.
+            </p>
+            <p class="text-muted">
+              US & CAN: 1-234-56789 <br />
+              Worldwide: 1-234-56789
+            </p>
+            <p class="text-muted">
+              E-mail: info@domain.com <br />
+              Website: <a href="#">https://www.domain.com/</a>
+            </p>
+  
+          </div>
+        </div> <!-- / .row -->
+      </div> <!-- / .container -->
+
+
+    <!-- FOOTER 
+    ================================================== -->
+    <footer>
+      <div class="container">
+        <div class="row">
+          <div class="col-xs-12 col-sm-4">
+            
+            <div class="footer__col">
+              <h3 class="footer__header">Our Company</h3>
+              <p>
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Commodi, corrupti debitis!
+              </p>
+              <p>
+                US & CAN: 1-234-56789 <br />
+                Worldwide: 1-234-56789
+              </p>
+              <ul class="footer__social">
+                <li>
+                  <a href="#"><i class="fa fa-facebook"></i></a>
+                </li>
+                <li>
+                  <a href="#"><i class="fa fa-twitter"></i></a>
+                </li>
+                <li>
+                  <a href="#"><i class="fa fa-google-plus"></i></a>
+                </li>
+              </ul>
+            </div>
+
+          </div>          
+          <div class="col-xs-6 col-sm-2">
+            
+            <div class="footer__col">
+              <h3 class="footer__header">
+                Learn More
+              </h3>
+              <ul class="footer__content">
+                <li><a href="#">How it works?</a></li>
+                <li><a href="#">Meeting Tools</a></li>
+                <li><a href="#">Pricing</a></li>
+                <li><a href="#">Sitemap</a></li>
+              </ul>
+            </div>
+
+          </div>
+          <div class="col-xs-6 col-sm-2">
+            
+            <div class="footer__col">
+              <h3 class="footer__header">
+                About Us
+              </h3>
+              <ul class="footer__content">
+                <li><a href="#">About Us</a></li>
+                <li><a href="#">Careers</a></li>
+                <li><a href="#">Terms of Service</a></li>
+                <li><a href="#">Privacy Policy</a></li>
+              </ul>
+            </div>
+
+          </div>
+          <div class="col-xs-12 col-sm-4">
+            
+            <div class="footer__col">
+              <h3 class="footer__header">Subscribe</h3>
+              <p>
+                Enter your e-mail below to subscribe to our free newsletter.
+              </p>
+              <p>
+                No spam. We promise.
+              </p>
+              <form class="form-inline footer__form">
+                <div class="form-group">
+                  <label class="sr-only">Enter e-mail</label>
+                  <input type="email" class="form-control" placeholder="Enter your e-mail">
+                </div>
+                <button type="submit" class="btn btn-default">
+                  OK
+                </button>
+              </form>
+            </div>
+
+          </div>
+
+        </div> <!-- / .row -->
+
+        <hr class="footer__hr" />
+
+        <div class="row">
+          <div class="col-sm-6">
+            
+            <p>
+              Company 2016. All rights reserved.
+            </p>
+
+          </div>
+        </div> <!-- / .row -->
+
+      </div> <!-- / .container -->
+    </footer>
+
+    <!-- JavaScript Basics Chapter 6 : Character Count -->
+
+    
+
+    
+    <!-- JavaScript
+    ================================================== -->
+    
+    <!-- JS Global -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+    
+    <!-- JS Plugins -->
+    <script src="assets/plugins/scrolltopcontrol/scrolltopcontrol.js"></script>
+    
+    <!-- JS Custom -->
+    <script src="assets/js/custom.js"></script>
+
+  </body>
+</html>

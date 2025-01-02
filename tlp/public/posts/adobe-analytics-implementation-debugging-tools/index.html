@@ -1,0 +1,606 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    
+    <script type="application/ld+json">
+
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Adobe Analytics Implementation Debugging - Tools",
+  
+  "image": "https://imagedelivery.net/aOXfYgXj8p9Bd9bCC1ppIQ/d8094811-2679-4cb9-86e3-7b0adb50f600/public",
+  
+  "datePublished": "2022-08-10T00:00:00Z",
+  "dateModified": "2022-08-10T00:00:00Z",
+  "author": {
+    "@type": "Person",
+    "name": "Ritesh Gupta",
+    
+    "image": "https://www.gravatar.com/avatar/fdb1efed7fa1de6156e618da1947d2ac"
+    
+  },
+  "mainEntityOfPage": { 
+    "@type": "WebPage",
+    "@id": "https:\/\/thelearningproject.in\/posts\/adobe-analytics-implementation-debugging-tools\/" 
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "The Learning Project",
+    
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://www.gravatar.com/avatar/fdb1efed7fa1de6156e618da1947d2ac"
+    }
+    
+  },
+  "description": "In the world of software development, debugging plays a very important role. It is a process of detecting and removing existing as well as potential errors. In the same way, when you are implementing Adobe Analytics, Analytics debugging refers to validating the payload that is being sent to the Adobe Analytics server.\n",
+  "keywords": [, "adobe experience cloud, adobe launch, adobe analytics, adobe experience platform, multi solution architect, business analytics"]
+}
+
+</script>
+    <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="generator" content="Hugo 0.125.7 with theme Tranquilpeak 0.5.3-BETA">
+<meta name="author" content="Ritesh Gupta">
+<meta name="keywords" content=", adobe experience cloud, adobe launch, adobe analytics, adobe experience platform, multi solution architect, business analytics">
+<meta name="description" content="In the world of software development, debugging plays a very important role. It is a process of detecting and removing existing as well as potential errors. In the same way, when you are implementing Adobe Analytics, Analytics debugging refers to validating the payload that is being sent to the Adobe Analytics server.">
+
+
+<meta property="og:description" content="In the world of software development, debugging plays a very important role. It is a process of detecting and removing existing as well as potential errors. In the same way, when you are implementing Adobe Analytics, Analytics debugging refers to validating the payload that is being sent to the Adobe Analytics server.">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Adobe Analytics Implementation Debugging - Tools">
+<meta name="twitter:title" content="Adobe Analytics Implementation Debugging - Tools">
+<meta property="og:url" content="https://thelearningproject.in/posts/adobe-analytics-implementation-debugging-tools/">
+<meta property="twitter:url" content="https://thelearningproject.in/posts/adobe-analytics-implementation-debugging-tools/">
+<meta property="og:site_name" content="The Learning Project">
+<meta property="og:description" content="In the world of software development, debugging plays a very important role. It is a process of detecting and removing existing as well as potential errors. In the same way, when you are implementing Adobe Analytics, Analytics debugging refers to validating the payload that is being sent to the Adobe Analytics server.">
+<meta name="twitter:description" content="In the world of software development, debugging plays a very important role. It is a process of detecting and removing existing as well as potential errors. In the same way, when you are implementing Adobe Analytics, Analytics debugging refers to validating the payload that is being sent to the Adobe Analytics server.">
+<meta property="og:locale" content="en-us">
+
+  
+    <meta property="article:published_time" content="2022-08-10T00:00:00">
+  
+  
+    <meta property="article:modified_time" content="2022-08-10T00:00:00">
+  
+  
+  
+  
+    
+      <meta property="article:tag" content="adobe analytics debugging">
+    
+      <meta property="article:tag" content="how to debug adobe analytics">
+    
+  
+
+
+<meta name="twitter:card" content="summary">
+
+  <meta name="twitter:site" content="@riteshvg">
+
+
+  <meta name="twitter:creator" content="@riteshvg">
+
+
+
+
+
+
+  <meta property="og:image" content="https://www.gravatar.com/avatar/fdb1efed7fa1de6156e618da1947d2ac?s=640">
+  <meta property="twitter:image" content="https://www.gravatar.com/avatar/fdb1efed7fa1de6156e618da1947d2ac?s=640">
+
+
+
+
+
+  <meta property="og:image" content="https://imagedelivery.net/aOXfYgXj8p9Bd9bCC1ppIQ/d8094811-2679-4cb9-86e3-7b0adb50f600/public">
+  <meta property="twitter:image" content="https://imagedelivery.net/aOXfYgXj8p9Bd9bCC1ppIQ/d8094811-2679-4cb9-86e3-7b0adb50f600/public">
+
+
+    <title>Adobe Analytics Implementation Debugging - Tools</title>
+
+    <link rel="icon" href="https://thelearningproject.in/favicon.png">
+    
+
+    
+
+    <link rel="canonical" href="https://thelearningproject.in/posts/adobe-analytics-implementation-debugging-tools/">
+
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css" integrity="sha512-H9jrZiiopUdsLpg94A333EfumgUBpO9MdbxStdeITo+KEIMaNfHNvwyjjDJb+ERPaRS6DpyRlKbvPUasNItRyw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    
+    
+    
+    <link rel="stylesheet" href="https://thelearningproject.in/css/style-h6ccsoet3mzkbb0wngshlfbaweimexgqcxj0h5hu4h82olsdzz6wmqdkajm.min.css" />
+    
+    
+  </head>
+
+  <body>
+    <div id="blog">
+      <header id="header" data-behavior="2">
+  <i id="btn-open-sidebar" class="fa fa-lg fa-bars"></i>
+  <div class="header-title">
+    <a class="header-title-link" href="../../" aria-label="Go to homepage">The Learning Project</a>
+  </div>
+  
+    
+      <a class="header-right-picture "
+         href="../../about" aria-label="Open the link: /about">
+    
+    
+    
+      
+        <img class="header-picture" src="https://www.gravatar.com/avatar/fdb1efed7fa1de6156e618da1947d2ac?s=90" alt="Author&#39;s picture" />
+      
+    
+    </a>
+  
+</header>
+
+      <nav id="sidebar" data-behavior="2">
+  <div class="sidebar-container">
+    
+      <div class="sidebar-profile">
+        <a href="../../#about" aria-label="Read more about the author">
+          <img class="sidebar-profile-picture" src="https://www.gravatar.com/avatar/fdb1efed7fa1de6156e618da1947d2ac?s=110" alt="Author&#39;s picture" />
+        </a>
+        <h4 class="sidebar-profile-name">Ritesh Gupta</h4>
+        
+          <h5 class="sidebar-profile-bio">Always be learning!</h5>
+        
+      </div>
+    
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="../../" title="Home">
+    
+      <i class="sidebar-button-icon fas fa-lg fa-home" aria-hidden="true"></i>
+      
+      <span class="sidebar-button-desc">Home</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="../../about" title="About">
+    
+      <i class="sidebar-button-icon fas fa-lg fa-code" aria-hidden="true"></i>
+      
+      <span class="sidebar-button-desc">About</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="../../tools" title="Tools">
+    
+      <i class="sidebar-button-icon fas fa-lg fa-anchor" aria-hidden="true"></i>
+      
+      <span class="sidebar-button-desc">Tools</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="../../playground" title="Playground">
+    
+      <i class="sidebar-button-icon fas fa-lg fa-pen-nib" aria-hidden="true"></i>
+      
+      <span class="sidebar-button-desc">Playground</span>
+    </a>
+  </li>
+
+
+    </ul>
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://github.com/riteshvg" target="_blank" rel="noopener" title="GitHub">
+    
+      <i class="sidebar-button-icon fab fa-lg fa-github" aria-hidden="true"></i>
+      
+      <span class="sidebar-button-desc">GitHub</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://www.linkedin.com/in/riteshvgupta/" target="_blank" rel="noopener" title="LinkedIn">
+    
+      <i class="sidebar-button-icon fab fa-lg fa-linkedin" aria-hidden="true"></i>
+      
+      <span class="sidebar-button-desc">LinkedIn</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://twitter.com/riteshvg" target="_blank" rel="noopener" title="Twitter">
+    
+      <i class="sidebar-button-icon fab fa-lg fa-twitter" aria-hidden="true"></i>
+      
+      <span class="sidebar-button-desc">Twitter</span>
+    </a>
+  </li>
+
+
+    </ul>
+    <ul class="sidebar-buttons">
+      
+
+    </ul>
+  </div>
+</nav>
+
+      
+
+      <div id="main" data-behavior="2"
+        class="
+               hasCoverMetaIn
+               ">
+        <article class="post" id="top">
+          
+          
+            <div class="post-header main-content-wrap text-left">
+  
+    <h1 class="post-title">
+      Adobe Analytics Implementation Debugging - Tools
+    </h1>
+  
+  
+  <div class="postShorten-meta post-meta">
+    
+      <time datetime="2022-08-10T00:00:00Z">
+        
+  August 10, 2022
+
+      </time>
+    
+    
+  </div>
+
+</div>
+          
+          <div class="post-content markdown">
+            <div class="main-content-wrap">
+              <p>In the world of software development, debugging plays a very important role. It is a process of detecting and removing existing as well as potential errors. In the same way, when you are implementing Adobe Analytics, Analytics debugging refers to validating the payload that is being sent to the Adobe Analytics server.</p>
+<p>Why is learning how to debug an Analytics beacon necessary? It is a must skill to learn as your implementation quality and speed improves. You don’t need to wait for data to be populated in your Adobe Analytics report suite and then make the appropriate changes. This is a big help especially when you are working for a live project.</p>
+<p>This means you check the variables and their values that your TMS is sending, even before Adobe Analytics processes it and stores it in the designated report suite. With the need defined, let me take you through a list of tools that are available to debug an Adobe Analytics implementation:</p>
+<ul>
+<li>Adobe Experience Platform Debugger</li>
+<li>Charles Web Debugging Proxy Application</li>
+<li>Debugger for Adobe Analytics Extension</li>
+<li>Browser Network filter</li>
+</ul>
+<h6 id="adobe-experience-cloud-debugger">Adobe Experience Cloud Debugger</h6>
+<p>This is the official debugging tool provided by Adobe and is currently available as a <a href="https://chrome.google.com/webstore/detail/adobe-experience-platform/bfnnokhpnncpkdmbokanobigaccjkpob?hl=en">Chrome</a> and <a href="https://addons.mozilla.org/en-US/firefox/addon/adobe-experience-platform-dbg/">Firefox</a> extension. The debugger is an all-encompassing toolset which means you can use it for validating all Adobe Experience Cloud solutions including Analytics, AEP, Target, Audience Manager etc.</p>
+<p>It has an array of features such as ability to inject or replace Adobe Launch embed code, federated login to auto populate property and the environment variables, lock mechanism to stay connected to the tab in focus, console logging, inbuilt Auditor etc. These rich and helpful features make it a must have tool for <strong>debugging any implementation</strong> project. And since it is supported by Adobe, you can expect feature upgrades which will make it more relevant and useful for your implementation needs.</p>
+
+
+    
+    <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
+      <iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen="allowfullscreen" loading="eager" referrerpolicy="strict-origin-when-cross-origin" src="https://www.youtube.com/embed/KkCiWDo59p8?autoplay=0&controls=1&end=0&loop=0&mute=0&start=0" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" title="YouTube video"
+      ></iframe>
+    </div>
+
+<p>Level of use: Easy</p>
+<h6 id="charles-web-debugging-proxy-application">Charles Web Debugging Proxy Application</h6>
+<p><a href="https://www.charlesproxy.com/">Charles</a> app is not just a debugging tool. It is a web proxy that runs on your system. This makes it the middle layer to record and display all data that is sent and received from your browser. It means it can read all type of payloads including ones sent by Adobe Experience Cloud solutions.</p>
+<p>The tool used to be my default go to utility until Adobe introduced the Experience Platform Debugger. Besides filtering for specific requests, it has some excellent features like Map Remote, Map Local, SSL Proxying etc. These were a great help for mapping development libraries on a production site to debug and find out errors for fixing issues. The tool has certain downsides too such as cost of accruing a license, a complicated setup for SSL tracking etc. But it is a great application that certainly should be explored.</p>
+<p>Level of use: Hard</p>
+<h6 id="debugger-for-adobe-analytics-extension">Debugger for Adobe Analytics Extension</h6>
+<p>Sometimes we don’t need a very elaborate setup like the one that Adobe Experience Platform debugger or Charles command. We want a quick view of the data that is sent to Adobe Analytics without moving away from the browser. Enter <a href="https://chrome.google.com/webstore/detail/debugger-for-adobe-analyt/bdingoflfadhnjohjaplginnpjeclmof?hl=en">Debugger for Adobe Analytics Chrome Extension</a>. This is my favorite debugging tool as it allows me to view the variables within the Chrome window itself. I agree that the view is pretty basic, but it solves my purpose 50% of the time. If you are looking at a tool to debug only Adobe Analytics payload, I highly advice you install it.</p>
+<p>Level of use: Easy</p>
+<figure><img src="https://imagedelivery.net/aOXfYgXj8p9Bd9bCC1ppIQ/80efdbc7-5ecf-4cd5-c835-5625c40e8f00/public">
+</figure>
+
+<h6 id="browser-network-window">Browser Network Window</h6>
+<p>This is another very basic application available for debugging purposes. This is again a good method to debug an Adobe Experience Cloud implementation. All you need to do is head over to the Network tab in the browser and filter the requests sent using certain solution specific commands like:</p>
+<ul>
+<li>Adobe Analytics : <em>b/ss</em></li>
+<li>Adobe Target    : <em>mbox</em></li>
+<li>Google Analytics: <em>collect</em></li>
+</ul>
+<p>You can even write regular expression to combine two payloads such as:</p>
+<figure><img src="https://imagedelivery.net/aOXfYgXj8p9Bd9bCC1ppIQ/64d00760-c78f-4a8d-6f2f-0fd38fc1ba00/public">
+</figure>
+
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-JavaScript" data-lang="JavaScript"><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">/(g/collect\b|/ss)/ - For checking requests on Google And Adobe Analytics</span>
+</span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">/(mbox\b|/ss)/ - For checking requests on Adobe Analytics and Target</span>
+</span></span></code></pre></div><p>Level of use: Easy</p>
+<p>That is all for this blog post. Do let me know what is your favorite go to tool for debugging an Adobe Analytics implementation. Drop me a line at <em>(ritesh)at(thelearningproject)dot(in)</em>.</p>
+              
+
+
+            </div>
+          </div>
+          <div id="post-footer" class="post-footer main-content-wrap">
+            
+              
+                
+                
+                  <div class="post-footer-tags">
+                    <span class="text-color-light text-small">TAGGED IN</span><br/>
+                    
+  <a class="tag tag--primary tag--small" href="../../tags/adobe-analytics-debugging/">adobe analytics debugging</a>
+
+  <a class="tag tag--primary tag--small" href="../../tags/how-to-debug-adobe-analytics/">how to debug adobe analytics</a>
+
+                  </div>
+                
+              
+            
+            
+<div class="post-actions-wrap">
+  <nav >
+    <ul class="post-actions post-action-nav">
+      
+        <li class="post-action">
+          
+            <a class="post-action-btn btn btn--default tooltip--top" href="../../posts/anonymizing-ip-address/" data-tooltip="Anonymizing IP Address" aria-label="NEXT: Anonymizing IP Address">
+          
+              <i class="fa fa-angle-left"></i>
+              <span class="hide-xs hide-sm text-small icon-ml">NEXT</span>
+            </a>
+        </li>
+        <li class="post-action">
+          
+            <a class="post-action-btn btn btn--default tooltip--top" href="../../posts/b2b-series-adobe-launch-part-5.3-adobe-launch-rules-actions/" data-tooltip="B2B Series: Adobe Launch - Part 5.3 - Adobe Launch Rules: Actions" aria-label="PREVIOUS: B2B Series: Adobe Launch - Part 5.3 - Adobe Launch Rules: Actions">
+          
+              <span class="hide-xs hide-sm text-small icon-mr">PREVIOUS</span>
+              <i class="fa fa-angle-right"></i>
+            </a>
+        </li>
+      
+    </ul>
+  </nav>
+<ul class="post-actions post-action-share" >
+  
+    <li class="post-action hide-lg hide-md hide-sm">
+      <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions" aria-label="Share this post">
+        <i class="fa fa-share-alt" aria-hidden="true"></i>
+      </a>
+    </li>
+    
+      <li class="post-action hide-xs">
+        <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://thelearningproject.in/posts/adobe-analytics-implementation-debugging-tools/" title="Share on Twitter" aria-label="Share on Twitter">
+          <i class="fab fa-twitter" aria-hidden="true"></i>
+        </a>
+      </li>
+    
+      <li class="post-action hide-xs">
+        <a class="post-action-btn btn btn--default" target="new" href="https://www.linkedin.com/sharing/share-offsite/?url=https://thelearningproject.in/posts/adobe-analytics-implementation-debugging-tools/" title="Share on Linkedin" aria-label="Share on Linkedin">
+          <i class="fab fa-linkedin" aria-hidden="true"></i>
+        </a>
+      </li>
+    
+  
+  
+  <li class="post-action">
+    
+      <a class="post-action-btn btn btn--default" href="#top" aria-label="Back to top">
+      <i class="fa fa-arrow-up" aria-hidden="true"></i>
+    
+    </a>
+  </li>
+</ul>
+</div>
+
+
+            
+  
+
+
+          </div>
+        </article>
+        <footer id="footer" class="main-content-wrap">
+  <span class="copyrights">
+    &copy; 2025 Ritesh Gupta. All Rights Reserved
+  </span>
+</footer>
+
+      </div>
+      <div id="bottom-bar" class="post-bottom-bar" data-behavior="2">
+        
+<div class="post-actions-wrap">
+  <nav >
+    <ul class="post-actions post-action-nav">
+      
+        <li class="post-action">
+          
+            <a class="post-action-btn btn btn--default tooltip--top" href="../../posts/anonymizing-ip-address/" data-tooltip="Anonymizing IP Address" aria-label="NEXT: Anonymizing IP Address">
+          
+              <i class="fa fa-angle-left"></i>
+              <span class="hide-xs hide-sm text-small icon-ml">NEXT</span>
+            </a>
+        </li>
+        <li class="post-action">
+          
+            <a class="post-action-btn btn btn--default tooltip--top" href="../../posts/b2b-series-adobe-launch-part-5.3-adobe-launch-rules-actions/" data-tooltip="B2B Series: Adobe Launch - Part 5.3 - Adobe Launch Rules: Actions" aria-label="PREVIOUS: B2B Series: Adobe Launch - Part 5.3 - Adobe Launch Rules: Actions">
+          
+              <span class="hide-xs hide-sm text-small icon-mr">PREVIOUS</span>
+              <i class="fa fa-angle-right"></i>
+            </a>
+        </li>
+      
+    </ul>
+  </nav>
+<ul class="post-actions post-action-share" >
+  
+    <li class="post-action hide-lg hide-md hide-sm">
+      <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions" aria-label="Share this post">
+        <i class="fa fa-share-alt" aria-hidden="true"></i>
+      </a>
+    </li>
+    
+      <li class="post-action hide-xs">
+        <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://thelearningproject.in/posts/adobe-analytics-implementation-debugging-tools/" title="Share on Twitter" aria-label="Share on Twitter">
+          <i class="fab fa-twitter" aria-hidden="true"></i>
+        </a>
+      </li>
+    
+      <li class="post-action hide-xs">
+        <a class="post-action-btn btn btn--default" target="new" href="https://www.linkedin.com/sharing/share-offsite/?url=https://thelearningproject.in/posts/adobe-analytics-implementation-debugging-tools/" title="Share on Linkedin" aria-label="Share on Linkedin">
+          <i class="fab fa-linkedin" aria-hidden="true"></i>
+        </a>
+      </li>
+    
+  
+  
+  <li class="post-action">
+    
+      <a class="post-action-btn btn btn--default" href="#top" aria-label="Back to top">
+      <i class="fa fa-arrow-up" aria-hidden="true"></i>
+    
+    </a>
+  </li>
+</ul>
+</div>
+
+
+      </div>
+      
+<div id="share-options-bar" class="share-options-bar" data-behavior="2">
+  <i id="btn-close-shareoptions" class="fa fa-times"></i>
+  <ul class="share-options">
+    
+      <li class="share-option">
+        <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=https%3A%2F%2Fthelearningproject.in%2Fposts%2Fadobe-analytics-implementation-debugging-tools%2F" aria-label="Share on Twitter">
+          <i class="fab fa-twitter" aria-hidden="true"></i><span>Share on Twitter</span>
+        </a>
+      </li>
+    
+      <li class="share-option">
+        <a class="share-option-btn" target="new" href="https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Fthelearningproject.in%2Fposts%2Fadobe-analytics-implementation-debugging-tools%2F" aria-label="Share on Linkedin">
+          <i class="fab fa-linkedin" aria-hidden="true"></i><span>Share on Linkedin</span>
+        </a>
+      </li>
+    
+  </ul>
+</div>
+<div id="share-options-mask" class="share-options-mask"></div>
+
+
+    </div>
+    
+    <div id="about">
+  <div id="about-card">
+    <div id="about-btn-close">
+      <i class="fa fa-times"></i>
+    </div>
+    
+      <img id="about-card-picture" src="https://www.gravatar.com/avatar/fdb1efed7fa1de6156e618da1947d2ac?s=110" alt="Author&#39;s picture" />
+    
+    <h4 id="about-card-name">Ritesh Gupta</h4>
+    
+      <div id="about-card-bio">Always be learning!</div>
+    
+    
+      <div id="about-card-job">
+        <i class="fa fa-briefcase"></i>
+        <br/>
+        Technical Architect
+      </div>
+    
+    
+      <div id="about-card-location">
+        <i class="fa fa-map-marker-alt"></i>
+        <br/>
+        Adobe India
+      </div>
+    
+  </div>
+</div>
+
+    
+
+    
+  
+    
+      <div id="cover" style="background-image:url('https://thelearningproject.in/images/cover-v1.2.0.jpg');"></div>
+    
+  
+
+
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/highlight.min.js" integrity="sha512-z+/WWfyD5tccCukM4VvONpEtLmbAm5LDu7eKiyMQJ9m7OfPEDL7gENyDRL3Yfe8XAuGsS2fS4xSMnl6d30kqGQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js" integrity="sha512-uURl+ZXMBrF4AwGaWmEetzrd+J5/8NRkWAvJx5sbPSSuOb0bZLqf+tOzniObO00BjHa/dD7gub9oCGMLPQHtQA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+
+<script src="https://thelearningproject.in/js/script-yqzy9wdlzix4lbbwdnzvwx3egsne77earqmn73v9uno8aupuph8wfguccut.min.js"></script>
+
+
+  
+    <script async crossorigin="anonymous" defer integrity="sha512-gE8KAQyFIzV1C9+GZ8TKJHZS2s+n7EjNtC+IMRn1l5+WYJTHOODUM6JSjZhFhqXmc7bG8Av6XXpckA4tYhflnw==" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/languages/apache.min.js"></script>
+  
+
+  
+    <script async crossorigin="anonymous" defer integrity="sha512-EWROca+bote+7Oaaar1F6y74iZj1r1F9rm/ly7o+/FwJopbBaWtsFDmaKoZDd3QiGU2pGacBirHJNivmGLYrow==" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/languages/go.min.js"></script>
+  
+
+  
+    <script async crossorigin="anonymous" defer integrity="sha512-GDVzAn0wpx1yVtQsRWmFc6PhJiLBPdUic+h4GWgljBh904O3JU10fk9EKNpVyIoPqkFn54rgL2QBG4BmUTMpiQ==" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/languages/http.min.js"></script>
+  
+
+  
+    <script async crossorigin="anonymous" defer integrity="sha512-UgZlma8NzkrDb/NWgmLIcTrH7i/CSnLLDRFqCSNF5NGPpjKmzyM25qcoXGOup8+cDakKyaiTDd7N4dyH4YT+IA==" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/languages/less.min.js"></script>
+  
+
+  
+    <script async crossorigin="anonymous" defer integrity="sha512-lot9koe73sfXIrUvIPM/UEhuMciN56RPyBdOyZgfO53P2lkWyyXN7J+njcxIIBRV+nVDQeiWtiXg+bLAJZDTfg==" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/languages/nginx.min.js"></script>
+  
+
+  
+    <script async crossorigin="anonymous" defer integrity="sha512-Zd3e7XxHP00TD0Imr0PIfeM0fl0v95kMWuhyAS3Wn1UTSXTkz0OhtRgBAr4JlmADRgiXr4x7lpeUdqaGN8xIog==" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/languages/puppet.min.js"></script>
+  
+
+  
+    <script async crossorigin="anonymous" defer integrity="sha512-qtqDO052iXMSP+5d/aE/jMtL9vIIGvONgTJziC2K/ZIB1yEGa55WVxGE9/08rSQ62EoDifS9SWVGZ7ihSLhzMA==" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/languages/scss.min.js"></script>
+  
+
+  
+    <script async crossorigin="anonymous" defer integrity="sha512-1NmkjnEDnwwwcu28KoQF8vs3oaPFokQHbmbtwGhFfeDsQZtVFI8zW2aE9O8yMYdpdyKV/5blE4pSWw4Z/Sv97w==" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/languages/stylus.min.js"></script>
+  
+
+  
+    <script async crossorigin="anonymous" defer integrity="sha512-B2wSfruPjr8EJL6IIzQr1eAuDwrsfIfccNf/LCEdxELCgC/S/ZMt/Uvk80aD79m7IqOqW+Sw8nbkvha20yZpzg==" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/languages/swift.min.js"></script>
+  
+
+  
+    <script async crossorigin="anonymous" defer integrity="sha512-28oDiQZGKUVN6wQ7PSLPNipOcmkCALXKwOi7bnkyFf8QiMZQxG9EQoy/iiNx6Zxj2cG2SbVa4dXKigQhu7GiFw==" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/languages/yaml.min.js"></script>
+  
+
+  
+    <script async crossorigin="anonymous" defer src="https://www.thelearningproject.in/public/js/launch-39d64d92912c-development.min.js"></script>
+  
+
+
+<script>
+$(document).ready(function() {
+  hljs.configure({ classPrefix: '', useBR: false });
+  $('pre.code-highlight > code, pre > code').each(function(i, block) {
+    if (!$(this).hasClass('codeblock')) {
+      $(this).addClass('codeblock');
+    }
+    hljs.highlightBlock(block);
+  });
+});
+</script>
+
+
+
+
+    
+  </body>
+</html>
+

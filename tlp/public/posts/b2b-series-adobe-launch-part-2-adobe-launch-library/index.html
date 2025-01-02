@@ -1,0 +1,679 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    
+    <script type="application/ld+json">
+
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "B2B Series: Adobe Launch - Part 2 - Adobe Launch Library",
+  
+  "image": "https://imagedelivery.net/aOXfYgXj8p9Bd9bCC1ppIQ/f226b3ef-7dde-4cb0-b781-6d2c21160f00/public",
+  
+  "datePublished": "2022-06-05T00:00:00Z",
+  "dateModified": "2022-06-05T00:00:00Z",
+  "author": {
+    "@type": "Person",
+    "name": "Ritesh Gupta",
+    
+    "image": "https://www.gravatar.com/avatar/fdb1efed7fa1de6156e618da1947d2ac"
+    
+  },
+  "mainEntityOfPage": { 
+    "@type": "WebPage",
+    "@id": "https:\/\/thelearningproject.in\/posts\/b2b-series-adobe-launch-part-2-adobe-launch-library\/" 
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "The Learning Project",
+    
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://www.gravatar.com/avatar/fdb1efed7fa1de6156e618da1947d2ac"
+    }
+    
+  },
+  "description": "In the previous blog post, we covered an introduction to what is Adobe Launch (now known as Tags). In this article, we will cover different components available in Authoring and Publishing setup and how to create a new library and integrate it.\n",
+  "keywords": [, "adobe experience cloud, adobe launch, adobe analytics, adobe experience platform, multi solution architect, business analytics"]
+}
+
+</script>
+    <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="generator" content="Hugo 0.125.7 with theme Tranquilpeak 0.5.3-BETA">
+<meta name="author" content="Ritesh Gupta">
+<meta name="keywords" content=", adobe experience cloud, adobe launch, adobe analytics, adobe experience platform, multi solution architect, business analytics">
+<meta name="description" content="In the previous blog post, we covered an introduction to what is Adobe Launch (now known as Tags). In this article, we will cover different components available in Authoring and Publishing setup and how to create a new library and integrate it.">
+
+
+<meta property="og:description" content="In the previous blog post, we covered an introduction to what is Adobe Launch (now known as Tags). In this article, we will cover different components available in Authoring and Publishing setup and how to create a new library and integrate it.">
+<meta property="og:type" content="article">
+<meta property="og:title" content="B2B Series: Adobe Launch - Part 2 - Adobe Launch Library">
+<meta name="twitter:title" content="B2B Series: Adobe Launch - Part 2 - Adobe Launch Library">
+<meta property="og:url" content="https://thelearningproject.in/posts/b2b-series-adobe-launch-part-2-adobe-launch-library/">
+<meta property="twitter:url" content="https://thelearningproject.in/posts/b2b-series-adobe-launch-part-2-adobe-launch-library/">
+<meta property="og:site_name" content="The Learning Project">
+<meta property="og:description" content="In the previous blog post, we covered an introduction to what is Adobe Launch (now known as Tags). In this article, we will cover different components available in Authoring and Publishing setup and how to create a new library and integrate it.">
+<meta name="twitter:description" content="In the previous blog post, we covered an introduction to what is Adobe Launch (now known as Tags). In this article, we will cover different components available in Authoring and Publishing setup and how to create a new library and integrate it.">
+<meta property="og:locale" content="en-us">
+
+  
+    <meta property="article:published_time" content="2022-06-05T00:00:00">
+  
+  
+    <meta property="article:modified_time" content="2022-06-05T00:00:00">
+  
+  
+  
+  
+    
+      <meta property="article:tag" content="adobe launch">
+    
+      <meta property="article:tag" content="adobe launch library overview">
+    
+  
+
+
+<meta name="twitter:card" content="summary">
+
+  <meta name="twitter:site" content="@riteshvg">
+
+
+  <meta name="twitter:creator" content="@riteshvg">
+
+
+
+
+
+
+  <meta property="og:image" content="https://www.gravatar.com/avatar/fdb1efed7fa1de6156e618da1947d2ac?s=640">
+  <meta property="twitter:image" content="https://www.gravatar.com/avatar/fdb1efed7fa1de6156e618da1947d2ac?s=640">
+
+
+
+
+
+  <meta property="og:image" content="https://imagedelivery.net/aOXfYgXj8p9Bd9bCC1ppIQ/f226b3ef-7dde-4cb0-b781-6d2c21160f00/public">
+  <meta property="twitter:image" content="https://imagedelivery.net/aOXfYgXj8p9Bd9bCC1ppIQ/f226b3ef-7dde-4cb0-b781-6d2c21160f00/public">
+
+
+    <title>B2B Series: Adobe Launch - Part 2 - Adobe Launch Library</title>
+
+    <link rel="icon" href="https://thelearningproject.in/favicon.png">
+    
+
+    
+
+    <link rel="canonical" href="https://thelearningproject.in/posts/b2b-series-adobe-launch-part-2-adobe-launch-library/">
+
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css" integrity="sha512-H9jrZiiopUdsLpg94A333EfumgUBpO9MdbxStdeITo+KEIMaNfHNvwyjjDJb+ERPaRS6DpyRlKbvPUasNItRyw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    
+    
+    
+    <link rel="stylesheet" href="https://thelearningproject.in/css/style-h6ccsoet3mzkbb0wngshlfbaweimexgqcxj0h5hu4h82olsdzz6wmqdkajm.min.css" />
+    
+    
+  </head>
+
+  <body>
+    <div id="blog">
+      <header id="header" data-behavior="2">
+  <i id="btn-open-sidebar" class="fa fa-lg fa-bars"></i>
+  <div class="header-title">
+    <a class="header-title-link" href="../../" aria-label="Go to homepage">The Learning Project</a>
+  </div>
+  
+    
+      <a class="header-right-picture "
+         href="../../about" aria-label="Open the link: /about">
+    
+    
+    
+      
+        <img class="header-picture" src="https://www.gravatar.com/avatar/fdb1efed7fa1de6156e618da1947d2ac?s=90" alt="Author&#39;s picture" />
+      
+    
+    </a>
+  
+</header>
+
+      <nav id="sidebar" data-behavior="2">
+  <div class="sidebar-container">
+    
+      <div class="sidebar-profile">
+        <a href="../../#about" aria-label="Read more about the author">
+          <img class="sidebar-profile-picture" src="https://www.gravatar.com/avatar/fdb1efed7fa1de6156e618da1947d2ac?s=110" alt="Author&#39;s picture" />
+        </a>
+        <h4 class="sidebar-profile-name">Ritesh Gupta</h4>
+        
+          <h5 class="sidebar-profile-bio">Always be learning!</h5>
+        
+      </div>
+    
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="../../" title="Home">
+    
+      <i class="sidebar-button-icon fas fa-lg fa-home" aria-hidden="true"></i>
+      
+      <span class="sidebar-button-desc">Home</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="../../about" title="About">
+    
+      <i class="sidebar-button-icon fas fa-lg fa-code" aria-hidden="true"></i>
+      
+      <span class="sidebar-button-desc">About</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="../../tools" title="Tools">
+    
+      <i class="sidebar-button-icon fas fa-lg fa-anchor" aria-hidden="true"></i>
+      
+      <span class="sidebar-button-desc">Tools</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="../../playground" title="Playground">
+    
+      <i class="sidebar-button-icon fas fa-lg fa-pen-nib" aria-hidden="true"></i>
+      
+      <span class="sidebar-button-desc">Playground</span>
+    </a>
+  </li>
+
+
+    </ul>
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://github.com/riteshvg" target="_blank" rel="noopener" title="GitHub">
+    
+      <i class="sidebar-button-icon fab fa-lg fa-github" aria-hidden="true"></i>
+      
+      <span class="sidebar-button-desc">GitHub</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://www.linkedin.com/in/riteshvgupta/" target="_blank" rel="noopener" title="LinkedIn">
+    
+      <i class="sidebar-button-icon fab fa-lg fa-linkedin" aria-hidden="true"></i>
+      
+      <span class="sidebar-button-desc">LinkedIn</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://twitter.com/riteshvg" target="_blank" rel="noopener" title="Twitter">
+    
+      <i class="sidebar-button-icon fab fa-lg fa-twitter" aria-hidden="true"></i>
+      
+      <span class="sidebar-button-desc">Twitter</span>
+    </a>
+  </li>
+
+
+    </ul>
+    <ul class="sidebar-buttons">
+      
+
+    </ul>
+  </div>
+</nav>
+
+      
+
+      <div id="main" data-behavior="2"
+        class="
+               hasCoverMetaIn
+               ">
+        <article class="post" id="top">
+          
+          
+            <div class="post-header main-content-wrap text-left">
+  
+    <h1 class="post-title">
+      B2B Series: Adobe Launch - Part 2 - Adobe Launch Library
+    </h1>
+  
+  
+  <div class="postShorten-meta post-meta">
+    
+      <time datetime="2022-06-05T00:00:00Z">
+        
+  June 5, 2022
+
+      </time>
+    
+    
+  </div>
+
+</div>
+          
+          <div class="post-content markdown">
+            <div class="main-content-wrap">
+              <p>In the previous blog post, we covered an introduction to what is Adobe Launch (now known as Tags). In this article, we will cover different components available in Authoring and Publishing setup and how to create a new library and integrate it.</p>
+<h5 id="authoring-overview">Authoring Overview</h5>
+<p>Authoring in Adobe Launch refers to using the tool to implement marketing technologies using a combination of rules, data elements and extensions. We will be covering all the three components later in details. As of now, think of them as the building blocks of your implementation.</p>
+<p><strong>Rules:</strong> Rules are the most critical component of Adobe Launch. They help to implement various marketing technologies through a combination of events, conditions and actions.</p>
+<p><strong>Data Elements:</strong> Data Elements are the building blocks of Adobe Launch. They are containers mapped to different elements of a website like query strings, URL, cookies etc.</p>
+<p><strong>Extensions:</strong> Extensions are code packages prebuilt by developers to extend the functionality of Adobe Launch and avoids custom implementation of marketing technologies</p>
+<h5 id="publishing-overview">Publishing Overview</h5>
+<p>Once you are done with using the elements in Authoring section, you need to package them in a unified JavaScript library. Publishing in Launch refers to being able to compile and publish a Launch library that contains all the Authoring components. The Publishing step follows closely to the Authoring step.</p>
+<p>The library is then referred to by being integrated into your web property as a script.</p>
+<p>The Publishing section itself has different steps and components:</p>
+<ul>
+<li>Environments and Hosts refer to the setup of your authoring environment</li>
+<li>Publishing Flow refers to the act of passing through different stages before publishing a Launch library</li>
+</ul>
+<h4 id="environment">Environment</h4>
+<p>Most companies divide their web development in three enviroments: development, staging and production. These steps are to ensure that the changes that they make to their final codebase is properly validated and tested before it reaches production. Adobe Launch follows the same system and it is made available for use in the Environments window.</p>
+<figure><img src="https://imagedelivery.net/aOXfYgXj8p9Bd9bCC1ppIQ/6ffd696d-0148-4a63-1851-e646883e3f00/public">
+</figure>
+
+<p>Each environment has a dedicated library code that is auto generated by Adobe Launch. Depending on the web environment that you are working with, you copy the the appropriate library code. You can always access the library code by clicking on the small box at the end of environment name under the Install column.</p>
+<figure><img src="https://imagedelivery.net/aOXfYgXj8p9Bd9bCC1ppIQ/3e2ea65c-3f38-42d6-2f66-215844e08600/public">
+</figure>
+
+<p>The Web Install Instructions window that you see contains the Environment Name and Environment IDs. We always keep the Load Library Asynchronously button as selected. This is a JavaScript loading method and is preferred by most clients.</p>
+<p><code>There is a very important point to mention here. You can create as many Development  Environment as your implementation requires by clicking on the Add Environment button.  This mirrors the web development cycle of organisations where the tasks are organized  in sprint cycles running into months, and is divided in between multiple teams</code></p>
+<p>This way one team can work within their assigned Environment without overwriting the
+other teams efforts. And when all the development is completed, the libraries are
+merged into one single library and that is why you get only one one staging and
+one production environment. That is why you get only one staging and one production environment.</p>
+<p><strong>Where to include the Launch library</strong>?</p>
+<p>There are multiple places where the Launch library can be embedded into the web environment. But the best place is to include JS snippet right above the closing head tag.</p>
+<p>This is because most implementations need a processing time before updating their data layer with required values. But if the script is placed at the top of the page then the Launch library might get triggered earlier than the other scripts which might lead to blank values being captured by Launch.</p>
+<figure><img src="https://imagedelivery.net/aOXfYgXj8p9Bd9bCC1ppIQ/7347e734-c016-4605-af3a-e5fc0de3ba00/public">
+</figure>
+
+<p><strong>Publishing Flow</strong></p>
+<p>The Publishing Flow is as the name suggests a set of steps that we need to follow before making an Adobe Launch library active. As you see below, when we first start working with Adobe Launch the changes are mostly in the Development container. The Development view correlates to the Development Environment you see below.</p>
+<figure><img src="https://imagedelivery.net/aOXfYgXj8p9Bd9bCC1ppIQ/83e7fa79-6ed2-4c33-4b3a-dcc8601d4900/public">
+</figure>
+
+<p><strong>Hosts</strong></p>
+<p>Host is where the Adobe Library is hosted. Since the Library is a JavaScript file, it needs to be hosted somewhere which is then accessed by the browser. I have seen this setting remain true for most of the clients, unless you are working for a client which has a secured hosting requirement like a bank in which case you can add your own host and link it here.</p>
+<h4 id="hands-on">Hands on</h4>
+<p>Until now we covered important points related to the authoring and publishing environment. Let&rsquo;s break the process and cover each step one by one:</p>
+<ul>
+<li>Look at the options available in Authoring and Publishing overview</li>
+<li>Setup a new development environment</li>
+<li>Create a Launch library in a development environment</li>
+<li>Add and compile the library with default settings</li>
+<li>Include the library in the head tag</li>
+<li>Check if the script is loading correctly</li>
+</ul>
+
+
+    
+    <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
+      <iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen="allowfullscreen" loading="eager" referrerpolicy="strict-origin-when-cross-origin" src="https://www.youtube.com/embed/6NtF3H41Xyw?autoplay=0&controls=1&end=0&loop=0&mute=0&start=0" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" title="YouTube video"
+      ></iframe>
+    </div>
+
+<p>Let&rsquo;s move on to covering more about the Launch library and its components</p>
+<h5 id="the-deep-dive-library">The Deep Dive: Library</h5>
+<p>As mentioned earlier, a library in Adobe Launch is a compiled JavaScript file. It brings together all elements of Adobe Launch including rules, data elements, extensions, custom code etc. and makes them available to be referenced as a single snippet in a website. When the snippet is embedded in the backend, the browser executes the file and a beacon is fired which captures data as intended.</p>
+<p>Below are the three states of a library when in active implementation.</p>
+<figure><img src="https://imagedelivery.net/aOXfYgXj8p9Bd9bCC1ppIQ/fa543fdd-97a8-4074-24c7-ea226a085500/public">
+</figure>
+
+<p><code>A green icon indicates that the library is successfully compiled and ready to be integrated in the web development. A yellow icon indicates changes that have been carried out in a part of the library and it needs to be recompiled. A red icon indicates that one of the component has an error and needs attention. </code></p>
+<p>Whenever you start with your implementation, you always first add a library by selecting the Add Library option. This opens up a page in which you can create a library. You will see multiple or single development environments depending on your setup in the Environments section. Dividing the implementation into multiple environments keeps your developers independent. You select the environment that you are assigned to work in, enter a name and click on Save.</p>
+<p>This is how it looks when you have multiple environments working in tandem with each other.</p>
+<figure><img src="https://imagedelivery.net/aOXfYgXj8p9Bd9bCC1ppIQ/76a4a1aa-abef-4cad-dae4-558aa1b94a00/public">
+</figure>
+
+<p>There are other key components and pieces of information that you can access when selecting a particular library like</p>
+<ul>
+<li>Library State: What is the state of your library? Has it ever been published before?</li>
+<li>Last Build Status: Did the last build fail or was it a successful one?</li>
+<li>Ability to add notes: Release notes as your implemetnation gets more complex</li>
+</ul>
+<figure><img src="https://imagedelivery.net/aOXfYgXj8p9Bd9bCC1ppIQ/19ee086e-3bd4-4ed0-923d-e6f452b39500/public">
+</figure>
+
+<p>The Resources Upstream window gives you a view of which elements (rules, data element, extensions) are already in a published state. The Resource Changes window on the other hand gives you an overview of which of the existing resources have been changed from its previous state. Adobe Launch is an iterative development tool and it allows you to override changes in a particular component. The Resource Changes window allows you to preview what changes have been carried out.</p>
+<p>You can select &lsquo;Add a Resource&rsquo; to add the changed components individually, or click on the &lsquo;Add All Changed Resources&rsquo; to do it all at once. Adobe Launch will check the elements versions, and update accordingly.</p>
+<figure><img src="https://imagedelivery.net/aOXfYgXj8p9Bd9bCC1ppIQ/6185ab02-3602-44b4-0631-371be23d6a00/public">
+</figure>
+
+<p>You can open each element and see what changes have been carried out against the existing versions. This is of significant help in case you add an incorrect piece of code or mess with the existing setup. It allows you to roll back to a stable revision.</p>
+<figure><img src="https://imagedelivery.net/aOXfYgXj8p9Bd9bCC1ppIQ/0ae01fc5-ead7-4b3d-9ce2-666112ce6500/public">
+</figure>
+
+<p>The Status signal tells you if the Rule has been enabled or disabled, and if it is in a live state in a production. As you can see below, Revision 1 states that the rule has been already published to production, but Revision 2 is a work in progress</p>
+<figure><img src="https://imagedelivery.net/aOXfYgXj8p9Bd9bCC1ppIQ/82b8f959-fa0e-4e81-d095-302d4317f100/public">
+</figure>
+
+<p>When you select the Compare Revisions window, you get to see the changes in the revisions that you have made and option to select a stable revision in case you have made any error in the new resource</p>
+<figure><img src="https://imagedelivery.net/aOXfYgXj8p9Bd9bCC1ppIQ/857f05f4-a99f-47b6-9bc2-cf0911e71800/public">
+</figure>
+
+<p>When you are configuring the implementation, you first select the right library and then start the process of adding rules, data elements and setting up extensions. This ensures that your library has the latest changes always</p>
+<h4 id="hands-on-1">Hands on</h4>
+<p>Until now, we covered important points related to setting up the Launch library. Let&rsquo;s break the process and cover each step one by one:</p>
+<ul>
+<li>See how multiple dev environments work in tandem with each other</li>
+<li>Add a couple of data elements to capture Page URL and a static string</li>
+<li>Add resources one by one or together</li>
+<li>Add release notes</li>
+</ul>
+
+
+    
+    <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
+      <iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen="allowfullscreen" loading="eager" referrerpolicy="strict-origin-when-cross-origin" src="https://www.youtube.com/embed/SkxnzTMORXo?autoplay=0&controls=1&end=0&loop=0&mute=0&start=0" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" title="YouTube video"
+      ></iframe>
+    </div>
+
+<p>Once you have compiled the library, it is now available for use in Adobe Launch simply by clicking on &rsquo; Select a Working Library&rsquo; and selecting the library name. In the next blog post we will cover all about Extensions and see how to activate two extensions: Adobe Analytics and Adobe Experience Cloud ID Service.</p>
+<p>I hope these updates are helpful to you in your implementation. I have tried covering all the scenarios that I have experienced in my implementation journey and will continue to keep adding more as I keep learning. Do share with me any feedback you might have on:
+<em>ritesh(at)thelearningproject(dot)in</em></p>
+              
+
+
+            </div>
+          </div>
+          <div id="post-footer" class="post-footer main-content-wrap">
+            
+              
+                
+                
+                  <div class="post-footer-tags">
+                    <span class="text-color-light text-small">TAGGED IN</span><br/>
+                    
+  <a class="tag tag--primary tag--small" href="../../tags/adobe-launch/">adobe launch</a>
+
+  <a class="tag tag--primary tag--small" href="../../tags/adobe-launch-library-overview/">adobe launch library overview</a>
+
+                  </div>
+                
+              
+            
+            
+<div class="post-actions-wrap">
+  <nav >
+    <ul class="post-actions post-action-nav">
+      
+        <li class="post-action">
+          
+            <a class="post-action-btn btn btn--default tooltip--top" href="../../posts/b2b-series-adobe-launch-part-3-extensions/" data-tooltip="B2B Series: Adobe Launch - Part 3 - Extensions" aria-label="NEXT: B2B Series: Adobe Launch - Part 3 - Extensions">
+          
+              <i class="fa fa-angle-left"></i>
+              <span class="hide-xs hide-sm text-small icon-ml">NEXT</span>
+            </a>
+        </li>
+        <li class="post-action">
+          
+            <a class="post-action-btn btn btn--default tooltip--top" href="../../posts/b2b-series-adobe-launch-part-1-introduction/" data-tooltip="B2B Series: Adobe Launch - Part 1 - Introduction" aria-label="PREVIOUS: B2B Series: Adobe Launch - Part 1 - Introduction">
+          
+              <span class="hide-xs hide-sm text-small icon-mr">PREVIOUS</span>
+              <i class="fa fa-angle-right"></i>
+            </a>
+        </li>
+      
+    </ul>
+  </nav>
+<ul class="post-actions post-action-share" >
+  
+    <li class="post-action hide-lg hide-md hide-sm">
+      <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions" aria-label="Share this post">
+        <i class="fa fa-share-alt" aria-hidden="true"></i>
+      </a>
+    </li>
+    
+      <li class="post-action hide-xs">
+        <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://thelearningproject.in/posts/b2b-series-adobe-launch-part-2-adobe-launch-library/" title="Share on Twitter" aria-label="Share on Twitter">
+          <i class="fab fa-twitter" aria-hidden="true"></i>
+        </a>
+      </li>
+    
+      <li class="post-action hide-xs">
+        <a class="post-action-btn btn btn--default" target="new" href="https://www.linkedin.com/sharing/share-offsite/?url=https://thelearningproject.in/posts/b2b-series-adobe-launch-part-2-adobe-launch-library/" title="Share on Linkedin" aria-label="Share on Linkedin">
+          <i class="fab fa-linkedin" aria-hidden="true"></i>
+        </a>
+      </li>
+    
+  
+  
+  <li class="post-action">
+    
+      <a class="post-action-btn btn btn--default" href="#top" aria-label="Back to top">
+      <i class="fa fa-arrow-up" aria-hidden="true"></i>
+    
+    </a>
+  </li>
+</ul>
+</div>
+
+
+            
+  
+
+
+          </div>
+        </article>
+        <footer id="footer" class="main-content-wrap">
+  <span class="copyrights">
+    &copy; 2025 Ritesh Gupta. All Rights Reserved
+  </span>
+</footer>
+
+      </div>
+      <div id="bottom-bar" class="post-bottom-bar" data-behavior="2">
+        
+<div class="post-actions-wrap">
+  <nav >
+    <ul class="post-actions post-action-nav">
+      
+        <li class="post-action">
+          
+            <a class="post-action-btn btn btn--default tooltip--top" href="../../posts/b2b-series-adobe-launch-part-3-extensions/" data-tooltip="B2B Series: Adobe Launch - Part 3 - Extensions" aria-label="NEXT: B2B Series: Adobe Launch - Part 3 - Extensions">
+          
+              <i class="fa fa-angle-left"></i>
+              <span class="hide-xs hide-sm text-small icon-ml">NEXT</span>
+            </a>
+        </li>
+        <li class="post-action">
+          
+            <a class="post-action-btn btn btn--default tooltip--top" href="../../posts/b2b-series-adobe-launch-part-1-introduction/" data-tooltip="B2B Series: Adobe Launch - Part 1 - Introduction" aria-label="PREVIOUS: B2B Series: Adobe Launch - Part 1 - Introduction">
+          
+              <span class="hide-xs hide-sm text-small icon-mr">PREVIOUS</span>
+              <i class="fa fa-angle-right"></i>
+            </a>
+        </li>
+      
+    </ul>
+  </nav>
+<ul class="post-actions post-action-share" >
+  
+    <li class="post-action hide-lg hide-md hide-sm">
+      <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions" aria-label="Share this post">
+        <i class="fa fa-share-alt" aria-hidden="true"></i>
+      </a>
+    </li>
+    
+      <li class="post-action hide-xs">
+        <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://thelearningproject.in/posts/b2b-series-adobe-launch-part-2-adobe-launch-library/" title="Share on Twitter" aria-label="Share on Twitter">
+          <i class="fab fa-twitter" aria-hidden="true"></i>
+        </a>
+      </li>
+    
+      <li class="post-action hide-xs">
+        <a class="post-action-btn btn btn--default" target="new" href="https://www.linkedin.com/sharing/share-offsite/?url=https://thelearningproject.in/posts/b2b-series-adobe-launch-part-2-adobe-launch-library/" title="Share on Linkedin" aria-label="Share on Linkedin">
+          <i class="fab fa-linkedin" aria-hidden="true"></i>
+        </a>
+      </li>
+    
+  
+  
+  <li class="post-action">
+    
+      <a class="post-action-btn btn btn--default" href="#top" aria-label="Back to top">
+      <i class="fa fa-arrow-up" aria-hidden="true"></i>
+    
+    </a>
+  </li>
+</ul>
+</div>
+
+
+      </div>
+      
+<div id="share-options-bar" class="share-options-bar" data-behavior="2">
+  <i id="btn-close-shareoptions" class="fa fa-times"></i>
+  <ul class="share-options">
+    
+      <li class="share-option">
+        <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=https%3A%2F%2Fthelearningproject.in%2Fposts%2Fb2b-series-adobe-launch-part-2-adobe-launch-library%2F" aria-label="Share on Twitter">
+          <i class="fab fa-twitter" aria-hidden="true"></i><span>Share on Twitter</span>
+        </a>
+      </li>
+    
+      <li class="share-option">
+        <a class="share-option-btn" target="new" href="https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Fthelearningproject.in%2Fposts%2Fb2b-series-adobe-launch-part-2-adobe-launch-library%2F" aria-label="Share on Linkedin">
+          <i class="fab fa-linkedin" aria-hidden="true"></i><span>Share on Linkedin</span>
+        </a>
+      </li>
+    
+  </ul>
+</div>
+<div id="share-options-mask" class="share-options-mask"></div>
+
+
+    </div>
+    
+    <div id="about">
+  <div id="about-card">
+    <div id="about-btn-close">
+      <i class="fa fa-times"></i>
+    </div>
+    
+      <img id="about-card-picture" src="https://www.gravatar.com/avatar/fdb1efed7fa1de6156e618da1947d2ac?s=110" alt="Author&#39;s picture" />
+    
+    <h4 id="about-card-name">Ritesh Gupta</h4>
+    
+      <div id="about-card-bio">Always be learning!</div>
+    
+    
+      <div id="about-card-job">
+        <i class="fa fa-briefcase"></i>
+        <br/>
+        Technical Architect
+      </div>
+    
+    
+      <div id="about-card-location">
+        <i class="fa fa-map-marker-alt"></i>
+        <br/>
+        Adobe India
+      </div>
+    
+  </div>
+</div>
+
+    
+
+    
+  
+    
+      <div id="cover" style="background-image:url('https://thelearningproject.in/images/cover-v1.2.0.jpg');"></div>
+    
+  
+
+
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/highlight.min.js" integrity="sha512-z+/WWfyD5tccCukM4VvONpEtLmbAm5LDu7eKiyMQJ9m7OfPEDL7gENyDRL3Yfe8XAuGsS2fS4xSMnl6d30kqGQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js" integrity="sha512-uURl+ZXMBrF4AwGaWmEetzrd+J5/8NRkWAvJx5sbPSSuOb0bZLqf+tOzniObO00BjHa/dD7gub9oCGMLPQHtQA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+
+<script src="https://thelearningproject.in/js/script-yqzy9wdlzix4lbbwdnzvwx3egsne77earqmn73v9uno8aupuph8wfguccut.min.js"></script>
+
+
+  
+    <script async crossorigin="anonymous" defer integrity="sha512-gE8KAQyFIzV1C9+GZ8TKJHZS2s+n7EjNtC+IMRn1l5+WYJTHOODUM6JSjZhFhqXmc7bG8Av6XXpckA4tYhflnw==" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/languages/apache.min.js"></script>
+  
+
+  
+    <script async crossorigin="anonymous" defer integrity="sha512-EWROca+bote+7Oaaar1F6y74iZj1r1F9rm/ly7o+/FwJopbBaWtsFDmaKoZDd3QiGU2pGacBirHJNivmGLYrow==" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/languages/go.min.js"></script>
+  
+
+  
+    <script async crossorigin="anonymous" defer integrity="sha512-GDVzAn0wpx1yVtQsRWmFc6PhJiLBPdUic+h4GWgljBh904O3JU10fk9EKNpVyIoPqkFn54rgL2QBG4BmUTMpiQ==" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/languages/http.min.js"></script>
+  
+
+  
+    <script async crossorigin="anonymous" defer integrity="sha512-UgZlma8NzkrDb/NWgmLIcTrH7i/CSnLLDRFqCSNF5NGPpjKmzyM25qcoXGOup8+cDakKyaiTDd7N4dyH4YT+IA==" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/languages/less.min.js"></script>
+  
+
+  
+    <script async crossorigin="anonymous" defer integrity="sha512-lot9koe73sfXIrUvIPM/UEhuMciN56RPyBdOyZgfO53P2lkWyyXN7J+njcxIIBRV+nVDQeiWtiXg+bLAJZDTfg==" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/languages/nginx.min.js"></script>
+  
+
+  
+    <script async crossorigin="anonymous" defer integrity="sha512-Zd3e7XxHP00TD0Imr0PIfeM0fl0v95kMWuhyAS3Wn1UTSXTkz0OhtRgBAr4JlmADRgiXr4x7lpeUdqaGN8xIog==" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/languages/puppet.min.js"></script>
+  
+
+  
+    <script async crossorigin="anonymous" defer integrity="sha512-qtqDO052iXMSP+5d/aE/jMtL9vIIGvONgTJziC2K/ZIB1yEGa55WVxGE9/08rSQ62EoDifS9SWVGZ7ihSLhzMA==" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/languages/scss.min.js"></script>
+  
+
+  
+    <script async crossorigin="anonymous" defer integrity="sha512-1NmkjnEDnwwwcu28KoQF8vs3oaPFokQHbmbtwGhFfeDsQZtVFI8zW2aE9O8yMYdpdyKV/5blE4pSWw4Z/Sv97w==" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/languages/stylus.min.js"></script>
+  
+
+  
+    <script async crossorigin="anonymous" defer integrity="sha512-B2wSfruPjr8EJL6IIzQr1eAuDwrsfIfccNf/LCEdxELCgC/S/ZMt/Uvk80aD79m7IqOqW+Sw8nbkvha20yZpzg==" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/languages/swift.min.js"></script>
+  
+
+  
+    <script async crossorigin="anonymous" defer integrity="sha512-28oDiQZGKUVN6wQ7PSLPNipOcmkCALXKwOi7bnkyFf8QiMZQxG9EQoy/iiNx6Zxj2cG2SbVa4dXKigQhu7GiFw==" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/languages/yaml.min.js"></script>
+  
+
+  
+    <script async crossorigin="anonymous" defer src="https://www.thelearningproject.in/public/js/launch-39d64d92912c-development.min.js"></script>
+  
+
+
+<script>
+$(document).ready(function() {
+  hljs.configure({ classPrefix: '', useBR: false });
+  $('pre.code-highlight > code, pre > code').each(function(i, block) {
+    if (!$(this).hasClass('codeblock')) {
+      $(this).addClass('codeblock');
+    }
+    hljs.highlightBlock(block);
+  });
+});
+</script>
+
+
+
+
+    
+  </body>
+</html>
+

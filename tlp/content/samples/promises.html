@@ -1,0 +1,526 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="shortcut icon" href="assets/favicon/favicon.ico">
+
+    <title>JavaScript : Promises and Array Methods</title>
+
+    <!-- CSS Plugins -->
+    <link href="assets/plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet" >
+
+    <!-- CSS Global -->
+    <link href="assets/css/styles.css" rel="stylesheet">
+
+    <!-- Google Fonts -->
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600italic,600,700,700italic,800,800italic' rel='stylesheet' type='text/css'>
+
+    <!-- Data Layer -->
+  <script>
+    var adobeDataLayer = window.adobeDataLayer = window.adobeDataLayer|| [];
+    adobeDataLayer.push({
+      page: 'Promises',
+      description: 'Promises',
+      url: 'https://www.thelearningproject.in/samples/promises',
+      contentType: 'JavaScript Promises',
+      siteSection: 'Samples'
+    });
+   </script> 
+
+  <!-- Launch Library Code -->
+    <script src="https://assets.adobedtm.com/204118644db8/437cd1c7d72a/launch-39d64d92912c-development.min.js" async></script>
+
+  </head>
+
+  <body>
+
+    <!-- NAVIGATION
+    ================================================== -->
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-default">
+      <div class="container">
+
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar_main" aria-expanded="false">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+
+          <a class="navbar-brand" href="https://www.thelearningproject.in">The Learning Project</a>
+
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="navbar_main">
+
+            <ul class="nav navbar-nav navbar-left">
+                <li><a href="https://www.thelearningproject.in" >Home</a></li>
+                <li class="dropdown">
+                  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">More Pages <span class="caret"></span></a>
+                  <ul class="dropdown-menu">
+                    <li><a href = "multiforms.html">Multi Forms</a></li>
+                    <li><a href="charactercount.html">Character Count</a></li>
+                    <li><a href="promises.html"  class="active">Promises</a></li>
+                    <li><a href="arraymanipulation.html" >Array & String Manipulation</a></li>
+                    <li><a href="multipleAPIs.html">Accessing Multiple API endpoints</a></li>
+                  </ul>
+                </li>
+              </ul>
+
+          <ul class="nav navbar-nav navbar-right">
+            <li>
+              <a href="sign-up.html"><i class="fa fa-user"></i> <span class="hidden-md">Sign Up</span></a>
+            </li>
+          </ul>
+
+          <form class="navbar-form navbar-search navbar-right">
+            <div class="form-group">
+              <input type="text" class="form-control" placeholder="&#xF002; &nbsp; Search">
+            </div>
+            <button type="submit" class="btn btn-default">
+              <i class="fa fa-search"></i> Search
+            </button>
+          </form>
+
+        </div><!-- /.navbar-collapse -->
+      </div><!-- /.container -->
+    </nav>
+
+    <!-- Header -->
+    <div class="page-topbar">
+      <div class="container">
+        <div class="row">
+          <div class="col-sm-4">
+
+            <h3>Promises</h3>
+            
+          </div>
+          <div class="col-sm-8 hidden-xs">
+            
+            <ol class="breadcrumb">
+              <li><a href="#">Home</a></li>
+              <li class="active">Promises</li>
+            </ol>
+
+          </div>
+        </div> <!-- / .row -->
+      </div> <!-- / .container -->
+    </div>
+
+
+    <!-- CONTENT
+    ================================================== -->
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-12 col-md-8 col-lg-6 col-md-offset-2 col-lg-offset-3">
+
+          <!-- Interstellar -->
+          <div class="profile__sign-in">
+
+            <h1 class="block-header alt">
+              <span>PROMISES</span>
+            </h1>
+            <!-- <p class="codepen" data-height="300" data-default-tab="html,result" data-slug-hash="abPYrJe" data-user="riteshvg" style="height: 300px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;">
+              <span>See the Pen <a href="https://codepen.io/riteshvg/pen/abPYrJe">
+              Toggle Multiple Password Field</a> by riteshvg (<a href="https://codepen.io/riteshvg">@riteshvg</a>)
+              on <a href="https://codepen.io">CodePen</a>.</span>
+            </p>
+            <script async src="https://cpwebassets.codepen.io/assets/embed/ei.js"></script> -->
+            
+            <p>
+              Your favorite movie is: <strong>
+                <span id = "promises"></span></strong>.
+            </p>
+            <!-- Script to capture my fav movie name-->
+            <script type = "text/javascript">
+
+              //Creating a new Promise
+              let myFavMovie = new Promise(function(resolve, reject) {
+                
+              //Defining the resolve parameter
+                setTimeout(function(){
+                  resolve ("The Dark Knight!")
+                },3000)
+
+              //Defining the reject parameter
+                setTimeout(function(){
+                  reject ("Interstellar!")
+                },2000)
+              });
+
+              //Creating a variable to store the span attribute
+              let favMovie = document.querySelector('#promises')
+
+              //Handle the Promise 
+              myFavMovie.then(function(msg){
+                favMovie.textContent = msg;
+              }).catch(function(error){
+                favMovie.textContent = error;
+              });
+            </script>
+            <!-- Script ends -->
+            <hr>
+
+            <p>
+              <a href = "https://www.thelearningproject.in/posts/back-to-basics-javascript-part-3/">Go back</a>
+            </p>
+
+          </div> <!-- / .profile_sign-in -->
+
+          <hr>
+
+          <!-- Learning Examples -->
+
+          <script>
+            // Traditional function
+              
+            function fetchStoicAPI() {
+               fetch('https://jsonplaceholder.typicode.com/posts')
+               .then(function(response){
+                return response.json()
+               })
+               .then(function(data){
+                console.log('fetch complete', data)
+               });
+               console.log('random message')
+            }
+            //fetchStoicAPI();
+
+            //Async function
+
+            async function asyncFn(){
+
+              await fetch('https://jsonplaceholder.typicode.com/posts')
+              .then(function(response){
+                return response.json();
+              }).then(function(data){
+                console.log('async fetch complete', data);
+              });
+              console.log('random message')
+            }
+
+            //asyncFn();
+          </script>
+
+          <!-- Stoic Module Starts -->
+
+          <div class="profile__sign-in">
+
+            <h1 class="block-header alt">
+              <span>The Stoicism API!</span>
+            </h1>
+            <p>
+              <div>
+                <h4><span id = "stoicPunchLine">
+                  <em>
+                    Get a random Stoic quote on click of the below button!
+                  </em>
+                </span>
+                <span id = "stoicAuthor">
+                </span>
+              </h4> 
+              </div>
+              <p></p>
+            <button class = "btn btn-primary" id="stoicButton">Get your Daily Dose!</button>
+            </p>
+
+            <!-- Get a fresh quote from the Bhagvad Gita API and render it into the DOM - 
+              /**
+               * fetch() method is used to make Ajax requests such as calling API or fetching a remote resource
+              */
+            -->
+            <script>
+
+            // Working Example - Async function to fetch data and display in the UI 
+            //Click the Get your daily dose button to get a random Stoic quote
+            // Rewritten based on Chris's chapter of error handling with async function
+
+            async function fetchStoicAPI(){
+              try {
+                 //Get the endopoint
+                let response = await fetch('https://api.themotivate365.com/stoic-quote');
+
+                //If the call failed, throw an error
+                if(!response.ok){
+                  //throw(response.status);
+                  throw('Something went wrong!')
+                }
+
+                //Otherwise get the response. Don't forget to return the data. Else, you will get an error!
+                let data = await response.json();
+                return data;
+
+                //Log the data to console
+                console.log(data);
+
+              } catch (error) {
+                console.warn(error)
+              }
+            }
+
+            let stoicPunchLine = document.querySelector('#stoicPunchLine');
+            let stoicButton = document.querySelector('#stoicButton');
+            let stoicAuthor = document.querySelector('#stoicAuthor');
+
+            stoicButton.addEventListener('click', async function(){
+              let data = await fetchStoicAPI();
+              console.log(data);
+              stoicPunchLine.innerText = data.quote + '-'
+              stoicAuthor.innerText = data.author;
+            })
+
+            /* async function fetchJokeAPI() {
+                try {
+                  const url = 'https://api.themotivate365.com/stoic-quote'
+                    const response = await fetch(url); // Replace with your API endpoint
+                    if (response.ok) {
+                        const data = await response.json();
+                        //console.log(data);
+                        return data;
+                    } else {
+                        throw new Error('Network response was not ok.');
+                    }
+                } catch (error) {
+                    console.error('Error fetching data:', error);
+                }
+            } 
+
+            const jokePunchline = document.querySelector('#jokePunchline');
+            const jokeButton = document.querySelector('#jokeButton')
+            const author = document.querySelector('#author')
+
+             jokeButton.addEventListener('click', async function() {
+                const data = await fetchJokeAPI(); // Fetch data from the API
+                jokePunchline.innerText = data.quote + '..' 
+                author.innerText = data.author;
+            });*/
+            </script>
+            
+            <hr>
+            <!-- Stoic Module Ends -->
+            <p>
+              <a href = "https://www.thelearningproject.in/posts/back-to-basics-javascript-part-4/">Go back</a>
+            </p>
+
+          </div>
+
+          <!-- / .profile_sign-in -->
+
+          <hr>
+          <div class="profile__sign-in">
+
+            <h1 class="block-header alt">
+              <span>The Bhagavad Gita API</span>
+            </h1>
+            <p>
+              <h4>
+                Chapter Number : <span id = "chapterNumber"></span> </h4>
+              <blockquote id = "summaryOutput">
+                <em>Opening the Bhagvad Gita!</em>
+            </blockquote>
+            <button id = "summaryButton" class = "btn btn-primary">Show Next Chapter</button>
+            </p>
+  
+            <script> 
+              /**
+               * fetch() method is used to make Ajax requests such as calling API or fetching a remote resource
+              */
+  
+              //Trying on button click 
+              
+              //function getQuote () {       
+  
+            async function fetchData(){
+              const url = 'https://bhagavad-gita3.p.rapidapi.com/v2/chapters/';
+              const options = {
+              method: 'GET',
+              headers: {
+                'X-RapidAPI-Key': '3d4c716da3mshc3f13b8dd2f6b2ep1f4b7fjsndebb9f4a5fcf',
+                'X-RapidAPI-Host': 'bhagavad-gita3.p.rapidapi.com'
+                }
+              }
+              try{
+              const response = await fetch(url, options);
+              if(response.ok){
+                const data = await response.json();
+                //console.log(data);
+                return data;
+              } else {
+              throw new Error('Network response was not OK!')
+              }
+              } catch (error) {
+                console.error('Error fetching data:', error);
+              }
+            };
+  
+            let currentChapterIndex = 0;
+            
+            const chapterNumber = document.querySelector('#chapterNumber')
+            const buttonClick = document.querySelector('#summaryButton');
+            const summaryDisplay = document.querySelector('#summaryOutput')
+  
+            buttonClick.addEventListener('click', async function(){
+              const quotes = await fetchData();
+  
+              if(currentChapterIndex < quotes.length) {
+                chapterNumber.textContent = quotes[currentChapterIndex].chapter_number;
+                summaryDisplay.textContent = quotes[currentChapterIndex].chapter_summary_hindi;
+                currentChapterIndex ++;
+              } else {
+                console.log('no more quotes');
+                currentChapterIndex = 0;
+              }
+            });
+            
+              </script>
+                            
+                <p>
+                  <a href = "https://www.thelearningproject.in/posts/back-to-basics-javascript-part-4/">Go back</a>
+                </p>
+            </div>
+            <hr>
+
+            <div class="profile__sign-in">
+              <h1 class = "block-header alt">
+                <span>The Books API</span>
+              </h1>
+              <em>
+                Coming Soon!
+              </em>
+            </div>
+
+        </div>
+        
+      </div> <!-- / .row -->
+    </div> <!-- / .container -->
+
+
+    <!-- FOOTER 
+    ================================================== -->
+    <footer>
+      <div class="container">
+        <div class="row">
+          <div class="col-xs-12 col-sm-4">
+            
+            <div class="footer__col">
+              <h3 class="footer__header">Our Company</h3>
+              <p>
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Commodi, corrupti debitis!
+              </p>
+              <p>
+                US & CAN: 1-234-56789 <br />
+                Worldwide: 1-234-56789
+              </p>
+              <ul class="footer__social">
+                <li>
+                  <a href="#"><i class="fa fa-facebook"></i></a>
+                </li>
+                <li>
+                  <a href="#"><i class="fa fa-twitter"></i></a>
+                </li>
+                <li>
+                  <a href="#"><i class="fa fa-google-plus"></i></a>
+                </li>
+              </ul>
+            </div>
+
+          </div>          
+          <div class="col-xs-6 col-sm-2">
+            
+            <div class="footer__col">
+              <h3 class="footer__header">
+                Learn More
+              </h3>
+              <ul class="footer__content">
+                <li><a href="#">How it works?</a></li>
+                <li><a href="#">Meeting Tools</a></li>
+                <li><a href="#">Pricing</a></li>
+                <li><a href="#">Sitemap</a></li>
+              </ul>
+            </div>
+
+          </div>
+          <div class="col-xs-6 col-sm-2">
+            
+            <div class="footer__col">
+              <h3 class="footer__header">
+                About Us
+              </h3>
+              <ul class="footer__content">
+                <li><a href="#">About Us</a></li>
+                <li><a href="#">Careers</a></li>
+                <li><a href="#">Terms of Service</a></li>
+                <li><a href="#">Privacy Policy</a></li>
+              </ul>
+            </div>
+
+          </div>
+          <div class="col-xs-12 col-sm-4">
+            
+            <div class="footer__col">
+              <h3 class="footer__header">Subscribe</h3>
+              <p>
+                Enter your e-mail below to subscribe to our free newsletter.
+              </p>
+              <p>
+                No spam. We promise.
+              </p>
+              <form class="form-inline footer__form">
+                <div class="form-group">
+                  <label class="sr-only">Enter e-mail</label>
+                  <input type="email" class="form-control" placeholder="Enter your e-mail">
+                </div>
+                <button type="submit" class="btn btn-default">
+                  OK
+                </button>
+              </form>
+            </div>
+
+          </div>
+
+        </div> <!-- / .row -->
+
+        <hr class="footer__hr" />
+
+        <div class="row">
+          <div class="col-sm-6">
+            
+            <p>
+              Company 2016. All rights reserved.
+            </p>
+
+          </div>
+        </div> <!-- / .row -->
+
+      </div> <!-- / .container -->
+    </footer>
+
+    <!-- JavaScript Basics Chapter 6 : Character Count -->
+
+    
+
+    
+    <!-- JavaScript
+    ================================================== -->
+    
+    <!-- JS Global -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+    
+    <!-- JS Plugins -->
+    <script src="assets/plugins/scrolltopcontrol/scrolltopcontrol.js"></script>
+    
+    <!-- JS Custom -->
+    <script src="assets/js/custom.js"></script>
+
+  </body>
+</html>

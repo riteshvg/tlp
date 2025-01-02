@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="shortcut icon" href="assets/favicon/favicon.ico">
+
+    <title>JavaScript : Array Manipulation</title>
+
+    <!-- CSS Plugins -->
+    <link href="assets/plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet" >
+
+    <!-- CSS Global -->
+    <link href="assets/css/styles.css" rel="stylesheet">
+
+    <!-- Google Fonts -->
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600italic,600,700,700italic,800,800italic' rel='stylesheet' type='text/css'>
+
+    <!-- Data Layer -->
+  <script>
+    var adobeDataLayer = window.adobeDataLayer = window.adobeDataLayer|| [];
+    adobeDataLayer.push({
+      page: 'Promises',
+      description: 'Promises',
+      url: 'https://www.thelearningproject.in/samples/arrayManipulation',
+      contentType: 'JavaScript Promises',
+      siteSection: 'Samples'
+    });
+   </script> 
+
+  <!-- Launch Library Code -->
+    <script src="https://assets.adobedtm.com/204118644db8/437cd1c7d72a/launch-39d64d92912c-development.min.js" async></script>
+
+  </head>
+
+  <body>
+
+    <!-- NAVIGATION
+    ================================================== -->
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-default">
+      <div class="container">
+
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar_main" aria-expanded="false">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+
+          <a class="navbar-brand" href="https://www.thelearningproject.in">The Learning Project</a>
+
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="navbar_main">
+
+            <ul class="nav navbar-nav navbar-left">
+                <li><a href="https://www.thelearningproject.in" >Home</a></li>
+                <li class="dropdown">
+                  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">More Pages <span class="caret"></span></a>
+                  <ul class="dropdown-menu">
+                    <li><a href = "multiforms.html">Multi Forms</a></li>
+                    <li><a href="charactercount.html">Character Count</a></li>
+                    <li><a href="promises.html" >Promises</a></li>
+                    <li><a href="arraymanipulation.html"  class="active">Array & String Manipulation</a></li>
+                    <li><a href="multipleAPIs.html">Accessing Multiple API endpoints</a></li>
+                  </ul>
+                </li>
+              </ul>
+
+          <ul class="nav navbar-nav navbar-right">
+            <li>
+              <a href="sign-up.html"><i class="fa fa-user"></i> <span class="hidden-md">Sign Up</span></a>
+            </li>
+          </ul>
+
+          <form class="navbar-form navbar-search navbar-right">
+            <div class="form-group">
+              <input type="text" class="form-control" placeholder="&#xF002; &nbsp; Search">
+            </div>
+            <button type="submit" class="btn btn-default">
+              <i class="fa fa-search"></i> Search
+            </button>
+          </form>
+
+        </div><!-- /.navbar-collapse -->
+      </div><!-- /.container -->
+    </nav>
+
+    <!-- Header -->
+    <div class="page-topbar">
+      <div class="container">
+        <div class="row">
+          <div class="col-sm-4">
+
+            <h3>Array Manipulation</h3>
+            
+          </div>
+          <div class="col-sm-8 hidden-xs">
+            
+            <ol class="breadcrumb">
+              <li><a href="#">Home</a></li>
+              <li class="active">Array Manipulation</li>
+            </ol>
+
+          </div>
+        </div> <!-- / .row -->
+      </div> <!-- / .container -->
+    </div>
+
+
+    <!-- CONTENT
+    ================================================== -->
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-12 col-md-8 col-lg-6 col-md-offset-2 col-lg-offset-3">
+
+          <!-- Interstellar -->
+          <div class="profile__sign-in">
+
+            <h1 class="block-header alt">
+              <span>Injecting Array Data into HTML</span>
+            </h1>
+            <h5>Task: Access the jsonplaceholder API and return the data in an ordered list</h5>
+            
+            <div class="info-board info-board-primary">
+              <p>
+                This task involves fetching a response from the jsonplaceholder API and returning back the user company name with the fetch() method.
+              </p>
+            </div>
+
+            <div id = "orderedList"></div>
+
+            <script>
+              let users;
+              let user;
+
+              //fetching data via API
+              fetch('https://jsonplaceholder.typicode.com/users')
+              .then(function(response){
+              //fetching the response object and converting it into a json() object
+                return response.json();
+              }).then(function(data){
+              //storing the returned data in users variable
+                  users = data;
+                  console.log(users);
+                  
+              //accessing the app node via querySelector function
+                  let app = document.querySelector('#orderedList');
+
+                  //accessing the app's innerHTML property and using Array.prototype.map() 
+                  //and Array.prototype.join() method
+                  app.innerHTML = '<ul>' + users.map(function(user){
+                    return '<li>' + user.company.name + '</li>'
+                  }).join('')+ '</ul>'
+              
+              
+              //listening for errors 
+              }).catch(function(error){
+                console.warn(error);
+              })
+            </script>
+
+            <hr>
+
+            <h5>Task: Access the jsonplaceholder API and return the data in a tabular format</h5>
+
+            <div class="info-board info-board-primary">
+              <p>
+                This task involves fetching multiple endpoints using promise.all() method and returning the value in the table below.
+                Currently, work in progress!
+              </p>
+            </div>
+
+            <!-- Table from Highland Business Template -->
+
+            <div class="table-responsive">
+              <table class="table table-hover profile__inbox">
+                <tbody>
+                  <tr>
+                    <td>
+                      <div class="profile-inbox__img">
+                        <img src="assets/img/person_1.jpg" class="img-responsive" alt="...">
+                      </div>
+                    </td>
+                    <td>
+                      From: <a href="profile.html">John Doe</a> <br>
+                      1 hours ago
+                    </td>
+                    <td>
+                      <a href="inbox-dialog.html">
+                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iste pariatur nemo hic sunt. Minima amet repellendus magni placeat.
+                      </a>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <script>
+              fetch('https://jsonplaceholder.typicode.com/users')
+              .then(function(res){
+                return res.json();
+              }).then(function(returnedData){
+                let userDetails = returnedData;
+                console.log(userDetails);
+              })
+              //fetching data via API
+              
+            </script>
+            <p>
+              <a href = "https://www.thelearningproject.in/posts/back-to-basics-javascript-part-3/">Go back</a>
+            </p>
+
+          </div> <!-- / .profile_sign-in -->
+
+          
+
+          <!-- Learning Examples -->
+
+          <script>
+            // Traditional function
+              
+            function fetchStoicAPI() {
+               fetch('https://jsonplaceholder.typicode.com/posts')
+               .then(function(response){
+                return response.json()
+               })
+               .then(function(data){
+                console.log('fetch complete', data)
+               });
+               console.log('random message')
+            }
+            //fetchStoicAPI();
+
+            //Async function
+
+            async function asyncFn(){
+
+              await fetch('https://jsonplaceholder.typicode.com/posts')
+              .then(function(response){
+                return response.json();
+              }).then(function(data){
+                console.log('async fetch complete', data);
+              });
+              console.log('random message')
+            }
+
+            //asyncFn();
+          </script>
+
+          <!-- Ghibli Module Starts -->
+
+          <div class="profile__sign-in">
+
+            <h1 class="block-header alt">
+              <span>Injecting Array Data GoMakeThings Template!</span>
+            </h1>
+            <div class="info-board info-board-primary">
+              <p>
+                This task involves fetching Studio Ghibli endpoint using the fetch() function.
+              </p>
+            </div>
+            <p>
+              <div id = "app"></div>
+
+              <script>
+                //Access the app div
+                let app = document.querySelector('#app')
+                // Hit the Studio Ghibli endpoint 'films'
+                /**
+                 * Render articles into the DOM
+                 * @param {Array} articles The articles to render
+                */
+
+                fetch('https://ghibliapi.vercel.app/films')
+                .then(function(response){
+                  if(response.ok){
+                    return response.json()
+                  }
+                    throw response.status;
+                }).then(function(data){
+                  //Render the films into DOM
+                  let studioData = data;
+                  app.innerHTML = studioData.map(function(movies){
+                    return `
+                    <h5><b>${movies.original_title}</b> (<b>${movies.title}</b>)</h5>
+                    <p>by &nbsp; <em>${movies.director}</em></p>
+                      <p>${movies.description}</p>                      
+                    `
+                  }).join('');
+                }).catch(function(error){
+                  console.warn(error);
+                });
+              </script>
+            </div>
+            <hr>
+            
+            <div class="profile__sign-in">
+              <h1 class = "block-header alt">
+                <span>The Books API</span>
+              </h1>
+              <em>
+                Coming Soon!
+              </em>
+            </div>
+
+        </div>
+        
+      </div> <!-- / .row -->
+    </div> <!-- / .container -->
+
+
+    <!-- FOOTER 
+    ================================================== -->
+    <footer>
+      <div class="container">
+        <div class="row">
+          <div class="col-xs-12 col-sm-4">
+            
+            <div class="footer__col">
+              <h3 class="footer__header">Our Company</h3>
+              <p>
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Commodi, corrupti debitis!
+              </p>
+              <p>
+                US & CAN: 1-234-56789 <br />
+                Worldwide: 1-234-56789
+              </p>
+              <ul class="footer__social">
+                <li>
+                  <a href="#"><i class="fa fa-facebook"></i></a>
+                </li>
+                <li>
+                  <a href="#"><i class="fa fa-twitter"></i></a>
+                </li>
+                <li>
+                  <a href="#"><i class="fa fa-google-plus"></i></a>
+                </li>
+              </ul>
+            </div>
+
+          </div>          
+          <div class="col-xs-6 col-sm-2">
+            
+            <div class="footer__col">
+              <h3 class="footer__header">
+                Learn More
+              </h3>
+              <ul class="footer__content">
+                <li><a href="#">How it works?</a></li>
+                <li><a href="#">Meeting Tools</a></li>
+                <li><a href="#">Pricing</a></li>
+                <li><a href="#">Sitemap</a></li>
+              </ul>
+            </div>
+
+          </div>
+          <div class="col-xs-6 col-sm-2">
+            
+            <div class="footer__col">
+              <h3 class="footer__header">
+                About Us
+              </h3>
+              <ul class="footer__content">
+                <li><a href="#">About Us</a></li>
+                <li><a href="#">Careers</a></li>
+                <li><a href="#">Terms of Service</a></li>
+                <li><a href="#">Privacy Policy</a></li>
+              </ul>
+            </div>
+
+          </div>
+          <div class="col-xs-12 col-sm-4">
+            
+            <div class="footer__col">
+              <h3 class="footer__header">Subscribe</h3>
+              <p>
+                Enter your e-mail below to subscribe to our free newsletter.
+              </p>
+              <p>
+                No spam. We promise.
+              </p>
+              <form class="form-inline footer__form">
+                <div class="form-group">
+                  <label class="sr-only">Enter e-mail</label>
+                  <input type="email" class="form-control" placeholder="Enter your e-mail">
+                </div>
+                <button type="submit" class="btn btn-default">
+                  OK
+                </button>
+              </form>
+            </div>
+
+          </div>
+
+        </div> <!-- / .row -->
+
+        <hr class="footer__hr" />
+
+        <div class="row">
+          <div class="col-sm-6">
+            
+            <p>
+              Company 2016. All rights reserved.
+            </p>
+
+          </div>
+        </div> <!-- / .row -->
+
+      </div> <!-- / .container -->
+    </footer>
+
+    <!-- JavaScript Basics Chapter 6 : Character Count -->
+
+    
+
+    
+    <!-- JavaScript
+    ================================================== -->
+    
+    <!-- JS Global -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+    
+    <!-- JS Plugins -->
+    <script src="assets/plugins/scrolltopcontrol/scrolltopcontrol.js"></script>
+    
+    <!-- JS Custom -->
+    <script src="assets/js/custom.js"></script>
+
+  </body>
+</html>
