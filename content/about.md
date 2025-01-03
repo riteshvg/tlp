@@ -5,7 +5,9 @@ date: 2022-01-02
 
 Life is continuous learning journey, and change is inevitable.
 
-Hi, my name is Ritesh Gupta. Thank you for visiting my blog. I define myself as a 'Continuous Learner' and I love learning about different things. I have been a Copywriter, an Event Creative, a Email Consultant, a Web Consultant, a Digital Marketing Manager, **Sr. Technical Consultant**, a **Technical Architect** , an **Implementation Specialist** for Conversionista! Stockholm, Sweden and now a **Technical Architect** for Adobe India. 
+Hi, my name is Ritesh Gupta. I define myself as a 'Continuous Learner' and I love learning about different things. I have been a Copywriter, an Event Creative, a Email Consultant, a Web Consultant, a Digital Marketing Manager, **Sr. Technical Consultant**, a **Technical Architect** , an **Implementation Specialist** for Conversionista! Stockholm, Sweden and now a **Technical Architect** for Adobe India. 
+
+Visit my [Playground](../playground)
 
 My work involves architecting Adobe's digital analytics/CDP tools such as Adobe Analytics, Adobe Target, Adobe Audience Manager, Adobe Web SDK, Adobe Experience Platform for Fortune 500 clients in order to help them measure, evaluate and enhance their digital properties and digital efforts.
 
