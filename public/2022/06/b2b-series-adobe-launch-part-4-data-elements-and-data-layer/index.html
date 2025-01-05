@@ -1,0 +1,636 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    
+    <script type="application/ld+json">
+
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "B2B Series: Adobe Launch - Part 4 - Data Elements and Data Layer",
+  
+  "image": "https://imagedelivery.net/aOXfYgXj8p9Bd9bCC1ppIQ/1b42e624-cb22-4a4d-7c15-1e8368235e00/public",
+  
+  "datePublished": "2022-06-11T00:00:00Z",
+  "dateModified": "2022-06-11T00:00:00Z",
+  "author": {
+    "@type": "Person",
+    "name":  null ,
+    
+  },
+  "mainEntityOfPage": { 
+    "@type": "WebPage",
+    "@id": "https:\/\/thelearningproject.in\/2022\/06\/b2b-series-adobe-launch-part-4-data-elements-and-data-layer\/" 
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "The Learning Project",
+    
+  },
+  "description": "So far we have covered all items related to the Publishing Flow in Adobe Launch as well as covered briefly about Adobe Launch Extensions and their utility. We will now cover Data Elements and Data Layer. And see how are they rightly referred to as building blocks for Adobe Launch.\n",
+  "keywords": [, "adobe experience cloud, adobe launch, adobe analytics, adobe experience platform, multi solution architect, business analytics"]
+}
+
+</script>
+    <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="generator" content="Hugo 0.139.2 with theme Tranquilpeak 0.5.3-BETA">
+<meta name="author" content="">
+<meta name="keywords" content=", adobe experience cloud, adobe launch, adobe analytics, adobe experience platform, multi solution architect, business analytics">
+<meta name="description" content="So far we have covered all items related to the Publishing Flow in Adobe Launch as well as covered briefly about Adobe Launch Extensions and their utility. We will now cover Data Elements and Data Layer. And see how are they rightly referred to as building blocks for Adobe Launch.">
+
+
+<meta property="og:description" content="So far we have covered all items related to the Publishing Flow in Adobe Launch as well as covered briefly about Adobe Launch Extensions and their utility. We will now cover Data Elements and Data Layer. And see how are they rightly referred to as building blocks for Adobe Launch.">
+<meta property="og:type" content="article">
+<meta property="og:title" content="B2B Series: Adobe Launch - Part 4 - Data Elements and Data Layer">
+<meta name="twitter:title" content="B2B Series: Adobe Launch - Part 4 - Data Elements and Data Layer">
+<meta property="og:url" content="https://thelearningproject.in/2022/06/b2b-series-adobe-launch-part-4-data-elements-and-data-layer/">
+<meta property="twitter:url" content="https://thelearningproject.in/2022/06/b2b-series-adobe-launch-part-4-data-elements-and-data-layer/">
+<meta property="og:site_name" content="The Learning Project">
+<meta property="og:description" content="So far we have covered all items related to the Publishing Flow in Adobe Launch as well as covered briefly about Adobe Launch Extensions and their utility. We will now cover Data Elements and Data Layer. And see how are they rightly referred to as building blocks for Adobe Launch.">
+<meta name="twitter:description" content="So far we have covered all items related to the Publishing Flow in Adobe Launch as well as covered briefly about Adobe Launch Extensions and their utility. We will now cover Data Elements and Data Layer. And see how are they rightly referred to as building blocks for Adobe Launch.">
+<meta property="og:locale" content="en-us">
+
+  
+    <meta property="article:published_time" content="2022-06-11T00:00:00">
+  
+  
+    <meta property="article:modified_time" content="2022-06-11T00:00:00">
+  
+  
+  
+  
+    
+      <meta property="article:tag" content="adobe launch">
+    
+      <meta property="article:tag" content="adobe launch data layer overview">
+    
+  
+
+
+<meta name="twitter:card" content="summary">
+
+
+
+
+
+
+
+
+
+
+
+  <meta property="og:image" content="https://imagedelivery.net/aOXfYgXj8p9Bd9bCC1ppIQ/1b42e624-cb22-4a4d-7c15-1e8368235e00/public">
+  <meta property="twitter:image" content="https://imagedelivery.net/aOXfYgXj8p9Bd9bCC1ppIQ/1b42e624-cb22-4a4d-7c15-1e8368235e00/public">
+
+
+    <title>B2B Series: Adobe Launch - Part 4 - Data Elements and Data Layer</title>
+
+    <link rel="icon" href="https://thelearningproject.in/favicon.png">
+    
+
+    
+
+    <link rel="canonical" href="https://thelearningproject.in/2022/06/b2b-series-adobe-launch-part-4-data-elements-and-data-layer/">
+
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css" integrity="sha512-H9jrZiiopUdsLpg94A333EfumgUBpO9MdbxStdeITo+KEIMaNfHNvwyjjDJb+ERPaRS6DpyRlKbvPUasNItRyw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    
+    
+    
+    <link rel="stylesheet" href="https://thelearningproject.in/css/style-h6ccsoet3mzkbb0wngshlfbaweimexgqcxj0h5hu4h82olsdzz6wmqdkajm.min.css" />
+    
+    
+
+    
+  </head>
+
+  <body>
+    <div id="blog">
+      <header id="header" data-behavior="2">
+  <i id="btn-open-sidebar" class="fa fa-lg fa-bars"></i>
+  <div class="header-title">
+    <a class="header-title-link" href="../../../" aria-label="Go to homepage">The Learning Project</a>
+  </div>
+  
+    
+      <a class="header-right-picture "
+         href="../../../about" aria-label="Open the link: /about">
+    
+    
+    
+      
+    
+    </a>
+  
+</header>
+
+      <nav id="sidebar" data-behavior="2">
+  <div class="sidebar-container">
+    
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="../../../" title="Home">
+    
+      <i class="sidebar-button-icon fas fa-lg fa-home" aria-hidden="true"></i>
+      
+      <span class="sidebar-button-desc">Home</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="../../../about" title="About">
+    
+      <i class="sidebar-button-icon fas fa-lg fa-code" aria-hidden="true"></i>
+      
+      <span class="sidebar-button-desc">About</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="../../../tools" title="Tools">
+    
+      <i class="sidebar-button-icon fas fa-lg fa-anchor" aria-hidden="true"></i>
+      
+      <span class="sidebar-button-desc">Tools</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="../../../playground" title="Playground">
+    
+      <i class="sidebar-button-icon fas fa-lg fa-pen-nib" aria-hidden="true"></i>
+      
+      <span class="sidebar-button-desc">Playground</span>
+    </a>
+  </li>
+
+
+    </ul>
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://github.com/riteshvg" target="_blank" rel="noopener" title="GitHub">
+    
+      <i class="sidebar-button-icon fab fa-lg fa-github" aria-hidden="true"></i>
+      
+      <span class="sidebar-button-desc">GitHub</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://www.linkedin.com/in/riteshvgupta/" target="_blank" rel="noopener" title="LinkedIn">
+    
+      <i class="sidebar-button-icon fab fa-lg fa-linkedin" aria-hidden="true"></i>
+      
+      <span class="sidebar-button-desc">LinkedIn</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://twitter.com/riteshvg" target="_blank" rel="noopener" title="Twitter">
+    
+      <i class="sidebar-button-icon fab fa-lg fa-twitter" aria-hidden="true"></i>
+      
+      <span class="sidebar-button-desc">Twitter</span>
+    </a>
+  </li>
+
+
+    </ul>
+    <ul class="sidebar-buttons">
+      
+
+    </ul>
+  </div>
+</nav>
+
+      
+
+      <div id="main" data-behavior="2"
+        class="
+               hasCoverMetaIn
+               ">
+        <article class="post" id="top">
+          
+          
+            <div class="post-header main-content-wrap text-left">
+  
+    <h1 class="post-title">
+      B2B Series: Adobe Launch - Part 4 - Data Elements and Data Layer
+    </h1>
+  
+  
+  <div class="postShorten-meta post-meta">
+    
+      <time datetime="2022-06-11T00:00:00Z">
+        
+  June 11, 2022
+
+      </time>
+    
+    
+  </div>
+
+</div>
+          
+          <div class="post-content markdown">
+            <div class="main-content-wrap">
+              <p>So far we have covered all items related to the Publishing Flow in Adobe Launch as well as covered briefly about Adobe Launch Extensions and their utility. We will now cover Data Elements and Data Layer. And see how are they rightly referred to as building blocks for Adobe Launch.</p>
+<p>We move up in the &lsquo;Authoring&rsquo; section of Adobe Launch and will talk in detail about &lsquo;Data Elements&rsquo; and &lsquo;Data Layer&rsquo;. Both of the components are intrinsically related to each other and they help to make your implementation stay modular and flexible.</p>
+<h4 id="data-elements">Data Elements</h4>
+<p>I&rsquo;d like to begin this article by referencing a simple definition for Data Elements by <a href="https://www.jimalytics.com">Jim Gordon</a>: &ldquo;You’re missing the boat if you aren’t using Data Elements in Adobe Launch. Data Elements are built so you don’t have to rely on JavaScript or type the same text over and over again. Using Data Elements saves a whole lot of time and makes your rules leaner/cleaner!&rdquo;</p>
+<blockquote>
+<p>Please do check out his <a href="https://jimalytics.com/tag-management/adobe-launch-data-elements-guide/">resourceful</a> blog. It is an excellent repository covering various topics related to Adobe Analytics, especially about Event Driven Data Layer. The concept of EDDL and its extension developed by Search Discovery was a saviour during one of my key projects in Adobe India.</p>
+</blockquote>
+<p>Jim&rsquo;s definition is 100% right. <a href="https://experienceleague.adobe.com/docs/experience-platform/tags/ui/data-elements.html?lang=en">Data elements</a> are the building blocks of Adobe Launch. They are blank variables whose value can be easily mapped to <strong>query strings</strong>, <strong>URLs</strong>, <strong>cookie values</strong>, <strong>JavaScript variables</strong>, and so on. The best part about data elements is that they can then be easily referenced across Adobe Launch through a nifty button in the visual interface or in the custom code by using the <em>satellite.getVar</em> function and adding the data element name like below:</p>
+<pre tabindex="0"><code>_satellite.getVar(&#39;data element name&#39;);
+</code></pre><p>Let&rsquo;s say for thelearningproject.in, I reference each post name by its document.title element. At the outset let me say that this is not a best practice. I highly recommend using a <a href="https://jimalytics.com/data-layers/event-driven-data-layer-eddl-demo/">data layer</a> in your implementation. It is a best practice and I can&rsquo;t stress enough. But for now, I capture <em>document.title</em> as my Page Name. I go ahead and create a data element called <em>Page Name</em> and set the Data Element Type (more on the different Data Element Types below!) to <em>Page Info</em> and then select <em>Title</em> as my attribute. That&rsquo;s it. I am done.</p>
+<p>I can reference this data element wherever I need through out the entire implementation. I can do it via the UI by clicking on the small database icon or reference it in the custom code using the below code:</p>
+<pre tabindex="0"><code>_satellite.getVar(&#39;Page Name&#39;);
+</code></pre><p>But tomorrow, I add a data layer in my blog. I now want the <em>Page Name</em> data element to capture the <em>digtalData.page.pageInfo.pageTitle</em> node. I go ahead and easily make the change in my data element by changing the Data Element type from <em>Page Info</em> to <em>JavaScript Variable</em> type, refer it via the node above and voila! I am done.</p>
+<h5 id="the-working-of-a-data-element">The working of a data element</h5>
+<p>We need to understand the finer aspect of how a Data Element works? To explain, I will refer a lot of the material again from jimalytics.com from <a href="https://jimalytics.com/tag-management/adobe-launch-data-elements-guide">this blog post</a>!</p>
+<blockquote>
+<p>A Data Element will try to reset its value each time it is referenced. Repeat it slowly, <em>a Data Element will try to reset its value each time it is referenced</em>. What this means is every time that you reference a data element it will first check for an existing value from the <a href="https://medium.com/adobetech/data-persistence-from-dtm-to-launch-466a6ab9d168">source</a>. The source can be a data layer, cookie, DOM element, whatever that has been defined. If the value that is returned <strong>is not</strong> <em>null</em> or <em>undefined</em>, then the Data Element will be set to the new returned value. But if the returned value is <em>null</em> or <em>undefined</em>, Adobe Launch will look inside the data element storage to determine if there is any existing stored value. If the condition returns true, then that value is used. But, if the condition returns false, then Launch will set the data element value to the default value which is stored by a user. This process is run and validated every single time a data element is referenced on the page.</p>
+</blockquote>
+<p>The below flow <a href="https://jimalytics.com/tag-management/adobe-launch-data-elements-guide/#How_to_Use_Data_Elements">diagram</a> does a great job of simplifying the concept</p>
+<figure><img src="https://imagedelivery.net/aOXfYgXj8p9Bd9bCC1ppIQ/740f7dc0-b14d-4a1e-6f40-eb5b14a79f00/public">
+</figure>
+
+<h5 id="storage-types">Storage Types</h5>
+<p>The other most important aspect to consider while creating a data element is the &lsquo;storage type&rsquo;. Storage type indicates for how long will Adobe Launch retain the stored value in a Data Element. There are four different scope types available: Visitor, Session, Pageview and None.</p>
+<p>From the <a href="https://medium.com/adobetech/data-persistence-from-dtm-to-launch-466a6ab9d168">Medium</a> blog on data persistence, here&rsquo;s what the scoping looks like for each data element storage duration:</p>
+<figure><img src="https://imagedelivery.net/aOXfYgXj8p9Bd9bCC1ppIQ/5067e335-42fe-4dfa-f164-4b3160863800/public">
+</figure>
+
+<p>Most implementation requests are fine with the &lsquo;Visitor&rsquo;, &lsquo;Session&rsquo; and &lsquo;Pageview&rsquo; scoping, but the &lsquo;None&rsquo; scoping was done to tackle issues with single page applications. Aaron Hardy in his <a href="https://medium.com/adobetech/none-data-element-storage-duration-bce063e7fd73">Medium</a> blog post has explained the reasoning behind introducing the <em>None</em> scoping.</p>
+<blockquote>
+<p>&lsquo;None&rsquo; prevents Launch from &ldquo;remembering&rdquo; a Data Element&rsquo;s value. Adobe Launch first tries to find the value from the defined source. If the value that the source returns is <em>null</em> or <em>undefined</em> , then it looks for a value in the storage. In case of &lsquo;None&rsquo;, no value is found. Finally, the default value is used which is configured in the UI. This is actually a great support especially for single page applications. &lsquo;None&rsquo; option is a default every time you try to setup a Data Element in Launch.</p>
+</blockquote>
+<h5 id="data-element-types">Data element types</h5>
+<p>The last part of this blog post will cover different Data Element types that is available for use. As you can see from below, you have a wide variety of settings available for use when creating Data Elements. I will only be covering a few of the available options. You can always refer to the official <a href="https://experienceleague.adobe.com/docs/experience-platform/tags/ui/data-elements.html">Experience League</a> or the helpful <a href="https://jimalytics.com/tag-management/adobe-launch-data-elements-guide/#How_to_Use_Data_Elements">blog post</a> again by Jim Gordon to read about the different types.</p>
+<figure><img src="https://imagedelivery.net/aOXfYgXj8p9Bd9bCC1ppIQ/877b047c-53a5-4c0b-c593-2563eaa2c000/public">
+</figure>
+
+<p>Cookie: It grabs the value of any cookie being stored on a web property. You can refer the cookie name in the Data Element type UI</p>
+<figure><img src="https://imagedelivery.net/aOXfYgXj8p9Bd9bCC1ppIQ/519073a7-9516-497b-6e61-b0a7fefd4a00/public">
+</figure>
+
+<p>Constant: Another gem in the arsenal. Frederik Werner from Full Stack Analyst has written an <a href="https://www.fullstackanalyst.io/blog/adobe-launch/why-you-should-use-the-constant-data-element-more-often-in-adobe-launch/">entire blog post</a> about &ldquo;why you should use the Constant Data Element type more often in Adobe Launch. Do read and bookmark it for future help. Constant Data Element Type does a great job of passing a constant value whenever referenced.</p>
+<figure><img src="https://imagedelivery.net/aOXfYgXj8p9Bd9bCC1ppIQ/20d4516d-2d49-4154-4fba-1980800ca400/public">
+</figure>
+
+<p>Custom Code: A powerful Data Element type. It helps you to write custom JavaScript, and returns it as a value.</p>
+<figure><img src="https://imagedelivery.net/aOXfYgXj8p9Bd9bCC1ppIQ/54657a38-f8ef-446b-604c-1bb906c45600/public">
+</figure>
+
+<p>Dom Attribute: Dom Attribute refers to an existing value in the Document Object Model like id, href, class or any other attribute, and returns it when referenced. You need to select the element in the CSS selector and then refer what attribute value would you like to pass when referenced.</p>
+<figure><img src="https://imagedelivery.net/aOXfYgXj8p9Bd9bCC1ppIQ/38a70f8f-78ce-4908-cedf-ec07d7a5be00/public">
+</figure>
+
+<p>JavaScript variable: It is the most preferred method that I always resort to and I suggest you the same. A robust data layer is one of the most essential elements of a successful implementation. Always, always resort to this option when creating Data Elements. Once you select this type, you can refer to it in the exact path that is made available in the data layer.</p>
+<figure><img src="https://imagedelivery.net/aOXfYgXj8p9Bd9bCC1ppIQ/4f2a2b88-5ad1-449e-8ac7-e77c0c9fb200/public">
+</figure>
+
+<p>As you can see there are multiple options that are available to you to set the value of a Data Element. What type you choose is totally dependent on the use case and available resources. But definitely explore all the different available types in your implementation.</p>
+<h5 id="data-layer">Data Layer</h5>
+<p>At this point it is important to introduce the concept of Data Layer. You can again refer to Jim Gordon from <a href="https://jimalytics.com/tag-management/the-event-driven-data-layer/">jimalytics.com</a> and The Data Layer primer from <a href="https://annealytics.com/2017/08/29/the-data-layer-a-primer/">annealytics.com</a>. Both articles do a much better job of explaining why use a Data Layer, and especially Event Driven Data Layer (EDDL)</p>
+<p>I will keep it precise and simple: A data layer is a key part of most implementations. It is a JSON object that gets defined by the developers. It is a standard way of passing page level and now event level variables (read EDDL), and helps the Implementation Team of an organisation to not rely on using CSS or DOM elements. I highly, highly recommended spending time creating a standard Data Layer dictionary and forcing the Development team to implement it. If not, be ready for a lot of headaches and heartburns.</p>
+<p>Here is a simple data layer that I have defined in my sandbox project:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-JSON" data-lang="JSON"><span style="display:flex;"><span>    <span style="color:#75715e">// Page Level Data Layer 
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">// Declaring the dataLayer object
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>            <span style="color:#960050;background-color:#1e0010">window.dataLayer</span> <span style="color:#960050;background-color:#1e0010">=</span> <span style="color:#960050;background-color:#1e0010">window.dataLayer</span> <span style="color:#960050;background-color:#1e0010">||</span> []<span style="color:#960050;background-color:#1e0010">;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">//Setting only Page Level variables
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>            <span style="color:#960050;background-color:#1e0010">window.dataLayer.push(</span>{
+</span></span><span style="display:flex;"><span>                <span style="color:#f92672">&#34;event&#34;</span>:<span style="color:#e6db74">&#34;Page Loaded&#34;</span>,
+</span></span><span style="display:flex;"><span>                    <span style="color:#f92672">&#34;page&#34;</span>:{
+</span></span><span style="display:flex;"><span>                    <span style="color:#f92672">&#34;pageInfo&#34;</span>:{
+</span></span><span style="display:flex;"><span>                        <span style="color:#f92672">&#34;pageName&#34;</span>: <span style="color:#e6db74">&#34;home page : geometrixx&#34;</span>,
+</span></span><span style="display:flex;"><span>                        <span style="color:#f92672">&#34;pageURL&#34;</span>:  <span style="color:#e6db74">&#34;www/geometrixx&#34;</span>,
+</span></span><span style="display:flex;"><span>                        <span style="color:#f92672">&#34;siteDomain&#34;</span>: <span style="color:#e6db74">&#34;web&#34;</span>,
+</span></span><span style="display:flex;"><span>                    }
+</span></span><span style="display:flex;"><span>                },
+</span></span><span style="display:flex;"><span>                <span style="color:#f92672">&#34;category&#34;</span>:{
+</span></span><span style="display:flex;"><span>                    <span style="color:#f92672">&#34;siteSection&#34;</span>: <span style="color:#e6db74">&#34;web&#34;</span>,
+</span></span><span style="display:flex;"><span>                    <span style="color:#f92672">&#34;siteSubSection1&#34;</span>: <span style="color:#e6db74">&#34;geomextrixx&#34;</span>,
+</span></span><span style="display:flex;"><span>                    <span style="color:#f92672">&#34;siteSubSection2&#34;</span>: <span style="color:#e6db74">&#34; &#34;</span>,
+</span></span><span style="display:flex;"><span>                    <span style="color:#f92672">&#34;siteSubSection3&#34;</span>: <span style="color:#e6db74">&#34; &#34;</span>,
+</span></span><span style="display:flex;"><span>                    <span style="color:#f92672">&#34;siteSubSection4&#34;</span>: <span style="color:#e6db74">&#34; &#34;</span>,
+</span></span><span style="display:flex;"><span>                    <span style="color:#f92672">&#34;siteSubSection5&#34;</span>: <span style="color:#e6db74">&#34; &#34;</span>,
+</span></span><span style="display:flex;"><span>                },
+</span></span><span style="display:flex;"><span>                <span style="color:#f92672">&#34;userInfo&#34;</span>:{
+</span></span><span style="display:flex;"><span>                    <span style="color:#f92672">&#34;userName&#34;</span>:<span style="color:#e6db74">&#34;ABCDEDFER&#34;</span>,<span style="color:#75715e">//set to the username 
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>                    <span style="color:#f92672">&#34;userType&#34;</span> : <span style="color:#e6db74">&#34;platinum&#34;</span>
+</span></span><span style="display:flex;"><span>                    
+</span></span><span style="display:flex;"><span>                },
+</span></span><span style="display:flex;"><span>                <span style="color:#f92672">&#34;profile&#34;</span>:{
+</span></span><span style="display:flex;"><span>                    <span style="color:#f92672">&#34;incompleteSections&#34;</span> : <span style="color:#e6db74">&#34;mail|mobile&#34;</span>,
+</span></span><span style="display:flex;"><span>                    <span style="color:#f92672">&#34;gender&#34;</span> : <span style="color:#e6db74">&#34;male&#34;</span>,
+</span></span><span style="display:flex;"><span>                    <span style="color:#f92672">&#34;isFavStoreSelected&#34;</span> : <span style="color:#66d9ef">true</span>,
+</span></span><span style="display:flex;"><span>                }
+</span></span><span style="display:flex;"><span>            }<span style="color:#960050;background-color:#1e0010">);</span>
+</span></span></code></pre></div><p>You can download my sample <a href="https://github.com/riteshvg/DataLayer">Event Driven Data Layer</a> for using it in your implementation. Be sure to not remove the credits!</p>
+<h5 id="hands-on">Hands on:</h5>
+<p>We covered a lot of ground in this blog post. Let&rsquo;s try to do a hands on exercise in which we will:</p>
+<ul>
+<li>Add an Event Driven Data Layer and customize it for our webpage</li>
+<li>Add the Search Discovery Data Layer Manager extension and activate it</li>
+<li>Modify the Page Name and Page URL data elements to capture the Data Layer values from the Event Driven Data Layer</li>
+<li>Validate the changes</li>
+</ul>
+
+
+    
+    <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
+      <iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen="allowfullscreen" loading="eager" referrerpolicy="strict-origin-when-cross-origin" src="https://www.youtube.com/embed/UAwPxshJL9Q?autoplay=0&controls=1&end=0&loop=0&mute=0&start=0" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" title="YouTube video"
+      ></iframe>
+    </div>
+
+<p>With this we complete talking about Data Elements including why and how to define a Data Layer. In the next blog post, we will be covering all about Rules and start combining all the previous elements.</p>
+<p>I hope these updates are helpful to you in your implementation. I have tried covering all the scenarios that I have experienced in my implementation journey and will continue to keep adding more as I keep learning. Do share with me any feedback you might have on:
+<em>ritesh(at)thelearningproject(dot)in</em></p>
+              
+
+
+            </div>
+          </div>
+          <div id="post-footer" class="post-footer main-content-wrap">
+            
+              
+                
+                
+                  <div class="post-footer-tags">
+                    <span class="text-color-light text-small">TAGGED IN</span><br/>
+                    
+  <a class="tag tag--primary tag--small" href="../../../tags/adobe-launch/">adobe launch</a>
+
+  <a class="tag tag--primary tag--small" href="../../../tags/adobe-launch-data-layer-overview/">adobe launch data layer overview</a>
+
+                  </div>
+                
+              
+            
+            
+<div class="post-actions-wrap">
+  <nav >
+    <ul class="post-actions post-action-nav">
+      
+        <li class="post-action">
+          
+            <a class="post-action-btn btn btn--default tooltip--top" href="../../../2022/06/nordics-aaug-kick-off/" data-tooltip="Nordics AAUG Kick-off" aria-label="NEXT: Nordics AAUG Kick-off">
+          
+              <i class="fa fa-angle-left"></i>
+              <span class="hide-xs hide-sm text-small icon-ml">NEXT</span>
+            </a>
+        </li>
+        <li class="post-action">
+          
+            <a class="post-action-btn btn btn--default tooltip--top" href="../../../2022/06/b2b-series-adobe-launch-part-3-extensions/" data-tooltip="B2B Series: Adobe Launch - Part 3 - Extensions" aria-label="PREVIOUS: B2B Series: Adobe Launch - Part 3 - Extensions">
+          
+              <span class="hide-xs hide-sm text-small icon-mr">PREVIOUS</span>
+              <i class="fa fa-angle-right"></i>
+            </a>
+        </li>
+      
+    </ul>
+  </nav>
+<ul class="post-actions post-action-share" >
+  
+    <li class="post-action hide-lg hide-md hide-sm">
+      <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions" aria-label="Share this post">
+        <i class="fa fa-share-alt" aria-hidden="true"></i>
+      </a>
+    </li>
+    
+      <li class="post-action hide-xs">
+        <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://thelearningproject.in/2022/06/b2b-series-adobe-launch-part-4-data-elements-and-data-layer/" title="Share on Twitter" aria-label="Share on Twitter">
+          <i class="fab fa-twitter" aria-hidden="true"></i>
+        </a>
+      </li>
+    
+      <li class="post-action hide-xs">
+        <a class="post-action-btn btn btn--default" target="new" href="https://www.linkedin.com/sharing/share-offsite/?url=https://thelearningproject.in/2022/06/b2b-series-adobe-launch-part-4-data-elements-and-data-layer/" title="Share on Linkedin" aria-label="Share on Linkedin">
+          <i class="fab fa-linkedin" aria-hidden="true"></i>
+        </a>
+      </li>
+    
+  
+  
+  <li class="post-action">
+    
+      <a class="post-action-btn btn btn--default" href="#top" aria-label="Back to top">
+      <i class="fa fa-arrow-up" aria-hidden="true"></i>
+    
+    </a>
+  </li>
+</ul>
+</div>
+
+
+            
+  
+
+
+          </div>
+        </article>
+        <footer id="footer" class="main-content-wrap">
+  <span class="copyrights">
+    &copy; 2025 The Learning Project. All Rights Reserved
+  </span>
+</footer>
+
+      </div>
+      <div id="bottom-bar" class="post-bottom-bar" data-behavior="2">
+        
+<div class="post-actions-wrap">
+  <nav >
+    <ul class="post-actions post-action-nav">
+      
+        <li class="post-action">
+          
+            <a class="post-action-btn btn btn--default tooltip--top" href="../../../2022/06/nordics-aaug-kick-off/" data-tooltip="Nordics AAUG Kick-off" aria-label="NEXT: Nordics AAUG Kick-off">
+          
+              <i class="fa fa-angle-left"></i>
+              <span class="hide-xs hide-sm text-small icon-ml">NEXT</span>
+            </a>
+        </li>
+        <li class="post-action">
+          
+            <a class="post-action-btn btn btn--default tooltip--top" href="../../../2022/06/b2b-series-adobe-launch-part-3-extensions/" data-tooltip="B2B Series: Adobe Launch - Part 3 - Extensions" aria-label="PREVIOUS: B2B Series: Adobe Launch - Part 3 - Extensions">
+          
+              <span class="hide-xs hide-sm text-small icon-mr">PREVIOUS</span>
+              <i class="fa fa-angle-right"></i>
+            </a>
+        </li>
+      
+    </ul>
+  </nav>
+<ul class="post-actions post-action-share" >
+  
+    <li class="post-action hide-lg hide-md hide-sm">
+      <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions" aria-label="Share this post">
+        <i class="fa fa-share-alt" aria-hidden="true"></i>
+      </a>
+    </li>
+    
+      <li class="post-action hide-xs">
+        <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://thelearningproject.in/2022/06/b2b-series-adobe-launch-part-4-data-elements-and-data-layer/" title="Share on Twitter" aria-label="Share on Twitter">
+          <i class="fab fa-twitter" aria-hidden="true"></i>
+        </a>
+      </li>
+    
+      <li class="post-action hide-xs">
+        <a class="post-action-btn btn btn--default" target="new" href="https://www.linkedin.com/sharing/share-offsite/?url=https://thelearningproject.in/2022/06/b2b-series-adobe-launch-part-4-data-elements-and-data-layer/" title="Share on Linkedin" aria-label="Share on Linkedin">
+          <i class="fab fa-linkedin" aria-hidden="true"></i>
+        </a>
+      </li>
+    
+  
+  
+  <li class="post-action">
+    
+      <a class="post-action-btn btn btn--default" href="#top" aria-label="Back to top">
+      <i class="fa fa-arrow-up" aria-hidden="true"></i>
+    
+    </a>
+  </li>
+</ul>
+</div>
+
+
+      </div>
+      
+<div id="share-options-bar" class="share-options-bar" data-behavior="2">
+  <i id="btn-close-shareoptions" class="fa fa-times"></i>
+  <ul class="share-options">
+    
+      <li class="share-option">
+        <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=https%3A%2F%2Fthelearningproject.in%2F2022%2F06%2Fb2b-series-adobe-launch-part-4-data-elements-and-data-layer%2F" aria-label="Share on Twitter">
+          <i class="fab fa-twitter" aria-hidden="true"></i><span>Share on Twitter</span>
+        </a>
+      </li>
+    
+      <li class="share-option">
+        <a class="share-option-btn" target="new" href="https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Fthelearningproject.in%2F2022%2F06%2Fb2b-series-adobe-launch-part-4-data-elements-and-data-layer%2F" aria-label="Share on Linkedin">
+          <i class="fab fa-linkedin" aria-hidden="true"></i><span>Share on Linkedin</span>
+        </a>
+      </li>
+    
+  </ul>
+</div>
+<div id="share-options-mask" class="share-options-mask"></div>
+
+
+    </div>
+    
+    <div id="about">
+  <div id="about-card">
+    <div id="about-btn-close">
+      <i class="fa fa-times"></i>
+    </div>
+    
+    <h4 id="about-card-name"></h4>
+    
+    
+    
+  </div>
+</div>
+
+    
+
+    
+  
+    
+      <div id="cover" style="background-image:url('https://thelearningproject.in/images/cover-v1.2.0.jpg');"></div>
+    
+  
+
+
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/highlight.min.js" integrity="sha512-z+/WWfyD5tccCukM4VvONpEtLmbAm5LDu7eKiyMQJ9m7OfPEDL7gENyDRL3Yfe8XAuGsS2fS4xSMnl6d30kqGQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js" integrity="sha512-uURl+ZXMBrF4AwGaWmEetzrd+J5/8NRkWAvJx5sbPSSuOb0bZLqf+tOzniObO00BjHa/dD7gub9oCGMLPQHtQA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+
+<script src="https://thelearningproject.in/js/script-yqzy9wdlzix4lbbwdnzvwx3egsne77earqmn73v9uno8aupuph8wfguccut.min.js"></script>
+
+
+  
+    <script async crossorigin="anonymous" defer integrity="sha512-gE8KAQyFIzV1C9+GZ8TKJHZS2s+n7EjNtC+IMRn1l5+WYJTHOODUM6JSjZhFhqXmc7bG8Av6XXpckA4tYhflnw==" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/languages/apache.min.js"></script>
+  
+
+  
+    <script async crossorigin="anonymous" defer integrity="sha512-EWROca+bote+7Oaaar1F6y74iZj1r1F9rm/ly7o+/FwJopbBaWtsFDmaKoZDd3QiGU2pGacBirHJNivmGLYrow==" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/languages/go.min.js"></script>
+  
+
+  
+    <script async crossorigin="anonymous" defer integrity="sha512-GDVzAn0wpx1yVtQsRWmFc6PhJiLBPdUic+h4GWgljBh904O3JU10fk9EKNpVyIoPqkFn54rgL2QBG4BmUTMpiQ==" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/languages/http.min.js"></script>
+  
+
+  
+    <script async crossorigin="anonymous" defer integrity="sha512-UgZlma8NzkrDb/NWgmLIcTrH7i/CSnLLDRFqCSNF5NGPpjKmzyM25qcoXGOup8+cDakKyaiTDd7N4dyH4YT+IA==" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/languages/less.min.js"></script>
+  
+
+  
+    <script async crossorigin="anonymous" defer integrity="sha512-lot9koe73sfXIrUvIPM/UEhuMciN56RPyBdOyZgfO53P2lkWyyXN7J+njcxIIBRV+nVDQeiWtiXg+bLAJZDTfg==" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/languages/nginx.min.js"></script>
+  
+
+  
+    <script async crossorigin="anonymous" defer integrity="sha512-Zd3e7XxHP00TD0Imr0PIfeM0fl0v95kMWuhyAS3Wn1UTSXTkz0OhtRgBAr4JlmADRgiXr4x7lpeUdqaGN8xIog==" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/languages/puppet.min.js"></script>
+  
+
+  
+    <script async crossorigin="anonymous" defer integrity="sha512-qtqDO052iXMSP+5d/aE/jMtL9vIIGvONgTJziC2K/ZIB1yEGa55WVxGE9/08rSQ62EoDifS9SWVGZ7ihSLhzMA==" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/languages/scss.min.js"></script>
+  
+
+  
+    <script async crossorigin="anonymous" defer integrity="sha512-1NmkjnEDnwwwcu28KoQF8vs3oaPFokQHbmbtwGhFfeDsQZtVFI8zW2aE9O8yMYdpdyKV/5blE4pSWw4Z/Sv97w==" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/languages/stylus.min.js"></script>
+  
+
+  
+    <script async crossorigin="anonymous" defer integrity="sha512-B2wSfruPjr8EJL6IIzQr1eAuDwrsfIfccNf/LCEdxELCgC/S/ZMt/Uvk80aD79m7IqOqW+Sw8nbkvha20yZpzg==" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/languages/swift.min.js"></script>
+  
+
+  
+    <script async crossorigin="anonymous" defer integrity="sha512-28oDiQZGKUVN6wQ7PSLPNipOcmkCALXKwOi7bnkyFf8QiMZQxG9EQoy/iiNx6Zxj2cG2SbVa4dXKigQhu7GiFw==" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/languages/yaml.min.js"></script>
+  
+
+  
+    <script async crossorigin="anonymous" defer src="https://www.thelearningproject.in/public/js/launch-39d64d92912c-development.min.js"></script>
+  
+
+
+<script>
+$(document).ready(function() {
+  hljs.configure({ classPrefix: '', useBR: false });
+  $('pre.code-highlight > code, pre > code').each(function(i, block) {
+    if (!$(this).hasClass('codeblock')) {
+      $(this).addClass('codeblock');
+    }
+    hljs.highlightBlock(block);
+  });
+});
+</script>
+
+
+
+
+    
+  </body>
+</html>
+

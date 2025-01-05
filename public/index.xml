@@ -1,0 +1,250 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>The Learning Project</title>
+    <link>https://thelearningproject.in/</link>
+    <description>Recent content on The Learning Project</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <lastBuildDate>Wed, 28 Aug 2024 00:00:00 +0000</lastBuildDate>
+    <atom:link href="https://thelearningproject.in/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Gratitude Diary</title>
+      <link>https://thelearningproject.in/gratitude/</link>
+      <pubDate>Wed, 28 Aug 2024 00:00:00 +0000</pubDate>
+      <guid>https://thelearningproject.in/gratitude/</guid>
+      <description>&lt;h6 id=&#34;date-28082024&#34;&gt;Date: 28/08/2024&lt;/h6&gt;&#xA;&lt;h6 id=&#34;gratitude-note&#34;&gt;Gratitude Note:&lt;/h6&gt;&#xA;&lt;p&gt;Dear universe, thank you. Thank you for everything. Thank you for the food on my table, the money in my account, the water in my tap, the warmth and happiness of my family. Thank you for keeping us all safe and secured. Thank you for my job and the money it brings and all the things I am able to afford because of it.&lt;/p&gt;&#xA;&lt;p&gt;Thank you for helping Omansh improve his handwriting and his learning skills. Thank you for the accolades that he will get this semester. Thank you for securing Shruti&amp;rsquo;s job and her health. Thank you for the continuous feedback and improvement that I am getting due to which I am growing to be a matured individual.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Back to Basics : JavaScript : Part 7</title>
+      <link>https://thelearningproject.in/2024/07/back-to-basics-javascript-part-7/</link>
+      <pubDate>Sun, 07 Jul 2024 00:00:00 +0000</pubDate>
+      <guid>https://thelearningproject.in/2024/07/back-to-basics-javascript-part-7/</guid>
+      <description>&lt;p&gt;Today we will be looking at how we can use localStorage to save form fields and use this feature to prefill forms or send the data to API for further processing!&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Back to Basics : JavaScript : Part 6</title>
+      <link>https://thelearningproject.in/2024/02/back-to-basics-javascript-part-6/</link>
+      <pubDate>Fri, 09 Feb 2024 00:00:00 +0000</pubDate>
+      <guid>https://thelearningproject.in/2024/02/back-to-basics-javascript-part-6/</guid>
+      <description>&lt;p&gt;Today we will be talking about getting and setting HTML and using Template Literals. These features are mostly used for dynamically changing HTML elements and string manipulation.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Back to Basics : JavaScript : Part 5</title>
+      <link>https://thelearningproject.in/2023/11/back-to-basics-javascript-part-5/</link>
+      <pubDate>Mon, 13 Nov 2023 00:00:00 +0000</pubDate>
+      <guid>https://thelearningproject.in/2023/11/back-to-basics-javascript-part-5/</guid>
+      <description>&lt;p&gt;This is part 5 of the Back to Basics series covering my JavaScript learning journey. In this blog post, I will be covering and explaining the concept of &lt;code&gt;Promises&lt;/code&gt;, do a live project on how to fetch data from an API using &lt;code&gt;standard&lt;/code&gt; and &lt;code&gt;async/await&lt;/code&gt; operators as well as cover different &lt;code&gt;array&lt;/code&gt; modification methods such as &lt;code&gt;array.shift()&lt;/code&gt;, &lt;code&gt;array.pop()&lt;/code&gt;, &lt;code&gt;array.slice()&lt;/code&gt; etc.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Back to Basics : JavaScript : Part 4</title>
+      <link>https://thelearningproject.in/2023/10/back-to-basics-javascript-part-4/</link>
+      <pubDate>Sat, 07 Oct 2023 00:00:00 +0000</pubDate>
+      <guid>https://thelearningproject.in/2023/10/back-to-basics-javascript-part-4/</guid>
+      <description>&lt;p&gt;This is part 4 of the Back to Basics series covering my JavaScript learning journey. In this blog post, I will be covering how Chris talked about converting a &lt;code&gt;string&lt;/code&gt; into an &lt;code&gt;array&lt;/code&gt;, &lt;code&gt;filtering an array&lt;/code&gt; and more.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Back to Basics : JavaScript : Part 3</title>
+      <link>https://thelearningproject.in/2023/09/back-to-basics-javascript-part-3/</link>
+      <pubDate>Mon, 25 Sep 2023 00:00:00 +0000</pubDate>
+      <guid>https://thelearningproject.in/2023/09/back-to-basics-javascript-part-3/</guid>
+      <description>&lt;p&gt;This is part 3 of the Back to Basics series covering my JavaScript learning journey. In this blog post, I will be covering using the &lt;code&gt;textContent&lt;/code&gt; method and other methods. For lesson 1 and 2 in this series, be sure to check out this &lt;a href=&#34;https://www.thelearningproject.in/posts/back-to-basics-javascript-part-1/&#34;&gt;link&lt;/a&gt; and this &lt;a href=&#34;https://www.thelearningproject.in/posts/back-to-basics-javascript-part-2/&#34;&gt;link&lt;/a&gt;.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Back to Basics : JavaScript : Part 2</title>
+      <link>https://thelearningproject.in/2023/09/back-to-basics-javascript-part-2/</link>
+      <pubDate>Mon, 04 Sep 2023 00:00:00 +0000</pubDate>
+      <guid>https://thelearningproject.in/2023/09/back-to-basics-javascript-part-2/</guid>
+      <description>&lt;p&gt;This is part 2 of the Back to Basics series covering my JavaScript learning journey. In this blog post, I will be covering how to check if an element matches a selector and working with multiple elements. These lessons are very well explained in the &lt;a href=&#34;https://vanillajsacademy.com/&#34;&gt;Vanilla JS Academy&lt;/a&gt; by Chris Ferdinandi.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>How to get Lucky? : Be the Best</title>
+      <link>https://thelearningproject.in/2023/08/how-to-get-lucky-be-the-best/</link>
+      <pubDate>Sat, 26 Aug 2023 00:00:00 +0000</pubDate>
+      <guid>https://thelearningproject.in/2023/08/how-to-get-lucky-be-the-best/</guid>
+      <description>&lt;p&gt;In continuation with my earlier blog post on people who inspired me, I mentioned briefly about Naval Ravikant and some of his favorite quotes. This blog post will cover all his writings and my views on it.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Back to Basics : Analysis Workspace : Part 1</title>
+      <link>https://thelearningproject.in/2023/08/back-to-basics-analysis-workspace-part-1/</link>
+      <pubDate>Thu, 24 Aug 2023 00:00:00 +0000</pubDate>
+      <guid>https://thelearningproject.in/2023/08/back-to-basics-analysis-workspace-part-1/</guid>
+      <description>&lt;p&gt;As an Analytics Technical Consultant, I have always been piqued by the need to create wonderful looking, insightful dashboards using Adobe Analysis Workspace. This Back to Basics series will cover all my learning about Adobe Analysis Workspace and hopefully spur me on a different path later.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Back to Basics : JavaScript : Part 1</title>
+      <link>https://thelearningproject.in/2023/08/back-to-basics-javascript-part-1/</link>
+      <pubDate>Wed, 23 Aug 2023 00:00:00 +0000</pubDate>
+      <guid>https://thelearningproject.in/2023/08/back-to-basics-javascript-part-1/</guid>
+      <description>&lt;p&gt;At the beginning of the year, I decided to enhance my JavaScript skills. I have always considered focusing on a skill and increase my expertise by learning from the experts. In this context, I came across many JavaScript teaching courses, but only one worked well for me. It is the &lt;a href=&#34;https://vanillajsacademy.com/&#34;&gt;Vanilla JS Academy&lt;/a&gt; by Chris Ferdinandi.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Who Inspires You?</title>
+      <link>https://thelearningproject.in/2023/07/who-inspires-you/</link>
+      <pubDate>Wed, 19 Jul 2023 00:00:00 +0000</pubDate>
+      <guid>https://thelearningproject.in/2023/07/who-inspires-you/</guid>
+      <description>&lt;p&gt;I have always stayed away from idolising people. I found it an unnecessary inclination. All this while I drew inspiration from books, music, movies, but never, in particular, from people. I was influenced by authors and movie directors but only to the extent of their output.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Never Forget!</title>
+      <link>https://thelearningproject.in/2023/07/never-forget/</link>
+      <pubDate>Tue, 18 Jul 2023 00:00:00 +0000</pubDate>
+      <guid>https://thelearningproject.in/2023/07/never-forget/</guid>
+      <description>&lt;p&gt;Never forget what you can achieve is within your reach. Never forget that you can make it big. Never forget to forgive people. For they come with their own sense of insecurities and fallacies.&lt;/p&gt;&#xA;&lt;figure&gt;&lt;img src=&#34;https://ik.imagekit.io/hyegquogx/The_Learning_Project/Never_Forget_Poster.png&#34;&gt;&#xA;&lt;/figure&gt;</description>
+    </item>
+    <item>
+      <title>Adobe Managed Certificate Program </title>
+      <link>https://thelearningproject.in/2023/02/adobe-managed-certificate-program/</link>
+      <pubDate>Thu, 09 Feb 2023 00:00:00 +0000</pubDate>
+      <guid>https://thelearningproject.in/2023/02/adobe-managed-certificate-program/</guid>
+      <description>&lt;p&gt;Are you confused about the difference between first-party or third-party cookie? Do you want to know how Adobe can help you mitigate the issue of browser blocking third-party cookies and limiting the time to live of first party cookies?&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Playground</title>
+      <link>https://thelearningproject.in/playground/</link>
+      <pubDate>Mon, 23 Jan 2023 00:00:00 +0000</pubDate>
+      <guid>https://thelearningproject.in/playground/</guid>
+      <description>&lt;p&gt;As a Technical Consultant, I come across various use cases where I need a ready to use platform for testing different approaches. Think of it as a practice ground that athletes use for sharpening their skills. Now, I can go ahead with a simple web page, but the designer in me abhors badly designed web pages. Especially when you have ready to use frameworks like Bootstrap 5 and hundreds of freely available templates.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>TEST</title>
+      <link>https://thelearningproject.in/test/</link>
+      <pubDate>Mon, 23 Jan 2023 00:00:00 +0000</pubDate>
+      <guid>https://thelearningproject.in/test/</guid>
+      <description>&lt;!DOCTYPE HTML&gt;&#xA;&lt;html&gt;&#xA;&#x9;&lt;body&gt;&#xA;&#x9;&lt;h1&gt;Welcome&lt;/h1&gt;&#xA;&#x9;&lt;p&gt;test html content&lt;/p&gt;&#xA;    &lt;h1 class=&#34;block-header alt&#34;&gt;&#xA;              &lt;span&gt;Form 1&lt;/span&gt;&#xA;    &lt;/h1&gt;&#xA;    &lt;form&gt;&#xA;              &lt;div class=&#34;form-group&#34;&gt;&#xA;                &lt;label class=&#34;sr-only&#34;&gt;Full name&lt;/label&gt;&#xA;                &lt;input type=&#34;text&#34; class=&#34;form-control input-lg&#34; placeholder=&#34;Full name&#34;&gt;&#xA;              &lt;/div&gt;&#xA;              &lt;div class=&#34;form-group&#34;&gt;&#xA;                &lt;label class=&#34;sr-only&#34;&gt;Username&lt;/label&gt;&#xA;                &lt;input type=&#34;text&#34; class=&#34;form-control input-lg&#34; placeholder=&#34;Username&#34;&gt;&#xA;              &lt;/div&gt;&#xA;              &lt;div class=&#34;form-group&#34;&gt;&#xA;                &lt;label class=&#34;sr-only&#34;&gt;E-mail&lt;/label&gt;&#xA;                &lt;input type=&#34;email&#34; class=&#34;form-control input-lg&#34; placeholder=&#34;E-mail&#34;&gt;&#xA;              &lt;/div&gt;&#xA;              &lt;div class=&#34;row&#34;&gt;&#xA;                &lt;div class=&#34;col-sm-6&#34;&gt;&#xA;                  &lt;div class=&#34;form-group&#34;&gt;&#xA;                    &lt;label class=&#34;sr-only&#34;&gt;Password&lt;/label&gt;&#xA;                    &lt;input type=&#34;password&#34; id = &#34;password&#34; class=&#34;form-control input-lg&#34; placeholder=&#34;Password&#34; &gt;&#xA;                  &lt;/div&gt;&#xA;                &lt;/div&gt;&#xA;                &lt;!-- &lt;div class=&#34;col-sm-6&#34;&gt;&#xA;                  &lt;div class=&#34;form-group&#34;&gt;&#xA;                    &lt;label class=&#34;sr-only&#34;&gt;Repeat password&lt;/label&gt;&#xA;                    &lt;input type=&#34;password&#34; id = &#34;password1&#34; class=&#34;form-control input-lg&#34; placeholder=&#34;Repeat password&#34;&gt;&#xA;                  &lt;/div&gt; &#xA;                &lt;/div&gt; --&gt;&#xA;              &lt;/div&gt;&#xA;              &lt;div class=&#34;checkbox&#34;&gt;&#xA;                &lt;input type=&#34;checkbox&#34; class = &#34;toggle&#34; id=&#34;singlePassword&#34; value=&#34;&#34; data-pw-toggle = &#34;#password&#34;&gt;&#xA;                &lt;label for=&#34;singlePassword&#34;&gt;&#xA;                  Show Password&#xA;                &lt;/label&gt;&#xA;              &lt;/div&gt;&lt;br /&gt;&#xA;              &lt;button type=&#34;submit&#34; class=&#34;btn btn-lg btn-primary&#34;&gt;&#xA;                Sign Up&#xA;              &lt;/button&gt;&#xA;            &lt;/form&gt;&#xA;&#x9;&lt;/body&gt;&#xA;&lt;/html&gt;</description>
+    </item>
+    <item>
+      <title>Anonymizing IP Address</title>
+      <link>https://thelearningproject.in/2022/10/anonymizing-ip-address/</link>
+      <pubDate>Thu, 06 Oct 2022 00:00:00 +0000</pubDate>
+      <guid>https://thelearningproject.in/2022/10/anonymizing-ip-address/</guid>
+      <description>&lt;p&gt;Anonymizing IP address is the act of removing the IP address from the web analytics tracking hit. As we know it is out of the box setting and is captured just as the user agent and other user level details are recorded. By tracking IP , it might impact Geo Location, Processing Rules, Marketing Channels that are IP based. Instead, there are two options that are available for anonymizing the IP Address&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Adobe Analytics Implementation Debugging - Tools</title>
+      <link>https://thelearningproject.in/2022/08/adobe-analytics-implementation-debugging-tools/</link>
+      <pubDate>Wed, 10 Aug 2022 00:00:00 +0000</pubDate>
+      <guid>https://thelearningproject.in/2022/08/adobe-analytics-implementation-debugging-tools/</guid>
+      <description>&lt;p&gt;In the world of software development, debugging plays a very important role. It is a process of detecting and removing existing as well as potential errors. In the same way, when you are implementing Adobe Analytics, Analytics debugging refers to validating the payload that is being sent to the Adobe Analytics server.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>B2B Series: Adobe Launch - Part 5.3 - Adobe Launch Rules: Actions</title>
+      <link>https://thelearningproject.in/2022/07/b2b-series-adobe-launch-part-5.3-adobe-launch-rules-actions/</link>
+      <pubDate>Sat, 30 Jul 2022 00:00:00 +0000</pubDate>
+      <guid>https://thelearningproject.in/2022/07/b2b-series-adobe-launch-part-5.3-adobe-launch-rules-actions/</guid>
+      <description>&lt;p&gt;In the previous two blog posts on the Rules topic, we covered &lt;a href=&#34;./posts/b2b-series-adobe-launch-part-5.1-adobe-launch-rules-events/&#34;&gt;&lt;em&gt;Events&lt;/em&gt;&lt;/a&gt; and the &lt;em&gt;event types&lt;/em&gt;. We also explored the different &lt;a href=&#34;./posts/b2b-series-adobe-launch-part-5.2-adobe-launch-rules-conditions/&#34;&gt;&lt;em&gt;Conditions&lt;/em&gt;&lt;/a&gt; that are available to help us filter when Adobe Launch should or should not trigger a rule. Summing up the topic, this blog post will cover all about &lt;em&gt;Actions&lt;/em&gt; in Adobe Launch.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>B2B Series: Adobe Launch - Part 5.2 - Adobe Launch Rules: Conditions</title>
+      <link>https://thelearningproject.in/2022/07/b2b-series-adobe-launch-part-5.2-adobe-launch-rules-conditions/</link>
+      <pubDate>Wed, 20 Jul 2022 00:00:00 +0000</pubDate>
+      <guid>https://thelearningproject.in/2022/07/b2b-series-adobe-launch-part-5.2-adobe-launch-rules-conditions/</guid>
+      <description>&lt;p&gt;In the previous &lt;a href=&#34;./posts/b2b-series-adobe-launch-part-5.1-adobe-launch-rules-events/&#34;&gt;blog post&lt;/a&gt;, we learn about &lt;em&gt;Events&lt;/em&gt; and the available &lt;em&gt;event types&lt;/em&gt; in Adobe Launch. We saw how we have a wide array of different events available to determine when to trigger an Adobe Launch rule. In this blog post, we will cover all about &lt;em&gt;Conditions&lt;/em&gt;.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>B2B Series: Adobe Launch - Part 5.1 - Adobe Launch Rules: Events</title>
+      <link>https://thelearningproject.in/2022/07/b2b-series-adobe-launch-part-5.1-adobe-launch-rules-events/</link>
+      <pubDate>Fri, 15 Jul 2022 00:00:00 +0000</pubDate>
+      <guid>https://thelearningproject.in/2022/07/b2b-series-adobe-launch-part-5.1-adobe-launch-rules-events/</guid>
+      <description>&lt;p&gt;In the previous &lt;a href=&#34;./posts/b2b-series-adobe-launch-part-5-adobe-launch-rules/&#34;&gt;blog post&lt;/a&gt;, we covered a primer on what are Rules in Adobe Launch. We saw how Rules imitate an &lt;em&gt;if&amp;hellip;then&lt;/em&gt; structure, and how the three main components: &lt;strong&gt;Events, Conditions&lt;/strong&gt; and &lt;strong&gt;Actions&lt;/strong&gt; work. In this blog post, we will cover in depth the different types of &lt;em&gt;Events&lt;/em&gt; that are available for us to utilize. Let&amp;rsquo;s dig in!&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>B2B Series: Adobe Launch - Part 5 - Adobe Launch Rules</title>
+      <link>https://thelearningproject.in/2022/07/b2b-series-adobe-launch-part-5-adobe-launch-rules/</link>
+      <pubDate>Fri, 08 Jul 2022 00:00:00 +0000</pubDate>
+      <guid>https://thelearningproject.in/2022/07/b2b-series-adobe-launch-part-5-adobe-launch-rules/</guid>
+      <description>&lt;p&gt;We move further up in the &amp;lsquo;Authoring&amp;rsquo; section of Adobe Launch and will cover the last component: Rules. Adobe Launch Rules are a way to combine all the previously created components: extensions, data elements and libraries to trigger marketing or tracking pixels on a webpage.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Death of Universal Analytics - What&#39;s next?</title>
+      <link>https://thelearningproject.in/2022/06/death-of-universal-analytics-whats-next/</link>
+      <pubDate>Thu, 23 Jun 2022 00:00:00 +0000</pubDate>
+      <guid>https://thelearningproject.in/2022/06/death-of-universal-analytics-whats-next/</guid>
+      <description>&lt;p&gt;Google recently made a big &lt;a href=&#34;https://support.google.com/analytics/answer/11583528?hl=en#:~:text=Google%20Analytics%204%20is%20our,Google%20Analytics%204%20going%20forward.&#34;&gt;announcement&lt;/a&gt; to sunset their Universal Analytics product by June 2023. This means companies currently on Universal Analytics (UA) and UA360&#xA;tools to track their visitors will now need to migrate their analytics setup to Google Analytics 4 (GA4) by next year or fear losing the tracking completely. Here&amp;rsquo;s my take on the situation!&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Nordics AAUG Kick-off</title>
+      <link>https://thelearningproject.in/2022/06/nordics-aaug-kick-off/</link>
+      <pubDate>Mon, 13 Jun 2022 00:00:00 +0000</pubDate>
+      <guid>https://thelearningproject.in/2022/06/nordics-aaug-kick-off/</guid>
+      <description>&lt;p&gt;I have started a Nordics Adobe Analytics User Group (#Nordics AAUG) in association with Adobe. Adobe Analytics User Group (AAUG) is a community of passionate Analytics users who come together to share best practices, collectively problem solve, and network. There are multiple chapters of AAUG spread across the world. Nordics AAUG is specifically for the Nordics region.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>B2B Series: Adobe Launch - Part 4 - Data Elements and Data Layer</title>
+      <link>https://thelearningproject.in/2022/06/b2b-series-adobe-launch-part-4-data-elements-and-data-layer/</link>
+      <pubDate>Sat, 11 Jun 2022 00:00:00 +0000</pubDate>
+      <guid>https://thelearningproject.in/2022/06/b2b-series-adobe-launch-part-4-data-elements-and-data-layer/</guid>
+      <description>&lt;p&gt;So far we have covered all items related to the Publishing Flow in Adobe Launch as well as covered briefly about Adobe Launch Extensions and their utility. We will now cover Data Elements and Data Layer. And see how are they rightly referred to as building blocks for Adobe Launch.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>B2B Series: Adobe Launch - Part 3 - Extensions</title>
+      <link>https://thelearningproject.in/2022/06/b2b-series-adobe-launch-part-3-extensions/</link>
+      <pubDate>Thu, 09 Jun 2022 00:00:00 +0000</pubDate>
+      <guid>https://thelearningproject.in/2022/06/b2b-series-adobe-launch-part-3-extensions/</guid>
+      <description>&lt;p&gt;In article one and two, we covered introduction and overview of Adobe Launch in previous articles. In this post, we will be doing a deep dive into the Adobe Launch extensions and how they simplify adding marketing and tracking pixels into your site without need for using custom code.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>B2B Series: Adobe Launch - Part 2 - Adobe Launch Library</title>
+      <link>https://thelearningproject.in/2022/06/b2b-series-adobe-launch-part-2-adobe-launch-library/</link>
+      <pubDate>Sun, 05 Jun 2022 00:00:00 +0000</pubDate>
+      <guid>https://thelearningproject.in/2022/06/b2b-series-adobe-launch-part-2-adobe-launch-library/</guid>
+      <description>&lt;p&gt;In the previous blog post, we covered an introduction to what is Adobe Launch (now known as Tags). In this article, we will cover different components available in Authoring and Publishing setup and how to create a new library and integrate it.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>B2B Series: Adobe Launch - Part 1 - Introduction</title>
+      <link>https://thelearningproject.in/2022/06/b2b-series-adobe-launch-part-1-introduction/</link>
+      <pubDate>Thu, 02 Jun 2022 00:00:00 +0000</pubDate>
+      <guid>https://thelearningproject.in/2022/06/b2b-series-adobe-launch-part-1-introduction/</guid>
+      <description>&lt;p&gt;This series will be all about covering the basics of my knowledge about Adobe Analytics and its implementation using Adobe Launch as well as analysis of data using Analysis Workspace. In this blog post, we cover the introduction to Adobe Launch.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Automation Tools and Launch Extensions</title>
+      <link>https://thelearningproject.in/tools/</link>
+      <pubDate>Wed, 02 Feb 2022 00:00:00 +0000</pubDate>
+      <guid>https://thelearningproject.in/tools/</guid>
+      <description>&lt;p&gt;The best part about Adobe Experience Platform is its extensibility. The &lt;strong&gt;API first&lt;/strong&gt; philosophy has led to creative developers and architects extending the features of the Platform and its services. I have been involved in creating a few tools to automate and simplify the workflow. Below are the four tools that I have conceptualized, architectected and then develop them with the help of developers.&lt;/p&gt;&#xA;&lt;p&gt;&lt;em&gt;Disclaimer: The first three tools are the intellectual property of my previous employers TA Digital and Adobe. I don&amp;rsquo;t own or can share the source code&lt;/em&gt;&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>About me</title>
+      <link>https://thelearningproject.in/about/</link>
+      <pubDate>Sun, 02 Jan 2022 00:00:00 +0000</pubDate>
+      <guid>https://thelearningproject.in/about/</guid>
+      <description>&lt;p&gt;Life is continuous learning journey, and change is inevitable.&lt;/p&gt;&#xA;&lt;p&gt;Hi, my name is Ritesh Gupta. I define myself as a &amp;lsquo;Continuous Learner&amp;rsquo; and I love learning about different things. I have been a Copywriter, an Event Creative, a Email Consultant, a Web Consultant, a Digital Marketing Manager, &lt;strong&gt;Sr. Technical Consultant&lt;/strong&gt;, a &lt;strong&gt;Technical Architect&lt;/strong&gt; , an &lt;strong&gt;Implementation Specialist&lt;/strong&gt; for Conversionista! Stockholm, Sweden and now a &lt;strong&gt;Technical Architect&lt;/strong&gt; for Adobe India.&lt;/p&gt;&#xA;&lt;p&gt;Visit my &lt;a href=&#34;../playground&#34;&gt;Playground&lt;/a&gt;&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Day 1 : Finding the Business Need of Adobe Experience Platform</title>
+      <link>https://thelearningproject.in/2021/10/day-1-finding-the-business-need-of-adobe-experience-platform/</link>
+      <pubDate>Fri, 08 Oct 2021 00:00:00 +0000</pubDate>
+      <guid>https://thelearningproject.in/2021/10/day-1-finding-the-business-need-of-adobe-experience-platform/</guid>
+      <description>&lt;p&gt;I recently completed an in-depth training session on Adobe Experience Platform (AEP) for a bunch of Developers and Architects from a Consulting organisation. I prefer to term the session as AEP Bootcamp as it was indeed a start to finish session covering a myriad of topics related to Adobe Experience Platform and its applications. I wish to record all my knowledge regarding AEP and create a repository of blog posts that I can refer anytime.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Introduction to AEP Web SDK</title>
+      <link>https://thelearningproject.in/2021/10/introduction-to-aep-web-sdk/</link>
+      <pubDate>Thu, 07 Oct 2021 00:00:00 +0000</pubDate>
+      <guid>https://thelearningproject.in/2021/10/introduction-to-aep-web-sdk/</guid>
+      <description>&lt;p&gt;This is a three part series covering the AEP Web SDK implementation and debugging series. AEP Web SDK is a new way of data collection in the Adobe Experience Platform stack. I believe it has great potential to simplify implementations of Adobe Experience Cloud tools. I will try to cover the basics and integration and we will see why should we advocate its use in our digital analytics projects.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Ignore the Gatekeepers</title>
+      <link>https://thelearningproject.in/2021/08/ignore-the-gatekeepers/</link>
+      <pubDate>Thu, 19 Aug 2021 00:00:00 +0000</pubDate>
+      <guid>https://thelearningproject.in/2021/08/ignore-the-gatekeepers/</guid>
+      <description>&lt;p&gt;Gatekeepers, they are everywhere. A person or a group of individuals who for some reasons have assumed that they know everything. A set of people who zealously guard the corridors of their hallowed hall of knowledge, and use everything possible to dissuade the rest.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>test</title>
+      <link>https://thelearningproject.in/playground1/</link>
+      <pubDate>Fri, 29 Dec 2017 12:15:02 +0000</pubDate>
+      <guid>https://thelearningproject.in/playground1/</guid>
+      <description>&lt;!DOCTYPE HTML&gt;&#xA;&lt;html&gt;&#xA;&#x9;&lt;body&gt;&#xA;&#x9;&lt;h1&gt;Welcome&lt;/h1&gt;&#xA;&#x9;&lt;p&gt;test html content&lt;/p&gt;&#xA;&#x9;&lt;/body&gt;&#xA;&lt;/html&gt;</description>
+    </item>
+    <item>
+      <title></title>
+      <link>https://thelearningproject.in/samples/sign-up/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://thelearningproject.in/samples/sign-up/</guid>
+      <description>&lt;!DOCTYPE html&gt;&#xA;&lt;html lang=&#34;en&#34;&gt;&#xA;  &lt;head&gt;&#xA;    &lt;meta charset=&#34;utf-8&#34;&gt;&#xA;    &lt;meta http-equiv=&#34;X-UA-Compatible&#34; content=&#34;IE=edge&#34;&gt;&#xA;    &lt;meta name=&#34;viewport&#34; content=&#34;width=device-width, initial-scale=1&#34;&gt;&#xA;    &lt;meta name=&#34;description&#34; content=&#34;&#34;&gt;&#xA;    &lt;meta name=&#34;author&#34; content=&#34;&#34;&gt;&#xA;    &lt;link rel=&#34;shortcut icon&#34; href=&#34;assets/favicon/favicon.ico&#34;&gt;&#xA;&#xA;    &lt;title&gt;Highland: Sign Up&lt;/title&gt;&#xA;&#xA;    &lt;!-- CSS Plugins --&gt;&#xA;    &lt;link href=&#34;assets/plugins/font-awesome/css/font-awesome.min.css&#34; rel=&#34;stylesheet&#34; &gt;&#xA;&#xA;    &lt;!-- CSS Global --&gt;&#xA;    &lt;link href=&#34;assets/css/styles.css&#34; rel=&#34;stylesheet&#34;&gt;&#xA;&#xA;    &lt;!-- Google Fonts --&gt;&#xA;    &lt;link href=&#39;https://fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600italic,600,700,700italic,800,800italic&#39; rel=&#39;stylesheet&#39; type=&#39;text/css&#39;&gt;&#xA;&#xA;    &lt;!-- Data Layer --&gt;&#xA;  &lt;script&gt;&#xA;    var adobeDataLayer = window.adobeDataLayer = window.adobeDataLayer|| [];&#xA;    adobeDataLayer.push({&#xA;      page: &#39;Sign Up&#39;,&#xA;      description: &#39;Sign Up&#39;,&#xA;      url: &#39;https://www.thelearningproject.in/samples/sign-up&#39;,&#xA;      contentType: &#39;JavaScript Sign up Forms&#39;,&#xA;      siteSection: &#39;Samples&#39;&#xA;    });&#xA;   &lt;/script&gt; &#xA;&#xA;  &lt;!-- Launch Library Code --&gt;&#xA;    &lt;script src=&#34;https://assets.adobedtm.com/204118644db8/437cd1c7d72a/launch-39d64d92912c-development.min.js&#34; async&gt;&lt;/script&gt;&#xA;&#xA;  &lt;/head&gt;&#xA;&#xA;  &lt;body&gt;&#xA;    &lt;!-- Header --&gt;&#xA;    &lt;div class=&#34;page-topbar&#34;&gt;&#xA;      &lt;div class=&#34;container&#34;&gt;&#xA;        &lt;div class=&#34;row&#34;&gt;&#xA;          &lt;div class=&#34;col-sm-4&#34;&gt;&#xA;&#xA;            &lt;h3&gt;Sign Up&lt;/h3&gt;&#xA;            &#xA;          &lt;/div&gt;&#xA;          &lt;div class=&#34;col-sm-8 hidden-xs&#34;&gt;&#xA;            &#xA;            &lt;ol class=&#34;breadcrumb&#34;&gt;&#xA;              &lt;li&gt;&lt;a href=&#34;#&#34;&gt;Home&lt;/a&gt;&lt;/li&gt;&#xA;              &lt;li class=&#34;active&#34;&gt;Sign Up&lt;/li&gt;&#xA;            &lt;/ol&gt;&#xA;&#xA;          &lt;/div&gt;&#xA;        &lt;/div&gt; &lt;!-- / .row --&gt;&#xA;      &lt;/div&gt; &lt;!-- / .container --&gt;&#xA;    &lt;/div&gt;&#xA;&#xA;&#xA;    &lt;!-- CONTENT&#xA;    ================================================== --&gt;&#xA;    &lt;div class=&#34;container&#34;&gt;&#xA;      &lt;div class=&#34;row&#34;&gt;&#xA;        &lt;div&gt;&#xA;&#xA;          &lt;!-- Sign In form --&gt;&#xA;          &lt;div class=&#34;profile__sign-in&#34;&gt;&#xA;&#xA;            &lt;h1 class=&#34;block-header alt&#34;&gt;&#xA;              &lt;span&gt;Form Data in Local Storage without FormData Object&lt;/span&gt;&#xA;            &lt;/h1&gt;&#xA;&#xA;            &lt;i&gt;Open the console and go to local storage. WFD represents without form data object&lt;/i&gt;&#xA;            &lt;p&gt;&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

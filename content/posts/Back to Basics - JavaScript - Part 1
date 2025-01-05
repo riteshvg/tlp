@@ -1,0 +1,23 @@
+---
+title: "Who Inspires You?"
+date: 2023-08-23
+tags:
+    main: self learning
+    topic1: javascript
+    topic2: basics
+thumbnailImagePosition: left
+thumbnailImage: https://ik.imagekit.io/hyegquogx/The_Learning_Project/Who%20Inspires%20You.png
+author:
+     display_name: Ritesh Gupta
+---
+
+Starting a new learning series on JavaScript basics based on my learning from Vanilla JS Academy by Chris Ferdinandi. This series will cover topics
+related to basics of JS that I am learning as part of Vanilla JS Academy.
+
+<!--more-->
+
+1. Getting an element in DOM
+
+To get an element in DOM, you need to use the document.querySelector method. 
+
+That is all for this blog post. Leave me a line on ritesh@thelearningproject.in and share with me people who have or are inspiring you. Or are you your own self inspiration.
