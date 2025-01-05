@@ -4,7 +4,7 @@ date: 2023-01-23
 url : "playground"
 ---
 
-As a Technical Consultant, I come across various use cases where I need a ready to use platform for testing different approaches. Think of it as a practice ground that athletes use for sharpening their skills. Now, I can go ahead with a simple web page, but the designer in me abhors badly designed web pages. Especially when you have ready to use frameworks like Bootstrap 5 and hundreds of freely available templates.
+As a Technical Consultant working for Adobe India, I come across various use cases where I need a ready to use platform for testing different approaches. Think of it as a practice ground that athletes use for sharpening their skills. Now, I can go ahead with a simple web page, but the designer in me abhors badly designed web pages. Especially when you have ready to use frameworks like Bootstrap 5 and hundreds of freely available templates.
 
 Below are some of my projects. I will keep adding as and when I create new projects
 
