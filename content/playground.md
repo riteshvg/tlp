@@ -16,8 +16,10 @@ Below are some of my projects. I will keep adding as and when I create new proje
 
 ##### Character Count
 
-<iframe height = '400' style = 'width: 100%' scrolling = 'yes' frameborder = 'no' allowtransparency = 'true' allowfullscreen = 'true' src="/charactercount.html"></iframe>
 This page captures and displays the character count as a user types it.
+
+<iframe height = '400' style = 'width: 100%' scrolling = 'yes' frameborder = 'no' allowtransparency = 'true' allowfullscreen = 'true' src="/charactercount.html"></iframe>
+
 ---
 
 ##### Accessing Multiple APIs
