@@ -92,7 +92,7 @@ canonifyurls = true
   weight = 5
   identifier = "todayilearned"
   name = "Today I Learned"
-  pre = "<i class=\"sidebar-button-icon fas fa-lg fa-pen-nib\" aria-hidden=\"true\"></i>"
+  pre = "<i class=\"sidebar-button-icon fas fa-lg fa-book\" aria-hidden=\"true\"></i>"
   url = "til"
 [[menu.links]]
   weight = 1
