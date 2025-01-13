@@ -65,6 +65,29 @@ Today I learned is my attempt at learning something new everyday and recording i
       <div>Today, I learned how to use the Fetch API with a config variable to pass the headers. I also learnt how to use the Async/Await operator and how to display the data fetched into HTML. The API here is available for free at <a href = "https://icanhazdadjoke.com" target = '_window'>'Dad Jokes' </a>. Here's the <a href = "https://codepen.io/riteshvg/pen/QwLmrre" target = "_window">Codepen</a> link.</p> 
 	  #50projectsin50days
 	<p><iframe height = '420' style = 'width: 100%' scrolling = 'yes' frameborder = 'no' allowtransparency = 'true' allowfullscreen = 'true' src = "/fetchAPI.html"></iframe> </p>
+	<h5>January 13, 2025</h5>
+	<div>
+      <div>Today, I learned how to use the Ternary operator in HTML and how it essentially simplifies the logic and makes it more terse. For e.g.
+		If I need to pass an 'if...then' condition, I can write it traditionally as 
+	  <code>
+	  		if()
+	  			then{
+					//condition to pass if true
+	  		}
+				else {
+					//condition to pass if false
+			}	 
+	  </code>
+	  Using the `ternary` operator, we can rewrite the condition as
+	  <code>
+	  	${event.key === ' '? 'condition to pass if true' : 'condition to pass if false'}
+	  </code>
+	  Here's the <a href = "https://codepen.io/riteshvg/pen/GgKxbWj" target = "_window">Codepen</a> link.
+	  </p> 
+	  #50projectsin50days
+	<p>
+	<iframe height = '150' style = 'width: 100%' scrolling = 'yes' frameborder = 'no' allowtransparency = 'true' allowfullscreen = 'true' src = "/keyCode.html"></iframe> 
+	</p>
 	</body>
 </html>
 
