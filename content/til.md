@@ -88,6 +88,12 @@ Today I learned is my attempt at learning something new everyday and recording i
 	<p>
 	<iframe height = '150' style = 'width: 100%' scrolling = 'yes' frameborder = 'no' allowtransparency = 'true' allowfullscreen = 'true' src = "/keyCode.html"></iframe> 
 	</p>
+	<h5>January 14, 2025</h5>
+	<div>
+      <div>Today, I learned how to make an FAQ box with dynamic interactivity.
+	  #50projectsin50days
+	<p><iframe height = '420' style = 'width: 100%' scrolling = 'yes' frameborder = 'no' allowtransparency = 'true' allowfullscreen = 'true' src = "/faq.html"></iframe> </p>
+	
 	</body>
 </html>
 
