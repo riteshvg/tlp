@@ -8,7 +8,7 @@ Today I learned is my attempt at learning something new everyday and recording i
 <!DOCTYPE HTML>
 <html>
 	<body>
-	<h3>January 2025</h3>
+	<h5>January</h5>
     <h5>January 5, 2025</h5>
       <div>Today, I learned about essential git commands </div>
 	<p><iframe height = '280' style = 'width: 100%' scrolling = 'yes' frameborder = 'no' allowtransparency = 'true' allowfullscreen = 'true' src = "/gitcodes.html"></iframe> </p>
@@ -93,7 +93,12 @@ Today I learned is my attempt at learning something new everyday and recording i
       <div>Today, I learned how to make an FAQ box with dynamic interactivity.
 	  #50projectsin50days
 	<p><iframe height = '420' style = 'width: 100%' scrolling = 'yes' frameborder = 'no' allowtransparency = 'true' allowfullscreen = 'true' src = "/faq.html"></iframe> </p>
-	
+	<h5>January 15, 2025</h5>
+	<div>
+      <div>Today, I learned about helper functions, how to use filter() and map() functions, how to use setTimeout and setInterval methods and how to display data from form input in HTML by creating HTML tags from within JavaScript. I also learned how to create highlight and unhighlight effect - helper functions. These learnings helped in creating a random picker application which randomly selects a choice from the available choices.
+	  Here's the <a href = "https://codepen.io/riteshvg/pen/xbKzxje" target = "_window">Codepen</a> link.
+	  #50projectsin50days
+	<p><iframe height = '250' style = 'width: 100%' scrolling = 'yes' frameborder = 'no' allowtransparency = 'true' allowfullscreen = 'true' src = "/randomchoicepicker.html"></iframe> </p>
 	</body>
 </html>
 
