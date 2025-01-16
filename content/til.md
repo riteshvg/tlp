@@ -99,6 +99,12 @@ Today I learned is my attempt at learning something new everyday and recording i
 	  Here's the <a href = "https://codepen.io/riteshvg/pen/xbKzxje" target = "_window">Codepen</a> link.
 	  #50projectsin50days
 	<p><iframe height = '250' style = 'width: 100%' scrolling = 'yes' frameborder = 'no' allowtransparency = 'true' allowfullscreen = 'true' src = "/randomchoicepicker.html"></iframe> </p>
+	<h5>January 16, 2025</h5>
+	<div>
+      <div>Today, I learned how to create an animated counter that stops spinning once the target is reached.
+	  Here's the <a href = "https://codepen.io/riteshvg/pen/gbYKzyz" target = "_window">Codepen</a> link.
+	  #50projectsin50days
+	<p><iframe height = '250' style = 'width: 100%' scrolling = 'yes' frameborder = 'no' allowtransparency = 'true' allowfullscreen = 'true' src = "/animatedCounter.html"></iframe> </p>
 	</body>
 </html>
 
