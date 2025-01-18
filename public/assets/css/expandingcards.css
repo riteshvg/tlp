@@ -9,14 +9,23 @@ body{
     display: flex;
     align-items:center;
     justify-content:center;
-    height: 100vh;
-    overflow: hidden;
+    height: 400vh;
+    overflow: visible;
     margin: 0;
 }
 
-.container{
-    display: flex;
-    width: 90vw;
+.alert{
+    padding: 20px;
+    background-color: #f44336;
+    color: white;
+    margin-bottom: 15px;
+}
+
+.infobox{
+    width: 15em;
+    border: 1px solid #333;
+    box-shadow: 8px 8px 5px #444;
+    padding: 8px 12px;
 }
 
 .panel{
@@ -68,3 +77,4 @@ body{
     }
 
 }
+

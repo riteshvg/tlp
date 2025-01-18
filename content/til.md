@@ -7,14 +7,18 @@ Today I learned is my attempt at learning something new everyday and recording i
 
 <!DOCTYPE HTML>
 <html>
-	<body>
-	<h5>January</h5>
+<head>
+	<title>
+	</title>
+</head>
+<body>	
+	<p><iframe height = '650' width = '750' scrolling = 'yes' frameborder = 'no' allowtransparency = 'true' allowfullscreen = 'true' src = "/january.html"></iframe> </p>
     <h5>January 5, 2025 | Project 1</h5>
       <div>Today, I learned about essential git commands </div>
 	<p><iframe height = '280' style = 'width: 100%' scrolling = 'yes' frameborder = 'no' allowtransparency = 'true' allowfullscreen = 'true' src = "/gitcodes.html"></iframe> </p>
 	<h5>January 6, 2025 | Project 2</h5>
       <div>Today, I learned about basic CSS and built expanding cards which is part of the <a href = "https://learning.oreilly.com/course/50-projects-in/9781801079976/"> 50 projects in 50 days </a> tutorials on Oreily by Brad Traversy and Florin Pop. I plan to use it for creating a calendar for my daily learning schedule.Here's the <a href = "https://codepen.io/riteshvg/pen/pvzLRZq" target = "_window">Codepen</a> link.</div>
-	<p>#50projectsin50days</p> 
+	<p>#50projectsin50days</p> 	
 	<p><iframe height = '150' style = 'width: 100%' scrolling = 'yes' frameborder = 'no' allowtransparency = 'true' allowfullscreen = 'true' src = "/expandingCards.html"></iframe> </p>
 	<h5>January 7, 2025 | Project 3</h5>
 	<div>
@@ -79,9 +83,7 @@ Today I learned is my attempt at learning something new everyday and recording i
 			}	 
 	  </code>
 	  Using the `ternary` operator, we can rewrite the condition as
-	  <code>
-	  	${event.key === ' '? 'condition to pass if true' : 'condition to pass if false'}
-	  </code>
+	  <code>${event.key === ' '? 'condition to pass if true' : 'condition to pass if false'}</code>
 	  Here's the <a href = "https://codepen.io/riteshvg/pen/GgKxbWj" target = "_window">Codepen</a> link.
 	  </p> 
 	  #50projectsin50days
