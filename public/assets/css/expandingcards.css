@@ -1,80 +1,85 @@
-@import url('https://fonts.googleapis.com/css2?family=Muli');
+@import url('https://fonts.googleapis.com/css2?family=Muli:wght@400;700&display=swap');
 
 * {
-    box-sizing: border-box;
+  box-sizing: border-box;
 }
 
-body{
-    font-family: 'Muli', sans-serif;
-    display: flex;
-    align-items:center;
-    justify-content:center;
-    height: 400vh;
-    overflow: visible;
-    margin: 0;
+body {
+  font-family: 'Muli', sans-serif;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  overflow: hidden;
+  margin: 0;
+}
+
+.info{
+  padding: 20px;
+  border-radius: 2px;
+  height: 5vh;
+  color: black;
+  margin-bottom: 1px;  
 }
 
 .alert{
-    padding: 20px;
-    background-color: #f44336;
-    color: white;
-    margin-bottom: 15px;
+  padding: 20px;
+  border-radius: 10px;
+  margin: 80px;
+  background-color: #7be692;
+  color: black;
+  margin-bottom: 15px;
+  flex: - 0.5;
 }
 
-.infobox{
-    width: 15em;
-    border: 1px solid #333;
-    box-shadow: 8px 8px 5px #444;
-    padding: 8px 12px;
+.container{
+  display: flex;
+  width: 90vw;
 }
 
 .panel{
-    background-size: cover 100%;
-    background-position: center;
-    background-repeat: no-repeat;
-    height: 20vh;
-    border-radius: 3px;
-    color:black;
-    cursor: pointer;
-    flex: 0.5;
-    margin: 10px;
-    position: relative;
-    transition: 0.7s ease-in;
+  background-size: cover;
+  background-position: center;
+  height: 20vh;
+  border-radius: 3px;
+  color: #fff;
+  cursor: pointer;
+  flex: 0.5;
+  margin: 10px;
+  position: relative;
+  -webkit-transition: all 700ms ease-in;
 }
 
-.panel h5{
-    font-size: 24px;
-    position: absolute;
-    bottom: 20px;
-    left: 20px;
-    margin: 0;
-    opacity: 0;
+.panel h3{
+  font-size: 24px;
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
+  margin: 0;
+  opacity: 0;
 }
 
-.panel.active {
-    flex: 5;
+.panel.active{
+  flex: 5;
 }
 
-.panel.active h5{
-    opacity: 1;
-    transition: opacity 0.3s ease-in 0.4s;
+.panel.active h3{
+  opacity: 1;
+  transition: opactity 0.3s ease-in 0.4s;
 }
 
-@media(max-width: 480px){
-    .container{
-        width: 100vw;
-    }
+@media (max-width: 480px){
+  .container{
+    width: 100vw;
+  }
 
-    .panel:nth-of-type(6),
-    .panel:nth-of-type(7),
-    .panel:nth-of-type(8),
-    .panel:nth-of-type(9),
-    .panel:nth-of-type(10),
-    .panel:nth-of-type(11),
-    .panel:nth-of-type(12) 
-    {
-        display: none;
-    }
-
+  .panel:nth-of-type(5),
+  .panel:nth-of-type(6),
+  .panel:nth-of-type(7),
+  .panel:nth-of-type(8),
+  .panel:nth-of-type(9),
+  .panel:nth-of-type(10) {
+    display: none;
+  }
 }
-
