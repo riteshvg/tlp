@@ -11,7 +11,7 @@
 }
 
 body{
-    background-color: #f6f7fb;
+    background-color: #fff;
     font-family: 'Muli', sans-serif;
     display: flex;
     align-items: center;
@@ -19,13 +19,31 @@ body{
     margin: 0;
 }
 
+.info{
+    padding: 20px;
+    border-radius: 2px;
+    height: 5vh;
+    color: black;
+    margin-bottom: 1px;  
+  }
+  
+  .alert{
+    margin-top: 15px;
+    color: black;
+    flex: 5;
+    flex-wrap: wrap;
+  }
+
 .container{
     text-align: center;
+    align-content: center;
+    row-gap: 10px   ;
 }
 
 .progress-container{
     display: flex;
     justify-content: space-between;
+    align-content: center;
     position: relative;
     margin-bottom: 30px;
     max-width: 100%;

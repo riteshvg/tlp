@@ -1,103 +1,37 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="">
-    <meta name="author" content="">
-    <link rel="shortcut icon" href="assets/favicon/favicon.ico">
-
-    <title>Playground: Git Codes</title>
-
-    <!-- CSS Plugins -->
-    <link href="assets/plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet" >
-
-    <!-- CSS Global -->
-    <link href="assets/css/styles.css" rel="stylesheet">
-
-    <!-- Google Fonts -->
-    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600italic,600,700,700italic,800,800italic' rel='stylesheet' type='text/css'>
-
-    <!-- Data Layer -->
-  <script>
-    var adobeDataLayer = window.adobeDataLayer = window.adobeDataLayer|| [];
-    adobeDataLayer.push({
-      page: 'Git Codes',
-      description: 'Git Codes',
-      url: 'https://www.thelearningproject.in/samples/charactercount',
-      contentType: 'Git Codes',
-      siteSection: 'Samples'
-    });
-   </script> 
-
-  <!-- Launch Library Code -->
-    <script src="https://assets.adobedtm.com/204118644db8/437cd1c7d72a/launch-39d64d92912c-development.min.js" async></script>
-
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/assets/css/expandingcards.css" />
+    <title>My Project</title>
   </head>
-
   <body>
-
-    <!-- Header -->
-    <div class="page-topbar">
-      <div class="container">
-        <div class="row">
-          <div class="col-sm-4">
-
-            <h3>Git Code Samples</h3>
-            
-          </div>
-
-
-          <div>
-            <ol>
-                <h5>Essential Git Commands </h5>
-
-                <li>initialize existing git repo -- git init</li>
-                    
-                <li>add changes from local to stage for uploading -- git add .</li>
-                    
-                <li>committing changes from local to stage for committing -- git commit -m "notes"</li>
-                    
-                <li>pushing changes to remote -- git push -u origin main</li>
-                    
-                <li>in case remote is ahead of local and you don't want to merge remote with local -- git push -f origin master</li>
-                    
-                <li>checking for branches -- git branch (main, master, my-feature)</li>
-                    
-                <li>changing branches -- git checkout master (will change from active branch to master)</li>
-                    
-                <li>merging changes from remote to local -- git branch -d my-feature</li>
-                    
-            </ol>
-            <ul>
-                
-                <h5>Error Messages</h5>
-
-                <li>src refspec master does not match any - This means that the remote repository is not available</li>
-                
-            </ul>
-          </div>
-
-        </div> <!-- / .row -->
-      </div> <!-- / .container -->
+    <div class = "alert">
+      Today, I learned about basic git commands which initializes a repo, adds the modified files, commits the changes and publishes it as well.
+      <p></p>
+      <h3>Project Title: Expanding Cards | Date: January 6th, 2025</h3>
     </div>
-
-
-    
-
-    <!-- JavaScript
-    ================================================== -->
-    
-    <!-- JS Global -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
-    
-    <!-- JS Plugins -->
-    <script src="assets/plugins/scrolltopcontrol/scrolltopcontrol.js"></script>
-    
-    <!-- JS Custom -->
-    <script src="assets/js/custom.js"></script>
-
+    <div class="container">
+        <ol>
+            <h5>Essential Git Commands </h5>
+            <code>
+            <li>initialize existing git repo -- git init</li>
+            <li>add changes from local to stage for uploading -- git add .</li>
+            <li>committing changes from local to stage for committing -- git commit -m "notes"</li>
+            <li>pushing changes to remote -- git push -u origin main</li>
+            <li>in case remote is ahead of local and you don't want to merge remote with local -- git push -f origin master</li>
+            <li>checking for branches -- git branch (main, master, my-feature)</li>
+            <li>changing branches -- git checkout master (will change from active branch to master)</li>
+            <li>merging changes from remote to local -- git branch -d my-feature</li>
+            </code>
+        </ol>
+        <ul>
+            <h5>Error Messages</h5>
+            <code> <li>src refspec master does not match any - This means that the remote repository is not available</li></code>
+            
+        </ul>
+    </div>
+    <script src="/assets/js/expandingcards.js"></script>
   </body>
 </html>

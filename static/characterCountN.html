@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="assets/css/progressTracker.css">
+    <title>Character Count</title>
+</head>
+<body>
+    <div class="container">
+        <form>
+            <div>
+              <textarea id = "text" row = "12" cols = "50"></textarea>
+            </div>
+          </form>
+          <hr>
+          <p>
+            You have typed 
+            <strong><span id = "character-count">0</span></strong>&nbsp;characters
+          </p>         
+        </div>
+    </div>
+    <script>
+        //Get the elements
+        let text = document.getElementById('text');
+        let charCount = document.getElementById('character-count');
+
+        //Use the input method to listen for changes in the text variable
+        text.addEventListener('input', function(){
+            console.log(text);
+            console.log(charCount);
+            //Display the characters count
+            charCount.textContent=text.value.length;
+        })
+    </script>
+</body>
+</html>

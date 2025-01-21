@@ -11,11 +11,14 @@ Today I learned is my attempt at learning something new everyday and recording i
 	<title>
 	</title>
 </head>
-<body>	
-	<p><iframe height = '650' width = '750' scrolling = 'yes' frameborder = 'no' allowtransparency = 'true' allowfullscreen = 'true' src = "/january.html"></iframe> </p>
-    <h5>January 5, 2025 | Project 1</h5>
-      <div>Today, I learned about essential git commands </div>
-	<p><iframe height = '280' style = 'width: 100%' scrolling = 'yes' frameborder = 'no' allowtransparency = 'true' allowfullscreen = 'true' src = "/gitcodes.html"></iframe> </p>
+<body>
+	<h5>January 5, 2025 | Project 1</h5>
+	Today, I learned about basic git commands for version control and republishing website 
+	<p><iframe height = '150' style = 'width: 100%' scrolling = 'yes' frameborder = 'no' allowtransparency = 'true' allowfullscreen = 'true' src = "/gitCodes.html"></iframe> </p>	
+	<h5>January 6, 2025 | Project 2</h5>
+	Today, I learned about basic CSS and built expanding cards which is part of the 
+      <a href = "https://learning.oreilly.com/course/50-projects-in/9781801079976/" target = "_window"> 50 projects in 50 days </a> tutorials on Oreily by Brad Traversy and Florin Pop. I plan to use it for creating a calendar for my daily learning schedule. Here's the <a href = "https://codepen.io/riteshvg/pen/pvzLRZq" target = "_window">Codepen</a> link.
+	<p><iframe height = '150' style = 'width: 100%' scrolling = 'yes' frameborder = 'no' allowtransparency = 'true' allowfullscreen = 'true' src = "/expandingCards.html"></iframe> </p>
 	<h5>January 7, 2025 | Project 3</h5>
 	<div>
       <div>Today, I learned that you can use variable like methods in CSS. For e.g., </div> 
@@ -105,10 +108,28 @@ Today I learned is my attempt at learning something new everyday and recording i
 	<p><iframe height = '250' style = 'width: 100%' scrolling = 'yes' frameborder = 'no' allowtransparency = 'true' allowfullscreen = 'true' src = "/animatedCounter.html"></iframe> </p>
 	<h5>January 17, 2025 | Project 13</h5>
 	<div>
-      <div>Today, I learned how to create a water drinkking tracker that tracks how much water you drank during the day. This project taught me how to use CSS variables, manipulate the DOM, use mathematical concepts in JavaScript and more.
+      <div>Today, I learned how to create a water drinking tracker that tracks how much water you drank during the day. This project taught me how to use CSS variables, manipulate the DOM, use mathematical concepts in JavaScript and more.
 	  Here's the <a href = "https://codepen.io/riteshvg/pen/gbYKzyz" target = "_window">Codepen</a> link.
 	  #50projectsin50days
 	<p><iframe height = '650' style = 'width: 100%' scrolling = 'yes' frameborder = 'no' allowtransparency = 'true' allowfullscreen = 'true' src = "/waterDrinking.html"></iframe> </p>
+	<h5>January 18, 2025 | Project 14</h5>
+	<div>
+      <div>Today, I learned how to create a movie app using the async...await operator, use destructuring, how to get data from a search field and use it as a query string for search.
+	  Here's the <a href = "https://codepen.io/riteshvg/pen/jENvrey" target = "_window">Codepen</a> link.
+	  #50projectsin50days
+	<p><iframe height = '350' style = 'width: 100%' scrolling = 'yes' frameborder = 'no' allowtransparency = 'true' allowfullscreen = 'true' src = "/themovieapp.html"></iframe> </p>
+	<h5>January 19, 2025 | Project 15</h5>
+	<div>
+      <div>Today, I learned how to create a character count application that displays the number of characters a visitor types.
+	  Here's the <a href = "https://codepen.io/riteshvg/pen/LEPJOwq" target = "_window">Codepen</a> link.
+	  #50projectsin50days
+	<p><iframe height = '350' style = 'width: 100%' scrolling = 'yes' frameborder = 'no' allowtransparency = 'true' allowfullscreen = 'true' src = "/characterCountN.html"></iframe> </p>
+	<h5>January 20, 2025 | Project 16</h5>
+	<div>
+      <div>Today, I learned how to create a character and word count application that displays the number of characters and words a visitor types.
+	  Here's the <a href = "https://codepen.io/riteshvg/pen/ZYzMvzv" target = "_window">Codepen</a> link.
+	  #50projectsin50days
+	<p><iframe height = '350' style = 'width: 100%' scrolling = 'yes' frameborder = 'no' allowtransparency = 'true' allowfullscreen = 'true' src = "/characterCountN1.html"></iframe> </p>
 	</body>
 </html>
 

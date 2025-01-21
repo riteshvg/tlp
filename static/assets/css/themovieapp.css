@@ -34,7 +34,7 @@ header{
 }
 
 .info{
-  padding: 20px;
+  padding: 10px;
   border-radius: 2px;
   height: 5vh;
   color: black;
@@ -42,11 +42,9 @@ header{
 }
 
 .alert{
-  margin-top: 15px;
-  margin-right: 5px;
-  color: black;
-  flex: 3;
-  flex-wrap: wrap;
+  margin-top: 10px;
+  margin-right: 2px;
+  color: green;
 }
 
 .search::placeholder{
