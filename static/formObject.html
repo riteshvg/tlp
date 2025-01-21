@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="assets/css/styles.css" rel="stylesheet">
+    <title>Store and retrieve form data without form data object</title>
+</head>
+<body>
+    <div class="container">
+        <h1 class="block-header alt">
+            <span>Form Data in Local Storage without FormData Object</span>
+          </h1>
+        <form id = "withoutFormData">
+            <div class="form-group">
+              <label class="sr-only">Full name</label>
+              <input type="text" class="form-control input-lg" placeholder="Full name" id = "wfd_name">
+            </div>
+            <div class="form-group">
+              <label class="sr-only">Username</label>
+              <input type="text" class="form-control input-lg" placeholder="Username" id = "wfd_username">
+            </div>
+            <div class="form-group">
+              <label class="sr-only">E-mail</label>
+              <input type="email" class="form-control input-lg" placeholder="E-mail" id = "wfd_email">
+            </div>
+            <div class="row">
+              <div class="col-sm-6">
+                <div class="form-group">
+                  <label class="sr-only">Password</label>
+                  <input type="password" id = "password" class="form-control input-lg" placeholder="Password" id = "wfd_password">
+                </div>
+              </div>
+              <div class="col-sm-6">
+                <div class="form-group">
+                  <label class="sr-only">Password</label>
+                  <input type="password" id = "password" class="form-control input-lg" placeholder="Re-enter Password" id = "wfd_reenter">
+                </div>
+              </div>
+              <!-- <div class="col-sm-6">
+                <div class="form-group">
+                  <label class="sr-only">Repeat password</label>
+                  <input type="password" id = "password1" class="form-control input-lg" placeholder="Repeat password">
+                </div> 
+              </div> -->
+            </div>
+            <div class="checkbox">
+              <input type="checkbox" class = "toggle" id="wfd_profile-sign-in__remember" value="">
+              <label for="profile-sign-in__remember">
+                Show Password
+              </label>
+            </div><br />
+            <button type="submit" class="btn btn-lg btn-primary">
+              Sign Up
+            </button>
+            <div id = "notification"></div>
+          </form>
+    </div>
+    <script>
+        //Get the form id and save it to a variable
+        let withoutFormData = document.querySelector('#withoutFormData');
+
+//assign a prefix to local storage
+let prefix = 'autosave_';
+
+//Defining the callback function
+/**
+ * Capturing field data and saving it in local storage
+*/
+
+function inputHandler (event){
+
+  //Assigned the event.target to  the field variable
+  let field = event.target;
+
+  //Only save the field if it has an ID
+  if(!field.id) return;
+
+  //Save field to local storage 
+  localStorage.setItem(prefix + field.id, field.value)
+
+}
+
+/**
+ * Load saved data from localStorage
+*/
+
+function loadSaved() {
+
+  //Get all the fields in the form
+  let fields = withoutFormData.elements;
+
+  //Loop through each one of the fields and load save data from storage
+  for (let field of fields){
+    let saved = localStorage.getItem(prefix + field.id);
+    if(!saved) continue;
+    field.value = saved;
+  }
+}
+
+  //Load saved data from local storage
+  loadSaved();
+
+  /**
+   * Clear saved data from localStorage
+  */
+  
+  function clearStorage(){
+
+    //Get rid of all the fields in a form 
+    let fields = withoutFormData.elements;
+
+    //Loop through the fields and remove it from storage
+    for (let field of fields){
+      localStorage.removeItem(prefix + field.id)
+    }
+
+  }
+
+//Listen for DOM events for input and pass the value to a named function called 'inputHandler'
+//as a callback function
+withoutFormData.addEventListener('input', inputHandler);
+withoutFormData.addEventListener('submit', clearStorage)
+
+//Adding just in time status messages
+
+let form = document.querySelector('#withoutFormData')
+form.addEventListener('submit', function(event){
+  
+  //Stop the form from reloading the page
+  event.preventDefault();
+
+  //Display a notification
+  let notification = document.querySelector('#notification');
+  notification.textContent = 'Your query was submitted!'
+
+  //Adding settimeout to remove the message
+  setTimeout(function(event){
+    notification.textContent = '';
+  },4000)
+})
+    </script>
+</body>
+</html>
