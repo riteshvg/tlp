@@ -82,18 +82,18 @@ canonifyurls = true
   name = "Tools"
   pre = "<i class=\"sidebar-button-icon fas fa-lg fa-anchor\" aria-hidden=\"true\"></i>"
   url = "/tools"
-[[menu.main]]
-  weight = 4
-  identifier = "playground"
-  name = "Playground"
-  pre = "<i class=\"sidebar-button-icon fas fa-lg fa-pen-nib\" aria-hidden=\"true\"></i>"
-  url = "playground"
+#[[menu.main]]
+#  weight = 4
+#  identifier = "playground"
+#  name = "Playground"
+#  pre = "<i class=\"sidebar-button-icon fas fa-lg fa-pen-nib\" aria-hidden=\"true\"></i>"
+#  url = "playground"
 [[menu.main]]
   weight = 5
   identifier = "todayilearned"
   name = "Today I Learned"
   pre = "<i class=\"sidebar-button-icon fas fa-lg fa-book\" aria-hidden=\"true\"></i>"
-  url = "til"
+  url = "todayilearned.html"
 [[menu.links]]
   weight = 1
   identifier = "github"

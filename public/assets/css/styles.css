@@ -252,7 +252,6 @@ th {
     border: 1px solid #ddd !important;
   }
 }
-
 @font-face {
   font-family: 'Glyphicons Halflings';
   src: url('../fonts/glyphicons-halflings-regular.eot');
@@ -8056,10 +8055,6 @@ p {
 }
 .showcase .item.item_3 {
   background-image: url(../img/home_3.jpg);
-  text-align: center;
-}
-.showcase .item.item_4 {
-  background-image: url(../img/blog_2.jpg);
   text-align: center;
 }
 @media (max-width: 991px) {
