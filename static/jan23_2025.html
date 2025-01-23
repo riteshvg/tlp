@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head class="html_boxed">
+  <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -8,9 +8,9 @@
     <meta name="author" content="">
     <link rel="shortcut icon" href="assets/favicon/favicon.ico">
 
-    <title>Highland: Index</title>
+    <title>Background Slider</title>
 
-    <!-- CSS Plugins -->
+    <!-- Font Awesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css"/>
 
     <!-- CSS Global -->
@@ -23,7 +23,7 @@
 
   <body>
 
-    <!-- NAVIGATION
+   <!-- NAVIGATION
     ================================================== -->
 
     <!-- Navbar -->
@@ -35,7 +35,7 @@
             <li><a href="index.html"><i class = "fas fa-home fa-lg"></i></a></li>
             <li><a href="/about"><i class="fas fa-solid fa-code fa-lg"></i></a></li>
             <li><a href="/tools"><i class="fas fa-solid fa-anchor fa-lg"></i></a></li>
-            <li><a href="#"><i class="fas fa-solid fa-book fa-lg active"></i></a></li>
+            <li><a href="todayilearned.html"><i class="fas fa-solid fa-book fa-lg active"></i></a></li>
             <li><a href=" "><i class="fas fa-grip-lines-vertical fa-lg"></i></a></li>
             <li><a href="https://github.com/riteshvg" target="_blank"><i class="fab fa-github fa-lg"></i></a></li>
             <li><a href="https://x.com/riteshvg" target="_blank"><i class="fab fa-twitter fa-lg"></i></a></li>
@@ -45,70 +45,58 @@
       </div><!-- /.container -->
     </nav>
 
-    <!-- RECENT WORKS
+    <!-- CONTENT
     ================================================== -->
-    <div class="row isotope-container">
-      <div class="col-sm-4 col-lg-3 isotope-item category_1">
-        
-      </div>
-    </div>
     <div class="container">
-
       <div class="row">
-        <div class="col-sm-12">
+        <div class="col-sm-7">
+          <iframe src = "formObject.html" width = "1200" height="500" frameborder = "1"></iframe>
+        </div>
+        <p></p>
+        <div class="col-sm-9">
           
-          <h1 class="block-header">
-            <span>January 2025</span>
+          <h1 class="block-header alt">
+            <span>Using Local Storage for Storing Form Data</span>
+          </h1>
+          <h4>
+          <p>
+            Today I learned how to use the localStorage object available in browser to store and retrieve data in a form. There are two methods by which you can store
+            and retrieve data. 
+           <p>Method # 1: Store data in individual key value pairs. </p>
+           <p>Method # 2: Create an array of the data and store it as a single object</p>
+           </p>
+           <i>Open the console and check the Application tab.</i>
+           </h4>
+          
+        
+          </div>
+          <div class = "col-sm-3">
+          <h1 class="block-header alt">
+            <span>File Info</span>
           </h1>
 
-        </div>
+          <table class="table table-bordered">
+            <tbody>
+              <tr>
+                <td>Category</td>
+                <td>HTML / JS / CSS</td>
+              </tr>
+              <tr>
+                <td>Credits</td>
+                <td><a href = "https://gomakethings.com/" target="_blank">Go Make Things</a></td>
+              </tr>
+              <tr>
+                <td>Date</td>
+                <td>January 23rd, 2025</td>
+              </tr>
+              <tr>
+                <td>Codepen</td>
+                <td><a href = "https://codepen.io/riteshvg/pen/bNbxjxV" target="_blank">Click here</a></td>
+              </tr>
+            </tbody>
+          </table>
+          <button><a href = "todayilearned.html">Go Back</a></button>
       </div> <!-- / .row -->
-
-      <div class="row">
-
-        <!-- Box # 1 -->
-        <div class="col-sm-3">
-          <a href="jan22_2025.html" class="thumbnail">
-            <div class="blockTextGreen">
-              <h3>Creating a Image Slider with CSS.</h3>
-            </div>
-            <div class="caption">
-                <b>January 22, 2025</b>            
-            </div>
-          </a>
-          </div>
-
-          <!-- Box # 2 -->
-        <div class="col-sm-3">
-          <a href="jan23_2025.html" class="thumbnail">
-            <div class="blockTextBrown">
-              <h3>Storing form data in local storage.</h3>
-            </div>
-            <div class="caption">
-                <b>January 23, 2025</b>
-            </div>
-          </a>
-          </div>
-
-            
-
-      </div><!-- /. row -->
     </div> <!-- / .container -->
-
-    
-
-    <!-- JavaScript
-    ================================================== -->
-    
-    <!-- JS Global -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
-    
-    <!-- JS Plugins -->
-    <script src="assets/plugins/scrolltopcontrol/scrolltopcontrol.js"></script>
-    
-    <!-- JS Custom -->
-    <script src="assets/js/custom.js"></script>
-
   </body>
 </html>
