@@ -1,107 +1,50 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="">
-    <meta name="author" content="">
-    <link rel="shortcut icon" href="assets/favicon/favicon.ico">
-
-    <title>OTP verification</title>
-
-    <!-- Font Awesome Icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css"/>
-
-    <!-- CSS Global -->
-    <link href="assets/css/styles_green.css" rel="stylesheet">
-
-    <!-- Google Fonts -->
-    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600italic,600,700,700italic,800,800italic' rel='stylesheet' type='text/css'>
-
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="assets/css/expandingcards.css" />
+    <title>Expanding Cards</title>
   </head>
-
   <body>
-
-   <!-- NAVIGATION
-    ================================================== -->
-
-    <!-- Navbar -->
-    <nav class="navbar navbar-default">
-      <div class="container">
-        <!-- Collect the nav links, forms, and other content for toggling -->
-        <div class="collapse navbar-collapse" id="navbar_main">
-          <ul class="nav navbar-nav navbar-left">
-            <li><a href="index.html"><i class = "fas fa-home fa-lg"></i></a></li>
-            <li><a href="/about"><i class="fas fa-solid fa-code fa-lg"></i></a></li>
-            <li><a href="/tools"><i class="fas fa-solid fa-anchor fa-lg"></i></a></li>
-            <li><a href="todayilearned.html"><i class="fas fa-solid fa-book fa-lg active"></i></a></li>
-            <li><a href=" "><i class="fas fa-grip-lines-vertical fa-lg"></i></a></li>
-            <li><a href="https://github.com/riteshvg" target="_blank"><i class="fab fa-github fa-lg"></i></a></li>
-            <li><a href="https://x.com/riteshvg" target="_blank"><i class="fab fa-twitter fa-lg"></i></a></li>
-            <li><a href="https://www.linkedin.com/in/riteshvgupta/" target="_blank"><i class="fab fa-linkedin fa-lg"></i></a></li>
-          </ul>
-        </div><!-- /.navbar-collapse -->
-      </div><!-- /.container -->
-    </nav>
-
-    <!-- CONTENT
-    ================================================== -->
     <div class="container">
-      <div class="row">
-        <div class="col-sm-7">
-          <iframe src = "verifyotp.html" width = "1200" height="500" frameborder = "1"></iframe>
-        </div>
-        <p></p>
-        <div class="col-sm-9">
-          
-          <h1 class="block-header alt">
-            <span>Create an application that verifies user inputs</span>
-          </h1>
-          <h4>
-            <p>This is a simple application for OTP verification with ability to shift focus and regain focus on individual boxes.</p>
-           <p>
-            Today I learned multiple things :
-            
-            <ul>
-                <li>Using element.focus() method to initially set focus on the first input field - https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/focus</li>
-                <li>Using CSS pseudoclass, flexbox for spatial alignment of input fields and using media queries for style adjustments based on screen size</li>
-                <li>Increment and decrement the focus() method to handle indices in the loop with index manipulation with if-condition
-                <li>Use setimeout to delay operations for a smooth user experience</li>
-                <li>Listen for keydown and backspaces</li>
-                <li>how to access the index of an item in a node list</li>
-            </ul>
-        </p>
-        </h4>        
-          </div>
-
-          <div class = "col-sm-3">
-          <h1 class="block-header alt">
-            <span>File Info</span>
-          </h1>
-
-          <table class="table table-bordered">
-            <tbody>
-              <tr>
-                <td>Category</td>
-                <td>HTML / JS / CSS</td>
-              </tr>
-              <tr>
-                <td>Credits</td>
-                <td><a href = "https://www.oreilly.com/videos/50-projects-in/9781801079976/" target="_blank">50 Projects in 50 days</a></td>
-              </tr>
-              <tr>
-                <td>Date</td>
-                <td>January 26th, 2025</td>
-              </tr>
-              <tr>
-                <td>Codepen</td>
-                <td><a href = "https://codepen.io/riteshvg/pen/vEBvGdG" target="_blank">Click here</a></td>
-              </tr>
-            </tbody>
-          </table>
-          <button><a href = "todayilearned.html">Go Back</a></button>
-      </div> <!-- / .row -->
-    </div> <!-- / .container -->
+      <div class="panel active" style="background-color: aquamarine">
+        <h5>January</h5>
+      </div>
+      <div class="panel" style="background-color: antiquewhite">
+        <h5>February</h5>
+      </div>
+      <div class="panel" style="background-color: antiquewhite">
+        <h5>March</h5>
+      </div>
+      <div class="panel" style="background-color: antiquewhite">
+        <h5>April</h5>
+      </div>
+      <div class="panel" style="background-color: antiquewhite">
+        <h5>May</h5>
+      </div>
+      <div class="panel" style="background-color: antiquewhite">
+        <h5>June</h5>
+      </div>
+      <div class="panel" style="background-color: antiquewhite">
+        <h5>July</h5>
+      </div>
+      <div class="panel" style="background-color: antiquewhite">
+        <h5>August</h5>
+      </div>
+      <div class="panel" style="background-color: antiquewhite">
+        <h5>September</h5>
+      </div>
+      <div class="panel" style="background-color: antiquewhite">
+        <h5>October</h5>
+      </div>
+      <div class="panel" style="background-color: antiquewhite">
+        <h5>November</h5>
+      </div>
+      <div class="panel" style="background-color: antiquewhite">
+        <h5>December</h5>
+      </div>
+    </div>
+    <script src="assets/js/expandingcards.js"></script>
   </body>
 </html>

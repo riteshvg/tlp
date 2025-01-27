@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Muli:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Muli');
 
 * {
   box-sizing: border-box;
@@ -7,48 +7,33 @@
 body {
   font-family: 'Muli', sans-serif;
   display: flex;
-  flex-direction: column;
-  align-items: left;
+  align-items: center;
   justify-content: center;
-  height: 50vh;
+  height: 100vh;
   overflow: hidden;
   margin: 0;
 }
 
-.info{
-  padding: 20px;
-  border-radius: 2px;
-  height: 5vh;
-  color: black;
-  margin-bottom: 1px;  
-}
-
-.alert{
-  margin-top: 15px;
-  color: black;
-  flex: 5;
-  flex-wrap: wrap;
-}
-
-.container{
+.container {
   display: flex;
-  width: 90vw;
+  width: 100vw;
 }
 
-.panel{
-  background-size: cover;
+.panel {
+  background-size: cover 100%;
   background-position: center;
-  height: 30vh;
+  background-repeat: no-repeat;
+  height: 20vh;
   border-radius: 3px;
-  color: #fff;
+  color: black;
   cursor: pointer;
   flex: 0.5;
   margin: 10px;
   position: relative;
-  -webkit-transition: all 700ms ease-in;
+  transition: 0.7s ease-in;
 }
 
-.panel h3{
+.panel h5 {
   font-size: 24px;
   position: absolute;
   bottom: 20px;
@@ -57,26 +42,27 @@ body {
   opacity: 0;
 }
 
-.panel.active{
-  flex: 5;
+.panel.active {
+  flex: 10;
 }
 
-.panel.active h3{
+.panel.active h5 {
   opacity: 1;
-  transition: opactity 0.3s ease-in 0.4s;
+  transition: opacity 0.3s ease-in 0.4s;
 }
 
-@media (max-width: 480px){
-  .container{
+@media (max-width: 480px) {
+  .container {
     width: 100vw;
   }
 
-  .panel:nth-of-type(5),
   .panel:nth-of-type(6),
   .panel:nth-of-type(7),
   .panel:nth-of-type(8),
   .panel:nth-of-type(9),
-  .panel:nth-of-type(10) {
+  .panel:nth-of-type(10),
+  .panel:nth-of-type(11),
+  .panel:nth-of-type(12) {
     display: none;
   }
 }

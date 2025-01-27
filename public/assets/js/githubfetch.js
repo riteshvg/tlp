@@ -2,32 +2,31 @@ const APIURL = 'https://api.github.com/users/';
 
 const form = document.getElementById('form');
 const search = document.getElementById('search');
-const main = document.getElementById('main')
+const main = document.getElementById('main');
 
-
-async function getUser(username){
-    try {
-        const { data } = await axios.get(APIURL + username) //destructure
-        createUserCard(data);
-        getRepos(username);
-    } catch(err){
-        if(err.response.status == 404) {
-            createErrorCard('No user found!');
-        }
+async function getUser(username) {
+  try {
+    const { data } = await axios.get(APIURL + username); //destructure
+    createUserCard(data);
+    getRepos(username);
+  } catch (err) {
+    if (err.response.status == 404) {
+      createErrorCard('No user found!');
     }
+  }
 }
 
-async function getRepos (username) {
-    try {
-        const { data } = await axios.get(APIURL + username + '/repos?sort=created') //destructure
-        addReposToCard(data);
-    } catch(err){
-            createErrorCard('Problem fetching repos!');
-    }
+async function getRepos(username) {
+  try {
+    const { data } = await axios.get(APIURL + username + '/repos?sort=created'); //destructure
+    addReposToCard(data);
+  } catch (err) {
+    createErrorCard('Problem fetching repos!');
+  }
 }
 
 function createUserCard(user) {
-    const cardHTML = `
+  const cardHTML = `
     <div class="card">
         <div>
           <img src="${user.avatar_url}" alt="${user.name}" class="avatar">
@@ -45,50 +44,47 @@ function createUserCard(user) {
           <div id="repos"></div>
         </div>
       </div>
-    `
-    main.innerHTML = cardHTML;
-    
+    `;
+  main.innerHTML = cardHTML;
 }
 
 function createErrorCard(message) {
-    const cardHTML = `
+  const cardHTML = `
         <div class = "card">
             <h1>${message}</h1>
         </div>
-    `
-    main.innerHTML = cardHTML;
+    `;
+  main.innerHTML = cardHTML;
 }
 
 function addReposToCard(repos) {
-    const reposEl = document.getElementById('repos')
+  const reposEl = document.getElementById('repos');
 
-    repos
-    .slice(0, 5)
-    .forEach(repo => {
-        const repoEl = document.createElement('a');
-        repoEl.classList.add('repo');
-        repoEl.href = repo.html_url;
-        repoEl.target = "_blank";
-        repoEl.innerText = repo.name;
+  repos.slice(0, 5).forEach((repo) => {
+    const repoEl = document.createElement('a');
+    repoEl.classList.add('repo');
+    repoEl.href = repo.html_url;
+    repoEl.target = '_blank';
+    repoEl.innerText = repo.name;
 
-        reposEl.appendChild(repoEl);
-    })
+    reposEl.appendChild(repoEl);
+  });
 }
 
 form.addEventListener('submit', (e) => {
-    e.preventDefault();
+  e.preventDefault();
 
-    const user = search.value;
+  const user = search.value;
 
-    if(user){
-        getUser(user)
+  if (user) {
+    getUser(user);
 
-        search.value = ''
-    }
-})
+    search.value = '';
+  }
+});
 
 /***
- * 
+ *
  * how to use the async await function with axios to make the code easier to read and maintain
  * how to request data from multiple endpoints in an API
  * e.target provides a reference to the element where the event occured
