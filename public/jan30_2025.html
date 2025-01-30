@@ -8,7 +8,7 @@
     <meta name="author" content="">
     <link rel="shortcut icon" href="assets/favicon/favicon.ico">
 
-    <title>Form Progress Tracker</title>
+    <title>Random Choice Picker</title>
 
     <!-- Font Awesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css"/>
@@ -50,22 +50,37 @@
     <div class="container">
       <div class="row">
         <div class="col-sm-7">
-          <iframe src = "progressTracker.html" width = "1200" height="500" frameborder = "1"></iframe>
+          <iframe src = "randomChoicePicker.html" width = "1200" height="500" frameborder = "1"></iframe>
         </div>
         <p></p>
         <div class="col-sm-9">
           
           <h1 class="block-header alt">
-            <span>Creating steps in a form tracker</span>
+            <span>Making a random choice picker</span>
           </h1>
           <h4>
-            <p>Today I learned how to create a simple multi-step form tracker. This component can be used to create forms. I also learned that we can create 
-                JavaScript type variables in CSS and these variables can be referenced in other components.
+            <p>Today I learned how to create a simple random choice picker. A user types in multiple choices separated by a comma and the 
+                application randomly selects one of the choice. This project taught me 
             </p>
+            <ul>
+                <li>Using a math function to create a random selection.</li>
+                <li>Adding a class list and inserting HTML tags programmatically</li>
+                <li>Using the filter method along with other methods</li>
+            </ul>
             <code>
-                :root {
-                  --line-border-fill: #3498db;
-                  --line-border-empty: #e0e0e0;
+                function createTags(input){
+                    const tags = input.split(',')
+                    .filter(tag => tag.trim()!== '')
+                    .map(tag => tag.trim())
+                    
+                    tagsEl.innerHTML = '';
+                
+                    tags.forEach(tag => {
+                        const tagEl = document.createElement('span');
+                        tagEl.classList.add('tag');
+                        tagEl.innerText = tag;
+                        tagsEl.appendChild(tagEl);
+                    })
                 }
                 </code>
         </h4>        
@@ -92,7 +107,7 @@
               </tr>
               <tr>
                 <td>Codepen</td>
-                <td><a href = "https://codepen.io/riteshvg/pen/pvzLROq" target="_blank">Click here</a></td>
+                <td><a href = "https://codepen.io/riteshvg/pen/xbKzxje" target="_blank">Click here</a></td>
               </tr>
             </tbody>
           </table>
