@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <link rel="shortcut icon" href="assets/favicon/favicon.ico" />
+
+    <title>Responsive Tables: Option 1</title>
+
+    <!-- Font Awesome Icons -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css"
+    />
+
+    <!-- CSS Global -->
+    <link href="assets/css/styles_green.css" rel="stylesheet" />
+
+    <!-- Table CSS -->
+     <style>
+        .scroll-horizontal {
+        display: block;
+        overflow-x: auto
+    }
+
+/**
+ * Add box sizing to everything
+ * @link http://www.paulirish.com/2012/box-sizing-border-box-ftw/
+ */
+*,
+*:before,
+*:after {
+	box-sizing: border-box;
+}
+
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+	margin-bottom: 1.5em;
+	max-width: 100%;
+	width: 100%;
+}
+
+th,
+td {
+	text-align: left;
+	padding: 0.5em;
+  white-space: nowrap;
+}
+
+th {
+	border-bottom: 0.125em solid #e5e5e5;
+	font-weight: bold;
+	vertical-align: bottom;
+}
+
+td {
+	border-top: 1px solid #e5e5e5;
+	vertical-align: top;
+}
+
+/**
+ * Adds zebra striping
+ */
+.table-striped tbody tr:nth-child(odd of :not([hidden])) {
+	background-color: #f7f7f7;
+}
+     </style>
+    
+
+
+    <!-- Google Fonts -->
+    <link
+      href="https://fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600italic,600,700,700italic,800,800italic"
+      rel="stylesheet"
+      type="text/css"
+    />
+  </head>
+
+  <body>
+    <!-- NAVIGATION
+    ================================================== -->
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-default">
+      <div class="container">
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="navbar_main">
+          <ul class="nav navbar-nav navbar-left">
+            <li>
+              <a href="index.html"><i class="fas fa-home fa-lg"></i></a>
+            </li>
+            <li>
+              <a href="/about"><i class="fas fa-solid fa-code fa-lg"></i></a>
+            </li>
+            <li>
+              <a href="/tools"><i class="fas fa-solid fa-anchor fa-lg"></i></a>
+            </li>
+            <li>
+              <a href="todayilearned.html"
+                ><i class="fas fa-solid fa-book fa-lg active"></i
+              ></a>
+            </li>
+            <li>
+              <a href=" "><i class="fas fa-grip-lines-vertical fa-lg"></i></a>
+            </li>
+            <li>
+              <a href="https://github.com/riteshvg" target="_blank"
+                ><i class="fab fa-github fa-lg"></i
+              ></a>
+            </li>
+            <li>
+              <a href="https://x.com/riteshvg" target="_blank"
+                ><i class="fab fa-twitter fa-lg"></i
+              ></a>
+            </li>
+            <li>
+              <a
+                href="https://www.linkedin.com/in/riteshvgupta/"
+                target="_blank"
+                ><i class="fab fa-linkedin fa-lg"></i
+              ></a>
+            </li>
+          </ul>
+        </div>
+        <!-- /.navbar-collapse -->
+      </div>
+      <!-- /.container -->
+    </nav>
+
+    <!-- CONTENT
+    ================================================== -->
+    <div class="container">
+      <div class="col-sm-9">
+        <h1 class="block-header alt">
+          <span>Responsive Table - Horizontal Scroll</span>
+        </h1>
+          <p>
+            Showing data in tables inside HTML keeps the data clean and organized. It also provides a great user experience. But non-responsive
+            tables can create a bad user experience where the table columns mesh or worse don't display legible data. Thanks to Chris Ferdinandi from 
+            <a href = "https://gomakethings.com/" target = "_window">GoMakeThings</a>, today I learned how to create responsive tables that on narrow viewports 
+            adapt two different views:
+            <ul>
+                <li>Horizontal Scroll - A purposeful scroll in the table</li>
+                <li>Shift to Vertical Table - Columns stack on top of each other</li>
+            </ul>
+          </p>
+          <p>
+            Here's a demo of the Horizontal Scroll Responsive Table. Reduce the width of the browser window to see the table in action.
+          </p>
+          <!-- Table Responsive Code -->
+          <div class="scroll-horizontal">
+            <table class="table-striped">
+                <thead>
+                    <tr>
+                        <th scope = "col">First Name</th>
+                        <th scope = "col">Last Name</th>
+                        <th scope = "col">Movie</th>
+                        <th scope = "col">Country</th>
+                        <th scope = "col">Oscar Nominee</th>
+                        <th scope = "col">IsDeceased</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Irrfan</td>
+                        <td>Khan</td>
+                        <td>The LunchBox</td>
+                        <td>India</td>
+                        <td>Yes</td>
+                        <td>True</td>
+                    </tr>
+                    <tr>
+                        <td>Heath</td>
+                        <td>Ledger</td>
+                        <td>The Dark Knight</td>
+                        <td>United States of America</td>
+                        <td>Yes</td>
+                        <td>True</td>
+                    </tr>
+                    <tr>
+                        <td>Matthew</td>
+                        <td>McConaughey</td>
+                        <td>Interstellar</td>
+                        <td>United States of America</td>
+                        <td>Yes</td>
+                        <td>False</td>
+                    </tr>
+                    <tr>
+                        <td>Shahrukh</td>
+                        <td>Khan</td>
+                        <td>Swades - We the People</td>
+                        <td>India</td>
+                        <td>No</td>
+                        <td>False</td>
+                    </tr>
+                </tbody>
+            </table>
+          </div>
+      </div>
+      
+
+      <div class="col-sm-3">
+        <h1 class="block-header alt">
+          <span>File Info</span>
+        </h1>
+
+        <table class="table table-bordered">
+          <tbody>
+            <tr>
+              <td>Category</td>
+              <td>HTML / JS / CSS</td>
+            </tr>
+            <tr>
+              <td>Credits</td>
+              <td>
+                <a
+                  href="https://members.gomakethings.com/dashboard/"
+                  target="_blank"
+                  >Chris Ferdinandi</a
+                >
+              </td>
+            </tr>
+            <tr>
+              <td>Date</td>
+              <td>January 28th, 2025</td>
+            </tr>
+            <tr>
+              <td>Codepen</td>
+              <td>
+                <a
+                  href="https://codepen.io/riteshvg/pen/EaYMpPr"
+                  target="_blank"
+                  >Click here</a
+                >
+              </td>
+            </tr>
+          </tbody>
+        </table>
+        <button><a href="todayilearned.html">Go Back</a></button>
+      </div>
+      <!-- / .row -->
+    </div>
+    <!-- / .container -->
+  </body>
+</html>
