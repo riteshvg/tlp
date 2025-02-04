@@ -21,6 +21,7 @@ I have been trying to write and make a video of start to finish process about AE
 Let me first outline the **_Agenda_** that I have outlined for creating this blog series:
 
 - What is AEP Web SDK?
+- What is the difference between AEP and AEP Web SDK?
 - Characters in a AEP Web SDK implementation
   - Edge network
   - Schema
@@ -44,22 +45,24 @@ Watch the [Summit 2020](https://experienceleague.adobe.com/en/docs/experience-pl
 
 {{<figure src = "https://ik.imagekit.io/hyegquogx/The_Learning_Project/Screenshot%202025-02-03%20at%201.01.36%E2%80%AFPM.png">}}
 
-**Remember these definitions**
+**Remember these definitions:**
 
-Alloy.js - JavaScript library written from scratch to replace all four existing libraries
-AEP Web SDK - A broader framework that includes Alloy.js and other necessary components
-AEP Mobile SDK - A framework built for mobile applications
-AEP Web SDK Extension - An extension built around AEP Web SDK available for Adobe Tags for desktop data collection
+- Alloy.js - JavaScript library written from scratch to replace all four existing libraries
+- AEP Web SDK - A broader framework that includes Alloy.js and other necessary components
+- AEP Mobile SDK - A framework built for mobile applications
+- AEP Web SDK Extension - An extension built around AEP Web SDK available for Adobe Tags for desktop data collection
+
+##### How does AEP Web SDK work
+
+With the introduction to AEP Web SDK out of the way, let's move forward with the different components that you need to setup for a successful implementation:
 
 {{< alert info >}}
 Please note: We will be only covering Web SDK implementation in this blog series
 {{< /alert >}}
 
-**How does AEP Web SDK work**
+###### Characters in a Web SDK implementation
 
-##### Characters in a Web SDK implementation
-
-With the introduction to AEP Web SDK out of the way, let's move forward with the different components that you need to setup for a successful implementation:
+In a AEP Web SDK implementation, we have to take care of multiple components. They all need to work in parallel to deliver the desired output. Let's first look at the different components of an implementation
 
 - AEP Web SDK extension
 - Datastream
