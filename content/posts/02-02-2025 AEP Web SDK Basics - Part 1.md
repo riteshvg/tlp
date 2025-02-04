@@ -61,10 +61,9 @@ Please note: We will be only covering Web SDK implementation in this blog series
 
 With the introduction to AEP Web SDK out of the way, let's move forward with the different components that you need to setup for a successful implementation:
 
-- AEP Web SDK extension:
-
-But data collection was a challenge for many years now while keeping companies compliant with GDPR and other privacy guidelines.
-
-Enterprise data collection. Real data collection needs, from the first milisecond to the next
+- AEP Web SDK extension
+- Datastream
+- Schema
+- XDM vs Data Object
 
 That is all for this blog post. Leave me a line on ritesh@thelearningproject.in to share some JavaScript basics that you might be interested in sharing.
