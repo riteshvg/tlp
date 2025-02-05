@@ -9,7 +9,7 @@
   "@type": "BlogPosting",
   "headline": "Back to Basics : AEP Web SDK : Part 1",
   
-  "image": "https://ik.imagekit.io/hyegquogx/The_Learning_Project/Back%20to%20basics%20%20Part%207.png",
+  "image": "https://ik.imagekit.io/hyegquogx/The_Learning_Project/Back%20to%20basics%20%20-%20Web%20SDK%20Part%201.png",
   
   "datePublished": "2025-02-02T00:00:00Z",
   "dateModified": "2025-02-02T00:00:00Z",
@@ -83,8 +83,8 @@
 
 
 
-  <meta property="og:image" content="https://ik.imagekit.io/hyegquogx/The_Learning_Project/Back%20to%20basics%20%20Part%207.png">
-  <meta property="twitter:image" content="https://ik.imagekit.io/hyegquogx/The_Learning_Project/Back%20to%20basics%20%20Part%207.png">
+  <meta property="og:image" content="https://ik.imagekit.io/hyegquogx/The_Learning_Project/Back%20to%20basics%20%20-%20Web%20SDK%20Part%201.png">
+  <meta property="twitter:image" content="https://ik.imagekit.io/hyegquogx/The_Learning_Project/Back%20to%20basics%20%20-%20Web%20SDK%20Part%201.png">
 
 
     <title>Back to Basics : AEP Web SDK : Part 1</title>
@@ -253,6 +253,7 @@
 <p>Let me first outline the <strong><em>Agenda</em></strong> that I have outlined for creating this blog series:</p>
 <ul>
 <li>What is AEP Web SDK?</li>
+<li>Benefits of adopting AEP Web SDK over other libraries</li>
 <li>What is the difference between AEP and AEP Web SDK?</li>
 <li>Characters in a AEP Web SDK implementation
 <ul>
@@ -264,33 +265,57 @@
 </ul>
 </li>
 <li>How to implement AEP Web SDK in your project</li>
+<li>What is XDM? What is the difference between Data and XDM objects?</li>
 <li>Migrating from AppMeasurement to AEP Web SDK</li>
 </ul>
 <h5 id="what-is-aep-web-sdk">What is AEP Web SDK</h5>
-<p>Adobe has been in the field of data collection for more than a decade now. It has always prioritized helping enterprises understand their visitors and bring their behavioral as well as insightful attributes both across desktop and mobile.</p>
-<p>But, the challenge that plagued these enterprises stemmed from the multitude of libraries that were used for data collection. For data and behavioral attributes, we had to implement <strong>AppMeasurement</strong>. Personalization and targeting use cases were achieved through <strong>Mbox and AT.js</strong> libraries. To segment their visitors, enterprises had to take help of <strong>DIL.js</strong> and then for visitor identification, it was <strong>VisitorAPI.js</strong>.</p>
-<p>As you can imagine, an enterprise that had the license for all these solutions had to manage four libraries, each with their own quirks, strength, idiosyncracies, implementation guidelines etc. The implementation and maintenance use to quickly became a nightmare for the dev team. Adobe realized the gravity of the situation and around 2018 took a bold step in the direction of simplifying data collection - <strong>a single library to replace all the existing libraries</strong>.</p>
-<p>The premise of AEP Web SDK is simple: make enterprise data collection as simple as possible by completely elimintating the need to implement multiple libraries. This library was not an amalgamation of the four libraries, but a brand new, written from scratch library with one beacon one endpoint giving enterprises total control of data. The library is codenamed alloy.js and AEP Web SDK is the broader framework that includes Alloy.js and other configuration settings to power enterprises. We will be talking more about the required components for AEP Web SDK later.</p>
-<p>Watch the <a href="https://experienceleague.adobe.com/en/docs/experience-platform/web-sdk/home#overview">Summit 2020</a> video where the concept of Alloy.js and AEP Web SDK was introduced.</p>
+<p>Adobe has been in the field of data collection for more than a decade now. It has always targeted solutions that can help enterprises understand their visitors and bring their behavioral as well as insightful attributes both across desktop and mobile.</p>
+<p>The challenge that plagued these data collection requirements stemmed from the multitude of libraries. Each solution that Adobe recommended had its own specific library. These libraries were part of the legacy companies that Adobe purchased. For instance, for data and behavioral attributes, Adobe acquired Omniture in 2007. Omniture brough <strong>S-Code</strong> which was later ugpraded to <strong>AppMeasurement</strong>.</p>
+<p>For personalization and targeting requirements, Adobe acquired Touch Clarity which brought <strong>Mbox</strong> which was later upgraded to <strong>AT.js</strong>. To segment their visitors, Adobe provided <strong>DIL.js</strong> and for visitor identification, enterprises had to implement <strong>VisitorAPI.js</strong>.</p>
+<p>As you can imagine, an enterprise that had the license for all these solutions had to manage multiple libraries. Each library had its specific quirks, strength, idiosyncracies, implementation guidelines etc. Trying to implement and maintain them became a major task for the dev teams. Adobe realized the gravity of the situation, and around 2018 took a bold step in the direction of simplifying data collection. It decided to write from scratch a unified libary- <strong>to replace all the existing libraries</strong>.</p>
+<p>This library was codenamed <strong>Alloy.js</strong> and it is now rebranded as <strong>Adobe Experience Platform Web SDK</strong> or simply <strong>AEP Web SDK</strong>.</p>
+<p>The premise of AEP Web SDK is simple: make enterprise data collection as simple as possible by elimintating the need to implement multiple libraries. AEP Web SDK is designed to provide a one beacon one endpoint solution, giving enterprises total control of data. We will be talking more about the required components for AEP Web SDK later. I highly encourage you to watch the <a href="https://experienceleague.adobe.com/en/docs/experience-platform/web-sdk/home#overview">Summit 2020</a> video where the concept of Alloy.js and AEP Web SDK was introduced.</p>
 <figure><img src="https://ik.imagekit.io/hyegquogx/The_Learning_Project/Screenshot%202025-02-03%20at%201.01.36%E2%80%AFPM.png">
 </figure>
 
 <p><strong>Remember these definitions:</strong></p>
 <ul>
-<li>Alloy.js - JavaScript library written from scratch to replace all four existing libraries</li>
-<li>AEP Web SDK - A broader framework that includes Alloy.js and other necessary components</li>
-<li>AEP Mobile SDK - A framework built for mobile applications</li>
+<li>Alloy.js - Original javaScript library written from scratch to replace all four existing libraries</li>
+<li>AEP Web SDK - Rebranded Alloy.js</li>
+<li>AEP Mobile SDK - Library available for mobile applications just like AEP Web SDK</li>
 <li>AEP Web SDK Extension - An extension built around AEP Web SDK available for Adobe Tags for desktop data collection</li>
 </ul>
-<h5 id="how-does-aep-web-sdk-work">How does AEP Web SDK work</h5>
+<h5 id="benefits-of-adopting-aep-web-sdk-in-your-enterprises">Benefits of adopting AEP Web SDK in your enterprises</h5>
+<p>Besides the fact that your dev team doesn&rsquo;t have to grapple with a multitude of updates and maintaining multiple libraries, AEP Web SDK offers the following benefits</p>
+<ul>
+<li>Significantly faster loading times</li>
+<li>One SDK for multiple needs</li>
+<li>Better flexibility and privacy compliance with feaures for consent management</li>
+<li>Option to enable event forwarding that can send data in real time to other solutions instead of just Adobe</li>
+<li>Native integration with Adobe Experience Platform for real time data streaming</li>
+</ul>
+<h5 id="what-is-the-difference-between-aep-and-aep-web-sdk">What is the difference between AEP and AEP Web SDK?</h5>
+<p>At this juncture, I think it is important to introduce the concept of Adobe Experience Platform or AEP, and how are they inter-related. <a href="https://experienceleague.adobe.com/en/docs/experience-platform/landing/home">AEP</a>. It is an flexible and open system built on REST APIs that allow organizations to send in data from any source - web, call center, purchase, offline, mobile etc. along with profile data and other datasets to centralize customer data. Data can be sent via batch or streaming or even data connectors.</p>
+<p>Enterprises that have invested in Adobe Experience Cloud applications such as Adobe Anayltics, Adobe Target, Adobe Campaign will significantly benefit by merging together data from all these applications, and non-Adobe applications to deliver a rich a customer experience.</p>
+<p>The difference between the two is that AEP Web SDK is <mark>another streaming data source that feeds in behavioral and transactional data from a website</mark>.</p>
+<h5 id="how-does-aep-web-sdk-work">How does AEP Web SDK work?</h5>
 <p>With the introduction to AEP Web SDK out of the way, let&rsquo;s move forward with the different components that you need to setup for a successful implementation:</p>
 <div class="alert info ">
   <p>Please note: We will be only covering Web SDK implementation in this blog series</p>
 </div>
+<p>To understand how to implement, we first need to understand the different components that work synchronously in a project of this kind:</p>
 <h6 id="characters-in-a-web-sdk-implementation">Characters in a Web SDK implementation</h6>
-<p>In a AEP Web SDK implementation, we have to take care of multiple components. They all need to work in parallel to deliver the desired output. Let&rsquo;s first look at the different components of an implementation</p>
 <ul>
-<li>AEP Web SDK extension</li>
+<li>Edge network: In its simplest definition, Edge network is a collection of servers spread across the globe that provides a solution-agnostic data network to enable enterprises to not only send multiple requests to one endpoint, but also receive it. You can read more about <a href="https://business.adobe.com/products/experience-platform/experience-platform-edge-network.html">Edge network</a> here.</li>
+</ul>
+<figure><img src="https://ik.imagekit.io/hyegquogx/The_Learning_Project/Edge%20Network?updatedAt=1738724289259">
+</figure>
+
+<ul>
+<li>AEP Web SDK extension: If you are using Adobe Tags <del>previously called Adobe Launch</del>, then you will greatly benefit from implementing the AEP Web SDK extension in your project.This extension has got native support to implement the library, plus significant upgrades that make implementation journey a lot easy. However, if you are not using Adobe Tags, you can always download the alloy.js library to continue with the implementation. Coming soon: a video walkthrough of the AEP WEb SDK extension.</li>
+</ul>
+<p>Coming soon:</p>
+<ul>
 <li>Datastream</li>
 <li>Schema</li>
 <li>XDM vs Data Object</li>
