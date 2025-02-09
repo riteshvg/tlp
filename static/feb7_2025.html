@@ -81,47 +81,74 @@
     <!-- CONTENT
     ================================================== -->
     <div class="container">
-      <div class="row">
-        <div class="col-sm-7">
-          <form>
-            <div>
-              <textarea id="text" row="12" cols="50"></textarea>
-            </div>
-          </form>
-          <hr />
-          <p>
-            You have typed
-            <strong><span id="character-count">0</span></strong
-            >&nbsp;characters
-          </p>
-        </div>
-
-        <div class="col-sm-7">
-          <form>
-            <div>
-              <textarea id="textDisplay" row="12" cols="50"></textarea>
-            </div>
-          </form>
-          <hr />
-          <p>
-            You have typed
-            <strong><span id="characterCount">0</span></strong
-            >&nbsp;characters and <strong><span id="wordCount">0</span></strong
-            >&nbsp;words.
-          </p>
-        </div>
-      </div>
-      <p></p>
       <div class="col-sm-9">
         <h1 class="block-header alt">
           <span>Counting Characters and Words</span>
         </h1>
-        <h4>
+        <div class="row">
           <p>
-            Today I learned how to create a utility that counts the number of
-            characters and words
+            Today, I learned how to create a counting character application. I
+            have seen this on many websites including x.com. The interesting
+            challenge here was not just to count the # of characters that a user
+            is typing. But also to count the number of words. This was done by
+            using the split method.
           </p>
-        </h4>
+
+          <div class="col-sm-7">
+            <form>
+              <div>
+                <textarea id="text" row="12" cols="50"></textarea>
+              </div>
+            </form>
+            <hr />
+            <p>
+              You have typed
+              <strong><span id="character-count">0</span></strong
+              >&nbsp;characters
+            </p>
+          </div>
+
+          <div class="col-sm-7">
+            <form>
+              <div>
+                <textarea id="textDisplay" row="12" cols="50"></textarea>
+              </div>
+            </form>
+            <hr />
+            <p>
+              You have typed
+              <strong><span id="characterCount">0</span></strong
+              >&nbsp;characters and
+              <strong><span id="wordCount">0</span></strong
+              >&nbsp;words.
+            </p>
+          </div>
+        </div>
+        <p></p>
+        <div>
+          <pre>
+            <code>
+                //Get the elements
+                let textDisplay = document.querySelector('#textDisplay');
+                let characterCount = document.querySelector('#characterCount');
+                let wordCount = document.querySelector('#wordCount');
+          
+                //Use the input method to listen for changes in the text variable
+                textDisplay.addEventListener('input', function () {
+                  // Gets the word count
+                  let words = textDisplay.value.split(/[\s]+/g).filter(function (num) {
+                    return num.length;
+                  });
+          
+                  // Display the word count
+                  wordCount.textContent = words.length;
+          
+                  //Display the characters count
+                  characterCount.textContent = textDisplay.value.length;
+                });
+            </code>
+          </pre>
+        </div>
       </div>
 
       <div class="col-sm-3">
