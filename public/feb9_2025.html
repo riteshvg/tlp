@@ -83,63 +83,72 @@
     <div class="container">
       <div class="col-sm-9">
         <h1 class="block-header alt">
-          <span>Toggle Passwords in Multiple Fields</span>
+          <span>Display Password</span>
         </h1>
-        <div class="row">
-          <p>
-            Today, I learned how to create a show password application. This
-            utility is seen in every form on the web. I learnt how to use the
-            for...of loop to loop through the array object and mainpulate the
-            items individually.
-          </p>
-          <div class="col-sm-12">
-            <form>
-              <p>
-                <label for="currentPassword">Current Password</label>
-                <input
-                  type="password"
-                  name="currentPassword"
-                  id="currentPassword"
-                />
-                <label for="newPassword">New Password</label>
-                <input type="password" name="newPassword" id="newPassword" />
-              </p>
-              <label for="show-passwords">
-                <input
-                  type="checkbox"
-                  name="showPasswords"
-                  id="showPasswords"
-                />
-                Show passwords
-              </label>
-            </form>
-          </div>
-        </div>
-        <p></p>
+        <p>
+          Today, I learned how to create a show password application. This
+          utility is seen in every form on the web. I learnt how to use the
+          for...of loop to loop through the array object and mainpulate the
+          items individually.
+        </p>
+        <pre><code>
+                    //Get the elements
+                    let passwords = document.querySelectorAll('[type="password"]');
+                    let checkbox = document.getElementById('showPasswords');
+    
+                    /* 
+                    * add an event listener to the variable 
+                    * use a for...of loop to loop through the items
+                    * check for event on each items 
+                    */
+    
+                    checkbox.addEventListener('click', () => {
+                        for (let password of passwords) {
+                          if (checkbox.checked) {
+                            password.type = 'text';
+                          } else {
+                            password.type = 'password';
+                          }
+                        }
+                      });
+                </code></pre>
         <div>
-          <pre>
-            <code>
-                //Get the elements
-                let passwords = document.querySelectorAll('[type="password"]');
-                let checkbox = document.getElementById('showPasswords');
+          <form>
+            <div class="row">
+              <div class="col-sm-6">
+                <div class="form-group">
+                  <label for="currentPassword" class="sr-only"
+                    >Current Password</label
+                  >
+                  <input
+                    type="password"
+                    id="password"
+                    class="form-control input-lg"
+                    placeholder="Current Password"
+                  />
+                </div>
+              </div>
+              <div class="col-sm-6">
+                <div class="form-group">
+                  <label for="newPassword" class="sr-only">New Password</label>
+                  <input
+                    type="password"
+                    id="password"
+                    class="form-control input-lg"
+                    placeholder="New Password"
+                  />
+                </div>
+              </div>
+            </div>
 
-                /* 
-                * add an event listener to the variable 
-                * use a for...of loop to loop through the items
-                * check for event on each items 
-                */
-
-                checkbox.addEventListener('click', () => {
-                    for (let password of passwords) {
-                      if (checkbox.checked) {
-                        password.type = 'text';
-                      } else {
-                        password.type = 'password';
-                      }
-                    }
-                  });
-            </code>
-          </pre>
+            <input
+              type="checkbox"
+              id="showPasswords"
+              value=""
+              data-pw-toggle="#password"
+            />
+            <label for="singlePassword"> Show Password </label>
+          </form>
         </div>
       </div>
 
@@ -166,7 +175,7 @@
             </tr>
             <tr>
               <td>Date</td>
-              <td>February 8th, 2025</td>
+              <td>February 9th, 2025</td>
             </tr>
             <tr>
               <td>Codepen</td>
