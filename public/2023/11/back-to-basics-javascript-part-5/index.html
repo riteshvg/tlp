@@ -1,0 +1,695 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    
+    <script type="application/ld+json">
+
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Back to Basics : JavaScript : Part 5",
+  
+  "image": "https://ik.imagekit.io/hyegquogx/The_Learning_Project/Back%20to%20basics%20%20Part%205.png?",
+  
+  "datePublished": "2023-11-13T00:00:00Z",
+  "dateModified": "2023-11-13T00:00:00Z",
+  "author": {
+    "@type": "Person",
+    "name":  null ,
+    
+  },
+  "mainEntityOfPage": { 
+    "@type": "WebPage",
+    "@id": "https:\/\/thelearningproject.in\/2023\/11\/back-to-basics-javascript-part-5\/" 
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "The Learning Project",
+    
+  },
+  "description": "This is part 5 of the Back to Basics series covering my JavaScript learning journey. In this blog post, I will be covering and explaining the concept of Promises, do a live project on how to fetch data from an API using standard and async/await operators as well as cover different array modification methods such as array.shift(), array.pop(), array.slice() etc.\n",
+  "keywords": [, "adobe experience cloud, adobe launch, adobe analytics, adobe experience platform, multi solution architect, business analytics"]
+}
+
+</script>
+    <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="generator" content="Hugo 0.139.2 with theme Tranquilpeak 0.5.3-BETA">
+<meta name="author" content="">
+<meta name="keywords" content=", adobe experience cloud, adobe launch, adobe analytics, adobe experience platform, multi solution architect, business analytics">
+<meta name="description" content="This is part 5 of the Back to Basics series covering my JavaScript learning journey. In this blog post, I will be covering and explaining the concept of Promises, do a live project on how to fetch data from an API using standard and async/await operators as well as cover different array modification methods such as array.shift(), array.pop(), array.slice() etc.">
+
+
+<meta property="og:description" content="This is part 5 of the Back to Basics series covering my JavaScript learning journey. In this blog post, I will be covering and explaining the concept of Promises, do a live project on how to fetch data from an API using standard and async/await operators as well as cover different array modification methods such as array.shift(), array.pop(), array.slice() etc.">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Back to Basics : JavaScript : Part 5">
+<meta name="twitter:title" content="Back to Basics : JavaScript : Part 5">
+<meta property="og:url" content="https://thelearningproject.in/2023/11/back-to-basics-javascript-part-5/">
+<meta property="twitter:url" content="https://thelearningproject.in/2023/11/back-to-basics-javascript-part-5/">
+<meta property="og:site_name" content="The Learning Project">
+<meta property="og:description" content="This is part 5 of the Back to Basics series covering my JavaScript learning journey. In this blog post, I will be covering and explaining the concept of Promises, do a live project on how to fetch data from an API using standard and async/await operators as well as cover different array modification methods such as array.shift(), array.pop(), array.slice() etc.">
+<meta name="twitter:description" content="This is part 5 of the Back to Basics series covering my JavaScript learning journey. In this blog post, I will be covering and explaining the concept of Promises, do a live project on how to fetch data from an API using standard and async/await operators as well as cover different array modification methods such as array.shift(), array.pop(), array.slice() etc.">
+<meta property="og:locale" content="en-us">
+
+  
+    <meta property="article:published_time" content="2023-11-13T00:00:00">
+  
+  
+    <meta property="article:modified_time" content="2023-11-13T00:00:00">
+  
+  
+  
+  
+    
+      <meta property="article:tag" content="self learning">
+    
+      <meta property="article:tag" content="javascript">
+    
+      <meta property="article:tag" content="basics">
+    
+  
+
+
+<meta name="twitter:card" content="summary">
+
+
+
+
+
+
+
+
+
+
+
+  <meta property="og:image" content="https://ik.imagekit.io/hyegquogx/The_Learning_Project/Back%20to%20basics%20%20Part%205.png?">
+  <meta property="twitter:image" content="https://ik.imagekit.io/hyegquogx/The_Learning_Project/Back%20to%20basics%20%20Part%205.png?">
+
+
+    <title>Back to Basics : JavaScript : Part 5</title>
+
+    <link rel="icon" href="https://thelearningproject.in/favicon.png">
+    
+
+    
+
+    <link rel="canonical" href="https://thelearningproject.in/2023/11/back-to-basics-javascript-part-5/">
+
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css" integrity="sha512-H9jrZiiopUdsLpg94A333EfumgUBpO9MdbxStdeITo+KEIMaNfHNvwyjjDJb+ERPaRS6DpyRlKbvPUasNItRyw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    
+    
+    
+    <link rel="stylesheet" href="https://thelearningproject.in/css/style-h6ccsoet3mzkbb0wngshlfbaweimexgqcxj0h5hu4h82olsdzz6wmqdkajm.min.css" />
+    
+    
+
+    
+  </head>
+
+  <body>
+    <div id="blog">
+      <header id="header" data-behavior="3">
+  <i id="btn-open-sidebar" class="fa fa-lg fa-bars"></i>
+  <div class="header-title">
+    <a class="header-title-link" href="../../../" aria-label="Go to homepage">The Learning Project</a>
+  </div>
+  
+    
+      <a class="header-right-picture "
+         href="../../../about" aria-label="Open the link: /about">
+    
+    
+    
+      
+    
+    </a>
+  
+</header>
+
+      <nav id="sidebar" data-behavior="3">
+  <div class="sidebar-container">
+    
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="../../../" title="Home">
+    
+      <i class="sidebar-button-icon fas fa-lg fa-home" aria-hidden="true"></i>
+      
+      <span class="sidebar-button-desc">Home</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="../../../about" title="About">
+    
+      <i class="sidebar-button-icon fas fa-lg fa-code" aria-hidden="true"></i>
+      
+      <span class="sidebar-button-desc">About</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="../../../tools" title="Tools">
+    
+      <i class="sidebar-button-icon fas fa-lg fa-anchor" aria-hidden="true"></i>
+      
+      <span class="sidebar-button-desc">Tools</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="../../../todayilearned.html" title="Today I Learned">
+    
+      <i class="sidebar-button-icon fas fa-lg fa-book" aria-hidden="true"></i>
+      
+      <span class="sidebar-button-desc">Today I Learned</span>
+    </a>
+  </li>
+
+
+    </ul>
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://github.com/riteshvg" target="_blank" rel="noopener" title="GitHub">
+    
+      <i class="sidebar-button-icon fab fa-lg fa-github" aria-hidden="true"></i>
+      
+      <span class="sidebar-button-desc">GitHub</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://www.linkedin.com/in/riteshvgupta/" target="_blank" rel="noopener" title="LinkedIn">
+    
+      <i class="sidebar-button-icon fab fa-lg fa-linkedin" aria-hidden="true"></i>
+      
+      <span class="sidebar-button-desc">LinkedIn</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://twitter.com/riteshvg" target="_blank" rel="noopener" title="Twitter">
+    
+      <i class="sidebar-button-icon fab fa-lg fa-twitter" aria-hidden="true"></i>
+      
+      <span class="sidebar-button-desc">Twitter</span>
+    </a>
+  </li>
+
+
+    </ul>
+    <ul class="sidebar-buttons">
+      
+
+    </ul>
+  </div>
+</nav>
+
+      
+
+      <div id="main" data-behavior="3"
+        class="
+               hasCoverMetaIn
+               ">
+        <article class="post" id="top">
+          
+          
+            <div class="post-header main-content-wrap text-left">
+  
+    <h1 class="post-title">
+      Back to Basics : JavaScript : Part 5
+    </h1>
+  
+  
+  <div class="postShorten-meta post-meta">
+    
+      <time datetime="2023-11-13T00:00:00Z">
+        
+  November 13, 2023
+
+      </time>
+    
+    
+  </div>
+
+</div>
+          
+          <div class="post-content markdown">
+            <div class="main-content-wrap">
+              <p>This is part 5 of the Back to Basics series covering my JavaScript learning journey. In this blog post, I will be covering and explaining the concept of <code>Promises</code>, do a live project on how to fetch data from an API using <code>standard</code> and <code>async/await</code> operators as well as cover different <code>array</code> modification methods such as <code>array.shift()</code>, <code>array.pop()</code>, <code>array.slice()</code> etc.</p>
+<p>I adopted a different method to write this blog post. I first wrote the entire blog post as a JS file replete with code snippets and then just copied over the same to this MD file. Hopefully, this will help me cover lot of ground.</p>
+<h3 id="promise-what-is-a-promise">Promise. What is a Promise?</h3>
+<p>A promise is a proxy for a value not necessarily known when the promise is created. Certain situations like calling an API before taking further action on the result
+is a promise. We don&rsquo;t know if the promise will be completed, meaning the API will return a value or stay incompleted, meaning the API will not return a value.
+In the world of Promises, the &lsquo;completed&rsquo; state is called &lsquo;fulfilled&rsquo;  and the &lsquo;incompleted&rsquo; state is called &lsquo;rejected&rsquo;. But there is another state before
+that which is when the action is being executed. This is called &lsquo;pending&rsquo; state which means the action is neither completed nor rejected.</p>
+<p>When the action is either completed (fulfilled) or incompleted (rejected), the promise is said to be settled.</p>
+<p>Again according to MDN, once the promise is settled - means if the state is either returned or rejected, we have three methods .then(), .catch() and .finally()
+to associate further action. These methods too return promises, and therefore they can be chained or clubbed together.</p>
+<p>A promise object has the following internal properties</p>
+<p>state - A property can have pending, fufilled or rejected values
+pending - when the executor starts the function
+fufilled - when the promise is resolved
+rejected - when the promise is rejected</p>
+<p>result - a property can have the following values
+undefined -  When the state value is pending
+value - When the resolve(value) method is called
+error - When the reject(error) method is called</p>
+<p>A promise&rsquo;s state can be pending, fulfilled or rejected. A promise that is either resolved or rejected is called settled</p>
+<h5 id="lets-try-out">Let&rsquo;s try out!</h5>
+<p>Let&rsquo;s try to create a Promise. We create Promises in JavaScript by using the &rsquo;new Promise&rsquo; constructor object.</p>
+<pre tabindex="0"><code>let myFirstPromise = new Promise(function(reject, resolve){
+ // Code or function to run
+})
+</code></pre><p>In the above line of code, we create a Promise variable &lsquo;myFristPromise&rsquo; by using the &rsquo;new Promise&rsquo; constructor. When you create a Promise, you pass
+in a callback function as an argument. Inside the callback function, we define two parameters: resolve and reject. When the Promise is completed, we
+run the resolve() method.</p>
+<p>Let&rsquo;s try to expand on our myFirstPromise variable by adding in a function that will executed when the Promise is resolved.</p>
+<pre tabindex="0"><code>let myFirstPromise = new Promise(function(reject, resolve){
+ setTimeout(function(){
+     resolve(&#39;Hello! I am done!)
+ }, 5000);
+});
+</code></pre><p>In the above snippet, we create a Promise using the &rsquo;new Promise&rsquo; constructor and attach it to the variable called &lsquo;myFirstPromise&rsquo;. In the callback function,
+we have two parameters &lsquo;resolve&rsquo; and &lsquo;reject&rsquo;. In the next line, we use the &lsquo;setTimeout()&rsquo; function to mimic an async function. We set a timer for 5 seconds
+in which the function will run. Once the Promise is completed, we run the resolve() method, and then pass in arguments that can be passed into the Promise.then()
+method.</p>
+<p>Let&rsquo;s expand further</p>
+<pre tabindex="0"><code>let myFirstPromise = new Promise(function(reject, resolve){
+ setTimeout(function(){
+ resolve(&#39;Hello! I am done!&#39;)
+}, 5000);
+});
+
+myFirstPromise.then(function(msg){
+ console.log(msg);
+});
+</code></pre><p>But what happens if the Promise fails. We then use the reject() method to capture the error and pass it into the &lsquo;.catch()&rsquo; method. Let&rsquo;s modify our snippet to understand it further.</p>
+<pre tabindex="0"><code>let myFirstPromise = new Promise(function(resolve, reject){
+      reject(&#34;Unable to resolve!&#34;);
+
+     setTimeout(function(){
+          resolve(&#34;Hello! I am done!&#34;)
+ },5000);
+});
+
+myFirstPromise.then(function(msg){
+console.log(msg);
+}).catch(function(error){
+ console.warn(error);
+});
+</code></pre><p>It is very important to note that in both cases, whether the Promise is &lsquo;resolved&rsquo; or &lsquo;rejected&rsquo;, we see that the &lsquo;PromiseState&rsquo; is set to &lsquo;fulfilled&rsquo;
+which means the Promise is now settled.</p>
+<p>Let&rsquo;s try to encapsulate all the learning in a simple example. I try to console.log my fav movie based on the time elapsed. Copy the below code and use it in the Console tab to see the details.</p>
+<pre tabindex="0"><code>
+let myFavMovie = new Promise(function(resolve, reject){
+   setTimeout(function(){
+         resolve(&#39;My fav movie is The Prestige&#39;)
+  }, 5000);
+   
+  setTimeout(function(){
+         reject(&#39;No, my fav movie is The Dark Knight!&#39;)
+ },2000);  
+});
+
+ myFavMovie.then(function(favMovie){
+     console.log(favMovie);
+ }).catch(function(favMovies){
+     console.log(favMovies);
+ });
+</code></pre><p>Let&rsquo;s use the knowledge in a live project.</p>
+<p>We learn how to create a Promise and fetch results from an API. Accessing external API is best done using the Promise method. This
+is because we are not sure when will the API return back the results. We also need to consider the aspect of the API rejecting our request, plus network result. Combining all these requests is best done using the fetch() method. The fetch() method takes a url as a parameter. The URL is typically an API endpoint. There are various APIs available for testing. One such is the jsonplaceholder API.</p>
+<p>On accessing the endpoint, the API returns a response. We store the response as a parameter in an anonymous callback function. The response is returned as a readable stream. This response is not of any value.</p>
+<pre tabindex="0"><code>
+fetch(&#39;https://jsonplaceholder.typicode.com/posts&#39;).then(function (response) {
+	// The API call was successful!
+	console.log(response);
+}).catch(function (error) {
+	// There was an error
+	console.warn(error);
+});
+
+//Returns a readable stream!
+//Promise {pending}
+//Response {type: &#39;cors&#39;, url:&#39;https://jsonplaceholder.typicode.com/posts&#39;, 
+//redirected: false, status: 200, ok: true, ...}
+</code></pre><p>The above snippet returns a readable stream which is not of any use to use. To make the response readable, we attach a then() method that reads the response and stores it in a variable called data. The data object is returned either as a JSON response or as text.</p>
+<pre tabindex="0"><code>fetch(&#39;https://jsonplaceholder.typicode.com/posts&#39;)
+.then(function(response){
+    //The API call was successful
+    return response.json()
+    console.log(response);
+}).then(function(data){
+    //This is the JSON from our response
+    console.log(data);
+});
+
+//Returns a JSON response!
+//Promise {pending}
+//(100) [{}...{}]
+</code></pre><p>The above snippet returns back a JSON response which can be used to extract the attribute we need.</p>
+<h5 id="error-handling">Error Handling</h5>
+<p>One of the crucial aspects of using a promise method is to bake in error handling methods. When you try to hit an API Endpoint, there are chances that you might get an error response. Maybe the URL is incorrect or the endpoint is failing. Whatever the reason may be, you need to handle the errors. Fortunately, in the Fetch API there is a catch() method. The catch() method is responsible for catching any errors that the API returns.</p>
+<p>We again use an anonymous callback function and pass the error retrieved by the catch method into a variable.</p>
+<pre tabindex="0"><code>fetch(&#39;https://jsonplaceholder.typicode.com/post&#39;) //Removed &#39;posts&#39; as the endpoint
+.then(function(response){
+    //The API call was successful
+    return response.json()
+    console.log(response);
+}).then(function(data){
+    //This is the JSON from our response
+    console.log(data);
+}).catch(function(error){
+    console.warn(error);
+});
+
+//Promise {&lt;pending&gt;}
+// GET &#39;https://jsonplaceholder.typicode.com/post&#39; 404 (not found)
+// {}
+</code></pre><p>I have created a page that combines the above methods and fetches response from &lsquo;The Stoic API&rsquo;, as well as &lsquo;The BhagavadGita API&rsquo;. My next project will be to use the HAPI API to create a library of books. Head over to the <a href="https://www.thelearningproject.in/samples/promises.html">Playground</a> to check for more details.</p>
+<h3 id="array-methods">Array Methods</h3>
+<p>We will now see how to use different methods available in an Array to push a new item, check if an Array includes an item and get the first and last item in an Array.</p>
+<h5 id="arrayprototypepush">Array.prototype.push()</h5>
+<p>The array.push() method is used to add items to an existing array. We define an array with the number of items and then use the array.push() method to add new items to the end of the array</p>
+<pre tabindex="0"><code>let favMovies = [&#39;interstellar&#39;, &#39;the dark knight&#39;, &#39;the prestige&#39;];
+console.log(favMovies); //(3)[&#39;interstellar&#39;, the dark knight&#39;, &#39;the prestige&#39;]
+favMovies.push(&#39;oppenheimer&#39;,&#39;memento&#39;);
+console.log(favMovies); //(5) [&#39;interstellar&#39;, &#39;the dark knight&#39; , 
+&#39;the prestige&#39;, &#39;oppenheimer&#39;, &#39;memento&#39;] 
+</code></pre><h5 id="arrayprototypeslice">Array.prototype.slice()</h5>
+<p>The array.slice() method is used to a copy a segment/part of an array into a new array. This method creates a copy of the array into a new array</p>
+<pre tabindex="0"><code>let favMovies = [&#39;the dark knight&#39;, &#39;interstellar&#39;]
+let newFavMovies = favMovies.slice();
+console.log(newFavMovies); //(2)[&#39;the dark knight&#39;, &#39;interstellar&#39;];
+</code></pre><h5 id="arrayprototypeshift">Array.prototype.shift()</h5>
+<p>The array.shift() method is used to remove the first item from an array and returns it. The original array is modified</p>
+<pre tabindex="0"><code>let favMovies = [&#39;the dark knight&#39;, &#39;the prestige&#39;, &#39;interstellar&#39;];
+console.log(favMovies); //(3)[&#39;the dark knight&#39;, &#39;the prestige&#39;, &#39;interstellar&#39;];
+let shift = favMovies.shift();
+console.log(shift); // (1)[&#39;the dark knight&#39;];
+console.log(favMovies); // (2)[&#39;the prestige&#39;, &#39;interstellar&#39;];
+</code></pre><h5 id="arrayprototypepop">Array.prototype.pop()</h5>
+<p>The array.pop() method is used to remove the last item from an array and return the array. The original array is modified</p>
+<pre tabindex="0"><code>let favMovies = [&#39;the dark knight&#39;, &#39;the prestige&#39;, &#39;interstellar&#39;];
+console.log(favMovies); //(3)[&#39;the dark knight&#39;, &#39;the prestige&#39;, &#39;interstellar&#39;];
+let pop = favMovies.pop();
+console.log(pop); //(1)[&#39;interstellar&#39;]
+console.log(favMovies); //(2)[&#39;the dark knight&#39;, &#39;the prestige&#39;]
+</code></pre><h6 id="arrayprototypeincludes">Array.prototype.includes()</h6>
+<p>The array.includes() method checks if an array includes an aitem. It returns true if the array contains the item, else false if not</p>
+<pre tabindex="0"><code>let favMovies = [&#39;the dark knight&#39;, &#39;the prestige&#39;, &#39;interstellar&#39;];
+console.log(favMovies); //(3)[&#39;the dark knight&#39;, &#39;the prestige&#39;, &#39;interstellar&#39;];
+
+let myFavMovie = favMovies.includes(&#39;interstellar&#39;)
+console.log(myFavMovie); // true;
+
+let myNotSoFavMovie = favMovies.includes(&#39;the star wars&#39;);
+console.log(myNotSoFavMovie); //false;
+</code></pre><p>That is all for this blog post. Leave me a line on <a href="mailto:ritesh@thelearningproject.in">ritesh@thelearningproject.in</a> to share some JavaScript basics that you might be interested in sharing.</p>
+              
+
+
+            </div>
+          </div>
+          <div id="post-footer" class="post-footer main-content-wrap">
+            
+              
+                
+                
+                  <div class="post-footer-tags">
+                    <span class="text-color-light text-small">TAGGED IN</span><br/>
+                    
+  <a class="tag tag--primary tag--small" href="../../../tags/self-learning/">self learning</a>
+
+  <a class="tag tag--primary tag--small" href="../../../tags/javascript/">javascript</a>
+
+  <a class="tag tag--primary tag--small" href="../../../tags/basics/">basics</a>
+
+                  </div>
+                
+              
+            
+            
+<div class="post-actions-wrap">
+  <nav >
+    <ul class="post-actions post-action-nav">
+      
+        <li class="post-action">
+          
+            <a class="post-action-btn btn btn--default tooltip--top" href="../../../2024/02/back-to-basics-javascript-part-6/" data-tooltip="Back to Basics : JavaScript : Part 6" aria-label="NEXT: Back to Basics : JavaScript : Part 6">
+          
+              <i class="fa fa-angle-left"></i>
+              <span class="hide-xs hide-sm text-small icon-ml">NEXT</span>
+            </a>
+        </li>
+        <li class="post-action">
+          
+            <a class="post-action-btn btn btn--default tooltip--top" href="../../../2023/10/back-to-basics-javascript-part-4/" data-tooltip="Back to Basics : JavaScript : Part 4" aria-label="PREVIOUS: Back to Basics : JavaScript : Part 4">
+          
+              <span class="hide-xs hide-sm text-small icon-mr">PREVIOUS</span>
+              <i class="fa fa-angle-right"></i>
+            </a>
+        </li>
+      
+    </ul>
+  </nav>
+<ul class="post-actions post-action-share" >
+  
+    <li class="post-action hide-lg hide-md hide-sm">
+      <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions" aria-label="Share this post">
+        <i class="fa fa-share-alt" aria-hidden="true"></i>
+      </a>
+    </li>
+    
+      <li class="post-action hide-xs">
+        <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://thelearningproject.in/2023/11/back-to-basics-javascript-part-5/" title="Share on Twitter" aria-label="Share on Twitter">
+          <i class="fab fa-twitter" aria-hidden="true"></i>
+        </a>
+      </li>
+    
+      <li class="post-action hide-xs">
+        <a class="post-action-btn btn btn--default" target="new" href="https://www.linkedin.com/sharing/share-offsite/?url=https://thelearningproject.in/2023/11/back-to-basics-javascript-part-5/" title="Share on Linkedin" aria-label="Share on Linkedin">
+          <i class="fab fa-linkedin" aria-hidden="true"></i>
+        </a>
+      </li>
+    
+  
+  
+  <li class="post-action">
+    
+      <a class="post-action-btn btn btn--default" href="#top" aria-label="Back to top">
+      <i class="fa fa-arrow-up" aria-hidden="true"></i>
+    
+    </a>
+  </li>
+</ul>
+</div>
+
+
+            
+  
+
+
+          </div>
+        </article>
+        <footer id="footer" class="main-content-wrap">
+  <span class="copyrights">
+    &copy; 2025 The Learning Project. All Rights Reserved
+  </span>
+</footer>
+
+      </div>
+      <div id="bottom-bar" class="post-bottom-bar" data-behavior="3">
+        
+<div class="post-actions-wrap">
+  <nav >
+    <ul class="post-actions post-action-nav">
+      
+        <li class="post-action">
+          
+            <a class="post-action-btn btn btn--default tooltip--top" href="../../../2024/02/back-to-basics-javascript-part-6/" data-tooltip="Back to Basics : JavaScript : Part 6" aria-label="NEXT: Back to Basics : JavaScript : Part 6">
+          
+              <i class="fa fa-angle-left"></i>
+              <span class="hide-xs hide-sm text-small icon-ml">NEXT</span>
+            </a>
+        </li>
+        <li class="post-action">
+          
+            <a class="post-action-btn btn btn--default tooltip--top" href="../../../2023/10/back-to-basics-javascript-part-4/" data-tooltip="Back to Basics : JavaScript : Part 4" aria-label="PREVIOUS: Back to Basics : JavaScript : Part 4">
+          
+              <span class="hide-xs hide-sm text-small icon-mr">PREVIOUS</span>
+              <i class="fa fa-angle-right"></i>
+            </a>
+        </li>
+      
+    </ul>
+  </nav>
+<ul class="post-actions post-action-share" >
+  
+    <li class="post-action hide-lg hide-md hide-sm">
+      <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions" aria-label="Share this post">
+        <i class="fa fa-share-alt" aria-hidden="true"></i>
+      </a>
+    </li>
+    
+      <li class="post-action hide-xs">
+        <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://thelearningproject.in/2023/11/back-to-basics-javascript-part-5/" title="Share on Twitter" aria-label="Share on Twitter">
+          <i class="fab fa-twitter" aria-hidden="true"></i>
+        </a>
+      </li>
+    
+      <li class="post-action hide-xs">
+        <a class="post-action-btn btn btn--default" target="new" href="https://www.linkedin.com/sharing/share-offsite/?url=https://thelearningproject.in/2023/11/back-to-basics-javascript-part-5/" title="Share on Linkedin" aria-label="Share on Linkedin">
+          <i class="fab fa-linkedin" aria-hidden="true"></i>
+        </a>
+      </li>
+    
+  
+  
+  <li class="post-action">
+    
+      <a class="post-action-btn btn btn--default" href="#top" aria-label="Back to top">
+      <i class="fa fa-arrow-up" aria-hidden="true"></i>
+    
+    </a>
+  </li>
+</ul>
+</div>
+
+
+      </div>
+      
+<div id="share-options-bar" class="share-options-bar" data-behavior="3">
+  <i id="btn-close-shareoptions" class="fa fa-times"></i>
+  <ul class="share-options">
+    
+      <li class="share-option">
+        <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=https%3A%2F%2Fthelearningproject.in%2F2023%2F11%2Fback-to-basics-javascript-part-5%2F" aria-label="Share on Twitter">
+          <i class="fab fa-twitter" aria-hidden="true"></i><span>Share on Twitter</span>
+        </a>
+      </li>
+    
+      <li class="share-option">
+        <a class="share-option-btn" target="new" href="https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Fthelearningproject.in%2F2023%2F11%2Fback-to-basics-javascript-part-5%2F" aria-label="Share on Linkedin">
+          <i class="fab fa-linkedin" aria-hidden="true"></i><span>Share on Linkedin</span>
+        </a>
+      </li>
+    
+  </ul>
+</div>
+<div id="share-options-mask" class="share-options-mask"></div>
+
+
+    </div>
+    
+    <div id="about">
+  <div id="about-card">
+    <div id="about-btn-close">
+      <i class="fa fa-times"></i>
+    </div>
+    
+    <h4 id="about-card-name"></h4>
+    
+    
+    
+  </div>
+</div>
+
+    
+
+    
+  
+    
+      <div id="cover" style="background-image:url('https://thelearningproject.in/images/cover-v1.2.0.jpg');"></div>
+    
+  
+
+
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/highlight.min.js" integrity="sha512-z+/WWfyD5tccCukM4VvONpEtLmbAm5LDu7eKiyMQJ9m7OfPEDL7gENyDRL3Yfe8XAuGsS2fS4xSMnl6d30kqGQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js" integrity="sha512-uURl+ZXMBrF4AwGaWmEetzrd+J5/8NRkWAvJx5sbPSSuOb0bZLqf+tOzniObO00BjHa/dD7gub9oCGMLPQHtQA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+
+<script src="https://thelearningproject.in/js/script-yqzy9wdlzix4lbbwdnzvwx3egsne77earqmn73v9uno8aupuph8wfguccut.min.js"></script>
+
+
+  
+    <script async crossorigin="anonymous" defer integrity="sha512-gE8KAQyFIzV1C9+GZ8TKJHZS2s+n7EjNtC+IMRn1l5+WYJTHOODUM6JSjZhFhqXmc7bG8Av6XXpckA4tYhflnw==" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/languages/apache.min.js"></script>
+  
+
+  
+    <script async crossorigin="anonymous" defer integrity="sha512-EWROca+bote+7Oaaar1F6y74iZj1r1F9rm/ly7o+/FwJopbBaWtsFDmaKoZDd3QiGU2pGacBirHJNivmGLYrow==" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/languages/go.min.js"></script>
+  
+
+  
+    <script async crossorigin="anonymous" defer integrity="sha512-GDVzAn0wpx1yVtQsRWmFc6PhJiLBPdUic+h4GWgljBh904O3JU10fk9EKNpVyIoPqkFn54rgL2QBG4BmUTMpiQ==" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/languages/http.min.js"></script>
+  
+
+  
+    <script async crossorigin="anonymous" defer integrity="sha512-UgZlma8NzkrDb/NWgmLIcTrH7i/CSnLLDRFqCSNF5NGPpjKmzyM25qcoXGOup8+cDakKyaiTDd7N4dyH4YT+IA==" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/languages/less.min.js"></script>
+  
+
+  
+    <script async crossorigin="anonymous" defer integrity="sha512-lot9koe73sfXIrUvIPM/UEhuMciN56RPyBdOyZgfO53P2lkWyyXN7J+njcxIIBRV+nVDQeiWtiXg+bLAJZDTfg==" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/languages/nginx.min.js"></script>
+  
+
+  
+    <script async crossorigin="anonymous" defer integrity="sha512-Zd3e7XxHP00TD0Imr0PIfeM0fl0v95kMWuhyAS3Wn1UTSXTkz0OhtRgBAr4JlmADRgiXr4x7lpeUdqaGN8xIog==" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/languages/puppet.min.js"></script>
+  
+
+  
+    <script async crossorigin="anonymous" defer integrity="sha512-qtqDO052iXMSP+5d/aE/jMtL9vIIGvONgTJziC2K/ZIB1yEGa55WVxGE9/08rSQ62EoDifS9SWVGZ7ihSLhzMA==" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/languages/scss.min.js"></script>
+  
+
+  
+    <script async crossorigin="anonymous" defer integrity="sha512-1NmkjnEDnwwwcu28KoQF8vs3oaPFokQHbmbtwGhFfeDsQZtVFI8zW2aE9O8yMYdpdyKV/5blE4pSWw4Z/Sv97w==" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/languages/stylus.min.js"></script>
+  
+
+  
+    <script async crossorigin="anonymous" defer integrity="sha512-B2wSfruPjr8EJL6IIzQr1eAuDwrsfIfccNf/LCEdxELCgC/S/ZMt/Uvk80aD79m7IqOqW+Sw8nbkvha20yZpzg==" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/languages/swift.min.js"></script>
+  
+
+  
+    <script async crossorigin="anonymous" defer integrity="sha512-28oDiQZGKUVN6wQ7PSLPNipOcmkCALXKwOi7bnkyFf8QiMZQxG9EQoy/iiNx6Zxj2cG2SbVa4dXKigQhu7GiFw==" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/languages/yaml.min.js"></script>
+  
+
+  
+    <script async crossorigin="anonymous" defer src="https://www.thelearningproject.in/public/js/launch-39d64d92912c-development.min.js"></script>
+  
+
+
+<script>
+$(document).ready(function() {
+  hljs.configure({ classPrefix: '', useBR: false });
+  $('pre.code-highlight > code, pre > code').each(function(i, block) {
+    if (!$(this).hasClass('codeblock')) {
+      $(this).addClass('codeblock');
+    }
+    hljs.highlightBlock(block);
+  });
+});
+</script>
+
+
+
+
+    
+  </body>
+</html>
+

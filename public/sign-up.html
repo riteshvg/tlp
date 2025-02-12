@@ -1,0 +1,579 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="shortcut icon" href="assets/favicon/favicon.ico">
+
+    <title>Highland: Sign Up</title>
+
+    <!-- CSS Plugins -->
+    <link href="assets/plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet" >
+
+    <!-- CSS Global -->
+    <link href="assets/css/styles.css" rel="stylesheet">
+
+    <!-- Google Fonts -->
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600italic,600,700,700italic,800,800italic' rel='stylesheet' type='text/css'>
+
+    <!-- Data Layer -->
+  <script>
+    var adobeDataLayer = window.adobeDataLayer = window.adobeDataLayer|| [];
+    adobeDataLayer.push({
+      page: 'Sign Up',
+      description: 'Sign Up',
+      url: 'https://www.thelearningproject.in/samples/sign-up',
+      contentType: 'JavaScript Sign up Forms',
+      siteSection: 'Samples'
+    });
+   </script> 
+
+  <!-- Launch Library Code -->
+    <script src="https://assets.adobedtm.com/204118644db8/437cd1c7d72a/launch-39d64d92912c-development.min.js" async></script>
+
+  </head>
+
+  <body>
+
+    <!-- NAVIGATION
+    ================================================== -->
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-default">
+      <div class="container">
+
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar_main" aria-expanded="false">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+
+          <a class="navbar-brand" href="index.html">Highland</a>
+
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="navbar_main">
+
+          <ul class="nav navbar-nav navbar-left">
+            <li><a href="https://www.thelearningproject.in">Home</a></li>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">More Pages <span class="caret"></span></a>
+              <ul class="dropdown-menu">
+                <li><a href ="multiforms.html">Multi Forms</a></li>
+                <li><a href="charactercount.html">Character Count</a></li>
+                <li><a href="promises.html" >Promises</a></li>
+                <li><a href="arraymanipulation.html">Array & String Manipulation</a></li>
+                <li><a href="multipleapis.html">Accessing Multiple API endpoints</a></li>
+                <li><a href="sign-up.html" class = "active">Auto Save Form</a></li>
+                
+              </ul>
+            </li>
+          </ul>
+
+          <ul class="nav navbar-nav navbar-right">
+            <li>
+              <a href="sign-up.html"><i class="fa fa-user"></i> <span class="hidden-md">Sign Up</span></a>
+            </li>
+          </ul>
+          </ul>
+
+          <form class="navbar-form navbar-search navbar-right">
+            <div class="form-group">
+              <input type="text" class="form-control" placeholder="&#xF002; &nbsp; Search">
+            </div>
+            <button type="submit" class="btn btn-default">
+              <i class="fa fa-search"></i> Search
+            </button>
+          </form>
+
+        </div><!-- /.navbar-collapse -->
+      </div><!-- /.container -->
+    </nav>
+
+    <!-- Header -->
+    <div class="page-topbar">
+      <div class="container">
+        <div class="row">
+          <div class="col-sm-4">
+
+            <h3>Sign Up</h3>
+            
+          </div>
+          <div class="col-sm-8 hidden-xs">
+            
+            <ol class="breadcrumb">
+              <li><a href="#">Home</a></li>
+              <li class="active">Sign Up</li>
+            </ol>
+
+          </div>
+        </div> <!-- / .row -->
+      </div> <!-- / .container -->
+    </div>
+
+
+    <!-- CONTENT
+    ================================================== -->
+    <div class="container">
+      <div class="row">
+        <div>
+
+          <!-- Sign In form -->
+          <div class="profile__sign-in">
+
+            <h1 class="block-header alt">
+              <span>Form Data in Local Storage without FormData Object</span>
+            </h1>
+
+            <i>Open the console and go to local storage. WFD represents without form data object</i>
+            <p></p>
+
+            <form id = "withoutFormData">
+              <div class="form-group">
+                <label class="sr-only">Full name</label>
+                <input type="text" class="form-control input-lg" placeholder="Full name" id = "wfd_name">
+              </div>
+              <div class="form-group">
+                <label class="sr-only">Username</label>
+                <input type="text" class="form-control input-lg" placeholder="Username" id = "wfd_username">
+              </div>
+              <div class="form-group">
+                <label class="sr-only">E-mail</label>
+                <input type="email" class="form-control input-lg" placeholder="E-mail" id = "wfd_email">
+              </div>
+              <div class="row">
+                <div class="col-sm-6">
+                  <div class="form-group">
+                    <label class="sr-only">Password</label>
+                    <input type="password" id = "password" class="form-control input-lg" placeholder="Password" id = "wfd_password">
+                  </div>
+                </div>
+                <div class="col-sm-6">
+                  <div class="form-group">
+                    <label class="sr-only">Password</label>
+                    <input type="password" id = "password" class="form-control input-lg" placeholder="Re-enter Password" id = "wfd_reenter">
+                  </div>
+                </div>
+                <!-- <div class="col-sm-6">
+                  <div class="form-group">
+                    <label class="sr-only">Repeat password</label>
+                    <input type="password" id = "password1" class="form-control input-lg" placeholder="Repeat password">
+                  </div> 
+                </div> -->
+              </div>
+              <div class="checkbox">
+                <input type="checkbox" class = "toggle" id="wfd_profile-sign-in__remember" value="">
+                <label for="profile-sign-in__remember">
+                  Show Password
+                </label>
+              </div><br />
+              <button type="submit" class="btn btn-lg btn-primary">
+                Sign Up
+              </button>
+              <div id = "notification"></div>
+            </form>
+
+            <!-- Script to turn the form to auto-save -->
+
+              <script>
+                //Get the form id and save it to a variable
+                let withoutFormData = document.querySelector('#withoutFormData');
+
+                //assign a prefix to local storage
+                let prefix = 'autosave_';
+
+                //Defining the callback function
+                /**
+                 * Capturing field data and saving it in local storage
+                */
+
+                function inputHandler (event){
+
+                  //Assigned the event.target to  the field variable
+                  let field = event.target;
+
+                  //Only save the field if it has an ID
+                  if(!field.id) return;
+
+                  //Save field to local storage 
+                  localStorage.setItem(prefix + field.id, field.value)
+
+                }
+
+                /**
+                 * Load saved data from localStorage
+                */
+
+                function loadSaved() {
+
+                  //Get all the fields in the form
+                  let fields = withoutFormData.elements;
+
+                  //Loop through each one of the fields and load save data from storage
+                  for (let field of fields){
+                    let saved = localStorage.getItem(prefix + field.id);
+                    if(!saved) continue;
+                    field.value = saved;
+                  }
+                }
+
+                  //Load saved data from local storage
+                  loadSaved();
+
+                  /**
+                   * Clear saved data from localStorage
+                  */
+                  
+                  function clearStorage(){
+
+                    //Get rid of all the fields in a form 
+                    let fields = withoutFormData.elements;
+
+                    //Loop through the fields and remove it from storage
+                    for (let field of fields){
+                      localStorage.removeItem(prefix + field.id)
+                    }
+
+                  }
+
+                //Listen for DOM events for input and pass the value to a named function called 'inputHandler'
+                //as a callback function
+                withoutFormData.addEventListener('input', inputHandler);
+                withoutFormData.addEventListener('submit', clearStorage)
+
+                //Adding just in time status messages
+
+                let form = document.querySelector('#withoutFormData')
+                form.addEventListener('submit', function(event){
+                  
+                  //Stop the form from reloading the page
+                  event.preventDefault();
+
+                  //Display a notification
+                  let notification = document.querySelector('#notification');
+                  notification.textContent = 'Your query was submitted!'
+
+                  //Adding settimeout to remove the message
+                  setTimeout(function(event){
+                    notification.textContent = '';
+                  },4000)
+                })
+
+              </script>
+            
+
+            <hr>
+
+            <p>
+              Already registered? <a href="sign-in.html">Sign in to your account</a>.
+            </p>
+
+          </div> <!-- / .profile_sign-in -->
+          
+        </div>
+        <div>
+
+          <!-- Sign In form -->
+          <div class="profile__sign-in">
+
+            <h1 class="block-header alt">
+              <span>Form Data in Local Storage with FormData object</span>
+            </h1>
+            <i>Open the console and go to local storage. FD represents with form data object</i>
+
+            <p></p>
+
+            <form id = "withFormDataObject">
+              <div class="form-group">
+                <label class="sr-only">Full name</label>
+                <input type="text" class="form-control input-lg" placeholder="Full name" id = "fd_name" name = "firstname">
+              </div>
+              <div class="form-group">
+                <label class="sr-only">Username</label>
+                <input type="text" class="form-control input-lg" placeholder="Username" id = "fd_username" name = "username">
+              </div>
+              <div class="form-group">
+                <label class="sr-only">E-mail</label>
+                <input type="email" class="form-control input-lg" placeholder="E-mail" id = "fd_email" name = "email">
+              </div>
+              <div class="row">
+                <div class="col-sm-6">
+                  <div class="form-group">
+                    <label class="sr-only">Password</label>
+                    <input type="password" id = "password" class="form-control input-lg" placeholder="Password" id = "fd_password" value = "password" name = "password">
+                  </div>
+                </div>
+                </div>
+                <!-- <div class="col-sm-6">
+                  <div class="form-group">
+                    <label class="sr-only">Repeat password</label>
+                    <input type="password" id = "password1" class="form-control input-lg" placeholder="Repeat password">
+                  </div> 
+                </div> -->
+              </div>
+              <button type="submit" class="btn btn-lg btn-primary">
+                Sign Up
+              </button>
+
+              <div id = "statusNotification"></div>
+            </form>
+
+            <hr>
+
+            <!-- Script to turn the form to auto-save -->
+            <script>
+              //Get the form id and save it to a variable
+              let withFormDataObject = document.querySelector('#withFormDataObject');
+
+              // localstorage prefix to differentiate from the above form
+              let withFormDataPrefix = 'formObject';
+
+              /**
+                 * Serialize all form data into an object
+                 * (c) Chris Ferdinandi, MIT License, https://gomakethings.com
+                 * @param  {FormData} data The FormData object to serialize
+                 * @return {String}        The serialized form data
+                 */
+                function serialize (data) {
+                  let obj = {};
+                  for (let [key, value] of data) {
+                    if (obj[key] !== undefined) {
+                      if (!Array.isArray(obj[key])) {
+                        obj[key] = [obj[key]];
+                      }
+                      obj[key].push(value);
+                    } else {
+                      obj[key] = value;
+                    }
+                  }
+                  return obj;
+                };
+
+                /**
+                 * Handle input events
+                */
+
+                function withFormDataObjectinputHandler(event) {
+
+                  //Serialize the form fields
+                  let data = serialize(new FormData(withFormDataObject));
+
+                  // Stringify the object and save it to localStorage
+                  localStorage.setItem(withFormDataPrefix, JSON.stringify(data))
+                };
+
+                /***
+                 * Clear all of the saved fields from the local storage
+                */
+
+                function clearFormObjectLocalStorage(){
+                  localStorage.removeItem(withFormDataPrefix);
+                }
+
+                /**
+                 * Load saved data from local storage
+                */
+
+                function loadSaveFormDataFromLocalStorage(){
+                  
+                  //Get saved data from the formObject local storage
+                  //If there's nothing saved, bail
+
+                  let saved = JSON.parse(localStorage.getItem('formObject'));
+                  if(!saved) return;
+
+                  // Get all of the fields in the form
+                  let fields = withFormDataObject.elements;
+
+                  //Loop through each one and load saved data if it exists
+                  for (let field of fields){
+                    field.value = saved[field.name]
+                  }
+                }
+
+                //Load saved data from the localStorage
+                loadSaveFormDataFromLocalStorage();
+
+                //Listen for DOM events for input and pass the value to a named function called 'inputHandler'
+                //as a callback function
+                withFormDataObject.addEventListener('input', withFormDataObjectinputHandler);
+                withFormDataObject.addEventListener('submit', clearFormObjectLocalStorage);
+
+                //Adding just in time status messages
+
+                let newForm = document.querySelector('#withFormDataObject')
+                newForm.addEventListener('submit', function(event){
+                  
+                  //Stop the form from reloading the page
+                  event.preventDefault();
+
+                  //Display a notification
+                  let statusNotification = document.querySelector('#statusNotification');
+                  statusNotification.textContent = 'Your query was submitted!'
+
+                  //Adding settimeout to remove the message
+                  setTimeout(function(event){
+                    statusNotification.textContent = '';
+                  },4000)
+                })
+
+            </script>
+
+            <p>
+              Already registered? <a href="sign-in.html">Sign in to your account</a>.
+            </p>
+
+          </div> <!-- / .profile_sign-in -->
+          
+        </div>
+      </div> <!-- / .row -->
+    </div> <!-- / .container -->
+
+
+    <!-- FOOTER 
+    ================================================== -->
+    <footer>
+      <div class="container">
+        <div class="row">
+          <div class="col-xs-12 col-sm-4">
+            
+            <div class="footer__col">
+              <h3 class="footer__header">Our Company</h3>
+              <p>
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Commodi, corrupti debitis!
+              </p>
+              <p>
+                US & CAN: 1-234-56789 <br />
+                Worldwide: 1-234-56789
+              </p>
+              <ul class="footer__social">
+                <li>
+                  <a href="#"><i class="fa fa-facebook"></i></a>
+                </li>
+                <li>
+                  <a href="#"><i class="fa fa-twitter"></i></a>
+                </li>
+                <li>
+                  <a href="#"><i class="fa fa-google-plus"></i></a>
+                </li>
+              </ul>
+            </div>
+
+          </div>          
+          <div class="col-xs-6 col-sm-2">
+            
+            <div class="footer__col">
+              <h3 class="footer__header">
+                Learn More
+              </h3>
+              <ul class="footer__content">
+                <li><a href="#">How it works?</a></li>
+                <li><a href="#">Meeting Tools</a></li>
+                <li><a href="#">Pricing</a></li>
+                <li><a href="#">Sitemap</a></li>
+              </ul>
+            </div>
+
+          </div>
+          <div class="col-xs-6 col-sm-2">
+            
+            <div class="footer__col">
+              <h3 class="footer__header">
+                About Us
+              </h3>
+              <ul class="footer__content">
+                <li><a href="#">About Us</a></li>
+                <li><a href="#">Careers</a></li>
+                <li><a href="#">Terms of Service</a></li>
+                <li><a href="#">Privacy Policy</a></li>
+              </ul>
+            </div>
+
+          </div>
+          <div class="col-xs-12 col-sm-4">
+            
+            <div class="footer__col">
+              <h3 class="footer__header">Subscribe</h3>
+              <p>
+                Enter your e-mail below to subscribe to our free newsletter.
+              </p>
+              <p>
+                No spam. We promise.
+              </p>
+              <form class="form-inline footer__form">
+                <div class="form-group">
+                  <label class="sr-only">Enter e-mail</label>
+                  <input type="email" class="form-control" placeholder="Enter your e-mail">
+                </div>
+                <button type="submit" class="btn btn-default">
+                  OK
+                </button>
+              </form>
+            </div>
+
+          </div>
+
+        </div> <!-- / .row -->
+
+        <hr class="footer__hr" />
+
+        <div class="row">
+          <div class="col-sm-6">
+            
+            <p>
+              Company 2016. All rights reserved.
+            </p>
+
+          </div>
+        </div> <!-- / .row -->
+
+      </div> <!-- / .container -->
+    </footer>
+
+    <!-- JavaScript Basics -->
+    <script>
+      //Get the field
+      let passwordFields = document.querySelectorAll('[type="password"]')
+      let toggleBtn = document.querySelector('[type = "checkbox"]');
+
+      //add an event listener click to the toggle button
+      toggleBtn.addEventListener('click', function(){
+
+      //use a for...of loop to loop through the password fields and pick one by one
+        for (let password of passwordFields){
+
+          //listen for checked on the toggle button
+          if(toggleBtn.checked){
+
+            //set the password type to text or password based on the above
+            password.type = "text"
+          } else {
+            password.type = "password"
+          }
+        }
+      });
+    </script>
+
+    <!-- JavaScript
+    ================================================== -->
+    
+    <!-- JS Global -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+    
+    <!-- JS Plugins -->
+    <script src="assets/plugins/scrolltopcontrol/scrolltopcontrol.js"></script>
+    
+    <!-- JS Custom -->
+    <script src="assets/js/custom.js"></script>
+
+  </body>
+</html>
