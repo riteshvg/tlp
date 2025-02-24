@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head class="html_boxed">
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <link rel="shortcut icon" href="assets/favicon/favicon.ico" />
+
+    <title>The Learning Project | Post a Job</title>
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="https://cdn.ckeditor.com/ckeditor5/40.2.0/classic/ckeditor.js"></script>
+
+    <!-- CSS Plugins -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+      integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+
+    <!-- Include stylesheet -->
+    <link
+      href="https://cdn.quilljs.com/1.3.6/quill.snow.css"
+      rel="stylesheet"
+    />
+    <!-- Include the Quill library -->
+    <script src="https://cdn.quilljs.com/1.3.6/quill.js"></script>
+
+    <!-- CSS Global -->
+    <link href="assets/css/styles.css" rel="stylesheet" />
+
+    <!-- Google Fonts -->
+    <link
+      href="https://fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600italic,600,700,700italic,800,800italic"
+      rel="stylesheet"
+      type="text/css"
+    />
+  </head>
+
+  <body>
+    <!-- NAVIGATION -->
+    <nav class="navbar navbar-default">
+      <div class="container">
+        <div class="navbar-header">
+          <button
+            type="button"
+            class="navbar-toggle collapsed"
+            data-toggle="collapse"
+            data-target="#navbar_main"
+            aria-expanded="false"
+          >
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="index.html"
+            >The Learning Project | Job Board</a
+          >
+        </div>
+
+        <div class="collapse navbar-collapse" id="navbar_main">
+          <!-- Your navigation menu -->
+        </div>
+      </div>
+    </nav>
+
+    <!-- CONTENT -->
+
+    <!-- Disclaimer in full width -->
+    <div class="container mt-4">
+      <div class="alert alert-info" role="alert">
+        <h4 class="alert-heading">Disclaimer</h4>
+        <p class="mb-0">
+          The Learning Project is just providing a service to share jobs in the
+          field of Analytics and bears no responsibility for the content of job
+          postings or the hiring process. We act solely as an information
+          sharing platform. If you are sharing any job posting from your own
+          organization, please ensure that you have the permission to do so and
+          that the job posting is not misleading or false.
+        </p>
+      </div>
+    </div>
+
+    <!-- Form and Info Box -->
+    <div class="container mt-4">
+      <div class="row">
+        <!-- Form Column -->
+        <div class="col-lg-8">
+          <div class="card">
+            <div class="card-header">
+              <h4>Post a New Job</h4>
+            </div>
+            <div class="card-body">
+              <form id="jobForm" class="needs-validation" novalidate>
+                <div class="mb-3">
+                  <label for="title" class="form-label">Job Title*</label>
+                  <input type="text" class="form-control" id="title" required />
+                </div>
+
+                <div class="mb-3">
+                  <label for="company" class="form-label">Company Name*</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="company"
+                    required
+                  />
+                </div>
+
+                <div class="mb-3">
+                  <label for="companyDetails" class="form-label"
+                    >Company Details</label
+                  >
+                  <textarea
+                    class="html-editor"
+                    id="companyDetails"
+                    rows="6"
+                  ></textarea>
+                </div>
+
+                <div class="mb-3">
+                  <label for="location" class="form-label">Location*</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="location"
+                    required
+                  />
+                </div>
+
+                <div class="mb-3">
+                  <label for="jobType" class="form-label"
+                    >Select Solutions*</label
+                  >
+                  <select class="form-control" id="jobType" multiple required>
+                    <option value="Adobe Analytics">Adobe Analytics</option>
+                    <option value="Adobe Tags">Adobe Tags</option>
+                    <option value="Adobe Audience Manager">
+                      Adobe Audience Manager
+                    </option>
+                    <option value="Adobe Target">Adobe Target</option>
+                    <option value="Adobe Experience Manager">
+                      Adobe Experience Manager
+                    </option>
+                    <option value="Adobe Experience Platform">
+                      Adobe Experience Platform
+                    </option>
+                    <option value="Customer Journey Analytics">
+                      Customer Journey Analytics
+                    </option>
+                    <option value="Customer Journey Management">
+                      Customer Journey Management
+                    </option>
+                    <option value="RTCDP">RTCDP</option>
+                    <option value="Google Analytics">Google Analytics</option>
+                    <option value="Google Tag Manager">
+                      Google Tag Manager
+                    </option>
+                    <option value="Tealium">Tealium</option>
+                    <option value="Freelance / Corporate Training">
+                      Freelance / Corporate Training
+                    </option>
+                    <option value="Other">Other</option>
+                  </select>
+                  <small class="form-text text-muted"
+                    >Hold Ctrl (Windows) or Command (Mac) to select multiple
+                    solutions</small
+                  >
+                </div>
+
+                <div class="mb-3">
+                  <label for="experienceLevel" class="form-label"
+                    >Experience Level*</label
+                  >
+                  <select class="form-control" id="experienceLevel" required>
+                    <option value="">Select Experience Level</option>
+                    <option value="Entry Level">Entry Level</option>
+                    <option value="Mid Level">Mid Level</option>
+                    <option value="Senior Level">Senior Level</option>
+                    <option value="Executive Level">Executive Level</option>
+                  </select>
+                </div>
+
+                <div class="mb-3">
+                  <label for="source" class="form-label">Job Source</label>
+                  <select class="form-control" id="source">
+                    <option value="Direct">Direct</option>
+                    <option value="LinkedIn">LinkedIn</option>
+                    <option value="Indeed">Indeed</option>
+                    <option value="Glassdoor">Glassdoor</option>
+                    <option value="Other">Other</option>
+                  </select>
+                </div>
+
+                <div class="mb-3">
+                  <label for="description" class="form-label"
+                    >Job Description*</label
+                  >
+                  <textarea
+                    class="html-editor"
+                    id="description"
+                    rows="6"
+                    required
+                  ></textarea>
+                </div>
+
+                <div class="mb-3">
+                  <label for="requirements" class="form-label"
+                    >Requirements*</label
+                  >
+                  <textarea
+                    class="html-editor"
+                    id="requirements"
+                    rows="6"
+                    required
+                  ></textarea>
+                </div>
+
+                <div class="mb-3">
+                  <label for="jobLink" class="form-label">Job Link*</label>
+                  <input
+                    type="url"
+                    class="form-control"
+                    id="jobLink"
+                    placeholder="https://..."
+                  />
+                  <small class="form-text text-muted"
+                    >Direct link to the job posting</small
+                  >
+                </div>
+
+                <div class="mb-3">
+                  <button type="submit" class="btn btn-primary">
+                    Post Job
+                  </button>
+                  <a href="index.html" class="btn btn-secondary">Cancel</a>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+
+        <!-- Info Box Column -->
+        <!-- Info Box Column -->
+<div class="col-lg-4">
+  <div class="info-box sticky-top" style="top: 20px">
+      <h5><i class="fas fa-info-circle"></i> Posting Guidelines</h5>
+      <ul>
+          <li>All fields marked with * are required</li>
+          <li>Select multiple solutions using Ctrl/Cmd + Click</li>
+          <li>Provide clear and concise job descriptions</li>
+          <li>Include specific requirements and qualifications</li>
+          <li>Double-check the job link before submitting</li>
+      </ul>
+
+      <div class="contact-info">
+          <h5><i class="fas fa-question-circle"></i> Need Help?</h5>
+          <p>If you have any questions or need assistance, contact us:</p>
+          <ul>
+              <li><i class="fas fa-envelope"></i> support@thelearningproject.in</li>
+          </ul>
+      </div>
+  </div>
+</div>
+
+    <!-- FOOTER -->
+    <!-- ... your existing footer ... -->
+
+    <!-- JavaScript -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+    <script src="assets/plugins/scrolltopcontrol/scrolltopcontrol.js"></script>
+    <script src="assets/js/custom.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/js/post-app.js"></script>
+  </body>
+</html>
