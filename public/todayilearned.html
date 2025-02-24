@@ -17,6 +17,8 @@
     />
 
     <!-- CSS Global -->
+    <link rel="stylesheet" href="assets/css/style.css" />
+    <link rel="stylesheet" href="assets/css/sidebar.css" />
     <link href="assets/css/styles_blue.css" rel="stylesheet" />
 
     <!-- Google Fonts -->
@@ -32,49 +34,73 @@
     ================================================== -->
 
     <!-- Navbar -->
-    <nav class="navbar navbar-default">
-      <div class="container">
-        <!-- Collect the nav links, forms, and other content for toggling -->
-        <div class="collapse navbar-collapse" id="navbar_main">
-          <ul class="nav navbar-nav navbar-left">
-            <li>
-              <a href="index.html"><i class="fas fa-home fa-lg"></i></a>
-            </li>
-            <li>
-              <a href="/about"><i class="fas fa-solid fa-code fa-lg"></i></a>
-            </li>
-            <li>
-              <a href="/tools"><i class="fas fa-solid fa-anchor fa-lg"></i></a>
-            </li>
-            <li>
-              <a href="#"><i class="fas fa-solid fa-book fa-lg active"></i></a>
-            </li>
-            <li>
-              <a href=" "><i class="fas fa-grip-lines-vertical fa-lg"></i></a>
-            </li>
-            <li>
-              <a href="https://github.com/riteshvg" target="_blank"
-                ><i class="fab fa-github fa-lg"></i
-              ></a>
-            </li>
-            <li>
-              <a href="https://x.com/riteshvg" target="_blank"
-                ><i class="fab fa-twitter fa-lg"></i
-              ></a>
-            </li>
-            <li>
-              <a
-                href="https://www.linkedin.com/in/riteshvgupta/"
-                target="_blank"
-                ><i class="fab fa-linkedin fa-lg"></i
-              ></a>
-            </li>
-          </ul>
-        </div>
-        <!-- /.navbar-collapse -->
-      </div>
-      <!-- /.container -->
-    </nav>
+<nav id="sidebar" data-behavior="3">
+  <div class="sidebar-container">
+    <ul class="sidebar-buttons">
+      <li class="sidebar-button">
+        <a class="sidebar-button-link" href="./" title="Home">
+          <i class="sidebar-button-icon fas fa-lg fa-home" aria-hidden="true"></i>
+        </a>
+      </li>
+
+      <li class="sidebar-button">
+        <a class="sidebar-button-link" href="./about" title="About">
+          <i class="sidebar-button-icon fas fa-lg fa-code" aria-hidden="true"></i>
+        </a>
+      </li>
+
+      <li class="sidebar-button">
+        <a class="sidebar-button-link" href="./tools" title="Tools">
+          <i class="sidebar-button-icon fas fa-lg fa-anchor" aria-hidden="true"></i>
+        </a>
+      </li>
+
+      <li class="sidebar-button">
+        <a class="sidebar-button-link active" href="./todayilearned.html" title="Today I Learned">
+          <i class="sidebar-button-icon fas fa-lg fa-book" aria-hidden="true"></i>
+        </a>
+      </li>
+
+      <li class="sidebar-button">
+        <a class="sidebar-button-link" href="./jobBoard.html" title="Job Board">
+          <i class="sidebar-button-icon fas fa-lg fa-briefcase" aria-hidden="true"></i>
+        </a>
+      </li>
+    </ul>
+
+    <ul class="sidebar-buttons">
+      <li class="sidebar-button">
+        <a class="sidebar-button-link" href="https://github.com/riteshvg" target="_blank" rel="noopener" title="GitHub">
+          <i class="sidebar-button-icon fab fa-lg fa-github" aria-hidden="true"></i>
+        </a>
+      </li>
+
+      <li class="sidebar-button">
+        <a class="sidebar-button-link" href="https://www.linkedin.com/in/riteshvgupta/" target="_blank" rel="noopener" title="LinkedIn">
+          <i class="sidebar-button-icon fab fa-lg fa-linkedin" aria-hidden="true"></i>
+        </a>
+      </li>
+
+      <li class="sidebar-button">
+        <a class="sidebar-button-link" href="https://twitter.com/riteshvg" target="_blank" rel="noopener" title="Twitter">
+          <i class="sidebar-button-icon fab fa-lg fa-twitter" aria-hidden="true"></i>
+        </a>
+      </li>
+    </ul>
+
+    <ul class="sidebar-buttons">
+    </ul>
+  </div>
+</nav>
+
+<nav class="navbar navbar-default">
+  <div class="container">
+    <div class="navbar-header" style="height: 6.5vh">
+      <a class="navbar-brand" href="index.html">The Learning Project |</a>
+      <span class="navbar-brand">Daily Learnings</span>
+    </div>
+  </div>
+</nav>
 
     <!-- RECENT WORKS
     ================================================== -->

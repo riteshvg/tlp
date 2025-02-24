@@ -1,0 +1,96 @@
+#sidebar {
+  font-family: 'Open Sans', sans-serif;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  background: radial-gradient(
+    circle at top,
+    rgba(148, 94, 179, 0.8) 0%,
+    rgba(95, 107, 232, 0.8) 80%
+  ); /* Added radial gradient */
+  overflow: auto;
+  z-index: 20;
+  transition: transform 0.25s ease-in-out;
+  -webkit-transition: -webkit-transform 0.25s ease-in-out;
+  -webkit-font-smoothing: antialiased;
+  font-smoothing: antialiased;
+  width: 75px;
+  left: 0;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
+
+/* ... rest of the CSS remains the same ... */
+
+.sidebar-container {
+  padding: 20px 0;
+  overflow: auto;
+}
+
+.sidebar-buttons {
+  padding: 0;
+  margin: 0 0 20px 0;
+}
+
+.sidebar-button {
+  display: block;
+  width: 100%;
+  height: 45px;
+  line-height: 45px;
+  text-align: center;
+}
+
+.sidebar-button-link {
+  color: #ebebeb;
+  display: block;
+  height: 100%;
+  text-align: center;
+  width: 100%;
+  text-rendering: geometricPrecision; /* Improved text rendering */
+}
+
+.sidebar-button-link:hover,
+.sidebar-button-link:active {
+  text-decoration: none;
+  color: #fff;
+  background-color: rgba(255, 255, 255, 0.1); /* Added subtle hover effect */
+}
+
+.sidebar-button-icon {
+  font-size: 20px; /* Adjusted size for sharpness */
+  display: inline-block;
+  text-align: center;
+  width: 30px;
+  height: 30px;
+  line-height: 30px;
+  padding-top: 0;
+  vertical-align: middle;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale; /* Better font rendering */
+}
+
+/* Hide description for behavior="3" */
+.sidebar-button-desc {
+  display: none;
+}
+
+/* Adjust main content */
+body {
+  margin-left: 75px;
+}
+
+.container {
+  margin-left: 95px;
+  width: calc(100% - 95px);
+}
+
+/* Fix scrollbar appearance */
+#sidebar::-webkit-scrollbar {
+  width: 0;
+  background: transparent;
+}
+
+.sidebar-button-link.active {
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
+  background-color: rgba(203, 203, 203, 0.1);
+  border-radius: 4px;
+}

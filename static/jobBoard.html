@@ -13,10 +13,6 @@
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
     <!-- CSS Plugins -->
-    <link
-      href="assets/plugins/font-awesome/css/font-awesome.min.css"
-      rel="stylesheet"
-    />
 
     <link
       rel="stylesheet"
@@ -24,7 +20,9 @@
     />
 
     <!-- CSS Global -->
-    <link href="assets/css/styles.css" rel="stylesheet" />
+    <link rel="stylesheet" href="assets/css/style.css" />
+    <link rel="stylesheet" href="assets/css/sidebar.css" />
+    <link href="assets/css/styles_blue.css" rel="stylesheet" />
 
     <!-- Google Fonts -->
     <link
@@ -37,25 +35,119 @@
   <body>
     <!-- NAVIGATION
     ================================================== -->
+    <nav id="sidebar" data-behavior="3">
+      <div class="sidebar-container">
+        <ul class="sidebar-buttons">
+          <li class="sidebar-button">
+            <a class="sidebar-button-link" href="./" title="Home">
+              <i
+                class="sidebar-button-icon fas fa-lg fa-home"
+                aria-hidden="true"
+              ></i>
+            </a>
+          </li>
+
+          <li class="sidebar-button">
+            <a class="sidebar-button-link" href="./about" title="About">
+              <i
+                class="sidebar-button-icon fas fa-lg fa-code"
+                aria-hidden="true"
+              ></i>
+            </a>
+          </li>
+
+          <li class="sidebar-button">
+            <a class="sidebar-button-link" href="./tools" title="Tools">
+              <i
+                class="sidebar-button-icon fas fa-lg fa-anchor"
+                aria-hidden="true"
+              ></i>
+            </a>
+          </li>
+
+          <li class="sidebar-button">
+            <a
+              class="sidebar-button-link active"
+              href="./todayilearned.html"
+              title="Today I Learned"
+            >
+              <i
+                class="sidebar-button-icon fas fa-lg fa-book"
+                aria-hidden="true"
+              ></i>
+            </a>
+          </li>
+
+          <li class="sidebar-button">
+            <a
+              class="sidebar-button-link"
+              href="./jobBoard.html"
+              title="Job Board"
+            >
+              <i
+                class="sidebar-button-icon fas fa-lg fa-briefcase"
+                aria-hidden="true"
+              ></i>
+            </a>
+          </li>
+        </ul>
+
+        <ul class="sidebar-buttons">
+          <li class="sidebar-button">
+            <a
+              class="sidebar-button-link"
+              href="https://github.com/riteshvg"
+              target="_blank"
+              rel="noopener"
+              title="GitHub"
+            >
+              <i
+                class="sidebar-button-icon fab fa-lg fa-github"
+                aria-hidden="true"
+              ></i>
+            </a>
+          </li>
+
+          <li class="sidebar-button">
+            <a
+              class="sidebar-button-link"
+              href="https://www.linkedin.com/in/riteshvgupta/"
+              target="_blank"
+              rel="noopener"
+              title="LinkedIn"
+            >
+              <i
+                class="sidebar-button-icon fab fa-lg fa-linkedin"
+                aria-hidden="true"
+              ></i>
+            </a>
+          </li>
+
+          <li class="sidebar-button">
+            <a
+              class="sidebar-button-link"
+              href="https://twitter.com/riteshvg"
+              target="_blank"
+              rel="noopener"
+              title="Twitter"
+            >
+              <i
+                class="sidebar-button-icon fab fa-lg fa-twitter"
+                aria-hidden="true"
+              ></i>
+            </a>
+          </li>
+        </ul>
+
+        <ul class="sidebar-buttons"></ul>
+      </div>
+    </nav>
+
     <nav class="navbar navbar-default">
       <div class="container">
-        <!-- Brand and toggle get grouped for better mobile display -->
-        <div class="navbar-header">
-          <button
-            type="button"
-            class="navbar-toggle collapsed"
-            data-toggle="collapse"
-            data-target="#navbar_main"
-            aria-expanded="false"
-          >
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-          <a class="navbar-brand" href="index.html"
-            >The Learning Project | Job Board</a
-          >
+        <div class="navbar-header" style="height: 6.5vh">
+          <a class="navbar-brand" href="index.html">The Learning Project |</a>
+          <span class="navbar-brand" style="height: 6.5vh">Job Board</span>
         </div>
 
         <!-- Collect the nav links, forms, and other content for toggling -->
@@ -71,7 +163,7 @@
         </div>
       </div>
     </nav>
-
+    <!-- Navbar ends -->
     <!-- Disclaimer -->
     <div class="container mt-3">
       <div class="alert alert-info" role="alert">

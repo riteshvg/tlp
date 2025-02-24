@@ -34,11 +34,112 @@ async function loadJobDetails() {
 //Display job details in the page
 function displayJobDetails(job) {
   const jobDetails = document.getElementById('jobDetails');
-
   const postedDate = formatTimeAgo(job.posted_at);
   const jobTypes = job.jobType ? job.jobType.split(', ') : [];
 
   jobDetails.innerHTML = `
+  
+
+  
+    <nav class="clearfix">
+      <ul class="profile__nav">
+        <li>
+         ${
+           job.job_link
+             ? `
+          <a href="${job.job_link}">
+            <i class="fa fa-external-link-alt"></i> Apply Now
+          </a>
+          `
+             : ''
+         }
+        </li>
+      </ul>
+    </nav>
+
+    <article class="post">
+      <div class="post-header main-content-wrap">
+        <h1 class="post-title">
+          ${job.title} at ${job.company}
+        </h1>
+        <div class="post-meta">
+          <span>
+            <i class="fas fa-calendar-alt"></i> ${postedDate}
+          </span>
+          <span>
+            <i class="fas fa-map-marker-alt"></i> ${job.location}
+          </span>
+          ${jobTypes
+            .map(
+              (type) => `
+            <span class="post-tag">
+              <i class="fas fa-tags"></i> ${type}
+            </span>
+          `
+            )
+            .join('')}
+        </div>
+      </div>
+
+      <div class="post-content markdown main-content-wrap">
+        <div class="post-section">
+          <h2 class = "block-header alt">
+          <span><i class="fas fa-info-circle"></i> Job Description</h2></span>
+          <div class="text-muted">
+            ${job.description}
+          </div>
+        </div>
+
+        <div class="post-section">
+          <h2 class = "block-header alt">
+          <span><i class="fas fa-list-ul"></i> Requirements</h2></span>
+          <div class="text-muted">
+            ${job.requirements}
+          </div>
+        </div>
+
+        <div class="post-section">
+          <h2 class = "block-header alt">
+          <span><i class="fas fa-building"></i> About ${job.company}</h2></span>
+          <div class="text-muted">
+            ${
+              job.companydetails ||
+              `${job.company} is currently looking for a ${job.title} to join their team.`
+            }
+          </div>
+        </div>
+
+         <span class="post-source">
+            <i class="fas fa-globe"></i> Source: ${job.source || 'Direct'}
+          </span>
+
+          <p></p>
+
+        <div class="post-actions" >
+          ${
+            job.job_link
+              ? `
+            <a href="${job.job_link}" 
+               target="_blank" 
+               rel="noopener noreferrer" 
+               class="btn btn-primary">
+              <i class="fas fa-external-link-alt"></i> Apply Now
+            </a>
+          `
+              : ''
+          }
+          <a href="jobBoard.html" class="btn btn-primary ">
+            <i class="fas fa-arrow-left"></i> Back to Jobs
+          </a>
+        </div>
+      </div>
+    </article>
+    <div class="post-footer">
+   
+      </div>
+  `;
+
+  /*jobDetails.innerHTML = `
         <div class="card-header">
           <div class="d-flex justify-content-between align-items-start">
             <h1 class="h3">${job.title} | ${job.company} | ${job.location}</h1>
@@ -122,7 +223,7 @@ function displayJobDetails(job) {
             </div>
           </div>
         </div>
-      `;
+      `;*/
 }
 
 //The formatTimeAgo function (formatTimeAgo(dateString))

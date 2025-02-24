@@ -9237,3 +9237,7 @@ select[multiple] option:checked {
 .ck.ck-editor__main {
   border-radius: 0 0 4px 4px !important;
 }
+.post-actions {
+  display: flex;
+  justify-content: space-between;
+}
