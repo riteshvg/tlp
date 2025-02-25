@@ -194,75 +194,68 @@
       <div class="row">
         <div class="col-md-12">
           <!-- Filters -->
-          <div class="card mb-4">
-            <div class="card-header">
-              <h5>Filter Jobs</h5>
-            </div>
-            <div class="card-body">
-              <div class="row">
-                <div class="col-md-3">
-                  <div class="mb-3">
-                    <label for="filterJobType" class="form-label"
-                      >Job Type</label
-                    >
-                    <select class="form-control" id="filterJobType">
-                      <option value="">Filter by Solution</option>
-                      <option value="Adobe Analytics">Adobe Analytics</option>
-                      <option value="Adobe Audience Manager">
-                        Adobe Audience Manager
-                      </option>
-                      <option value="Adobe Target">Adobe Target</option>
-                      <option value="Adobe Experience Manager">
-                        Adobe Experience Manager
-                      </option>
-                      <option value="Adobe Experience Platform">
-                        Adobe Experience Platform
-                      </option>
-                      <option value="Google Analytics">Google Analytics</option>
-                      <option value="Google Tag Manager">
-                        Google Tag Manager
-                      </option>
-                      <option value="Customer Journey Analytics">
-                        Customer Journey Analytics
-                      </option>
-                    </select>
-                  </div>
+          <div class="filter-section mb-4">
+            <div class="row">
+              <div class="col-md-4">
+                <div class="form-group">
+                  <label for="searchKeyword">Search</label>
+                  <input
+                    type="text"
+                    id="searchKeyword"
+                    class="form-control"
+                    placeholder="Search jobs..."
+                  />
                 </div>
-                <div class="col-md-3">
-                  <div class="mb-3">
-                    <label for="filterExperience" class="form-label"
-                      >Experience Level</label
-                    >
-                    <select class="form-control" id="filterExperience">
-                      <option value="">All Experience Levels</option>
-                      <option value="Entry Level">Entry Level</option>
-                      <option value="Mid Level">Mid Level</option>
-                      <option value="Senior Level">Senior Level</option>
-                      <option value="Executive Level">Executive Level</option>
-                    </select>
-                  </div>
+              </div>
+
+              <div class="col-md-4">
+                <div class="form-group">
+                  <label for="filterSolutions">Solutions</label>
+                  <select id="filterSolutions" class="form-control">
+                    <option value="">All Solutions</option>
+                    <option value="Adobe Analytics">Adobe Analytics</option>
+                    <option value="Adobe Tags">Adobe Tags</option>
+                    <option value="Adobe Audience Manager">
+                      Adobe Audience Manager
+                    </option>
+                    <option value="Adobe Target">Adobe Target</option>
+                    <option value="Adobe Experience Manager">
+                      Adobe Experience Manager
+                    </option>
+                    <option value="Adobe Experience Platform">
+                      Adobe Experience Platform
+                    </option>
+                    <option value="Customer Journey Analytics">
+                      Customer Journey Analytics
+                    </option>
+                    <option value="Customer Journey Management">
+                      Customer Journey Management
+                    </option>
+                    <option value="RTCDP">RTCDP</option>
+                    <option value="Google Analytics">Google Analytics</option>
+                    <option value="Google Tag Manager">
+                      Google Tag Manager
+                    </option>
+                    <option value="Tealium">Tealium</option>
+                    <option value="Freelance / Corporate Training">
+                      Freelance / Corporate Training
+                    </option>
+                  </select>
                 </div>
-                <div class="col-md-4">
-                  <div class="mb-3">
-                    <label for="searchKeyword" class="form-label">Search</label>
-                    <input
-                      type="text"
-                      class="form-control"
-                      id="searchKeyword"
-                      placeholder="Search by company name..."
-                    />
-                  </div>
-                </div>
-                <div class="col-md-2">
-                  <div class="mb-3">
-                    <label class="form-label">&nbsp;</label>
-                    <button
-                      class="btn btn-secondary w-100"
-                      onclick="resetFilters()"
-                    >
-                      Reset
-                    </button>
-                  </div>
+              </div>
+
+              <div class="col-md-4">
+                <div class="form-group">
+                  <label for="filterJobType">Job Type</label>
+                  <select id="filterJobType" class="form-control">
+                    <option value="">All Types</option>
+                    <option value="Full-time">Full-time</option>
+                    <option value="Part-time">Part-time</option>
+                    <option value="Contract">Contract</option>
+                    <option value="Freelance">Freelance</option>
+                    <option value="Internship">Internship</option>
+                    <option value="Remote">Remote</option>
+                  </select>
                 </div>
               </div>
             </div>

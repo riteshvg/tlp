@@ -103,27 +103,6 @@
                 </div>
 
                 <div class="mb-3">
-                  <label for="company" class="form-label">Company Name*</label>
-                  <input
-                    type="text"
-                    class="form-control"
-                    id="company"
-                    required
-                  />
-                </div>
-
-                <div class="mb-3">
-                  <label for="companyDetails" class="form-label"
-                    >Company Details</label
-                  >
-                  <textarea
-                    class="html-editor"
-                    id="companyDetails"
-                    rows="6"
-                  ></textarea>
-                </div>
-
-                <div class="mb-3">
                   <label for="location" class="form-label">Location*</label>
                   <input
                     type="text"
@@ -134,10 +113,10 @@
                 </div>
 
                 <div class="mb-3">
-                  <label for="jobType" class="form-label"
+                  <label for="solutions" class="form-label"
                     >Select Solutions*</label
                   >
-                  <select class="form-control" id="jobType" multiple required>
+                  <select class="form-control" id="solutions" name = "solutions" multiple required>
                     <option value="Adobe Analytics">Adobe Analytics</option>
                     <option value="Adobe Tags">Adobe Tags</option>
                     <option value="Adobe Audience Manager">
@@ -174,26 +153,15 @@
                 </div>
 
                 <div class="mb-3">
-                  <label for="experienceLevel" class="form-label"
-                    >Experience Level*</label
-                  >
-                  <select class="form-control" id="experienceLevel" required>
-                    <option value="">Select Experience Level</option>
-                    <option value="Entry Level">Entry Level</option>
-                    <option value="Mid Level">Mid Level</option>
-                    <option value="Senior Level">Senior Level</option>
-                    <option value="Executive Level">Executive Level</option>
-                  </select>
-                </div>
-
-                <div class="mb-3">
-                  <label for="source" class="form-label">Job Source</label>
-                  <select class="form-control" id="source">
-                    <option value="Direct">Direct</option>
-                    <option value="LinkedIn">LinkedIn</option>
-                    <option value="Indeed">Indeed</option>
-                    <option value="Glassdoor">Glassdoor</option>
-                    <option value="Other">Other</option>
+                  <label for="jobType" class="form-label">Job Type*</label>
+                  <select class="form-control" id="jobType" required>
+                    <option value="">Select Job Type</option>
+                    <option value="Full-time">Full-time</option>
+                    <option value="Part-time">Part-time</option>
+                    <option value="Contract">Contract</option>
+                    <option value="Freelance">Freelance</option>
+                    <option value="Internship">Internship</option>
+                    <option value="Remote">Remote</option>
                   </select>
                 </div>
 
@@ -219,6 +187,38 @@
                     rows="6"
                     required
                   ></textarea>
+                </div>
+
+                <div class="mb-3">
+                  <label for="company" class="form-label">Company Name*</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="company"
+                    required
+                  />
+                </div>
+
+                <div class="mb-3">
+                  <label for="companyDetails" class="form-label"
+                    >Company Details</label
+                  >
+                  <textarea
+                    class="html-editor"
+                    id="companyDetails"
+                    rows="6"
+                  ></textarea>
+                </div>
+
+                <div class="mb-3">
+                  <label for="source" class="form-label">Job Source</label>
+                  <select class="form-control" id="source">
+                    <option value="Direct">Direct</option>
+                    <option value="LinkedIn">LinkedIn</option>
+                    <option value="Indeed">Indeed</option>
+                    <option value="Glassdoor">Glassdoor</option>
+                    <option value="Other">Other</option>
+                  </select>
                 </div>
 
                 <div class="mb-3">

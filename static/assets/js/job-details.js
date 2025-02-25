@@ -47,7 +47,8 @@ function displayJobDetails(job) {
          ${
            job.job_link
              ? `
-          <a href="${job.job_link}">
+             
+          <a href="${job.job_link}" target="_blank" rel="noopener noreferrer">
             <i class="fa fa-external-link-alt"></i> Apply Now
           </a>
           `
@@ -63,9 +64,6 @@ function displayJobDetails(job) {
           ${job.title} at ${job.company}
         </h1>
         <div class="post-meta">
-          <span>
-            <i class="fas fa-calendar-alt"></i> ${postedDate}
-          </span>
           <span>
             <i class="fas fa-map-marker-alt"></i> ${job.location}
           </span>
