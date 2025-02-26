@@ -66,4 +66,4 @@ With the introduction to AEP Web SDK out of the way, let's move forward with the
 - Schema
 - XDM vs Data Object
 
-That is all for this blog post. Leave me a line on ritesh@thelearningproject.in to share some JavaScript basics that you might be interested in sharing.
+That is all for this blog post. Leave me a line on ritesh@thelearningproject.in to share some AEP Web SDK basics that you might be interested in sharing.
