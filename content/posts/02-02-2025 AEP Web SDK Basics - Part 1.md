@@ -1,5 +1,5 @@
 ---
-title: 'Back to Basics : AEP Web SDK : Part 1'
+title: 'Back to Basics : AEP Web SDK'
 date: 2025-02-02
 tags:
   main: self learning
