@@ -1,8 +1,7 @@
 <!DOCTYPE html>
 <html lang="en-us">
   <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
-    
-    <script type="application/ld+json">
+     <script type="application/ld+json">
 
 {
   "@context": "https://schema.org",
@@ -31,11 +30,10 @@
   "keywords": [, "adobe experience cloud, adobe launch, adobe analytics, adobe experience platform, multi solution architect, business analytics"]
 }
 
-</script>
-    <meta charset="UTF-8">
+</script> <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="generator" content="Hugo 0.139.2 with theme Tranquilpeak 0.5.3-BETA">
+<meta name="generator" content="Hugo 0.147.8 with theme Tranquilpeak 0.5.3-BETA">
 <meta name="author" content="">
 <meta name="keywords" content=", adobe experience cloud, adobe launch, adobe analytics, adobe experience platform, multi solution architect, business analytics">
 <meta name="description" content="A placeholder for a blog series on AEP Web SDK. Topics to be covered - History of data collection; Introduction of Alloy.js; Sending streaming data into AEP and Analytics; Difference between data and XDM object; Characters of Web SDK integration (&hellip;)">
@@ -89,25 +87,37 @@
 
     <title>Back to Basics : AEP Web SDK</title>
 
-    <link rel="icon" href="http://localhost:1313/favicon.png">
-    
+    <link
+      rel="icon"
+      href="http://localhost:1313/favicon.png"
+    />
+     
+
+    <link rel="canonical" href="http://localhost:1313/2025/02/back-to-basics-aep-web-sdk/" />
 
     
-
-    <link rel="canonical" href="http://localhost:1313/2025/02/back-to-basics-aep-web-sdk/">
-
-    
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css" integrity="sha512-H9jrZiiopUdsLpg94A333EfumgUBpO9MdbxStdeITo+KEIMaNfHNvwyjjDJb+ERPaRS6DpyRlKbvPUasNItRyw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+      integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css"
+      integrity="sha512-H9jrZiiopUdsLpg94A333EfumgUBpO9MdbxStdeITo+KEIMaNfHNvwyjjDJb+ERPaRS6DpyRlKbvPUasNItRyw=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
     
     
     
     <link rel="stylesheet" href="http://localhost:1313/css/style-h6ccsoet3mzkbb0wngshlfbaweimexgqcxj0h5hu4h82olsdzz6wmqdkajm.min.css" />
     
     
-
-    
   </head>
+</html>
 
   <body>
     <div id="blog">
@@ -284,27 +294,27 @@
 
 <p>For a typical project, a company had to implement Adobe Analytics which required them to implement <strong>AppMeasurement.js</strong> library. For personalization and targeting, there was a need to integrate Adobe Target via <strong>Mbox and AT.js</strong>. For visitor segmentation and to make logical cohorts of their visitors, companies implemented Adobe Audience Manager with the help of <strong>DIL.js</strong>, and underlying all the solutions was <strong>Visitor API.js</strong>, a library for visitor identification.</p>
 <p>Each of these libraries brought their own quirks, strength, idiosyncracies, implementation guidelines etc. The implementation and maintenance therefore quickly became a nightmare for the dev team. Adobe realized the gravity of the situation and around 2018 took a bold step in the direction of simplifying data collection - <strong>a single library to replace all the existing libraries</strong>.</p>
+<div class="alert info ">
+  <p>Please note: We will be only covering Web SDK implementation in this blog series</p>
+</div>
 <h5 id="what-is-aep-web-sdk">What is AEP Web SDK?</h5>
 <p>The premise of AEP Web SDK is simple: make enterprise data collection as simple as possible by completely elimintating the need to implement multiple libraries. The WebSDK library is not an amalgamation of the four libraries, but a completely &lsquo;written-from-scratch&rsquo; library with <strong>one beacon, one endpoint, one processing</strong> center.</p>
 <p>The advantages of following this approach can be summed up below:</p>
-<ol>
-<li><strong>Easy to manage</strong>: With a single SDK for various Adobe solutions the <a href="https://growthnatives.com/blogs/analytics/migrate-appmeasurement-js-to-adobe-experience-platform-web-sdk/">implementation</a> process is much simpler and debugging, troubleshooting is much easier</li>
-<li><strong>Improved website performance</strong>: AEP Web SDK is designed to be faster and efficient while reducing the amount of code which leads to faster page load and improved <a href="https://experienceleaguecommunities.adobe.com/t5/adobe-analytics-blogs/why-should-brands-need-to-move-to-aep-web-sdk-from-traditional/ba-p/589885">website</a> performance</li>
-<li><strong>Standardized data collection</strong>: AEP Web SDK utilizes a standard schema(more about it in another blog post) to ensure data consistency across different platforms and applications. This makes future integrations easy and future proof</li>
-<li><strong>Future proof</strong>: Through AEP Web SDK, enterprises can send data to non Adobe solutions through server side forwarding which expands the scope of the team significantly</li>
-</ol>
-<p>Watch the <a href="https://experienceleague.adobe.com/en/docs/experience-platform/web-sdk/home#overview">Summit 2020</a> video where the concept of Alloy.js and AEP Web SDK was introduced.</p>
 <figure><img src="https://ik.imagekit.io/hyegquogx/The_Learning_Project/Screenshot%202025-02-03%20at%201.01.36%E2%80%AFPM.png">
 </figure>
 
+<ol>
+<li><strong>Easy to manage</strong>: With a single SDK for various Adobe solutions the <a href="https://growthnatives.com/blogs/analytics/migrate-appmeasurement-js-to-adobe-experience-platform-web-sdk/">implementation</a> process of these solutions is simpler and debugging, troubleshooting much easier.</li>
+<li><strong>Improved website performance</strong>: AEP Web SDK is designed to be faster and efficient while reducing the amount of code that the solutions require to function. This leads to faster page load and improved <a href="https://experienceleaguecommunities.adobe.com/t5/adobe-analytics-blogs/why-should-brands-need-to-move-to-aep-web-sdk-from-traditional/ba-p/589885">website</a> performance</li>
+<li><strong>Standardized data collection</strong>: AEP Web SDK utilizes a standard schema(more about it in another blog post) to ensure data consistency across different platforms and applications. This makes the implementation modular and easy to be updated without starting from scratch</li>
+<li><strong>Future proof</strong>: Through AEP Web SDK, enterprises can send data to non Adobe solutions through server side forwarding which expands the scope of the team significantly</li>
+</ol>
+<p>Watch the <a href="https://experienceleague.adobe.com/en/docs/experience-platform/web-sdk/home#overview">Summit 2020</a> video where the concept of Alloy.js and AEP Web SDK was introduced.</p>
 <p><strong>Remember these definitions</strong></p>
 <p>Alloy.js - JavaScript library written from scratch to replace all four existing libraries
 AEP Web SDK - A broader framework that includes Alloy.js and other necessary components
 AEP Mobile SDK - A framework built for mobile applications
 AEP Web SDK Extension - An extension built around AEP Web SDK available for Adobe Tags for desktop data collection</p>
-<div class="alert info ">
-  <p>Please note: We will be only covering Web SDK implementation in this blog series</p>
-</div>
 <p><strong>How does AEP Web SDK work</strong></p>
 <h5 id="characters-in-a-web-sdk-implementation">Characters in a Web SDK implementation</h5>
 <p>With the introduction to AEP Web SDK out of the way, let&rsquo;s move forward with the different components that you need to setup for a successful implementation:</p>

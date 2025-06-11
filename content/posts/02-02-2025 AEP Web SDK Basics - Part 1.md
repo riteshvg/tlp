@@ -44,20 +44,24 @@ For a typical project, a company had to implement Adobe Analytics which required
 
 Each of these libraries brought their own quirks, strength, idiosyncracies, implementation guidelines etc. The implementation and maintenance therefore quickly became a nightmare for the dev team. Adobe realized the gravity of the situation and around 2018 took a bold step in the direction of simplifying data collection - **a single library to replace all the existing libraries**.
 
+{{< alert info >}}
+Please note: We will be only covering Web SDK implementation in this blog series
+{{< /alert >}}
+
 ##### What is AEP Web SDK?
 
 The premise of AEP Web SDK is simple: make enterprise data collection as simple as possible by completely elimintating the need to implement multiple libraries. The WebSDK library is not an amalgamation of the four libraries, but a completely 'written-from-scratch' library with **one beacon, one endpoint, one processing** center.
 
 The advantages of following this approach can be summed up below:
 
-1. **Easy to manage**: With a single SDK for various Adobe solutions the [implementation](https://growthnatives.com/blogs/analytics/migrate-appmeasurement-js-to-adobe-experience-platform-web-sdk/) process is much simpler and debugging, troubleshooting is much easier
-2. **Improved website performance**: AEP Web SDK is designed to be faster and efficient while reducing the amount of code which leads to faster page load and improved [website](https://experienceleaguecommunities.adobe.com/t5/adobe-analytics-blogs/why-should-brands-need-to-move-to-aep-web-sdk-from-traditional/ba-p/589885) performance
-3. **Standardized data collection**: AEP Web SDK utilizes a standard schema(more about it in another blog post) to ensure data consistency across different platforms and applications. This makes future integrations easy and future proof
+{{<figure src = "https://ik.imagekit.io/hyegquogx/The_Learning_Project/Screenshot%202025-02-03%20at%201.01.36%E2%80%AFPM.png">}}
+
+1. **Easy to manage**: With a single SDK for various Adobe solutions the [implementation](https://growthnatives.com/blogs/analytics/migrate-appmeasurement-js-to-adobe-experience-platform-web-sdk/) process of these solutions is simpler and debugging, troubleshooting much easier.
+2. **Improved website performance**: AEP Web SDK is designed to be faster and efficient while reducing the amount of code that the solutions require to function. This leads to faster page load and improved [website](https://experienceleaguecommunities.adobe.com/t5/adobe-analytics-blogs/why-should-brands-need-to-move-to-aep-web-sdk-from-traditional/ba-p/589885) performance
+3. **Standardized data collection**: AEP Web SDK utilizes a standard schema(more about it in another blog post) to ensure data consistency across different platforms and applications. This makes the implementation modular and easy to be updated without starting from scratch
 4. **Future proof**: Through AEP Web SDK, enterprises can send data to non Adobe solutions through server side forwarding which expands the scope of the team significantly
 
 Watch the [Summit 2020](https://experienceleague.adobe.com/en/docs/experience-platform/web-sdk/home#overview) video where the concept of Alloy.js and AEP Web SDK was introduced.
-
-{{<figure src = "https://ik.imagekit.io/hyegquogx/The_Learning_Project/Screenshot%202025-02-03%20at%201.01.36%E2%80%AFPM.png">}}
 
 **Remember these definitions**
 
@@ -65,10 +69,6 @@ Alloy.js - JavaScript library written from scratch to replace all four existing 
 AEP Web SDK - A broader framework that includes Alloy.js and other necessary components
 AEP Mobile SDK - A framework built for mobile applications
 AEP Web SDK Extension - An extension built around AEP Web SDK available for Adobe Tags for desktop data collection
-
-{{< alert info >}}
-Please note: We will be only covering Web SDK implementation in this blog series
-{{< /alert >}}
 
 **How does AEP Web SDK work**
 

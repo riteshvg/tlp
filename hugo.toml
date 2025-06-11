@@ -22,7 +22,9 @@ title = "The Learning Project"
 theme = "hugo-tranquilpeak-theme"
 disqusShortname = "thelearningproject"
 # googleAnalytics = "UA-123-456"
-paginate = 6
+[pagination]
+  pagerSize = 6
+
 canonifyurls = true
 
 [permalinks]
