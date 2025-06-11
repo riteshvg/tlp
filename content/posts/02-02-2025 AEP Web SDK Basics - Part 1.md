@@ -30,15 +30,30 @@ Let me first outline the **_Agenda_** that I have outlined for creating this blo
 - How to implement AEP Web SDK in your project
 - Migrating from AppMeasurement to AEP Web SDK
 
-##### What is AEP Web SDK
+##### Why was AEP Web SDK introduced?
 
-Adobe has been in the field of data collection for more than a decade now. It has always prioritized helping enterprises understand their visitors and bring their behavioral as well as insightful attributes both across desktop and mobile.
+Every enterprise or business, whether big or small, is in a continuous quest to understand its end customer. The need to analyze visitors' behavioral and transactional attributes in order to provide an ultimate experience is the holy grail of today's digital first world.
 
-But, the challenge that plagued these enterprises stemmed from the multitude of libraries that were used for data collection. For data and behavioral attributes, we had to implement **AppMeasurement**. Personalization and targeting use cases were achieved through **Mbox and AT.js** libraries. To segment their visitors, enterprises had to take help of **DIL.js** and then for visitor identification, it was **VisitorAPI.js**.
+Adobe with its Experience Cloud solutions has been a go-to partner for enterprises of different sizes and industries. It has been in the field of data collection for more than a decade now and has always prioritized helping enterprises understand their visitors and understand their behavioral as well as insightful attributes both across desktop and mobile.
 
-As you can imagine, an enterprise that had the license for all these solutions had to manage four libraries, each with their own quirks, strength, idiosyncracies, implementation guidelines etc. The implementation and maintenance use to quickly became a nightmare for the dev team. Adobe realized the gravity of the situation and around 2018 took a bold step in the direction of simplifying data collection - **a single library to replace all the existing libraries**.
+But, the challenge that plagued these enterprises stemmed from the multitude of libraries that Adobe required for collecting the details. Here's how it looked before AEP Web SDK
 
-The premise of AEP Web SDK is simple: make enterprise data collection as simple as possible by completely elimintating the need to implement multiple libraries. This library was not an amalgamation of the four libraries, but a brand new, written from scratch library with one beacon one endpoint giving enterprises total control of data. The library is codenamed alloy.js and AEP Web SDK is the broader framework that includes Alloy.js and other configuration settings to power enterprises. We will be talking more about the required components for AEP Web SDK later.
+{{<figure src = "https://ik.imagekit.io/hyegquogx/The_Learning_Project/Screenshot%202025-06-11%20at%201.53.50%E2%80%AFPM.png?updatedAt=1749630344804">}}
+
+For a typical project, a company had to implement Adobe Analytics which required them to implement **AppMeasurement.js** library. For personalization and targeting, there was a need to integrate Adobe Target via **Mbox and AT.js**. For visitor segmentation and to make logical cohorts of their visitors, companies implemented Adobe Audience Manager with the help of **DIL.js**, and underlying all the solutions was **Visitor API.js**, a library for visitor identification.
+
+Each of these libraries brought their own quirks, strength, idiosyncracies, implementation guidelines etc. The implementation and maintenance therefore quickly became a nightmare for the dev team. Adobe realized the gravity of the situation and around 2018 took a bold step in the direction of simplifying data collection - **a single library to replace all the existing libraries**.
+
+##### What is AEP Web SDK?
+
+The premise of AEP Web SDK is simple: make enterprise data collection as simple as possible by completely elimintating the need to implement multiple libraries. The WebSDK library is not an amalgamation of the four libraries, but a completely 'written-from-scratch' library with **one beacon, one endpoint, one processing** center.
+
+The advantages of following this approach can be summed up below:
+
+1. **Easy to manage**: With a single SDK for various Adobe solutions the [implementation](https://growthnatives.com/blogs/analytics/migrate-appmeasurement-js-to-adobe-experience-platform-web-sdk/) process is much simpler and debugging, troubleshooting is much easier
+2. **Improved website performance**: AEP Web SDK is designed to be faster and efficient while reducing the amount of code which leads to faster page load and improved [website](https://experienceleaguecommunities.adobe.com/t5/adobe-analytics-blogs/why-should-brands-need-to-move-to-aep-web-sdk-from-traditional/ba-p/589885) performance
+3. **Standardized data collection**: AEP Web SDK utilizes a standard schema(more about it in another blog post) to ensure data consistency across different platforms and applications. This makes future integrations easy and future proof
+4. **Future proof**: Through AEP Web SDK, enterprises can send data to non Adobe solutions through server side forwarding which expands the scope of the team significantly
 
 Watch the [Summit 2020](https://experienceleague.adobe.com/en/docs/experience-platform/web-sdk/home#overview) video where the concept of Alloy.js and AEP Web SDK was introduced.
 
