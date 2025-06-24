@@ -65,10 +65,10 @@ Watch the [Summit 2020](https://experienceleague.adobe.com/en/docs/experience-pl
 
 **Remember these definitions**
 
-Alloy.js - JavaScript library written from scratch to replace all four existing libraries
-AEP Web SDK - A broader framework that includes Alloy.js and other necessary components
-AEP Mobile SDK - A framework built for mobile applications
-AEP Web SDK Extension - An extension built around AEP Web SDK available for Adobe Tags for desktop data collection
+1. Alloy.js - JavaScript library written from scratch to replace all four existing libraries
+2. AEP Web SDK - A broader framework that includes Alloy.js and other necessary components
+3. AEP Mobile SDK - A framework built for mobile applications
+4. AEP Web SDK Extension - An extension built around AEP Web SDK available for Adobe Tags for desktop data collection
 
 **How does AEP Web SDK work**
 
