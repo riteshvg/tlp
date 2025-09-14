@@ -84,6 +84,12 @@ canonifyurls = true
   name = "Tools"
   pre = "<i class=\"sidebar-button-icon fas fa-lg fa-anchor\" aria-hidden=\"true\"></i>"
   url = "/tools"
+[[menu.main]]
+  weight = 4
+  identifier = "appliedai"
+  name = "AI Applications"
+  pre = "<i class=\"sidebar-button-icon fas fa-lg fa-solid fa-microchip\" aria-hidden=\"true\"></i>"
+  url = "/appliedAi"
 #[[menu.main]]
 #  weight = 4
 #  identifier = "playground"
@@ -96,12 +102,12 @@ canonifyurls = true
   name = "Today I Learned"
   pre = "<i class=\"sidebar-button-icon fas fa-lg fa-book\" aria-hidden=\"true\"></i>"
   url = "todayilearned.html"
-[[menu.main]]
-  weight = 6
-  identifier = "job board"
-  name = "Job Board"
-  pre = "<i class=\"sidebar-button-icon fas fa-lg fa-briefcase\" aria-hidden=\"true\"></i>"
-  url = "jobBoard.html"
+# [[menu.main]]
+#   weight = 6
+#   identifier = "job board"
+#  name = "Job Board"
+#  pre = "<i class=\"sidebar-button-icon fas fa-lg fa-briefcase\" aria-hidden=\"true\"></i>"
+#  url = "jobBoard.html"
 [[menu.links]]
   weight = 1
   identifier = "github"
