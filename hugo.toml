@@ -86,10 +86,10 @@ canonifyurls = true
   url = "/tools"
 [[menu.main]]
   weight = 4
-  identifier = "appliedai"
-  name = "AI Applications"
+  identifier = "ai hub"
+  name = "AI Hub"
   pre = "<i class=\"sidebar-button-icon fas fa-lg fa-solid fa-microchip\" aria-hidden=\"true\"></i>"
-  url = "/appliedAi"
+  url = "/aihub"
 #[[menu.main]]
 #  weight = 4
 #  identifier = "playground"
