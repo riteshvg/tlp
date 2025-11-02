@@ -91,12 +91,12 @@ canonifyurls = true
   name = "AI Hub"
   pre = "<i class=\"sidebar-button-icon fas fa-lg fa-solid fa-microchip\" aria-hidden=\"true\"></i>"
   url = "/aihub"
-#[[menu.main]]
-#  weight = 4
-#  identifier = "reflections"
-#  name = "Reflections"
-#  pre = "<i class=\"sidebar-button-icon fas fa-lg fa-pen-nib\" aria-hidden=\"true\"></i>"
-#  url = "/reflections"
+[[menu.main]]
+  weight = 4
+  identifier = "reflections"
+  name = "Reflections"
+  pre = "<i class=\"sidebar-button-icon fas fa-lg fa-pen-nib\" aria-hidden=\"true\"></i>"
+  url = "/reflections"
 [[menu.main]]
   weight = 5
   identifier = "todayilearned"
