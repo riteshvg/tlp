@@ -16,7 +16,7 @@ Welcome to my reflection blog! This is a sample post created with Decap CMS.
 
 ## What This Blog Is About
 
-This space is dedicated to my personal reflections, learnings, and thoughts. I aim to share:
+This space of the website is mostly to journaly personal reflections and retrospective thoughts that is not possible for me to categorize in a technical journal. I aim to share:
 
 * **Daily insights** from my journey as a Technical Architect
 * **Technical learnings** and discoveries
