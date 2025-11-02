@@ -29,6 +29,7 @@ canonifyurls = true
 
 [permalinks]
   posts = "/:year/:month/:slug/"
+  reflections = "/reflections/:year/:month/:slug/"
 
 [taxonomies]
   tag = "tags"

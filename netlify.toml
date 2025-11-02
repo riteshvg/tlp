@@ -15,3 +15,28 @@
 
 [context.branch-deploy]
   command = "hugo --buildFuture -b $DEPLOY_PRIME_URL"
+
+# Identity Configuration for Decap CMS
+
+[[redirects]]
+  from = "/admin"
+  to = "/admin/index.html"
+  status = 200
+
+[[redirects]]
+  from = "/admin/*"
+  to = "/admin/index.html"
+  status = 200
+
+# Enable Identity
+[identity]
+  cookie_expires_in_hours = 336
+  cookie_prefix = "nf-auth-"
+
+[[identity.external]]
+  provider = "github"
+  url = "https://github.com"
+
+[[identity.external]]
+  provider = "email"
+  url = "mailto:support@thelearningproject.in"
