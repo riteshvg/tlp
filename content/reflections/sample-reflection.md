@@ -1,5 +1,5 @@
 ---
-title: Diary Entry - 02/11/2025
+title: Diary Entry - 02/11/2025 - Sunday
 date: 2025-02-20 00:00:00
 author: Ritesh Gupta
 tags:
