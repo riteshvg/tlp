@@ -93,10 +93,10 @@ canonifyurls = true
   url = "/aihub"
 #[[menu.main]]
 #  weight = 4
-#  identifier = "playground"
-#  name = "Playground"
+#  identifier = "reflections"
+#  name = "Reflections"
 #  pre = "<i class=\"sidebar-button-icon fas fa-lg fa-pen-nib\" aria-hidden=\"true\"></i>"
-#  url = "playground"
+#  url = "/reflections"
 [[menu.main]]
   weight = 5
   identifier = "todayilearned"
