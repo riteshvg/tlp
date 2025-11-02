@@ -35,14 +35,14 @@ Still in Identity settings:
 #### Method A: Self-Registration (Recommended)
 1. Visit: https://www.thelearningproject.in/admin
 2. Click: **Sign up**
-3. Enter email & password
+3. Enter email & create a new password (NOT your Git password!)
 4. Click **Sign up**
 
 #### Method B: Invitation
 1. In Identity settings: **Invite users**
 2. Enter your email
 3. Check inbox for invite
-4. Click link and set password
+4. Click link and create a password (NOT your Git password!)
 
 ✅ Done? You're ready to blog!
 

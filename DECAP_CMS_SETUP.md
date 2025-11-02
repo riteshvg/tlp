@@ -52,14 +52,14 @@ To start using Decap CMS, you need to enable Netlify Identity in your Netlify da
 2. Enter your email address (e.g., ritesh@thelearningproject.in)
 3. Click **Send invite**
 4. Check your email and click the invitation link
-5. Set your password
+5. Create a new password (NOT your Git/GitHub password - this is for Netlify Identity only)
 
 **Alternative: Self-Registration**
 
 If you enabled "Open" registration:
 1. Visit: `https://www.thelearningproject.in/admin`
 2. Click **Sign up**
-3. Create your account
+3. Create your account (use a new password - NOT your Git password)
 
 ---
 
