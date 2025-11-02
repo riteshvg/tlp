@@ -20,6 +20,7 @@
 ### Step 2: Enable Git Gateway (1 min)
 
 Still in Identity settings:
+
 1. Scroll to **Services** section
 2. Find **Git Gateway**
 3. Click: **Enable Git Gateway**
@@ -33,16 +34,21 @@ Still in Identity settings:
 **Choose one method:**
 
 #### Method A: Self-Registration (Recommended)
+
 1. Visit: https://www.thelearningproject.in/admin
 2. Click: **Sign up**
 3. Enter email & create a new password (NOT your Git password!)
 4. Click **Sign up**
 
 #### Method B: Invitation
+
 1. In Identity settings: **Invite users**
 2. Enter your email
-3. Check inbox for invite
-4. Click link and create a password (NOT your Git password!)
+3. Click **Send invite**
+4. **Check your email inbox** for the invitation from Netlify
+5. Click the invite link in the email
+6. **On the web page that opens**, you'll see a form to create your password
+7. Create your password (NOT your Git password!)
 
 ✅ Done? You're ready to blog!
 
@@ -73,24 +79,29 @@ Visit: **https://www.thelearningproject.in/admin**
 ## 🎯 Quick Tips
 
 ### Adding Tags
+
 - Click "Add" next to Tags
 - Type tag name
 - Press Enter
 - Repeat for more tags
 
 ### Uploading Images
+
 - Click "Choose an image" in Featured Image
 - Select from your computer
 - Image uploads automatically
 - Use in post with: `![Alt text](/images/reflections/filename.jpg)`
 
 ### Drafts
+
 - Check "Draft" box to save unpublished
 - Edit later from admin panel
 - Uncheck draft to publish
 
 ### Using <!--more-->
+
 Add `<!--more-->` in your post body:
+
 - Text above = summary in listings
 - Text below = full content on post page
 
@@ -107,16 +118,20 @@ Add `<!--more-->` in your post body:
 ## ⚠️ Troubleshooting
 
 ### "Identity is disabled"
+
 → Go to Netlify Dashboard → Identity → Enable Identity
 
 ### "Git Gateway not enabled"
+
 → Identity → Services → Enable Git Gateway
 
 ### "Can't log in"
+
 → Check you registered or were invited
 → Check spam folder for emails
 
 ### "404 on /admin"
+
 → Wait 2 minutes after deploying
 → Clear browser cache
 → Hard refresh (Cmd+Shift+R / Ctrl+Shift+R)
@@ -134,4 +149,3 @@ Add `<!--more-->` in your post body:
 **Start writing at: https://www.thelearningproject.in/admin**
 
 Happy reflecting! 🚀✨
-
