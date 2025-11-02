@@ -1,5 +1,5 @@
 ---
-title: My First Reflection
+title: Diary Entry - 02/11/2025
 date: 2025-02-20 00:00:00
 author: Ritesh Gupta
 tags:
