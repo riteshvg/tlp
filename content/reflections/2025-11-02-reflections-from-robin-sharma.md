@@ -1,8 +1,9 @@
 ---
 title: Reflections from Robin Sharma
-date: 2025-11-02 11:18:00
+date: 2025-11-03 21:26:00
 author: Ritesh Gupta
 tags: []
+thumbnailImage: /images/reflections/lili-kovac-0rxoqqaxncs-unsplash.jpg
 excerpt: An email received from Robin Sharma on 13 lessons life has taught him.
   Most of it is relevant for all of us. Kind of serendiptious if you think when
   I just wanted to start a section on reflections myself.
