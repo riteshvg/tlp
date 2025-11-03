@@ -176,7 +176,7 @@ canonifyurls = true
 
   # Main sections - posts that appear on homepage
   # By default, Hugo uses the section with most pages
-  mainSections = ['posts', 'reflections']
+  mainSections = ['posts']
 
   # Display `Next` on left side of the pagination, and `Prev` on right side one.
   # If you set this value to `true`, these positions swap.
