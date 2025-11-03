@@ -2,10 +2,28 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>https://thelearningproject.in/aihub/</loc>
-    <lastmod>2025-09-14T00:00:00+00:00</lastmod>
+    <loc>https://thelearningproject.in/reflections/</loc>
+    <lastmod>2025-11-03T20:27:00+00:00</lastmod>
+  </url><url>
+    <loc>https://thelearningproject.in/reflections/2025/11/reflections-test-2/</loc>
+    <lastmod>2025-11-03T20:27:00+00:00</lastmod>
   </url><url>
     <loc>https://thelearningproject.in/</loc>
+    <lastmod>2025-11-03T20:27:00+00:00</lastmod>
+  </url><url>
+    <loc>https://thelearningproject.in/tags/</loc>
+    <lastmod>2025-11-03T20:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://thelearningproject.in/tags/test/</loc>
+    <lastmod>2025-11-03T20:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://thelearningproject.in/reflections/2025/11/test-post/</loc>
+    <lastmod>2025-11-03T20:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://thelearningproject.in/reflections/2025/11/reflections-from-robin-sharma/</loc>
+    <lastmod>2025-11-02T11:18:00+00:00</lastmod>
+  </url><url>
+    <loc>https://thelearningproject.in/aihub/</loc>
     <lastmod>2025-09-14T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://thelearningproject.in/2025/02/back-to-basics-aep-web-sdk/</loc>
@@ -110,7 +128,5 @@
     <loc>https://thelearningproject.in/archives/</loc>
   </url><url>
     <loc>https://thelearningproject.in/categories/</loc>
-  </url><url>
-    <loc>https://thelearningproject.in/tags/</loc>
   </url>
 </urlset>
