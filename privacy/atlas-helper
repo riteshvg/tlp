@@ -1,0 +1,64 @@
+Privacy policy — ATLAS Helper (draft)
+Last updated: April 19, 2026
+
+Developer: [Your name or team]
+Contact: [privacy@yourdomain or contact form URL]
+
+1. Introduction
+ATLAS Helper (“the Extension”) is a companion browser extension for ATLAS.ai. It provides a client-side bridge so ATLAS features—Tag Scanner and QA Automator—can access browser-side information needed for Adobe Experience Platform / Adobe Launch–related workflows (for example, runtime context on a page and network-related signals used for validation).
+
+This policy describes what the Extension may access and how it is used. By installing the Extension, you agree to this policy.
+
+2. Single purpose
+The Extension has one narrow purpose: to support ATLAS Tag Scanner and QA Automator when you use ATLAS.ai. It is not intended for unrelated features (for example, ad blocking, shopping, or general web browsing tools).
+
+3. Data the Extension may access
+3.1 Tab and page context
+The Extension may use the tabs permission to identify the active tab and relate operations to the correct page when you initiate a scan or QA workflow from ATLAS.
+
+3.2 Script bridge on ATLAS web app pages
+The Extension injects packaged scripts (scripting, content scripts) only on URLs matched in the manifest:
+
+Local development: http(s)://localhost:3000/* and http(s)://127.0.0.1:3000/*
+Adobe corporate: https://*.corp.adobe.com/*
+These scripts allow the ATLAS web application to communicate with the Extension in a controlled way.
+
+3.3 Debugger / DevTools Protocol (debugger)
+The Extension uses the debugger permission to attach to the browser’s debugging interface for CDP-style capabilities required by QA Automator (for example, network-related inspection tied to validation workflows). This permission is used only to support the Extension’s stated ATLAS workflows—not for unrelated debugging or surveillance.
+
+3.4 Host access (<all_urls>)
+The manifest includes broad host access because users may run Tag Scanner / QA Automator against different customer websites and environments that are not known in advance. Access is tied to workflows you start in ATLAS (for example, scanning or validating a site you choose). The Extension does not use this access to run unrelated background crawling of your browsing activity.
+
+3.5 Categories of information
+Depending on how you use ATLAS and which page you target, the Extension may process:
+
+Technical / website content signals needed for implementation review (for example, page URL, and runtime-related data such as Adobe Launch _satellite / container-related context where present).
+Network-related technical signals used for QA Automator validation workflows.
+The Extension is not designed to collect passwords, payment card data, or the contents of private communications as a product feature.
+
+4. Where data goes
+[Choose one and delete the other:]
+
+Option A (typical): Information observed by the Extension is transmitted to ATLAS services [describe: e.g. your FastAPI backend / corporate ATLAS hostname] only when you take an action in ATLAS that triggers Tag Scanner or QA Automator (for example, starting a scan).
+Option B: The Extension processes data locally and only passes minimal results to ATLAS when you explicitly run a workflow. [Add detail if this is accurate.]
+[If applicable:] Third parties: [e.g. Azure OpenAI / Adobe endpoints] only if your ATLAS backend uses them for those workflows—describe at a high level.
+
+5. Retention
+[Adjust to truth:]
+
+Browser-side processing is ephemeral during the workflow.
+Any server-side logs or outputs follow [your org’s / ATLAS’s] retention practices. [Link if you have a separate corporate policy, or say “contact us for details.”]
+6. Security
+We use reasonable measures to protect data in transit (for example, HTTPS where applicable for service communication). No method is 100% secure.
+
+7. Your choices
+You can remove the Extension at any time via Chrome’s extension management.
+Uninstalling stops further access via the Extension.
+8. Children
+The Extension is intended for business / professional use and is not directed at children.
+
+9. Changes to this policy
+We may update this policy by posting a new version on this page and updating the “Last updated” date. Continued use after changes means you accept the updated policy.
+
+10. Contact
+Questions about this policy: [email or form].
