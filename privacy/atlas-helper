@@ -1,8 +1,8 @@
 Privacy policy — ATLAS Helper (draft)
 Last updated: April 19, 2026
 
-Developer: [Your name or team]
-Contact: [privacy@yourdomain or contact form URL]
+Developer: Ritesh Gupta
+Contact: ritesh@thelearningproject.in
 
 1. Introduction
 ATLAS Helper (“the Extension”) is a companion browser extension for ATLAS.ai. It provides a client-side bridge so ATLAS features—Tag Scanner and QA Automator—can access browser-side information needed for Adobe Experience Platform / Adobe Launch–related workflows (for example, runtime context on a page and network-related signals used for validation).
@@ -61,4 +61,4 @@ The Extension is intended for business / professional use and is not directed at
 We may update this policy by posting a new version on this page and updating the “Last updated” date. Continued use after changes means you accept the updated policy.
 
 10. Contact
-Questions about this policy: [email or form].
+Questions about this policy: ritesh@thelearningproject.in.
