@@ -1,0 +1,33 @@
+backend:
+  name: git-gateway
+  branch: main # Branch to update (optional; defaults to master)
+  commit_messages:
+    create: "Create {{collection}} “{{slug}}”"
+    update: "Update {{collection}} “{{slug}}”"
+    delete: "Delete {{collection}} “{{slug}}”"
+    uploadMedia: "[skip ci] Upload “{{path}}”"
+    deleteMedia: "[skip ci] Delete “{{path}}”"
+
+# Uncomment below to enable draft posts
+# publish_mode: editorial_workflow
+
+media_folder: "static/images/reflections" # Media files will be stored in the repo under static/images/reflections
+public_folder: "/images/reflections" # The src attribute for uploaded media will begin with /images/reflections
+
+collections:
+  - name: "blog" # Used in routes, e.g., /admin/collections/blog
+    label: "Reflection Posts" # Used in the UI
+    folder: "content/reflections" # The path to the folder where the documents are stored
+    create: true # Allow users to create new documents in this collection
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}" # Filename template, e.g., 2024-01-15-title.md
+    fields: # The fields for each document, usually in front matter
+      - {label: "Title", name: "title", widget: "string"}
+      - {label: "Publish Date", name: "date", widget: "datetime", default: "", format: "YYYY-MM-DD HH:mm:ss"}
+      - {label: "Author", name: "author", widget: "string", default: "Ritesh Gupta", required: false}
+      - {label: "Tags", name: "tags", widget: "list", default: [], field: {label: "Tag", name: "tag", widget: "string"}, hint: "Add tags to categorize your reflections"}
+      - {label: "Category", name: "category", widget: "select", options: ["Learning", "Personal", "Technical", "Career", "Inspiration"], required: false}
+      - {label: "Featured Image", name: "thumbnailImage", widget: "image", required: false, hint: "Upload a featured image for this post"}
+      - {label: "Excerpt", name: "excerpt", widget: "text", required: false, hint: "Brief summary of the post (will appear in listings)"}
+      - {label: "Body", name: "body", widget: "markdown", hint: "Write your reflection here"}
+      - {label: "Draft", name: "draft", widget: "boolean", default: false, hint: "Check if this post should be saved as draft"}
+
