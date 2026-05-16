@@ -485,6 +485,30 @@
       word-break: break-word; white-space: pre-wrap; line-height: 1.5;
     }
 
+    /* ─── Questions tab ──────────────────────────────────────────────── */
+    .q-feedback-pill {
+      display: inline-flex; align-items: center; gap: 4px;
+      font-size: 11px; font-weight: 700; padding: 3px 9px; border-radius: 10px;
+      white-space: nowrap;
+    }
+    .q-fb-positive { background: #d1fae5; color: #065f46; }
+    .q-fb-negative { background: #fee2e2; color: #991b1b; }
+    .q-fb-none     { background: #f3f4f6; color: #9ca3af; }
+    .q-text-cell   { font-size: 12.5px; color: #374151; max-width: 280px; word-break: break-word; line-height: 1.5; }
+    .btn-view-answer {
+      background: none; border: 1px solid #e3e6f0; border-radius: 5px;
+      color: #9ca3af; cursor: pointer; font-size: 11px; padding: 3px 8px;
+      transition: all 0.15s; white-space: nowrap;
+    }
+    .btn-view-answer:hover  { border-color: #4e73df; color: #4e73df; background: #eff4ff; }
+    .btn-view-answer.active { border-color: #4e73df; color: #4e73df; background: #eff4ff; }
+    .q-answer-row td { padding: 0 !important; }
+    .q-answer-panel {
+      padding: 14px 18px; background: #f8f9fc; border-top: 1px solid #e3e6f0;
+      font-size: 12.5px; color: #374151; line-height: 1.7; white-space: pre-wrap; word-break: break-word;
+    }
+    .q-answer-label { font-size: 11px; font-weight: 700; color: #9ca3af; text-transform: uppercase; letter-spacing: 0.4px; margin-bottom: 6px; }
+
     /* ─── Empty state ─────────────────────────────────────────────────── */
     .empty-state {
       text-align: center; padding: 48px 24px; color: #9ca3af; font-size: 14px;
@@ -644,6 +668,10 @@
         <button class="tab-btn" data-tab="feedback">
           <i class="fas fa-comment-dots"></i> Feedback
           <span class="tab-badge" id="tabBadgeFeedback">—</span>
+        </button>
+        <button class="tab-btn" data-tab="questions">
+          <i class="fas fa-question-circle"></i> Questions
+          <span class="tab-badge" id="tabBadgeQuestions">—</span>
         </button>
       </div>
     </div>
@@ -845,6 +873,24 @@
             <div id="feedbackTableWrap">
               <div class="table-loading">
                 <i class="fas fa-spinner fa-spin" style="margin-right:8px"></i>Loading feedback…
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── Tab: Questions ─────────────────────────────────────────────────── -->
+    <div class="tab-panel" id="panel-questions">
+      <div class="panel-content">
+        <h2 class="section-heading">User Questions</h2>
+        <p class="section-sub" id="questionsSubtitle">All chat questions asked by users with feedback</p>
+
+        <div class="data-card">
+          <div class="table-scroll">
+            <div id="questionsTableWrap">
+              <div class="table-loading">
+                <i class="fas fa-spinner fa-spin" style="margin-right:8px"></i>Loading questions…
               </div>
             </div>
           </div>
@@ -1415,6 +1461,96 @@
       } catch(e) { err.textContent=e.message; err.style.display=''; } finally { btn.disabled=false; }
     });
 
+    // ── Questions (admin) ──────────────────────────────────────────────────
+
+    async function fetchAdminQuestions(session) {
+      var wrap = document.getElementById('questionsTableWrap');
+      try {
+        var data = await callLambda({ type: 'adminQueries', sessionToken: session.sessionToken });
+        var items = data.items || [];
+        var n = items.length;
+        document.getElementById('tabBadgeQuestions').textContent = n;
+        document.getElementById('questionsSubtitle').textContent =
+          n + ' question' + (n === 1 ? '' : 's') + ' asked by users';
+        renderQuestionsTable(items, wrap);
+      } catch (err) {
+        wrap.innerHTML = '<div class="table-loading" style="color:#ef4444"><i class="fas fa-exclamation-circle" style="margin-right:8px"></i>' + esc(err.message) + '</div>';
+      }
+    }
+
+    function renderQuestionsTable(items, wrap) {
+      if (!items.length) {
+        wrap.innerHTML = '<div class="empty-state"><i class="fas fa-question-circle"></i>No chat questions yet.</div>';
+        return;
+      }
+
+      var rows = items.map(function(item, idx) {
+        var when = item.createdAt
+          ? new Date(item.createdAt).toLocaleString(undefined, { dateStyle: 'medium', timeStyle: 'short' })
+          : '—';
+        var user = (item.userName || item.email)
+          ? '<div style="font-size:13px;font-weight:600">' + esc(item.userName || '') + '</div>' +
+            '<div style="font-size:11px;color:#9ca3af">' + esc(item.email || '') + '</div>'
+          : '<span style="font-size:12px;color:#d1d5db">Unknown</span>';
+        var question = '';
+        var answer = '';
+        try {
+          var rj = typeof item.resultJson === 'string' ? JSON.parse(item.resultJson) : (item.resultJson || {});
+          question = rj.question || item.requestSummary || '—';
+          answer   = rj.answer   || '';
+        } catch (e) {
+          question = item.requestSummary || '—';
+        }
+        var prop = item.propertyKey
+          ? '<span style="font-size:11px;color:#6b7280">' + esc(item.propertyKey.split('|')[0] || item.propertyKey) + '</span>'
+          : '<span style="color:#d1d5db">—</span>';
+
+        var fbClass = 'q-fb-none', fbIcon = 'fa-minus', fbLabel = 'No feedback';
+        if (item.feedback === 'positive') { fbClass = 'q-fb-positive'; fbIcon = 'fa-thumbs-up';   fbLabel = 'Helpful'; }
+        if (item.feedback === 'negative') { fbClass = 'q-fb-negative'; fbIcon = 'fa-thumbs-down'; fbLabel = 'Not helpful'; }
+        var fbPill = '<span class="q-feedback-pill ' + fbClass + '"><i class="fas ' + fbIcon + '"></i>' + fbLabel + '</span>';
+        if (item.feedbackText) fbPill += '<div style="font-size:11px;color:#6b7280;margin-top:3px">' + esc(item.feedbackText) + '</div>';
+
+        var hasAnswer = answer.trim().length > 0;
+        var viewBtn = hasAnswer
+          ? '<button class="btn-view-answer" data-qidx="' + idx + '" data-answer="' + esc(answer) + '"><i class="fas fa-chevron-down" style="font-size:10px;margin-right:3px"></i>Answer</button>'
+          : '<span style="font-size:11px;color:#d1d5db">—</span>';
+
+        return '<tr id="qrow-' + idx + '">' +
+          '<td style="white-space:nowrap;font-size:11.5px;color:#6b7280">' + when + '</td>' +
+          '<td>' + user + '</td>' +
+          '<td class="q-text-cell">' + esc(question) + '</td>' +
+          '<td>' + viewBtn + '</td>' +
+          '<td>' + fbPill + '</td>' +
+          '<td>' + prop + '</td>' +
+          '</tr>' +
+          '<tr id="qans-' + idx + '" class="q-answer-row" style="display:none"><td colspan="6"><div class="q-answer-panel" id="qans-panel-' + idx + '"></div></td></tr>';
+      }).join('');
+
+      wrap.innerHTML = '<table class="data-table"><thead><tr>' +
+        '<th>Date</th><th>User</th><th>Question</th><th>Answer</th><th>Feedback</th><th>Property</th>' +
+        '</tr></thead><tbody>' + rows + '</tbody></table>';
+
+      wrap.querySelectorAll('.btn-view-answer').forEach(function(btn) {
+        btn.addEventListener('click', function() {
+          var idx = this.dataset.qidx;
+          var ansRow = document.getElementById('qans-' + idx);
+          var panel  = document.getElementById('qans-panel-' + idx);
+          var open   = ansRow.style.display !== 'none';
+          if (open) {
+            ansRow.style.display = 'none';
+            btn.classList.remove('active');
+            btn.innerHTML = '<i class="fas fa-chevron-down" style="font-size:10px;margin-right:3px"></i>Answer';
+          } else {
+            panel.textContent = this.dataset.answer;
+            ansRow.style.display = '';
+            btn.classList.add('active');
+            btn.innerHTML = '<i class="fas fa-chevron-up" style="font-size:10px;margin-right:3px"></i>Hide';
+          }
+        });
+      });
+    }
+
     // ── Zero state ─────────────────────────────────────────────────────────
 
     function renderZero() {
@@ -1436,12 +1572,12 @@
         renderProfile(session,data.user); renderStats(stats); renderBarChart(items);
         renderDoughnutChart(stats); renderCost(stats); renderActivity(items);
         showScreen('dashboard');
-        fetchUsers(session); fetchAIControl(session); fetchFeedback(session);
+        fetchUsers(session); fetchAIControl(session); fetchFeedback(session); fetchAdminQuestions(session);
       } catch(err) {
         renderProfile(session,null); renderZero();
         showError('Could not load dashboard data: '+(err.message||'Unknown error'));
         showScreen('dashboard');
-        fetchUsers(session); fetchAIControl(session); fetchFeedback(session);
+        fetchUsers(session); fetchAIControl(session); fetchFeedback(session); fetchAdminQuestions(session);
       }
     }
 
