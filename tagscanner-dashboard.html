@@ -1,0 +1,1555 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>TagScanner — Admin Dashboard</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <!-- Google Identity Services for web OAuth -->
+  <script src="https://accounts.google.com/gsi/client"></script>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; }
+
+    body {
+      background: #f8f9fc;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      margin: 0;
+      padding: 0;
+      min-height: 100vh;
+    }
+
+    /* ── Page header ─────────────────────────── */
+    .page-nav {
+      background: linear-gradient(135deg, #1a1d23, #2d3748);
+      padding: 14px 24px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 1px 8px rgba(0,0,0,0.25);
+    }
+    .page-nav-logo {
+      width: 28px; height: 28px; border-radius: 6px;
+      background: linear-gradient(135deg, #4e73df, #36b9cc);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 13px; font-weight: 800; color: #fff; flex-shrink: 0;
+    }
+    .page-nav-title { font-size: 14px; font-weight: 700; color: #fff; }
+    .page-nav-sub   { font-size: 11px; color: #9ca3af; margin-top: 1px; }
+
+    /* ── Content wrapper ─────────────────────── */
+    .page-content {
+      max-width: 980px;
+      margin: 0 auto;
+      padding: 28px 20px 48px;
+    }
+
+    /* ── Loading ─────────────────────────────── */
+    #loadingState {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 60vh;
+      color: #9ca3af;
+      font-size: 13px;
+    }
+
+    /* ── Login / restricted shared card ─────── */
+    .gate-wrap {
+      display: none;
+      align-items: center;
+      justify-content: center;
+      min-height: 60vh;
+    }
+    .login-card {
+      background: #fff;
+      border: 1px solid #e3e6f0;
+      border-radius: 10px;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.12);
+      width: 90%;
+      max-width: 400px;
+      overflow: hidden;
+    }
+    .login-card-header {
+      background: linear-gradient(135deg, #1a1d23, #2d3748);
+      color: #fff;
+      padding: 24px;
+      text-align: center;
+    }
+    .login-card-header h2 { margin: 10px 0 4px; font-size: 17px; font-weight: 700; }
+    .login-card-header p  { margin: 0; font-size: 12px; color: #9ca3af; }
+    .login-card-body { padding: 24px; text-align: center; }
+    .login-card-body p { font-size: 13px; color: #6b7280; margin-bottom: 20px; line-height: 1.5; }
+    .btn-google-signin {
+      display: flex; align-items: center; justify-content: center; gap: 10px;
+      width: 100%; padding: 11px 16px; background: #fff; border: 1px solid #d1d3e2;
+      border-radius: 6px; font-size: 14px; font-weight: 500; color: #374151;
+      cursor: pointer; transition: background 0.15s;
+    }
+    .btn-google-signin:hover    { background: #f9fafb; }
+    .btn-google-signin:disabled { opacity: 0.6; cursor: not-allowed; }
+    .signin-error {
+      display: none; margin-top: 12px; font-size: 12px; color: #ef4444;
+      padding: 8px; background: #fef2f2; border-radius: 4px;
+    }
+
+    /* ── Dashboard ───────────────────────────── */
+    #dashboardContent { display: none; }
+
+    /* ── Profile card ────────────────────────── */
+    .profile-card {
+      background: linear-gradient(135deg, #1a1d23, #2d3748);
+      border-radius: 10px;
+      padding: 20px 24px;
+      margin-bottom: 20px;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+    .profile-avatar-wrap { flex-shrink: 0; }
+    .profile-avatar {
+      width: 60px; height: 60px; border-radius: 50%;
+      border: 3px solid rgba(255,255,255,0.25); display: block;
+    }
+    .profile-avatar-placeholder {
+      width: 60px; height: 60px; border-radius: 50%;
+      background: linear-gradient(135deg, #4e73df, #36b9cc);
+      border: 3px solid rgba(255,255,255,0.25);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 22px; font-weight: 700; color: #fff;
+    }
+    .profile-info { flex: 1; min-width: 0; }
+    .profile-name  { font-size: 16px; font-weight: 700; color: #fff; margin-bottom: 3px; }
+    .profile-email { font-size: 12px; color: #9ca3af; margin-bottom: 8px; }
+    .profile-company-row { display: flex; align-items: center; gap: 6px; flex-wrap: wrap; }
+    .profile-company {
+      font-size: 12px; font-weight: 600; color: #61dafb;
+      background: rgba(97,218,251,0.12); padding: 2px 10px;
+      border-radius: 10px; border: 1px solid rgba(97,218,251,0.3);
+    }
+    .profile-company-empty { font-size: 12px; color: #6b7280; font-style: italic; }
+    .btn-edit-company {
+      background: none; border: none; color: #6b7280; cursor: pointer;
+      font-size: 11px; padding: 2px 4px; line-height: 1;
+    }
+    .btn-edit-company:hover { color: #61dafb; }
+    .profile-company-input {
+      font-size: 12px; border: 1px solid #4b5563; border-radius: 4px;
+      padding: 3px 8px; outline: none; width: 160px;
+      background: rgba(255,255,255,0.1); color: #fff;
+    }
+    .profile-company-input::placeholder { color: #6b7280; }
+    .profile-company-input:focus { border-color: #61dafb; }
+    .btn-save-company {
+      font-size: 11px; padding: 3px 10px; background: #61dafb; color: #1a1d23;
+      border: none; border-radius: 4px; cursor: pointer; font-weight: 600;
+    }
+    .btn-save-company:hover { background: #38bdf8; }
+    .profile-actions { margin-left: auto; }
+    .btn-signout {
+      padding: 6px 14px; font-size: 12px;
+      background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.2);
+      border-radius: 6px; color: #d1d5db; cursor: pointer; white-space: nowrap;
+    }
+    .btn-signout:hover { background: rgba(255,255,255,0.15); color: #fff; }
+
+    /* ── Error banner ────────────────────────── */
+    .error-banner {
+      background: #fef2f2; border: 1px solid #fecaca; border-radius: 6px;
+      padding: 10px 14px; font-size: 12px; color: #991b1b;
+      margin-bottom: 16px; display: none;
+    }
+
+    /* ── Section title ───────────────────────── */
+    .section-title {
+      font-size: 11px; font-weight: 700; color: #6b7280;
+      text-transform: uppercase; letter-spacing: 0.4px; margin-bottom: 10px;
+    }
+
+    /* ── Stat cards ──────────────────────────── */
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+      gap: 12px;
+      margin-bottom: 20px;
+    }
+    .stat-card {
+      background: #fff; border: 1px solid #e3e6f0; border-radius: 8px;
+      padding: 14px 16px; border-left: 4px solid;
+    }
+    .stat-card.stat-total    { border-left-color: #4e73df; }
+    .stat-card.stat-scan     { border-left-color: #1cc88a; }
+    .stat-card.stat-explain  { border-left-color: #36b9cc; }
+    .stat-card.stat-feedback { border-left-color: #f6c23e; }
+    .stat-card.stat-tokens   { border-left-color: #858796; }
+    .stat-label {
+      font-size: 10px; font-weight: 700; text-transform: uppercase;
+      letter-spacing: 0.5px; color: #6b7280; margin-bottom: 6px;
+    }
+    .stat-value { font-size: 22px; font-weight: 700; color: #1f2937; line-height: 1; }
+    .stat-sub   { font-size: 10px; color: #9ca3af; margin-top: 4px; }
+
+    /* ── Charts ──────────────────────────────── */
+    .charts-row {
+      display: grid; grid-template-columns: 2fr 1fr; gap: 16px; margin-bottom: 20px;
+    }
+    @media (max-width: 600px) { .charts-row { grid-template-columns: 1fr; } }
+    .chart-card {
+      background: #fff; border: 1px solid #e3e6f0; border-radius: 8px; padding: 16px;
+    }
+    .chart-card-title {
+      font-size: 11px; font-weight: 700; color: #6b7280;
+      text-transform: uppercase; letter-spacing: 0.4px; margin-bottom: 12px;
+    }
+    .chart-wrap { position: relative; height: 180px; }
+
+    /* ── Cost card ───────────────────────────── */
+    .cost-card {
+      background: #fff; border: 1px solid #e3e6f0; border-radius: 8px;
+      padding: 16px; margin-bottom: 20px;
+    }
+    .cost-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+      gap: 12px; margin-bottom: 12px;
+    }
+    .cost-item { padding: 10px 14px; background: #f8f9fc; border-radius: 6px; }
+    .cost-item.cost-total { background: #eff4ff; border: 1px solid #c7d7fd; }
+    .cost-label {
+      font-size: 10px; font-weight: 700; text-transform: uppercase;
+      letter-spacing: 0.4px; color: #6b7280; margin-bottom: 5px;
+    }
+    .cost-value { font-size: 18px; font-weight: 700; color: #1f2937; line-height: 1; }
+    .cost-item.cost-total .cost-value { color: #3730a3; }
+    .cost-sub   { font-size: 10px; color: #9ca3af; margin-top: 3px; }
+    .cost-note {
+      font-size: 11px; color: #9ca3af; padding-top: 10px;
+      border-top: 1px solid #f0f0f0; display: flex; align-items: center; gap: 5px;
+    }
+
+    /* ── Recent activity ─────────────────────── */
+    .activity-list { display: flex; flex-direction: column; gap: 6px; }
+    .activity-row {
+      display: flex; align-items: center; gap: 8px; background: #fff;
+      border: 1px solid #e3e6f0; border-radius: 6px; padding: 9px 12px; font-size: 12px;
+    }
+    .type-badge {
+      font-size: 9px; font-weight: 700; text-transform: uppercase;
+      padding: 2px 6px; border-radius: 8px; flex-shrink: 0;
+    }
+    .badge-scan    { background: #dbeafe; color: #1d4ed8; }
+    .badge-explain { background: #d1fae5; color: #065f46; }
+    .activity-summary {
+      flex: 1; color: #374151; white-space: nowrap;
+      overflow: hidden; text-overflow: ellipsis;
+    }
+    .activity-time { color: #9ca3af; font-size: 11px; flex-shrink: 0; }
+    .feedback-dot  { width: 7px; height: 7px; border-radius: 50%; flex-shrink: 0; }
+    .feedback-dot.positive { background: #10b981; }
+    .feedback-dot.negative { background: #ef4444; }
+    .feedback-dot.none     { background: #e5e7eb; }
+
+    /* ── Empty state ─────────────────────────── */
+    .empty-state {
+      text-align: center; padding: 32px 20px; color: #9ca3af;
+      background: #fff; border: 1px solid #e3e6f0; border-radius: 8px; font-size: 13px;
+    }
+    .empty-state i { font-size: 26px; margin-bottom: 10px; display: block; }
+
+    /* ── Users table ─────────────────────────── */
+    .users-card {
+      background: #fff; border: 1px solid #e3e6f0; border-radius: 8px; overflow: hidden;
+    }
+    .users-table { width: 100%; border-collapse: collapse; font-size: 12px; }
+    .users-table thead th {
+      background: #f8f9fc; color: #6b7280; font-size: 10px; font-weight: 700;
+      text-transform: uppercase; letter-spacing: 0.4px;
+      padding: 10px 14px; border-bottom: 1px solid #e3e6f0; text-align: left;
+      position: sticky; top: 0; z-index: 1;
+    }
+    .users-table tbody tr { border-bottom: 1px solid #f3f4f6; transition: background 0.1s; }
+    .users-table tbody tr:last-child { border-bottom: none; }
+    .users-table tbody tr:hover { background: #f8f9fc; }
+    .users-table td { padding: 10px 14px; color: #374151; vertical-align: middle; }
+    .user-avatar-sm {
+      width: 28px; height: 28px; border-radius: 50%; object-fit: cover;
+      border: 1px solid #e3e6f0; vertical-align: middle; margin-right: 8px;
+    }
+    .user-initials-sm {
+      display: inline-flex; align-items: center; justify-content: center;
+      width: 28px; height: 28px; border-radius: 50%; font-size: 11px;
+      font-weight: 700; color: #fff; background: linear-gradient(135deg, #4e73df, #36b9cc);
+      vertical-align: middle; margin-right: 8px; flex-shrink: 0;
+    }
+    .user-name-cell { display: flex; align-items: center; }
+    .copy-btn {
+      background: none; border: none; color: #9ca3af; cursor: pointer;
+      font-size: 11px; padding: 2px 5px; border-radius: 3px; margin-left: 4px;
+      transition: color 0.15s;
+    }
+    .copy-btn:hover { color: #4e73df; }
+    .users-table-loading { text-align: center; padding: 24px; color: #9ca3af; font-size: 12px; }
+
+    .users-table-scroll { overflow-x: auto; overflow-y: auto; max-height: 400px; }
+    .users-pagination {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 10px 14px; border-top: 1px solid #f3f4f6;
+      font-size: 12px; color: #6b7280; background: #f8f9fc;
+    }
+    .users-pagination-info { font-size: 11px; }
+    .users-pagination-btns { display: flex; gap: 6px; }
+    .users-page-btn {
+      padding: 4px 10px; font-size: 11px; border: 1px solid #e3e6f0;
+      border-radius: 4px; background: #fff; color: #374151; cursor: pointer;
+      transition: all 0.15s;
+    }
+    .users-page-btn:hover:not(:disabled) { border-color: #4e73df; color: #4e73df; }
+    .users-page-btn:disabled { opacity: 0.4; cursor: not-allowed; }
+    .users-page-btn.active { background: #4e73df; color: #fff; border-color: #4e73df; }
+
+    /* ── AI Controls card ───────────────────── */
+    .ai-control-card {
+      background: #fff; border: 1px solid #e3e6f0; border-radius: 8px;
+      padding: 16px; margin-bottom: 20px;
+    }
+    .ai-control-loading { text-align: center; padding: 16px; color: #9ca3af; font-size: 12px; }
+    .ai-status-row {
+      display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px;
+    }
+    .ai-status-indicator { display: flex; align-items: center; }
+    .ai-status-dot {
+      display: inline-block; width: 10px; height: 10px; border-radius: 50%; margin-right: 8px;
+    }
+    .ai-status-dot.enabled  { background: #10b981; box-shadow: 0 0 0 3px rgba(16,185,129,0.18); }
+    .ai-status-dot.disabled { background: #ef4444; box-shadow: 0 0 0 3px rgba(239,68,68,0.18); }
+    .ai-status-label { font-size: 13px; font-weight: 600; color: #1f2937; }
+    .ai-toggle-btn {
+      padding: 6px 14px; font-size: 12px; font-weight: 600; border: none; border-radius: 6px;
+      cursor: pointer; transition: background 0.15s;
+    }
+    .ai-toggle-btn.btn-disable { background: #ef4444; color: #fff; }
+    .ai-toggle-btn.btn-disable:hover { background: #dc2626; }
+    .ai-toggle-btn.btn-enable  { background: #10b981; color: #fff; }
+    .ai-toggle-btn.btn-enable:hover  { background: #059669; }
+    .ai-toggle-btn:disabled { opacity: 0.5; cursor: not-allowed; }
+    .ai-reason-label {
+      font-size: 10px; font-weight: 700; text-transform: uppercase;
+      color: #9ca3af; letter-spacing: 0.4px; margin-bottom: 4px;
+    }
+    .ai-reason-text {
+      font-size: 12px; color: #6b7280; background: #fef9ec; border: 1px solid #fde68a;
+      border-radius: 4px; padding: 6px 10px; margin-bottom: 12px;
+    }
+    .ai-cost-row { display: flex; gap: 24px; margin-bottom: 8px; flex-wrap: wrap; }
+    .ai-cost-info { display: flex; flex-direction: column; gap: 2px; }
+    .ai-cost-label {
+      font-size: 10px; font-weight: 700; text-transform: uppercase;
+      color: #6b7280; letter-spacing: 0.4px;
+    }
+    .ai-cost-value { font-size: 16px; font-weight: 700; color: #1f2937; }
+    .ai-progress-wrap { display: flex; align-items: center; gap: 8px; margin-bottom: 14px; }
+    .ai-progress-bar { flex: 1; height: 8px; background: #f3f4f6; border-radius: 4px; overflow: hidden; }
+    .ai-progress-fill { height: 100%; border-radius: 4px; background: #4e73df; transition: width 0.3s, background 0.3s; }
+    .ai-progress-fill.warn   { background: #f6c23e; }
+    .ai-progress-fill.danger { background: #ef4444; }
+    .ai-progress-pct { font-size: 11px; font-weight: 600; color: #6b7280; flex-shrink: 0; min-width: 32px; text-align: right; }
+    .ai-limit-row { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+    .ai-limit-label { font-size: 12px; color: #6b7280; flex-shrink: 0; }
+    .ai-limit-input {
+      width: 80px; font-size: 12px; border: 1px solid #d1d5db; border-radius: 4px;
+      padding: 4px 8px; outline: none;
+    }
+    .ai-limit-input:focus { border-color: #4e73df; }
+    .ai-save-btn {
+      padding: 4px 12px; font-size: 12px; background: #4e73df; color: #fff;
+      border: none; border-radius: 4px; cursor: pointer; font-weight: 600;
+    }
+    .ai-save-btn:hover:not(:disabled) { background: #2e59d9; }
+    .ai-save-btn:disabled { opacity: 0.5; cursor: not-allowed; }
+    .ai-control-error {
+      margin-top: 10px; font-size: 12px; color: #ef4444;
+      background: #fef2f2; border: 1px solid #fecaca; border-radius: 4px; padding: 6px 10px;
+    }
+
+    /* ── Feedback table ──────────────────────── */
+    .feedback-msg-cell {
+      font-size: 12px; color: #374151; max-width: 320px;
+      word-break: break-word; white-space: pre-wrap; line-height: 1.5;
+    }
+    .rating-pill {
+      display: inline-flex; align-items: center; gap: 4px;
+      font-size: 10px; font-weight: 700; padding: 3px 9px;
+      border-radius: 10px; white-space: nowrap;
+    }
+    .rating-love    { background: #d1fae5; color: #065f46; }
+    .rating-helpful { background: #dbeafe; color: #1d4ed8; }
+    .rating-meh     { background: #fef3c7; color: #92400e; }
+    .rating-bad     { background: #fee2e2; color: #991b1b; }
+    .rating-unknown { background: #f3f4f6; color: #6b7280; }
+
+    /* ── Page footer ─────────────────────────── */
+    .page-footer {
+      text-align: center; padding: 16px;
+      font-size: 11px; color: #9ca3af; border-top: 1px solid #e3e6f0;
+      margin-top: 16px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Page nav -->
+  <nav class="page-nav">
+    <div class="page-nav-logo">TS</div>
+    <div>
+      <div class="page-nav-title">TagScanner</div>
+      <div class="page-nav-sub">Admin Dashboard · thelearningproject.in</div>
+    </div>
+  </nav>
+
+  <div class="page-content">
+
+    <!-- ── Loading ───────────────────────────────────────── -->
+    <div id="loadingState">
+      <i class="fas fa-spinner fa-spin" style="font-size:28px;color:#4e73df;margin-bottom:10px"></i>
+      Loading dashboard…
+    </div>
+
+    <!-- ── Login gate ─────────────────────────────────────── -->
+    <div id="loginGate" class="gate-wrap">
+      <div class="login-card">
+        <div class="login-card-header">
+          <i class="fas fa-tachometer-alt" style="font-size:32px;color:#61dafb"></i>
+          <h2>Activity Dashboard</h2>
+          <p>TagScanner AI · Query Analytics</p>
+        </div>
+        <div class="login-card-body">
+          <p>Sign in with your admin Google account to view usage statistics, AI query trends, cost controls, and user activity.</p>
+          <button id="btnSignIn" class="btn-google-signin">
+            <svg width="18" height="18" viewBox="0 0 48 48" aria-hidden="true" style="flex-shrink:0">
+              <path fill="#4285F4" d="M47.53 24.56c0-1.6-.14-3.14-.4-4.62H24v8.73h13.2c-.57 3.03-2.3 5.59-4.9 7.32v6.08h7.93c4.64-4.28 7.3-10.58 7.3-17.51z"/>
+              <path fill="#34A853" d="M24 48c6.66 0 12.24-2.21 16.32-5.98l-7.93-6.08c-2.2 1.47-5.01 2.34-8.39 2.34-6.45 0-11.91-4.35-13.86-10.21H2.08v6.28C6.14 42.62 14.43 48 24 48z"/>
+              <path fill="#FBBC05" d="M10.14 28.07A14.42 14.42 0 0 1 9.6 24c0-1.41.24-2.78.54-4.07v-6.28H2.08A23.98 23.98 0 0 0 0 24c0 3.88.93 7.55 2.08 10.35l8.06-6.28z"/>
+              <path fill="#EA4335" d="M24 9.52c3.63 0 6.88 1.25 9.44 3.7l7.08-7.08C36.23 2.19 30.65 0 24 0 14.43 0 6.14 5.38 2.08 13.65l8.06 6.28C12.09 13.87 17.55 9.52 24 9.52z"/>
+            </svg>
+            Continue with Google
+          </button>
+          <div id="signinError" class="signin-error"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── Access restricted ──────────────────────────────── -->
+    <div id="restrictedState" class="gate-wrap">
+      <div class="login-card">
+        <div class="login-card-header">
+          <i class="fas fa-lock" style="font-size:32px;color:#f6c23e"></i>
+          <h2>Access Restricted</h2>
+          <p>Admin-only page</p>
+        </div>
+        <div class="login-card-body">
+          <p>This dashboard is only available to the TagScanner administrator.</p>
+          <button id="btnRestrictedSignOut"
+                  style="padding:8px 16px;font-size:13px;background:#f3f4f6;border:1px solid #d1d5db;border-radius:6px;color:#374151;cursor:pointer">
+            <i class="fas fa-sign-out-alt" style="margin-right:6px"></i>Sign out
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── Dashboard content ──────────────────────────────── -->
+    <div id="dashboardContent">
+
+      <!-- Profile card -->
+      <div class="profile-card">
+        <div class="profile-avatar-wrap">
+          <img id="profileAvatar" class="profile-avatar" src="" alt="" style="display:none" />
+          <div id="profileInitials" class="profile-avatar-placeholder" style="display:none"></div>
+        </div>
+        <div class="profile-info">
+          <div class="profile-name"  id="profileName"></div>
+          <div class="profile-email" id="profileEmail"></div>
+          <div class="profile-company-row">
+            <span id="profileCompanyDisplay"></span>
+            <button id="btnEditCompany" class="btn-edit-company" title="Edit company name">
+              <i class="fas fa-pencil-alt"></i>
+            </button>
+            <input id="profileCompanyInput" class="profile-company-input" type="text"
+                   placeholder="Add company…" maxlength="60" style="display:none" />
+            <button id="btnSaveCompany" class="btn-save-company" style="display:none">Save</button>
+          </div>
+        </div>
+        <div class="profile-actions">
+          <button id="btnSignOut" class="btn-signout">
+            <i class="fas fa-sign-out-alt" style="margin-right:4px"></i>Sign out
+          </button>
+        </div>
+      </div>
+
+      <!-- Error banner -->
+      <div id="errorBanner" class="error-banner">
+        <i class="fas fa-exclamation-circle" style="margin-right:6px"></i>
+        <span id="errorText"></span>
+      </div>
+
+      <!-- Stat cards -->
+      <div class="section-title"><i class="fas fa-bolt" style="margin-right:5px"></i>Usage Overview</div>
+      <div class="stats-grid">
+        <div class="stat-card stat-total">
+          <div class="stat-label">Total Queries</div>
+          <div class="stat-value" id="statTotal">—</div>
+          <div class="stat-sub">last 50 recorded</div>
+        </div>
+        <div class="stat-card stat-scan">
+          <div class="stat-label"><i class="fas fa-search" style="margin-right:3px"></i>Scans</div>
+          <div class="stat-value" id="statScans">—</div>
+          <div class="stat-sub">property health scans</div>
+        </div>
+        <div class="stat-card stat-explain">
+          <div class="stat-label"><i class="fas fa-code" style="margin-right:3px"></i>Explains</div>
+          <div class="stat-value" id="statExplains">—</div>
+          <div class="stat-sub">code explanations</div>
+        </div>
+        <div class="stat-card stat-feedback">
+          <div class="stat-label"><i class="fas fa-star" style="margin-right:3px"></i>Feedback Rate</div>
+          <div class="stat-value" id="statFeedback">—</div>
+          <div class="stat-sub">of queries rated</div>
+        </div>
+        <div class="stat-card stat-tokens">
+          <div class="stat-label"><i class="fas fa-coins" style="margin-right:3px"></i>Tokens Used</div>
+          <div class="stat-value" id="statTokens">—</div>
+          <div class="stat-sub" id="statTokensSub">input + output</div>
+        </div>
+      </div>
+
+      <!-- Charts -->
+      <div class="section-title"><i class="fas fa-chart-bar" style="margin-right:5px"></i>Query Trends</div>
+      <div class="charts-row">
+        <div class="chart-card">
+          <div class="chart-card-title">
+            <i class="fas fa-calendar-alt" style="margin-right:5px"></i>Queries — Last 7 Days
+          </div>
+          <div class="chart-wrap"><canvas id="barChart"></canvas></div>
+        </div>
+        <div class="chart-card">
+          <div class="chart-card-title">
+            <i class="fas fa-chart-pie" style="margin-right:5px"></i>Scan vs Explain
+          </div>
+          <div class="chart-wrap"><canvas id="doughnutChart"></canvas></div>
+        </div>
+      </div>
+
+      <!-- Cost analysis -->
+      <div class="section-title"><i class="fas fa-dollar-sign" style="margin-right:5px"></i>Cost Analysis</div>
+      <div class="cost-card">
+        <div class="cost-grid">
+          <div class="cost-item cost-total">
+            <div class="cost-label">Total Estimated</div>
+            <div class="cost-value" id="costTotal">—</div>
+            <div class="cost-sub">last 50 queries</div>
+          </div>
+          <div class="cost-item">
+            <div class="cost-label">Avg per Query</div>
+            <div class="cost-value" id="costAvg">—</div>
+            <div class="cost-sub">blended</div>
+          </div>
+          <div class="cost-item">
+            <div class="cost-label">Scan Total</div>
+            <div class="cost-value" id="costScan">—</div>
+            <div class="cost-sub" id="costScanTokens"></div>
+          </div>
+          <div class="cost-item">
+            <div class="cost-label">Explain Total</div>
+            <div class="cost-value" id="costExplain">—</div>
+            <div class="cost-sub" id="costExplainTokens"></div>
+          </div>
+        </div>
+        <div class="cost-note">
+          <i class="fas fa-info-circle"></i>
+          Estimates based on Claude 3.5 Haiku on AWS Bedrock · $0.80 / 1M input tokens · $4.00 / 1M output tokens
+        </div>
+      </div>
+
+      <!-- AI Controls -->
+      <div class="section-title"><i class="fas fa-sliders-h" style="margin-right:5px"></i>AI Controls</div>
+      <div class="ai-control-card">
+        <div class="ai-control-loading" id="aiControlLoading">
+          <i class="fas fa-spinner fa-spin" style="margin-right:6px"></i>Loading AI config…
+        </div>
+        <div id="aiControlContent" style="display:none">
+          <div class="ai-status-row">
+            <div class="ai-status-indicator">
+              <span class="ai-status-dot" id="aiStatusDot"></span>
+              <span class="ai-status-label" id="aiStatusLabel">—</span>
+            </div>
+            <button id="aiToggleBtn" class="ai-toggle-btn">—</button>
+          </div>
+          <div id="aiDisabledReasonWrap" style="display:none">
+            <div class="ai-reason-label">Disabled reason</div>
+            <div id="aiDisabledReason" class="ai-reason-text">—</div>
+          </div>
+          <div class="ai-cost-row">
+            <div class="ai-cost-info">
+              <span class="ai-cost-label">Today's cost</span>
+              <span class="ai-cost-value" id="aiTodayCost">—</span>
+            </div>
+            <div class="ai-cost-info">
+              <span class="ai-cost-label">Daily limit</span>
+              <span class="ai-cost-value" id="aiCostLimitDisplay">—</span>
+            </div>
+          </div>
+          <div class="ai-progress-wrap">
+            <div class="ai-progress-bar">
+              <div class="ai-progress-fill" id="aiProgressFill" style="width:0%"></div>
+            </div>
+            <span class="ai-progress-pct" id="aiProgressPct">0%</span>
+          </div>
+          <div class="ai-limit-row">
+            <label class="ai-limit-label">Set daily limit ($USD):</label>
+            <input type="number" id="aiCostLimitInput" class="ai-limit-input"
+                   min="0.5" max="100" step="0.5" placeholder="5.00" />
+            <button id="aiSaveLimitBtn" class="ai-save-btn">Save</button>
+          </div>
+          <div id="aiControlError" class="ai-control-error" style="display:none"></div>
+        </div>
+      </div>
+
+      <!-- Recent activity -->
+      <div class="section-title"><i class="fas fa-history" style="margin-right:5px"></i>Recent Activity</div>
+      <div id="activityList" class="activity-list"></div>
+
+      <!-- Users table -->
+      <div class="section-title" style="margin-top:24px">
+        <i class="fas fa-users" style="margin-right:5px"></i>All Users
+        <span id="userCount" style="font-size:10px;font-weight:400;color:#9ca3af;margin-left:6px"></span>
+      </div>
+      <div class="users-card">
+        <div class="users-table-scroll">
+          <div id="usersTableWrap">
+            <div class="users-table-loading">
+              <i class="fas fa-spinner fa-spin" style="margin-right:6px"></i>Loading users…
+            </div>
+          </div>
+        </div>
+        <div id="usersPagination" class="users-pagination" style="display:none">
+          <span id="usersPaginationInfo" class="users-pagination-info"></span>
+          <div class="users-pagination-btns">
+            <button id="usersPrevBtn" class="users-page-btn" disabled>
+              <i class="fas fa-chevron-left"></i> Prev
+            </button>
+            <span id="usersPageIndicator" style="font-size:11px;line-height:1;align-self:center;padding:0 4px"></span>
+            <button id="usersNextBtn" class="users-page-btn">
+              Next <i class="fas fa-chevron-right"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Customer Feedback -->
+      <div class="section-title" style="margin-top:24px">
+        <i class="fas fa-comment-dots" style="margin-right:5px"></i>Customer Feedback
+        <span id="feedbackCount" style="font-size:10px;font-weight:400;color:#9ca3af;margin-left:6px"></span>
+      </div>
+      <div class="users-card" id="feedbackCard">
+        <div class="users-table-scroll" style="max-height:400px">
+          <div id="feedbackTableWrap">
+            <div class="users-table-loading">
+              <i class="fas fa-spinner fa-spin" style="margin-right:6px"></i>Loading feedback…
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div><!-- /#dashboardContent -->
+
+    <div class="page-footer">
+      TagScanner &copy; 2025 &nbsp;·&nbsp; thelearningproject.in
+    </div>
+
+  </div><!-- /.page-content -->
+
+
+  <!-- ── Auth (web version — replaces chrome.identity with Google Identity Services) ── -->
+  <script>
+  (function (global) {
+    'use strict';
+
+    var GOOGLE_CLIENT_ID =
+      '668026713538-k01pdeb0ijmqmiqqrqra65jme34jua3v.apps.googleusercontent.com';
+
+    var TS_PROXY_URL =
+      'https://ihn2pz2dbcktbxvn36g6pfptda0jfnri.lambda-url.us-east-1.on.aws/';
+    var SESSION_KEY = 'tagscanner_session';
+
+    // ── Session helpers ─────────────────────────────────────────────────────
+
+    function getSession() {
+      try {
+        var raw = localStorage.getItem(SESSION_KEY);
+        if (!raw) return null;
+        var s = JSON.parse(raw);
+        if (s.expiresAt && Date.now() > s.expiresAt) {
+          clearSession();
+          return null;
+        }
+        return s;
+      } catch (e) {
+        return null;
+      }
+    }
+
+    function saveSession(session) {
+      try { localStorage.setItem(SESSION_KEY, JSON.stringify(session)); } catch (e) {}
+    }
+
+    function clearSession() {
+      try { localStorage.removeItem(SESSION_KEY); } catch (e) {}
+    }
+
+    function isSignedIn() {
+      return getSession() !== null;
+    }
+
+    // ── Lambda call ─────────────────────────────────────────────────────────
+
+    async function callLambda(body) {
+      var res = await fetch(TS_PROXY_URL, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(body)
+      });
+      var data = await res.json().catch(function () { return { error: 'Invalid response' }; });
+      if (!res.ok) throw new Error(data.error || 'Auth request failed (' + res.status + ')');
+      return data;
+    }
+
+    // ── Google Sign-In via Google Identity Services (web) ───────────────────
+    // Requires https://thelearningproject.in added as Authorized JavaScript origin
+    // in Google Cloud Console → APIs & Services → Credentials → OAuth Client ID.
+
+    function signInWithGoogle() {
+      return new Promise(function (resolve, reject) {
+        if (typeof google === 'undefined' || !google.accounts || !google.accounts.oauth2) {
+          reject(new Error('Google Sign-In is still loading — please try again in a moment.'));
+          return;
+        }
+
+        var client = google.accounts.oauth2.initTokenClient({
+          client_id: GOOGLE_CLIENT_ID,
+          scope: 'email profile openid',
+          callback: async function (response) {
+            if (response.error) {
+              reject(new Error(response.error_description || response.error || 'Google sign-in failed'));
+              return;
+            }
+            try {
+              var data = await callLambda({
+                type: 'auth',
+                googleAccessToken: response.access_token
+              });
+              var session = {
+                sessionToken: data.sessionToken,
+                userId:       data.userId,
+                email:        data.email,
+                name:         data.name,
+                picture:      data.picture,
+                expiresAt:    Date.now() + 30 * 24 * 60 * 60 * 1000
+              };
+              saveSession(session);
+              resolve(session);
+            } catch (err) {
+              reject(err);
+            }
+          },
+          error_callback: function (err) {
+            if (err && err.type === 'popup_closed') {
+              reject(new Error('Sign-in was cancelled'));
+            } else {
+              reject(new Error((err && err.message) || 'Google sign-in failed'));
+            }
+          }
+        });
+
+        client.requestAccessToken({ prompt: 'select_account' });
+      });
+    }
+
+    function signOut() {
+      clearSession();
+    }
+
+    // ── Public API ──────────────────────────────────────────────────────────
+
+    global.TagScannerAuth = {
+      signInWithGoogle: signInWithGoogle,
+      signOut:          signOut,
+      getSession:       getSession,
+      isSignedIn:       isSignedIn,
+      saveSession:      saveSession
+    };
+
+  })(window);
+  </script>
+
+  <!-- Chart.js 2.x (matching the extension's chart API) -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.4/dist/Chart.bundle.min.js"></script>
+
+  <!-- ── Dashboard logic (identical to vendor/dashboard.js) ── -->
+  <script>
+  (function () {
+    'use strict';
+
+    var TS_PROXY_URL  = 'https://ihn2pz2dbcktbxvn36g6pfptda0jfnri.lambda-url.us-east-1.on.aws/';
+    var COMPANY_KEY   = 'tagscanner_dashboard_company';
+
+    var COST_INPUT_PER_TOKEN  = 0.80 / 1e6;
+    var COST_OUTPUT_PER_TOKEN = 4.00 / 1e6;
+
+    var barChartInstance      = null;
+    var doughnutChartInstance = null;
+    var aiCurrentConfig       = null;
+
+    // ── Helpers ───────────────────────────────────────────────────────────────
+
+    function esc(s) {
+      return String(s || '')
+        .replace(/&/g, '&amp;').replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+    }
+
+    function relativeTime(iso) {
+      var ms   = Date.now() - new Date(iso).getTime();
+      var secs = Math.floor(ms / 1000);
+      if (secs < 60)  return 'just now';
+      var mins = Math.floor(secs / 60);
+      if (mins < 60)  return mins + 'm ago';
+      var hrs  = Math.floor(mins / 60);
+      if (hrs  < 24)  return hrs + 'h ago';
+      return Math.floor(hrs / 24) + 'd ago';
+    }
+
+    function formatCost(usd) {
+      if (usd === 0)    return '$0.00';
+      if (usd < 0.001)  return '$' + usd.toFixed(6);
+      if (usd < 0.01)   return '$' + usd.toFixed(4);
+      if (usd < 1)      return '$' + usd.toFixed(3);
+      return '$' + usd.toFixed(2);
+    }
+
+    function formatTokens(n) {
+      return n >= 1000 ? (n / 1000).toFixed(1) + 'K' : String(n);
+    }
+
+    function initials(name) {
+      var parts = (name || '').trim().split(/\s+/);
+      if (parts.length >= 2) return (parts[0][0] + parts[parts.length - 1][0]).toUpperCase();
+      return (parts[0] || '?')[0].toUpperCase();
+    }
+
+    // ── Lambda call ───────────────────────────────────────────────────────────
+
+    async function callLambda(body) {
+      var res = await fetch(TS_PROXY_URL, {
+        method:  'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body:    JSON.stringify(body)
+      });
+      var data = await res.json().catch(function () { return { error: 'Invalid response' }; });
+      if (!res.ok) throw new Error(data.error || 'Request failed (' + res.status + ')');
+      return data;
+    }
+
+    // ── State toggling ────────────────────────────────────────────────────────
+
+    function showState(state) {
+      document.getElementById('loadingState').style.display     = (state === 'loading')    ? 'flex'  : 'none';
+      document.getElementById('loginGate').style.display        = (state === 'login')      ? 'flex'  : 'none';
+      document.getElementById('restrictedState').style.display  = (state === 'restricted') ? 'flex'  : 'none';
+      document.getElementById('dashboardContent').style.display = (state === 'dashboard')  ? 'block' : 'none';
+    }
+
+    function showError(msg) {
+      document.getElementById('errorText').textContent = msg;
+      document.getElementById('errorBanner').style.display = 'block';
+    }
+
+    // ── Profile card ──────────────────────────────────────────────────────────
+
+    function renderProfile(session, userData) {
+      var name    = (userData && userData.name)    || session.name    || '';
+      var email   = (userData && userData.email)   || session.email   || '';
+      var picture = (userData && userData.picture) || session.picture || '';
+
+      document.getElementById('profileName').textContent  = name;
+      document.getElementById('profileEmail').textContent = email;
+
+      var avatar = document.getElementById('profileAvatar');
+      var initEl = document.getElementById('profileInitials');
+
+      function showInitials() {
+        avatar.style.display = 'none';
+        initEl.textContent   = initials(name || email);
+        initEl.style.display = 'flex';
+      }
+
+      if (picture) {
+        avatar.src           = picture;
+        avatar.alt           = name;
+        avatar.style.display = 'block';
+        initEl.style.display = 'none';
+        avatar.onerror       = showInitials;
+      } else {
+        showInitials();
+      }
+
+      renderCompany();
+    }
+
+    function renderCompany() {
+      var company   = localStorage.getItem(COMPANY_KEY) || '';
+      var displayEl = document.getElementById('profileCompanyDisplay');
+      if (company) {
+        displayEl.className   = 'profile-company';
+        displayEl.textContent = company;
+      } else {
+        displayEl.className   = 'profile-company-empty';
+        displayEl.textContent = 'No company set';
+      }
+    }
+
+    document.getElementById('btnEditCompany').addEventListener('click', function () {
+      var current   = localStorage.getItem(COMPANY_KEY) || '';
+      var input     = document.getElementById('profileCompanyInput');
+      var saveBtn   = document.getElementById('btnSaveCompany');
+      var editBtn   = document.getElementById('btnEditCompany');
+      var displayEl = document.getElementById('profileCompanyDisplay');
+      input.value              = current;
+      displayEl.style.display  = 'none';
+      editBtn.style.display    = 'none';
+      input.style.display      = '';
+      saveBtn.style.display    = '';
+      input.focus();
+    });
+
+    function saveCompany() {
+      var input     = document.getElementById('profileCompanyInput');
+      var saveBtn   = document.getElementById('btnSaveCompany');
+      var editBtn   = document.getElementById('btnEditCompany');
+      var displayEl = document.getElementById('profileCompanyDisplay');
+      var val = input.value.trim();
+      if (val) {
+        localStorage.setItem(COMPANY_KEY, val);
+      } else {
+        localStorage.removeItem(COMPANY_KEY);
+      }
+      input.style.display     = 'none';
+      saveBtn.style.display   = 'none';
+      displayEl.style.display = '';
+      editBtn.style.display   = '';
+      renderCompany();
+    }
+
+    document.getElementById('btnSaveCompany').addEventListener('click', saveCompany);
+    document.getElementById('profileCompanyInput').addEventListener('keydown', function (e) {
+      if (e.key === 'Enter')  saveCompany();
+      if (e.key === 'Escape') {
+        document.getElementById('profileCompanyInput').style.display  = 'none';
+        document.getElementById('btnSaveCompany').style.display        = 'none';
+        document.getElementById('profileCompanyDisplay').style.display = '';
+        document.getElementById('btnEditCompany').style.display        = '';
+      }
+    });
+
+    // ── Stats ─────────────────────────────────────────────────────────────────
+
+    function computeStats(items) {
+      var totalScans = 0, totalExplains = 0, feedbackCount = 0;
+      var inAll = 0, outAll = 0, inScan = 0, outScan = 0, inExplain = 0, outExplain = 0;
+
+      items.forEach(function (q) {
+        var ti = (q.tokens && q.tokens.input)  || 0;
+        var to = (q.tokens && q.tokens.output) || 0;
+        if (q.feedback) feedbackCount++;
+        inAll += ti; outAll += to;
+        if (q.type === 'scan')    { totalScans++;    inScan    += ti; outScan    += to; }
+        if (q.type === 'explain') { totalExplains++; inExplain += ti; outExplain += to; }
+      });
+
+      return {
+        total: items.length, totalScans: totalScans, totalExplains: totalExplains,
+        feedbackPct: items.length > 0 ? Math.round((feedbackCount / items.length) * 100) : 0,
+        totalInput: inAll, totalOutput: outAll, totalTokens: inAll + outAll,
+        scanInput: inScan, scanOutput: outScan,
+        explainInput: inExplain, explainOutput: outExplain
+      };
+    }
+
+    function renderStats(stats) {
+      document.getElementById('statTotal').textContent    = stats.total;
+      document.getElementById('statScans').textContent    = stats.totalScans;
+      document.getElementById('statExplains').textContent = stats.totalExplains;
+      document.getElementById('statFeedback').textContent = stats.feedbackPct + '%';
+      document.getElementById('statTokens').textContent   = formatTokens(stats.totalTokens);
+      document.getElementById('statTokensSub').textContent =
+        formatTokens(stats.totalInput) + ' in / ' + formatTokens(stats.totalOutput) + ' out';
+    }
+
+    // ── Cost ──────────────────────────────────────────────────────────────────
+
+    function renderCost(stats) {
+      var totalCost   = stats.totalInput   * COST_INPUT_PER_TOKEN  + stats.totalOutput   * COST_OUTPUT_PER_TOKEN;
+      var scanCost    = stats.scanInput    * COST_INPUT_PER_TOKEN  + stats.scanOutput    * COST_OUTPUT_PER_TOKEN;
+      var explainCost = stats.explainInput * COST_INPUT_PER_TOKEN  + stats.explainOutput * COST_OUTPUT_PER_TOKEN;
+      var avgCost     = stats.total > 0 ? totalCost / stats.total : 0;
+
+      document.getElementById('costTotal').textContent   = formatCost(totalCost);
+      document.getElementById('costAvg').textContent     = formatCost(avgCost);
+      document.getElementById('costScan').textContent    = formatCost(scanCost);
+      document.getElementById('costExplain').textContent = formatCost(explainCost);
+
+      document.getElementById('costScanTokens').textContent =
+        stats.scanInput || stats.scanOutput
+          ? formatTokens(stats.scanInput) + ' in / ' + formatTokens(stats.scanOutput) + ' out'
+          : 'no scans yet';
+      document.getElementById('costExplainTokens').textContent =
+        stats.explainInput || stats.explainOutput
+          ? formatTokens(stats.explainInput) + ' in / ' + formatTokens(stats.explainOutput) + ' out'
+          : 'no explains yet';
+    }
+
+    // ── Day bucketing ─────────────────────────────────────────────────────────
+
+    function bucketByDay(items) {
+      var DAY_NAMES = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+      var labels = [], keys = [], counts = {};
+      var now = new Date();
+      for (var i = 6; i >= 0; i--) {
+        var d   = new Date(now);
+        d.setDate(d.getDate() - i);
+        var m   = String(d.getMonth() + 1).padStart(2, '0');
+        var day = String(d.getDate()).padStart(2, '0');
+        var key = d.getFullYear() + '-' + m + '-' + day;
+        labels.push(i === 0 ? 'Today' : (DAY_NAMES[d.getDay()] + ' ' + d.getDate()));
+        keys.push(key);
+        counts[key] = 0;
+      }
+      items.forEach(function (q) {
+        if (!q.createdAt) return;
+        var d   = new Date(q.createdAt);
+        var m   = String(d.getMonth() + 1).padStart(2, '0');
+        var day = String(d.getDate()).padStart(2, '0');
+        var key = d.getFullYear() + '-' + m + '-' + day;
+        if (Object.prototype.hasOwnProperty.call(counts, key)) counts[key]++;
+      });
+      return { labels: labels, data: keys.map(function (k) { return counts[k]; }) };
+    }
+
+    // ── Charts ────────────────────────────────────────────────────────────────
+
+    function renderBarChart(items) {
+      var ctx      = document.getElementById('barChart').getContext('2d');
+      var bucketed = bucketByDay(items);
+      if (barChartInstance) { barChartInstance.destroy(); barChartInstance = null; }
+      barChartInstance = new Chart(ctx, {
+        type: 'bar',
+        data: {
+          labels: bucketed.labels,
+          datasets: [{
+            label: 'Queries', data: bucketed.data,
+            backgroundColor: 'rgba(78,115,223,0.45)', borderColor: 'rgba(78,115,223,1)', borderWidth: 1
+          }]
+        },
+        options: {
+          responsive: true, maintainAspectRatio: false, legend: { display: false },
+          scales: {
+            xAxes: [{ gridLines: { display: false }, ticks: { fontSize: 10 } }],
+            yAxes: [{ ticks: { beginAtZero: true, precision: 0, fontSize: 10 }, gridLines: { color: '#f0f0f0' } }]
+          },
+          tooltips: {
+            mode: 'index', intersect: false,
+            callbacks: { label: function (item) { return item.yLabel + ' ' + (item.yLabel === 1 ? 'query' : 'queries'); } }
+          }
+        }
+      });
+    }
+
+    function renderDoughnutChart(stats) {
+      var ctx     = document.getElementById('doughnutChart').getContext('2d');
+      var hasData = (stats.totalScans + stats.totalExplains) > 0;
+      if (doughnutChartInstance) { doughnutChartInstance.destroy(); doughnutChartInstance = null; }
+      doughnutChartInstance = new Chart(ctx, {
+        type: 'doughnut',
+        data: {
+          labels:   hasData ? ['Scans', 'Explains'] : ['No data'],
+          datasets: [{
+            data:            hasData ? [stats.totalScans, stats.totalExplains] : [1],
+            backgroundColor: hasData ? ['#4e73df', '#1cc88a'] : ['#e5e7eb'],
+            borderWidth: hasData ? 2 : 0, borderColor: '#fff'
+          }]
+        },
+        options: {
+          responsive: true, maintainAspectRatio: false, cutoutPercentage: 68,
+          legend: { display: true, position: 'bottom', labels: { fontSize: 10, padding: 12, boxWidth: 12 } },
+          tooltips: {
+            callbacks: {
+              label: function (item, d) {
+                if (!hasData) return 'No data yet';
+                var val   = d.datasets[0].data[item.index];
+                var total = d.datasets[0].data.reduce(function (a, b) { return a + b; }, 0);
+                return d.labels[item.index] + ': ' + val + ' (' + Math.round((val / total) * 100) + '%)';
+              }
+            }
+          }
+        }
+      });
+    }
+
+    // ── Recent activity ───────────────────────────────────────────────────────
+
+    function renderActivity(items) {
+      var container = document.getElementById('activityList');
+      var recent    = items.slice(0, 5);
+      if (!recent.length) {
+        container.innerHTML =
+          '<div class="empty-state"><i class="fas fa-history"></i>' +
+          'No activity yet. Run a scan or explain code to see it here.</div>';
+        return;
+      }
+      container.innerHTML = recent.map(function (q) {
+        var bc  = q.type === 'scan' ? 'badge-scan' : 'badge-explain';
+        var bl  = q.type === 'scan' ? 'Scan'       : 'Explain';
+        var dc  = q.feedback === 'positive' ? 'positive' : q.feedback === 'negative' ? 'negative' : 'none';
+        var dt  = q.feedback === 'positive' ? 'Positive feedback'
+                : q.feedback === 'negative' ? 'Negative feedback' : 'No feedback yet';
+        return '<div class="activity-row">' +
+          '<span class="type-badge ' + bc + '">' + bl + '</span>' +
+          '<span class="activity-summary" title="' + esc(q.requestSummary || '') + '">' + esc(q.requestSummary || '—') + '</span>' +
+          '<span class="activity-time">' + relativeTime(q.createdAt) + '</span>' +
+          '<div class="feedback-dot ' + dc + '" title="' + dt + '"></div>' +
+          '</div>';
+      }).join('');
+    }
+
+    // ── Users table ───────────────────────────────────────────────────────────
+
+    var USER_PAGE_SIZE   = 10;
+    var usersCurrentPage = 0;
+    var usersAllData     = [];
+
+    async function fetchAndRenderUsers(session) {
+      var wrap = document.getElementById('usersTableWrap');
+      try {
+        var data = await callLambda({ type: 'users', sessionToken: session.sessionToken });
+        usersAllData = data.users || [];
+        document.getElementById('userCount').textContent = usersAllData.length + ' registered';
+        usersCurrentPage = 0;
+        renderUsersPage();
+      } catch (err) {
+        wrap.innerHTML =
+          '<div class="users-table-loading" style="color:#ef4444">' +
+          '<i class="fas fa-exclamation-circle" style="margin-right:6px"></i>' +
+          'Could not load users: ' + esc(err.message) + '</div>';
+      }
+    }
+
+    function renderUsersPage() {
+      var wrap       = document.getElementById('usersTableWrap');
+      var pagination = document.getElementById('usersPagination');
+      var totalPages = Math.ceil(usersAllData.length / USER_PAGE_SIZE) || 1;
+      var start      = usersCurrentPage * USER_PAGE_SIZE;
+      var pageUsers  = usersAllData.slice(start, start + USER_PAGE_SIZE);
+
+      renderUsersTable(pageUsers, wrap);
+
+      var showing = usersAllData.length
+        ? (start + 1) + '–' + Math.min(start + USER_PAGE_SIZE, usersAllData.length) + ' of ' + usersAllData.length + ' users'
+        : '';
+      document.getElementById('usersPaginationInfo').textContent = showing;
+      document.getElementById('usersPageIndicator').textContent  = 'Page ' + (usersCurrentPage + 1) + ' of ' + totalPages;
+      document.getElementById('usersPrevBtn').disabled = usersCurrentPage === 0;
+      document.getElementById('usersNextBtn').disabled = usersCurrentPage >= totalPages - 1;
+      pagination.style.display = usersAllData.length > USER_PAGE_SIZE ? '' : 'none';
+
+      var scrollWrap = document.querySelector('.users-table-scroll');
+      if (scrollWrap) scrollWrap.scrollTop = 0;
+    }
+
+    function userInitials(name, email) {
+      var src = (name || email || '?').trim().split(/\s+/);
+      if (src.length >= 2) return (src[0][0] + src[src.length - 1][0]).toUpperCase();
+      return src[0][0].toUpperCase();
+    }
+
+    function renderUsersTable(users, wrap) {
+      if (!users.length) {
+        wrap.innerHTML = '<div class="users-table-loading">No users found.</div>';
+        return;
+      }
+
+      var rows = users.map(function (u) {
+        var s          = u.stats || {};
+        var name       = esc(u.name  || '—');
+        var email      = esc(u.email || '—');
+        var joined     = u.createdAt   ? new Date(u.createdAt).toLocaleDateString()  : '—';
+        var lastActive = s.lastActive  ? relativeTime(s.lastActive) : (u.lastLoginAt ? relativeTime(u.lastLoginAt) : '—');
+
+        var avatarHtml = u.picture
+          ? '<img class="user-avatar-sm" src="' + esc(u.picture) + '" alt="" onerror="this.style.display=\'none\';this.nextSibling.style.display=\'inline-flex\'">' +
+            '<span class="user-initials-sm" style="display:none">' + userInitials(u.name, u.email) + '</span>'
+          : '<span class="user-initials-sm">' + userInitials(u.name, u.email) + '</span>';
+
+        var activityHtml = s.totalQueries
+          ? '<span style="font-size:11px;font-weight:600;color:#1f2937">' + s.totalQueries + '</span>' +
+            '<span style="font-size:10px;color:#9ca3af;margin-left:4px">(' + (s.totalScans || 0) + ' scans · ' + (s.totalExplains || 0) + ' explains)</span>'
+          : '<span style="font-size:11px;color:#d1d5db">—</span>';
+
+        var props = s.properties || [];
+        var propsHtml;
+        if (!props.length) {
+          propsHtml = '<span style="font-size:11px;color:#d1d5db">—</span>';
+        } else {
+          var visible = props.slice(0, 2).map(function (p) {
+            return '<span style="display:inline-block;font-size:10px;background:#eff4ff;color:#3730a3;border:1px solid #c7d7fd;border-radius:4px;padding:1px 6px;margin:1px 2px 1px 0;white-space:nowrap;max-width:140px;overflow:hidden;text-overflow:ellipsis" title="' + esc(p) + '">' + esc(p) + '</span>';
+          }).join('');
+          var extra = props.length > 2
+            ? '<span style="font-size:10px;color:#6b7280;cursor:default" title="' + esc(props.join(', ')) + '">+' + (props.length - 2) + ' more</span>'
+            : '';
+          propsHtml = visible + extra;
+        }
+
+        var totalTok = (s.totalInputTokens || 0) + (s.totalOutputTokens || 0);
+        var tokHtml  = totalTok
+          ? '<span style="font-size:11px;font-weight:600;color:#1f2937">' + formatTokens(totalTok) + '</span>' +
+            '<br><span style="font-size:10px;color:#9ca3af">' + formatTokens(s.totalInputTokens || 0) + ' in / ' + formatTokens(s.totalOutputTokens || 0) + ' out</span>'
+          : '<span style="font-size:11px;color:#d1d5db">—</span>';
+
+        return '<tr>' +
+          '<td><div class="user-name-cell">' + avatarHtml + '<span style="font-size:12px;font-weight:500">' + name + '</span></div></td>' +
+          '<td style="white-space:nowrap">' + email +
+            '<button class="copy-btn" data-copy="' + email + '" title="Copy email"><i class="fas fa-copy"></i></button>' +
+          '</td>' +
+          '<td>' + activityHtml + '</td>' +
+          '<td>' + propsHtml + '</td>' +
+          '<td style="font-size:11px;color:#374151;white-space:nowrap">' + lastActive + '</td>' +
+          '<td>' + tokHtml + '</td>' +
+          '<td style="font-size:11px;color:#6b7280;white-space:nowrap">' + joined + '</td>' +
+          '</tr>';
+      }).join('');
+
+      wrap.innerHTML =
+        '<table class="users-table">' +
+          '<thead><tr>' +
+            '<th>User</th>' +
+            '<th>Email</th>' +
+            '<th>Activity</th>' +
+            '<th>Properties Scanned</th>' +
+            '<th>Last Active</th>' +
+            '<th>Tokens Used</th>' +
+            '<th>Joined</th>' +
+          '</tr></thead>' +
+          '<tbody>' + rows + '</tbody>' +
+        '</table>';
+
+      wrap.querySelectorAll('[data-copy]').forEach(function (btn) {
+        btn.addEventListener('click', function () {
+          var text = btn.getAttribute('data-copy');
+          navigator.clipboard.writeText(text).then(function () {
+            btn.innerHTML = '<i class="fas fa-check"></i>';
+            setTimeout(function () { btn.innerHTML = '<i class="fas fa-copy"></i>'; }, 1500);
+          }).catch(function () {});
+        });
+      });
+    }
+
+    // ── Customer Feedback ─────────────────────────────────────────────────────
+
+    var RATING_CSS = {
+      'Love it':         'rating-love',
+      "It's helpful":    'rating-helpful',
+      'Could be better': 'rating-meh',
+      'Not helpful':     'rating-bad'
+    };
+    var RATING_ICON = {
+      'Love it':         'fa-heart',
+      "It's helpful":    'fa-thumbs-up',
+      'Could be better': 'fa-meh',
+      'Not helpful':     'fa-thumbs-down'
+    };
+
+    async function fetchAndRenderFeedback(session) {
+      var wrap    = document.getElementById('feedbackTableWrap');
+      var countEl = document.getElementById('feedbackCount');
+      try {
+        var data  = await callLambda({ type: 'getFeedback', sessionToken: session.sessionToken });
+        var items = data.items || [];
+
+        if (countEl) countEl.textContent = items.length + ' entr' + (items.length === 1 ? 'y' : 'ies');
+
+        if (!items.length) {
+          wrap.innerHTML = '<div class="empty-state"><i class="fas fa-comment"></i>No feedback submitted yet.</div>';
+          return;
+        }
+
+        var rows = items.map(function (item) {
+          var cssClass    = RATING_CSS[item.rating]  || 'rating-unknown';
+          var iconClass   = RATING_ICON[item.rating] || 'fa-star';
+          var ratingBadge = '<span class="rating-pill ' + cssClass + '">' +
+            '<i class="fas ' + iconClass + '" style="margin-right:4px"></i>' + esc(item.rating || '—') + '</span>';
+          var catBadge    = '<span style="font-size:10px;font-weight:600;padding:2px 8px;border-radius:10px;background:#eff4ff;color:#3730a3">' +
+            esc(item.category || 'General') + '</span>';
+          var when        = item.submittedAt
+            ? new Date(item.submittedAt).toLocaleString(undefined, { dateStyle: 'medium', timeStyle: 'short' })
+            : '—';
+          var nameHtml  = item.name  ? esc(item.name)  : '';
+          var emailHtml = item.email ? '<span style="font-size:10px;color:#9ca3af">' + esc(item.email) + '</span>' : '';
+          var userCell  = (nameHtml || emailHtml)
+            ? (nameHtml ? '<div style="font-size:12px;font-weight:500">' + nameHtml + '</div>' : '') + emailHtml
+            : '<span style="font-size:11px;color:#d1d5db">Anonymous</span>';
+
+          return '<tr>' +
+            '<td style="white-space:nowrap;font-size:11px;color:#6b7280">' + when + '</td>' +
+            '<td>' + userCell + '</td>' +
+            '<td>' + ratingBadge + '</td>' +
+            '<td>' + catBadge + '</td>' +
+            '<td class="feedback-msg-cell">' + esc(item.message || '') + '</td>' +
+            '</tr>';
+        }).join('');
+
+        wrap.innerHTML =
+          '<table class="users-table">' +
+            '<thead><tr>' +
+              '<th>Date</th><th>User</th><th>Rating</th><th>Category</th><th>Message</th>' +
+            '</tr></thead>' +
+            '<tbody>' + rows + '</tbody>' +
+          '</table>';
+      } catch (err) {
+        if (wrap) wrap.innerHTML =
+          '<div style="padding:16px;color:#ef4444;font-size:12px">' +
+          '<i class="fas fa-exclamation-circle" style="margin-right:6px"></i>' + esc(err.message) + '</div>';
+      }
+    }
+
+    // ── AI Controls ───────────────────────────────────────────────────────────
+
+    async function fetchAndRenderAIControl(session) {
+      var loadingEl = document.getElementById('aiControlLoading');
+      var contentEl = document.getElementById('aiControlContent');
+      try {
+        var data = await callLambda({ type: 'config', sessionToken: session.sessionToken });
+        aiCurrentConfig = data;
+        loadingEl.style.display = 'none';
+        contentEl.style.display = '';
+        renderAIControl(data);
+      } catch (err) {
+        loadingEl.innerHTML =
+          '<span style="color:#ef4444"><i class="fas fa-exclamation-circle" style="margin-right:5px"></i>' +
+          esc(err.message) + '</span>';
+      }
+    }
+
+    function renderAIControl(config) {
+      var dot        = document.getElementById('aiStatusDot');
+      var label      = document.getElementById('aiStatusLabel');
+      var toggleBtn  = document.getElementById('aiToggleBtn');
+      var reasonWrap = document.getElementById('aiDisabledReasonWrap');
+      var reasonEl   = document.getElementById('aiDisabledReason');
+      var todayEl    = document.getElementById('aiTodayCost');
+      var limitEl    = document.getElementById('aiCostLimitDisplay');
+      var fillEl     = document.getElementById('aiProgressFill');
+      var pctEl      = document.getElementById('aiProgressPct');
+      var limitInput = document.getElementById('aiCostLimitInput');
+
+      var enabled        = config.ai_enabled !== false;
+      dot.className      = 'ai-status-dot ' + (enabled ? 'enabled' : 'disabled');
+      label.textContent  = enabled ? 'AI Enabled' : 'AI Disabled';
+      toggleBtn.textContent = enabled ? 'Disable AI' : 'Enable AI';
+      toggleBtn.className   = 'ai-toggle-btn ' + (enabled ? 'btn-disable' : 'btn-enable');
+
+      if (!enabled && config.disabled_reason) {
+        reasonEl.textContent     = config.disabled_reason;
+        reasonWrap.style.display = '';
+      } else {
+        reasonWrap.style.display = 'none';
+      }
+
+      var limit     = typeof config.cost_limit_usd === 'number' ? config.cost_limit_usd : 5;
+      var todayCost = config.today_cost_usd || 0;
+      todayEl.textContent = formatCost(todayCost);
+      limitEl.textContent = formatCost(limit);
+      limitInput.value    = limit.toFixed(2);
+
+      var pct = limit > 0 ? Math.min(100, Math.round((todayCost / limit) * 100)) : 0;
+      fillEl.style.width = pct + '%';
+      fillEl.className   = 'ai-progress-fill' + (pct >= 100 ? ' danger' : pct >= 75 ? ' warn' : '');
+      pctEl.textContent  = pct + '%';
+    }
+
+    document.getElementById('aiToggleBtn').addEventListener('click', async function () {
+      var btn   = this;
+      var errEl = document.getElementById('aiControlError');
+      if (!aiCurrentConfig) return;
+      errEl.style.display = 'none';
+
+      var newEnabled = !aiCurrentConfig.ai_enabled;
+      var reason = '';
+      if (!newEnabled) {
+        var typed = window.prompt('Reason for disabling AI (optional):');
+        if (typed === null) return;
+        reason = typed.trim() || 'Manually disabled by admin.';
+      }
+
+      btn.disabled = true;
+      try {
+        var session = window.TagScannerAuth && window.TagScannerAuth.getSession();
+        await callLambda({
+          type: 'setConfig', sessionToken: session.sessionToken,
+          ai_enabled: newEnabled, disabled_reason: newEnabled ? '' : reason
+        });
+        aiCurrentConfig.ai_enabled      = newEnabled;
+        aiCurrentConfig.disabled_reason = newEnabled ? '' : reason;
+        renderAIControl(aiCurrentConfig);
+      } catch (err) {
+        errEl.textContent   = err.message;
+        errEl.style.display = '';
+      } finally {
+        btn.disabled = false;
+      }
+    });
+
+    document.getElementById('aiSaveLimitBtn').addEventListener('click', async function () {
+      var btn   = this;
+      var errEl = document.getElementById('aiControlError');
+      errEl.style.display = 'none';
+      var val = parseFloat(document.getElementById('aiCostLimitInput').value);
+      if (isNaN(val) || val < 0.5) {
+        errEl.textContent   = 'Enter a valid limit (minimum $0.50).';
+        errEl.style.display = '';
+        return;
+      }
+      btn.disabled = true;
+      try {
+        var session = window.TagScannerAuth && window.TagScannerAuth.getSession();
+        await callLambda({ type: 'setConfig', sessionToken: session.sessionToken, cost_limit_usd: val });
+        if (aiCurrentConfig) { aiCurrentConfig.cost_limit_usd = val; renderAIControl(aiCurrentConfig); }
+      } catch (err) {
+        errEl.textContent   = err.message;
+        errEl.style.display = '';
+      } finally {
+        btn.disabled = false;
+      }
+    });
+
+    // ── Zero state ────────────────────────────────────────────────────────────
+
+    function renderZeroState() {
+      var zero = {
+        total: 0, totalScans: 0, totalExplains: 0, feedbackPct: 0,
+        totalInput: 0, totalOutput: 0, totalTokens: 0,
+        scanInput: 0, scanOutput: 0, explainInput: 0, explainOutput: 0
+      };
+      renderStats(zero);
+      renderBarChart([]);
+      renderDoughnutChart(zero);
+      renderCost(zero);
+      renderActivity([]);
+    }
+
+    // ── Main init ─────────────────────────────────────────────────────────────
+
+    async function init() {
+      showState('loading');
+
+      var session = window.TagScannerAuth && window.TagScannerAuth.getSession();
+      if (!session) { showState('login'); return; }
+
+      try {
+        await callLambda({ type: 'config', sessionToken: session.sessionToken });
+      } catch (err) {
+        showState('restricted');
+        return;
+      }
+
+      try {
+        var data  = await callLambda({ type: 'history', sessionToken: session.sessionToken, limit: 50 });
+        var items = data.items || [];
+        var stats = computeStats(items);
+
+        renderProfile(session, data.user);
+        renderStats(stats);
+        renderBarChart(items);
+        renderDoughnutChart(stats);
+        renderCost(stats);
+        renderActivity(items);
+        showState('dashboard');
+        fetchAndRenderUsers(session);
+        fetchAndRenderAIControl(session);
+        fetchAndRenderFeedback(session);
+      } catch (err) {
+        renderProfile(session, null);
+        renderZeroState();
+        showError('Could not load dashboard data: ' + (err.message || 'Unknown error') + '. Try reloading.');
+        showState('dashboard');
+        fetchAndRenderUsers(session);
+        fetchAndRenderAIControl(session);
+        fetchAndRenderFeedback(session);
+      }
+    }
+
+    // ── Sign-in ───────────────────────────────────────────────────────────────
+
+    document.getElementById('btnSignIn').addEventListener('click', async function () {
+      var btn   = document.getElementById('btnSignIn');
+      var errEl = document.getElementById('signinError');
+      btn.disabled    = true;
+      btn.textContent = 'Signing in…';
+      errEl.style.display = 'none';
+      try {
+        await window.TagScannerAuth.signInWithGoogle();
+        init();
+      } catch (err) {
+        errEl.textContent   = err.message || 'Sign-in failed. Please try again.';
+        errEl.style.display = 'block';
+        btn.disabled        = false;
+        btn.innerHTML =
+          '<svg width="18" height="18" viewBox="0 0 48 48" aria-hidden="true" style="flex-shrink:0">' +
+          '<path fill="#4285F4" d="M47.53 24.56c0-1.6-.14-3.14-.4-4.62H24v8.73h13.2c-.57 3.03-2.3 5.59-4.9 7.32v6.08h7.93c4.64-4.28 7.3-10.58 7.3-17.51z"/>' +
+          '<path fill="#34A853" d="M24 48c6.66 0 12.24-2.21 16.32-5.98l-7.93-6.08c-2.2 1.47-5.01 2.34-8.39 2.34-6.45 0-11.91-4.35-13.86-10.21H2.08v6.28C6.14 42.62 14.43 48 24 48z"/>' +
+          '<path fill="#FBBC05" d="M10.14 28.07A14.42 14.42 0 0 1 9.6 24c0-1.41.24-2.78.54-4.07v-6.28H2.08A23.98 23.98 0 0 0 0 24c0 3.88.93 7.55 2.08 10.35l8.06-6.28z"/>' +
+          '<path fill="#EA4335" d="M24 9.52c3.63 0 6.88 1.25 9.44 3.7l7.08-7.08C36.23 2.19 30.65 0 24 0 14.43 0 6.14 5.38 2.08 13.65l8.06 6.28C12.09 13.87 17.55 9.52 24 9.52z"/>' +
+          '</svg> Continue with Google';
+      }
+    });
+
+    document.getElementById('btnRestrictedSignOut').addEventListener('click', function () {
+      window.TagScannerAuth.signOut();
+      location.reload();
+    });
+
+    document.getElementById('btnSignOut').addEventListener('click', function () {
+      window.TagScannerAuth.signOut();
+      if (barChartInstance)      { barChartInstance.destroy();      barChartInstance = null; }
+      if (doughnutChartInstance) { doughnutChartInstance.destroy(); doughnutChartInstance = null; }
+      location.reload();
+    });
+
+    document.getElementById('usersPrevBtn').addEventListener('click', function () {
+      if (usersCurrentPage > 0) { usersCurrentPage--; renderUsersPage(); }
+    });
+
+    document.getElementById('usersNextBtn').addEventListener('click', function () {
+      var totalPages = Math.ceil(usersAllData.length / USER_PAGE_SIZE);
+      if (usersCurrentPage < totalPages - 1) { usersCurrentPage++; renderUsersPage(); }
+    });
+
+    // ── Boot ──────────────────────────────────────────────────────────────────
+
+    init();
+
+  })();
+  </script>
+
+</body>
+</html>
