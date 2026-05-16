@@ -1154,15 +1154,21 @@
           propsHtml=props.slice(0,2).map(function(p){return '<span style="display:inline-block;font-size:10px;background:#eff4ff;color:#3730a3;border:1px solid #c7d7fd;border-radius:4px;padding:1px 7px;margin:1px 2px 1px 0;max-width:130px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap" title="'+esc(p)+'">'+esc(p)+'</span>';}).join('');
           if (props.length>2) propsHtml+='<span style="font-size:11px;color:#6b7280" title="'+esc(props.join(', '))+'">+' +(props.length-2)+' more</span>';
         }
+        var sites=s.sites||[], sitesHtml;
+        if (!sites.length) { sitesHtml='<span style="color:#d1d5db;font-size:11px">—</span>'; }
+        else {
+          sitesHtml=sites.slice(0,2).map(function(h){return '<span style="display:inline-block;font-size:10px;background:#f0fdf4;color:#166534;border:1px solid #bbf7d0;border-radius:4px;padding:1px 7px;margin:1px 2px 1px 0;max-width:150px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap" title="'+esc(h)+'">'+esc(h)+'</span>';}).join('');
+          if (sites.length>2) sitesHtml+='<span style="font-size:11px;color:#6b7280" title="'+esc(sites.join(', '))+'">+' +(sites.length-2)+' more</span>';
+        }
         var tot=(s.totalInputTokens||0)+(s.totalOutputTokens||0);
         var tok=tot?'<strong>'+fmtTok(tot)+'</strong><br><span style="font-size:10px;color:#9ca3af">'+fmtTok(s.totalInputTokens||0)+' in / '+fmtTok(s.totalOutputTokens||0)+' out</span>':'<span style="color:#d1d5db">—</span>';
         return '<tr><td><div class="user-name-cell">'+av+'<span style="font-weight:600">'+name+'</span></div></td>'+
           '<td style="white-space:nowrap">'+email+'<button class="copy-btn" data-copy="'+email+'" title="Copy email"><i class="fas fa-copy"></i></button></td>'+
-          '<td>'+act+'</td><td>'+propsHtml+'</td>'+
+          '<td>'+act+'</td><td>'+propsHtml+'</td><td>'+sitesHtml+'</td>'+
           '<td style="white-space:nowrap;font-size:12px">'+last+'</td><td>'+tok+'</td>'+
           '<td style="font-size:12px;color:#6b7280;white-space:nowrap">'+joined+'</td></tr>';
       }).join('');
-      wrap.innerHTML='<table class="data-table"><thead><tr><th>User</th><th>Email</th><th>Activity</th><th>Properties</th><th>Last Active</th><th>Tokens</th><th>Joined</th></tr></thead><tbody>'+rows+'</tbody></table>';
+      wrap.innerHTML='<table class="data-table"><thead><tr><th>User</th><th>Email</th><th>Activity</th><th>Properties</th><th>Websites</th><th>Last Active</th><th>Tokens</th><th>Joined</th></tr></thead><tbody>'+rows+'</tbody></table>';
       wrap.querySelectorAll('[data-copy]').forEach(function(btn) {
         btn.addEventListener('click', function() {
           navigator.clipboard.writeText(btn.getAttribute('data-copy')).then(function() {
