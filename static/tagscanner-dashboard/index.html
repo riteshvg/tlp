@@ -501,6 +501,41 @@
       content: ''; flex: 1; height: 1px; background: #e5e7eb;
     }
 
+    /* ─── User profile panel ─────────────────────────────────────────── */
+    .profile-panel-header {
+      background: #fff; border-radius: 12px; padding: 20px 24px;
+      box-shadow: 0 1px 6px rgba(0,0,0,0.06); margin-bottom: 16px;
+      display: flex; align-items: center; gap: 16px; flex-wrap: wrap;
+    }
+    .profile-panel-avatar {
+      width: 56px; height: 56px; border-radius: 50%;
+      border: 2px solid #e3e6f0; flex-shrink: 0;
+    }
+    .profile-panel-initials {
+      width: 56px; height: 56px; border-radius: 50%; flex-shrink: 0;
+      background: linear-gradient(135deg, #4e73df, #36b9cc);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 22px; font-weight: 700; color: #fff;
+    }
+    .profile-panel-stats { display: flex; gap: 24px; margin-left: auto; flex-wrap: wrap; }
+    .profile-panel-stat { text-align: center; }
+    .profile-panel-stat-value { font-size: 20px; font-weight: 800; color: #111827; }
+    .profile-panel-stat-label { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.4px; color: #9ca3af; }
+    .btn-back {
+      display: inline-flex; align-items: center; gap: 7px;
+      padding: 6px 14px; font-size: 13px; font-weight: 600;
+      background: #fff; border: 1.5px solid #d1d5db; border-radius: 8px;
+      color: #374151; cursor: pointer; transition: all 0.15s; margin-bottom: 16px;
+    }
+    .btn-back:hover { border-color: #4e73df; color: #4e73df; }
+    .query-activity-row {
+      display: flex; align-items: flex-start; gap: 10px;
+      padding: 12px 16px; border-bottom: 1px solid #f3f4f6; font-size: 13px;
+    }
+    .query-activity-row:last-child { border-bottom: none; }
+    .query-activity-row:hover { background: #fafbff; }
+    .badge-chat { background: #fef3c7; color: #92400e; }
+
     /* ─── Page footer ─────────────────────────────────────────────────── */
     .page-footer {
       text-align: center; padding: 20px;
@@ -749,26 +784,53 @@
     <!-- ── Tab: Users ──────────────────────────────────────────────────── -->
     <div class="tab-panel" id="panel-users">
       <div class="panel-content">
-        <h2 class="section-heading">All Users</h2>
-        <p class="section-sub" id="usersSubtitle">Registered users and their activity</p>
 
-        <div class="data-card">
-          <div class="table-scroll">
-            <div id="usersTableWrap">
-              <div class="table-loading">
-                <i class="fas fa-spinner fa-spin" style="margin-right:8px"></i>Loading users…
+        <!-- Users list view -->
+        <div id="usersListView">
+          <h2 class="section-heading">All Users</h2>
+          <p class="section-sub" id="usersSubtitle">Registered users and their activity</p>
+
+          <div class="data-card">
+            <div class="table-scroll">
+              <div id="usersTableWrap">
+                <div class="table-loading">
+                  <i class="fas fa-spinner fa-spin" style="margin-right:8px"></i>Loading users…
+                </div>
+              </div>
+            </div>
+            <div id="usersPagination" class="pagination-bar" style="display:none">
+              <span id="usersPaginationInfo"></span>
+              <div class="pagination-btns">
+                <button id="usersPrevBtn" class="page-btn" disabled><i class="fas fa-chevron-left"></i> Prev</button>
+                <span id="usersPageIndicator" style="font-size:12px;color:#6b7280;padding:0 4px"></span>
+                <button id="usersNextBtn" class="page-btn">Next <i class="fas fa-chevron-right"></i></button>
               </div>
             </div>
           </div>
-          <div id="usersPagination" class="pagination-bar" style="display:none">
-            <span id="usersPaginationInfo"></span>
-            <div class="pagination-btns">
-              <button id="usersPrevBtn" class="page-btn" disabled><i class="fas fa-chevron-left"></i> Prev</button>
-              <span id="usersPageIndicator" style="font-size:12px;color:#6b7280;padding:0 4px"></span>
-              <button id="usersNextBtn" class="page-btn">Next <i class="fas fa-chevron-right"></i></button>
+        </div>
+
+        <!-- User profile sub-view -->
+        <div id="userProfilePanel" style="display:none">
+          <button id="btnBackToUsers" class="btn-back">
+            <i class="fas fa-arrow-left"></i> Back to Users
+          </button>
+          <div class="profile-panel-header" id="profilePanelHeader"></div>
+          <div class="data-card">
+            <div class="data-card-header">
+              <div class="data-card-title">
+                <i class="fas fa-history" style="color:#4e73df"></i>
+                Activity History
+                <span class="count-pill" id="profileActivityCount">—</span>
+              </div>
+            </div>
+            <div id="profileActivityList">
+              <div class="table-loading">
+                <i class="fas fa-spinner fa-spin" style="margin-right:8px"></i>Loading activity…
+              </div>
             </div>
           </div>
         </div>
+
       </div>
     </div>
 
@@ -1104,13 +1166,14 @@
 
     // ── Users table ────────────────────────────────────────────────────────
 
-    var PAGE_SIZE=10, userPage=0, allUsers=[];
+    var PAGE_SIZE=10, userPage=0, allUsers=[], profileUserMap={};
 
     async function fetchUsers(session) {
       var wrap=document.getElementById('usersTableWrap');
       try {
         var data=await callLambda({type:'users',sessionToken:session.sessionToken});
         allUsers=data.users||[];
+        allUsers.forEach(function(u){if(u.userId)profileUserMap[u.userId]=u;});
         var n=allUsers.length;
         document.getElementById('tabBadgeUsers').textContent=n;
         document.getElementById('usersSubtitle').textContent=n+' registered user'+(n===1?'':'s');
@@ -1162,7 +1225,7 @@
         }
         var tot=(s.totalInputTokens||0)+(s.totalOutputTokens||0);
         var tok=tot?'<strong>'+fmtTok(tot)+'</strong><br><span style="font-size:10px;color:#9ca3af">'+fmtTok(s.totalInputTokens||0)+' in / '+fmtTok(s.totalOutputTokens||0)+' out</span>':'<span style="color:#d1d5db">—</span>';
-        return '<tr><td><div class="user-name-cell">'+av+'<span style="font-weight:600">'+name+'</span></div></td>'+
+        return '<tr data-uid="'+esc(u.userId||'')+'" style="cursor:pointer"><td><div class="user-name-cell">'+av+'<span style="font-weight:600">'+name+'</span></div></td>'+
           '<td style="white-space:nowrap">'+email+'<button class="copy-btn" data-copy="'+email+'" title="Copy email"><i class="fas fa-copy"></i></button></td>'+
           '<td>'+act+'</td><td>'+propsHtml+'</td><td>'+sitesHtml+'</td>'+
           '<td style="white-space:nowrap;font-size:12px">'+last+'</td><td>'+tok+'</td>'+
@@ -1177,10 +1240,90 @@
           }).catch(function(){});
         });
       });
+      wrap.querySelectorAll('tbody tr[data-uid]').forEach(function(row) {
+        row.addEventListener('click', function(e) {
+          if (e.target.closest('.copy-btn')) return;
+          var uid=row.getAttribute('data-uid');
+          var u=profileUserMap[uid];
+          if (u) showUserProfile(uid, u);
+        });
+      });
     }
 
     document.getElementById('usersPrevBtn').addEventListener('click', function() { if(userPage>0){userPage--;renderUsersPage();} });
     document.getElementById('usersNextBtn').addEventListener('click', function() { var t=Math.ceil(allUsers.length/PAGE_SIZE); if(userPage<t-1){userPage++;renderUsersPage();} });
+
+    function showUsersList() {
+      document.getElementById('usersListView').style.display='block';
+      document.getElementById('userProfilePanel').style.display='none';
+    }
+
+    function showUserProfile(userId, user) {
+      document.getElementById('usersListView').style.display='none';
+      document.getElementById('userProfilePanel').style.display='block';
+      var s=user.stats||{}, name=esc(user.name||'—'), email=esc(user.email||'—');
+      var av=user.picture
+        ?'<img class="profile-panel-avatar" src="'+esc(user.picture)+'" alt="" onerror="this.style.display=\'none\';this.nextSibling.style.display=\'flex\'"><span class="profile-panel-initials" style="display:none">'+uInit(user.name,user.email)+'</span>'
+        :'<span class="profile-panel-initials">'+uInit(user.name,user.email)+'</span>';
+      var joined=user.createdAt?new Date(user.createdAt).toLocaleDateString():'—';
+      var tot=(s.totalInputTokens||0)+(s.totalOutputTokens||0);
+      var chatCount=s.totalQueries?(s.totalQueries-(s.totalScans||0)-(s.totalExplains||0)):0;
+      document.getElementById('profilePanelHeader').innerHTML=
+        '<div style="display:flex;align-items:center;gap:12px;flex:1">'+av+
+        '<div>'+
+          '<div style="font-size:16px;font-weight:700;color:#111827">'+name+'</div>'+
+          '<div style="font-size:12px;color:#6b7280">'+email+'</div>'+
+          '<div style="font-size:11px;color:#9ca3af;margin-top:3px">Joined '+joined+'</div>'+
+        '</div></div>'+
+        '<div class="profile-panel-stats">'+
+          '<div class="profile-panel-stat"><div class="profile-panel-stat-value">'+(s.totalQueries||0)+'</div><div class="profile-panel-stat-label">Total</div></div>'+
+          '<div class="profile-panel-stat"><div class="profile-panel-stat-value">'+(s.totalScans||0)+'</div><div class="profile-panel-stat-label">Scans</div></div>'+
+          '<div class="profile-panel-stat"><div class="profile-panel-stat-value">'+(s.totalExplains||0)+'</div><div class="profile-panel-stat-label">Explains</div></div>'+
+          '<div class="profile-panel-stat"><div class="profile-panel-stat-value">'+Math.max(0,chatCount)+'</div><div class="profile-panel-stat-label">Chats</div></div>'+
+          '<div class="profile-panel-stat"><div class="profile-panel-stat-value">'+fmtTok(tot)+'</div><div class="profile-panel-stat-label">Tokens</div></div>'+
+        '</div>';
+      document.getElementById('profileActivityList').innerHTML='<div class="table-loading"><i class="fas fa-spinner fa-spin" style="margin-right:8px"></i>Loading activity…</div>';
+      document.getElementById('profileActivityCount').textContent='—';
+      fetchUserHistory(userId);
+    }
+
+    async function fetchUserHistory(userId) {
+      var session=window.TagScannerAuth.getSession();
+      if (!session) return;
+      try {
+        var data=await callLambda({type:'history',sessionToken:session.sessionToken,ownerId:userId,limit:50});
+        var items=data.items||[];
+        document.getElementById('profileActivityCount').textContent=items.length+(items.length>=50?'+':'');
+        renderUserActivity(items);
+      } catch(err) {
+        document.getElementById('profileActivityList').innerHTML='<div class="table-loading" style="color:#ef4444"><i class="fas fa-exclamation-circle" style="margin-right:8px"></i>'+esc(err.message)+'</div>';
+      }
+    }
+
+    function renderUserActivity(items) {
+      var el=document.getElementById('profileActivityList');
+      if (!items.length) { el.innerHTML='<div class="empty-state"><i class="fas fa-history"></i>No activity yet.</div>'; return; }
+      el.innerHTML=items.map(function(q) {
+        var bc=q.type==='scan'?'badge-scan':q.type==='chat'?'badge-chat':'badge-explain';
+        var bl=q.type==='scan'?'Scan':q.type==='chat'?'Chat':'Explain';
+        var when=q.createdAt?new Date(q.createdAt).toLocaleString(undefined,{dateStyle:'medium',timeStyle:'short'}):'—';
+        var prop=q.propertyKey?'<span style="font-size:11px;color:#9ca3af;margin-top:2px;display:block">'+esc(q.propertyKey.replace(/#.*/,''))+'</span>':'';
+        var tok=(q.tokens&&(q.tokens.input||q.tokens.output))?'<span style="font-size:10px;color:#9ca3af">'+fmtTok((q.tokens.input||0)+(q.tokens.output||0))+' tok</span>':'';
+        return '<div class="query-activity-row">'+
+          '<span class="type-badge '+bc+'">'+bl+'</span>'+
+          '<div style="flex:1;min-width:0">'+
+            '<div style="color:#374151;font-weight:500;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">'+esc(q.requestSummary||'—')+'</div>'+
+            prop+
+          '</div>'+
+          '<div style="text-align:right;flex-shrink:0">'+
+            '<div style="font-size:11px;color:#9ca3af;white-space:nowrap">'+when+'</div>'+
+            tok+
+          '</div>'+
+        '</div>';
+      }).join('');
+    }
+
+    document.getElementById('btnBackToUsers').addEventListener('click', showUsersList);
 
     // ── Feedback ───────────────────────────────────────────────────────────
 
