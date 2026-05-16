@@ -284,6 +284,14 @@
 
     /* ─── Activity ────────────────────────────────────────────────────── */
     .activity-list { display: flex; flex-direction: column; gap: 8px; }
+    .activity-filter-btn {
+      padding: 3px 12px; font-size: 11px; font-weight: 600;
+      border: 1px solid #e3e6f0; border-radius: 20px;
+      background: #fff; color: #6b7280; cursor: pointer; transition: all 0.15s;
+    }
+    .activity-filter-btn:hover  { border-color: #4e73df; color: #4e73df; }
+    .activity-filter-btn.active { background: #4e73df; color: #fff; border-color: #4e73df; }
+
     .activity-row {
       display: flex; align-items: center; gap: 10px;
       background: #fff; border-radius: 10px; padding: 12px 16px;
@@ -727,7 +735,15 @@
           </div>
         </div>
 
-        <div class="section-divider">Recent Activity</div>
+        <div class="section-divider" style="justify-content:space-between;align-items:center">
+          <span>Activity History <span class="count-pill" id="activityCount" style="margin-left:6px">—</span></span>
+          <div id="activityFilters" style="display:flex;gap:6px">
+            <button class="activity-filter-btn active" data-filter="all">All</button>
+            <button class="activity-filter-btn" data-filter="chat">Chat</button>
+            <button class="activity-filter-btn" data-filter="scan">Scan</button>
+            <button class="activity-filter-btn" data-filter="explain">Explain</button>
+          </div>
+        </div>
         <div id="activityList" class="activity-list"></div>
 
       </div>
@@ -1193,22 +1209,51 @@
 
     // ── Activity ───────────────────────────────────────────────────────────
 
+    var allActivityItems = [];
+    var activeActivityFilter = 'all';
+
     function renderActivity(items) {
-      var el=document.getElementById('activityList'), recent=items.slice(0,5);
-      if (!recent.length) {
-        el.innerHTML='<div class="empty-state"><i class="fas fa-history"></i>No activity yet. Run a scan or explain to see it here.</div>'; return;
+      allActivityItems = items || [];
+      document.getElementById('activityCount').textContent = allActivityItems.length;
+      applyActivityFilter();
+    }
+
+    function applyActivityFilter() {
+      var el = document.getElementById('activityList');
+      var filtered = activeActivityFilter === 'all'
+        ? allActivityItems
+        : allActivityItems.filter(function(q) { return q.type === activeActivityFilter; });
+
+      if (!filtered.length) {
+        el.innerHTML = '<div class="empty-state"><i class="fas fa-history"></i>No ' +
+          (activeActivityFilter === 'all' ? '' : activeActivityFilter + ' ') +
+          'activity yet.</div>';
+        return;
       }
-      el.innerHTML=recent.map(function(q) {
-        var bc=q.type==='scan'?'badge-scan':'badge-explain', bl=q.type==='scan'?'Scan':'Explain';
-        var dc=q.feedback==='positive'?'positive':q.feedback==='negative'?'negative':'none';
-        var dt=q.feedback==='positive'?'Positive feedback':q.feedback==='negative'?'Negative feedback':'No feedback';
-        return '<div class="activity-row">'+
-          '<span class="type-badge '+bc+'">'+bl+'</span>'+
-          '<span class="activity-summary" title="'+esc(q.requestSummary||'')+'">'+esc(q.requestSummary||'—')+'</span>'+
-          '<span class="activity-time">'+relTime(q.createdAt)+'</span>'+
-          '<div class="feedback-dot '+dc+'" title="'+dt+'"></div></div>';
+
+      el.innerHTML = filtered.map(function(q) {
+        var bc = q.type === 'scan' ? 'badge-scan' : q.type === 'chat' ? 'badge-chat' : 'badge-explain';
+        var bl = q.type === 'scan' ? 'Scan' : q.type === 'chat' ? 'Chat' : 'Explain';
+        var dc = q.feedback === 'positive' ? 'positive' : q.feedback === 'negative' ? 'negative' : 'none';
+        var dt = q.feedback === 'positive' ? 'Positive feedback' : q.feedback === 'negative' ? 'Negative feedback' : 'No feedback';
+        var when = q.createdAt ? new Date(q.createdAt).toLocaleString(undefined, { dateStyle: 'medium', timeStyle: 'short' }) : '—';
+        var prop = q.propertyKey ? '<span style="font-size:11px;color:#9ca3af;margin-left:6px">' + esc(q.propertyKey.split('#')[0]) + '</span>' : '';
+        return '<div class="activity-row">' +
+          '<span class="type-badge ' + bc + '">' + bl + '</span>' +
+          '<span class="activity-summary" title="' + esc(q.requestSummary || '') + '">' + esc(q.requestSummary || '—') + prop + '</span>' +
+          '<span class="activity-time">' + when + '</span>' +
+          '<div class="feedback-dot ' + dc + '" title="' + dt + '"></div></div>';
       }).join('');
     }
+
+    document.getElementById('activityFilters').addEventListener('click', function(e) {
+      var btn = e.target.closest('.activity-filter-btn');
+      if (!btn) return;
+      document.querySelectorAll('.activity-filter-btn').forEach(function(b) { b.classList.remove('active'); });
+      btn.classList.add('active');
+      activeActivityFilter = btn.dataset.filter;
+      applyActivityFilter();
+    });
 
     // ── Users table ────────────────────────────────────────────────────────
 
