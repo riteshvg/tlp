@@ -401,6 +401,56 @@
       background: #fef2f2; border: 1px solid #fecaca; border-radius: 6px; padding: 8px 12px;
     }
 
+    /* ─── Maintenance / Purge panel ──────────────────────────────────── */
+    .purge-card {
+      background: #fff; border-radius: 12px; padding: 24px;
+      box-shadow: 0 1px 6px rgba(0,0,0,0.06); margin-bottom: 20px;
+    }
+    .purge-card-title {
+      font-size: 14px; font-weight: 700; color: #111827; margin: 0 0 4px;
+      display: flex; align-items: center; gap: 8px;
+    }
+    .purge-card-desc { font-size: 12.5px; color: #6b7280; margin: 0 0 18px; line-height: 1.5; }
+    .purge-scope-grid {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 20px;
+    }
+    @media (max-width: 560px) { .purge-scope-grid { grid-template-columns: 1fr; } }
+    .purge-scope-item {
+      display: flex; align-items: flex-start; gap: 10px;
+      border: 1.5px solid #e5e7eb; border-radius: 8px; padding: 12px 14px; cursor: pointer;
+      transition: border-color 0.15s, background 0.15s;
+    }
+    .purge-scope-item:has(input:checked) { border-color: #ef4444; background: #fff5f5; }
+    .purge-scope-item input[type=checkbox] { margin-top: 2px; accent-color: #ef4444; cursor: pointer; flex-shrink: 0; }
+    .purge-scope-label { font-size: 12.5px; font-weight: 700; color: #111827; }
+    .purge-scope-sublabel { font-size: 11px; color: #9ca3af; margin-top: 1px; }
+    .purge-danger-box {
+      background: #fef2f2; border: 1px solid #fecaca; border-radius: 8px;
+      padding: 12px 14px; margin-bottom: 18px; font-size: 12.5px; color: #7f1d1d;
+      display: flex; gap: 10px; align-items: flex-start;
+    }
+    .purge-danger-box i { flex-shrink: 0; margin-top: 1px; color: #ef4444; }
+    .purge-btn-row { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
+    .purge-btn {
+      padding: 9px 22px; font-size: 13px; font-weight: 700;
+      background: #ef4444; color: #fff; border: none; border-radius: 8px;
+      cursor: pointer; display: flex; align-items: center; gap: 7px;
+      transition: background 0.15s;
+    }
+    .purge-btn:hover:not(:disabled) { background: #dc2626; }
+    .purge-btn:disabled { opacity: 0.5; cursor: not-allowed; }
+    .purge-result {
+      margin-top: 16px; font-size: 12.5px; border-radius: 8px; padding: 12px 14px;
+      display: none;
+    }
+    .purge-result.success { background: #f0fdf4; border: 1px solid #bbf7d0; color: #14532d; }
+    .purge-result.error   { background: #fef2f2; border: 1px solid #fecaca; color: #7f1d1d; }
+    .purge-result-counts { margin-top: 8px; display: flex; flex-wrap: wrap; gap: 8px; }
+    .purge-count-pill {
+      background: rgba(0,0,0,0.06); border-radius: 20px; padding: 2px 10px;
+      font-size: 11px; font-weight: 700;
+    }
+
     /* ─── Card wrapper used in several tabs ───────────────────────────── */
     .data-card {
       background: #fff; border-radius: 12px;
@@ -681,6 +731,9 @@
           <i class="fas fa-question-circle"></i> Questions
           <span class="tab-badge" id="tabBadgeQuestions">—</span>
         </button>
+        <button class="tab-btn" data-tab="maintenance">
+          <i class="fas fa-tools"></i> Maintenance
+        </button>
       </div>
     </div>
 
@@ -914,8 +967,80 @@
       </div>
     </div>
 
+    <!-- ── Tab: Maintenance ───────────────────────────────────────────────── -->
+    <div class="tab-panel" id="panel-maintenance">
+      <div class="panel-content">
+        <h2 class="section-heading">Maintenance</h2>
+        <p class="section-sub">Reset test data before going live so real users start with a clean slate</p>
+
+        <div class="purge-card">
+          <p class="purge-card-title"><i class="fas fa-trash-alt" style="color:#ef4444"></i> Purge Test Data</p>
+          <p class="purge-card-desc">
+            Select which tables to clear. All items in the chosen tables will be permanently deleted.
+            This is irreversible — run it once before inviting real users to ensure they don't
+            encounter cached tester results or inherit tester rate-limit counts.
+          </p>
+
+          <div class="purge-scope-grid">
+            <label class="purge-scope-item">
+              <input type="checkbox" class="purge-scope-check" value="scan_cache" checked />
+              <div>
+                <div class="purge-scope-label"><i class="fas fa-search" style="color:#4e73df;margin-right:5px"></i>Scan Cache</div>
+                <div class="purge-scope-sublabel">Fingerprint-keyed Health Scan results. <strong style="color:#ef4444">Critical</strong> — tester results served to real users of the same property.</div>
+              </div>
+            </label>
+            <label class="purge-scope-item">
+              <input type="checkbox" class="purge-scope-check" value="explain_cache" checked />
+              <div>
+                <div class="purge-scope-label"><i class="fas fa-code" style="color:#1cc88a;margin-right:5px"></i>Explain Cache</div>
+                <div class="purge-scope-sublabel">Code-hash-keyed explanations. Tester explanations returned to real users explaining the same code.</div>
+              </div>
+            </label>
+            <label class="purge-scope-item">
+              <input type="checkbox" class="purge-scope-check" value="rate_limits" checked />
+              <div>
+                <div class="purge-scope-label"><i class="fas fa-tachometer-alt" style="color:#f6c23e;margin-right:5px"></i>Rate Limits &amp; Beta Counts</div>
+                <div class="purge-scope-sublabel">Daily API quota counters and per-user beta chat counts. Real users would inherit tester quota usage.</div>
+              </div>
+            </label>
+            <label class="purge-scope-item">
+              <input type="checkbox" class="purge-scope-check" value="queries" />
+              <div>
+                <div class="purge-scope-label"><i class="fas fa-history" style="color:#858796;margin-right:5px"></i>Query History</div>
+                <div class="purge-scope-sublabel">All scan, explain, and chat queries. Clears the property-scoped history view. Optional — uncheck to keep audit logs.</div>
+              </div>
+            </label>
+          </div>
+
+          <div class="purge-danger-box">
+            <i class="fas fa-exclamation-triangle"></i>
+            <div>
+              <strong style="display:block;margin-bottom:3px">This action is irreversible.</strong>
+              Deleted items cannot be recovered. The scan cache and explain cache regenerate automatically on the next real user scan. Rate limit counters reset to zero.
+            </div>
+          </div>
+
+          <div class="purge-btn-row">
+            <button id="purgeRunBtn" class="purge-btn">
+              <i class="fas fa-trash-alt"></i> Purge Selected Tables
+            </button>
+            <span id="purgeStatusText" style="font-size:12.5px;color:#6b7280;display:none">
+              <i class="fas fa-spinner fa-spin" style="margin-right:5px"></i>Deleting…
+            </span>
+          </div>
+
+          <div id="purgeResult" class="purge-result">
+            <strong id="purgeResultTitle"></strong>
+            <div id="purgeResultMsg" style="margin-top:4px"></div>
+            <div class="purge-result-counts" id="purgeResultCounts"></div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
     <footer class="page-footer">
-      TagScanner &copy; 2025 &nbsp;·&nbsp; thelearningproject.in
+      TagScanner &copy; 2026 &nbsp;·&nbsp; thelearningproject.in
     </footer>
 
   </div><!-- /#dashboardShell -->
@@ -1594,6 +1719,58 @@
           }
         });
       });
+    }
+
+    // ── Purge test data ────────────────────────────────────────────────────
+
+    document.getElementById('purgeRunBtn').addEventListener('click', async function () {
+      var checks = Array.from(document.querySelectorAll('.purge-scope-check:checked')).map(function (el) { return el.value; });
+      if (!checks.length) {
+        showPurgeResult('error', 'Select at least one table to purge.', null);
+        return;
+      }
+
+      var labels = { scan_cache: 'Scan Cache', explain_cache: 'Explain Cache', rate_limits: 'Rate Limits', queries: 'Queries' };
+      var listStr = checks.map(function (k) { return labels[k] || k; }).join(', ');
+      var confirmed = window.confirm(
+        'Permanently delete ALL items from: ' + listStr + '?\n\nThis cannot be undone.'
+      );
+      if (!confirmed) return;
+
+      var btn = this;
+      var status = document.getElementById('purgeStatusText');
+      var result = document.getElementById('purgeResult');
+      btn.disabled = true;
+      status.style.display = '';
+      result.style.display = 'none';
+
+      try {
+        var s = window.TagScannerAuth.getSession();
+        var data = await callLambda({ type: 'purgeTestData', sessionToken: s.sessionToken, tables: checks });
+        var counts = data.deletedCounts || {};
+        var pills = checks.map(function (k) {
+          var n = typeof counts[k] === 'number' ? counts[k] : (String(counts[k] || '?'));
+          return '<span class="purge-count-pill">' + esc(labels[k] || k) + ': ' + esc(String(n)) + ' deleted</span>';
+        }).join('');
+        showPurgeResult('success', 'Purge complete — tables are clean for real users.', pills);
+      } catch (err) {
+        showPurgeResult('error', err.message || 'Purge failed. Check Lambda logs.', null);
+      } finally {
+        btn.disabled = false;
+        status.style.display = 'none';
+      }
+    });
+
+    function showPurgeResult(type, msg, pillsHtml) {
+      var el    = document.getElementById('purgeResult');
+      var title = document.getElementById('purgeResultTitle');
+      var msgEl = document.getElementById('purgeResultMsg');
+      var pills = document.getElementById('purgeResultCounts');
+      el.className = 'purge-result ' + type;
+      title.textContent = type === 'success' ? '✓ Done' : '✗ Error';
+      msgEl.textContent = msg;
+      pills.innerHTML   = pillsHtml || '';
+      el.style.display  = '';
     }
 
     // ── Zero state ─────────────────────────────────────────────────────────
