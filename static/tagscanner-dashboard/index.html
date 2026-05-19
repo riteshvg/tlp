@@ -451,6 +451,78 @@
       font-size: 11px; font-weight: 700;
     }
 
+    /* ─── Purge modals ────────────────────────────────────────────────── */
+    .purge-modal-overlay {
+      display: none; position: fixed; inset: 0; z-index: 9999;
+      background: rgba(0,0,0,0.55); align-items: center; justify-content: center;
+    }
+    .purge-modal-overlay.open { display: flex; }
+    .purge-modal {
+      background: #fff; border-radius: 14px; width: 90%; max-width: 460px;
+      box-shadow: 0 12px 40px rgba(0,0,0,0.22); overflow: hidden; font-family: inherit;
+    }
+    .purge-modal-header {
+      padding: 18px 22px 14px; border-bottom: 1px solid #f3f4f6;
+      display: flex; align-items: center; gap: 10px;
+    }
+    .purge-modal-header-icon {
+      width: 36px; height: 36px; border-radius: 50%; display: flex;
+      align-items: center; justify-content: center; flex-shrink: 0; font-size: 15px;
+    }
+    .purge-modal-header-icon.warn  { background: #fef2f2; color: #ef4444; }
+    .purge-modal-header-icon.ok    { background: #f0fdf4; color: #10b981; }
+    .purge-modal-header-icon.error { background: #fef2f2; color: #ef4444; }
+    .purge-modal-title { font-size: 15px; font-weight: 700; color: #111827; }
+    .purge-modal-subtitle { font-size: 12px; color: #6b7280; margin-top: 1px; }
+    .purge-modal-body { padding: 18px 22px; }
+    .purge-modal-body p { font-size: 13px; color: #374151; margin: 0 0 14px; line-height: 1.55; }
+    .purge-modal-scope-list { list-style: none; margin: 0 0 14px; padding: 0; display: flex; flex-direction: column; gap: 6px; }
+    .purge-modal-scope-list li {
+      display: flex; align-items: center; gap: 8px; font-size: 12.5px;
+      background: #fef2f2; border: 1px solid #fecaca; border-radius: 7px;
+      padding: 7px 12px; color: #7f1d1d; font-weight: 600;
+    }
+    .purge-modal-scope-list li i { font-size: 11px; flex-shrink: 0; }
+    .purge-modal-warn-note {
+      font-size: 12px; color: #92400e; background: #fffbeb; border: 1px solid #fde68a;
+      border-radius: 7px; padding: 8px 12px; display: flex; gap: 8px; align-items: flex-start;
+    }
+    .purge-modal-warn-note i { flex-shrink: 0; margin-top: 1px; }
+    .purge-modal-footer {
+      padding: 14px 22px; border-top: 1px solid #f3f4f6;
+      display: flex; justify-content: flex-end; gap: 10px;
+    }
+    .purge-modal-btn-cancel {
+      padding: 8px 18px; font-size: 13px; font-weight: 600; border-radius: 8px;
+      border: 1.5px solid #d1d5db; background: #fff; color: #374151; cursor: pointer;
+    }
+    .purge-modal-btn-cancel:hover { background: #f9fafb; }
+    .purge-modal-btn-confirm {
+      padding: 8px 18px; font-size: 13px; font-weight: 700; border-radius: 8px;
+      border: none; background: #ef4444; color: #fff; cursor: pointer;
+      display: flex; align-items: center; gap: 7px;
+    }
+    .purge-modal-btn-confirm:hover:not(:disabled) { background: #dc2626; }
+    .purge-modal-btn-confirm:disabled { opacity: 0.5; cursor: not-allowed; }
+    /* Result modal */
+    .purge-result-row {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 9px 0; border-bottom: 1px solid #f3f4f6; font-size: 13px;
+    }
+    .purge-result-row:last-child { border-bottom: none; }
+    .purge-result-row-name { display: flex; align-items: center; gap: 8px; color: #374151; font-weight: 600; }
+    .purge-result-row-count {
+      font-size: 13px; font-weight: 800; padding: 2px 10px; border-radius: 20px;
+    }
+    .purge-result-row-count.has-items { background: #f0fdf4; color: #15803d; }
+    .purge-result-row-count.zero      { background: #f3f4f6; color: #9ca3af; }
+    .purge-result-row-count.err       { background: #fef2f2; color: #ef4444; font-size: 11px; }
+    .purge-modal-btn-done {
+      padding: 8px 22px; font-size: 13px; font-weight: 700; border-radius: 8px;
+      border: none; background: #4e73df; color: #fff; cursor: pointer;
+    }
+    .purge-modal-btn-done:hover { background: #2e59d9; }
+
     /* ─── Card wrapper used in several tabs ───────────────────────────── */
     .data-card {
       background: #fff; border-radius: 12px;
@@ -1029,13 +1101,54 @@
             </span>
           </div>
 
-          <div id="purgeResult" class="purge-result">
-            <strong id="purgeResultTitle"></strong>
-            <div id="purgeResultMsg" style="margin-top:4px"></div>
-            <div class="purge-result-counts" id="purgeResultCounts"></div>
-          </div>
         </div>
 
+      </div>
+    </div>
+
+    <!-- ── Purge confirm modal ──────────────────────────────────────────── -->
+    <div class="purge-modal-overlay" id="purgeConfirmOverlay">
+      <div class="purge-modal">
+        <div class="purge-modal-header">
+          <div class="purge-modal-header-icon warn"><i class="fas fa-exclamation-triangle"></i></div>
+          <div>
+            <div class="purge-modal-title">Confirm Purge</div>
+            <div class="purge-modal-subtitle">This action is permanent and cannot be undone</div>
+          </div>
+        </div>
+        <div class="purge-modal-body">
+          <p>The following tables will be permanently cleared:</p>
+          <ul class="purge-modal-scope-list" id="purgeConfirmList"></ul>
+          <div class="purge-modal-warn-note">
+            <i class="fas fa-info-circle"></i>
+            <span>Scan and explain caches regenerate automatically on the next user scan. Rate limit counters reset to zero.</span>
+          </div>
+        </div>
+        <div class="purge-modal-footer">
+          <button class="purge-modal-btn-cancel" id="purgeConfirmCancel">Cancel</button>
+          <button class="purge-modal-btn-confirm" id="purgeConfirmOk">
+            <i class="fas fa-trash-alt"></i> Yes, Purge Now
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── Purge result modal ────────────────────────────────────────────── -->
+    <div class="purge-modal-overlay" id="purgeResultOverlay">
+      <div class="purge-modal">
+        <div class="purge-modal-header" id="purgeResultHeader">
+          <div class="purge-modal-header-icon ok" id="purgeResultIcon"><i class="fas fa-check-circle"></i></div>
+          <div>
+            <div class="purge-modal-title" id="purgeResultTitle">Purge Complete</div>
+            <div class="purge-modal-subtitle" id="purgeResultSubtitle">Tables are clean for real users</div>
+          </div>
+        </div>
+        <div class="purge-modal-body">
+          <div id="purgeResultRows"></div>
+        </div>
+        <div class="purge-modal-footer">
+          <button class="purge-modal-btn-done" id="purgeResultClose">Done</button>
+        </div>
       </div>
     </div>
 
@@ -1723,54 +1836,96 @@
 
     // ── Purge test data ────────────────────────────────────────────────────
 
-    document.getElementById('purgeRunBtn').addEventListener('click', async function () {
-      var checks = Array.from(document.querySelectorAll('.purge-scope-check:checked')).map(function (el) { return el.value; });
-      if (!checks.length) {
-        showPurgeResult('error', 'Select at least one table to purge.', null);
-        return;
-      }
+    var PURGE_LABELS = {
+      scan_cache:    { label: 'Scan Cache',              icon: 'fa-search',        color: '#4e73df' },
+      explain_cache: { label: 'Explain Cache',           icon: 'fa-code',          color: '#1cc88a' },
+      rate_limits:   { label: 'Rate Limits & Beta Counts', icon: 'fa-tachometer-alt', color: '#f6c23e' },
+      queries:       { label: 'Query History',           icon: 'fa-history',       color: '#858796' }
+    };
 
-      var labels = { scan_cache: 'Scan Cache', explain_cache: 'Explain Cache', rate_limits: 'Rate Limits', queries: 'Queries' };
-      var listStr = checks.map(function (k) { return labels[k] || k; }).join(', ');
-      var confirmed = window.confirm(
-        'Permanently delete ALL items from: ' + listStr + '?\n\nThis cannot be undone.'
-      );
-      if (!confirmed) return;
+    var _purgeChecks = [];
 
-      var btn = this;
-      var status = document.getElementById('purgeStatusText');
-      var result = document.getElementById('purgeResult');
-      btn.disabled = true;
+    // Step 1: Open confirm modal
+    document.getElementById('purgeRunBtn').addEventListener('click', function () {
+      _purgeChecks = Array.from(document.querySelectorAll('.purge-scope-check:checked')).map(function (el) { return el.value; });
+      if (!_purgeChecks.length) { alert('Select at least one table to purge.'); return; }
+
+      var list = document.getElementById('purgeConfirmList');
+      list.innerHTML = _purgeChecks.map(function (k) {
+        var m = PURGE_LABELS[k] || { label: k, icon: 'fa-table', color: '#6b7280' };
+        return '<li><i class="fas ' + m.icon + '" style="color:' + m.color + '"></i>' + esc(m.label) + '</li>';
+      }).join('');
+
+      document.getElementById('purgeConfirmOverlay').classList.add('open');
+    });
+
+    document.getElementById('purgeConfirmCancel').addEventListener('click', function () {
+      document.getElementById('purgeConfirmOverlay').classList.remove('open');
+    });
+
+    // Step 2: Execute purge on confirm
+    document.getElementById('purgeConfirmOk').addEventListener('click', async function () {
+      var confirmOverlay = document.getElementById('purgeConfirmOverlay');
+      var confirmBtn     = this;
+      var status         = document.getElementById('purgeStatusText');
+
+      confirmOverlay.classList.remove('open');
+      confirmBtn.disabled = true;
       status.style.display = '';
-      result.style.display = 'none';
+      document.getElementById('purgeRunBtn').disabled = true;
 
       try {
-        var s = window.TagScannerAuth.getSession();
-        var data = await callLambda({ type: 'purgeTestData', sessionToken: s.sessionToken, tables: checks });
-        var counts = data.deletedCounts || {};
-        var pills = checks.map(function (k) {
-          var n = typeof counts[k] === 'number' ? counts[k] : (String(counts[k] || '?'));
-          return '<span class="purge-count-pill">' + esc(labels[k] || k) + ': ' + esc(String(n)) + ' deleted</span>';
-        }).join('');
-        showPurgeResult('success', 'Purge complete — tables are clean for real users.', pills);
+        var s    = window.TagScannerAuth.getSession();
+        var data = await callLambda({ type: 'purgeTestData', sessionToken: s.sessionToken, tables: _purgeChecks });
+        showPurgeResultModal(true, data.deletedCounts || {}, data.purgedAt || null);
       } catch (err) {
-        showPurgeResult('error', err.message || 'Purge failed. Check Lambda logs.', null);
+        showPurgeResultModal(false, {}, null, err.message || 'Purge failed. Check Lambda logs.');
       } finally {
-        btn.disabled = false;
+        confirmBtn.disabled = false;
         status.style.display = 'none';
+        document.getElementById('purgeRunBtn').disabled = false;
       }
     });
 
-    function showPurgeResult(type, msg, pillsHtml) {
-      var el    = document.getElementById('purgeResult');
-      var title = document.getElementById('purgeResultTitle');
-      var msgEl = document.getElementById('purgeResultMsg');
-      var pills = document.getElementById('purgeResultCounts');
-      el.className = 'purge-result ' + type;
-      title.textContent = type === 'success' ? '✓ Done' : '✗ Error';
-      msgEl.textContent = msg;
-      pills.innerHTML   = pillsHtml || '';
-      el.style.display  = '';
+    document.getElementById('purgeResultClose').addEventListener('click', function () {
+      document.getElementById('purgeResultOverlay').classList.remove('open');
+    });
+
+    function showPurgeResultModal(success, counts, purgedAt, errMsg) {
+      var icon     = document.getElementById('purgeResultIcon');
+      var title    = document.getElementById('purgeResultTitle');
+      var subtitle = document.getElementById('purgeResultSubtitle');
+      var rows     = document.getElementById('purgeResultRows');
+
+      if (success) {
+        icon.className     = 'purge-modal-header-icon ok';
+        icon.innerHTML     = '<i class="fas fa-check-circle"></i>';
+        title.textContent  = 'Purge Complete';
+        subtitle.textContent = purgedAt
+          ? 'Completed at ' + new Date(purgedAt).toLocaleTimeString(undefined, { hour: '2-digit', minute: '2-digit', second: '2-digit' })
+          : 'Tables are clean for real users';
+
+        rows.innerHTML = _purgeChecks.map(function (k) {
+          var m   = PURGE_LABELS[k] || { label: k, icon: 'fa-table', color: '#6b7280' };
+          var val = counts[k];
+          var isErr = typeof val === 'string' && val.startsWith('ERROR');
+          var n   = isErr ? 'Error' : (typeof val === 'number' ? val : '0');
+          var cls = isErr ? 'err' : (n > 0 ? 'has-items' : 'zero');
+          var countLabel = isErr ? val : (n + ' item' + (n === 1 ? '' : 's') + ' deleted');
+          return '<div class="purge-result-row">' +
+            '<span class="purge-result-row-name"><i class="fas ' + m.icon + '" style="color:' + m.color + '"></i>' + esc(m.label) + '</span>' +
+            '<span class="purge-result-row-count ' + cls + '">' + esc(String(countLabel)) + '</span>' +
+            '</div>';
+        }).join('');
+      } else {
+        icon.className     = 'purge-modal-header-icon error';
+        icon.innerHTML     = '<i class="fas fa-times-circle"></i>';
+        title.textContent  = 'Purge Failed';
+        subtitle.textContent = 'No data was deleted';
+        rows.innerHTML = '<p style="font-size:13px;color:#ef4444;margin:0">' + esc(errMsg || 'Unknown error') + '</p>';
+      }
+
+      document.getElementById('purgeResultOverlay').classList.add('open');
     }
 
     // ── Zero state ─────────────────────────────────────────────────────────
