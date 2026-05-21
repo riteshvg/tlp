@@ -3,6 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="robots" content="noindex, nofollow" />
   <title>TagScanner — Admin Dashboard</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
   <script src="https://accounts.google.com/gsi/client"></script>
@@ -1528,6 +1529,50 @@
       return p.length>=2?(p[0][0]+p[p.length-1][0]).toUpperCase():p[0][0].toUpperCase();
     }
 
+    function buildLimitCell(u) {
+      var isUnlimited = u.chat_limit_override === -1;
+      var uid = esc(u.userId || '');
+      if (isUnlimited) {
+        return '<span style="display:inline-flex;align-items:center;gap:5px;font-size:11px;color:#059669;font-weight:600">' +
+          '<i class="fas fa-infinity" style="font-size:10px"></i> Unlimited' +
+          '</span>' +
+          '<button class="limit-reset-btn" data-uid="' + uid + '" title="Reset to default (10)" ' +
+          'style="margin-left:6px;background:none;border:1px solid #e5e7eb;border-radius:4px;padding:1px 6px;font-size:10px;color:#6b7280;cursor:pointer;">Reset</button>';
+      }
+      return '<span style="font-size:11px;color:#6b7280">10 (default)</span>' +
+        '<button class="limit-override-btn" data-uid="' + uid + '" title="Remove limit for this user" ' +
+        'style="margin-left:6px;background:none;border:1px solid #e5e7eb;border-radius:4px;padding:1px 6px;font-size:10px;color:#4e73df;cursor:pointer;">Unlimited</button>';
+    }
+
+    function setUserChatLimit(targetUserId, limit, btn) {
+      var origHtml = btn.innerHTML;
+      btn.disabled = true;
+      btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i>';
+      fetch(TS_PROXY_URL, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ type: 'setUserChatLimit', sessionToken: window.TagScannerAuth.getSession().sessionToken, targetUserId: targetUserId, limit: limit })
+      })
+      .then(function(r) { return r.json(); })
+      .then(function(data) {
+        if (data.ok) {
+          var u = profileUserMap[targetUserId];
+          if (u) {
+            if (limit === null) { delete u.chat_limit_override; } else { u.chat_limit_override = limit; }
+          }
+          renderUsersPage();
+        } else {
+          btn.innerHTML = origHtml;
+          btn.disabled = false;
+          alert('Error: ' + (data.error || 'Could not update limit.'));
+        }
+      })
+      .catch(function() {
+        btn.innerHTML = origHtml;
+        btn.disabled = false;
+      });
+    }
+
     function renderUsersTable(users, wrap) {
       if (!users.length) { wrap.innerHTML='<div class="table-loading">No users found.</div>'; return; }
       var rows=users.map(function(u) {
@@ -1558,9 +1603,10 @@
           '<td style="white-space:nowrap">'+email+'<button class="copy-btn" data-copy="'+email+'" title="Copy email"><i class="fas fa-copy"></i></button></td>'+
           '<td>'+act+'</td><td>'+propsHtml+'</td><td>'+sitesHtml+'</td>'+
           '<td style="white-space:nowrap;font-size:12px">'+last+'</td><td>'+tok+'</td>'+
-          '<td style="font-size:12px;color:#6b7280;white-space:nowrap">'+joined+'</td></tr>';
+          '<td style="font-size:12px;color:#6b7280;white-space:nowrap">'+joined+'</td>'+
+          '<td style="white-space:nowrap">'+buildLimitCell(u)+'</td></tr>';
       }).join('');
-      wrap.innerHTML='<table class="data-table"><thead><tr><th>User</th><th>Email</th><th>Activity</th><th>Properties</th><th>Websites</th><th>Last Active</th><th>Tokens</th><th>Joined</th></tr></thead><tbody>'+rows+'</tbody></table>';
+      wrap.innerHTML='<table class="data-table"><thead><tr><th>User</th><th>Email</th><th>Activity</th><th>Properties</th><th>Websites</th><th>Last Active</th><th>Tokens</th><th>Joined</th><th>AI Limit</th></tr></thead><tbody>'+rows+'</tbody></table>';
       wrap.querySelectorAll('[data-copy]').forEach(function(btn) {
         btn.addEventListener('click', function() {
           navigator.clipboard.writeText(btn.getAttribute('data-copy')).then(function() {
@@ -1572,9 +1618,25 @@
       wrap.querySelectorAll('tbody tr[data-uid]').forEach(function(row) {
         row.addEventListener('click', function(e) {
           if (e.target.closest('.copy-btn')) return;
+          if (e.target.closest('.limit-override-btn') || e.target.closest('.limit-reset-btn')) return;
           var uid=row.getAttribute('data-uid');
           var u=profileUserMap[uid];
           if (u) showUserProfile(uid, u);
+        });
+      });
+      // AI Limit override buttons
+      wrap.querySelectorAll('.limit-override-btn').forEach(function(btn) {
+        btn.addEventListener('click', function(e) {
+          e.stopPropagation();
+          var uid = btn.getAttribute('data-uid');
+          setUserChatLimit(uid, -1, btn);
+        });
+      });
+      wrap.querySelectorAll('.limit-reset-btn').forEach(function(btn) {
+        btn.addEventListener('click', function(e) {
+          e.stopPropagation();
+          var uid = btn.getAttribute('data-uid');
+          setUserChatLimit(uid, null, btn);
         });
       });
     }
