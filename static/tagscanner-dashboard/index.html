@@ -1805,6 +1805,7 @@
       var btn=this, err=document.getElementById('aiControlError'); err.style.display='none';
       var v=parseFloat(document.getElementById('aiCostLimitInput').value);
       if (isNaN(v)||v<0.5) { err.textContent='Enter a valid limit (minimum $0.50).'; err.style.display=''; return; }
+      if (!window.confirm('Set daily cost limit to $' + v.toFixed(2) + '?\n\nAI will be automatically disabled when today\'s spend reaches this amount. This takes effect immediately.')) return;
       btn.disabled=true;
       try {
         var s=window.TagScannerAuth.getSession();
@@ -1817,6 +1818,7 @@
       var btn=this, err=document.getElementById('aiControlError'); err.style.display='none';
       var v=parseInt(document.getElementById('aiQuestionLimitInput').value,10);
       if (isNaN(v)||v<1) { err.textContent='Enter a valid question limit (minimum 1).'; err.style.display=''; return; }
+      if (!window.confirm('Set question limit to ' + v + ' per user per property?\n\nThis applies to all users immediately. Users who have already reached the old limit will not automatically regain access — they will be governed by the new limit going forward.')) return;
       btn.disabled=true;
       try {
         var s=window.TagScannerAuth.getSession();
