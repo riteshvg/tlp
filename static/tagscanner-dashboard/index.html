@@ -944,6 +944,11 @@
               <input type="number" id="aiCostLimitInput" class="ai-limit-input" min="0.5" max="100" step="0.5" placeholder="5.00" />
               <button id="aiSaveLimitBtn" class="ai-save-btn">Save</button>
             </div>
+            <div class="ai-limit-row" style="margin-top:8px">
+              <label class="ai-limit-label">Question limit (per user per property):</label>
+              <input type="number" id="aiQuestionLimitInput" class="ai-limit-input" min="1" max="9999" step="1" placeholder="10" />
+              <button id="aiSaveQuestionLimitBtn" class="ai-save-btn">Save</button>
+            </div>
             <div id="aiControlError" class="ai-control-error" style="display:none"></div>
           </div>
         </div>
@@ -1779,6 +1784,8 @@
       fill.style.width=pct+'%';
       fill.className='ai-progress-fill'+(pct>=100?' danger':pct>=75?' warn':'');
       document.getElementById('aiProgressPct').textContent=pct+'%';
+      var qlInput=document.getElementById('aiQuestionLimitInput');
+      if (qlInput) qlInput.value=typeof c.chat_question_limit==='number'?c.chat_question_limit:10;
     }
 
     document.getElementById('aiToggleBtn').addEventListener('click', async function() {
@@ -1803,6 +1810,18 @@
         var s=window.TagScannerAuth.getSession();
         await callLambda({type:'setConfig',sessionToken:s.sessionToken,cost_limit_usd:v});
         if (aiConfig) { aiConfig.cost_limit_usd=v; renderAIControl(aiConfig); }
+      } catch(e) { err.textContent=e.message; err.style.display=''; } finally { btn.disabled=false; }
+    });
+
+    document.getElementById('aiSaveQuestionLimitBtn').addEventListener('click', async function() {
+      var btn=this, err=document.getElementById('aiControlError'); err.style.display='none';
+      var v=parseInt(document.getElementById('aiQuestionLimitInput').value,10);
+      if (isNaN(v)||v<1) { err.textContent='Enter a valid question limit (minimum 1).'; err.style.display=''; return; }
+      btn.disabled=true;
+      try {
+        var s=window.TagScannerAuth.getSession();
+        await callLambda({type:'setConfig',sessionToken:s.sessionToken,chat_question_limit:v});
+        if (aiConfig) { aiConfig.chat_question_limit=v; renderAIControl(aiConfig); }
       } catch(e) { err.textContent=e.message; err.style.display=''; } finally { btn.disabled=false; }
     });
 
