@@ -294,12 +294,31 @@
     .activity-filter-btn.active { background: #4e73df; color: #fff; border-color: #4e73df; }
 
     .activity-row {
-      display: flex; align-items: center; gap: 10px;
       background: #fff; border-radius: 10px; padding: 12px 16px;
       box-shadow: 0 1px 4px rgba(0,0,0,0.05); font-size: 13px;
-      transition: box-shadow 0.15s;
+      transition: box-shadow 0.15s; cursor: pointer;
     }
     .activity-row:hover { box-shadow: 0 3px 10px rgba(0,0,0,0.09); }
+    .activity-row-header { display: flex; align-items: center; gap: 10px; }
+    .activity-expand-icon {
+      font-size: 10px; color: #d1d5db; flex-shrink: 0;
+      transition: transform 0.15s;
+    }
+    .activity-row.expanded .activity-expand-icon { transform: rotate(180deg); }
+    .activity-panel {
+      display: none; margin-top: 10px; padding-top: 10px;
+      border-top: 1px solid #f3f4f6; font-size: 12px; color: #6b7280;
+    }
+    .activity-row.expanded .activity-panel { display: block; }
+    .activity-panel-row { display: flex; align-items: flex-start; gap: 6px; margin-bottom: 5px; }
+    .activity-panel-row:last-child { margin-bottom: 0; }
+    .activity-panel-label { font-weight: 600; color: #9ca3af; min-width: 56px; flex-shrink: 0; }
+    .activity-feedback-pill {
+      display: inline-flex; align-items: center; gap: 4px;
+      padding: 2px 9px; border-radius: 10px; font-size: 11px; font-weight: 600;
+    }
+    .activity-feedback-pill.positive { background: #d1fae5; color: #065f46; }
+    .activity-feedback-pill.negative { background: #fee2e2; color: #991b1b; }
     .type-badge {
       font-size: 9px; font-weight: 800; text-transform: uppercase;
       padding: 3px 8px; border-radius: 8px; flex-shrink: 0; letter-spacing: 0.4px;
@@ -1482,11 +1501,34 @@
         var dt = q.feedback === 'positive' ? 'Positive feedback' : q.feedback === 'negative' ? 'Negative feedback' : 'No feedback';
         var when = q.createdAt ? new Date(q.createdAt).toLocaleString(undefined, { dateStyle: 'medium', timeStyle: 'short' }) : '—';
         var prop = q.propertyKey ? '<span style="font-size:11px;color:#9ca3af;margin-left:6px">' + esc(q.propertyKey.split('#')[0]) + '</span>' : '';
+
+        var panelRows = '';
+        if (q.userName || q.email) {
+          panelRows += '<div class="activity-panel-row"><span class="activity-panel-label">User</span><span>' + esc(q.userName || q.email || '') + (q.email && q.userName ? ' <span style="color:#9ca3af">(' + esc(q.email) + ')</span>' : '') + '</span></div>';
+        }
+        if (q.feedback) {
+          var pill = '<span class="activity-feedback-pill ' + dc + '">' + (dc === 'positive' ? '👍 Positive' : '👎 Negative') + '</span>';
+          panelRows += '<div class="activity-panel-row"><span class="activity-panel-label">Rating</span>' + pill + '</div>';
+          if (q.feedbackText) {
+            panelRows += '<div class="activity-panel-row"><span class="activity-panel-label">Comment</span><span style="color:#374151">"' + esc(q.feedbackText) + '"</span></div>';
+          }
+        } else {
+          panelRows += '<div class="activity-panel-row"><span style="color:#d1d5db"><i class="fas fa-comment-slash" style="margin-right:5px"></i>No feedback given</span></div>';
+        }
+        if (q.tokens && (q.tokens.input || q.tokens.output)) {
+          panelRows += '<div class="activity-panel-row"><span class="activity-panel-label">Tokens</span><span>' + ((q.tokens.input||0) + (q.tokens.output||0)).toLocaleString() + ' <span style="color:#9ca3af">(' + (q.tokens.input||0).toLocaleString() + ' in / ' + (q.tokens.output||0).toLocaleString() + ' out)</span></span></div>';
+        }
+
         return '<div class="activity-row">' +
+          '<div class="activity-row-header">' +
           '<span class="type-badge ' + bc + '">' + bl + '</span>' +
           '<span class="activity-summary" title="' + esc(q.requestSummary || '') + '">' + esc(q.requestSummary || '—') + prop + '</span>' +
           '<span class="activity-time">' + when + '</span>' +
-          '<div class="feedback-dot ' + dc + '" title="' + dt + '"></div></div>';
+          '<div class="feedback-dot ' + dc + '" title="' + dt + '"></div>' +
+          '<i class="fas fa-chevron-down activity-expand-icon"></i>' +
+          '</div>' +
+          '<div class="activity-panel">' + panelRows + '</div>' +
+          '</div>';
       }).join('');
     }
 
@@ -1497,6 +1539,12 @@
       btn.classList.add('active');
       activeActivityFilter = btn.dataset.filter;
       applyActivityFilter();
+    });
+
+    document.getElementById('activityList').addEventListener('click', function(e) {
+      var row = e.target.closest('.activity-row');
+      if (!row) return;
+      row.classList.toggle('expanded');
     });
 
     // ── Users table ────────────────────────────────────────────────────────
