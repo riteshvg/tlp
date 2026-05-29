@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TagScanner — Adobe Tags Audit & Debugger | The Learning Project</title>
+<meta name="description" content="TagScanner is a free Chrome extension that reads directly from the Adobe Tags satellite container. Audit any property in minutes. No API. No credentials.">
+<meta name="keywords" content="Adobe Tags, Adobe Launch, audit, Chrome extension, TagScanner, data elements, rules, extensions">
+<meta property="og:title" content="TagScanner — Adobe Tags Audit & Debugger">
+<meta property="og:description" content="A full property audit that used to take 15 hours now takes minutes. Free Chrome extension. No API. No credentials.">
+<meta property="og:url" content="https://thelearningproject.in/tools/tagscanner">
+<link rel="canonical" href="https://thelearningproject.in/tools/tagscanner">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --navy:     #0D1B3E;
+  --navy-mid: #1A2B55;
+  --coral:    #D85A30;
+  --green:    #1D9E75;
+  --blue:     #185FA5;
+  --white:    #FFFFFF;
+  --off:      #F8F6F1;
+  --mid:      #E8E4DC;
+  --muted:    #6B7280;
+  --dark:     #1A1714;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 300;
+  background: var(--navy);
+  color: var(--white);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  overflow-x: hidden;
+}
+
+body::before {
+  content: '';
+  position: fixed; inset: 0;
+  background:
+    radial-gradient(ellipse 60% 50% at 80% 30%, rgba(29,158,117,0.07) 0%, transparent 60%),
+    radial-gradient(ellipse 40% 60% at 10% 80%, rgba(216,90,48,0.07) 0%, transparent 60%);
+  pointer-events: none; z-index: 0;
+}
+
+body::after {
+  content: '';
+  position: fixed; inset: 0;
+  background-image:
+    linear-gradient(rgba(255,255,255,0.018) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.018) 1px, transparent 1px);
+  background-size: 52px 52px;
+  pointer-events: none; z-index: 0;
+}
+
+/* ── Nav ── */
+nav {
+  position: relative; z-index: 10;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0 2rem; height: 56px;
+  border-bottom: 0.5px solid rgba(255,255,255,0.07);
+  background: rgba(13,27,62,0.8);
+  backdrop-filter: blur(12px);
+}
+
+.nav-brand {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 13px; font-weight: 400;
+  color: rgba(255,255,255,0.55);
+  display: flex; align-items: center; gap: 8px;
+  text-decoration: none;
+}
+
+.nav-brand .sep { color: rgba(255,255,255,0.2); }
+.nav-brand .tool { color: var(--coral); font-weight: 500; }
+
+.nav-cta {
+  font-size: 12px; font-weight: 500;
+  background: var(--coral); color: var(--white);
+  padding: 6px 16px; border-radius: 5px;
+  text-decoration: none;
+  transition: background 0.2s;
+}
+.nav-cta:hover { background: #c04f26; }
+
+/* ── Main ── */
+main {
+  position: relative; z-index: 1;
+  flex: 1;
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+  padding: 80px 24px;
+  text-align: center;
+}
+
+.eyebrow {
+  font-family: 'DM Mono', monospace;
+  font-size: 10px; letter-spacing: 0.14em;
+  text-transform: uppercase; color: var(--green);
+  display: inline-flex; align-items: center; gap: 8px;
+  margin-bottom: 20px;
+  padding: 4px 14px;
+  background: rgba(29,158,117,0.1);
+  border: 0.5px solid rgba(29,158,117,0.25);
+  border-radius: 100px;
+}
+
+.eyebrow::before {
+  content: '';
+  width: 6px; height: 6px; border-radius: 50%;
+  background: var(--green);
+  animation: pulse 2s ease infinite;
+}
+
+@keyframes pulse {
+  0%,100% { opacity:1; transform:scale(1); }
+  50% { opacity:0.4; transform:scale(0.7); }
+}
+
+h1 {
+  font-family: 'DM Serif Display', serif;
+  font-size: clamp(36px, 6vw, 68px);
+  line-height: 1.1; letter-spacing: -0.02em;
+  color: var(--white); margin-bottom: 18px;
+}
+
+h1 em { color: var(--coral); font-style: italic; }
+
+.sub {
+  font-size: clamp(14px, 2vw, 17px);
+  color: rgba(255,255,255,0.5);
+  line-height: 1.7; font-weight: 300;
+  max-width: 520px; margin: 0 auto 36px;
+}
+
+.sub strong { color: rgba(255,255,255,0.8); font-weight: 500; }
+
+/* Stats row */
+.stats {
+  display: flex; align-items: center; gap: 0;
+  background: rgba(255,255,255,0.04);
+  border: 0.5px solid rgba(255,255,255,0.08);
+  border-radius: 10px; overflow: hidden;
+  margin-bottom: 40px;
+}
+
+.stat {
+  padding: 16px 28px;
+  border-right: 0.5px solid rgba(255,255,255,0.07);
+}
+.stat:last-child { border-right: none; }
+
+.sv {
+  font-family: 'DM Serif Display', serif;
+  font-size: 26px; color: var(--white);
+  line-height: 1; margin-bottom: 3px;
+}
+.sv.c { color: var(--coral); }
+.sv.g { color: var(--green); }
+
+.sl {
+  font-family: 'DM Mono', monospace;
+  font-size: 9px; letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.25);
+}
+
+/* CTA buttons */
+.actions {
+  display: flex; align-items: center;
+  justify-content: center; gap: 12px;
+  flex-wrap: wrap; margin-bottom: 64px;
+}
+
+.btn-primary {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: var(--coral); color: var(--white);
+  padding: 13px 28px; border-radius: 6px;
+  font-size: 14px; font-weight: 500;
+  text-decoration: none;
+  transition: background 0.2s, transform 0.15s;
+}
+.btn-primary:hover { background: #c04f26; transform: translateY(-1px); }
+
+.btn-secondary {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: transparent; color: rgba(255,255,255,0.6);
+  padding: 13px 28px; border-radius: 6px;
+  font-size: 14px; border: 0.5px solid rgba(255,255,255,0.15);
+  text-decoration: none;
+  transition: border-color 0.2s, color 0.2s, transform 0.15s;
+}
+.btn-secondary:hover {
+  border-color: rgba(255,255,255,0.4);
+  color: var(--white); transform: translateY(-1px);
+}
+
+/* Feature chips */
+.features {
+  display: flex; flex-wrap: wrap;
+  justify-content: center; gap: 8px;
+  max-width: 640px; margin: 0 auto 64px;
+}
+
+.chip {
+  font-family: 'DM Mono', monospace;
+  font-size: 11px; color: rgba(255,255,255,0.45);
+  background: rgba(255,255,255,0.04);
+  border: 0.5px solid rgba(255,255,255,0.08);
+  padding: 5px 12px; border-radius: 100px;
+  letter-spacing: 0.02em;
+}
+
+/* Coming soon note */
+.coming-soon {
+  background: rgba(200,150,42,0.08);
+  border: 0.5px solid rgba(200,150,42,0.2);
+  border-radius: 10px;
+  padding: 16px 24px;
+  max-width: 480px; margin: 0 auto;
+  display: flex; align-items: flex-start; gap: 12px;
+}
+
+.cs-icon { font-size: 18px; flex-shrink: 0; margin-top: 1px; }
+
+.cs-text {
+  text-align: left;
+}
+
+.cs-title {
+  font-size: 13px; font-weight: 500;
+  color: rgba(255,255,255,0.8);
+  margin-bottom: 3px;
+}
+
+.cs-sub {
+  font-size: 12px; color: rgba(255,255,255,0.35);
+  line-height: 1.6;
+}
+
+/* Footer */
+footer {
+  position: relative; z-index: 1;
+  padding: 20px 2rem;
+  border-top: 0.5px solid rgba(255,255,255,0.06);
+  display: flex; align-items: center;
+  justify-content: space-between; flex-wrap: wrap; gap: 12px;
+}
+
+.footer-left {
+  font-size: 12px; color: rgba(255,255,255,0.25);
+}
+
+.footer-left a {
+  color: rgba(255,255,255,0.35);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+.footer-left a:hover { color: rgba(255,255,255,0.7); }
+
+.footer-right {
+  font-size: 11px; color: rgba(255,255,255,0.2);
+  font-family: 'DM Mono', monospace;
+  letter-spacing: 0.04em;
+}
+
+@media (max-width: 520px) {
+  .stats { flex-direction: column; }
+  .stat { border-right: none; border-bottom: 0.5px solid rgba(255,255,255,0.07); }
+  .stat:last-child { border-bottom: none; }
+  nav { padding: 0 1rem; }
+  main { padding: 60px 16px; }
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="https://www.thelearningproject.in" class="nav-brand">
+    The Learning Project <span class="sep">/</span>
+    <span class="tool">TagScanner</span>
+  </a>
+  <a href="https://chromewebstore.google.com" class="nav-cta">Install Free</a>
+</nav>
+
+<main>
+
+  <div class="eyebrow">Free Chrome Extension · v2.5.6</div>
+
+  <h1>Audit any Adobe Tags<br>property <em>in minutes.</em></h1>
+
+  <p class="sub">
+    Built on the <strong>_satellite container object</strong> — the compiled library Adobe Tags injects into every page it runs on. No API. No credentials. No access requests.
+  </p>
+
+  <div class="stats">
+    <div class="stat">
+      <div class="sv c">15h</div>
+      <div class="sl">Manual audit</div>
+    </div>
+    <div class="stat">
+      <div class="sv g">Minutes</div>
+      <div class="sl">With TagScanner</div>
+    </div>
+    <div class="stat">
+      <div class="sv">94%</div>
+      <div class="sl">Time reduction</div>
+    </div>
+  </div>
+
+  <div class="actions">
+    <a href="https://chromewebstore.google.com" class="btn-primary">
+      ↓ Add to Chrome — Free
+    </a>
+    <a href="https://www.youtube.com" class="btn-secondary">
+      ▶ Watch the walkthrough
+    </a>
+  </div>
+
+  <div class="features">
+    <span class="chip">Rules Explorer</span>
+    <span class="chip">Data Elements Explorer</span>
+    <span class="chip">Extensions Explorer</span>
+    <span class="chip">Flow Diagram</span>
+    <span class="chip">Global Code Search</span>
+    <span class="chip">AI Health Scan</span>
+    <span class="chip">Custom Code Explanation</span>
+    <span class="chip">Ask AI</span>
+    <span class="chip">Environment Override</span>
+    <span class="chip">Export Full Report</span>
+  </div>
+
+  <div class="coming-soon">
+    <div class="cs-icon">🔭</div>
+    <div class="cs-text">
+      <div class="cs-title">Monitor — coming soon</div>
+      <div class="cs-sub">Always-on change detection for live Adobe Tags properties. Breaking changes surfaced before your client finds them. <a href="mailto:tagscannerfeedback@gmail.com" style="color:rgba(200,150,42,0.8);text-decoration:none;">Join the waitlist →</a></div>
+    </div>
+  </div>
+
+</main>
+
+<footer>
+  <div class="footer-left">
+    <a href="https://www.thelearningproject.in">The Learning Project</a>
+    &nbsp;·&nbsp;
+    <a href="https://www.thelearningproject.in/tools">All Tools</a>
+    &nbsp;·&nbsp;
+    <a href="mailto:tagscannerfeedback@gmail.com">tagscannerfeedback@gmail.com</a>
+  </div>
+  <div class="footer-right">v2.5.6 · placeholder</div>
+</footer>
+
+</body>
+</html>
