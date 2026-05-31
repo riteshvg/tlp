@@ -1,0 +1,63 @@
+<link rel="stylesheet" href="{{ "assets/css/tool-grid.css" | relURL }}">
+<div class="tool-grid">
+  {{ $placeholder := "assets/images/tool-placeholder.svg" | relURL }}
+  {{ range $i, $tool := .Page.Params.tools }}
+    {{ $accent := mod $i 3 }}
+    {{ if $tool.url }}<a href="{{ $tool.url }}" class="tool-card tool-card--accent-{{ $accent }}">{{ else }}<div class="tool-card tool-card--accent-{{ $accent }}">{{ end }}
+      <div class="tool-card-visual">
+        {{ with $tool.status }}<span class="tool-card-badge">{{ . }}</span>{{ end }}
+        <div class="tool-card-decor" aria-hidden="true">
+          <span class="tool-card-ring"></span>
+          <span class="tool-card-ring tool-card-ring--sm"></span>
+          <span class="tool-card-squiggle"></span>
+        </div>
+        {{ $img := $placeholder }}
+        {{ with $tool.image }}
+          {{ if or (hasPrefix . "http://") (hasPrefix . "https://") }}
+            {{ $img = . }}
+          {{ else }}
+            {{ $img = . | relURL }}
+          {{ end }}
+        {{ end }}
+        <img class="tool-card-image" src="{{ $img }}" alt="" loading="lazy">
+      </div>
+      <div class="tool-card-body">
+        <div class="tool-card-row">
+          <div class="tool-card-info">
+            <h3 class="tool-card-title">{{ $tool.name }}</h3>
+            {{ with $tool.description }}<p class="tool-card-desc">{{ . }}</p>{{ end }}
+            <div class="tool-card-stars" aria-hidden="true">
+              <span class="tool-card-star tool-card-star--on"></span>
+              <span class="tool-card-star tool-card-star--on"></span>
+              <span class="tool-card-star tool-card-star--on"></span>
+              <span class="tool-card-star tool-card-star--on"></span>
+              <span class="tool-card-star"></span>
+            </div>
+          </div>
+          <div class="tool-card-divider" aria-hidden="true"></div>
+          <div class="tool-card-meta">
+            {{ with $tool.platform }}
+            <div class="tool-card-meta-item">
+              <span class="tool-card-meta-label">Platform</span>
+              <span class="tool-card-meta-value">{{ . }}</span>
+            </div>
+            {{ end }}
+            {{ with $tool.developer }}
+            <div class="tool-card-meta-item">
+              <span class="tool-card-meta-label">Developer</span>
+              <span class="tool-card-meta-value">{{ . }}</span>
+            </div>
+            {{ end }}
+            {{ with $tool.developed_for }}
+            <div class="tool-card-meta-item">
+              <span class="tool-card-meta-label">Developed for</span>
+              <span class="tool-card-meta-value">{{ . }}</span>
+            </div>
+            {{ end }}
+          </div>
+        </div>
+        <span class="tool-card-cta">{{ if $tool.url }}View Details{{ else }}Coming Soon{{ end }}</span>
+      </div>
+    {{ if $tool.url }}</a>{{ else }}</div>{{ end }}
+  {{ end }}
+</div>

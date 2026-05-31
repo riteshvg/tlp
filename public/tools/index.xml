@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Automation Tools and Launch Extensions on The Learning Project</title>
+    <link>https://thelearningproject.in/tools/</link>
+    <description>Recent content in Automation Tools and Launch Extensions on The Learning Project</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sun, 31 May 2026 00:00:00 +0000</lastBuildDate>
+    <atom:link href="https://thelearningproject.in/tools/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>TagScanner</title>
+      <link>https://thelearningproject.in/tools/tagscanner/</link>
+      <pubDate>Sun, 31 May 2026 00:00:00 +0000</pubDate>
+      <guid>https://thelearningproject.in/tools/tagscanner/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>TagVersionManager</title>
+      <link>https://thelearningproject.in/tools/tagversionmanager/</link>
+      <pubDate>Sun, 31 May 2026 00:00:00 +0000</pubDate>
+      <guid>https://thelearningproject.in/tools/tagversionmanager/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Call Tracking Metrics Extension</title>
+      <link>https://thelearningproject.in/tools/call-tracking-metrics-extension/</link>
+      <pubDate>Wed, 02 Feb 2022 00:00:00 +0000</pubDate>
+      <guid>https://thelearningproject.in/tools/call-tracking-metrics-extension/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Data Source Automator</title>
+      <link>https://thelearningproject.in/tools/data-source-automator/</link>
+      <pubDate>Wed, 02 Feb 2022 00:00:00 +0000</pubDate>
+      <guid>https://thelearningproject.in/tools/data-source-automator/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Launch Property Migration Tool</title>
+      <link>https://thelearningproject.in/tools/launch-property-migration-tool/</link>
+      <pubDate>Wed, 02 Feb 2022 00:00:00 +0000</pubDate>
+      <guid>https://thelearningproject.in/tools/launch-property-migration-tool/</guid>
+      <description></description>
+    </item>
+  </channel>
+</rss>

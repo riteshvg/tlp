@@ -1,0 +1,44 @@
+{{ partial "head.html" . }}
+  <body>
+    <div id="blog">
+      {{ partial "header.html" . }}
+      {{ partial "sidebar.html" . }}
+      {{ partial "post/header-cover.html" . }}
+      <div id="main" data-behavior="{{ .Scratch.Get "sidebarBehavior" }}"
+        class="{{ with .Params.coverimage }}hasCover{{ end }}
+               {{ if eq .Params.covermeta "out" }}hasCoverMetaOut{{ else }}hasCoverMetaIn{{ end }}
+               {{ with .Params.coverCaption }}hasCoverCaption{{ end }}">
+        <article class="post" id="top">
+          {{ with .Params.covercaption }}
+            <span class="post-header-cover-caption caption">{{ . | markdownify }}</span>
+          {{ end }}
+          {{ if or (not .Params.coverimage) (eq .Params.covermeta "out") }}
+            {{ partial "post/header.html" . }}
+          {{ end }}
+          <div class="post-content markdown">
+            <div class="main-content-wrap">
+              {{ if .Params.developed_for }}
+              <ul>
+                {{ partial "tool-detail.html" . }}
+              </ul>
+              {{ end }}
+              {{ .Content }}
+              {{ if .Params.developed_for }}
+              <p><a href="{{ "/tools/" | relURL }}">← All Tools</a></p>
+              {{ end }}
+              {{ partial "post/gallery.html" . }}
+            </div>
+          </div>
+          <div id="post-footer" class="post-footer main-content-wrap">
+            {{ partial "post/actions.html" . }}
+            {{ partial "post/comment.html" . }}
+          </div>
+        </article>
+        {{ partial "footer.html" . }}
+      </div>
+      <div id="bottom-bar" class="post-bottom-bar" data-behavior="{{ .Scratch.Get "sidebarBehavior" }}">
+        {{ partial "post/actions.html" . }}
+      </div>
+      {{ partial "post/share-options.html" . }}
+    </div>
+{{ partial "foot.html" . }}
