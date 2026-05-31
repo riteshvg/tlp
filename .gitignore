@@ -1,0 +1,7 @@
+# Local Netlify folder
+.netlify
+node_modules/
+screenshots/
+.DS_Store
+*.md~
+# Full deploy to production.md

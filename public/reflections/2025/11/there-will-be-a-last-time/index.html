@@ -128,8 +128,15 @@ the last time you visit your favorite city, street and shop">
   
 </header>
 
-      <nav id="sidebar" data-behavior="3">
+      <link rel="stylesheet" href="../../../../css/sidebar-collapse.css">
+
+<nav id="sidebar" data-behavior="3">
   <div class="sidebar-container">
+
+    <button id="sidebar-toggle" aria-label="Toggle sidebar" title="Toggle sidebar">
+      <i class="fas fa-chevron-left" id="sidebar-toggle-icon"></i>
+    </button>
+
     
     <ul class="sidebar-buttons">
       
@@ -518,7 +525,8 @@ $(document).ready(function() {
 
 
 
-    
+    <script src="../../../../js/sidebar-toggle.js"></script>
+
   </body>
 </html>
 

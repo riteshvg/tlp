@@ -1,0 +1,103 @@
+/* ── Toggle button — sits directly in #sidebar, outside .sidebar-container ── */
+#sidebar-toggle {
+  position: absolute;
+  top: 12px;
+  right: 10px;
+  z-index: 30;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 26px;
+  height: 26px;
+  background: rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  border-radius: 6px;
+  cursor: pointer;
+  color: #ebebeb;
+  font-size: 0.72rem;
+  transition: background 0.15s;
+}
+#sidebar-toggle:hover {
+  background: rgba(255, 255, 255, 0.25);
+}
+
+/* Collapsed: center the button in the 75px sidebar */
+#sidebar:not(.sidebar-open-state) #sidebar-toggle {
+  right: auto;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+/* ── Smooth sidebar transition ─────────────────── */
+#sidebar {
+  transition: width 0.25s ease !important;
+}
+
+/* Push all menu items below the toggle button */
+#sidebar .sidebar-container {
+  padding-top: 50px !important;
+}
+
+/* ── Expanded state ────────────────────────────── */
+body.sidebar-open #sidebar {
+  width: 220px !important;
+}
+
+/* Push content right */
+body.sidebar-open #main[data-behavior="3"],
+body.sidebar-open #main[data-behavior="6"] {
+  width: calc(100% - 220px - 30px) !important;
+  left: 220px !important;
+  transition: left 0.25s ease, width 0.25s ease;
+}
+
+body.sidebar-open #header[data-behavior="3"],
+body.sidebar-open #header[data-behavior="6"] {
+  width: calc(100% - 220px - 30px) !important;
+  left: 220px !important;
+  transition: left 0.25s ease, width 0.25s ease;
+}
+
+body.sidebar-open #bottom-bar[data-behavior="3"],
+body.sidebar-open #bottom-bar[data-behavior="6"] {
+  width: calc(100% - 220px - 30px) !important;
+  left: 220px !important;
+  transition: left 0.25s ease, width 0.25s ease;
+}
+
+/* Show text labels */
+body.sidebar-open #sidebar ul.sidebar-buttons li.sidebar-button .sidebar-button-link {
+  text-align: left !important;
+  padding-left: 14px !important;
+  width: 100% !important;
+}
+
+body.sidebar-open #sidebar ul.sidebar-buttons li.sidebar-button .sidebar-button-link .sidebar-button-icon {
+  margin-right: 10px !important;
+}
+
+body.sidebar-open #sidebar ul.sidebar-buttons li.sidebar-button .sidebar-button-link .sidebar-button-desc {
+  display: inline-block !important;
+  font-size: 1.5rem !important;
+}
+
+/* Allow taller rows for longer labels */
+body.sidebar-open #sidebar ul.sidebar-buttons li.sidebar-button {
+  height: auto !important;
+  min-height: 45px !important;
+  line-height: 45px !important;
+}
+
+/* Profile in expanded state */
+body.sidebar-open #sidebar .sidebar-profile-name,
+body.sidebar-open #sidebar .sidebar-profile-bio {
+  display: block !important;
+}
+
+body.sidebar-open #sidebar .sidebar-profile-picture {
+  width: 70px !important;
+  height: 70px !important;
+  border-radius: 70px !important;
+  display: block !important;
+  margin: 8px auto 5px !important;
+}
