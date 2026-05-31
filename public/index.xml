@@ -37,6 +37,13 @@
       <description>&lt;p&gt;This page is my attempt at linking agents and applications developed using AI including AI agents, AI powered IDEs, LLM chatbot etc. Some applications are developed by me independently, whereas some are collaborative and some are created in my line of work. Applications developed by me will have free access, but for others, they will be given as just a link.&lt;/p&gt;&#xA;&lt;h4 id=&#34;tlp-airways&#34;&gt;TLP Airways&lt;/h4&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;Platform: React + Cursor + Claude&lt;/li&gt;&#xA;&lt;li&gt;Purpose: A dummy airline booking platform for flight search, booking, and payment with comprehensive event driven data layer for user journey tracking&lt;/li&gt;&#xA;&lt;li&gt;Features: Flight search, multi-booking flow, seat selection, baggage options, booking timer and Adobe Data Layer&lt;/li&gt;&#xA;&lt;li&gt;Data Sources: Static JSON files (flights.json, airports.json, ancillary/ configs), sessionStorage for booking state persistence&lt;/li&gt;&#xA;&lt;li&gt;Architecture: Monorepo with frontend (React + Material-UI), backend (Express.js), Railway deployment with Nixpacks, Auth0 integration for authentication, and comprehensive Adobe Analytics data layer implementation.&#xA;Status&lt;/li&gt;&#xA;&lt;li&gt;Status: &lt;a href = &#34;https://tlpairways.thelearningproject.in/&#34; target = &#34;_blank&#34;&gt; Live &lt;/a&gt; with all features functional&lt;/li&gt;&#xA;&lt;li&gt;Key Benefits: Complete Adobe Data Layer integration with fully functional user experience&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt;Links: &lt;a href=&#34;https://tlpairways.thelearningproject.in/&#34; target=&#34;_blank&#34;&gt;TLP Airways&lt;/a&gt;&lt;/p&gt;</description>
     </item>
     <item>
+      <title>CJA Migration: Key Metrics and How to Calculate</title>
+      <link>https://thelearningproject.in/2025/06/cja-migration-key-metrics-and-how-to-calculate/</link>
+      <pubDate>Mon, 16 Jun 2025 00:00:00 +0000</pubDate>
+      <guid>https://thelearningproject.in/2025/06/cja-migration-key-metrics-and-how-to-calculate/</guid>
+      <description>&lt;p&gt;Some key metrics that you will need to derive when moving from AEP Mobile SDK to CJA&lt;/p&gt;</description>
+    </item>
+    <item>
       <title>Back to Basics : AEP Web SDK</title>
       <link>https://thelearningproject.in/2025/02/back-to-basics-aep-web-sdk/</link>
       <pubDate>Sun, 02 Feb 2025 00:00:00 +0000</pubDate>

@@ -6,8 +6,15 @@
     <description>Recent content in Posts on The Learning Project</description>
     <generator>Hugo</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 02 Feb 2025 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 16 Jun 2025 00:00:00 +0000</lastBuildDate>
     <atom:link href="https://thelearningproject.in/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>CJA Migration: Key Metrics and How to Calculate</title>
+      <link>https://thelearningproject.in/2025/06/cja-migration-key-metrics-and-how-to-calculate/</link>
+      <pubDate>Mon, 16 Jun 2025 00:00:00 +0000</pubDate>
+      <guid>https://thelearningproject.in/2025/06/cja-migration-key-metrics-and-how-to-calculate/</guid>
+      <description>&lt;p&gt;Some key metrics that you will need to derive when moving from AEP Mobile SDK to CJA&lt;/p&gt;</description>
+    </item>
     <item>
       <title>Back to Basics : AEP Web SDK</title>
       <link>https://thelearningproject.in/2025/02/back-to-basics-aep-web-sdk/</link>

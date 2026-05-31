@@ -1,8 +1,7 @@
 <!DOCTYPE html>
 <html lang="en-us">
   <head>
-    
-    <script type="application/ld+json">
+     <script type="application/ld+json">
 
 {
   "@context": "https://schema.org",
@@ -31,11 +30,10 @@
   "keywords": [, "adobe experience cloud, adobe launch, adobe analytics, adobe experience platform, multi solution architect, business analytics"]
 }
 
-</script>
-    <meta charset="UTF-8">
+</script> <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="generator" content="Hugo 0.139.2 with theme Tranquilpeak 0.5.3-BETA">
+<meta name="generator" content="Hugo 0.147.8 with theme Tranquilpeak 0.5.3-BETA">
 <meta name="author" content="">
 <meta name="keywords" content=", adobe experience cloud, adobe launch, adobe analytics, adobe experience platform, multi solution architect, business analytics">
 <meta name="description" content="A placeholder for a blog series on AEP Web SDK. Topics to be covered - History of data collection; Introduction of Alloy.js; Sending streaming data into AEP and Analytics; Difference between data and XDM object; Characters of Web SDK integration (&hellip;)">
@@ -89,26 +87,37 @@
 
     <title>Back to Basics : AEP Web SDK</title>
 
-    <link rel="icon" href="https://thelearningproject.in/favicon.png">
-    
+    <link
+      rel="icon"
+      href="https://thelearningproject.in/favicon.png"
+    />
+     
+
+    <link rel="canonical" href="https://thelearningproject.in/2025/02/back-to-basics-aep-web-sdk/" />
 
     
-
-    <link rel="canonical" href="https://thelearningproject.in/2025/02/back-to-basics-aep-web-sdk/">
-
-    
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css" integrity="sha512-H9jrZiiopUdsLpg94A333EfumgUBpO9MdbxStdeITo+KEIMaNfHNvwyjjDJb+ERPaRS6DpyRlKbvPUasNItRyw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+      integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css"
+      integrity="sha512-H9jrZiiopUdsLpg94A333EfumgUBpO9MdbxStdeITo+KEIMaNfHNvwyjjDJb+ERPaRS6DpyRlKbvPUasNItRyw=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
     
     
     
     <link rel="stylesheet" href="https://thelearningproject.in/css/style-h6ccsoet3mzkbb0wngshlfbaweimexgqcxj0h5hu4h82olsdzz6wmqdkajm.min.css" />
     
     
-
-    
-    
   </head>
+</html>
 
   <body>
     <div id="blog">
@@ -260,7 +269,7 @@
           <div class="post-content markdown">
             <div class="main-content-wrap">
               <p>A placeholder for a blog series on AEP Web SDK. Topics to be covered - History of data collection; Introduction of Alloy.js; Sending streaming data into AEP and Analytics; Difference between data and XDM object; Characters of Web SDK integration (&hellip;)</p>
-<p>I have been trying to write and make a video of start to finish process about AEP Web SDK. But some or other priorities took over. This time I am committed to complete the entire Back to Basics series about AEP Web SDK, even if it takes a month. So, if you &rsquo;d like to know more about the nuts and bolts of AEP Web SDK, then stick around. But if you are just interested in getting started with the implementation, check out the video series.</p>
+<p>I have been trying to write and make a video of start to finish process about AEP Web SDK. But some or other priorities took over. This time I am committed to complete the entire Back to Basics series about AEP Web SDK, even if it takes a month or more. So, if you &rsquo;d like to know more about the nuts and bolts of AEP Web SDK, then stick around.</p>
 <p>Let me first outline the <strong><em>Agenda</em></strong> that I have outlined for creating this blog series:</p>
 <ul>
 <li>What is AEP Web SDK?</li>
@@ -279,11 +288,11 @@
 <h5 id="why-was-aep-web-sdk-introduced">Why was AEP Web SDK introduced?</h5>
 <p>Every enterprise or business, whether big or small, is in a continuous quest to understand its end customer. The need to analyze visitors&rsquo; behavioral and transactional attributes in order to provide an ultimate experience is the holy grail of today&rsquo;s digital first world.</p>
 <p>Adobe with its Experience Cloud solutions has been a go-to partner for enterprises of different sizes and industries. It has been in the field of data collection for more than a decade now and has always prioritized helping enterprises understand their visitors and understand their behavioral as well as insightful attributes both across desktop and mobile.</p>
-<p>But, the challenge that plagued these enterprises stemmed from the multitude of libraries that Adobe required for collecting the details. Here&rsquo;s how it looked before AEP Web SDK</p>
+<p>But, the challenge that plagued these enterprises stemmed from the multitude of libraries that Adobe required for collecting the details. Here&rsquo;s how it looked:</p>
 <figure><img src="https://ik.imagekit.io/hyegquogx/The_Learning_Project/Screenshot%202025-06-11%20at%201.53.50%E2%80%AFPM.png?updatedAt=1749630344804">
 </figure>
 
-<p>For a typical project, a company had to implement Adobe Analytics which required them to implement <strong>AppMeasurement.js</strong> library. For personalization and targeting, there was a need to integrate Adobe Target via <strong>Mbox and AT.js</strong>. For visitor segmentation and to make logical cohorts of their visitors, companies implemented Adobe Audience Manager with the help of <strong>DIL.js</strong>, and underlying all the solutions was <strong>Visitor API.js</strong>, a library for visitor identification.</p>
+<p>For a typical project which had the need to implement different Adobe Experience Cloud solutions, a company had to implement Adobe Analytics which required integrating <strong>AppMeasurement.js</strong> library. For personalization and targeting, there was a need to integrate Adobe Target via <strong>Mbox and AT.js</strong>. For visitor segmentation and to make logical cohorts of their visitors, companies implemented Adobe Audience Manager with the help of <strong>DIL.js</strong>, and underlying all the solutions was <strong>Visitor API.js</strong>, a library for visitor identification.</p>
 <p>Each of these libraries brought their own quirks, strength, idiosyncracies, implementation guidelines etc. The implementation and maintenance therefore quickly became a nightmare for the dev team. Adobe realized the gravity of the situation and around 2018 took a bold step in the direction of simplifying data collection - <strong>a single library to replace all the existing libraries</strong>.</p>
 <div class="alert info ">
   <p>Please note: We will be only covering Web SDK implementation in this blog series</p>
@@ -301,21 +310,26 @@
 <li><strong>Future proof</strong>: Through AEP Web SDK, enterprises can send data to non Adobe solutions through server side forwarding which expands the scope of the team significantly</li>
 </ol>
 <p>Watch the <a href="https://experienceleague.adobe.com/en/docs/experience-platform/web-sdk/home#overview">Summit 2020</a> video where the concept of Alloy.js and AEP Web SDK was introduced.</p>
-<p><strong>Remember these definitions</strong></p>
-<ol>
-<li>Alloy.js - JavaScript library written from scratch to replace all four existing libraries</li>
-<li>AEP Web SDK - A broader framework that includes Alloy.js and other necessary components</li>
-<li>AEP Mobile SDK - A framework built for mobile applications</li>
-<li>AEP Web SDK Extension - An extension built around AEP Web SDK available for Adobe Tags for desktop data collection</li>
-</ol>
 <p><strong>How does AEP Web SDK work</strong></p>
 <h5 id="characters-in-a-web-sdk-implementation">Characters in a Web SDK implementation</h5>
-<p>With the introduction to AEP Web SDK out of the way, let&rsquo;s move forward with the different components that you need to setup for a successful implementation:</p>
+<p>To understand how AEP Web SDK works and how it helps enterprises simplify data collection from their digital entity, we need to first understand the different components and how they come together to create a successful and all encompassing data collection methodology.</p>
+<p>The different elements that work together are:</p>
 <ul>
-<li>AEP Web SDK extension</li>
-<li>Datastream</li>
-<li>Schema</li>
-<li>XDM vs Data Object</li>
+<li>Alloy.js - Alloy.js is the library that was created from scratch to streamline data collection and replace need to have multiple Adobe Experience Cloud solution libraries</li>
+<li>AEP Web SDK - AEP Web SDK is the framework that utilizes Alloy.js and other components to send data to the Aodbe Experience Platform Edge Network</li>
+<li>Edge Network - To streamline data collection through a single point, Adobe created the Edge network - a comprehensive collection of servers that support unified data collection. Edge Network offers a single endpoint for data collection reducing data latency and improving web page performance</li>
+<li>AEP Web SDK extension - AEP Web SDK extension used in Adobe&rsquo;s Data Collection simplifies integrating Alloy.js, AEP Web SDK and other components</li>
+<li>Datastream - Datastream is like the traffic police that determines how to reroute the collection of data to different Experience Cloud solutions. It is a server side configuration that dtermines where the incoming data from Edge Network should be sent</li>
+<li>XDM Schema - Since data is collected from different solutions, there was a need to have a standardized Schema for customer experience data which is called as the XDM (Experience Data Model). The purpose of XDM is to bring consistency across different applications and services</li>
+<li>Data Object - Data is sent to the Edge network in two forms:
+&ndash; XDM Object - A structured object that conforms to the predefined XDM schema
+&ndash; Data Object: A flexible and unstructured object introduced recently. The Data object removes the need to rewrite the entire data layer and utilizes existing paths</li>
+</ul>
+<p>To summarize for this blog post, <strong>Remember these definitions</strong></p>
+<ul>
+<li>Enterprises struggled with data collection due to multitiude of libraries which made data collection complex, degraded web page performance</li>
+<li>Alloy.js and the broader framework AEP Web SDK was introduced to simplify data collection while increasing performance and reducing burden on martech teams</li>
+<li>An enterprise can start by migrating their existing data collection to AEP Web SDK framework using the Data object and plan for the larger transition to utilize the XDM object</li>
 </ul>
 <p>That is all for this blog post. Leave me a line on <a href="mailto:ritesh@thelearningproject.in">ritesh@thelearningproject.in</a> to share some AEP Web SDK basics that you might be interested in sharing.</p>
               
@@ -348,7 +362,7 @@
       
         <li class="post-action">
           
-            <a class="post-action-btn btn btn--disabled">
+            <a class="post-action-btn btn btn--default tooltip--top" href="../../../2025/06/cja-migration-key-metrics-and-how-to-calculate/" data-tooltip="CJA Migration: Key Metrics and How to Calculate" aria-label="NEXT: CJA Migration: Key Metrics and How to Calculate">
           
               <i class="fa fa-angle-left"></i>
               <span class="hide-xs hide-sm text-small icon-ml">NEXT</span>
@@ -419,7 +433,7 @@
       
         <li class="post-action">
           
-            <a class="post-action-btn btn btn--disabled">
+            <a class="post-action-btn btn btn--default tooltip--top" href="../../../2025/06/cja-migration-key-metrics-and-how-to-calculate/" data-tooltip="CJA Migration: Key Metrics and How to Calculate" aria-label="NEXT: CJA Migration: Key Metrics and How to Calculate">
           
               <i class="fa fa-angle-left"></i>
               <span class="hide-xs hide-sm text-small icon-ml">NEXT</span>
