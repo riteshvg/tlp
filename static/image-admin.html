@@ -205,8 +205,70 @@
     #history-list li .h-copy { background: none; border: 1px solid #e2e6ea; border-radius: 4px; padding: 2px 8px; cursor: pointer; font-size: 0.76rem; color: #555; }
     #history-list li .h-copy:hover { background: #f0ebff; }
 
+    /* ── Media library ─────────────────────────── */
+    #library-section { display: none; max-width: 1100px; margin: 0 auto 32px; padding: 0 24px; }
+    .library-toolbar { display: flex; gap: 10px; align-items: center; margin-bottom: 16px; flex-wrap: wrap; }
+    .lib-filter { padding: 6px 14px; border-radius: 8px; border: 1.5px solid #e2e6ea; font-size: 0.85rem; font-weight: 600; cursor: pointer; color: #555; background: #fff; }
+    .lib-filter.active { background: #7c5cbf; border-color: #7c5cbf; color: #fff; }
+    #lib-search { flex: 1; min-width: 160px; padding: 8px 12px; border: 1.5px solid #e2e6ea; border-radius: 8px; font-size: 0.9rem; outline: none; }
+    #lib-search:focus { border-color: #7c5cbf; }
+    #lib-refresh { padding: 7px 16px; background: #f0f2f5; border: none; border-radius: 8px; cursor: pointer; font-size: 0.85rem; font-weight: 600; color: #555; }
+    #lib-refresh:hover { background: #e2e6ea; }
+    #lib-count { font-size: 0.82rem; color: #888; }
+
+    .lib-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 14px; }
+    .lib-card {
+      background: #fff; border: 1px solid #e2e6ea; border-radius: 10px;
+      overflow: hidden; cursor: pointer;
+      transition: box-shadow 0.15s, transform 0.15s;
+    }
+    .lib-card:hover { box-shadow: 0 4px 16px rgba(0,0,0,0.1); transform: translateY(-2px); }
+    .lib-card.selected { border-color: #7c5cbf; box-shadow: 0 0 0 2px #7c5cbf; }
+    .lib-thumb {
+      width: 100%; height: 120px; object-fit: cover;
+      background: #f0f2f5; display: block;
+    }
+    .lib-thumb-placeholder { width: 100%; height: 120px; background: #f0ebff; display: flex; align-items: center; justify-content: center; font-size: 2rem; }
+    .lib-info { padding: 8px 10px; }
+    .lib-filename { font-size: 0.78rem; font-weight: 600; color: #1a1a2e; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+    .lib-meta { font-size: 0.72rem; color: #888; margin-top: 2px; }
+    .lib-folder-tag { display: inline-block; font-size: 0.68rem; font-weight: 700; text-transform: uppercase; padding: 1px 6px; border-radius: 4px; margin-top: 4px; }
+    .lib-folder-tools { background: #f0ebff; color: #7c5cbf; }
+    .lib-folder-blog  { background: #e6f7f5; color: #1a9e8f; }
+    .lib-folder-hero  { background: #fff0e8; color: #d95f2b; }
+
+    /* ── Selected image detail ─────────────────── */
+    #lib-detail {
+      position: fixed; right: 0; top: 0; bottom: 0; width: 320px;
+      background: #fff; border-left: 1px solid #e2e6ea;
+      box-shadow: -4px 0 20px rgba(0,0,0,0.08);
+      display: none; flex-direction: column; z-index: 50;
+    }
+    #lib-detail.open { display: flex; }
+    .lib-detail-header { padding: 16px 20px; border-bottom: 1px solid #e2e6ea; display: flex; justify-content: space-between; align-items: center; }
+    .lib-detail-header h3 { font-size: 0.95rem; }
+    #lib-detail-close { background: none; border: none; font-size: 1.2rem; cursor: pointer; color: #888; }
+    #lib-detail-img { width: 100%; height: 200px; object-fit: contain; background: #f0f2f5; border-bottom: 1px solid #e2e6ea; }
+    .lib-detail-body { padding: 16px 20px; display: flex; flex-direction: column; gap: 12px; flex: 1; overflow-y: auto; }
+    .lib-detail-row { font-size: 0.82rem; }
+    .lib-detail-label { font-weight: 700; color: #888; text-transform: uppercase; font-size: 0.72rem; letter-spacing: 0.05em; display: block; margin-bottom: 3px; }
+    .lib-detail-url { word-break: break-all; color: #1a1a2e; background: #f8f9fa; border-radius: 6px; padding: 8px 10px; font-size: 0.78rem; }
+    .lib-detail-actions { display: flex; flex-direction: column; gap: 8px; margin-top: auto; }
+    .lib-copy-md { padding: 9px; background: #7c5cbf; color: #fff; border: none; border-radius: 8px; cursor: pointer; font-size: 0.85rem; font-weight: 700; }
+    .lib-copy-url { padding: 9px; background: #f0ebff; color: #7c5cbf; border: none; border-radius: 8px; cursor: pointer; font-size: 0.85rem; font-weight: 700; }
+    .lib-copy-yaml { padding: 9px; background: #e6f7f5; color: #1a9e8f; border: none; border-radius: 8px; cursor: pointer; font-size: 0.85rem; font-weight: 700; }
+
+    /* ── Nav tabs (top level) ──────────────────── */
+    .nav-tabs { display: flex; gap: 4px; padding: 0 24px; max-width: 1100px; margin: 0 auto 0; }
+    .nav-tab { padding: 10px 20px; font-size: 0.9rem; font-weight: 700; cursor: pointer; border-bottom: 3px solid transparent; color: #888; background: none; border-top: none; border-left: none; border-right: none; }
+    .nav-tab.active { color: #7c5cbf; border-bottom-color: #7c5cbf; }
+
+    #lib-loading { text-align: center; padding: 40px; color: #888; font-size: 0.9rem; }
+    #lib-empty { text-align: center; padding: 40px; color: #888; font-size: 0.9rem; display: none; }
+
     @media (max-width: 768px) {
       main { grid-template-columns: 1fr; }
+      #lib-detail { width: 100%; }
     }
   </style>
 </head>
@@ -232,7 +294,63 @@
   <button id="logout-btn">Sign out</button>
 </header>
 
-<main>
+<!-- Top nav -->
+<div style="background:#fff; border-bottom:1px solid #e2e6ea;">
+  <div class="nav-tabs">
+    <button class="nav-tab active" id="nav-upload" onclick="switchNav('upload')">⬆ Upload</button>
+    <button class="nav-tab" id="nav-library" onclick="switchNav('library')">🖼 Media Library</button>
+  </div>
+</div>
+
+<!-- Media Library -->
+<div id="library-section">
+  <div class="library-toolbar" style="margin-top:24px;">
+    <button class="lib-filter active" data-folder="all" onclick="filterLib(this,'all')">All</button>
+    <button class="lib-filter" data-folder="tools" onclick="filterLib(this,'tools')">Tools</button>
+    <button class="lib-filter" data-folder="blog" onclick="filterLib(this,'blog')">Blog</button>
+    <button class="lib-filter" data-folder="hero" onclick="filterLib(this,'hero')">Hero</button>
+    <input type="text" id="lib-search" placeholder="Search filename..." oninput="renderLib()">
+    <button id="lib-refresh" onclick="loadLibrary()">↻ Refresh</button>
+    <span id="lib-count"></span>
+  </div>
+  <div id="lib-loading">Loading images...</div>
+  <div id="lib-empty">No images found.</div>
+  <div class="lib-grid" id="lib-grid"></div>
+</div>
+
+<!-- Image detail panel -->
+<div id="lib-detail">
+  <div class="lib-detail-header">
+    <h3 id="lib-detail-name">Image</h3>
+    <button id="lib-detail-close" onclick="closeDetail()">✕</button>
+  </div>
+  <img id="lib-detail-img" src="" alt="">
+  <div class="lib-detail-body">
+    <div class="lib-detail-row">
+      <span class="lib-detail-label">CDN URL</span>
+      <div class="lib-detail-url" id="lib-detail-url"></div>
+    </div>
+    <div class="lib-detail-row">
+      <span class="lib-detail-label">Folder</span>
+      <span id="lib-detail-folder"></span>
+    </div>
+    <div class="lib-detail-row">
+      <span class="lib-detail-label">Size</span>
+      <span id="lib-detail-size"></span>
+    </div>
+    <div class="lib-detail-row">
+      <span class="lib-detail-label">Uploaded</span>
+      <span id="lib-detail-date"></span>
+    </div>
+    <div class="lib-detail-actions">
+      <button class="lib-copy-url" onclick="copyDetail('url')">Copy CDN URL</button>
+      <button class="lib-copy-md"  onclick="copyDetail('md')">Copy Markdown ![img](url)</button>
+      <button class="lib-copy-yaml" onclick="copyDetail('yaml')">Copy YAML  image: url</button>
+    </div>
+  </div>
+</div>
+
+<main id="upload-section">
   <!-- Left: upload controls -->
   <div>
     <div class="card">
@@ -659,6 +777,112 @@
       if (currentFile) updatePreview();
     });
   });
+
+  // ── Nav ───────────────────────────────────────────
+  function switchNav(tab) {
+    document.getElementById('upload-section').style.display = tab === 'upload' ? 'grid' : 'none';
+    document.getElementById('library-section').style.display = tab === 'library' ? 'block' : 'none';
+    document.getElementById('nav-upload').classList.toggle('active', tab === 'upload');
+    document.getElementById('nav-library').classList.toggle('active', tab === 'library');
+    if (tab === 'library' && !libLoaded) loadLibrary();
+  }
+
+  // ── Media Library ─────────────────────────────────
+  let allImages = [];
+  let libLoaded = false;
+  let libFolder = 'all';
+  let selectedImage = null;
+
+  async function loadLibrary() {
+    if (!password) return;
+    document.getElementById('lib-loading').style.display = 'block';
+    document.getElementById('lib-grid').innerHTML = '';
+    document.getElementById('lib-empty').style.display = 'none';
+    try {
+      const res = await fetch('/.netlify/functions/list-images', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ password }),
+      });
+      const data = await res.json();
+      allImages = data.images || [];
+      libLoaded = true;
+      document.getElementById('lib-loading').style.display = 'none';
+      renderLib();
+    } catch (err) {
+      document.getElementById('lib-loading').textContent = 'Failed to load: ' + err.message;
+    }
+  }
+
+  function filterLib(btn, folder) {
+    document.querySelectorAll('.lib-filter').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    libFolder = folder;
+    renderLib();
+  }
+
+  function renderLib() {
+    const search = document.getElementById('lib-search').value.toLowerCase();
+    const filtered = allImages.filter(img =>
+      (libFolder === 'all' || img.folder === libFolder) &&
+      (!search || img.filename.toLowerCase().includes(search))
+    );
+    document.getElementById('lib-count').textContent = `${filtered.length} image${filtered.length !== 1 ? 's' : ''}`;
+    document.getElementById('lib-empty').style.display = filtered.length === 0 ? 'block' : 'none';
+    const grid = document.getElementById('lib-grid');
+    grid.innerHTML = filtered.map((img) => `
+      <div class="lib-card ${selectedImage?.key === img.key ? 'selected' : ''}" onclick="selectImage('${img.key}')">
+        <img class="lib-thumb" src="${img.url}" alt="${img.filename}" loading="lazy"
+          onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+        <div class="lib-thumb-placeholder" style="display:none">🖼️</div>
+        <div class="lib-info">
+          <div class="lib-filename">${img.filename}</div>
+          <div class="lib-meta">${formatSize(img.size)} · ${new Date(img.lastModified).toLocaleDateString('en-GB',{day:'numeric',month:'short',year:'numeric'})}</div>
+          <span class="lib-folder-tag lib-folder-${img.folder}">${img.folder}</span>
+        </div>
+      </div>
+    `).join('');
+  }
+
+  function selectImage(key) {
+    selectedImage = allImages.find(i => i.key === key);
+    if (!selectedImage) return;
+    document.getElementById('lib-detail').classList.add('open');
+    document.getElementById('lib-detail-name').textContent = selectedImage.filename;
+    document.getElementById('lib-detail-img').src = selectedImage.url;
+    document.getElementById('lib-detail-url').textContent = selectedImage.url;
+    document.getElementById('lib-detail-folder').textContent = selectedImage.folder;
+    document.getElementById('lib-detail-size').textContent = formatSize(selectedImage.size);
+    document.getElementById('lib-detail-date').textContent = new Date(selectedImage.lastModified).toLocaleDateString('en-GB',{day:'numeric',month:'short',year:'numeric'});
+    renderLib();
+  }
+
+  function closeDetail() {
+    selectedImage = null;
+    document.getElementById('lib-detail').classList.remove('open');
+    renderLib();
+  }
+
+  function copyDetail(type) {
+    if (!selectedImage) return;
+    const url = selectedImage.url;
+    const text = type === 'url' ? url
+      : type === 'md'   ? `![${selectedImage.filename}](${url})`
+      : `image: ${url}`;
+    navigator.clipboard.writeText(text).then(() => {
+      const map = { url: '.lib-copy-url', md: '.lib-copy-md', yaml: '.lib-copy-yaml' };
+      const btn = document.querySelector(map[type]);
+      const orig = btn.textContent;
+      btn.textContent = '✅ Copied!';
+      setTimeout(() => btn.textContent = orig, 1500);
+    });
+  }
+
+  function formatSize(bytes) {
+    if (bytes < 1024) return bytes + ' B';
+    if (bytes < 1024 * 1024) return (bytes / 1024).toFixed(1) + ' KB';
+    return (bytes / 1024 / 1024).toFixed(1) + ' MB';
+  }
 
   // ── Init ──────────────────────────────────────────
   renderPresets();
