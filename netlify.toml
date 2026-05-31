@@ -1,6 +1,7 @@
 [build]
   publish = "public"
   command = "hugo"
+  functions = "netlify/functions"
 
 [build.environment]
   HUGO_VERSION = "0.121.1"
@@ -20,6 +21,11 @@
   command = "hugo --buildFuture -b $DEPLOY_PRIME_URL"
 
 # Identity Configuration for Decap CMS
+
+[[redirects]]
+  from = "/image-admin"
+  to = "/image-admin.html"
+  status = 200
 
 [[redirects]]
   from = "/admin"
