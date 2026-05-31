@@ -1,5 +1,5 @@
 ---
-title: "Automation Tools and Launch Extensions"
+title: 'Automation Tools and Launch Extensions'
 date: 2022-02-02
 layout: single
 tools:
@@ -40,8 +40,8 @@ tools:
     description: Automate Data Source file formatting and upload to Adobe FTP for processing.
 ---
 
-The best part about Adobe Experience Platform is its extensibility. The **API first** philosophy has led to creative developers and architects extending the features of the Platform and its services. I have been involved in creating a few tools to automate and simplify the workflow. Below are the four tools that I have conceptualized, architectected and then develop them with the help of developers.
-
-{{< tool-grid >}}
+I have always been a creator at heart. Creating applications and seeing them taking shape brings me a sense of satisfaction. Some tools that I have worked on are available for general use while rest are internal only. I want to thank the developers and people who have guided me for each application.
 
 _Disclaimer: All tools are designed and developed on as is basis and with best effort. Please use your judgement while using the tools in your workflow_
+
+{{< tool-grid >}}
