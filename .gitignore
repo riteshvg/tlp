@@ -5,3 +5,5 @@ screenshots/
 .DS_Store
 *.md~
 # Full deploy to production.md
+static/assets/*.mp4
+public/assets/*.mp4
