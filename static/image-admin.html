@@ -805,6 +805,10 @@
         body: JSON.stringify({ password }),
       });
       const data = await res.json();
+      if (!res.ok || data.error) {
+        document.getElementById('lib-loading').textContent = 'Error: ' + (data.error || res.status);
+        return;
+      }
       allImages = data.images || [];
       libLoaded = true;
       document.getElementById('lib-loading').style.display = 'none';
