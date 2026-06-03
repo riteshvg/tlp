@@ -1,4 +1,4 @@
-import { CloudFrontClient, CreateInvalidationCommand } from '@aws-sdk/client-cloudfront';
+import { AwsClient } from 'aws4fetch';
 
 const CORS = {
   'Access-Control-Allow-Origin': '*',
@@ -20,23 +20,31 @@ export async function onRequestPost(context) {
       return new Response(JSON.stringify({ error: 'Unauthorized' }), { status: 401, headers: CORS });
     }
 
-    const cf = new CloudFrontClient({
+    const aws = new AwsClient({
+      accessKeyId: env.TLP_AWS_ACCESS_KEY_ID,
+      secretAccessKey: env.TLP_AWS_SECRET_ACCESS_KEY,
       region: 'us-east-1',
-      credentials: {
-        accessKeyId: env.TLP_AWS_ACCESS_KEY_ID,
-        secretAccessKey: env.TLP_AWS_SECRET_ACCESS_KEY,
-      },
     });
 
-    const command = new CreateInvalidationCommand({
-      DistributionId: env.CLOUDFRONT_DISTRIBUTION_ID,
-      InvalidationBatch: {
-        CallerReference: Date.now().toString(),
-        Paths: { Quantity: 1, Items: [`/${path}`] },
-      },
-    });
+    const body = `<?xml version="1.0" encoding="UTF-8"?>
+<InvalidationBatch xmlns="http://cloudfront.amazonaws.com/doc/2020-11-20/">
+  <CallerReference>${Date.now()}</CallerReference>
+  <Paths>
+    <Items><Path>/${path}</Path></Items>
+    <Quantity>1</Quantity>
+  </Paths>
+</InvalidationBatch>`;
 
-    await cf.send(command);
+    const res = await aws.fetch(
+      `https://cloudfront.amazonaws.com/2020-11-20/distribution/${env.CLOUDFRONT_DISTRIBUTION_ID}/invalidation`,
+      { method: 'POST', headers: { 'Content-Type': 'application/xml' }, body }
+    );
+
+    if (!res.ok) {
+      const text = await res.text();
+      throw new Error(`CloudFront error ${res.status}: ${text.slice(0, 300)}`);
+    }
+
     return new Response(JSON.stringify({ success: true }), { status: 200, headers: CORS });
   } catch (err) {
     return new Response(JSON.stringify({ error: err.message }), { status: 500, headers: CORS });
