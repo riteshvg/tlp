@@ -477,7 +477,7 @@
 
     // Validate by calling get-upload-url with a dummy payload
     try {
-      const res = await fetch('/.netlify/functions/get-upload-url', {
+      const res = await fetch('/api/get-upload-url', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ password: pw, filename: '__auth_check__', contentType: 'image/png', folder: 'test' }),
@@ -643,7 +643,7 @@
       showProgress(20, 'Getting upload URL...');
 
       // Get pre-signed URL
-      const urlRes = await fetch('/.netlify/functions/get-upload-url', {
+      const urlRes = await fetch('/api/get-upload-url', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ password, filename, contentType: currentFile.type, folder: currentFolder }),
@@ -730,7 +730,7 @@
     if (!key) return;
     status.textContent = 'Invalidating...';
     try {
-      const res = await fetch('/.netlify/functions/invalidate-cache', {
+      const res = await fetch('/api/invalidate-cache', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ password, path: key }),
@@ -799,12 +799,16 @@
     document.getElementById('lib-grid').innerHTML = '';
     document.getElementById('lib-empty').style.display = 'none';
     try {
-      const res = await fetch('/.netlify/functions/list-images', {
+      const res = await fetch('/api/list-images', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ password }),
       });
       const data = await res.json();
+      if (!res.ok || data.error) {
+        document.getElementById('lib-loading').textContent = 'Error: ' + (data.error || res.status);
+        return;
+      }
       allImages = data.images || [];
       libLoaded = true;
       document.getElementById('lib-loading').style.display = 'none';

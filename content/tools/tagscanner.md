@@ -17,7 +17,7 @@ links:
     url: '/tools/tagscanner/privacy'
 ---
 
-TagScanner is a joint effort by many developers to create a chrome based browser extension that analyzes your Adobe Tags property and gives a easily consumable and processable report.
+TagScanner is a joint effort by me along with other developers to create a Chrome based browser extension that analyzes your Adobe Tags property and gives a easily consumable and processable report.
 
 ![tagscanner-ask-ai-image.png](https://d2coej5ollyd8p.cloudfront.net/tools/tagscanner-ask-ai-image.png)
 
