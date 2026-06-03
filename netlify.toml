@@ -22,6 +22,12 @@
 
 # Identity Configuration for Decap CMS
 
+# Experience League Unofficial Chatbot (SPA routing)
+[[redirects]]
+  from = "/tools/exlunofficialchatbot/*"
+  to = "/tools/exlunofficialchatbot/index.html"
+  status = 200
+
 [[redirects]]
   from = "/image-admin"
   to = "/image-admin.html"
