@@ -7,3 +7,4 @@ screenshots/
 # Full deploy to production.md
 static/assets/*.mp4
 public/assets/*.mp4
+public/assets/video.mp4.mp4
