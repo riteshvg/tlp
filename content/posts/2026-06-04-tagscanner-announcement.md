@@ -38,6 +38,12 @@ As someone who spends a lot of time auditing and debugging Adobe Tags implementa
 
 {{< youtube F0AkmsKtycA >}}
 
+### What savings can you expect?
+
+Below is a savings chart, I figured out for a medium sized complex property that is a general use case for any mid-size client. All numbers are estimated and here just for reference.
+
+![tagscanner-ask-ai-image.png](https://d2coej5ollyd8p.cloudfront.net/tools/efficiency.png)
+
 ### Get it now
 
 TagScanner is free and available on the Chrome Web Store.
