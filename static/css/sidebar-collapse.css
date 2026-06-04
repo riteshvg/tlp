@@ -31,11 +31,23 @@
 /* ── Smooth sidebar transition ─────────────────── */
 #sidebar {
   transition: width 0.25s ease !important;
+  overflow-x: hidden !important;
+  overflow-y: auto !important;
 }
 
 /* Push all menu items below the toggle button */
 #sidebar .sidebar-container {
   padding-top: 50px !important;
+  overflow-x: hidden !important;
+  overflow-y: auto !important;
+}
+
+/* ── Default collapsed offset (sidebar = 75px) ── */
+#bottom-bar[data-behavior="3"],
+#bottom-bar[data-behavior="6"] {
+  left: 75px !important;
+  width: calc(100% - 75px) !important;
+  transition: left 0.25s ease, width 0.25s ease;
 }
 
 /* ── Expanded state ────────────────────────────── */
