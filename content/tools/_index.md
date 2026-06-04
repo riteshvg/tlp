@@ -11,14 +11,14 @@ tools:
     developed_for: The Learning Project
     description: Audit any Adobe Tags property in minutes. No API, no credentials, no access requests.
     image: https://d2coej5ollyd8p.cloudfront.net/tools/tagscanner-preview.png?v=2
-  - name: TagVersionManager
-    url: /tools/tagversionmanager/
-    status: Coming soon
+  - name: Experience League Chatbot
+    url: /tools/experience-league-chatbot/
+    status: Live
     platform: Adobe Tags
-    developer: TBD
-    developed_for: The Learning Project
-    description: Manage Adobe Tags library versions across environments with a single workflow.
-    image: https://d2coej5ollyd8p.cloudfront.net/tools/dummyimage.png
+    developer: Self
+    developed_for: Self
+    description: My first unofficial chatbot that I created for Adobe Experience League documentation
+    image: https://d2coej5ollyd8p.cloudfront.net/tools/exlchatbot.png
   - name: Call Tracking Metrics Extension
     url: /tools/call-tracking-metrics-extension/
     status: Published
@@ -27,6 +27,22 @@ tools:
     developed_for: TA Digital
     description: Integrate Call Tracking Metrics with Adobe Analytics via ECID in real time.
     image: https://d2coej5ollyd8p.cloudfront.net/tools/ctm-extension-preview.png
+  - name: TLP Airways
+    url: /tools/tlp-airways/
+    status: Live
+    platform: Adobe Analytics, CJA, AEP, AEP Web SDK
+    developer: Self
+    developed_for: Self
+    description: My attempt at learning how AEP, AEP Web SDK, CJA, Schema modelling and other data engineering concepts
+    image: https://d2coej5ollyd8p.cloudfront.net/tools/tlpairways.png
+  - name: TagVersionManager
+    url: /tools/tagversionmanager/
+    status: Coming soon
+    platform: Adobe Tags
+    developer: TBD
+    developed_for: The Learning Project
+    description: Manage Adobe Tags library versions across environments with a single workflow.
+    image: https://d2coej5ollyd8p.cloudfront.net/tools/dummyimage.png
   - name: Data Source Automator
     url: /tools/data-source-automator/
     status: Internal
@@ -34,22 +50,6 @@ tools:
     developer: Prateek Kejriwal
     developed_for: Adobe India
     description: Automate Data Source file formatting and upload to Adobe FTP for processing.
-    image: https://d2coej5ollyd8p.cloudfront.net/tools/dummyimage.png
-  - name: Experience League Chatbot
-    url: /tools/experience-league-chatbot/
-    status: Live
-    platform: Adobe Tags
-    developer: Self
-    developed_for: Self
-    description: My first unofficial chatbot that I created for Experience League documentation
-    image: https://d2coej5ollyd8p.cloudfront.net/tools/dummyimage.png
-  - name: TLP Airways
-    url: /tools/tlp-airways/
-    status: Live
-    platform: Adobe Analytics, CJA, AEP, AEP Web SDK
-    developer: Self
-    developed_for: Self
-    description: My attempt at tying AEP, AEP Web SDK, CJA, Schema modelling and other data engineering
     image: https://d2coej5ollyd8p.cloudfront.net/tools/dummyimage.png
 ---
 

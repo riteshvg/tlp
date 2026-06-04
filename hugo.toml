@@ -180,7 +180,7 @@ canonifyurls = true
 
   # Display `Next` on left side of the pagination, and `Prev` on right side one.
   # If you set this value to `true`, these positions swap.
-    swapPaginator = false
+    swapPaginator = true
 
   # ---------------------
   # Sidebar configuration
