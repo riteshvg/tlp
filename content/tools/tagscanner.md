@@ -11,10 +11,6 @@ status: 'Published — Free Chrome Extension v2.5.6'
 links:
   - text: 'Chrome Web Store'
     url: 'https://chromewebstore.google.com/detail/mhejdbndckkddicchjjbaehfbmjjlmjn?utm_source=item-share-cb'
-  - text: 'Watch walkthrough'
-    url: 'youtube.com/watch?v=F0AkmsKtycA'
-  - text: 'Privacy policy'
-    url: '/tools/tagscanner/privacy'
 ---
 
 TagScanner is a joint effort by me along with other developers to create a Chrome based browser extension that analyzes your Adobe Tags property and gives a easily consumable and processable report.
@@ -23,6 +19,6 @@ TagScanner is a joint effort by me along with other developers to create a Chrom
 
 The Chrome based extension is available at [Chrome Web Store]('https://chromewebstore.google.com/detail/mhejdbndckkddicchjjbaehfbmjjlmjn?utm_source=item-share-cb')
 
-You can watch a demo video for [TagScanner]('https://www.youtube.com/watch?v=F0AkmsKtycA)
+You can watch a demo video below
 
 {{< youtube F0AkmsKtycA >}}

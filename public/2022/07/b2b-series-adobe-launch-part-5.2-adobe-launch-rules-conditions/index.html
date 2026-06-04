@@ -26,7 +26,7 @@
     "name": "The Learning Project",
     
   },
-  "description": "In the previous blog post, we learn about Events and the available event types in Adobe Launch. We saw how we have a wide array of different events available to determine when to trigger an Adobe Launch rule. In this blog post, we will cover all about Conditions.\n",
+  "description": "In the previous blog post , we learn about Events and the available event types in Adobe Launch. We saw how we have a wide array of different events available to determine when to trigger an Adobe Launch rule. In this blog post, we will cover all about Conditions.\n",
   "keywords": [, "adobe experience cloud, adobe launch, adobe analytics, adobe experience platform, multi solution architect, business analytics"]
 }
 
@@ -36,18 +36,30 @@
 <meta name="generator" content="Hugo 0.147.8 with theme Tranquilpeak 0.5.3-BETA">
 <meta name="author" content="">
 <meta name="keywords" content=", adobe experience cloud, adobe launch, adobe analytics, adobe experience platform, multi solution architect, business analytics">
-<meta name="description" content="In the previous blog post, we learn about Events and the available event types in Adobe Launch. We saw how we have a wide array of different events available to determine when to trigger an Adobe Launch rule. In this blog post, we will cover all about Conditions.">
+<meta name="description" content="In the previous 
+  blog post
+
+, we learn about Events and the available event types in Adobe Launch. We saw how we have a wide array of different events available to determine when to trigger an Adobe Launch rule. In this blog post, we will cover all about Conditions.">
 
 
-<meta property="og:description" content="In the previous blog post, we learn about Events and the available event types in Adobe Launch. We saw how we have a wide array of different events available to determine when to trigger an Adobe Launch rule. In this blog post, we will cover all about Conditions.">
+<meta property="og:description" content="In the previous 
+  blog post
+
+, we learn about Events and the available event types in Adobe Launch. We saw how we have a wide array of different events available to determine when to trigger an Adobe Launch rule. In this blog post, we will cover all about Conditions.">
 <meta property="og:type" content="article">
 <meta property="og:title" content="B2B Series: Adobe Launch - Part 5.2 - Adobe Launch Rules: Conditions">
 <meta name="twitter:title" content="B2B Series: Adobe Launch - Part 5.2 - Adobe Launch Rules: Conditions">
 <meta property="og:url" content="https://thelearningproject.in/2022/07/b2b-series-adobe-launch-part-5.2-adobe-launch-rules-conditions/">
 <meta property="twitter:url" content="https://thelearningproject.in/2022/07/b2b-series-adobe-launch-part-5.2-adobe-launch-rules-conditions/">
 <meta property="og:site_name" content="The Learning Project">
-<meta property="og:description" content="In the previous blog post, we learn about Events and the available event types in Adobe Launch. We saw how we have a wide array of different events available to determine when to trigger an Adobe Launch rule. In this blog post, we will cover all about Conditions.">
-<meta name="twitter:description" content="In the previous blog post, we learn about Events and the available event types in Adobe Launch. We saw how we have a wide array of different events available to determine when to trigger an Adobe Launch rule. In this blog post, we will cover all about Conditions.">
+<meta property="og:description" content="In the previous 
+  blog post
+
+, we learn about Events and the available event types in Adobe Launch. We saw how we have a wide array of different events available to determine when to trigger an Adobe Launch rule. In this blog post, we will cover all about Conditions.">
+<meta name="twitter:description" content="In the previous 
+  blog post
+
+, we learn about Events and the available event types in Adobe Launch. We saw how we have a wide array of different events available to determine when to trigger an Adobe Launch rule. In this blog post, we will cover all about Conditions.">
 <meta property="og:locale" content="en-us">
 
   
@@ -261,7 +273,10 @@
           
           <div class="post-content markdown">
             <div class="main-content-wrap">
-              <p>In the previous <a href="../../../posts/b2b-series-adobe-launch-part-5.1-adobe-launch-rules-events/">blog post</a>, we learn about <em>Events</em> and the available <em>event types</em> in Adobe Launch. We saw how we have a wide array of different events available to determine when to trigger an Adobe Launch rule. In this blog post, we will cover all about <em>Conditions</em>.</p>
+              <p>In the previous <a href="../../../posts/b2b-series-adobe-launch-part-5.1-adobe-launch-rules-events/">
+  blog post
+</a>
+, we learn about <em>Events</em> and the available <em>event types</em> in Adobe Launch. We saw how we have a wide array of different events available to determine when to trigger an Adobe Launch rule. In this blog post, we will cover all about <em>Conditions</em>.</p>
 <h4 id="what-are-conditions-in-adobe-launch">What are Conditions in Adobe Launch?</h4>
 <p><em>Conditons</em>, as we recall, are constraints that get applied to further restrict when Adobe Launch can or cannot trigger a rule. Think of it as a filter available to be super specific about when Adobe Launch can execute a Rule. The <em>conditions</em> can be as simple as telling Adobe Launch to trigger the rule only when the visitor is a new visitor. Or the traffic source equals to &lsquo;Search&rsquo; etc. Let&rsquo;s dig in to see what options are available for us!</p>
 <figure><img src="https://imagedelivery.net/aOXfYgXj8p9Bd9bCC1ppIQ/45cdfc6e-3a42-42fc-fdf4-1a8a282c7400/public">
@@ -288,16 +303,25 @@
 </figure>
 
 <p><strong>Custom Code</strong>: The &lsquo;Custom Code&rsquo; condition checks for the scope of the rule, and fires the rule if the code evaluates to true, or ignores the rule if the code returns a false.
-For e.g. building on the previous use case of checking for Page Type variable, we can trigger a rule if the <em>pageType</em> value equals <em>content</em>, else ask Adobe Launch to ignore other values. Custom code conditions like custom code events should be used sparingly. Read this &lsquo;<a href="https://webanalyticsfordevelopers.com/2019/01/08/2019-challenge-no-custom-code/">no Custom Code challenge</a>&rsquo; by Jan Exner.</p>
+For e.g. building on the previous use case of checking for Page Type variable, we can trigger a rule if the <em>pageType</em> value equals <em>content</em>, else ask Adobe Launch to ignore other values. Custom code conditions like custom code events should be used sparingly. Read this &lsquo;<a href="https://webanalyticsfordevelopers.com/2019/01/08/2019-challenge-no-custom-code/" target="_blank" rel="noopener">
+  no Custom Code challenge
+</a>
+&rsquo; by Jan Exner.</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-JavaScript" data-lang="JavaScript"><span style="display:flex;"><span>    <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">queryString</span> <span style="color:#f92672">=</span> window.<span style="color:#a6e22e">location</span>.<span style="color:#a6e22e">search</span>;
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">urlParams</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">URLSearchParams</span>(<span style="color:#a6e22e">queryString</span>);
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">pageType</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">urlParams</span>.<span style="color:#a6e22e">get</span>(<span style="color:#e6db74">&#39;pageType&#39;</span>);
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span>(<span style="color:#a6e22e">pageType</span> <span style="color:#f92672">==</span> <span style="color:#e6db74">&#39;content&#39;</span>) {
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">true</span>;
 </span></span><span style="display:flex;"><span>    }
-</span></span></code></pre></div><p><strong>Value Comparision</strong>: This condition, I believe, should be a preferred one for any Technical Consultant. Even Jim Gordon from <a href="https://jimalytics.com/adobe-launch-guides/adobe-launch-rule-conditions-guide/">jimalytics.com</a> reaffirms the thought. I agree to it completely. The <em>Value Comparision</em> check is the easiest and a robust condition to configure. It checks for two values against one other, and if the expected value is returned then the rule is triggered. Else, Adobe Launch prevents the rule from being fired. You can even check for one data element against the other one, and that opens a whole new world of possibilities.</p>
+</span></span></code></pre></div><p><strong>Value Comparision</strong>: This condition, I believe, should be a preferred one for any Technical Consultant. Even Jim Gordon from <a href="https://jimalytics.com/adobe-launch-guides/adobe-launch-rule-conditions-guide/" target="_blank" rel="noopener">
+  jimalytics.com
+</a>
+ reaffirms the thought. I agree to it completely. The <em>Value Comparision</em> check is the easiest and a robust condition to configure. It checks for two values against one other, and if the expected value is returned then the rule is triggered. Else, Adobe Launch prevents the rule from being fired. You can even check for one data element against the other one, and that opens a whole new world of possibilities.</p>
 <p>Let&rsquo;s understand with an example: Say you want to fire a marketing pixel for visitors whose shopping cart total is more than $275. You can track the cart total in a data element (Hint: use an EDDL), add the data element as a <em>left operand</em>, select a <em>operator</em> and enter the value in the <em>right operand</em> box. That&rsquo;s it. Now when Adobe Launch sees the value of shopping cart above $275 on the shopping cart page, it will trigger the rule.</p>
-<p><strong>Variable</strong>: At a first glance, the <em>Variable</em> condition looks similar to the <em>Value Comparision</em> condition. Both the conditions are checking for a JavaScript variable. But the main difference is in how they reference the variable. With <em>Value Comparision</em> you have an ability to check for a Data Element. But with <em>Variable</em> you need to put in the actual variable path. You can&rsquo;t <a href="https://experienceleaguecommunities.adobe.com/t5/adobe-experience-platform-launch/rule-condition-difference-between-variable-and-value-comparison/m-p/311375">check</a> for a Data Element value with this condition.</p>
+<p><strong>Variable</strong>: At a first glance, the <em>Variable</em> condition looks similar to the <em>Value Comparision</em> condition. Both the conditions are checking for a JavaScript variable. But the main difference is in how they reference the variable. With <em>Value Comparision</em> you have an ability to check for a Data Element. But with <em>Variable</em> you need to put in the actual variable path. You can&rsquo;t <a href="https://experienceleaguecommunities.adobe.com/t5/adobe-experience-platform-launch/rule-condition-difference-between-variable-and-value-comparison/m-p/311375" target="_blank" rel="noopener">
+  check
+</a>
+ for a Data Element value with this condition.</p>
 <h6 id="condition-type-engagement">Condition Type: Engagement</h6>
 <p>The <em>engagement condition type</em> looks for different engagement parameters of the visitor to trigger or block the rule. The choices are self explanatory. However, there are still some finer aspects to consider.</p>
 <p><strong>Landing Page</strong>: As the name suggests, this condition checks for specific strings in the URL of the landing page and triggers the rule if the string is matched. You can also write regular expressions to include multiple scenarios.</p>
@@ -310,7 +334,10 @@ For e.g. building on the previous use case of checking for Page Type variable, w
 <h6 id="condition-type-engagement-1">Condition Type: Engagement</h6>
 <p>The <em>URL condition type</em> checks for different parameters in the URL of the page to trigger or block the rule. Let&rsquo;s look at the options available:</p>
 <p><strong>Domain</strong>: This option is populated from the domains we included when setting up the Adobe Launch container. You have an option to change the values by going back to the <em>Configuration</em> screen of the container</p>
-<p><strong>Hash</strong>: This option was a tricky one for me to understand. Until, I read the <a href="https://jimalytics.com/adobe-launch-guides/adobe-launch-rule-conditions-guide/">blog post</a> by Jim Gordon. This condition checks for the <em>hashed value</em> with the (#) symbol appended</p>
+<p><strong>Hash</strong>: This option was a tricky one for me to understand. Until, I read the <a href="https://jimalytics.com/adobe-launch-guides/adobe-launch-rule-conditions-guide/" target="_blank" rel="noopener">
+  blog post
+</a>
+ by Jim Gordon. This condition checks for the <em>hashed value</em> with the (#) symbol appended</p>
 <p><strong>Path and Query String</strong>: Checks for the value included in the URL Path along with the query string parameter. In short evaluates for value included in <em>document.location.pathname</em> + <em>document.location.search</em> attributes</p>
 <p><strong>Path without Query String</strong>: Checks for the value included ONLY in the URL Path. In short evaluates for value included in <em>document.location.pathname</em> attribute</p>
 <p><strong>Protocol</strong>: Evaluates based on <em>HTTP</em> or <em>HTTPS</em> parameters</p>

@@ -36,18 +36,30 @@
 <meta name="generator" content="Hugo 0.147.8 with theme Tranquilpeak 0.5.3-BETA">
 <meta name="author" content="">
 <meta name="keywords" content=", adobe experience cloud, adobe launch, adobe analytics, adobe experience platform, multi solution architect, business analytics">
-<meta name="description" content="This is part 2 of the Back to Basics series covering my JavaScript learning journey. In this blog post, I will be covering how to check if an element matches a selector and working with multiple elements. These lessons are very well explained in the Vanilla JS Academy by Chris Ferdinandi.">
+<meta name="description" content="This is part 2 of the Back to Basics series covering my JavaScript learning journey. In this blog post, I will be covering how to check if an element matches a selector and working with multiple elements. These lessons are very well explained in the 
+  Vanilla JS Academy
+
+ by Chris Ferdinandi.">
 
 
-<meta property="og:description" content="This is part 2 of the Back to Basics series covering my JavaScript learning journey. In this blog post, I will be covering how to check if an element matches a selector and working with multiple elements. These lessons are very well explained in the Vanilla JS Academy by Chris Ferdinandi.">
+<meta property="og:description" content="This is part 2 of the Back to Basics series covering my JavaScript learning journey. In this blog post, I will be covering how to check if an element matches a selector and working with multiple elements. These lessons are very well explained in the 
+  Vanilla JS Academy
+
+ by Chris Ferdinandi.">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Back to Basics : JavaScript : Part 2">
 <meta name="twitter:title" content="Back to Basics : JavaScript : Part 2">
 <meta property="og:url" content="https://thelearningproject.in/2023/09/back-to-basics-javascript-part-2/">
 <meta property="twitter:url" content="https://thelearningproject.in/2023/09/back-to-basics-javascript-part-2/">
 <meta property="og:site_name" content="The Learning Project">
-<meta property="og:description" content="This is part 2 of the Back to Basics series covering my JavaScript learning journey. In this blog post, I will be covering how to check if an element matches a selector and working with multiple elements. These lessons are very well explained in the Vanilla JS Academy by Chris Ferdinandi.">
-<meta name="twitter:description" content="This is part 2 of the Back to Basics series covering my JavaScript learning journey. In this blog post, I will be covering how to check if an element matches a selector and working with multiple elements. These lessons are very well explained in the Vanilla JS Academy by Chris Ferdinandi.">
+<meta property="og:description" content="This is part 2 of the Back to Basics series covering my JavaScript learning journey. In this blog post, I will be covering how to check if an element matches a selector and working with multiple elements. These lessons are very well explained in the 
+  Vanilla JS Academy
+
+ by Chris Ferdinandi.">
+<meta name="twitter:description" content="This is part 2 of the Back to Basics series covering my JavaScript learning journey. In this blog post, I will be covering how to check if an element matches a selector and working with multiple elements. These lessons are very well explained in the 
+  Vanilla JS Academy
+
+ by Chris Ferdinandi.">
 <meta property="og:locale" content="en-us">
 
   
@@ -263,10 +275,16 @@
           
           <div class="post-content markdown">
             <div class="main-content-wrap">
-              <p>This is part 2 of the Back to Basics series covering my JavaScript learning journey. In this blog post, I will be covering how to check if an element matches a selector and working with multiple elements. These lessons are very well explained in the <a href="https://vanillajsacademy.com/">Vanilla JS Academy</a> by Chris Ferdinandi.</p>
+              <p>This is part 2 of the Back to Basics series covering my JavaScript learning journey. In this blog post, I will be covering how to check if an element matches a selector and working with multiple elements. These lessons are very well explained in the <a href="https://vanillajsacademy.com/" target="_blank" rel="noopener">
+  Vanilla JS Academy
+</a>
+ by Chris Ferdinandi.</p>
 <p>The first part of the JavaScript learning series covered how to check for elements in DOM. We saw how to use the <code>document.querySelector</code> and <code>document.querySelectorAll</code> method to grab DOM elements and how to use <code>eventListener</code> method to attach events to the elements. In this blog post, we will be checking for <code>element.matches</code> method</p>
 <h4 id="check-if-an-element-matches-a-selector">Check if an Element matches a selector</h4>
-<p>According to <a href="https://developer.mozilla.org/en-US/docs/Web/API/Element/matches">MDN</a> the <code>element.matches</code> determines whether the element will be selected by the specified CSS selector or not.</p>
+<p>According to <a href="https://developer.mozilla.org/en-US/docs/Web/API/Element/matches" target="_blank" rel="noopener">
+  MDN
+</a>
+ the <code>element.matches</code> determines whether the element will be selected by the specified CSS selector or not.</p>
 <p>To use the method, we query the element using the <code>document.querySelector</code> method. Then on the resulting variable, you will apply the <code>element.matches</code> method in a <code>if...else</code> condition. And in the condition, apply alternate paths based on the result</p>
 <pre tabindex="0"><code>let btn = document.querySelector(&#39;.col-sm-3&#39;);
 if btn.matches(&#39;.col-sm-3&#39;) {
@@ -298,7 +316,10 @@ for (let btn of btns){
   });
 }
 </code></pre><h6 id="using-event-delegation">Using Event Delegation</h6>
-<p>According to <a href="https://www.scaler.com/topics/event-delegation-in-javascript/">scaler.com</a>, event delegation is a pattern for efficiently handling events. Events can be added to parent element instead of adding to every single element. Because of the event bubbling phenomenon every time someone clicks on any element, the action bubbles up to its parent until it reaches the document element.</p>
+<p>According to <a href="https://www.scaler.com/topics/event-delegation-in-javascript/" target="_blank" rel="noopener">
+  scaler.com
+</a>
+, event delegation is a pattern for efficiently handling events. Events can be added to parent element instead of adding to every single element. Because of the event bubbling phenomenon every time someone clicks on any element, the action bubbles up to its parent until it reaches the document element.</p>
 <p>This means we attach the <code>eventListener</code> method to the document object. The browser will listen for clicks on any element inside the document node. When a click occurs, it will bubble up the action to the parent until it reaches the document node. We can then use a callback function to listen for specific conditions using <code>event.target.matches</code> method. Here is how it works:</p>
 <pre tabindex="0"><code>document.addEventListener(&#39;click&#39;, function (event){
   if(event.target.matches(&#39;.services__item&#39;)){
@@ -349,12 +370,18 @@ console.log(movieExists);
 
 <h6 id="project-work">Project Work</h6>
 <p>Now, let&rsquo;s apply this learning into a live project. In the previous blog post, we saw how to use <code>querySelectorAll</code> method to toggle password in two different fields in a single form. In this post, we will see how to enable the toggle password button in two separate forms.</p>
-<p>Head over to the <a href="https://www.thelearningproject.in/samples/multiforms.html/">Playground</a> to check out the project. Don&rsquo;t forget to switch the debug logs. Meanwhile, here is a YouTube video recording that you can watch.</p>
+<p>Head over to the <a href="https://www.thelearningproject.in/samples/multiforms.html/" target="_blank" rel="noopener">
+  Playground
+</a>
+ to check out the project. Don&rsquo;t forget to switch the debug logs. Meanwhile, here is a YouTube video recording that you can watch.</p>
 <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
       <iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share; fullscreen" loading="eager" referrerpolicy="strict-origin-when-cross-origin" src="https://www.youtube.com/embed/DuTpJ45QCwE?autoplay=0&amp;controls=1&amp;end=0&amp;loop=0&amp;mute=0&amp;start=0" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" title="YouTube video"></iframe>
     </div>
 
-<p>That is all for this blog post. Leave me a line on <a href="mailto:ritesh@thelearningproject.in">ritesh@thelearningproject.in</a> to share some JavaScript basics that you might be interested in sharing.</p>
+<p>That is all for this blog post. Leave me a line on <a href="mailto:ritesh@thelearningproject.in">
+  ritesh@thelearningproject.in
+</a>
+ to share some JavaScript basics that you might be interested in sharing.</p>
               
 
 

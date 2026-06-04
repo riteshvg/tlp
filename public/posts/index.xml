@@ -55,14 +55,14 @@
       <link>https://thelearningproject.in/2023/09/back-to-basics-javascript-part-3/</link>
       <pubDate>Mon, 25 Sep 2023 00:00:00 +0000</pubDate>
       <guid>https://thelearningproject.in/2023/09/back-to-basics-javascript-part-3/</guid>
-      <description>&lt;p&gt;This is part 3 of the Back to Basics series covering my JavaScript learning journey. In this blog post, I will be covering using the &lt;code&gt;textContent&lt;/code&gt; method and other methods. For lesson 1 and 2 in this series, be sure to check out this &lt;a href=&#34;https://www.thelearningproject.in/posts/back-to-basics-javascript-part-1/&#34;&gt;link&lt;/a&gt; and this &lt;a href=&#34;https://www.thelearningproject.in/posts/back-to-basics-javascript-part-2/&#34;&gt;link&lt;/a&gt;.&lt;/p&gt;</description>
+      <description>&lt;p&gt;This is part 3 of the Back to Basics series covering my JavaScript learning journey. In this blog post, I will be covering using the &lt;code&gt;textContent&lt;/code&gt; method and other methods. For lesson 1 and 2 in this series, be sure to check out this &lt;a href=&#34;https://www.thelearningproject.in/posts/back-to-basics-javascript-part-1/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;&#xA;  link&#xA;&lt;/a&gt;&#xA; and this &lt;a href=&#34;https://www.thelearningproject.in/posts/back-to-basics-javascript-part-2/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;&#xA;  link&#xA;&lt;/a&gt;&#xA;.&lt;/p&gt;</description>
     </item>
     <item>
       <title>Back to Basics : JavaScript : Part 2</title>
       <link>https://thelearningproject.in/2023/09/back-to-basics-javascript-part-2/</link>
       <pubDate>Mon, 04 Sep 2023 00:00:00 +0000</pubDate>
       <guid>https://thelearningproject.in/2023/09/back-to-basics-javascript-part-2/</guid>
-      <description>&lt;p&gt;This is part 2 of the Back to Basics series covering my JavaScript learning journey. In this blog post, I will be covering how to check if an element matches a selector and working with multiple elements. These lessons are very well explained in the &lt;a href=&#34;https://vanillajsacademy.com/&#34;&gt;Vanilla JS Academy&lt;/a&gt; by Chris Ferdinandi.&lt;/p&gt;</description>
+      <description>&lt;p&gt;This is part 2 of the Back to Basics series covering my JavaScript learning journey. In this blog post, I will be covering how to check if an element matches a selector and working with multiple elements. These lessons are very well explained in the &lt;a href=&#34;https://vanillajsacademy.com/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;&#xA;  Vanilla JS Academy&#xA;&lt;/a&gt;&#xA; by Chris Ferdinandi.&lt;/p&gt;</description>
     </item>
     <item>
       <title>How to get Lucky? : Be the Best</title>
@@ -83,7 +83,7 @@
       <link>https://thelearningproject.in/2023/08/back-to-basics-javascript-part-1/</link>
       <pubDate>Wed, 23 Aug 2023 00:00:00 +0000</pubDate>
       <guid>https://thelearningproject.in/2023/08/back-to-basics-javascript-part-1/</guid>
-      <description>&lt;p&gt;At the beginning of the year, I decided to enhance my JavaScript skills. I have always considered focusing on a skill and increase my expertise by learning from the experts. In this context, I came across many JavaScript teaching courses, but only one worked well for me. It is the &lt;a href=&#34;https://vanillajsacademy.com/&#34;&gt;Vanilla JS Academy&lt;/a&gt; by Chris Ferdinandi.&lt;/p&gt;</description>
+      <description>&lt;p&gt;At the beginning of the year, I decided to enhance my JavaScript skills. I have always considered focusing on a skill and increase my expertise by learning from the experts. In this context, I came across many JavaScript teaching courses, but only one worked well for me. It is the &lt;a href=&#34;https://vanillajsacademy.com/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;&#xA;  Vanilla JS Academy&#xA;&lt;/a&gt;&#xA; by Chris Ferdinandi.&lt;/p&gt;</description>
     </item>
     <item>
       <title>Who Inspires You?</title>
@@ -125,21 +125,21 @@
       <link>https://thelearningproject.in/2022/07/b2b-series-adobe-launch-part-5.3-adobe-launch-rules-actions/</link>
       <pubDate>Sat, 30 Jul 2022 00:00:00 +0000</pubDate>
       <guid>https://thelearningproject.in/2022/07/b2b-series-adobe-launch-part-5.3-adobe-launch-rules-actions/</guid>
-      <description>&lt;p&gt;In the previous two blog posts on the Rules topic, we covered &lt;a href=&#34;../posts/b2b-series-adobe-launch-part-5.1-adobe-launch-rules-events/&#34;&gt;&lt;em&gt;Events&lt;/em&gt;&lt;/a&gt; and the &lt;em&gt;event types&lt;/em&gt;. We also explored the different &lt;a href=&#34;../posts/b2b-series-adobe-launch-part-5.2-adobe-launch-rules-conditions/&#34;&gt;&lt;em&gt;Conditions&lt;/em&gt;&lt;/a&gt; that are available to help us filter when Adobe Launch should or should not trigger a rule. Summing up the topic, this blog post will cover all about &lt;em&gt;Actions&lt;/em&gt; in Adobe Launch.&lt;/p&gt;</description>
+      <description>&lt;p&gt;In the previous two blog posts on the Rules topic, we covered &lt;a href=&#34;../posts/b2b-series-adobe-launch-part-5.1-adobe-launch-rules-events/&#34;&gt;&#xA;  &lt;em&gt;Events&lt;/em&gt;&#xA;&lt;/a&gt;&#xA; and the &lt;em&gt;event types&lt;/em&gt;. We also explored the different &lt;a href=&#34;../posts/b2b-series-adobe-launch-part-5.2-adobe-launch-rules-conditions/&#34;&gt;&#xA;  &lt;em&gt;Conditions&lt;/em&gt;&#xA;&lt;/a&gt;&#xA; that are available to help us filter when Adobe Launch should or should not trigger a rule. Summing up the topic, this blog post will cover all about &lt;em&gt;Actions&lt;/em&gt; in Adobe Launch.&lt;/p&gt;</description>
     </item>
     <item>
       <title>B2B Series: Adobe Launch - Part 5.2 - Adobe Launch Rules: Conditions</title>
       <link>https://thelearningproject.in/2022/07/b2b-series-adobe-launch-part-5.2-adobe-launch-rules-conditions/</link>
       <pubDate>Wed, 20 Jul 2022 00:00:00 +0000</pubDate>
       <guid>https://thelearningproject.in/2022/07/b2b-series-adobe-launch-part-5.2-adobe-launch-rules-conditions/</guid>
-      <description>&lt;p&gt;In the previous &lt;a href=&#34;../posts/b2b-series-adobe-launch-part-5.1-adobe-launch-rules-events/&#34;&gt;blog post&lt;/a&gt;, we learn about &lt;em&gt;Events&lt;/em&gt; and the available &lt;em&gt;event types&lt;/em&gt; in Adobe Launch. We saw how we have a wide array of different events available to determine when to trigger an Adobe Launch rule. In this blog post, we will cover all about &lt;em&gt;Conditions&lt;/em&gt;.&lt;/p&gt;</description>
+      <description>&lt;p&gt;In the previous &lt;a href=&#34;../posts/b2b-series-adobe-launch-part-5.1-adobe-launch-rules-events/&#34;&gt;&#xA;  blog post&#xA;&lt;/a&gt;&#xA;, we learn about &lt;em&gt;Events&lt;/em&gt; and the available &lt;em&gt;event types&lt;/em&gt; in Adobe Launch. We saw how we have a wide array of different events available to determine when to trigger an Adobe Launch rule. In this blog post, we will cover all about &lt;em&gt;Conditions&lt;/em&gt;.&lt;/p&gt;</description>
     </item>
     <item>
       <title>B2B Series: Adobe Launch - Part 5.1 - Adobe Launch Rules: Events</title>
       <link>https://thelearningproject.in/2022/07/b2b-series-adobe-launch-part-5.1-adobe-launch-rules-events/</link>
       <pubDate>Fri, 15 Jul 2022 00:00:00 +0000</pubDate>
       <guid>https://thelearningproject.in/2022/07/b2b-series-adobe-launch-part-5.1-adobe-launch-rules-events/</guid>
-      <description>&lt;p&gt;In the previous &lt;a href=&#34;../posts/b2b-series-adobe-launch-part-5-adobe-launch-rules/&#34;&gt;blog post&lt;/a&gt;, we covered a primer on what are Rules in Adobe Launch. We saw how Rules imitate an &lt;em&gt;if&amp;hellip;then&lt;/em&gt; structure, and how the three main components: &lt;strong&gt;Events, Conditions&lt;/strong&gt; and &lt;strong&gt;Actions&lt;/strong&gt; work. In this blog post, we will cover in depth the different types of &lt;em&gt;Events&lt;/em&gt; that are available for us to utilize. Let&amp;rsquo;s dig in!&lt;/p&gt;</description>
+      <description>&lt;p&gt;In the previous &lt;a href=&#34;../posts/b2b-series-adobe-launch-part-5-adobe-launch-rules/&#34;&gt;&#xA;  blog post&#xA;&lt;/a&gt;&#xA;, we covered a primer on what are Rules in Adobe Launch. We saw how Rules imitate an &lt;em&gt;if&amp;hellip;then&lt;/em&gt; structure, and how the three main components: &lt;strong&gt;Events, Conditions&lt;/strong&gt; and &lt;strong&gt;Actions&lt;/strong&gt; work. In this blog post, we will cover in depth the different types of &lt;em&gt;Events&lt;/em&gt; that are available for us to utilize. Let&amp;rsquo;s dig in!&lt;/p&gt;</description>
     </item>
     <item>
       <title>B2B Series: Adobe Launch - Part 5 - Adobe Launch Rules</title>
@@ -153,7 +153,7 @@
       <link>https://thelearningproject.in/2022/06/death-of-universal-analytics-whats-next/</link>
       <pubDate>Thu, 23 Jun 2022 00:00:00 +0000</pubDate>
       <guid>https://thelearningproject.in/2022/06/death-of-universal-analytics-whats-next/</guid>
-      <description>&lt;p&gt;Google recently made a big &lt;a href=&#34;https://support.google.com/analytics/answer/11583528?hl=en#:~:text=Google%20Analytics%204%20is%20our,Google%20Analytics%204%20going%20forward.&#34;&gt;announcement&lt;/a&gt; to sunset their Universal Analytics product by June 2023. This means companies currently on Universal Analytics (UA) and UA360&#xA;tools to track their visitors will now need to migrate their analytics setup to Google Analytics 4 (GA4) by next year or fear losing the tracking completely. Here&amp;rsquo;s my take on the situation!&lt;/p&gt;</description>
+      <description>&lt;p&gt;Google recently made a big &lt;a href=&#34;https://support.google.com/analytics/answer/11583528?hl=en#:~:text=Google%20Analytics%204%20is%20our,Google%20Analytics%204%20going%20forward.&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;&#xA;  announcement&#xA;&lt;/a&gt;&#xA; to sunset their Universal Analytics product by June 2023. This means companies currently on Universal Analytics (UA) and UA360&#xA;tools to track their visitors will now need to migrate their analytics setup to Google Analytics 4 (GA4) by next year or fear losing the tracking completely. Here&amp;rsquo;s my take on the situation!&lt;/p&gt;</description>
     </item>
     <item>
       <title>Nordics AAUG Kick-off</title>

@@ -29,12 +29,12 @@ A simulated airline booking site — flight search, multi-step booking flow, sea
 
 ## Data Architecture
 
-| Layer | Detail |
-|---|---|
-| **Data Sources** | Static JSON files (`flights.json`, `airports.json`, ancillary configs) |
-| **State persistence** | `sessionStorage` for booking state across steps |
-| **Schema** | XDM-aligned event schema for all user interactions |
-| **Collection** | AEP Web SDK sending to Edge Network → AEP → CJA |
+| Layer                 | Detail                                                                 |
+| --------------------- | ---------------------------------------------------------------------- |
+| **Data Sources**      | Static JSON files (`flights.json`, `airports.json`, ancillary configs) |
+| **State persistence** | `sessionStorage` for booking state across steps                        |
+| **Schema**            | XDM-aligned event schema for all user interactions                     |
+| **Collection**        | AEP Web SDK sending to Edge Network → AEP → CJA                        |
 
 ## Key Features
 
