@@ -321,10 +321,9 @@ canonifyurls = true
 
 # Adobe Launch Script
   [[params.customJS]]
-    src = "https://www.thelearningproject.in/public/js/launch-39d64d92912c-development.min.js"
+    src = "https://assets.adobedtm.com/204118644db8/437cd1c7d72a/launch-a040553a1374.min.js"
     crossorigin = "anonymous"
     async = true
-    defer = true
 
 
   # ---------------
