@@ -36,18 +36,30 @@
 <meta name="generator" content="Hugo 0.147.8 with theme Tranquilpeak 0.5.3-BETA">
 <meta name="author" content="">
 <meta name="keywords" content=", adobe experience cloud, adobe launch, adobe analytics, adobe experience platform, multi solution architect, business analytics">
-<meta name="description" content="If you regularly work with Adobe Experience Cloud solutions, you have scratched your head trying to find an answer to the right question. The problem isn&rsquo;t the quality of the documentation. The Adobe Experience Leage (ExL) docs are genuinely good — comprehensive, well-maintained, regularly updated. The problem is something else.">
+<meta name="description" content="If you regularly work with 
+  Adobe Experience Cloud
+
+ solutions, you have scratched your head trying to find an answer to the right question. The problem isn&rsquo;t the quality of the documentation. The Adobe Experience Leage (ExL) docs are genuinely good — comprehensive, well-maintained, regularly updated. The problem is something else.">
 
 
-<meta property="og:description" content="If you regularly work with Adobe Experience Cloud solutions, you have scratched your head trying to find an answer to the right question. The problem isn&rsquo;t the quality of the documentation. The Adobe Experience Leage (ExL) docs are genuinely good — comprehensive, well-maintained, regularly updated. The problem is something else.">
+<meta property="og:description" content="If you regularly work with 
+  Adobe Experience Cloud
+
+ solutions, you have scratched your head trying to find an answer to the right question. The problem isn&rsquo;t the quality of the documentation. The Adobe Experience Leage (ExL) docs are genuinely good — comprehensive, well-maintained, regularly updated. The problem is something else.">
 <meta property="og:type" content="article">
 <meta property="og:title" content="ExL Unoffical: A conversational engine for Adobe Experience League">
 <meta name="twitter:title" content="ExL Unoffical: A conversational engine for Adobe Experience League">
 <meta property="og:url" content="https://thelearningproject.in/2026/06/exl-unoffical-a-conversational-engine-for-adobe-experience-league/">
 <meta property="twitter:url" content="https://thelearningproject.in/2026/06/exl-unoffical-a-conversational-engine-for-adobe-experience-league/">
 <meta property="og:site_name" content="The Learning Project">
-<meta property="og:description" content="If you regularly work with Adobe Experience Cloud solutions, you have scratched your head trying to find an answer to the right question. The problem isn&rsquo;t the quality of the documentation. The Adobe Experience Leage (ExL) docs are genuinely good — comprehensive, well-maintained, regularly updated. The problem is something else.">
-<meta name="twitter:description" content="If you regularly work with Adobe Experience Cloud solutions, you have scratched your head trying to find an answer to the right question. The problem isn&rsquo;t the quality of the documentation. The Adobe Experience Leage (ExL) docs are genuinely good — comprehensive, well-maintained, regularly updated. The problem is something else.">
+<meta property="og:description" content="If you regularly work with 
+  Adobe Experience Cloud
+
+ solutions, you have scratched your head trying to find an answer to the right question. The problem isn&rsquo;t the quality of the documentation. The Adobe Experience Leage (ExL) docs are genuinely good — comprehensive, well-maintained, regularly updated. The problem is something else.">
+<meta name="twitter:description" content="If you regularly work with 
+  Adobe Experience Cloud
+
+ solutions, you have scratched your head trying to find an answer to the right question. The problem isn&rsquo;t the quality of the documentation. The Adobe Experience Leage (ExL) docs are genuinely good — comprehensive, well-maintained, regularly updated. The problem is something else.">
 <meta property="og:locale" content="en-us">
 
   
@@ -263,7 +275,10 @@
           
           <div class="post-content markdown">
             <div class="main-content-wrap">
-              <p>If you regularly work with Adobe Experience Cloud solutions, you have scratched your head trying to find an answer to the right question. The problem isn&rsquo;t the quality of the documentation. The Adobe Experience Leage (ExL) docs are genuinely good — comprehensive, well-maintained, regularly updated. The problem is something else.</p>
+              <p>If you regularly work with <a href="https://experienceleague.adobe.com/docs/" target="_blank" rel="noopener">
+  Adobe Experience Cloud
+</a>
+ solutions, you have scratched your head trying to find an answer to the right question. The problem isn&rsquo;t the quality of the documentation. The Adobe Experience Leage (ExL) docs are genuinely good — comprehensive, well-maintained, regularly updated. The problem is something else.</p>
 <p>Guides and articles for each Adobe Experience Cloud solution can span hundreds of pages. The documents are well structured, but the problem comes when you&rsquo;re mid-implementation and need to know whether a Profile Dataset or an Event Dataset is the right choice for your use case. The answer exists somewhere in that corpus, but finding the answer means sifting through all details, distilling the responses and then implying the learning to the problem at hand.</p>
 <p>The search is one way. There is no conversation. Therefore, the typical workflow — search, click, scan, refine, try again — costs 15–25 minutes on questions that, with the right tool, should take two.</p>
 <h3 id="presenting-exl-unofficial-an-unofficial-chatbot-for-experience-league">Presenting ExL Unofficial: An Unofficial Chatbot for Experience League</h3>
@@ -316,11 +331,211 @@
 <p>The project sat on the backburner for months while other work took priority — TLP Airways, TagScanner upgrades. When it was time to pick it back up, the migration took 5–7 days of roughly two hours each. The original Streamlit prototype had taken around 10 days. Neither sprint would have been achievable without AI tooling - Claude.ai and Claude Code; the scope simply isn&rsquo;t viable for a solo practitioner working evenings otherwise.</p>
 <p>Getting it running on Railway introduced a different class of problem. The FastAPI backend deploys there; the React frontend builds locally and deploys to Cloudflare Pages as static files inside the Hugo blog. Railway&rsquo;s filesystem is ephemeral — every restart wipes the disk, which means ChromaDB&rsquo;s on-disk index disappears. The fix was an S3 cold-start restore: on startup, if the index is empty, download a pre-built archive from S3 and extract it. This was discovered from a real failure, not anticipated. The production push also surfaced a CORS misconfiguration, a startup crash on empty ChromaDB, a placeholder URL in .env.production, and a LangGraph streaming type mismatch that only appeared on complex queries. None of these showed up in development.</p>
 <p>The estimated cost is roughly $0.009 per query at current Claude Sonnet 4.6 pricing. The time saved is roughly around 20 - 30 mins per query. I am not opening this utility to others for now due to cost implications. But, hopefully, I will soon.</p>
-<h3 id="demo-video">Demo Video:</h3>
-<div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
-      <iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share; fullscreen" loading="eager" referrerpolicy="strict-origin-when-cross-origin" src="https://www.youtube.com/embed/N_E9dN2Av54?autoplay=0&amp;controls=1&amp;end=0&amp;loop=0&amp;mute=0&amp;start=0" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" title="YouTube video"></iframe>
-    </div>
-
+<h2 id="tech-stack">Tech Stack</h2>
+<h3 id="frontend">Frontend</h3>
+<table>
+  <thead>
+      <tr>
+          <th>Component</th>
+          <th>Technology</th>
+          <th>Purpose</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>Framework</td>
+          <td>React 19 + TypeScript + Vite</td>
+          <td>UI and build tooling</td>
+      </tr>
+      <tr>
+          <td>State Management</td>
+          <td>Zustand</td>
+          <td>Chat sessions, auth, message history</td>
+      </tr>
+      <tr>
+          <td>Styling</td>
+          <td>Tailwind CSS + shadcn/ui</td>
+          <td>Component design system</td>
+      </tr>
+      <tr>
+          <td>Markdown Rendering</td>
+          <td>ReactMarkdown + remark-gfm</td>
+          <td>Render LLM responses with tables, code, and images</td>
+      </tr>
+      <tr>
+          <td>Static Site Generator</td>
+          <td>Hugo</td>
+          <td>Wraps the React app inside thelearningproject.in</td>
+      </tr>
+  </tbody>
+</table>
+<h3 id="hosting">Hosting</h3>
+<table>
+  <thead>
+      <tr>
+          <th>Component</th>
+          <th>Technology</th>
+          <th>Purpose</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>Frontend</td>
+          <td>Cloudflare Pages</td>
+          <td>Static site hosting via wrangler deploy</td>
+      </tr>
+      <tr>
+          <td>Backend</td>
+          <td>Railway</td>
+          <td>Container hosting, auto-restarts, environment variables</td>
+      </tr>
+      <tr>
+          <td>Database</td>
+          <td>PostgreSQL (Railway)</td>
+          <td>Feedback storage and analytics</td>
+      </tr>
+      <tr>
+          <td>Object Storage</td>
+          <td>AWS S3</td>
+          <td>Doc source files + ChromaDB snapshot for cold-start restore</td>
+      </tr>
+  </tbody>
+</table>
+<h3 id="backend">Backend</h3>
+<table>
+  <thead>
+      <tr>
+          <th>Component</th>
+          <th>Technology</th>
+          <th>Purpose</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>API Server</td>
+          <td>FastAPI (Python)</td>
+          <td>REST + SSE API server</td>
+      </tr>
+      <tr>
+          <td>Query Routing</td>
+          <td>Custom Smart Router</td>
+          <td>Classifies query → Haiku or Sonnet path</td>
+      </tr>
+      <tr>
+          <td>Query Processing</td>
+          <td>Custom QueryProcessor</td>
+          <td>Adobe abbreviation expansion, session context injection</td>
+      </tr>
+  </tbody>
+</table>
+<h3 id="llm-and-ai">LLM and AI</h3>
+<table>
+  <thead>
+      <tr>
+          <th>Component</th>
+          <th>Technology</th>
+          <th>Purpose</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>Fast path</td>
+          <td>Claude Haiku 4.5</td>
+          <td>Single-pass answers, definitions, factual lookups</td>
+      </tr>
+      <tr>
+          <td>Complex path</td>
+          <td>Claude Sonnet 4.6</td>
+          <td>Multi-step reasoning, comparisons, procedures</td>
+      </tr>
+      <tr>
+          <td>Orchestration</td>
+          <td>LangChain LCEL + LangGraph ReAct</td>
+          <td>Chain (Haiku path) and agent loop (Sonnet path)</td>
+      </tr>
+      <tr>
+          <td>Embeddings</td>
+          <td>AWS Bedrock Titan Embed v2</td>
+          <td>1,024-dimension vectors for semantic search</td>
+      </tr>
+      <tr>
+          <td>Vector Database</td>
+          <td>ChromaDB (persistent)</td>
+          <td>Stores 8,514 chunks with full metadata</td>
+      </tr>
+  </tbody>
+</table>
+<h3 id="data-and-ingestion">Data and Ingestion</h3>
+<table>
+  <thead>
+      <tr>
+          <th>Component</th>
+          <th>Technology</th>
+          <th>Purpose</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>Doc Sources</td>
+          <td>GitHub (AdobeDocs repos)</td>
+          <td>Markdown source for all ingested documentation</td>
+      </tr>
+      <tr>
+          <td>Ingestion Pipeline</td>
+          <td>Python scripts + GitHub Actions</td>
+          <td>Weekly sync → chunk → embed → upsert to ChromaDB</td>
+      </tr>
+      <tr>
+          <td>CI/CD</td>
+          <td>GitHub Actions</td>
+          <td>Scheduled weekly documentation refresh workflow</td>
+      </tr>
+  </tbody>
+</table>
+<h3 id="authorization-and-observability">Authorization and Observability</h3>
+<table>
+  <thead>
+      <tr>
+          <th>Component</th>
+          <th>Technology</th>
+          <th>Purpose</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>Auth</td>
+          <td>JWT (PyJWT)</td>
+          <td>Site login, demo account, admin panel</td>
+      </tr>
+      <tr>
+          <td>Observability</td>
+          <td>LangSmith</td>
+          <td>LLM trace logging, latency, token usage</td>
+      </tr>
+  </tbody>
+</table>
+<h3 id="code-support">Code Support</h3>
+<table>
+  <thead>
+      <tr>
+          <th>Component</th>
+          <th>Technology</th>
+          <th>Purpose</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>Assist</td>
+          <td>Claude Code</td>
+          <td>Editing the files and creating the work</td>
+      </tr>
+      <tr>
+          <td>Research</td>
+          <td>Claude.ai</td>
+          <td>Researching and prompting Claude Code</td>
+      </tr>
+  </tbody>
+</table>
 <p>Have feedback or feature requests? Drop me a line at <a href="mailto:ritesh@thelearningproject.in">
   ritesh@thelearningproject.in
 </a>

@@ -12,7 +12,7 @@ author:
   display_name: Ritesh Gupta
 ---
 
-If you regularly work with Adobe Experience Cloud solutions, you have scratched your head trying to find an answer to the right question. The problem isn't the quality of the documentation. The Adobe Experience Leage (ExL) docs are genuinely good — comprehensive, well-maintained, regularly updated. The problem is something else.
+If you regularly work with [Adobe Experience Cloud](https://experienceleague.adobe.com/docs/) solutions, you have scratched your head trying to find an answer to the right question. The problem isn't the quality of the documentation. The Adobe Experience Leage (ExL) docs are genuinely good — comprehensive, well-maintained, regularly updated. The problem is something else.
 
 <!--more-->
 
@@ -93,8 +93,65 @@ Getting it running on Railway introduced a different class of problem. The FastA
 
 The estimated cost is roughly $0.009 per query at current Claude Sonnet 4.6 pricing. The time saved is roughly around 20 - 30 mins per query. I am not opening this utility to others for now due to cost implications. But, hopefully, I will soon.
 
-### Demo Video:
+## Tech Stack
 
-{{< youtube N_E9dN2Av54 >}}
+### Frontend
+
+| Component             | Technology                   | Purpose                                            |
+| --------------------- | ---------------------------- | -------------------------------------------------- |
+| Framework             | React 19 + TypeScript + Vite | UI and build tooling                               |
+| State Management      | Zustand                      | Chat sessions, auth, message history               |
+| Styling               | Tailwind CSS + shadcn/ui     | Component design system                            |
+| Markdown Rendering    | ReactMarkdown + remark-gfm   | Render LLM responses with tables, code, and images |
+| Static Site Generator | Hugo                         | Wraps the React app inside thelearningproject.in   |
+
+### Hosting
+
+| Component      | Technology           | Purpose                                                     |
+| -------------- | -------------------- | ----------------------------------------------------------- |
+| Frontend       | Cloudflare Pages     | Static site hosting via wrangler deploy                     |
+| Backend        | Railway              | Container hosting, auto-restarts, environment variables     |
+| Database       | PostgreSQL (Railway) | Feedback storage and analytics                              |
+| Object Storage | AWS S3               | Doc source files + ChromaDB snapshot for cold-start restore |
+
+### Backend
+
+| Component        | Technology            | Purpose                                                 |
+| ---------------- | --------------------- | ------------------------------------------------------- |
+| API Server       | FastAPI (Python)      | REST + SSE API server                                   |
+| Query Routing    | Custom Smart Router   | Classifies query → Haiku or Sonnet path                 |
+| Query Processing | Custom QueryProcessor | Adobe abbreviation expansion, session context injection |
+
+### LLM and AI
+
+| Component       | Technology                       | Purpose                                           |
+| --------------- | -------------------------------- | ------------------------------------------------- |
+| Fast path       | Claude Haiku 4.5                 | Single-pass answers, definitions, factual lookups |
+| Complex path    | Claude Sonnet 4.6                | Multi-step reasoning, comparisons, procedures     |
+| Orchestration   | LangChain LCEL + LangGraph ReAct | Chain (Haiku path) and agent loop (Sonnet path)   |
+| Embeddings      | AWS Bedrock Titan Embed v2       | 1,024-dimension vectors for semantic search       |
+| Vector Database | ChromaDB (persistent)            | Stores 8,514 chunks with full metadata            |
+
+### Data and Ingestion
+
+| Component          | Technology                      | Purpose                                          |
+| ------------------ | ------------------------------- | ------------------------------------------------ |
+| Doc Sources        | GitHub (AdobeDocs repos)        | Markdown source for all ingested documentation   |
+| Ingestion Pipeline | Python scripts + GitHub Actions | Weekly sync → chunk → embed → upsert to ChromaDB |
+| CI/CD              | GitHub Actions                  | Scheduled weekly documentation refresh workflow  |
+
+### Authorization and Observability
+
+| Component     | Technology  | Purpose                                 |
+| ------------- | ----------- | --------------------------------------- |
+| Auth          | JWT (PyJWT) | Site login, demo account, admin panel   |
+| Observability | LangSmith   | LLM trace logging, latency, token usage |
+
+### Code Support
+
+| Component | Technology  | Purpose                                 |
+| --------- | ----------- | --------------------------------------- |
+| Assist    | Claude Code | Editing the files and creating the work |
+| Research  | Claude.ai   | Researching and prompting Claude Code   |
 
 Have feedback or feature requests? Drop me a line at ritesh@thelearningproject.in
