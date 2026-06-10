@@ -8,7 +8,7 @@
   "@type": "BlogPosting",
   "headline": "ExL Unoffical: A conversational engine for Adobe Experience League",
   
-  "image": "https://d2coej5ollyd8p.cloudfront.net/tools/tagscanner-preview.png",
+  "image": "https://d2coej5ollyd8p.cloudfront.net/tools/exlheroimage.png",
   
   "datePublished": "2026-06-09T00:00:00Z",
   "dateModified": "2026-06-09T00:00:00Z",
@@ -81,8 +81,8 @@
 
 
 
-  <meta property="og:image" content="https://d2coej5ollyd8p.cloudfront.net/tools/tagscanner-preview.png">
-  <meta property="twitter:image" content="https://d2coej5ollyd8p.cloudfront.net/tools/tagscanner-preview.png">
+  <meta property="og:image" content="https://d2coej5ollyd8p.cloudfront.net/tools/exlheroimage.png">
+  <meta property="twitter:image" content="https://d2coej5ollyd8p.cloudfront.net/tools/exlheroimage.png">
 
 
     <title>ExL Unoffical: A conversational engine for Adobe Experience League</title>
@@ -267,6 +267,10 @@
 <p>Guides and articles for each Adobe Experience Cloud solution can span hundreds of pages. The documents are well structured, but the problem comes when you&rsquo;re mid-implementation and need to know whether a Profile Dataset or an Event Dataset is the right choice for your use case. The answer exists somewhere in that corpus, but finding the answer means sifting through all details, distilling the responses and then implying the learning to the problem at hand.</p>
 <p>The search is one way. There is no conversation. Therefore, the typical workflow — search, click, scan, refine, try again — costs 15–25 minutes on questions that, with the right tool, should take two.</p>
 <h3 id="presenting-exl-unofficial-an-unofficial-chatbot-for-experience-league">Presenting ExL Unofficial: An Unofficial Chatbot for Experience League</h3>
+<div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
+      <iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share; fullscreen" loading="eager" referrerpolicy="strict-origin-when-cross-origin" src="https://www.youtube.com/embed/N_E9dN2Av54?autoplay=0&amp;controls=1&amp;end=0&amp;loop=0&amp;mute=0&amp;start=0" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" title="YouTube video"></iframe>
+    </div>
+
 <p><a href="https://thelearningproject.in/tools/exlunofficialchatbot" target="_blank" rel="noopener">
   ExL Unofficial
 </a>
@@ -296,11 +300,27 @@
   procedural/cross-product question (e.g. cross-device attribution in CJA).
   Pull from the live tool or LangSmith traces.
 -->
-<p>The index currently covers three products:</p>
-<p>Adobe Analytics — ~964 documentation pages
-Adobe Experience Platform (AEP) — ~160 pages
-Customer Journey Analytics (CJA) — ~136 pages</p>
-<p>In total: 1,260 unique documentation pages, stored as 5,685 chunks after processing. 539 of those pages include inline media — screenshots, diagrams, or video references — which the ingestion pipeline captures in metadata. The knowledge base reflects documentation as of March 14, 2026.</p>
+<p>The index currently covers AEP, Adobe Analytics, Adobe Target, Customer Journey Analytics and Adobe Data Collection. All in all total 1656 pages of content including inline media - screenshots, diagrams and video references is captured in the metadata. The knowledge base reflects documentation updated on May 9, 2026. This is a great deal when comparing knowledge freshness with external tools like Claude, ChatGPT etc.</p>
+<h3 id="how-is-the-chatbot-built">How is the chatbot built?</h3>
+<p>The architecture has two distinct phases: a retrieval phase that finds the relevant documentation, and a generation phase where the language model synthesises an answer from what was retrieved. This pattern — Retrieval-Augmented Generation, or RAG — is what keeps the responses grounded rather than hallucinated.</p>
+<p><img src="https://d2coej5ollyd8p.cloudfront.net/tools/chatbotflow.png?v=1" alt="exl-flow.png"></p>
+<p>A question enters at the top, an answer streams out at the bottom.</p>
+<p>The React frontend sends the query to FastAPI, which authenticates the request and immediately hands it to the Smart Router. This is the first real decision point — the router classifies the query and sends it down one of two paths. Simple factual questions (&ldquo;what is an eVar?&rdquo;, &ldquo;what&rsquo;s the default session timeout in CJA?&rdquo;) go left to the faster, cheaper Haiku path. Complex or multi-step questions (&ldquo;compare CJA filters vs Analytics segments&rdquo;, &ldquo;walk me through cross-device attribution&rdquo;) go right to the more capable Sonnet path.</p>
+<p>Both paths run the same retrieval sequence independently. The Query Preprocessor first expands Adobe abbreviations — CJA becomes Customer Journey Analytics, AEP becomes Adobe Experience Platform — so the query matches the language of the documentation. It also injects the last turn of conversation history, so follow-up questions have enough context to retrieve meaningfully. The preprocessed query is then converted into a vector by AWS Bedrock&rsquo;s Titan Embed v2, and ChromaDB searches 8,514 stored documentation chunks by cosine similarity, returning the most relevant ones.</p>
+<p>Where the paths diverge is in how they use what they retrieved. The Haiku path takes the retrieved chunks, builds a context block, and makes a single Claude call — fast and direct, suited to questions with a clear answer. The Sonnet path runs a LangGraph ReAct agent that reads the retrieved chunks and decides whether it has enough to answer. If not, it refines its search and retrieves again — up to three passes. This is what makes it effective for questions that span multiple product areas or require synthesis across several documentation sources.</p>
+<p>Both paths converge at the Anthropic API, which streams the response back token by token. Three event types flow to the frontend: individual tokens rendered word by word using a typewriter effect, a citations payload carrying the source URLs for every chunk the model drew on (currently a work in progress), and a done signal that triggers follow-up question suggestions.</p>
+<p>The Session Store sits quietly in the centre because it touches both paths in two places — conversation history feeds into the preprocessor before retrieval, and into the LLM call after retrieval. This is what makes multi-turn conversations coherent: the model always knows what was asked before.</p>
+<h3 id="how-it-got-here">How It Got Here</h3>
+<p>The first commit was September 10, 2025 — a Streamlit UI, AWS Bedrock Knowledge Base for retrieval, and Claude 3 via Bedrock for generation, all wired together in a single app.py. It worked. Then it kept growing. Query routing, conversation memory, prompt engineering, citation extraction, admin tooling — all accumulating in one place until app.py hit 3,700 lines and the Streamlit execution model made a fluid conversational interface impossible to build. Bedrock Knowledge Base had abstracted away the retrieval controls that clearly needed tuning.</p>
+<p>The rewrite to React + FastAPI + ChromaDB was the only sensible path forward.</p>
+<p>The project sat on the backburner for months while other work took priority — TLP Airways, TagScanner upgrades. When it was time to pick it back up, the migration took 5–7 days of roughly two hours each. The original Streamlit prototype had taken around 10 days. Neither sprint would have been achievable without AI tooling - Claude.ai and Claude Code; the scope simply isn&rsquo;t viable for a solo practitioner working evenings otherwise.</p>
+<p>Getting it running on Railway introduced a different class of problem. The FastAPI backend deploys there; the React frontend builds locally and deploys to Cloudflare Pages as static files inside the Hugo blog. Railway&rsquo;s filesystem is ephemeral — every restart wipes the disk, which means ChromaDB&rsquo;s on-disk index disappears. The fix was an S3 cold-start restore: on startup, if the index is empty, download a pre-built archive from S3 and extract it. This was discovered from a real failure, not anticipated. The production push also surfaced a CORS misconfiguration, a startup crash on empty ChromaDB, a placeholder URL in .env.production, and a LangGraph streaming type mismatch that only appeared on complex queries. None of these showed up in development.</p>
+<p>The estimated cost is roughly $0.009 per query at current Claude Sonnet 4.6 pricing. The time saved is roughly around 20 - 30 mins per query. I am not opening this utility to others for now due to cost implications. But, hopefully, I will soon.</p>
+<h3 id="demo-video">Demo Video:</h3>
+<div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
+      <iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share; fullscreen" loading="eager" referrerpolicy="strict-origin-when-cross-origin" src="https://www.youtube.com/embed/N_E9dN2Av54?autoplay=0&amp;controls=1&amp;end=0&amp;loop=0&amp;mute=0&amp;start=0" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" title="YouTube video"></iframe>
+    </div>
+
 <p>Have feedback or feature requests? Drop me a line at <a href="mailto:ritesh@thelearningproject.in">
   ritesh@thelearningproject.in
 </a>
