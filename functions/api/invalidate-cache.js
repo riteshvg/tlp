@@ -27,7 +27,7 @@ export async function onRequestPost(context) {
     });
 
     const body = `<?xml version="1.0" encoding="UTF-8"?>
-<InvalidationBatch xmlns="http://cloudfront.amazonaws.com/doc/2020-11-20/">
+<InvalidationBatch xmlns="http://cloudfront.amazonaws.com/doc/2020-05-31/">
   <CallerReference>${Date.now()}</CallerReference>
   <Paths>
     <Items><Path>/${path}</Path></Items>
@@ -36,7 +36,7 @@ export async function onRequestPost(context) {
 </InvalidationBatch>`;
 
     const res = await aws.fetch(
-      `https://cloudfront.amazonaws.com/2020-11-20/distribution/${env.CLOUDFRONT_DISTRIBUTION_ID}/invalidation`,
+      `https://cloudfront.amazonaws.com/2020-05-31/distribution/${env.CLOUDFRONT_DISTRIBUTION_ID}/invalidation`,
       { method: 'POST', headers: { 'Content-Type': 'application/xml' }, body }
     );
 
