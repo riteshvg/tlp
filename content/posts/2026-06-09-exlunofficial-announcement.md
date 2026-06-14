@@ -26,7 +26,7 @@ The search is one way. There is no conversation. Therefore, the typical workflow
 
 Rovr is my attempt at creating a conversational tool for a subset of solutions found on Experience League. This project had been running in my mind for sometime. The first draft was a simple POC to get the basic viability check. And then began the task of translating the learning into a full fledged project.
 
-![exl_hero.png](https://d2coej5ollyd8p.cloudfront.net/tools/exlheroimage.png)
+![exl_hero.png](https://d2coej5ollyd8p.cloudfront.net/tools/exl-annoucement.png)
 
 ### Why a Chatbot?
 
@@ -50,7 +50,7 @@ The chatbot lets you ask natural language questions against a curated index of A
 
 Not summaries generated from a model's training memory. Not plausible-sounding responses that might be six months out of date. Answers retrieved from specific documentation pages and synthesised by the model with those pages as its source material. When the response says "according to the AEP Identity Service documentation", it means it. And how can I be so sure about it. This is because there is a pipeline that retrieves the latest updates to the documents regularly and feeds it into the backend.
 
-![exl-image.png](https://d2coej5ollyd8p.cloudfront.net/tools/exl_unofficial.png)
+![exl-image.png](https://d2coej5ollyd8p.cloudfront.net/tools/kbscreenshot.png)
 
 The index currently covers AEP, Adobe Analytics, Adobe Target, Customer Journey Analytics and Adobe Data Collection. All in all total 1656 pages of content including inline media - screenshots, diagrams and video references is captured in the metadata. The knowledge base reflects documentation updated on May 9, 2026. This is a great deal when comparing knowledge freshness with external tools like Claude, ChatGPT etc.
 

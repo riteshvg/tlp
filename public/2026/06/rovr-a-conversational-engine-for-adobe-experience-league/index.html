@@ -287,7 +287,7 @@
     </div>
 
 <p>Rovr is my attempt at creating a conversational tool for a subset of solutions found on Experience League. This project had been running in my mind for sometime. The first draft was a simple POC to get the basic viability check. And then began the task of translating the learning into a full fledged project.</p>
-<p><img src="https://d2coej5ollyd8p.cloudfront.net/tools/exlheroimage.png" alt="exl_hero.png"></p>
+<p><img src="https://d2coej5ollyd8p.cloudfront.net/tools/exl-annoucement.png" alt="exl_hero.png"></p>
 <h3 id="why-a-chatbot">Why a Chatbot?</h3>
 <p>A conversational RAG chatbot is one of the most complete learning surfaces in AI engineering. To build one properly, you have to make real decisions at every layer of the stack:</p>
 <ul>
@@ -304,7 +304,7 @@
 <h3 id="what-it-does">What it does?</h3>
 <p>The chatbot lets you ask natural language questions against a curated index of Adobe Experience League documentation and get answers grounded in actual documentation pages — with citations.</p>
 <p>Not summaries generated from a model&rsquo;s training memory. Not plausible-sounding responses that might be six months out of date. Answers retrieved from specific documentation pages and synthesised by the model with those pages as its source material. When the response says &ldquo;according to the AEP Identity Service documentation&rdquo;, it means it. And how can I be so sure about it. This is because there is a pipeline that retrieves the latest updates to the documents regularly and feeds it into the backend.</p>
-<p><img src="https://d2coej5ollyd8p.cloudfront.net/tools/exl_unofficial.png" alt="exl-image.png"></p>
+<p><img src="https://d2coej5ollyd8p.cloudfront.net/tools/kbscreenshot.png" alt="exl-image.png"></p>
 <p>The index currently covers AEP, Adobe Analytics, Adobe Target, Customer Journey Analytics and Adobe Data Collection. All in all total 1656 pages of content including inline media - screenshots, diagrams and video references is captured in the metadata. The knowledge base reflects documentation updated on May 9, 2026. This is a great deal when comparing knowledge freshness with external tools like Claude, ChatGPT etc.</p>
 <h3 id="how-is-the-chatbot-built">How is the chatbot built?</h3>
 <p>The architecture has two distinct phases: a retrieval phase that finds the relevant documentation, and a generation phase where the language model synthesises an answer from what was retrieved. This pattern — Retrieval-Augmented Generation, or RAG — is what keeps the responses grounded rather than hallucinated.</p>
