@@ -10,5 +10,5 @@ description: 'My attempt at understanding RAG, LLM, chunking, retrieval, prompt 
 status: 'Published and available at Experience League Chatbot'
 links:
   - text: 'Adobe Experience League Chatbot (Unofficial)'
-    url: '/tools/exlunofficialchatbot'
+    url: '/tools/rovr'
 ---
