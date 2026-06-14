@@ -8,7 +8,7 @@
   "@type": "BlogPosting",
   "headline": "Rovr: Part 1 - Data Ingestion",
   
-  "image": "https://d2coej5ollyd8p.cloudfront.net/tools/exlheroimage.png",
+  "image": "https://d2coej5ollyd8p.cloudfront.net/tools/exl-annoucement.png",
   
   "datePublished": "2026-06-12T00:00:00Z",
   "dateModified": "2026-06-12T00:00:00Z",
@@ -26,7 +26,7 @@
     "name": "The Learning Project",
     
   },
-  "description": "This is next part of the series on Rovr - a conversational chat bot I created to access the documents on Adobe Experience League. The intro covered the idea, the tech stack and a high level overview of the application. I also covered the most important decision of moving from Streamlit to React + FastAPI. This and the next set of posts will talk about the application in detail. We start by covering in-depth the process behind what makes Rovr useful: building a knowledge base worth querying — and keeping it current.\n",
+  "description": "This is part 1 of the deep dive series on Rovr - a conversational chat bot I created for Adobe Experience League. The intro covered the idea, the tech stack and a high level overview of the application. I also covered the most important decision of moving from Streamlit to React + FastAPI. This post, and the future ones will talk about the application, architecture, technology, mistakes, learnings in detail.\n",
   "keywords": [, "adobe experience cloud, adobe launch, adobe analytics, adobe experience platform, multi solution architect, business analytics"]
 }
 
@@ -36,18 +36,30 @@
 <meta name="generator" content="Hugo 0.147.8 with theme Tranquilpeak 0.5.3-BETA">
 <meta name="author" content="">
 <meta name="keywords" content=", adobe experience cloud, adobe launch, adobe analytics, adobe experience platform, multi solution architect, business analytics">
-<meta name="description" content="This is next part of the series on Rovr - a conversational chat bot I created to access the documents on Adobe Experience League. The intro covered the idea, the tech stack and a high level overview of the application. I also covered the most important decision of moving from Streamlit to React &#43; FastAPI. This and the next set of posts will talk about the application in detail. We start by covering in-depth the process behind what makes Rovr useful: building a knowledge base worth querying — and keeping it current.">
+<meta name="description" content="This is part 1 of the deep dive series on 
+  Rovr
+
+ - a conversational chat bot I created for Adobe Experience League. The intro covered the idea, the tech stack and a high level overview of the application. I also covered the most important decision of moving from Streamlit to React &#43; FastAPI. This post, and the future ones will talk about the application, architecture, technology, mistakes, learnings in detail.">
 
 
-<meta property="og:description" content="This is next part of the series on Rovr - a conversational chat bot I created to access the documents on Adobe Experience League. The intro covered the idea, the tech stack and a high level overview of the application. I also covered the most important decision of moving from Streamlit to React &#43; FastAPI. This and the next set of posts will talk about the application in detail. We start by covering in-depth the process behind what makes Rovr useful: building a knowledge base worth querying — and keeping it current.">
+<meta property="og:description" content="This is part 1 of the deep dive series on 
+  Rovr
+
+ - a conversational chat bot I created for Adobe Experience League. The intro covered the idea, the tech stack and a high level overview of the application. I also covered the most important decision of moving from Streamlit to React &#43; FastAPI. This post, and the future ones will talk about the application, architecture, technology, mistakes, learnings in detail.">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Rovr: Part 1 - Data Ingestion">
 <meta name="twitter:title" content="Rovr: Part 1 - Data Ingestion">
 <meta property="og:url" content="https://thelearningproject.in/2026/06/rovr-part-1-data-ingestion/">
 <meta property="twitter:url" content="https://thelearningproject.in/2026/06/rovr-part-1-data-ingestion/">
 <meta property="og:site_name" content="The Learning Project">
-<meta property="og:description" content="This is next part of the series on Rovr - a conversational chat bot I created to access the documents on Adobe Experience League. The intro covered the idea, the tech stack and a high level overview of the application. I also covered the most important decision of moving from Streamlit to React &#43; FastAPI. This and the next set of posts will talk about the application in detail. We start by covering in-depth the process behind what makes Rovr useful: building a knowledge base worth querying — and keeping it current.">
-<meta name="twitter:description" content="This is next part of the series on Rovr - a conversational chat bot I created to access the documents on Adobe Experience League. The intro covered the idea, the tech stack and a high level overview of the application. I also covered the most important decision of moving from Streamlit to React &#43; FastAPI. This and the next set of posts will talk about the application in detail. We start by covering in-depth the process behind what makes Rovr useful: building a knowledge base worth querying — and keeping it current.">
+<meta property="og:description" content="This is part 1 of the deep dive series on 
+  Rovr
+
+ - a conversational chat bot I created for Adobe Experience League. The intro covered the idea, the tech stack and a high level overview of the application. I also covered the most important decision of moving from Streamlit to React &#43; FastAPI. This post, and the future ones will talk about the application, architecture, technology, mistakes, learnings in detail.">
+<meta name="twitter:description" content="This is part 1 of the deep dive series on 
+  Rovr
+
+ - a conversational chat bot I created for Adobe Experience League. The intro covered the idea, the tech stack and a high level overview of the application. I also covered the most important decision of moving from Streamlit to React &#43; FastAPI. This post, and the future ones will talk about the application, architecture, technology, mistakes, learnings in detail.">
 <meta property="og:locale" content="en-us">
 
   
@@ -81,8 +93,8 @@
 
 
 
-  <meta property="og:image" content="https://d2coej5ollyd8p.cloudfront.net/tools/exlheroimage.png">
-  <meta property="twitter:image" content="https://d2coej5ollyd8p.cloudfront.net/tools/exlheroimage.png">
+  <meta property="og:image" content="https://d2coej5ollyd8p.cloudfront.net/tools/exl-annoucement.png">
+  <meta property="twitter:image" content="https://d2coej5ollyd8p.cloudfront.net/tools/exl-annoucement.png">
 
 
     <title>Rovr: Part 1 - Data Ingestion</title>
@@ -263,41 +275,52 @@
           
           <div class="post-content markdown">
             <div class="main-content-wrap">
-              <p>This is next part of the series on Rovr - a conversational chat bot I created to access the documents on Adobe Experience League. The intro covered the idea, the tech stack and a high level overview of the application. I also covered the most important decision of moving from Streamlit to React + FastAPI. This and the next set of posts will talk about the application in detail. We start by covering in-depth the process behind what makes Rovr useful: building a knowledge base worth querying — and keeping it current.</p>
-<p>Rovr is a RAG system based on the open sourced Experience League Docs. And a RAG system is only as good as what you put into it. The retrieval can be well-designed, the prompt can be carefully engineered, and the UI can be polished — but if the knowledge base has bad chunks, wrong URLs, or stale content, the whole thing falls apart at query time. I spent more time on this layer than on any other part of the project, and most of that time was on problems I didn&rsquo;t anticipate.</p>
-<p>This post covers the full ingestion pipeline end to end: where the docs come from, how they stay current, how they get chunked and embedded, the metadata registry that makes citations work, and the hard-won lessons at the end..</p>
+              <p>This is part 1 of the deep dive series on <a href="https://thelearningproject.in/tools/rovr" target="_blank" rel="noopener">
+  Rovr
+</a>
+ - a conversational chat bot I created for Adobe Experience League. The intro covered the idea, the tech stack and a high level overview of the application. I also covered the most important decision of moving from Streamlit to React + FastAPI. This post, and the future ones will talk about the application, architecture, technology, mistakes, learnings in detail.</p>
+<p><a href="https://thelearningproject.in/tools/rovr" target="_blank" rel="noopener">
+  Rovr
+</a>
+ is a RAG system based on the open sourced <a href="https://experienceleague.adobe.com/docs/" target="_blank" rel="noopener">
+  Adobe Experience Cloud
+</a>
+. And a RAG system is only as good as the data that it retrieves. The retrieval can be well-designed, the prompt can be carefully engineered, and the UI can be polished — but if the knowledge base has bad chunks, wrong URLs, or stale content, the whole thing falls apart at query time.</p>
+<p>I deliberately spent more time on this layer than on any other part of the project, and most of that time was on problems I didn&rsquo;t anticipate.</p>
+<p>This post covers the full ingestion pipeline end to end: where the docs come from, how do they stay current, how they get chunked and embedded, the metadata registry that makes citations work, and the hard-won lessons at the end.</p>
 <h3 id="the-full-data-ingestion-pipeline">The Full Data Ingestion Pipeline</h3>
-<p>Data Ingestion Pipeline</p>
+<p>Data Ingestion Pipeline: The data ingestion pipeline is a fundamental part of the entire application. There were a series of decisions that I&rsquo;d to make even before I had began the actual work. The points ranged from:</p>
+<ul>
+<li>location of the documents</li>
+<li>license governing the data</li>
+<li>recency and frequency of updates</li>
+<li>frequency of ingestion</li>
+<li>storage and retrieval of data</li>
+<li>future scope</li>
+</ul>
+<p>All these decisions were important enough to spend weeks on them. I initially decided to cover only Adobe Analytics and Customer Journey Analytics. But then I was aiming for a very narrow audience. The scope kept on expanding and the ingestion architecture started taking shape. Here&rsquo;s the ingestion pipeline as it stands today.</p>
 <p><img src="https://d2coej5ollyd8p.cloudfront.net/tools/ingestionworkflow.png" alt="ingestionpipeline.png"></p>
-<p>Step 1 — Source: AdobeDocs GitHub Repos
-Adobe maintains public Markdown documentation repos for each product (AdobeDocs/analytics.en, AdobeDocs/experience-platform.en, etc.). Every .md file is
-one documentation page, continuously updated by Adobe&rsquo;s technical writers.</p>
+<p>Step 1 — <em>Source: AdobeDocs GitHub Repos</em>
+Adobe maintains public Markdown documentation repos for each product (AdobeDocs/analytics.en, AdobeDocs/experience-platform.en, etc.). Every .md file is one documentation page, continuously updated by Adobe&rsquo;s technical writers.</p>
 <hr>
-<p>Step 2 — SHA Delta Sync: GitHub → S3
-Instead of downloading everything weekly, sync_docs_to_s3.py calls GitHub&rsquo;s tree API — one request per repo that returns every file&rsquo;s path and SHA hash.
-Only files whose SHA has changed since the last run get downloaded and uploaded to S3. A manifest (sync_manifest.json) stored in S3 records the last-seen
-SHA for each file so future runs know what to skip.</p>
+<p>Step 2 — <em>SHA Delta Sync: GitHub → S3</em>
+Instead of downloading everything weekly, sync_docs_to_s3.py calls GitHub&rsquo;s tree API — one request per repo that returns every file&rsquo;s path and SHA hash. Only files whose SHA has changed since the last run get downloaded and uploaded to S3. A manifest (sync_manifest.json) stored in S3 records the last-seen. SHA for each file so future runs know what to skip.</p>
 <hr>
-<p>Step 3 — Chunking: Markdown → Text Chunks
-Each changed document is split into ~500-token chunks. The strategy is hierarchical — first split on ##/### headers, then on paragraph breaks, then
-hard-split oversized paragraphs as a last resort. Each chunk gets a stable ID (s3_key#chunk_index) so re-ingesting an updated file overwrites the right
-records.</p>
+<p>Step 3 — <em>Chunking: Markdown → Text Chunks</em>
+Each changed document is split into ~500-token chunks. The strategy is hierarchical — first split on ##/### headers, then on paragraph breaks, then hard-split oversized paragraphs as a last resort. Each chunk gets a stable ID (s3_key#chunk_index) so re-ingesting an updated file overwrites the right records.</p>
 <hr>
-<p>Step 4 — Embedding: Chunks → Vectors
-Each chunk is passed to AWS Bedrock Titan Embed v2, which returns a 1,024-dimension vector representing the semantic meaning of that text. Only changed
-documents get re-embedded — unchanged chunks already in ChromaDB are untouched.</p>
+<p>Step 4 — <em>Embedding: Chunks → Vectors</em>
+Each chunk is passed to AWS Bedrock Titan Embed v2, which returns a 1,024-dimension vector representing the semantic meaning of that text. Only changed documents get re-embedded — unchanged chunks already in ChromaDB are untouched.</p>
 <hr>
-<p>Step 5 — Storage: Vectors → ChromaDB
-Each chunk is upserted into ChromaDB with its vector and metadata: product, url, title, doc_type, s3_key, chunk_index. ChromaDB uses a cosine-similarity
+<p>Step 5 — <em>Storage: Vectors → ChromaDB</em>
+Each chunk is upserted into ChromaDB with its vector and metadata: product, url, title, doc_type, s3_key, chunk_index. ChromaDB uses a cosine-similarity.
 HNSW index for fast nearest-neighbour lookup at query time.</p>
 <hr>
-<p>Step 6 — Media Enrichment
-A second pass over ChromaDB extracts video URLs (&gt;[!VIDEO] tags), thumbnail CDN links (frontmatter thumbnail: field), and screenshot image paths from
-each chunk&rsquo;s raw Markdown. These are written back to the chunk metadata and later surfaced in the UI alongside text responses.</p>
+<p>Step 6 — <em>Media Enrichment</em>
+A second pass over ChromaDB extracts video URLs (&gt;[!VIDEO] tags), thumbnail CDN links (frontmatter thumbnail: field), and screenshot image paths from each chunk&rsquo;s raw Markdown. These are written back to the chunk metadata and later surfaced in the UI alongside text responses.</p>
 <hr>
-<p>Step 7 — Publish: ChromaDB → S3
-The entire chroma_db/ directory is compressed to chroma_db.tar.gz and uploaded to S3. The production backend on Railway downloads this archive on cold
-start, so every deployment gets the latest vector index without needing to re-embed anything.</p>
+<p>Step 7 — <em>Publish: ChromaDB → S3</em>
+The entire chroma_db/ directory is compressed to chroma_db.tar.gz and uploaded to S3. The production backend on Railway downloads this archive on cold start, so every deployment gets the latest vector index without needing to re-embed anything.</p>
 <p>Have feedback or feature requests? Drop me a line at <a href="mailto:ritesh@thelearningproject.in">
   ritesh@thelearningproject.in
 </a>
