@@ -6,13 +6,20 @@
     <description>Recent content in Posts on The Learning Project</description>
     <generator>Hugo</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 09 Jun 2026 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Fri, 12 Jun 2026 00:00:00 +0000</lastBuildDate>
     <atom:link href="https://thelearningproject.in/posts/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>ExL Unoffical: A conversational engine for Adobe Experience League</title>
-      <link>https://thelearningproject.in/2026/06/exl-unoffical-a-conversational-engine-for-adobe-experience-league/</link>
+      <title>Rovr: Part 1 - Data Ingestion</title>
+      <link>https://thelearningproject.in/2026/06/rovr-part-1-data-ingestion/</link>
+      <pubDate>Fri, 12 Jun 2026 00:00:00 +0000</pubDate>
+      <guid>https://thelearningproject.in/2026/06/rovr-part-1-data-ingestion/</guid>
+      <description>&lt;p&gt;This is next part of the series on Rovr - a conversational chat bot I created to access the documents on Adobe Experience League. The intro covered the idea, the tech stack and a high level overview of the application. I also covered the most important decision of moving from Streamlit to React + FastAPI. This and the next set of posts will talk about the application in detail. We start by covering in-depth the process behind what makes Docsy useful: building a knowledge base worth querying — and keeping it current.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Rovr: A conversational engine for Adobe Experience League</title>
+      <link>https://thelearningproject.in/2026/06/rovr-a-conversational-engine-for-adobe-experience-league/</link>
       <pubDate>Tue, 09 Jun 2026 00:00:00 +0000</pubDate>
-      <guid>https://thelearningproject.in/2026/06/exl-unoffical-a-conversational-engine-for-adobe-experience-league/</guid>
+      <guid>https://thelearningproject.in/2026/06/rovr-a-conversational-engine-for-adobe-experience-league/</guid>
       <description>&lt;p&gt;If you regularly work with &lt;a href=&#34;https://experienceleague.adobe.com/docs/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;&#xA;  Adobe Experience Cloud&#xA;&lt;/a&gt;&#xA; solutions, you have scratched your head trying to find an answer to the right question. The problem isn&amp;rsquo;t the quality of the documentation. The Adobe Experience Leage (ExL) docs are genuinely good — comprehensive, well-maintained, regularly updated. The problem is something else.&lt;/p&gt;</description>
     </item>
     <item>

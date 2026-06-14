@@ -6,7 +6,7 @@
 {
   "@context": "https://schema.org",
   "@type": "BlogPosting",
-  "headline": "ExL Unoffical: A conversational engine for Adobe Experience League",
+  "headline": "Rovr: A conversational engine for Adobe Experience League",
   
   "image": "https://d2coej5ollyd8p.cloudfront.net/tools/exlheroimage.png",
   
@@ -19,7 +19,7 @@
   },
   "mainEntityOfPage": { 
     "@type": "WebPage",
-    "@id": "https:\/\/thelearningproject.in\/2026\/06\/exl-unoffical-a-conversational-engine-for-adobe-experience-league\/" 
+    "@id": "https:\/\/thelearningproject.in\/2026\/06\/rovr-a-conversational-engine-for-adobe-experience-league\/" 
   },
   "publisher": {
     "@type": "Organization",
@@ -47,10 +47,10 @@
 
  solutions, you have scratched your head trying to find an answer to the right question. The problem isn&rsquo;t the quality of the documentation. The Adobe Experience Leage (ExL) docs are genuinely good — comprehensive, well-maintained, regularly updated. The problem is something else.">
 <meta property="og:type" content="article">
-<meta property="og:title" content="ExL Unoffical: A conversational engine for Adobe Experience League">
-<meta name="twitter:title" content="ExL Unoffical: A conversational engine for Adobe Experience League">
-<meta property="og:url" content="https://thelearningproject.in/2026/06/exl-unoffical-a-conversational-engine-for-adobe-experience-league/">
-<meta property="twitter:url" content="https://thelearningproject.in/2026/06/exl-unoffical-a-conversational-engine-for-adobe-experience-league/">
+<meta property="og:title" content="Rovr: A conversational engine for Adobe Experience League">
+<meta name="twitter:title" content="Rovr: A conversational engine for Adobe Experience League">
+<meta property="og:url" content="https://thelearningproject.in/2026/06/rovr-a-conversational-engine-for-adobe-experience-league/">
+<meta property="twitter:url" content="https://thelearningproject.in/2026/06/rovr-a-conversational-engine-for-adobe-experience-league/">
 <meta property="og:site_name" content="The Learning Project">
 <meta property="og:description" content="If you regularly work with 
   Adobe Experience Cloud
@@ -97,7 +97,7 @@
   <meta property="twitter:image" content="https://d2coej5ollyd8p.cloudfront.net/tools/exlheroimage.png">
 
 
-    <title>ExL Unoffical: A conversational engine for Adobe Experience League</title>
+    <title>Rovr: A conversational engine for Adobe Experience League</title>
 
     <link
       rel="icon"
@@ -105,7 +105,7 @@
     />
      
 
-    <link rel="canonical" href="https://thelearningproject.in/2026/06/exl-unoffical-a-conversational-engine-for-adobe-experience-league/" />
+    <link rel="canonical" href="https://thelearningproject.in/2026/06/rovr-a-conversational-engine-for-adobe-experience-league/" />
 
     
     <link
@@ -256,7 +256,7 @@
             <div class="post-header main-content-wrap text-left">
   
     <h1 class="post-title">
-      ExL Unoffical: A conversational engine for Adobe Experience League
+      Rovr: A conversational engine for Adobe Experience League
     </h1>
   
   
@@ -281,12 +281,12 @@
  solutions, you have scratched your head trying to find an answer to the right question. The problem isn&rsquo;t the quality of the documentation. The Adobe Experience Leage (ExL) docs are genuinely good — comprehensive, well-maintained, regularly updated. The problem is something else.</p>
 <p>Guides and articles for each Adobe Experience Cloud solution can span hundreds of pages. The documents are well structured, but the problem comes when you&rsquo;re mid-implementation and need to know whether a Profile Dataset or an Event Dataset is the right choice for your use case. The answer exists somewhere in that corpus, but finding the answer means sifting through all details, distilling the responses and then implying the learning to the problem at hand.</p>
 <p>The search is one way. There is no conversation. Therefore, the typical workflow — search, click, scan, refine, try again — costs 15–25 minutes on questions that, with the right tool, should take two.</p>
-<h3 id="presenting-exl-unofficial-an-unofficial-chatbot-for-experience-league">Presenting ExL Unofficial: An Unofficial Chatbot for Experience League</h3>
+<h3 id="presenting-rovr-an-unofficial-chatbot-for-experience-league">Presenting Rovr: An Unofficial Chatbot for Experience League</h3>
 <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
       <iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share; fullscreen" loading="eager" referrerpolicy="strict-origin-when-cross-origin" src="https://www.youtube.com/embed/N_E9dN2Av54?autoplay=0&amp;controls=1&amp;end=0&amp;loop=0&amp;mute=0&amp;start=0" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" title="YouTube video"></iframe>
     </div>
 
-<p>ExL Unofficial is my attempt at creating a conversational tool for a subset of solutions found on Experience League. This project had been running in my mind for sometime. The first draft was a simple POC to get the basic viability check. And then began the task of translating the learning into a full fledged project.</p>
+<p>Rovr is my attempt at creating a conversational tool for a subset of solutions found on Experience League. This project had been running in my mind for sometime. The first draft was a simple POC to get the basic viability check. And then began the task of translating the learning into a full fledged project.</p>
 <p><img src="https://d2coej5ollyd8p.cloudfront.net/tools/exlheroimage.png" alt="exl_hero.png"></p>
 <h3 id="why-a-chatbot">Why a Chatbot?</h3>
 <p>A conversational RAG chatbot is one of the most complete learning surfaces in AI engineering. To build one properly, you have to make real decisions at every layer of the stack:</p>
@@ -305,13 +305,6 @@
 <p>The chatbot lets you ask natural language questions against a curated index of Adobe Experience League documentation and get answers grounded in actual documentation pages — with citations.</p>
 <p>Not summaries generated from a model&rsquo;s training memory. Not plausible-sounding responses that might be six months out of date. Answers retrieved from specific documentation pages and synthesised by the model with those pages as its source material. When the response says &ldquo;according to the AEP Identity Service documentation&rdquo;, it means it. And how can I be so sure about it. This is because there is a pipeline that retrieves the latest updates to the documents regularly and feeds it into the backend.</p>
 <p><img src="https://d2coej5ollyd8p.cloudfront.net/tools/exl_unofficial.png" alt="exl-image.png"></p>
-<p>And here is how the answers are retrieved</p>
-<!--
-  PLACEHOLDER — insert 1–2 real Q&A examples here before publishing.
-  Ideal examples: one factual lookup (e.g. Dataset types in AEP) and one
-  procedural/cross-product question (e.g. cross-device attribution in CJA).
-  Pull from the live tool or LangSmith traces.
--->
 <p>The index currently covers AEP, Adobe Analytics, Adobe Target, Customer Journey Analytics and Adobe Data Collection. All in all total 1656 pages of content including inline media - screenshots, diagrams and video references is captured in the metadata. The knowledge base reflects documentation updated on May 9, 2026. This is a great deal when comparing knowledge freshness with external tools like Claude, ChatGPT etc.</p>
 <h3 id="how-is-the-chatbot-built">How is the chatbot built?</h3>
 <p>The architecture has two distinct phases: a retrieval phase that finds the relevant documentation, and a generation phase where the language model synthesises an answer from what was retrieved. This pattern — Retrieval-Augmented Generation, or RAG — is what keeps the responses grounded rather than hallucinated.</p>
@@ -575,7 +568,7 @@
         </li>
         <li class="post-action">
           
-            <a class="post-action-btn btn btn--default tooltip--top" href="../../../2026/06/docsy-part-1-data-ingestion/" data-tooltip="Docsy: Part 1 - Data Ingestion" aria-label="NEXT: Docsy: Part 1 - Data Ingestion">
+            <a class="post-action-btn btn btn--default tooltip--top" href="../../../2026/06/rovr-part-1-data-ingestion/" data-tooltip="Rovr: Part 1 - Data Ingestion" aria-label="NEXT: Rovr: Part 1 - Data Ingestion">
           
               <span class="hide-xs hide-sm text-small icon-mr">NEXT</span>
               <i class="fa fa-angle-right"></i>
@@ -593,13 +586,13 @@
     </li>
     
       <li class="post-action hide-xs">
-        <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://thelearningproject.in/2026/06/exl-unoffical-a-conversational-engine-for-adobe-experience-league/" title="Share on Twitter" aria-label="Share on Twitter">
+        <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://thelearningproject.in/2026/06/rovr-a-conversational-engine-for-adobe-experience-league/" title="Share on Twitter" aria-label="Share on Twitter">
           <i class="fab fa-twitter" aria-hidden="true"></i>
         </a>
       </li>
     
       <li class="post-action hide-xs">
-        <a class="post-action-btn btn btn--default" target="new" href="https://www.linkedin.com/sharing/share-offsite/?url=https://thelearningproject.in/2026/06/exl-unoffical-a-conversational-engine-for-adobe-experience-league/" title="Share on Linkedin" aria-label="Share on Linkedin">
+        <a class="post-action-btn btn btn--default" target="new" href="https://www.linkedin.com/sharing/share-offsite/?url=https://thelearningproject.in/2026/06/rovr-a-conversational-engine-for-adobe-experience-league/" title="Share on Linkedin" aria-label="Share on Linkedin">
           <i class="fab fa-linkedin" aria-hidden="true"></i>
         </a>
       </li>
@@ -646,7 +639,7 @@
         </li>
         <li class="post-action">
           
-            <a class="post-action-btn btn btn--default tooltip--top" href="../../../2026/06/docsy-part-1-data-ingestion/" data-tooltip="Docsy: Part 1 - Data Ingestion" aria-label="NEXT: Docsy: Part 1 - Data Ingestion">
+            <a class="post-action-btn btn btn--default tooltip--top" href="../../../2026/06/rovr-part-1-data-ingestion/" data-tooltip="Rovr: Part 1 - Data Ingestion" aria-label="NEXT: Rovr: Part 1 - Data Ingestion">
           
               <span class="hide-xs hide-sm text-small icon-mr">NEXT</span>
               <i class="fa fa-angle-right"></i>
@@ -664,13 +657,13 @@
     </li>
     
       <li class="post-action hide-xs">
-        <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://thelearningproject.in/2026/06/exl-unoffical-a-conversational-engine-for-adobe-experience-league/" title="Share on Twitter" aria-label="Share on Twitter">
+        <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://thelearningproject.in/2026/06/rovr-a-conversational-engine-for-adobe-experience-league/" title="Share on Twitter" aria-label="Share on Twitter">
           <i class="fab fa-twitter" aria-hidden="true"></i>
         </a>
       </li>
     
       <li class="post-action hide-xs">
-        <a class="post-action-btn btn btn--default" target="new" href="https://www.linkedin.com/sharing/share-offsite/?url=https://thelearningproject.in/2026/06/exl-unoffical-a-conversational-engine-for-adobe-experience-league/" title="Share on Linkedin" aria-label="Share on Linkedin">
+        <a class="post-action-btn btn btn--default" target="new" href="https://www.linkedin.com/sharing/share-offsite/?url=https://thelearningproject.in/2026/06/rovr-a-conversational-engine-for-adobe-experience-league/" title="Share on Linkedin" aria-label="Share on Linkedin">
           <i class="fab fa-linkedin" aria-hidden="true"></i>
         </a>
       </li>
@@ -695,13 +688,13 @@
   <ul class="share-options">
     
       <li class="share-option">
-        <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=https%3A%2F%2Fthelearningproject.in%2F2026%2F06%2Fexl-unoffical-a-conversational-engine-for-adobe-experience-league%2F" aria-label="Share on Twitter">
+        <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=https%3A%2F%2Fthelearningproject.in%2F2026%2F06%2Frovr-a-conversational-engine-for-adobe-experience-league%2F" aria-label="Share on Twitter">
           <i class="fab fa-twitter" aria-hidden="true"></i><span>Share on Twitter</span>
         </a>
       </li>
     
       <li class="share-option">
-        <a class="share-option-btn" target="new" href="https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Fthelearningproject.in%2F2026%2F06%2Fexl-unoffical-a-conversational-engine-for-adobe-experience-league%2F" aria-label="Share on Linkedin">
+        <a class="share-option-btn" target="new" href="https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Fthelearningproject.in%2F2026%2F06%2Frovr-a-conversational-engine-for-adobe-experience-league%2F" aria-label="Share on Linkedin">
           <i class="fab fa-linkedin" aria-hidden="true"></i><span>Share on Linkedin</span>
         </a>
       </li>

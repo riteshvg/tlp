@@ -6,12 +6,12 @@
 {
   "@context": "https://schema.org",
   "@type": "BlogPosting",
-  "headline": "ExL Unoffical: A conversational engine for Adobe Experience League",
+  "headline": "Docsy: Part 1 - Data Ingestion",
   
   "image": "https://d2coej5ollyd8p.cloudfront.net/tools/exlheroimage.png",
   
-  "datePublished": "2026-06-09T00:00:00Z",
-  "dateModified": "2026-06-09T00:00:00Z",
+  "datePublished": "2026-06-12T00:00:00Z",
+  "dateModified": "2026-06-12T00:00:00Z",
   "author": {
     "@type": "Person",
     "name":  null ,
@@ -19,14 +19,14 @@
   },
   "mainEntityOfPage": { 
     "@type": "WebPage",
-    "@id": "https:\/\/thelearningproject.in\/2026\/06\/exl-unoffical-a-conversational-engine-for-adobe-experience-league\/" 
+    "@id": "https:\/\/thelearningproject.in\/2026\/06\/docsy-part-1-data-ingestion\/" 
   },
   "publisher": {
     "@type": "Organization",
     "name": "The Learning Project",
     
   },
-  "description": "If you regularly work with Adobe Experience Cloud solutions, you have scratched your head trying to find an answer to the right question. The problem isn\u0026rsquo;t the quality of the documentation. The Adobe Experience Leage (ExL) docs are genuinely good — comprehensive, well-maintained, regularly updated. The problem is something else.\n",
+  "description": "This is next part of the series on Rovr - a conversational chat bot I created to access the documents on Adobe Experience League. The intro covered the idea, the tech stack and a high level overview of the application. I also covered the most important decision of moving from Streamlit to React + FastAPI. This and the next set of posts will talk about the application in detail. We start by covering in-depth the process behind what makes Docsy useful: building a knowledge base worth querying — and keeping it current.\n",
   "keywords": [, "adobe experience cloud, adobe launch, adobe analytics, adobe experience platform, multi solution architect, business analytics"]
 }
 
@@ -36,37 +36,25 @@
 <meta name="generator" content="Hugo 0.147.8 with theme Tranquilpeak 0.5.3-BETA">
 <meta name="author" content="">
 <meta name="keywords" content=", adobe experience cloud, adobe launch, adobe analytics, adobe experience platform, multi solution architect, business analytics">
-<meta name="description" content="If you regularly work with 
-  Adobe Experience Cloud
-
- solutions, you have scratched your head trying to find an answer to the right question. The problem isn&rsquo;t the quality of the documentation. The Adobe Experience Leage (ExL) docs are genuinely good — comprehensive, well-maintained, regularly updated. The problem is something else.">
+<meta name="description" content="This is next part of the series on Rovr - a conversational chat bot I created to access the documents on Adobe Experience League. The intro covered the idea, the tech stack and a high level overview of the application. I also covered the most important decision of moving from Streamlit to React &#43; FastAPI. This and the next set of posts will talk about the application in detail. We start by covering in-depth the process behind what makes Docsy useful: building a knowledge base worth querying — and keeping it current.">
 
 
-<meta property="og:description" content="If you regularly work with 
-  Adobe Experience Cloud
-
- solutions, you have scratched your head trying to find an answer to the right question. The problem isn&rsquo;t the quality of the documentation. The Adobe Experience Leage (ExL) docs are genuinely good — comprehensive, well-maintained, regularly updated. The problem is something else.">
+<meta property="og:description" content="This is next part of the series on Rovr - a conversational chat bot I created to access the documents on Adobe Experience League. The intro covered the idea, the tech stack and a high level overview of the application. I also covered the most important decision of moving from Streamlit to React &#43; FastAPI. This and the next set of posts will talk about the application in detail. We start by covering in-depth the process behind what makes Docsy useful: building a knowledge base worth querying — and keeping it current.">
 <meta property="og:type" content="article">
-<meta property="og:title" content="ExL Unoffical: A conversational engine for Adobe Experience League">
-<meta name="twitter:title" content="ExL Unoffical: A conversational engine for Adobe Experience League">
-<meta property="og:url" content="https://thelearningproject.in/2026/06/exl-unoffical-a-conversational-engine-for-adobe-experience-league/">
-<meta property="twitter:url" content="https://thelearningproject.in/2026/06/exl-unoffical-a-conversational-engine-for-adobe-experience-league/">
+<meta property="og:title" content="Docsy: Part 1 - Data Ingestion">
+<meta name="twitter:title" content="Docsy: Part 1 - Data Ingestion">
+<meta property="og:url" content="https://thelearningproject.in/2026/06/docsy-part-1-data-ingestion/">
+<meta property="twitter:url" content="https://thelearningproject.in/2026/06/docsy-part-1-data-ingestion/">
 <meta property="og:site_name" content="The Learning Project">
-<meta property="og:description" content="If you regularly work with 
-  Adobe Experience Cloud
-
- solutions, you have scratched your head trying to find an answer to the right question. The problem isn&rsquo;t the quality of the documentation. The Adobe Experience Leage (ExL) docs are genuinely good — comprehensive, well-maintained, regularly updated. The problem is something else.">
-<meta name="twitter:description" content="If you regularly work with 
-  Adobe Experience Cloud
-
- solutions, you have scratched your head trying to find an answer to the right question. The problem isn&rsquo;t the quality of the documentation. The Adobe Experience Leage (ExL) docs are genuinely good — comprehensive, well-maintained, regularly updated. The problem is something else.">
+<meta property="og:description" content="This is next part of the series on Rovr - a conversational chat bot I created to access the documents on Adobe Experience League. The intro covered the idea, the tech stack and a high level overview of the application. I also covered the most important decision of moving from Streamlit to React &#43; FastAPI. This and the next set of posts will talk about the application in detail. We start by covering in-depth the process behind what makes Docsy useful: building a knowledge base worth querying — and keeping it current.">
+<meta name="twitter:description" content="This is next part of the series on Rovr - a conversational chat bot I created to access the documents on Adobe Experience League. The intro covered the idea, the tech stack and a high level overview of the application. I also covered the most important decision of moving from Streamlit to React &#43; FastAPI. This and the next set of posts will talk about the application in detail. We start by covering in-depth the process behind what makes Docsy useful: building a knowledge base worth querying — and keeping it current.">
 <meta property="og:locale" content="en-us">
 
   
-    <meta property="article:published_time" content="2026-06-09T00:00:00">
+    <meta property="article:published_time" content="2026-06-12T00:00:00">
   
   
-    <meta property="article:modified_time" content="2026-06-09T00:00:00">
+    <meta property="article:modified_time" content="2026-06-12T00:00:00">
   
   
   
@@ -97,7 +85,7 @@
   <meta property="twitter:image" content="https://d2coej5ollyd8p.cloudfront.net/tools/exlheroimage.png">
 
 
-    <title>ExL Unoffical: A conversational engine for Adobe Experience League</title>
+    <title>Docsy: Part 1 - Data Ingestion</title>
 
     <link
       rel="icon"
@@ -105,7 +93,7 @@
     />
      
 
-    <link rel="canonical" href="https://thelearningproject.in/2026/06/exl-unoffical-a-conversational-engine-for-adobe-experience-league/" />
+    <link rel="canonical" href="https://thelearningproject.in/2026/06/docsy-part-1-data-ingestion/" />
 
     
     <link
@@ -256,15 +244,15 @@
             <div class="post-header main-content-wrap text-left">
   
     <h1 class="post-title">
-      ExL Unoffical: A conversational engine for Adobe Experience League
+      Docsy: Part 1 - Data Ingestion
     </h1>
   
   
   <div class="postShorten-meta post-meta">
     
-      <time datetime="2026-06-09T00:00:00Z">
+      <time datetime="2026-06-12T00:00:00Z">
         
-  June 9, 2026
+  June 12, 2026
 
       </time>
     
@@ -275,12 +263,40 @@
           
           <div class="post-content markdown">
             <div class="main-content-wrap">
-              <p>If you regularly work with <a href="https://experienceleague.adobe.com/docs/" target="_blank" rel="noopener">
-  Adobe Experience Cloud
-</a>
- solutions, you have scratched your head trying to find an answer to the right question. The problem isn&rsquo;t the quality of the documentation. The Adobe Experience Leage (ExL) docs are genuinely good — comprehensive, well-maintained, regularly updated. The problem is something else.</p>
-<p>Guides and articles for each Adobe Experience Cloud solution can span hundreds of pages. The documents are well structured, but the problem comes when you&rsquo;re mid-implementation and need to know whether a Profile Dataset or an Event Dataset is the right choice for your use case. The answer exists somewhere in that corpus, but finding the answer means sifting through all details, distilling the responses and then implying the learning to the problem at hand.</p>
-<p>The search is one way. There is no conversation. Therefore, the typical workflow — search, click, scan, refine, try again — costs 15–25 minutes on questions that, with the right tool, should take two.</p>
+              <p>This is next part of the series on Rovr - a conversational chat bot I created to access the documents on Adobe Experience League. The intro covered the idea, the tech stack and a high level overview of the application. I also covered the most important decision of moving from Streamlit to React + FastAPI. This and the next set of posts will talk about the application in detail. We start by covering in-depth the process behind what makes Docsy useful: building a knowledge base worth querying — and keeping it current.</p>
+<p>Rovr is a RAG system based on the open sourced Experience League Docs. And a RAG system is only as good as what you put into it. The retrieval can be well-designed, the prompt can be carefully engineered, and the UI can be polished — but if the knowledge base has bad chunks, wrong URLs, or stale content, the whole thing falls apart at query time. I spent more time on this layer than on any other part of the project, and most of that time was on problems I didn&rsquo;t anticipate.</p>
+<p>This post covers the full ingestion pipeline end to end: where the docs come from, how they stay current, how they get chunked and embedded, the metadata registry that makes citations work, and the hard-won lessons at the end..</p>
+<h3 id="the-full-data-ingestion-pipeline">The Full Data Ingestion Pipeline</h3>
+<p>Data Ingestion Pipeline</p>
+<p>Step 1 — Source: AdobeDocs GitHub Repos
+Adobe maintains public Markdown documentation repos for each product (AdobeDocs/analytics.en, AdobeDocs/experience-platform.en, etc.). Every .md file is
+one documentation page, continuously updated by Adobe&rsquo;s technical writers.</p>
+<hr>
+<p>Step 2 — SHA Delta Sync: GitHub → S3
+Instead of downloading everything weekly, sync_docs_to_s3.py calls GitHub&rsquo;s tree API — one request per repo that returns every file&rsquo;s path and SHA hash.
+Only files whose SHA has changed since the last run get downloaded and uploaded to S3. A manifest (sync_manifest.json) stored in S3 records the last-seen
+SHA for each file so future runs know what to skip.</p>
+<hr>
+<p>Step 3 — Chunking: Markdown → Text Chunks
+Each changed document is split into ~500-token chunks. The strategy is hierarchical — first split on ##/### headers, then on paragraph breaks, then
+hard-split oversized paragraphs as a last resort. Each chunk gets a stable ID (s3_key#chunk_index) so re-ingesting an updated file overwrites the right
+records.</p>
+<hr>
+<p>Step 4 — Embedding: Chunks → Vectors
+Each chunk is passed to AWS Bedrock Titan Embed v2, which returns a 1,024-dimension vector representing the semantic meaning of that text. Only changed
+documents get re-embedded — unchanged chunks already in ChromaDB are untouched.</p>
+<hr>
+<p>Step 5 — Storage: Vectors → ChromaDB
+Each chunk is upserted into ChromaDB with its vector and metadata: product, url, title, doc_type, s3_key, chunk_index. ChromaDB uses a cosine-similarity
+HNSW index for fast nearest-neighbour lookup at query time.</p>
+<hr>
+<p>Step 6 — Media Enrichment
+A second pass over ChromaDB extracts video URLs (&gt;[!VIDEO] tags), thumbnail CDN links (frontmatter thumbnail: field), and screenshot image paths from
+each chunk&rsquo;s raw Markdown. These are written back to the chunk metadata and later surfaced in the UI alongside text responses.</p>
+<hr>
+<p>Step 7 — Publish: ChromaDB → S3
+The entire chroma_db/ directory is compressed to chroma_db.tar.gz and uploaded to S3. The production backend on Railway downloads this archive on cold
+start, so every deployment gets the latest vector index without needing to re-embed anything.</p>
 <h3 id="presenting-exl-unofficial-an-unofficial-chatbot-for-experience-league">Presenting ExL Unofficial: An Unofficial Chatbot for Experience League</h3>
 <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
       <iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share; fullscreen" loading="eager" referrerpolicy="strict-origin-when-cross-origin" src="https://www.youtube.com/embed/N_E9dN2Av54?autoplay=0&amp;controls=1&amp;end=0&amp;loop=0&amp;mute=0&amp;start=0" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" title="YouTube video"></iframe>
@@ -567,7 +583,7 @@
       
         <li class="post-action">
           
-            <a class="post-action-btn btn btn--default tooltip--top" href="../../../2026/06/tagscanner-audit-your-adobe-tags-property-in-minutes/" data-tooltip="TagScanner: Audit Your Adobe Tags Property in Minutes" aria-label="PREVIOUS: TagScanner: Audit Your Adobe Tags Property in Minutes">
+            <a class="post-action-btn btn btn--default tooltip--top" href="../../../2026/06/rovr-a-conversational-engine-for-adobe-experience-league/" data-tooltip="Rovr: A conversational engine for Adobe Experience League" aria-label="PREVIOUS: Rovr: A conversational engine for Adobe Experience League">
           
               <i class="fa fa-angle-left"></i>
               <span class="hide-xs hide-sm text-small icon-ml">PREVIOUS</span>
@@ -575,7 +591,7 @@
         </li>
         <li class="post-action">
           
-            <a class="post-action-btn btn btn--default tooltip--top" href="../../../2026/06/docsy-part-1-data-ingestion/" data-tooltip="Docsy: Part 1 - Data Ingestion" aria-label="NEXT: Docsy: Part 1 - Data Ingestion">
+            <a class="post-action-btn btn btn--disabled">
           
               <span class="hide-xs hide-sm text-small icon-mr">NEXT</span>
               <i class="fa fa-angle-right"></i>
@@ -593,13 +609,13 @@
     </li>
     
       <li class="post-action hide-xs">
-        <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://thelearningproject.in/2026/06/exl-unoffical-a-conversational-engine-for-adobe-experience-league/" title="Share on Twitter" aria-label="Share on Twitter">
+        <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://thelearningproject.in/2026/06/docsy-part-1-data-ingestion/" title="Share on Twitter" aria-label="Share on Twitter">
           <i class="fab fa-twitter" aria-hidden="true"></i>
         </a>
       </li>
     
       <li class="post-action hide-xs">
-        <a class="post-action-btn btn btn--default" target="new" href="https://www.linkedin.com/sharing/share-offsite/?url=https://thelearningproject.in/2026/06/exl-unoffical-a-conversational-engine-for-adobe-experience-league/" title="Share on Linkedin" aria-label="Share on Linkedin">
+        <a class="post-action-btn btn btn--default" target="new" href="https://www.linkedin.com/sharing/share-offsite/?url=https://thelearningproject.in/2026/06/docsy-part-1-data-ingestion/" title="Share on Linkedin" aria-label="Share on Linkedin">
           <i class="fab fa-linkedin" aria-hidden="true"></i>
         </a>
       </li>
@@ -638,7 +654,7 @@
       
         <li class="post-action">
           
-            <a class="post-action-btn btn btn--default tooltip--top" href="../../../2026/06/tagscanner-audit-your-adobe-tags-property-in-minutes/" data-tooltip="TagScanner: Audit Your Adobe Tags Property in Minutes" aria-label="PREVIOUS: TagScanner: Audit Your Adobe Tags Property in Minutes">
+            <a class="post-action-btn btn btn--default tooltip--top" href="../../../2026/06/rovr-a-conversational-engine-for-adobe-experience-league/" data-tooltip="Rovr: A conversational engine for Adobe Experience League" aria-label="PREVIOUS: Rovr: A conversational engine for Adobe Experience League">
           
               <i class="fa fa-angle-left"></i>
               <span class="hide-xs hide-sm text-small icon-ml">PREVIOUS</span>
@@ -646,7 +662,7 @@
         </li>
         <li class="post-action">
           
-            <a class="post-action-btn btn btn--default tooltip--top" href="../../../2026/06/docsy-part-1-data-ingestion/" data-tooltip="Docsy: Part 1 - Data Ingestion" aria-label="NEXT: Docsy: Part 1 - Data Ingestion">
+            <a class="post-action-btn btn btn--disabled">
           
               <span class="hide-xs hide-sm text-small icon-mr">NEXT</span>
               <i class="fa fa-angle-right"></i>
@@ -664,13 +680,13 @@
     </li>
     
       <li class="post-action hide-xs">
-        <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://thelearningproject.in/2026/06/exl-unoffical-a-conversational-engine-for-adobe-experience-league/" title="Share on Twitter" aria-label="Share on Twitter">
+        <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://thelearningproject.in/2026/06/docsy-part-1-data-ingestion/" title="Share on Twitter" aria-label="Share on Twitter">
           <i class="fab fa-twitter" aria-hidden="true"></i>
         </a>
       </li>
     
       <li class="post-action hide-xs">
-        <a class="post-action-btn btn btn--default" target="new" href="https://www.linkedin.com/sharing/share-offsite/?url=https://thelearningproject.in/2026/06/exl-unoffical-a-conversational-engine-for-adobe-experience-league/" title="Share on Linkedin" aria-label="Share on Linkedin">
+        <a class="post-action-btn btn btn--default" target="new" href="https://www.linkedin.com/sharing/share-offsite/?url=https://thelearningproject.in/2026/06/docsy-part-1-data-ingestion/" title="Share on Linkedin" aria-label="Share on Linkedin">
           <i class="fab fa-linkedin" aria-hidden="true"></i>
         </a>
       </li>
@@ -695,13 +711,13 @@
   <ul class="share-options">
     
       <li class="share-option">
-        <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=https%3A%2F%2Fthelearningproject.in%2F2026%2F06%2Fexl-unoffical-a-conversational-engine-for-adobe-experience-league%2F" aria-label="Share on Twitter">
+        <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=https%3A%2F%2Fthelearningproject.in%2F2026%2F06%2Fdocsy-part-1-data-ingestion%2F" aria-label="Share on Twitter">
           <i class="fab fa-twitter" aria-hidden="true"></i><span>Share on Twitter</span>
         </a>
       </li>
     
       <li class="share-option">
-        <a class="share-option-btn" target="new" href="https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Fthelearningproject.in%2F2026%2F06%2Fexl-unoffical-a-conversational-engine-for-adobe-experience-league%2F" aria-label="Share on Linkedin">
+        <a class="share-option-btn" target="new" href="https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Fthelearningproject.in%2F2026%2F06%2Fdocsy-part-1-data-ingestion%2F" aria-label="Share on Linkedin">
           <i class="fab fa-linkedin" aria-hidden="true"></i><span>Share on Linkedin</span>
         </a>
       </li>

@@ -1,6 +1,6 @@
 ---
-title: 'Rovr: A conversational engine for Adobe Experience League'
-date: 2026-06-09
+title: 'Rovr: Part 1 - Data Ingestion'
+date: 2026-06-12
 tags:
   main: post
   topic1: Adobe Tags
@@ -12,19 +12,65 @@ author:
   display_name: Ritesh Gupta
 ---
 
-If you regularly work with [Adobe Experience Cloud](https://experienceleague.adobe.com/docs/) solutions, you have scratched your head trying to find an answer to the right question. The problem isn't the quality of the documentation. The Adobe Experience Leage (ExL) docs are genuinely good — comprehensive, well-maintained, regularly updated. The problem is something else.
+This is next part of the series on Rovr - a conversational chat bot I created to access the documents on Adobe Experience League. The intro covered the idea, the tech stack and a high level overview of the application. I also covered the most important decision of moving from Streamlit to React + FastAPI. This and the next set of posts will talk about the application in detail. We start by covering in-depth the process behind what makes Docsy useful: building a knowledge base worth querying — and keeping it current.
 
 <!--more-->
 
-Guides and articles for each Adobe Experience Cloud solution can span hundreds of pages. The documents are well structured, but the problem comes when you're mid-implementation and need to know whether a Profile Dataset or an Event Dataset is the right choice for your use case. The answer exists somewhere in that corpus, but finding the answer means sifting through all details, distilling the responses and then implying the learning to the problem at hand.
+Rovr is a RAG system based on the open sourced Experience League Docs. And a RAG system is only as good as what you put into it. The retrieval can be well-designed, the prompt can be carefully engineered, and the UI can be polished — but if the knowledge base has bad chunks, wrong URLs, or stale content, the whole thing falls apart at query time. I spent more time on this layer than on any other part of the project, and most of that time was on problems I didn't anticipate.
 
-The search is one way. There is no conversation. Therefore, the typical workflow — search, click, scan, refine, try again — costs 15–25 minutes on questions that, with the right tool, should take two.
+This post covers the full ingestion pipeline end to end: where the docs come from, how they stay current, how they get chunked and embedded, the metadata registry that makes citations work, and the hard-won lessons at the end..
 
-### Presenting Rovr: An Unofficial Chatbot for Experience League
+### The Full Data Ingestion Pipeline
+
+Data Ingestion Pipeline
+
+Step 1 — Source: AdobeDocs GitHub Repos
+Adobe maintains public Markdown documentation repos for each product (AdobeDocs/analytics.en, AdobeDocs/experience-platform.en, etc.). Every .md file is
+one documentation page, continuously updated by Adobe's technical writers.
+
+---
+
+Step 2 — SHA Delta Sync: GitHub → S3
+Instead of downloading everything weekly, sync_docs_to_s3.py calls GitHub's tree API — one request per repo that returns every file's path and SHA hash.
+Only files whose SHA has changed since the last run get downloaded and uploaded to S3. A manifest (sync_manifest.json) stored in S3 records the last-seen
+SHA for each file so future runs know what to skip.
+
+---
+
+Step 3 — Chunking: Markdown → Text Chunks
+Each changed document is split into ~500-token chunks. The strategy is hierarchical — first split on ##/### headers, then on paragraph breaks, then
+hard-split oversized paragraphs as a last resort. Each chunk gets a stable ID (s3_key#chunk_index) so re-ingesting an updated file overwrites the right
+records.
+
+---
+
+Step 4 — Embedding: Chunks → Vectors
+Each chunk is passed to AWS Bedrock Titan Embed v2, which returns a 1,024-dimension vector representing the semantic meaning of that text. Only changed
+documents get re-embedded — unchanged chunks already in ChromaDB are untouched.
+
+---
+
+Step 5 — Storage: Vectors → ChromaDB
+Each chunk is upserted into ChromaDB with its vector and metadata: product, url, title, doc_type, s3_key, chunk_index. ChromaDB uses a cosine-similarity
+HNSW index for fast nearest-neighbour lookup at query time.
+
+---
+
+Step 6 — Media Enrichment
+A second pass over ChromaDB extracts video URLs (>[!VIDEO] tags), thumbnail CDN links (frontmatter thumbnail: field), and screenshot image paths from
+each chunk's raw Markdown. These are written back to the chunk metadata and later surfaced in the UI alongside text responses.
+
+---
+
+Step 7 — Publish: ChromaDB → S3
+The entire chroma_db/ directory is compressed to chroma_db.tar.gz and uploaded to S3. The production backend on Railway downloads this archive on cold
+start, so every deployment gets the latest vector index without needing to re-embed anything.
+
+### Presenting ExL Unofficial: An Unofficial Chatbot for Experience League
 
 {{< youtube N_E9dN2Av54 >}}
 
-Rovr is my attempt at creating a conversational tool for a subset of solutions found on Experience League. This project had been running in my mind for sometime. The first draft was a simple POC to get the basic viability check. And then began the task of translating the learning into a full fledged project.
+ExL Unofficial is my attempt at creating a conversational tool for a subset of solutions found on Experience League. This project had been running in my mind for sometime. The first draft was a simple POC to get the basic viability check. And then began the task of translating the learning into a full fledged project.
 
 ![exl_hero.png](https://d2coej5ollyd8p.cloudfront.net/tools/exlheroimage.png)
 
@@ -51,6 +97,15 @@ The chatbot lets you ask natural language questions against a curated index of A
 Not summaries generated from a model's training memory. Not plausible-sounding responses that might be six months out of date. Answers retrieved from specific documentation pages and synthesised by the model with those pages as its source material. When the response says "according to the AEP Identity Service documentation", it means it. And how can I be so sure about it. This is because there is a pipeline that retrieves the latest updates to the documents regularly and feeds it into the backend.
 
 ![exl-image.png](https://d2coej5ollyd8p.cloudfront.net/tools/exl_unofficial.png)
+
+And here is how the answers are retrieved
+
+<!--
+  PLACEHOLDER — insert 1–2 real Q&A examples here before publishing.
+  Ideal examples: one factual lookup (e.g. Dataset types in AEP) and one
+  procedural/cross-product question (e.g. cross-device attribution in CJA).
+  Pull from the live tool or LangSmith traces.
+-->
 
 The index currently covers AEP, Adobe Analytics, Adobe Target, Customer Journey Analytics and Adobe Data Collection. All in all total 1656 pages of content including inline media - screenshots, diagrams and video references is captured in the metadata. The knowledge base reflects documentation updated on May 9, 2026. This is a great deal when comparing knowledge freshness with external tools like Claude, ChatGPT etc.
 
