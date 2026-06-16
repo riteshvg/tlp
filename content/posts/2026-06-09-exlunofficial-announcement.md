@@ -24,7 +24,7 @@ The search is one way. There is no conversation. Therefore, the typical workflow
 
 {{< youtube N_E9dN2Av54 >}}
 
-[Rovr](https://thelearningproject.in/tools/rovr) is my attempt at creating a conversational tool for a subset of solutions found on Experience League. This project had been running in my mind for sometime. The first draft was a simple POC to get the basic viability check. And then began the task of translating the learning into a full fledged project.
+Rovr is my attempt at creating a conversational tool for a subset of solutions found on Experience League. This project had been running in my mind for sometime. The first draft was a simple POC to get the basic viability check. And then began the task of translating the learning into a full fledged project.
 
 ![exl_hero.png](https://d2coej5ollyd8p.cloudfront.net/tools/exl-annoucement.png)
 
