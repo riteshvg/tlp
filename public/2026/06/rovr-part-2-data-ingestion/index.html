@@ -336,9 +336,7 @@ A second pass over ChromaDB extracts video URLs (&gt;[!VIDEO] tags), thumbnail C
 <hr>
 <p><strong>Step 7</strong> — <em>Publish: ChromaDB → S3</em>
 The entire chroma_db/ directory is compressed to chroma_db.tar.gz and uploaded to S3. The production backend on Railway downloads this archive on cold start, so every deployment gets the latest vector index without needing to re-embed anything.</p>
-<p>This 7 step ingestion is a crucial part contributing to Rovr&rsquo;s usability. And the steps look very logical and streamlined. But trust me this was the hardest part of the application. With no knowledge in data retrieval, it took me some iterations. But thanks to AI, I could iterate faster, learn quicker and get to the optimal workflow with minimal efforts.</p>
-<p>Ultimately, it makes sense to understand the content, your audience, cost limitations and overall UX experience before you actually get to work.</p>
-<p>Key Takeaways / Hard Learnt Lessons:</p>
+<p><strong>Key Takeaways</strong></p>
 <ul>
 <li>SHA delta syncing via the GitHub tree API makes weekly ingestion fast — compare hashes first, download only what changed</li>
 <li>S3 as the intermediate store decouples sync timing from ingestion and makes re-embedding a product filter away</li>
@@ -350,7 +348,19 @@ The entire chroma_db/ directory is compressed to chroma_db.tar.gz and uploaded t
 <li>Set your similarity threshold empirically, not by intuition. Niche technical topics score lower than you expect</li>
 <li>Update the S3 snapshot before any production redeploy — Railway&rsquo;s ephemeral filesystem means the snapshot is the only persistence</li>
 </ul>
-<p>I appreciate you taking out time and taking Rovr for a spin. If you have any difficulty in using Rovr, or have any feature request, please drop me a line at <a href="mailto:ritesh@thelearningproject.in">
+<p><strong>My Learnings</strong></p>
+<p>This 7 step ingestion is a crucial part contributing to <a href="https://thelearningproject.in/tools/rovr/" target="_blank" rel="noopener">
+  Rovr&rsquo;s
+</a>
+ usability. The steps look very logical and streamlined. But this was the hardest part of building the application. With no knowledge in data retrieval, it took me some iterations. But thanks to AI, I could iterate faster, learn quicker and get to the optimal workflow with minimal efforts.</p>
+<p>And always take time to understand the content, your audience, cost limitations and overall UX experience before you actually get to work.</p>
+<p>I appreciate you taking out time and taking <a href="https://thelearningproject.in/tools/rovr/" target="_blank" rel="noopener">
+  Rovr
+</a>
+ for a spin. If you have any difficulty in using <a href="https://thelearningproject.in/tools/rovr/" target="_blank" rel="noopener">
+  Rovr
+</a>
+, or have any feature request, please drop me a line at <a href="mailto:ritesh@thelearningproject.in">
   ritesh@thelearningproject.in
 </a>
 .</p>

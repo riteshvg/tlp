@@ -72,11 +72,7 @@ A second pass over ChromaDB extracts video URLs (>[!VIDEO] tags), thumbnail CDN 
 **Step 7** — _Publish: ChromaDB → S3_
 The entire chroma_db/ directory is compressed to chroma_db.tar.gz and uploaded to S3. The production backend on Railway downloads this archive on cold start, so every deployment gets the latest vector index without needing to re-embed anything.
 
-This 7 step ingestion is a crucial part contributing to Rovr's usability. And the steps look very logical and streamlined. But trust me this was the hardest part of the application. With no knowledge in data retrieval, it took me some iterations. But thanks to AI, I could iterate faster, learn quicker and get to the optimal workflow with minimal efforts.
-
-Ultimately, it makes sense to understand the content, your audience, cost limitations and overall UX experience before you actually get to work.
-
-Key Takeaways / Hard Learnt Lessons:
+**Key Takeaways**
 
 - SHA delta syncing via the GitHub tree API makes weekly ingestion fast — compare hashes first, download only what changed
 - S3 as the intermediate store decouples sync timing from ingestion and makes re-embedding a product filter away
@@ -88,4 +84,10 @@ Key Takeaways / Hard Learnt Lessons:
 - Set your similarity threshold empirically, not by intuition. Niche technical topics score lower than you expect
 - Update the S3 snapshot before any production redeploy — Railway's ephemeral filesystem means the snapshot is the only persistence
 
-I appreciate you taking out time and taking Rovr for a spin. If you have any difficulty in using Rovr, or have any feature request, please drop me a line at ritesh@thelearningproject.in.
+**My Learnings**
+
+This 7 step ingestion is a crucial part contributing to [Rovr's](https://thelearningproject.in/tools/rovr/) usability. The steps look very logical and streamlined. But this was the hardest part of building the application. With no knowledge in data retrieval, it took me some iterations. But thanks to AI, I could iterate faster, learn quicker and get to the optimal workflow with minimal efforts.
+
+And always take time to understand the content, your audience, cost limitations and overall UX experience before you actually get to work.
+
+I appreciate you taking out time and taking [Rovr](https://thelearningproject.in/tools/rovr/) for a spin. If you have any difficulty in using [Rovr](https://thelearningproject.in/tools/rovr/), or have any feature request, please drop me a line at ritesh@thelearningproject.in.
