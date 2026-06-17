@@ -24,7 +24,7 @@ This post covers the full ingestion pipeline end to end: where the docs come fro
 
 ### The Full Data Ingestion Pipeline
 
-Data Ingestion Pipeline: The data ingestion pipeline is a fundamental part of the entire application. So, it was imperative that I had to make it streamlined, expandable and agile from the intial design. There were a series of decisions that I'd to make even before I had began the actual work. The points ranged from:
+The data ingestion pipeline is a fundamental part of the entire application. So, it was imperative that I had to make it streamlined, expandable and agile from the initial design. There were a series of decisions that I'd to make even before I had began the actual work. The points ranged from:
 
 - location of the documents
 - recency and frequency of updates
@@ -33,7 +33,7 @@ Data Ingestion Pipeline: The data ingestion pipeline is a fundamental part of th
 - multi media support
 - expandabilty
 
-All these decisions were important enough to spend weeks on them. I initially decided to cover only Adobe Analytics and Customer Journey Analytics, and just text. But then the design was getting text heavy and with just two solutions I was aiming for a very narrow audience. The scope kept on expanding and the ingestion architecture started taking shape. Here's the ingestion pipeline as it stands today.
+All these decisions were important enough to spend weeks on them. I initially decided to cover only _Adobe Analytics_ and _Customer Journey Analytics_, and just text. But then the design was getting text heavy and with just two solutions I was aiming for a very narrow audience. The scope kept on expanding and the ingestion architecture started taking shape. Here's the ingestion pipeline as it stands today.
 
 ![ingestionpipeline.png](https://d2coej5ollyd8p.cloudfront.net/tools/ingestionworkflow.png)
 
@@ -72,6 +72,12 @@ A second pass over ChromaDB extracts video URLs (>[!VIDEO] tags), thumbnail CDN 
 **Step 7** — _Publish: ChromaDB → S3_
 The entire chroma_db/ directory is compressed to chroma_db.tar.gz and uploaded to S3. The production backend on Railway downloads this archive on cold start, so every deployment gets the latest vector index without needing to re-embed anything.
 
+**Ingestion Update**
+
+Here is an outcome of this process. The ingestion this week updated the docs in the database to 5400 docs
+
+![datarecency.png](https://d2coej5ollyd8p.cloudfront.net/tools/datarecency.png)
+
 **Key Takeaways**
 
 - SHA delta syncing via the GitHub tree API makes weekly ingestion fast — compare hashes first, download only what changed
@@ -88,6 +94,10 @@ The entire chroma_db/ directory is compressed to chroma_db.tar.gz and uploaded t
 
 This 7 step ingestion is a crucial part contributing to [Rovr's](https://thelearningproject.in/tools/rovr/) usability. The steps look very logical and streamlined. But this was the hardest part of building the application. With no knowledge in data retrieval, it took me some iterations. But thanks to AI, I could iterate faster, learn quicker and get to the optimal workflow with minimal efforts.
 
-And always take time to understand the content, your audience, cost limitations and overall UX experience before you actually get to work.
+My one key learning with the data ingestion process is
+
+<div class="alert alert-primary"> 
+  Always take time to understand the content, your audience, cost limitations and overall UX experience before you actually get to work.
+</div>
 
 I appreciate you taking out time and taking [Rovr](https://thelearningproject.in/tools/rovr/) for a spin. If you have any difficulty in using [Rovr](https://thelearningproject.in/tools/rovr/), or have any feature request, please drop me a line at ritesh@thelearningproject.in.
