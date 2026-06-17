@@ -24,14 +24,14 @@ This post covers the full ingestion pipeline end to end: where the docs come fro
 
 ### The Full Data Ingestion Pipeline
 
-The data ingestion pipeline is a fundamental part of the entire application. So, it was imperative that I had to make it streamlined, expandable and agile from the initial design. There were a series of decisions that I'd to make even before I had began the actual work. The points ranged from:
+The data ingestion pipeline is a fundamental part of the entire application. So, it was imperative that I had to make it streamlined, expandable and agile from the initial design. There were a series of decisions that I had to make even before I had began the actual work. The points ranged from:
 
 - location of the documents
 - recency and frequency of updates
 - frequency of ingestion in the knowledge bank
 - storage and retrieval of data
 - multi media support
-- expandabilty
+- expandability
 
 All these decisions were important enough to spend weeks on them. I initially decided to cover only _Adobe Analytics_ and _Customer Journey Analytics_, and just text. But then the design was getting text heavy and with just two solutions I was aiming for a very narrow audience. The scope kept on expanding and the ingestion architecture started taking shape. Here's the ingestion pipeline as it stands today.
 
@@ -43,7 +43,7 @@ Adobe maintains public Markdown documentation repos for each product (AdobeDocs/
 ---
 
 **Step 2** — _SHA Delta Sync: GitHub → S3_
-Instead of downloading everything weekly, sync_docs_to_s3.py calls GitHub's tree API — one request per repo that returns every file's path and SHA hash. Only files whose SHA has changed since the last run get downloaded and uploaded to S3. A manifest (sync_manifest.json) stored in S3 records the last-seen SHA for each file so future runs know what to skip. This decision was important as it meant significant cost savings running the sync only for changed files that is uploaded by Adobe Engineering to Github.
+Instead of downloading everything weekly, sync_docs_to_s3.py calls GitHub's tree API — one request per repo that returns every file's path and SHA hash. Only files whose SHA has changed since the last run get downloaded and uploaded to S3. A manifest (sync_manifest.json) stored in S3 records the last-seen SHA for each file so future runs know what to skip. This decision was important as it meant significant cost savings because only changed files are uploaded by Adobe Engineering to Github.
 
 ---
 

@@ -304,14 +304,14 @@
 <p>I deliberately spent more time on this layer than on any other part of the project, and most of that time was on problems I didn&rsquo;t anticipate.</p>
 <p>This post covers the full ingestion pipeline end to end: where the docs come from, how do they stay current, how they get chunked and embedded, the metadata registry that makes citations work, and the hard-won lessons at the end.</p>
 <h3 id="the-full-data-ingestion-pipeline">The Full Data Ingestion Pipeline</h3>
-<p>The data ingestion pipeline is a fundamental part of the entire application. So, it was imperative that I had to make it streamlined, expandable and agile from the initial design. There were a series of decisions that I&rsquo;d to make even before I had began the actual work. The points ranged from:</p>
+<p>The data ingestion pipeline is a fundamental part of the entire application. So, it was imperative that I had to make it streamlined, expandable and agile from the initial design. There were a series of decisions that I had to make even before I had began the actual work. The points ranged from:</p>
 <ul>
 <li>location of the documents</li>
 <li>recency and frequency of updates</li>
 <li>frequency of ingestion in the knowledge bank</li>
 <li>storage and retrieval of data</li>
 <li>multi media support</li>
-<li>expandabilty</li>
+<li>expandability</li>
 </ul>
 <p>All these decisions were important enough to spend weeks on them. I initially decided to cover only <em>Adobe Analytics</em> and <em>Customer Journey Analytics</em>, and just text. But then the design was getting text heavy and with just two solutions I was aiming for a very narrow audience. The scope kept on expanding and the ingestion architecture started taking shape. Here&rsquo;s the ingestion pipeline as it stands today.</p>
 <p><img src="https://d2coej5ollyd8p.cloudfront.net/tools/ingestionworkflow.png" alt="ingestionpipeline.png"></p>
@@ -319,7 +319,7 @@
 Adobe maintains public Markdown documentation repos for each product (AdobeDocs/analytics.en, AdobeDocs/experience-platform.en, etc.). Every .md file is one documentation page, continuously updated by Adobe&rsquo;s technical writers. This is both the advantage (the source is always current) and the engineering challenge (the pipeline needs to track what changed without re-processing everything every time).</p>
 <hr>
 <p><strong>Step 2</strong> — <em>SHA Delta Sync: GitHub → S3</em>
-Instead of downloading everything weekly, sync_docs_to_s3.py calls GitHub&rsquo;s tree API — one request per repo that returns every file&rsquo;s path and SHA hash. Only files whose SHA has changed since the last run get downloaded and uploaded to S3. A manifest (sync_manifest.json) stored in S3 records the last-seen SHA for each file so future runs know what to skip. This decision was important as it meant significant cost savings running the sync only for changed files that is uploaded by Adobe Engineering to Github.</p>
+Instead of downloading everything weekly, sync_docs_to_s3.py calls GitHub&rsquo;s tree API — one request per repo that returns every file&rsquo;s path and SHA hash. Only files whose SHA has changed since the last run get downloaded and uploaded to S3. A manifest (sync_manifest.json) stored in S3 records the last-seen SHA for each file so future runs know what to skip. This decision was important as it meant significant cost savings because only changed files are uploaded by Adobe Engineering to Github.</p>
 <hr>
 <p><strong>Step 3</strong> — <em>Chunking: Markdown → Text Chunks</em>
 Each changed document is split into ~500-token chunks. The strategy is hierarchical — first split on H2/H3 headers, then on paragraph breaks, then hard-split oversized paragraphs as a last resort. Each chunk gets a stable ID (s3_key#chunk_index) so re-ingesting an updated file overwrites the right records. This strategy took some time to finalize as it depends on the document design. So it makes sense to understand your content well before deciding on a chunking strategy. Don&rsquo;t go blind into it.</p>
