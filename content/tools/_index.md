@@ -11,7 +11,7 @@ tools:
     developed_for: The Learning Project
     description: Audit any Adobe Tags property in minutes. No API, no credentials, no access requests.
     image: https://d2coej5ollyd8p.cloudfront.net/tools/tagscanner-preview.png?v=2
-  - name: Rovr - Experience League Chatbot
+  - name: Rovr - ExL Chatbot
     url: /tools/experience-league-chatbot/
     status: Live
     platform: Adobe Tags
