@@ -131,7 +131,7 @@ $(function() {
 
 $(function() {
 
-  if( $(".isotope-container").length ) {
+  if( $(".isotope-container").length && !$("body").hasClass("page-til") ) {
 
     // Init Isotope
     var $container = $('.isotope-container').imagesLoaded( function() {

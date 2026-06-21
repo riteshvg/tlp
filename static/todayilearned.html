@@ -20,6 +20,7 @@
     <link rel="stylesheet" href="assets/css/style.css" />
     <link rel="stylesheet" href="assets/css/sidebar.css" />
     <link href="assets/css/styles_blue.css" rel="stylesheet" />
+    <link rel="stylesheet" href="assets/css/todayilearned.css" />
 
     <!-- Google Fonts -->
     <link
@@ -29,7 +30,7 @@
     />
   </head>
 
-  <body>
+  <body class="page-til">
     <!-- NAVIGATION
     ================================================== -->
 
@@ -95,18 +96,22 @@
 
 <nav class="navbar navbar-default">
   <div class="container">
-    <div class="navbar-header" style="height: 6.5vh">
-      <a class="navbar-brand" href="index.html">The Learning Project |</a>
-      <span class="navbar-brand">Daily Learnings</span>
+    <div class="navbar-header">
+      <button
+        type="button"
+        id="btn-open-sidebar"
+        class="mobile-sidebar-toggle"
+        aria-label="Open menu"
+      >
+        <i class="fas fa-bars" aria-hidden="true"></i>
+      </button>
+      <div class="navbar-title">
+        <a class="navbar-brand" href="index.html">The Learning Project</a>
+        <span class="navbar-subtitle">Daily Learnings</span>
+      </div>
     </div>
   </div>
 </nav>
-
-    <!-- RECENT WORKS
-    ================================================== -->
-    <div class="row isotope-container">
-      <div class="col-sm-4 col-lg-3 isotope-item category_1"></div>
-    </div>
 
     <!-- Infobox -->
     <div class="container">
@@ -539,7 +544,7 @@
     </div>
     <!-- Row # 3 Ends -->
 
-    <!-- / .container -->
+    </div><!-- /.container -->
 
     <!-- JavaScript
     ================================================== -->
@@ -547,13 +552,15 @@
     <!-- JS Global -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+    <script src="assets/plugins/isotope/imagesloaded.pkgd.min.js"></script>
+    <script src="assets/plugins/isotope/isotope.pkgd.min.js"></script>
 
     <!-- JS Plugins -->
     <script src="assets/plugins/scrolltopcontrol/scrolltopcontrol.js"></script>
 
     <!-- JS Custom -->
     <script src="assets/js/custom.js"></script>
-    <script src="assets/plugins/isotope/imagesloaded.pkgd.min.js"></script>
-    <script src="assets/plugins/isotope/isotope.pkgd.min.js"></script>
+    <script src="assets/js/sidebar-mobile.js"></script>
+    <script src="assets/js/todayilearned.js"></script>
   </body>
 </html>

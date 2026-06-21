@@ -7,7 +7,7 @@
     circle at top,
     rgba(148, 94, 179, 0.8) 0%,
     rgba(95, 107, 232, 0.8) 80%
-  ); /* Added radial gradient */
+  );
   overflow-y: auto !important;
   overflow-x: hidden !important;
   z-index: 20;
@@ -19,8 +19,6 @@
   left: 0;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
 }
-
-/* ... rest of the CSS remains the same ... */
 
 .sidebar-container {
   padding: 20px 0;
@@ -47,18 +45,18 @@
   height: 100%;
   text-align: center;
   width: 100%;
-  text-rendering: geometricPrecision; /* Improved text rendering */
+  text-rendering: geometricPrecision;
 }
 
 .sidebar-button-link:hover,
 .sidebar-button-link:active {
   text-decoration: none;
   color: #fff;
-  background-color: rgba(255, 255, 255, 0.1); /* Added subtle hover effect */
+  background-color: rgba(255, 255, 255, 0.1);
 }
 
 .sidebar-button-icon {
-  font-size: 20px; /* Adjusted size for sharpness */
+  font-size: 20px;
   display: inline-block;
   text-align: center;
   width: 30px;
@@ -67,25 +65,13 @@
   padding-top: 0;
   vertical-align: middle;
   -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale; /* Better font rendering */
+  -moz-osx-font-smoothing: grayscale;
 }
 
-/* Hide description for behavior="3" */
 .sidebar-button-desc {
   display: none;
 }
 
-/* Adjust main content */
-body {
-  margin-left: 75px;
-}
-
-.container {
-  margin-left: 95px;
-  width: calc(100% - 95px);
-}
-
-/* Fix scrollbar appearance */
 #sidebar::-webkit-scrollbar {
   width: 0;
   background: transparent;
@@ -95,4 +81,157 @@ body {
   box-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
   background-color: rgba(203, 203, 203, 0.1);
   border-radius: 4px;
+}
+
+.mobile-sidebar-toggle {
+  display: none;
+}
+
+/* Desktop: offset content for fixed sidebar */
+@media (min-width: 768px) {
+  body {
+    margin-left: 75px;
+  }
+
+  .container {
+    margin-left: 95px;
+    width: calc(100% - 95px);
+  }
+}
+
+/* Mobile: hide sidebar off-screen, full-width content, drawer menu */
+@media (max-width: 767px) {
+  body {
+    margin-left: 0;
+  }
+
+  .container {
+    margin-left: auto;
+    width: 100%;
+    max-width: 100%;
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+
+  .navbar {
+    margin-left: 0 !important;
+    width: 100% !important;
+  }
+
+  .navbar .navbar-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    float: none;
+    height: auto !important;
+    min-height: 56px;
+    padding: 8px 15px;
+  }
+
+  .navbar .navbar-brand {
+    float: none;
+    font-size: 15px;
+    line-height: 1.3;
+    padding: 0;
+    white-space: normal;
+  }
+
+  .mobile-sidebar-toggle {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    width: 40px;
+    height: 40px;
+    border: 0;
+    border-radius: 6px;
+    background: rgba(255, 255, 255, 0.15);
+    color: #fff;
+    font-size: 18px;
+    cursor: pointer;
+  }
+
+  .mobile-sidebar-toggle:hover,
+  .mobile-sidebar-toggle:focus {
+    background: rgba(255, 255, 255, 0.25);
+    outline: none;
+  }
+
+  #sidebar {
+    width: 260px;
+    max-width: 85vw;
+    left: 0;
+    transform: translate3d(-100%, 0, 0);
+    z-index: 1050;
+    background-color: #7a6bc4;
+    background-image: linear-gradient(180deg, #a28dbe 0%, #5260c0 100%);
+    box-shadow: none;
+  }
+
+  #sidebar.is-open {
+    transform: translate3d(0, 0, 0);
+    box-shadow: 4px 0 24px rgba(0, 0, 0, 0.35);
+  }
+
+  #sidebar.is-open .sidebar-container {
+    padding-top: 16px;
+  }
+
+  #sidebar.is-open .sidebar-button {
+    text-align: left;
+    height: auto;
+    min-height: 48px;
+    line-height: 1.2;
+  }
+
+  #sidebar.is-open .sidebar-button-link {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    text-align: left;
+    padding: 10px 18px;
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  #sidebar.is-open .sidebar-button-link::after {
+    content: attr(title);
+    font-size: 1.35rem;
+    line-height: 1.2;
+    color: #fff;
+  }
+
+  #sidebar.is-open .sidebar-button-icon {
+    flex-shrink: 0;
+    font-size: 1.25rem;
+    width: 24px;
+  }
+
+  body.sidebar-drawer-open {
+    overflow: hidden;
+  }
+
+  body.sidebar-drawer-open::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.45);
+    z-index: 1040;
+    pointer-events: auto;
+    cursor: pointer;
+  }
+
+  .block-header > span {
+    font-size: 22px;
+  }
+
+  .gallery__nav {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px;
+  }
+
+  .gallery__nav > li > a {
+    padding: 8px 12px;
+  }
 }
