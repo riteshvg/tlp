@@ -6,8 +6,15 @@
     <description>Recent content in Posts on The Learning Project</description>
     <generator>Hugo</generator>
     <language>en-us</language>
-    <lastBuildDate>Fri, 12 Jun 2026 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Wed, 24 Jun 2026 00:00:00 +0000</lastBuildDate>
     <atom:link href="https://thelearningproject.in/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Rovr: Part 3 - Query Processing</title>
+      <link>https://thelearningproject.in/2026/06/rovr-part-3-query-processing/</link>
+      <pubDate>Wed, 24 Jun 2026 00:00:00 +0000</pubDate>
+      <guid>https://thelearningproject.in/2026/06/rovr-part-3-query-processing/</guid>
+      <description>&lt;p&gt;This is Part 3 of the deep dive series on &lt;a href=&#34;https://thelearningproject.in/tools/rovr/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;&#xA;  Rovr&#xA;&lt;/a&gt;&#xA; - a conversational chat bot I created covering docs for Adobe Experience League. The &lt;a href=&#34;https://thelearningproject.in/2026/06/rovr-a-conversational-engine-for-adobe-experience-league/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;&#xA;  intro&#xA;&lt;/a&gt;&#xA; covered the idea, the tech stack and a high level overview of the application. The &lt;a href=&#34;http://localhost:1313/2026/06/rovr-part-2-data-ingestion/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;&#xA;  data ingestion&#xA;&lt;/a&gt;&#xA; covered how documentation gets ingested all the way from GitHub to ChromaDB. This post covers what happens after that. The knowledge base is ready. Now a user types a question. What happens next?&lt;/p&gt;</description>
+    </item>
     <item>
       <title>Rovr: Part 2 - Data Ingestion</title>
       <link>https://thelearningproject.in/2026/06/rovr-part-2-data-ingestion/</link>
