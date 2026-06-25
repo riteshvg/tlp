@@ -12,15 +12,15 @@ author:
   display_name: Ritesh Gupta
 ---
 
-This is Part 3 of the deep dive series on [Rovr](https://thelearningproject.in/tools/rovr/) - a conversational chat bot I created covering docs for Adobe Experience League. The [intro](https://thelearningproject.in/2026/06/rovr-a-conversational-engine-for-adobe-experience-league/) covered the idea, the tech stack and a high level overview of the application. The [data ingestion](http://localhost:1313/2026/06/rovr-part-2-data-ingestion/) covered how documentation gets ingested all the way from GitHub to ChromaDB. This post covers what happens after that. The knowledge base is ready. Now a user types a question. What happens next?
+This is Part 3 of the deep dive series on [Rovr](https://thelearningproject.in/tools/rovr/). The [intro](https://thelearningproject.in/2026/06/rovr-a-conversational-engine-for-adobe-experience-league/) covered the idea, the tech stack and a high level overview of the application. The [data ingestion](http://localhost:1313/2026/06/rovr-part-2-data-ingestion/) post covered how documentation gets ingested all the way from GitHub to ChromaDB. This blog post covers what happens after that. **The knowledge base is ready. Now a user types a question. What happens next?**
 
 <!--more-->
 
-When a user enters a query in natural language in [Rovr](https://thelearningproject.in/tools/rovr/) there are precisely seven steps that the query has to travel through before it retrieves the answer on user's screen. Here's the end to end workflow from the moment the query lands at the FastAPI backend to the moment a streamed response begins flowing back.
+When a user enters a query in natural language in [Rovr](https://thelearningproject.in/tools/rovr/) there are precisely six steps that the query has to travel through before it retrieves the answer on user's screen. Here's the end-to-end workflow from the moment the query lands at the FastAPI backend to the moment a streamed response begins flowing back.
 
 ![queryProcessing.png](https://d2coej5ollyd8p.cloudfront.net/tools/queryprocessing.png)
 
-Now, let's deep dive into each of those seven steps one by one:
+Now, let's deep dive into each of those six steps one by one:
 
 ### Step 1: The Smart Router: First Decision Point
 
@@ -58,7 +58,7 @@ AJO → Adobe Journey Optimizer
 
 This might look trivial. It is not. Adobe's documentation is inconsistent about which form it uses. Some pages use the abbreviated form throughout. Some switch between them. Without expansion, a query using abbreviations retrieves worse than it should, and that retrieval degradation propagates all the way to the final answer.
 
-The preprocessor also injects the last turn of conversation history into the query. This is what makes follow-up questions work. Without this, "what about segment sharing?" has no reference — the embedding model treats it as a standalone question about segment sharing in general, not as a follow-up to whatever was discussed in the previous turn. With context injection, the query becomes something like "in the context of Customer Journey Analytics filters: what about segment sharing?" — now retrieval finds the right pages. I will be covering in detail the query response and other associated steps in another blog post.
+The preprocessor also injects the last turn of conversation history into the query. This is what makes follow-up questions work. Without this, the question, "what about segment sharing?" has no reference — the embedding model treats it as a standalone question about segment sharing in general, not as a follow-up to whatever was discussed in the previous turn. With context injection, the query becomes something like "in the context of Customer Journey Analytics filters: what about segment sharing?" — now retrieval finds the right pages. I will be covering in detail the query response and other associated steps in another blog post.
 
 ---
 
@@ -72,13 +72,13 @@ The query vectors are normalised before comparison. ChromaDB is configured with 
 
 ### Step 4: Retrieval: finding the right chunks
 
-ChromaDB receives the query vector and searches across 8,514 stored documentation chunks using cosine similarity. The top-k most similar chunks come back — each with its content and its metadata: product, URL, title, doc_type, s3_key, chunk_index, and any embedded media references.
+ChromaDB receives the query vector and searches across 41000 stored documentation chunks using cosine similarity. The top-k most similar chunks come back — each with its content and its metadata: product, URL, title, doc_type, s3_key, chunk_index, and any embedded media references.
 
 Two things matter a lot here that aren't obvious from the description.
 
 The similarity threshold. There is a minimum score below which a chunk is excluded from the results even if it is in the top-k. Setting this threshold is empirical, not intuitive. For general web content, a cosine similarity of 0.7 might be considered a strong match. For niche technical documentation in a specific product domain, 0.7 is conservative — many genuinely relevant chunks score in the 0.55–0.65 range because the queries are highly specific and the documentation uses precise technical vocabulary. Too high a threshold and the retrieval silently returns fewer chunks than expected. Too low and noise gets into the context block. I set this empirically by testing a set of known queries against known documentation pages and finding the threshold that balanced recall and precision.
 
-The chunk count. How many chunks come back matters. Too few and the context block is thin — the model may not have enough to answer well. Too many and you're sending a lot of tokens to the LLM unnecessarily, increasing cost and sometimes diluting the most relevant content with loosely related material. The right number depends on the average chunk size (which is roughly 500 tokens in this pipeline) and the context window of the model being used.
+How many chunks come back matters. Too few and the context block is thin — the model may not have enough to answer well. Too many and you're sending a lot of tokens to the LLM unnecessarily, increasing cost and sometimes diluting the most relevant content with loosely related material. The right number depends on the average chunk size (which is roughly 500 tokens in this pipeline) and the context window of the model being used.
 
 ![step4-chromadb](https://d2coej5ollyd8p.cloudfront.net/tools/retrieval-step3.png)
 
@@ -92,7 +92,7 @@ The retrieved chunks are handed off differently depending on what the Smart Rout
 
 The Haiku path is direct. The chunks are assembled into a context block. A prompt is built: system instructions, the context block, conversation history, and the preprocessed query. One call goes to Claude Haiku via the Anthropic API. The response streams back. Fast, cheap, appropriate for well-scoped questions.
 
-The Sonnet path is more deliberate. A LangGraph ReAct agent receives the retrieved chunks and evaluates whether it has enough to answer the question well. If it does, it proceeds to generation. If it doesn't — if the chunks are thin, or the question spans multiple product areas that weren't all captured in the first retrieval — it refines its search and retrieves again. This loop runs up to three passes.
+The Claude Sonnet path is more deliberate. A LangGraph ReAct agent receives the retrieved chunks and evaluates whether it has enough to answer the question well. If it does, it proceeds to generation. If it doesn't — if the chunks are thin, or the question spans multiple product areas that weren't all captured in the first retrieval — it refines its search and retrieves again. This loop runs up to three passes.
 
 What does "refining the search" look like in practice? The agent rewrites the query, often decomposing a compound question into sub-queries. "Compare CJA filters and Adobe Analytics segments for cross-device use cases" might decompose into two targeted retrievals — one for CJA filter documentation and one for Analytics segment documentation — before the agent synthesises both into a single answer.
 
@@ -100,7 +100,7 @@ This is what makes Sonnet effective for the hard questions. It is also why it co
 
 ---
 
-### Step 6 & 7 — Convergence: generation and streaming
+### Step 6 — Convergence: generation and streaming
 
 Both the Haiku path and the Sonnet path arrive at the same place: the Prompt Builder. This is where the two paths converge, and everything from here is shared.
 
