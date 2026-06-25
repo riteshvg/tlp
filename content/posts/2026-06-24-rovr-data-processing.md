@@ -100,7 +100,7 @@ This is what makes Sonnet effective for the hard questions. It is also why it co
 
 ---
 
-### Step 6 — Convergence: generation and streaming
+### Step 6 & 7 — Convergence: generation and streaming
 
 Both the Haiku path and the Sonnet path arrive at the same place: the Prompt Builder. This is where the two paths converge, and everything from here is shared.
 
