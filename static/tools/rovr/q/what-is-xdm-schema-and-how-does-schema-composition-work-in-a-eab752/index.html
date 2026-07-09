@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/png" href="/tools/rovr/rovrlogo.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="build-date" content="2026-06-10" />
+    
+    
+    <script src="https://assets.adobedtm.com/204118644db8/290ae1adb65a/launch-e5ec7bf1a1ef-development.min.js" async></script>
+    <script type="module" crossorigin src="/tools/rovr/assets/index-DKjegKMz.js"></script>
+    <link rel="stylesheet" crossorigin href="/tools/rovr/assets/index-C3YgbV_4.css">
+  <title>What is XDM schema and how does schema composition work in AEP? | Rovr</title>
+<meta name="description" content="XDM Schema and Schema Composition in Adobe Experience Platform What is XDM Schema? Experience Data Model (XDM) is a publicly documented specification designed…" />
+<link rel="canonical" href="https://thelearningproject.in/tools/rovr/q/what-is-xdm-schema-and-how-does-schema-composition-work-in-a-eab752" />
+<meta property="og:title" content="What is XDM schema and how does schema composition work in AEP?" />
+<meta property="og:description" content="XDM Schema and Schema Composition in Adobe Experience Platform What is XDM Schema? Experience Data Model (XDM) is a publicly documented specification designed…" />
+<meta property="og:url" content="https://thelearningproject.in/tools/rovr/q/what-is-xdm-schema-and-how-does-schema-composition-work-in-a-eab752" />
+<meta property="og:type" content="article" />
+<meta property="og:image" content="https://thelearningproject.in/tools/rovr/rovrlogo.png" />
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="What is XDM schema and how does schema composition work in AEP?" />
+<meta name="twitter:description" content="XDM Schema and Schema Composition in Adobe Experience Platform What is XDM Schema? Experience Data Model (XDM) is a publicly documented specification designed…" />
+</head>
+  <body>
+    <div id="root"><article><h1>What is XDM schema and how does schema composition work in AEP?</h1>
+<h2>XDM Schema and Schema Composition in Adobe Experience Platform</h2>
+<h3>What is XDM Schema?</h3>
+<p><strong>Experience Data Model (XDM)</strong> is a publicly documented specification designed to standardize and improve the power of digital experiences. It provides the foundational framework for Adobe Experience Platform.</p>
+<h4>Core Purpose</h4>
+<p>XDM schemas define the structure of data in a consistent and reusable way across Experience Platform. By defining data consistently across systems, it becomes easier to retain meaning and gain value from data.</p>
+<p><strong>Key benefits include:</strong></p>
+<ul>
+<li>Better data governance and data minimization (especially important for privacy regulations)</li>
+<li>Out-of-the-box insights and use of AI/ML services with minimal customizations</li>
+<li>Infrastructure for data sharing, insights, and efficient orchestration</li>
+<li>Ability to deliver the right message to the right person, on the right channel, at exactly the right moment</li>
+</ul>
+<h4>Why Schemas Matter</h4>
+<p>Before data can be ingested into Experience Platform, a schema must be composed to:</p>
+<ul>
+<li>Describe the data&#x27;s structure</li>
+<li>Provide constraints on the type of data that can be contained within each field</li>
+<li>Ensure all customer experience data can be incorporated into a common representation</li>
+<li>Enable data to be interpreted consistently, regardless of origin</li>
+</ul>
+<hr>
+<h3>How Schema Composition Works</h3>
+<p>Schemas consist of two main building blocks:</p>
+<p>1. <strong>A base class</strong> — Defines the fundamental structure</p>
+<p>2. <strong>Zero or more schema field groups</strong> — Add additional fields and capabilities</p>
+<p><img src="https://raw.githubusercontent.com/AdobeDocs/experience-platform.en/main/help/xdm/schema/../images/schema-composition/composition.png" alt="Schema composition diagram"></p>
+<h4>Key Schema Components</h4>
+<p><strong>Data Types</strong></p>
+<p>Data types are reusable field components that represent multi-field objects. For example, a &quot;Phone Number&quot; data type might contain fields for country code, area code, and number.</p>
+<p><img src="https://raw.githubusercontent.com/AdobeDocs/experience-platform.en/main/help/xdm/schema/../images/schema-composition/data-type.png" alt="Data type example"></p>
+<p><strong>Field Groups</strong></p>
+<p>Field groups are sets of fields that define specific concepts or functionality. When you add a field group to a schema, all the fields within that group are added to the schema.</p>
+<p><strong>Union Schemas</strong></p>
+<p>When a schema is enabled for use in Real-Time Customer Profile, it becomes part of a union. Union schemas combine the fields of all schemas within the same class into a single representation.</p>
+<p><img src="https://raw.githubusercontent.com/AdobeDocs/experience-platform.en/main/help/xdm/schema/../images/schema-composition/union.png" alt="Union schema visualization"></p>
+<hr>
+<h3>Planning Your Schema</h3>
+<p>Before building a schema, follow these steps:</p>
+<p>1. <strong>Identify the concept</strong> — Determine the real-world object you&#x27;re trying to capture (e.g., a person, a purchase, an event).</p>
+<p>2. <strong>Think about your data</strong> — Consider:</p>
+<ul>
+<li>What type of data you need to store</li>
+<li>Which fields might serve as identity fields</li>
+<li>How the schema may evolve in the future</li>
+</ul>
+<p>3. <strong>Consider data behaviors</strong> — Understand how your data will behave within Experience Platform (streaming vs. batch, real-time vs. historical).</p>
+<hr>
+<h3>Standard XDM Components</h3>
+<p>Experience Platform provides <strong>standard XDM components</strong> — Adobe-built classes, field groups, and data types that are available out-of-the-box. These standardized components allow you to:</p>
+<ul>
+<li>Leverage pre-built, tested structures</li>
+<li>Ensure compatibility across Adobe solutions</li>
+<li>Share data more easily across your organization</li>
+<li>Reduce customization work</li>
+</ul>
+<hr>
+<h3>Schema-Based Workflows</h3>
+<p>The <strong>XDM System</strong> facilitates schema-based workflows and includes:</p>
+<ul>
+<li><strong>Schema Registry</strong> — Stores all your schemas</li>
+<li><strong>Schema Editor</strong> — Tool for building and managing schemas</li>
+<li><strong>Schema Metadata</strong> — Tracks schema versions, relationships, and usage</li>
+<li><strong>Service Consumption Patterns</strong> — How various Experience Platform services use schemas</li>
+</ul>
+<p>By using standardized schemas, all data that conforms to XDM can be reused across your organization without conflicts—and even shared between multiple organizations.</p>
+<h2>Sources</h2>
+<ul>
+<li><a href="https://experienceleague.adobe.com/en/docs/experience-platform/xdm/schema/composition">Basics of Schema Composition</a></li>
+</ul></article>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "What is XDM schema and how does schema composition work in AEP?", "acceptedAnswer": {"@type": "Answer", "text": "XDM Schema and Schema Composition in Adobe Experience Platform What is XDM Schema? Experience Data Model (XDM) is a publicly documented specification designed to standardize and improve the power of digital experiences. It provides the foundational framework for Adobe Experience Platform. Core Purpose XDM schemas define the structure of data in a consistent and reusable way across Experience Platform. By defining data consistently across systems, it becomes easier to retain meaning and gain value from data. Key benefits include: - Better data governance and data minimization (especially important for privacy regulations) - Out-of-the-box insights and use of AI/ML services with minimal customizations - Infrastructure for data sharing, insights, and efficient orchestration - Ability to deliver the right message to the right person, on the right channel, at exactly the right moment Why Schemas Matter Before data can be ingested into Experience Platform, a schema must be composed to: - Describe the data's structure - Provide constraints on the type of data that can be contained within each field - Ensure all customer experience data can be incorporated into a common representation - Enable data to be interpreted consistently, regardless of origin --- How Schema Composition Works Schemas consist of two main building blocks: 1. A base class \u2014 Defines the fundamental structure 2. Zero or more schema field groups \u2014 Add additional fields and capabilities !Schema composition diagram(https://raw.githubusercontent.com/AdobeDocs/experience-platform.en/main/help/xdm/schema/../images/schema-composition/composition.png) Key Schema Components Data Types Data types are reusable field components that represent multi-field objects. For example, a \"Phone Number\" data type might contain fields for country code, area code, and number. !Data type example(https://raw.githubusercontent.com/AdobeDocs/experience-platform.en/main/help/xdm/schema/../images/schema-composition/data-type.png)\u2026"}}]}</script></div>
+  </body>
+</html>

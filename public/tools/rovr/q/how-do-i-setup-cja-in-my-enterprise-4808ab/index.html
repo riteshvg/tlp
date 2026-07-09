@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/png" href="/tools/rovr/rovrlogo.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="build-date" content="2026-06-10" />
+    
+    
+    <script src="https://assets.adobedtm.com/204118644db8/290ae1adb65a/launch-e5ec7bf1a1ef-development.min.js" async></script>
+    <script type="module" crossorigin src="/tools/rovr/assets/index-DKjegKMz.js"></script>
+    <link rel="stylesheet" crossorigin href="/tools/rovr/assets/index-C3YgbV_4.css">
+  <title>How do I setup CJA in my enterprise? | Rovr</title>
+<meta name="description" content="Setting Up Customer Journey Analytics (CJA) in Your Enterprise Here is a comprehensive overview of the end-to-end setup process for Customer Journey…" />
+<link rel="canonical" href="https://thelearningproject.in/tools/rovr/q/how-do-i-setup-cja-in-my-enterprise-4808ab" />
+<meta property="og:title" content="How do I setup CJA in my enterprise?" />
+<meta property="og:description" content="Setting Up Customer Journey Analytics (CJA) in Your Enterprise Here is a comprehensive overview of the end-to-end setup process for Customer Journey…" />
+<meta property="og:url" content="https://thelearningproject.in/tools/rovr/q/how-do-i-setup-cja-in-my-enterprise-4808ab" />
+<meta property="og:type" content="article" />
+<meta property="og:image" content="https://thelearningproject.in/tools/rovr/rovrlogo.png" />
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="How do I setup CJA in my enterprise?" />
+<meta name="twitter:description" content="Setting Up Customer Journey Analytics (CJA) in Your Enterprise Here is a comprehensive overview of the end-to-end setup process for Customer Journey…" />
+</head>
+  <body>
+    <div id="root"><article><h1>How do I setup CJA in my enterprise?</h1>
+<h2>Setting Up Customer Journey Analytics (CJA) in Your Enterprise</h2>
+<p>Here is a comprehensive overview of the end-to-end setup process for Customer Journey Analytics.</p>
+<hr>
+<h3>Prerequisites</h3>
+<p>Before you begin, confirm the following:</p>
+<ul>
+<li>Your organization is <strong>provisioned for Adobe Experience Platform (AEP)</strong>.</li>
+<li>You have purchased the <strong>Customer Journey Analytics SKU</strong> (either as an add-on to Adobe Analytics Select, Prime, or Ultimate, or as a standalone product).</li>
+<li>You have appropriate <strong>access control</strong> permissions within your organization.</li>
+</ul>
+<hr>
+<h3>High-Level Architecture</h3>
+<p>CJA works by pulling datasets from Adobe Experience Platform into <strong>Connections</strong>, defining <strong>Data Views</strong> on top of those connections, and then analyzing data in <strong>Analysis Workspace</strong>.</p>
+<p><img src="https://raw.githubusercontent.com/AdobeDocs/analytics-platform.en/main/help/use-cases/b2b/b2b-edition/assets/b2b-event-schema-datasets.png" alt="Customer Journey Analytics architecture overview"></p>
+<p><a href="https://video.tv.adobe.com/v/3418680/?quality=12&amp;learn=on">▶ Watch: What is Customer Journey Analytics?</a></p>
+<hr>
+<h3>Step-by-Step Setup Workflow</h3>
+<h4>Step 1 — Architect and Create Your Schema</h4>
+<p>1. Define a <strong>Solution Design Reference</strong> — document every field you plan to collect (dimensions, metrics, identifiers).</p>
+<p>2. Navigate to Adobe Experience Platform and create an <strong>Experience Data Model (XDM) schema</strong> that maps to your data sources.</p>
+<p>3. If migrating from Adobe Analytics, decide whether to use your <strong>existing schema</strong> or create a new one optimized for CJA.</p>
+<hr>
+<h4>Step 2 — Create a Datastream</h4>
+<p>1. In Adobe Experience Platform Data Collection, create a <strong>Datastream</strong>.</p>
+<p>2. <strong>Add Adobe Experience Platform as a service</strong> within the datastream so that data flows into AEP datasets.</p>
+<hr>
+<h4>Step 3 — Create Datasets</h4>
+<p>1. Create one or more <strong>datasets</strong> in Adobe Experience Platform based on your XDM schema.</p>
+<p>2. If you use classifications, create <strong>lookup datasets</strong> to support them.</p>
+<p>3. <strong>Monitor dataset ingestion</strong> to ensure data is arriving correctly.</p>
+<hr>
+<h4>Step 4 — Implement Data Collection (Web SDK Recommended)</h4>
+<p>1. Create a <strong>Tag property</strong> in Adobe Data Collection.</p>
+<p>2. Add the <strong>Web SDK extension</strong> to your tag property.</p>
+<p>3. <strong>Implement the loader tag</strong> for the Web SDK extension on your website or app.</p>
+<p>4. Configure the tag to send data to the datastream you created in Step 2.</p>
+<p>&gt; If you are an existing Adobe Analytics customer, you can also use the <strong>Adobe Analytics Source Connector</strong> to ingest historical and ongoing report suite data into AEP — without re-implementing data collection immediately.</p>
+<hr>
+<h4>Step 5 — Set Up a Connection in CJA</h4>
+<p>1. In Customer Journey Analytics, navigate to <strong>Connections</strong>.</p>
+<p>2. Create a <strong>new Connection</strong> and select the AEP dataset(s) you want to include.</p>
+<p>3. Configure connection settings such as the <strong>Person ID</strong> (the identity field that stitches data across channels) and data retention settings.</p>
+<hr>
+<h4>Step 6 — Create a Data View</h4>
+<p>1. In CJA, create a <strong>Data View</strong> on top of your connection.</p>
+<p>2. Define which <strong>dimensions</strong> and <strong>metrics</strong> from your dataset fields are available for reporting.</p>
+<p>3. Configure <strong>attribution models</strong>, <strong>persistence settings</strong>, and <strong>value filters</strong> for each component as needed.</p>
+<hr>
+<h4>Step 7 — Build Projects in Analysis Workspace</h4>
+<p>1. Navigate to the <strong>Workspace</strong> tab in CJA.</p>
+<p>2. Create <strong>projects</strong> using the drag-and-drop interface.</p>
+<p>3. Build <strong>cross-channel reports and visualizations</strong> using the dimensions and metrics defined in your Data View — no SQL required.</p>
+<hr>
+<h3>Bringing in Historical Adobe Analytics Data</h3>
+<p>If you are migrating from Adobe Analytics:</p>
+<p>1. Create an <strong>XDM schema</strong> for the Analytics Source Connector.</p>
+<p>2. Set up the <strong>Adobe Analytics Source Connector</strong> in AEP, mapping report suite fields to XDM.</p>
+<p>3. <strong>Add the Source Connector dataset</strong> to your CJA Connection.</p>
+<p>4. Compare data between your old Adobe Analytics implementation and CJA to understand any differences.</p>
+<hr>
+<h3>User Onboarding Recommendations</h3>
+<ul>
+<li>Provide <strong>hands-on training</strong> focused on differences between Adobe Analytics and CJA (e.g., data models, reporting paradigms).</li>
+<li>Offer <strong>live workshops and on-demand resources</strong> (video tutorials, internal documentation).</li>
+<li>Allow users <strong>3–6 months</strong> to become comfortable with Analysis Workspace in CJA.</li>
+<li>Direct users to <strong>Customer Journey Analytics tutorials</strong> on Experience League for self-service learning.</li>
+</ul>
+<hr>
+<p><a href="https://video.tv.adobe.com/v/30090/?quality=12&amp;learn=on">▶ Watch: Introduction to Customer Journey Analytics</a></p>
+<hr>
+<h3>Access the Guided Upgrade Tool</h3>
+<p>If you are upgrading from Adobe Analytics, CJA includes a built-in upgrade guide:</p>
+<p>1. In CJA, select the <strong>Workspace</strong> tab.</p>
+<p>2. In the left panel, select <strong>Upgrade to Customer Journey Analytics</strong>.</p>
+<p>3. Follow the on-screen instructions for a dynamically generated, step-by-step upgrade path tailored to your organization.</p>
+</article>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "How do I setup CJA in my enterprise?", "acceptedAnswer": {"@type": "Answer", "text": "Setting Up Customer Journey Analytics (CJA) in Your Enterprise Here is a comprehensive overview of the end-to-end setup process for Customer Journey Analytics. --- Prerequisites Before you begin, confirm the following: - Your organization is provisioned for Adobe Experience Platform (AEP). - You have purchased the Customer Journey Analytics SKU (either as an add-on to Adobe Analytics Select, Prime, or Ultimate, or as a standalone product). - You have appropriate access control permissions within your organization. --- High-Level Architecture CJA works by pulling datasets from Adobe Experience Platform into Connections, defining Data Views on top of those connections, and then analyzing data in Analysis Workspace. !Customer Journey Analytics architecture overview(https://raw.githubusercontent.com/AdobeDocs/analytics-platform.en/main/help/use-cases/b2b/b2b-edition/assets/b2b-event-schema-datasets.png) \u25b6 Watch: What is Customer Journey Analytics?(https://video.tv.adobe.com/v/3418680/?quality=12&learn=on) --- Step-by-Step Setup Workflow Step 1 \u2014 Architect and Create Your Schema 1. Define a Solution Design Reference \u2014 document every field you plan to collect (dimensions, metrics, identifiers). 2. Navigate to Adobe Experience Platform and create an Experience Data Model (XDM) schema that maps to your data sources. 3. If migrating from Adobe Analytics, decide whether to use your existing schema or create a new one optimized for CJA. --- Step 2 \u2014 Create a Datastream 1. In Adobe Experience Platform Data Collection, create a Datastream. 2. Add Adobe Experience Platform as a service within the datastream so that data flows into AEP datasets. --- Step 3 \u2014 Create Datasets 1. Create one or more datasets in Adobe Experience Platform based on your XDM schema. 2. If you use classifications, create lookup datasets to support them. 3. Monitor dataset ingestion to ensure data is arriving correctly. --- Step 4 \u2014 Implement Data Collection (Web SDK Recommended) 1. Create a Tag property\u2026"}}]}</script></div>
+  </body>
+</html>

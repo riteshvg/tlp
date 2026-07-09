@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/png" href="/tools/rovr/rovrlogo.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="build-date" content="2026-06-10" />
+    
+    
+    <script src="https://assets.adobedtm.com/204118644db8/290ae1adb65a/launch-e5ec7bf1a1ef-development.min.js" async></script>
+    <script type="module" crossorigin src="/tools/rovr/assets/index-DKjegKMz.js"></script>
+    <link rel="stylesheet" crossorigin href="/tools/rovr/assets/index-C3YgbV_4.css">
+  <title>What is the difference between field based and graph based stitching? | Rovr</title>
+<meta name="description" content="Field-Based vs Graph-Based Stitching Both are stitching methods in Customer Journey Analytics (CJA), but they differ significantly in approach, scope, and…" />
+<link rel="canonical" href="https://thelearningproject.in/tools/rovr/q/what-is-the-difference-between-field-based-and-graph-based-s-5e4989" />
+<meta property="og:title" content="What is the difference between field based and graph based stitching?" />
+<meta property="og:description" content="Field-Based vs Graph-Based Stitching Both are stitching methods in Customer Journey Analytics (CJA), but they differ significantly in approach, scope, and…" />
+<meta property="og:url" content="https://thelearningproject.in/tools/rovr/q/what-is-the-difference-between-field-based-and-graph-based-s-5e4989" />
+<meta property="og:type" content="article" />
+<meta property="og:image" content="https://thelearningproject.in/tools/rovr/rovrlogo.png" />
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="What is the difference between field based and graph based stitching?" />
+<meta name="twitter:description" content="Field-Based vs Graph-Based Stitching Both are stitching methods in Customer Journey Analytics (CJA), but they differ significantly in approach, scope, and…" />
+</head>
+  <body>
+    <div id="root"><article><h1>What is the difference between field based and graph based stitching?</h1>
+<h2>Field-Based vs Graph-Based Stitching</h2>
+<p>Both are stitching methods in Customer Journey Analytics (CJA), but they differ significantly in approach, scope, and capabilities.</p>
+<hr>
+<h3>Field-Based Stitching</h3>
+<p><strong>How it works:</strong></p>
+<ul>
+<li>Uses a <strong>single prop or eVar</strong> that you specify to contain a person identifier (e.g., hashed login ID, email)</li>
+<li>Adobe reads the values in that field across hits and links them together based on matching IDs</li>
+<li><strong>Case-sensitive</strong> matching — &quot;Bob&quot; and &quot;BOB&quot; are treated as two different people</li>
+<li>Operates within a <strong>single report suite</strong> or dataset</li>
+</ul>
+<p><img src="https://raw.githubusercontent.com/AdobeDocs/analytics-platform.en/main/help/stitching/assets/fbs.png" alt="Field-based stitching diagram"></p>
+<p><strong>Best for:</strong></p>
+<ul>
+<li>Organizations with <strong>high user authentication/identification rates</strong></li>
+<li>Datasets where you already have a consistent person identifier captured</li>
+<li>Simpler implementations with fewer identity types</li>
+</ul>
+<p><strong>Limitations:</strong></p>
+<ul>
+<li>Only one prop or eVar can be used for stitching</li>
+<li>Cannot combine or concatenate multiple fields</li>
+<li>Does not transform or normalize the ID (case-sensitive)</li>
+<li>Limited to a single identifier type per field (not a mix of login IDs and emails)</li>
+<li>Does not work across multiple datasets with different identifier schemes</li>
+</ul>
+<hr>
+<h3>Graph-Based Stitching</h3>
+<p><strong>How it works:</strong></p>
+<ul>
+<li>Harnesses the <strong>Identity Graph</strong> from Adobe Experience Platform (AEP)</li>
+<li>Uses a <strong>common person identifier</strong> to align identities across multiple Experience Platform applications</li>
+<li>Allows <strong>multiple datasets to be joined</strong> in CJA using different identifier types</li>
+<li>Profiles created in <strong>Adobe Real-Time CDP and Adobe Journey Optimizer</strong> can be aligned with people in CJA</li>
+<li>More intelligent identity resolution across systems</li>
+</ul>
+<p><img src="https://raw.githubusercontent.com/AdobeDocs/analytics-platform.en/main/help/stitching/assets/gbs.png" alt="Graph-based stitching diagram"></p>
+<p><a href="https://video.tv.adobe.com/v/3429528/?learn=on">▶ Watch: Graph-based stitching overview</a></p>
+<p><strong>Best for:</strong></p>
+<ul>
+<li>Organizations leveraging <strong>Adobe Experience Platform, Real-Time CDP, or Adobe Journey Optimizer</strong></li>
+<li>Complex multi-dataset scenarios where different identity types exist across systems</li>
+<li>Need for <strong>cross-application identity alignment</strong></li>
+<li>Better coverage and accuracy across multiple data sources</li>
+</ul>
+<p><strong>Advantages:</strong></p>
+<ul>
+<li>Works across <strong>multiple datasets</strong> without manual ETL</li>
+<li>Improves identity coverage by sharing identity information across datasets</li>
+<li>Aligns CJA with CDP and Journey Optimizer profiles</li>
+<li>Handles <strong>multiple identity types</strong> intelligently</li>
+<li>More sophisticated identity resolution</li>
+</ul>
+<hr>
+<h3>Side-by-Side Comparison</h3>
+<p>| Feature | Field-Based | Graph-Based |</p>
+<p>|---|---|---|</p>
+<p>| <strong>Data source</strong> | Single report suite/dataset | Multiple datasets via AEP |</p>
+<p>| <strong>Identifier</strong> | Single prop/eVar | Identity Graph with multiple types |</p>
+<p>| <strong>Cross-application support</strong> | No | Yes (CDP, AJO, AEP) |</p>
+<p>| <strong>Case sensitivity</strong> | Case-sensitive | No |</p>
+<p>| <strong>Field concatenation</strong> | Not supported | Supported through Identity Graph |</p>
+<p>| <strong>Multiple identity types</strong> | No | Yes |</p>
+<p>| <strong>Setup complexity</strong> | Simpler | More complex (requires AEP) |</p>
+<p>| <strong>Identity coverage</strong> | Limited to what you capture | Better coverage through graph |</p>
+<p>| <strong>Best use case</strong> | High auth rate, simple needs | Multi-dataset, multi-app ecosystem |</p>
+<hr>
+<h3>Which Should You Use?</h3>
+<p><strong>Choose Field-Based Stitching if:</strong></p>
+<ul>
+<li>You&#x27;re in Adobe Analytics or CJA without AEP</li>
+<li>You have a high authentication rate</li>
+<li>Your identity needs are straightforward</li>
+<li>You want simplicity and predictability</li>
+</ul>
+<p><strong>Choose Graph-Based Stitching if:</strong></p>
+<ul>
+<li>You&#x27;re using Adobe Experience Platform, Real-Time CDP, or Journey Optimizer</li>
+<li>You have multiple datasets with different identifier schemes</li>
+<li>You need cross-application identity alignment</li>
+<li>You want more sophisticated identity coverage and resolution</li>
+</ul>
+</article>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "What is the difference between field based and graph based stitching?", "acceptedAnswer": {"@type": "Answer", "text": "Field-Based vs Graph-Based Stitching Both are stitching methods in Customer Journey Analytics (CJA), but they differ significantly in approach, scope, and capabilities. --- Field-Based Stitching How it works: - Uses a single prop or eVar that you specify to contain a person identifier (e.g., hashed login ID, email) - Adobe reads the values in that field across hits and links them together based on matching IDs - Case-sensitive matching \u2014 \"Bob\" and \"BOB\" are treated as two different people - Operates within a single report suite or dataset !Field-based stitching diagram(https://raw.githubusercontent.com/AdobeDocs/analytics-platform.en/main/help/stitching/assets/fbs.png) Best for: - Organizations with high user authentication/identification rates - Datasets where you already have a consistent person identifier captured - Simpler implementations with fewer identity types Limitations: - Only one prop or eVar can be used for stitching - Cannot combine or concatenate multiple fields - Does not transform or normalize the ID (case-sensitive) - Limited to a single identifier type per field (not a mix of login IDs and emails) - Does not work across multiple datasets with different identifier schemes --- Graph-Based Stitching How it works: - Harnesses the Identity Graph from Adobe Experience Platform (AEP) - Uses a common person identifier to align identities across multiple Experience Platform applications - Allows multiple datasets to be joined in CJA using different identifier types - Profiles created in Adobe Real-Time CDP and Adobe Journey Optimizer can be aligned with people in CJA - More intelligent identity resolution across systems !Graph-based stitching diagram(https://raw.githubusercontent.com/AdobeDocs/analytics-platform.en/main/help/stitching/assets/gbs.png) \u25b6 Watch: Graph-based stitching overview(https://video.tv.adobe.com/v/3429528/?learn=on) Best for: - Organizations leveraging Adobe Experience Platform, Real-Time CDP, or Adobe Journey Optimizer - Complex\u2026"}}]}</script></div>
+  </body>
+</html>

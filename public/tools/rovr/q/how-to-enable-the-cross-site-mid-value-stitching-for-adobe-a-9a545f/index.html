@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/png" href="/tools/rovr/rovrlogo.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="build-date" content="2026-06-10" />
+    
+    
+    <script src="https://assets.adobedtm.com/204118644db8/290ae1adb65a/launch-e5ec7bf1a1ef-development.min.js" async></script>
+    <script type="module" crossorigin src="/tools/rovr/assets/index-DKjegKMz.js"></script>
+    <link rel="stylesheet" crossorigin href="/tools/rovr/assets/index-C3YgbV_4.css">
+  <title>how to enable the cross site mid value stitching for adobe analytics | Rovr</title>
+<meta name="description" content="Cross-Device Analytics (CDA) – Enabling Stitching in Adobe Analytics Cross-Device Analytics (CDA) supports field-based stitching, which uses an Analytics…" />
+<link rel="canonical" href="https://thelearningproject.in/tools/rovr/q/how-to-enable-the-cross-site-mid-value-stitching-for-adobe-a-9a545f" />
+<meta property="og:title" content="how to enable the cross site mid value stitching for adobe analytics" />
+<meta property="og:description" content="Cross-Device Analytics (CDA) – Enabling Stitching in Adobe Analytics Cross-Device Analytics (CDA) supports field-based stitching, which uses an Analytics…" />
+<meta property="og:url" content="https://thelearningproject.in/tools/rovr/q/how-to-enable-the-cross-site-mid-value-stitching-for-adobe-a-9a545f" />
+<meta property="og:type" content="article" />
+<meta property="og:image" content="https://thelearningproject.in/tools/rovr/rovrlogo.png" />
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="how to enable the cross site mid value stitching for adobe analytics" />
+<meta name="twitter:description" content="Cross-Device Analytics (CDA) – Enabling Stitching in Adobe Analytics Cross-Device Analytics (CDA) supports field-based stitching, which uses an Analytics…" />
+</head>
+  <body>
+    <div id="root"><article><h1>how to enable the cross site mid value stitching for adobe analytics</h1>
+<h2>Cross-Device Analytics (CDA) – Enabling Stitching in Adobe Analytics</h2>
+<p>Cross-Device Analytics (CDA) supports <strong>field-based stitching</strong>, which uses an Analytics variable (such as a <strong>prop</strong> or <strong>eVar</strong>) containing a person identifier to link devices together. Here is a complete guide to enabling it.</p>
+<hr>
+<h3>Prerequisites</h3>
+<p>Before enabling CDA, ensure the following are in place:</p>
+<p>1. <strong>Existing customer eligibility</strong> – CDA is available to existing Adobe Analytics customers (not new contracts by default).</p>
+<p>2. <strong>A cross-device report suite</strong> – You must have a report suite that collects data across devices.</p>
+<p>3. <strong>Person identifier variable</strong> – A `prop` or `eVar` must be consistently populated with a person/user identifier (e.g., a hashed login ID) on your implementation.</p>
+<p>4. <strong>Admin privileges</strong> – You must belong to a <strong>Product Profile Admin</strong> group or have full admin privileges in Adobe Analytics.</p>
+<p>5. <strong>All prerequisites for your chosen stitching method must be met</strong> – Review the requirements for <strong>field-based stitching</strong> specifically.</p>
+<hr>
+<h3>Steps to Enable Cross-Device Analytics</h3>
+<h4>Step 1 – Contact Adobe Customer Care</h4>
+<p>Open a support ticket with <strong>Adobe Customer Care</strong> to have CDA provisioned on your cross-device report suite. This is a required first step — CDA cannot be self-enabled without Adobe provisioning it on the backend.</p>
+<h4>Step 2 – Verify Your Implementation</h4>
+<p>Ensure the Analytics variable you intend to use as the person identifier (e.g., an <strong>eVar</strong>) is:</p>
+<ul>
+<li>Consistently populated when users authenticate or are identifiable</li>
+<li>Passing a stable, unique identifier (e.g., hashed email or CRM ID)</li>
+</ul>
+<h4>Step 3 – Configure a Virtual Report Suite</h4>
+<p>Once Adobe has provisioned CDA on your report suite:</p>
+<p>1. Navigate to <strong>Analytics &gt; Components &gt; Virtual Report Suites</strong></p>
+<p>2. Click <strong>Create</strong> to create a new Virtual Report Suite</p>
+<p>3. Select the base <strong>cross-device report suite</strong></p>
+<p>4. Enable the <strong>Cross-Device Analytics</strong> option within the Virtual Report Suite settings</p>
+<p>5. Configure the <strong>stitching field</strong> by selecting the prop or eVar that contains your person identifier</p>
+<p>6. Save the Virtual Report Suite</p>
+<h4>Step 4 – Validate Stitching</h4>
+<p>After the Virtual Report Suite is created:</p>
+<ul>
+<li>Allow time for data processing (stitching is applied retroactively up to the lookback window allowed by your contract)</li>
+<li>Use the <strong>Cross-Device</strong> panels and segments in <strong>Analysis Workspace</strong> to validate that devices are being correctly stitched together</li>
+</ul>
+<hr>
+<h3>Key Considerations</h3>
+<p>| Aspect | Detail |</p>
+<p>|---|---|</p>
+<p>| <strong>Stitching Method</strong> | Field-based stitching uses a prop/eVar as the person identifier |</p>
+<p>| <strong>Recommended For</strong> | More transparency and predictability in visitor tracking |</p>
+<p>| <strong>Retroactive Processing</strong> | Stitching can be applied retroactively within your contract&#x27;s lookback window |</p>
+<p>| <strong>Access</strong> | Analysis is done through a CDA-enabled <strong>Virtual Report Suite</strong> |</p>
+<hr>
+<h3>Important Notes</h3>
+<ul>
+<li>If <strong>all prerequisites are not met</strong>, the feature will not be available or will not function correctly.</li>
+<li>Field-based stitching is the recommended approach as it offers greater <strong>transparency and predictability</strong>.</li>
+<li>CDA stitching is separate from the stitching capabilities available in <strong>Customer Journey Analytics (CJA)</strong> — if you are on CJA, the stitching configuration process differs.</li>
+</ul>
+</article>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "how to enable the cross site mid value stitching for adobe analytics", "acceptedAnswer": {"@type": "Answer", "text": "Cross-Device Analytics (CDA) \u2013 Enabling Stitching in Adobe Analytics Cross-Device Analytics (CDA) supports field-based stitching, which uses an Analytics variable (such as a prop or eVar) containing a person identifier to link devices together. Here is a complete guide to enabling it. --- Prerequisites Before enabling CDA, ensure the following are in place: 1. Existing customer eligibility \u2013 CDA is available to existing Adobe Analytics customers (not new contracts by default). 2. A cross-device report suite \u2013 You must have a report suite that collects data across devices. 3. Person identifier variable \u2013 A prop or eVar must be consistently populated with a person/user identifier (e.g., a hashed login ID) on your implementation. 4. Admin privileges \u2013 You must belong to a Product Profile Admin group or have full admin privileges in Adobe Analytics. 5. All prerequisites for your chosen stitching method must be met \u2013 Review the requirements for field-based stitching specifically. --- Steps to Enable Cross-Device Analytics Step 1 \u2013 Contact Adobe Customer Care Open a support ticket with Adobe Customer Care to have CDA provisioned on your cross-device report suite. This is a required first step \u2014 CDA cannot be self-enabled without Adobe provisioning it on the backend. Step 2 \u2013 Verify Your Implementation Ensure the Analytics variable you intend to use as the person identifier (e.g., an eVar) is: - Consistently populated when users authenticate or are identifiable - Passing a stable, unique identifier (e.g., hashed email or CRM ID) Step 3 \u2013 Configure a Virtual Report Suite Once Adobe has provisioned CDA on your report suite: 1. Navigate to Analytics Components Virtual Report Suites 2. Click Create to create a new Virtual Report Suite 3. Select the base cross-device report suite 4. Enable the Cross-Device Analytics option within the Virtual Report Suite settings 5. Configure the stitching field by selecting the prop or eVar that contains your person identifier 6. Save the\u2026"}}]}</script></div>
+  </body>
+</html>

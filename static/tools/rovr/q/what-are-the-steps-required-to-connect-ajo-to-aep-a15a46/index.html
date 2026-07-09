@@ -1,0 +1,127 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/png" href="/tools/rovr/rovrlogo.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="build-date" content="2026-06-10" />
+    
+    
+    <script src="https://assets.adobedtm.com/204118644db8/290ae1adb65a/launch-e5ec7bf1a1ef-development.min.js" async></script>
+    <script type="module" crossorigin src="/tools/rovr/assets/index-DKjegKMz.js"></script>
+    <link rel="stylesheet" crossorigin href="/tools/rovr/assets/index-C3YgbV_4.css">
+  <title>What are the steps required to connect AJO to AEP? | Rovr</title>
+<meta name="description" content="Connecting Adobe Journey Optimizer to Adobe Experience Platform Adobe Journey Optimizer is natively built on top of Adobe Experience Platform — it is not a…" />
+<link rel="canonical" href="https://thelearningproject.in/tools/rovr/q/what-are-the-steps-required-to-connect-ajo-to-aep-a15a46" />
+<meta property="og:title" content="What are the steps required to connect AJO to AEP?" />
+<meta property="og:description" content="Connecting Adobe Journey Optimizer to Adobe Experience Platform Adobe Journey Optimizer is natively built on top of Adobe Experience Platform — it is not a…" />
+<meta property="og:url" content="https://thelearningproject.in/tools/rovr/q/what-are-the-steps-required-to-connect-ajo-to-aep-a15a46" />
+<meta property="og:type" content="article" />
+<meta property="og:image" content="https://thelearningproject.in/tools/rovr/rovrlogo.png" />
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="What are the steps required to connect AJO to AEP?" />
+<meta name="twitter:description" content="Connecting Adobe Journey Optimizer to Adobe Experience Platform Adobe Journey Optimizer is natively built on top of Adobe Experience Platform — it is not a…" />
+</head>
+  <body>
+    <div id="root"><article><h1>What are the steps required to connect AJO to AEP?</h1>
+<h2>Connecting Adobe Journey Optimizer to Adobe Experience Platform</h2>
+<p>Adobe Journey Optimizer is <strong>natively built on top of Adobe Experience Platform</strong> — it is not a separate system that requires an explicit &quot;connection.&quot; AJO uses AEP&#x27;s underlying infrastructure (Profiles, Schemas, Datasets, Segments, Identity Service, and Datastreams) directly. However, there are several <strong>configuration steps</strong> required to ensure AJO can properly read from and write to AEP, and that data flows correctly between your data collection layer and both platforms.</p>
+<hr>
+<h3>Understanding the Relationship</h3>
+<p>| AEP Component | How AJO Uses It |</p>
+<p>|---|---|</p>
+<p>| <strong>XDM Schemas</strong> | Defines the structure of profile and event data used in journeys |</p>
+<p>| <strong>Datasets</strong> | Stores ingested profile and event data that AJO reads |</p>
+<p>| <strong>Real-Time Customer Profile</strong> | Powers journey personalization and eligibility |</p>
+<p>| <strong>Identity Service</strong> | Resolves customer identities across touchpoints |</p>
+<p>| <strong>Audiences / Segments</strong> | Used as journey entry conditions or action filters |</p>
+<p>| <strong>Datastreams</strong> | Routes Web SDK / Mobile SDK data to AEP and AJO |</p>
+<hr>
+<h3>Key Configuration Areas</h3>
+<h4>1. Schema and Dataset Setup in AEP</h4>
+<p>Before AJO can act on customer data, the underlying data structures must exist in AEP:</p>
+<p>1. Navigate to <strong>Data Management → Schemas</strong> in AEP</p>
+<p>2. Create or confirm existence of:</p>
+<ul>
+<li>An <strong>XDM Individual Profile</strong> schema (for profile attributes)</li>
+<li>An <strong>XDM Experience Event</strong> schema (for behavioral/event data)</li>
+</ul>
+<p>3. Enable both schemas for <strong>Real-Time Customer Profile</strong></p>
+<p>4. Create corresponding <strong>Datasets</strong> and enable them for <strong>Profile ingestion</strong></p>
+<p>5. Ingest your customer data into these datasets via batch or streaming</p>
+<hr>
+<h4>2. Identity Namespace Configuration</h4>
+<p>AJO needs to resolve and stitch customer identities correctly:</p>
+<p>1. Navigate to <strong>Customer → Identities</strong> in AEP</p>
+<p>2. Confirm the identity namespaces you will use are configured (e.g., <strong>Email</strong>, <strong>ECID</strong>, <strong>CRM ID</strong>)</p>
+<p>3. Ensure your schemas have the correct fields marked as <strong>Identity</strong> and that one is set as the <strong>Primary Identity</strong></p>
+<hr>
+<h4>3. Datastream Configuration (for Web/Mobile Data Collection)</h4>
+<p>If you are collecting data from websites or mobile apps, a Datastream connects Adobe Data Collection to AEP and AJO:</p>
+<p>1. Navigate to <strong>Data Collection → Datastreams</strong> in AEP</p>
+<p>2. Click <strong>New Datastream</strong></p>
+<p>3. Select your <strong>XDM Event Schema</strong></p>
+<p>4. Enable the following services on the datastream:</p>
+<ul>
+<li><strong>Adobe Experience Platform</strong> — to send data to AEP datasets and Profile</li>
+<li><strong>Adobe Journey Optimizer</strong> — to enable AJO to receive inbound events and deliver offer decisioning responses</li>
+</ul>
+<p>5. Save and note the <strong>Datastream ID</strong> for use in your Web SDK or Mobile SDK configuration</p>
+<hr>
+<h4>4. Web SDK / Mobile SDK Configuration</h4>
+<p>To stream real-time behavioral data from your digital properties:</p>
+<p>1. Install the <strong>Adobe Experience Platform Web SDK</strong> extension via <strong>Adobe Experience Platform Tags</strong> (Data Collection UI)</p>
+<p>2. Configure the extension with your <strong>Datastream ID</strong> from Step 3</p>
+<p>3. Implement `sendEvent` calls on key interactions (page views, form submissions, purchases)</p>
+<p>4. Ensure the event payloads conform to your XDM schemas</p>
+<hr>
+<h4>5. Journey Optimizer Channel Configuration</h4>
+<p>Within Journey Optimizer itself, configure the channels AJO will use to communicate with customers:</p>
+<p>1. Navigate to <strong>Administration → Channels</strong> in Journey Optimizer</p>
+<p>2. Configure the channels you need:</p>
+<ul>
+<li><strong>Email</strong> — set up sending domain, from address, IP pool</li>
+<li><strong>SMS</strong> — connect to an SMS provider (Sinch, Twilio, Infobip)</li>
+<li><strong>Push</strong> — connect to your mobile app credentials (APNs, FCM)</li>
+</ul>
+<p>3. Ensure each channel configuration points to the correct <strong>profile field</strong> for the delivery address (e.g., `profile.personalEmail.address`)</p>
+<hr>
+<h4>6. Event Configuration in Journey Optimizer</h4>
+<p>For event-triggered journeys, configure custom events that listen for AEP streaming events:</p>
+<p>1. Navigate to <strong>Administration → Configurations → Events</strong> in Journey Optimizer</p>
+<p>2. Create a <strong>Unitary Event</strong> linked to your XDM Experience Event schema</p>
+<p>3. Define the event condition that uniquely identifies this event type</p>
+<p>4. This event will fire automatically when matching data is streamed into AEP via your Datastream</p>
+<hr>
+<h4>7. Audience / Segment Sharing</h4>
+<p>For audience-based journeys (Read Audience journeys):</p>
+<p>1. Build audiences in <strong>AEP → Segmentation</strong></p>
+<p>2. These audiences are <strong>automatically available</strong> in Journey Optimizer under <strong>Journeys → Audiences</strong></p>
+<p>3. Use them as entry sources in <strong>Read Audience</strong> journey types or as conditions within journeys</p>
+<hr>
+<h3>Summary Flow</h3>
+<p>```</p>
+<p>Website / App</p>
+<p>↓</p>
+<p>Web SDK / Mobile SDK</p>
+<p>↓</p>
+<p>Adobe Data Collection (Tags)</p>
+<p>↓</p>
+<p>Datastream (AEP + AJO services enabled)</p>
+<p>↓</p>
+<p>AEP (Schemas → Datasets → Real-Time Profile → Audiences)</p>
+<p>↓</p>
+<p>Journey Optimizer (Events → Journeys → Channels → Delivery)</p>
+<p>```</p>
+<hr>
+<h3>Important Notes</h3>
+<ul>
+<li><strong>No separate connector or API integration</strong> is needed between AJO and AEP — they share the same underlying platform</li>
+<li><strong>Sandbox alignment</strong> is critical — ensure AJO and all AEP components are configured within the <strong>same sandbox</strong></li>
+<li><strong>Access control permissions</strong> must be configured in <strong>AEP → Administration → Permissions</strong> to ensure the correct roles have access to both AEP and AJO features</li>
+<li>Changes to schemas, datasets, or profiles in AEP are <strong>immediately reflected</strong> in Journey Optimizer</li>
+</ul>
+</article>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "What are the steps required to connect AJO to AEP?", "acceptedAnswer": {"@type": "Answer", "text": "Connecting Adobe Journey Optimizer to Adobe Experience Platform Adobe Journey Optimizer is natively built on top of Adobe Experience Platform \u2014 it is not a separate system that requires an explicit \"connection.\" AJO uses AEP's underlying infrastructure (Profiles, Schemas, Datasets, Segments, Identity Service, and Datastreams) directly. However, there are several configuration steps required to ensure AJO can properly read from and write to AEP, and that data flows correctly between your data collection layer and both platforms. --- Understanding the Relationship | AEP Component | How AJO Uses It | |---|---| | XDM Schemas | Defines the structure of profile and event data used in journeys | | Datasets | Stores ingested profile and event data that AJO reads | | Real-Time Customer Profile | Powers journey personalization and eligibility | | Identity Service | Resolves customer identities across touchpoints | | Audiences / Segments | Used as journey entry conditions or action filters | | Datastreams | Routes Web SDK / Mobile SDK data to AEP and AJO | --- Key Configuration Areas 1. Schema and Dataset Setup in AEP Before AJO can act on customer data, the underlying data structures must exist in AEP: 1. Navigate to Data Management \u2192 Schemas in AEP 2. Create or confirm existence of: - An XDM Individual Profile schema (for profile attributes) - An XDM Experience Event schema (for behavioral/event data) 3. Enable both schemas for Real-Time Customer Profile 4. Create corresponding Datasets and enable them for Profile ingestion 5. Ingest your customer data into these datasets via batch or streaming --- 2. Identity Namespace Configuration AJO needs to resolve and stitch customer identities correctly: 1. Navigate to Customer \u2192 Identities in AEP 2. Confirm the identity namespaces you will use are configured (e.g., Email, ECID, CRM ID) 3. Ensure your schemas have the correct fields marked as Identity and that one is set as the Primary Identity --- 3. Datastream Configuration (for\u2026"}}]}</script></div>
+  </body>
+</html>

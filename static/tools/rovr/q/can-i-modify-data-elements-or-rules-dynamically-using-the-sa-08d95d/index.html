@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/png" href="/tools/rovr/rovrlogo.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="build-date" content="2026-06-10" />
+    
+    
+    <script src="https://assets.adobedtm.com/204118644db8/290ae1adb65a/launch-e5ec7bf1a1ef-development.min.js" async></script>
+    <script type="module" crossorigin src="/tools/rovr/assets/index-DKjegKMz.js"></script>
+    <link rel="stylesheet" crossorigin href="/tools/rovr/assets/index-C3YgbV_4.css">
+  <title>Can I modify data elements or rules dynamically using the _satellite object, or is it read-only? | Rovr</title>
+<meta name="description" content="Great question! The short answer is: technically you can modify it, but it is not supported, not recommended, and changes are temporary and session-scoped…" />
+<link rel="canonical" href="https://thelearningproject.in/tools/rovr/q/can-i-modify-data-elements-or-rules-dynamically-using-the-sa-08d95d" />
+<meta property="og:title" content="Can I modify data elements or rules dynamically using the _satellite object, or is it read-only?" />
+<meta property="og:description" content="Great question! The short answer is: technically you can modify it, but it is not supported, not recommended, and changes are temporary and session-scoped…" />
+<meta property="og:url" content="https://thelearningproject.in/tools/rovr/q/can-i-modify-data-elements-or-rules-dynamically-using-the-sa-08d95d" />
+<meta property="og:type" content="article" />
+<meta property="og:image" content="https://thelearningproject.in/tools/rovr/rovrlogo.png" />
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="Can I modify data elements or rules dynamically using the _satellite object, or is it read-only?" />
+<meta name="twitter:description" content="Great question! The short answer is: technically you can modify it, but it is not supported, not recommended, and changes are temporary and session-scoped…" />
+</head>
+  <body>
+    <div id="root"><article><h1>Can I modify data elements or rules dynamically using the _satellite object, or is it read-only?</h1>
+<p>Great question! The short answer is: <strong>technically you can modify it, but it is not supported, not recommended, and changes are temporary and session-scoped only.</strong></p>
+<hr>
+<h3>What&#x27;s Actually Possible (Technically)</h3>
+<p>Since `_satellite._container` is just a JavaScript object in memory, the browser does not enforce true immutability on it. You <em>can</em> manipulate it:</p>
+<h4>Overriding a Data Element Value at Runtime</h4>
+<p>The `_satellite` object provides a <strong>semi-supported</strong> way to override data element values using:</p>
+<p>```javascript</p>
+<p>_satellite.setVar(&#x27;myDataElement&#x27;, &#x27;overrideValue&#x27;);</p>
+<p>```</p>
+<p>Then when any rule calls `_satellite.getVar(&#x27;myDataElement&#x27;)`, it will return your overridden value <strong>for that session only</strong>.</p>
+<p>&gt; This is actually a <strong>documented, legitimate use</strong> of the `_satellite` API — it is the intended way to set custom/JavaScript variable-type data elements dynamically.</p>
+<hr>
+<h4>Directly Mutating `_satellite._container` (Unsupported)</h4>
+<p>You could technically do things like:</p>
+<p>```javascript</p>
+<p>// Forcibly overwrite a data element definition</p>
+<p>_satellite._container.dataElements[&#x27;myDE&#x27;].settings.path = &#x27;newPath&#x27;;</p>
+<p>// Or push a fake rule into the rules array</p>
+<p>_satellite._container.rules.push({ name: &#x27;fakeRule&#x27;, ... });</p>
+<p>```</p>
+<p><strong>But this is entirely unsupported and comes with serious problems (see below).</strong></p>
+<hr>
+<h3>Why You Should NOT Directly Mutate `_satellite._container`</h3>
+<p>| Risk | Detail |</p>
+<p>|---|---|</p>
+<p>| <strong>Temporary only</strong> | All changes exist only in the current browser session&#x27;s memory. A page refresh wipes everything back to the published library state. |</p>
+<p>| <strong>No persistence</strong> | Changes never propagate back to the Tags property in Adobe Data Collection UI. |</p>
+<p>| <strong>Unpredictable behavior</strong> | Rules are compiled and evaluated in a specific internal structure. Injecting malformed or unexpected objects can cause silent failures or JavaScript errors. |</p>
+<p>| <strong>Library version dependency</strong> | Since `_satellite._container` is a private/internal API, its structure can change with any Tags runtime library update, breaking any code that depends on it. |</p>
+<p>| <strong>Security concern</strong> | If your site allows arbitrary JS execution that mutates `_satellite`, malicious actors could hijack your data collection logic (e.g., redirect beacon calls). |</p>
+<hr>
+<h3>The Right Ways to Dynamically Influence Tag Behavior</h3>
+<p>If you need dynamic behavior, Adobe Tags provides proper mechanisms:</p>
+<h4>1. Use `_satellite.setVar()` for Dynamic Values</h4>
+<p>```javascript</p>
+<p>// Set before a rule fires</p>
+<p>_satellite.setVar(&#x27;pageName&#x27;, dynamicValue);</p>
+<p>```</p>
+<h4>2. Use Custom Code Data Elements</h4>
+<p>Define a <strong>Custom Code</strong> data element in the Tags UI that reads from a JS variable your app controls:</p>
+<p>```javascript</p>
+<p>// Data element custom code</p>
+<p>return window.myApp.dynamicValue;</p>
+<p>```</p>
+<h4>3. Use Direct Call Rules</h4>
+<p>Trigger specific rules programmatically from your application code:</p>
+<p>```javascript</p>
+<p>_satellite.track(&#x27;myDirectCallEvent&#x27;, { payload: data });</p>
+<p>```</p>
+<h4>4. Use the Data Layer</h4>
+<p>Push values into a <strong>Adobe Client Data Layer (ACDL)</strong> or standard `digitalData` object, and have data elements point to those locations — giving you full dynamic control cleanly.</p>
+<hr>
+<h3>Summary</h3>
+<p>| Action | Supported? | Persistent? |</p>
+<p>|---|---|---|</p>
+<p>| `_satellite.setVar()` | ✅ Yes, documented | ❌ Session only |</p>
+<p>| `_satellite.track()` | ✅ Yes, documented | N/A |</p>
+<p>| `_satellite.getVar()` | ✅ Yes, documented | N/A |</p>
+<p>| Mutating `_satellite._container` directly | ⛔ No, unsupported | ❌ Session only |</p>
+<p>| Modifying rules/data elements permanently | ⛔ Only via Tags UI/API | ✅ Requires publish |</p>
+<p><strong>Bottom line:</strong> Use `_satellite.setVar()` and `_satellite.track()` for legitimate runtime dynamism. Leave `_satellite._container` alone outside of read-only debugging scenarios.</p>
+</article>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Can I modify data elements or rules dynamically using the _satellite object, or is it read-only?", "acceptedAnswer": {"@type": "Answer", "text": "Great question! The short answer is: technically you can modify it, but it is not supported, not recommended, and changes are temporary and session-scoped only. --- What's Actually Possible (Technically) Since satellite.container is just a JavaScript object in memory, the browser does not enforce true immutability on it. You can manipulate it: Overriding a Data Element Value at Runtime The satellite object provides a semi-supported way to override data element values using: javascript satellite.setVar('myDataElement', 'overrideValue'); Then when any rule calls satellite.getVar('myDataElement'), it will return your overridden value for that session only. This is actually a documented, legitimate use of the satellite API \u2014 it is the intended way to set custom/JavaScript variable-type data elements dynamically. --- Directly Mutating satellite.container (Unsupported) You could technically do things like: javascript // Forcibly overwrite a data element definition satellite.container.dataElements'myDE'.settings.path = 'newPath'; // Or push a fake rule into the rules array satellite.container.rules.push({ name: 'fakeRule', ... }); But this is entirely unsupported and comes with serious problems (see below). --- Why You Should NOT Directly Mutate satellite.container | Risk | Detail | |---|---| | Temporary only | All changes exist only in the current browser session's memory. A page refresh wipes everything back to the published library state. | | No persistence | Changes never propagate back to the Tags property in Adobe Data Collection UI. | | Unpredictable behavior | Rules are compiled and evaluated in a specific internal structure. Injecting malformed or unexpected objects can cause silent failures or JavaScript errors. | | Library version dependency | Since satellite.container is a private/internal API, its structure can change with any Tags runtime library update, breaking any code that depends on it. | | Security concern | If your site allows arbitrary JS execution\u2026"}}]}</script></div>
+  </body>
+</html>
