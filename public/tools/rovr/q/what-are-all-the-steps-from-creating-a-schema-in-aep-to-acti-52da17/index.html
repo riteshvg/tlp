@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/png" href="/tools/rovr/rovrlogo.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="build-date" content="2026-06-10" />
+    
+    
+    <script src="https://assets.adobedtm.com/204118644db8/290ae1adb65a/launch-e5ec7bf1a1ef-development.min.js" async></script>
+    <script type="module" crossorigin src="/tools/rovr/assets/index-DKjegKMz.js"></script>
+    <link rel="stylesheet" crossorigin href="/tools/rovr/assets/index-C3YgbV_4.css">
+  <title>What are all the steps from creating a schema in AEP to activating a dataset to a destination? | Rovr</title>
+<meta name="description" content="Creating a Schema and Activating a Dataset to a Destination in AEP Here&#x27;s the complete workflow from schema creation through dataset activation: 1. Create a…" />
+<link rel="canonical" href="https://thelearningproject.in/tools/rovr/q/what-are-all-the-steps-from-creating-a-schema-in-aep-to-acti-52da17" />
+<meta property="og:title" content="What are all the steps from creating a schema in AEP to activating a dataset to a destination?" />
+<meta property="og:description" content="Creating a Schema and Activating a Dataset to a Destination in AEP Here&#x27;s the complete workflow from schema creation through dataset activation: 1. Create a…" />
+<meta property="og:url" content="https://thelearningproject.in/tools/rovr/q/what-are-all-the-steps-from-creating-a-schema-in-aep-to-acti-52da17" />
+<meta property="og:type" content="article" />
+<meta property="og:image" content="https://thelearningproject.in/tools/rovr/rovrlogo.png" />
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="What are all the steps from creating a schema in AEP to activating a dataset to a destination?" />
+<meta name="twitter:description" content="Creating a Schema and Activating a Dataset to a Destination in AEP Here&#x27;s the complete workflow from schema creation through dataset activation: 1. Create a…" />
+</head>
+  <body>
+    <div id="root"><article><h1>What are all the steps from creating a schema in AEP to activating a dataset to a destination?</h1>
+<h2>Creating a Schema and Activating a Dataset to a Destination in AEP</h2>
+<p>Here&#x27;s the complete workflow from schema creation through dataset activation:</p>
+<h3>1. Create a Schema</h3>
+<h4>Open the Schemas workspace</h4>
+<p>In the Adobe Experience Platform UI, navigate to the <strong>[!UICONTROL Schemas]</strong> workspace.</p>
+<h4>Select schema type</h4>
+<p>Click <strong>[!UICONTROL Create schema]</strong> in the top-right corner. You&#x27;ll be presented with options to create:</p>
+<ul>
+<li><strong>Standard</strong> schemas</li>
+<li><strong>Relational</strong> schemas</li>
+</ul>
+<p>Choose the appropriate type based on your data structure and use case.</p>
+<h4>Define your schema</h4>
+<ul>
+<li>Set up your schema class (the foundational structure)</li>
+<li>Add schema field groups that contain reusable field definitions</li>
+<li>Add data types for specific field configurations</li>
+<li>Customize individual fields as needed</li>
+</ul>
+<p>&gt;[!NOTE]</p>
+<p>&gt;If you&#x27;re ingesting CSV data, you can use AI-generated recommendations to map that data to an XDM schema without manually creating the schema yourself.</p>
+<h3>2. Create a Dataset</h3>
+<p>Once your schema is defined, create a dataset based on that schema:</p>
+<ul>
+<li>The dataset will be stored in the Data Lake</li>
+<li>It acts as a storage and management construct for your data</li>
+<li>Datasets contain the schema (columns) and data (rows), plus metadata</li>
+</ul>
+<h3>3. Ingest Data into the Dataset</h3>
+<ul>
+<li>Move data from source connectors into your dataset</li>
+<li>Data is persisted within the Data Lake as part of the dataset</li>
+</ul>
+<h3>4. Data is Processed by Platform Services</h3>
+<p>The ingested data flows through:</p>
+<ul>
+<li><strong>[!DNL Identity Service]</strong>: Manages identity resolution and identity graphs</li>
+<li><strong>[!DNL Real-Time Customer Profile]</strong>: Creates unified, real-time customer profiles from aggregated data across sources</li>
+</ul>
+<h3>5. Activate Data to Destinations</h3>
+<h4>Understand dataflows</h4>
+<p>Dataflows are representations of data jobs that move data across Experience Platform. They connect your datasets to destination platforms for activation.</p>
+<h4>Choose a destination category</h4>
+<p>Experience Platform supports activation to multiple destination categories:</p>
+<ul>
+<li><strong>Adobe destinations</strong></li>
+<li><strong>Advertising destinations</strong></li>
+<li><strong>Analytics destinations</strong></li>
+<li><strong>Cloud storage destinations</strong></li>
+<li><strong>Data Management Platform (DMP) destinations</strong></li>
+<li><strong>Email marketing destinations</strong></li>
+<li><strong>Mobile engagement destinations</strong></li>
+<li><strong>Personalization destinations</strong></li>
+<li><strong>Social destinations</strong></li>
+<li><strong>Streaming destinations</strong> (HTTP)</li>
+<li><strong>Survey destinations</strong></li>
+<li><strong>Voice of the Customer destinations</strong></li>
+</ul>
+<h4>Configure the destination connection</h4>
+<ul>
+<li>Set up authentication and connection details for your chosen destination</li>
+<li>Map dataset fields to destination fields</li>
+<li>Define activation schedules and parameters</li>
+</ul>
+<h4>Activate the dataset</h4>
+<ul>
+<li>Select the dataset to export</li>
+<li>Configure which audiences or segments to activate (if applicable)</li>
+<li>Specify scheduling and frequency</li>
+<li>Review and confirm the activation</li>
+</ul>
+<h3>6. Monitor the Dataflow</h3>
+<p>Once activated, monitor your dataflow:</p>
+<ul>
+<li>Track data movement from your dataset to the destination</li>
+<li>Verify successful exports</li>
+<li>Monitor for any errors or issues in the activation process</li>
+<li>Use the Destinations UI to view dataflow status and metrics</li>
+</ul>
+<p><img src="https://raw.githubusercontent.com/AdobeDocs/experience-platform.en/main/help/destinations/assets/api/export-datasets/export-datasets-api-workflow-get-started.png" alt="Overview - the steps to create a destination and export datasets"></p>
+<h3>Required Permissions</h3>
+<p>To complete this workflow, ensure you have:</p>
+<ul>
+<li><strong>[!UICONTROL View Destinations]</strong></li>
+<li><strong>[!UICONTROL View Datasets]</strong></li>
+<li><strong>[!UICONTROL Manage and Activate Dataset Destinations]</strong></li>
+</ul>
+<p>These access control permissions may need to be granted by your product administrator.</p>
+<h3>Key Prerequisites</h3>
+<ul>
+<li>Working understanding of Experience Data Model (XDM)</li>
+<li>Knowledge of schema composition basics</li>
+<li>Understanding of your data structure and use case</li>
+<li>Access to appropriate sandboxes for development and testing</li>
+</ul>
+<p>This end-to-end workflow enables you to organize your data with a schema, capture it in a dataset, and then seamlessly activate it to external partners for cross-channel marketing campaigns, email campaigns, targeted advertising, and other use cases.</p>
+</article>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "What are all the steps from creating a schema in AEP to activating a dataset to a destination?", "acceptedAnswer": {"@type": "Answer", "text": "Creating a Schema and Activating a Dataset to a Destination in AEP Here's the complete workflow from schema creation through dataset activation: 1. Create a Schema Open the Schemas workspace In the Adobe Experience Platform UI, navigate to the !UICONTROL Schemas workspace. Select schema type Click !UICONTROL Create schema in the top-right corner. You'll be presented with options to create: - Standard schemas - Relational schemas Choose the appropriate type based on your data structure and use case. Define your schema - Set up your schema class (the foundational structure) - Add schema field groups that contain reusable field definitions - Add data types for specific field configurations - Customize individual fields as needed !NOTE If you're ingesting CSV data, you can use AI-generated recommendations to map that data to an XDM schema without manually creating the schema yourself. 2. Create a Dataset Once your schema is defined, create a dataset based on that schema: - The dataset will be stored in the Data Lake - It acts as a storage and management construct for your data - Datasets contain the schema (columns) and data (rows), plus metadata 3. Ingest Data into the Dataset - Move data from source connectors into your dataset - Data is persisted within the Data Lake as part of the dataset 4. Data is Processed by Platform Services The ingested data flows through: - !DNL Identity Service: Manages identity resolution and identity graphs - !DNL Real-Time Customer Profile: Creates unified, real-time customer profiles from aggregated data across sources 5. Activate Data to Destinations Understand dataflows Dataflows are representations of data jobs that move data across Experience Platform. They connect your datasets to destination platforms for activation. Choose a destination category Experience Platform supports activation to multiple destination categories: - Adobe destinations - Advertising destinations - Analytics destinations - Cloud storage destinations - Data\u2026"}}]}</script></div>
+  </body>
+</html>
