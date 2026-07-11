@@ -1,0 +1,384 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/png" href="/tools/rovr/rovrlogo.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="build-date" content="2026-06-10" />
+    
+    
+    <script src="https://assets.adobedtm.com/204118644db8/290ae1adb65a/launch-e5ec7bf1a1ef-development.min.js" async></script>
+    <script type="module" crossorigin src="/tools/rovr/assets/index-6PtPUQd3.js"></script>
+    <link rel="stylesheet" crossorigin href="/tools/rovr/assets/index-C3YgbV_4.css">
+  <title>Module 16: Adobe Tags, Web SDK, Data Streams, Edge Network &amp; alloy.js
+Q1. What is Adobe Experience Platform Tags (formerly Launch)? | Rovr</title>
+<meta name="description" content="What is Adobe Experience Platform Tags (formerly Launch)? Video Walkthroughs ▶ Watch: Adobe Experience Platform Tags…" />
+<link rel="canonical" href="https://thelearningproject.in/tools/rovr/q/module-16-adobe-tags-web-sdk-data-streams-edge-network-alloy-85f534" />
+<meta property="og:title" content="Module 16: Adobe Tags, Web SDK, Data Streams, Edge Network &amp; alloy.js
+Q1. What is Adobe Experience Platform Tags (formerly Launch)?" />
+<meta property="og:description" content="What is Adobe Experience Platform Tags (formerly Launch)? Video Walkthroughs ▶ Watch: Adobe Experience Platform Tags…" />
+<meta property="og:url" content="https://thelearningproject.in/tools/rovr/q/module-16-adobe-tags-web-sdk-data-streams-edge-network-alloy-85f534" />
+<meta property="og:type" content="article" />
+<meta property="og:image" content="https://thelearningproject.in/tools/rovr/rovrlogo.png" />
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="Module 16: Adobe Tags, Web SDK, Data Streams, Edge Network &amp; alloy.js
+Q1. What is Adobe Experience Platform Tags (formerly Launch)?" />
+<meta name="twitter:description" content="What is Adobe Experience Platform Tags (formerly Launch)? Video Walkthroughs ▶ Watch: Adobe Experience Platform Tags…" />
+</head>
+  <body>
+    <div id="root"><article><h1>Module 16: Adobe Tags, Web SDK, Data Streams, Edge Network &amp; alloy.js
+Q1. What is Adobe Experience Platform Tags (formerly Launch)?</h1>
+<h2>What is Adobe Experience Platform Tags (formerly Launch)?</h2>
+<h3>Video Walkthroughs</h3>
+<p><a href="https://video.tv.adobe.com/v/3420226?quality=12&amp;learn=on">▶ Watch: Adobe Experience Platform Tags Overview</a></p>
+<p>This video provides a comprehensive overview of Adobe Experience Platform Tags and how it simplifies data collection and marketing technology deployment.</p>
+<p><a href="https://experienceleague.adobe.com/en/playlists/experience-platform-get-started-with-tags">▶ Watch: Get Started with Adobe Experience Platform Tags</a></p>
+<p>This playlist walks through the complete process of creating and deploying Adobe Experience Platform Tags.</p>
+<hr>
+<h3>Overview</h3>
+<p><strong>Adobe Experience Platform Tags</strong> (formerly known as Adobe Launch, and before that Adobe Dynamic Tag Manager) is a <strong>next-generation tag management system</strong> built natively into Adobe Experience Platform. It allows organizations to <strong>manage and deploy marketing, analytics, and personalization technologies</strong> on their websites and mobile apps — all without requiring developers to manually update code for every change.</p>
+<hr>
+<h3>Key Definition</h3>
+<p>&gt; Adobe Experience Platform Tags is a <strong>unified data collection platform</strong> that enables you to deploy, manage, and govern all your marketing and analytics tags from a single interface — reducing reliance on development teams and accelerating time to value.</p>
+<hr>
+<h3>What Problem Does Tags Solve?</h3>
+<h4>Before Tags (Traditional Tag Management):</h4>
+<p>```</p>
+<p>Marketing Team needs new tracking pixel</p>
+<p>↓</p>
+<p>Submit request to Development Team</p>
+<p>↓</p>
+<p>Developer manually adds code to website</p>
+<p>↓</p>
+<p>QA Testing required</p>
+<p>↓</p>
+<p>Deployment cycle (days to weeks)</p>
+<p>↓</p>
+<p>Goes live (finally!)</p>
+<p>PROBLEM: Slow, costly, error-prone, requires constant developer involvement</p>
+<p>```</p>
+<h4>After Tags (Modern Tag Management):</h4>
+<p>```</p>
+<p>Marketing Team needs new tracking pixel</p>
+<p>↓</p>
+<p>Log into Tags UI</p>
+<p>↓</p>
+<p>Add extension or create rule</p>
+<p>↓</p>
+<p>Test in Development environment</p>
+<p>↓</p>
+<p>Publish to Production (minutes)</p>
+<p>SOLUTION: Fast, self-service, governed, no developer required for most changes</p>
+<p>```</p>
+<hr>
+<h3>Core Architecture of Tags</h3>
+<p>Tags is built around <strong>five core concepts</strong>:</p>
+<h4>1. Properties</h4>
+<p>A <strong>Property</strong> is the container that holds all your Tags configuration for a specific digital property.</p>
+<p>| Property Type | Use Case | Example |</p>
+<p>|---|---|---|</p>
+<p>| <strong>Web Property</strong> | Websites and SPAs | www.retailstore.com |</p>
+<p>| <strong>Mobile Property</strong> | iOS and Android apps | Retail Store iOS App |</p>
+<p>| <strong>Edge Property</strong> | Server-side collection | API-based data collection |</p>
+<p><strong>Creating a Web Property:</strong></p>
+<p>1. Log in to <strong>experience.adobe.com</strong></p>
+<p>2. Navigate to <strong>Data Collection</strong> → <strong>Tags</strong></p>
+<p>3. Click <strong>New Property</strong></p>
+<p>4. Enter <strong>Name</strong> (e.g., &quot;Retail Store - Production&quot;)</p>
+<p>5. Select <strong>Web</strong> as the platform</p>
+<p>6. Enter your <strong>domain(s)</strong></p>
+<p>7. Click <strong>Save</strong></p>
+<h4>2. Extensions</h4>
+<p><strong>Extensions</strong> are pre-built integrations that add functionality to your Tags property. They are the equivalent of &quot;apps&quot; for your tag management system.</p>
+<p>| Extension Category | Examples |</p>
+<p>|---|---|</p>
+<p>| <strong>Adobe Native</strong> | Adobe Experience Platform Web SDK, Adobe Analytics, Adobe Target, Adobe Audience Manager |</p>
+<p>| <strong>Identity</strong> | Experience Cloud ID Service, Customer Privacy |</p>
+<p>| <strong>Marketing</strong> | Google Analytics, Facebook Pixel, LinkedIn Insight Tag |</p>
+<p>| <strong>Utility</strong> | Core Extension, Adobe Client Data Layer, Common Analytics Plugins |</p>
+<p><strong>Key Extensions for AEP Implementation:</strong></p>
+<ul>
+<li><strong>Adobe Experience Platform Web SDK</strong> – Primary extension for sending data to Edge Network</li>
+<li><strong>Adobe Client Data Layer</strong> – Manages a standardized data layer on your website</li>
+<li><strong>Core</strong> – Provides fundamental event types, conditions, and actions</li>
+<li><strong>Adobe Experience Cloud ID Service</strong> – Legacy identity management (replaced by Web SDK)</li>
+</ul>
+<h4>3. Data Elements</h4>
+<p><strong>Data Elements</strong> are variables that capture and store values from your website&#x27;s data layer, cookies, JavaScript objects, or other sources.</p>
+<p>```</p>
+<p>Data Element Examples:</p>
+<p>─────────────────────</p>
+<p>Name: &quot;Page Name&quot;</p>
+<p>Type: JavaScript Variable</p>
+<p>Variable: digitalData.page.pageInfo.pageName</p>
+<p>Value: &quot;Homepage&quot; (captured at runtime)</p>
+<p>Name: &quot;Product SKU&quot;</p>
+<p>Type: Data Layer Variable</p>
+<p>Layer Variable: ecommerce.detail.products[0].id</p>
+<p>Value: &quot;SHOE-RUN-001&quot; (captured when product viewed)</p>
+<p>Name: &quot;Customer Email&quot;</p>
+<p>Type: Cookie</p>
+<p>Cookie Name: &quot;user_email&quot;</p>
+<p>Value: &quot;customer@email.com&quot; (if logged in)</p>
+<p>Name: &quot;ECID&quot;</p>
+<p>Type: AEP Web SDK (Identity)</p>
+<p>Value: &quot;98765432109876543210&quot; (auto-managed by Web SDK)</p>
+<p>```</p>
+<p><strong>Creating a Data Element:</strong></p>
+<p>1. In your Tags property, navigate to <strong>Data Elements</strong></p>
+<p>2. Click <strong>Add Data Element</strong></p>
+<p>3. Enter a <strong>Name</strong> (e.g., &quot;Product Name&quot;)</p>
+<p>4. Select the <strong>Extension</strong> (e.g., Core)</p>
+<p>5. Select the <strong>Data Element Type</strong> (e.g., JavaScript Variable)</p>
+<p>6. Configure the <strong>variable path</strong> (e.g., `digitalData.product.name`)</p>
+<p>7. Set <strong>storage duration</strong> and <strong>default value</strong></p>
+<p>8. Click <strong>Save</strong></p>
+<h4>4. Rules</h4>
+<p><strong>Rules</strong> define the logic for <strong>when</strong>, <strong>what conditions must be met</strong>, and <strong>what actions to take</strong> for tag firing.</p>
+<p>Rules have three components:</p>
+<p>```</p>
+<p>RULE STRUCTURE:</p>
+<p>───────────────</p>
+<p>Events (WHEN):</p>
+<ul>
+<li>Page Loaded</li>
+<li>Button Clicked</li>
+<li>Form Submitted</li>
+<li>Custom Event Fired</li>
+<li>DOM Ready</li>
+</ul>
+<p>Conditions (IF):</p>
+<ul>
+<li>Page URL contains &quot;/products&quot;</li>
+<li>Data Element equals &quot;Gold Member&quot;</li>
+<li>Cookie exists &quot;user_authenticated&quot;</li>
+<li>Browser is Chrome/Firefox/Safari</li>
+</ul>
+<p>Actions (THEN):</p>
+<ul>
+<li>Send Event (Web SDK)</li>
+<li>Set Variables (Analytics)</li>
+<li>Fire Beacon (Analytics)</li>
+<li>Send Beacon (Analytics)</li>
+<li>Custom Code</li>
+</ul>
+<p>```</p>
+<p><strong>Example Rule: Track Product Page Views</strong></p>
+<p>```</p>
+<p>Rule Name: &quot;Product Page View&quot;</p>
+<p>EVENT:</p>
+<p>Type: Page Loaded (DOM Ready)</p>
+<p>CONDITION:</p>
+<p>Type: Value Comparison</p>
+<p>Left: %Page Type% (Data Element)</p>
+<p>Operator: Equals</p>
+<p>Right: &quot;product-detail&quot;</p>
+<p>ACTION 1: Adobe Client Data Layer - Push Event</p>
+<p>Event: {</p>
+<p>&quot;event&quot;: &quot;product-view&quot;,</p>
+<p>&quot;productInfo&quot;: {</p>
+<p>&quot;sku&quot;: &quot;%Product SKU%&quot;,</p>
+<p>&quot;name&quot;: &quot;%Product Name%&quot;,</p>
+<p>&quot;price&quot;: &quot;%Product Price%&quot;</p>
+<p>}</p>
+<p>}</p>
+<p>ACTION 2: Adobe Experience Platform Web SDK - Send Event</p>
+<p>Event Type: commerce.productViews</p>
+<p>XDM Data: %XDM Product View Object%</p>
+<p>```</p>
+<h4>5. Environments &amp; Libraries</h4>
+<p>Tags uses <strong>three environments</strong> to manage the deployment lifecycle:</p>
+<p>| Environment | Purpose | Who Uses It |</p>
+<p>|---|---|---|</p>
+<p>| <strong>Development</strong> | Build and test new changes | Developers, QA |</p>
+<p>| <strong>Staging</strong> | Pre-production validation | QA, Stakeholders |</p>
+<p>| <strong>Production</strong> | Live customer-facing site | End customers |</p>
+<p><strong>A Library</strong> is a collection of rules, data elements, and extensions that gets built and deployed to an environment.</p>
+<p><strong>Library Publishing Workflow:</strong></p>
+<p>```</p>
+<p>1. Make changes (add rules, data elements, extensions)</p>
+<p>↓</p>
+<p>2. Save changes to Development library</p>
+<p>↓</p>
+<p>3. Build Development library</p>
+<p>↓</p>
+<p>4. Test in Development environment</p>
+<p>↓</p>
+<p>5. Submit library for Staging</p>
+<p>↓</p>
+<p>6. Test in Staging environment</p>
+<p>↓</p>
+<p>7. Approve and publish to Production</p>
+<p>↓</p>
+<p>8. Production library goes live</p>
+<p>```</p>
+<hr>
+<h3>How Tags Works End-to-End</h3>
+<p>```</p>
+<p>┌─────────────────────────────────────────────────────────────┐</p>
+<p>│                    TAGS WORKFLOW                              │</p>
+<p>│                                                             │</p>
+<p>│  1. CONFIGURE                                               │</p>
+<p>│     • Install extensions (Web SDK, Analytics, Target)       │</p>
+<p>│     • Create data elements (page name, product ID, etc.)    │</p>
+<p>│     • Build rules (when/if/then logic)                      │</p>
+<p>│                                                             │</p>
+<p>│  2. BUILD                                                   │</p>
+<p>│     • Compile rules, data elements, extensions              │</p>
+<p>│     • Generate JavaScript library file                      │</p>
+<p>│     • Deploy to chosen environment                          │</p>
+<p>│                                                             │</p>
+<p>│  3. DEPLOY                                                  │</p>
+<p>│     • Embed Tags script on website:                         │</p>
+<p>│       &lt;script src=&quot;//assets.adobedtm.com/abc123.js&quot;&gt;        │</p>
+<p>│     • Tags library loads on page                            │</p>
+<p>│                                                             │</p>
+<p>│  4. EXECUTE                                                 │</p>
+<p>│     • Rules evaluate on every page load/interaction         │</p>
+<p>│     • Data elements capture values dynamically              │</p>
+<p>│     • Actions fire (send events, set variables, etc.)       │</p>
+<p>│                                                             │</p>
+<p>│  5. COLLECT                                                 │</p>
+<p>│     • Web SDK sends XDM events to Edge Network              │</p>
+<p>│     • Analytics sends beacons to Analytics servers          │</p>
+<p>│     • Target requests personalization decisions             │</p>
+<p>└─────────────────────────────────────────────────────────────┘</p>
+<p>```</p>
+<hr>
+<h3>Tags Embed Code</h3>
+<p>Once a Tags property is created and published, it&#x27;s deployed to your website via a <strong>single embed code snippet</strong>:</p>
+<p>```html</p>
+<p>&lt;!-- Adobe Experience Platform Tags - Head Embed Code --&gt;</p>
+<p>&lt;!-- Development Environment --&gt;</p>
+<p>&lt;script src=&quot;//assets.adobedtm.com/launch-dev-abc123.min.js&quot; async&gt;&lt;/script&gt;</p>
+<p>&lt;!-- Staging Environment --&gt;</p>
+<p>&lt;script src=&quot;//assets.adobedtm.com/launch-staging-abc123.min.js&quot; async&gt;&lt;/script&gt;</p>
+<p>&lt;!-- Production Environment --&gt;</p>
+<p>&lt;script src=&quot;//assets.adobedtm.com/launch-abc123.min.js&quot; async&gt;&lt;/script&gt;</p>
+<p>```</p>
+<p><strong>This single script tag:</strong></p>
+<ul>
+<li>Loads the entire Tags library</li>
+<li>Initializes all configured extensions</li>
+<li>Evaluates rules on page load and user interactions</li>
+<li>Fires appropriate actions based on rule conditions</li>
+</ul>
+<hr>
+<h3>Tags vs. Legacy Solutions</h3>
+<p>| Feature | Adobe Tags | Legacy DTM | Manual Tag Implementation |</p>
+<p>|---|---|---|---|</p>
+<p>| <strong>Self-service</strong> | ✅ Full | ⚠️ Partial | ❌ No |</p>
+<p>| <strong>Developer required</strong> | ❌ Minimal | ⚠️ Sometimes | ✅ Always |</p>
+<p>| <strong>Version control</strong> | ✅ Built-in | ⚠️ Limited | ❌ Manual |</p>
+<p>| <strong>Multi-environment</strong> | ✅ Dev/Stage/Prod | ⚠️ Limited | ❌ Manual |</p>
+<p>| <strong>API access</strong> | ✅ Full REST API | ❌ Limited | ❌ No |</p>
+<p>| <strong>Extension ecosystem</strong> | ✅ 200+ extensions | ⚠️ Limited | ❌ Custom only |</p>
+<p>| <strong>Mobile support</strong> | ✅ Native | ❌ No | ❌ Manual |</p>
+<p>| <strong>AEP integration</strong> | ✅ Native | ❌ No | ❌ Custom |</p>
+<hr>
+<h3>Key Capabilities</h3>
+<h4>1. Self-Service Tag Management</h4>
+<ul>
+<li>Add, modify, and remove tags <strong>without developer involvement</strong></li>
+<li>Test changes safely in Development before going live</li>
+<li>Roll back changes instantly if issues arise</li>
+</ul>
+<h4>2. Governed Publishing Workflow</h4>
+<ul>
+<li><strong>Role-based permissions</strong> – Control who can create, approve, and publish</li>
+<li><strong>Approval workflows</strong> – Require sign-off before production deployment</li>
+<li><strong>Audit logs</strong> – Track every change made by every user</li>
+</ul>
+<h4>3. Extension Ecosystem</h4>
+<ul>
+<li><strong>200+ pre-built extensions</strong> in the Adobe Exchange marketplace</li>
+<li><strong>Custom extensions</strong> – Build your own extensions for proprietary systems</li>
+<li><strong>Automatic updates</strong> – Extension vendors can push updates to the marketplace</li>
+</ul>
+<h4>4. Advanced Debugging</h4>
+<ul>
+<li><strong>Tags Debugger</strong> – Chrome extension for real-time rule monitoring</li>
+<li><strong>Assurance integration</strong> – Deep debugging for mobile implementations</li>
+<li><strong>Test mode</strong> – Validate rules before publishing to production</li>
+</ul>
+<h4>5. API-First Architecture</h4>
+<ul>
+<li><strong>Full REST API</strong> – Automate Tags operations programmatically</li>
+<li><strong>CI/CD integration</strong> – Integrate Tags publishing into your deployment pipeline</li>
+<li><strong>Bulk operations</strong> – Manage multiple properties at scale</li>
+</ul>
+<hr>
+<h3>Tags in the AEP Ecosystem</h3>
+<p>```</p>
+<p>Adobe Experience Platform Tags</p>
+<p>↓</p>
+<p>Deploys Web SDK (alloy.js)</p>
+<p>↓</p>
+<p>Web SDK sends XDM events</p>
+<p>↓</p>
+<p>Edge Network receives events</p>
+<p>↓</p>
+<p>Datastream routes to AEP</p>
+<p>↓</p>
+<p>AEP processes events:</p>
+<p>• Data Lake storage</p>
+<p>• Identity resolution</p>
+<p>• Profile update</p>
+<p>• Segment evaluation</p>
+<p>↓</p>
+<p>AJO triggers journeys</p>
+<p>Target delivers personalization</p>
+<p>Analytics reports behavior</p>
+<p>```</p>
+<p>Tags sits at the <strong>very beginning</strong> of the AEP data collection pipeline — it is the mechanism that deploys the Web SDK and ensures data flows correctly from the browser to all downstream Adobe services.</p>
+<hr>
+<h3>Required Permissions for Tags</h3>
+<p>To work with Tags, users need the following permissions:</p>
+<p>| Permission | Description |</p>
+<p>|---|---|</p>
+<p>| <strong>Manage Properties</strong> | Create and configure tag properties |</p>
+<p>| <strong>Develop</strong> | Create and edit rules, data elements, extensions |</p>
+<p>| <strong>Manage Environments</strong> | Create and manage deployment environments |</p>
+<p>| <strong>Publish</strong> | Deploy libraries to production |</p>
+<p>| <strong>Manage Extensions</strong> | Install and configure extensions |</p>
+<hr>
+<h3>Prerequisites for Getting Started</h3>
+<p>Before setting up Adobe Experience Platform Tags:</p>
+<ul>
+<li>Access to <strong>experience.adobe.com</strong> with Adobe ID credentials</li>
+<li><strong>Property rights:</strong> Develop, Manage Extensions</li>
+<li><strong>AEP permissions:</strong> Data Modeling, Identities</li>
+<li>An <strong>XDM schema</strong> created in AEP (for Web SDK implementation)</li>
+<li>A <strong>datastream</strong> configured in AEP (to route data to Adobe services)</li>
+</ul>
+<hr>
+<h3>Getting Started: Quick Steps</h3>
+<p>1. <strong>Log in</strong> to experience.adobe.com</p>
+<p>2. Navigate to <strong>Data Collection</strong> → <strong>Tags</strong></p>
+<p>3. Click <strong>New Property</strong> → Enter name, select Web platform</p>
+<p>4. <strong>Install extensions:</strong></p>
+<ul>
+<li>Adobe Experience Platform Web SDK</li>
+<li>Adobe Client Data Layer</li>
+<li>Core (auto-installed)</li>
+</ul>
+<p>5. <strong>Configure Web SDK</strong> extension with your datastream ID</p>
+<p>6. <strong>Create data elements</strong> for your data layer variables</p>
+<p>7. <strong>Create rules</strong> for page views, interactions, and events</p>
+<p>8. <strong>Build and test</strong> in Development environment</p>
+<p>9. <strong>Publish</strong> to Staging then Production</p>
+<hr>
+<h3>Summary</h3>
+<p>| Aspect | Details |</p>
+<p>|---|---|</p>
+<p>| <strong>What it is</strong> | Tag management system built into AEP |</p>
+<p>| <strong>Primary purpose</strong> | Deploy and manage marketing/analytics tags without developer involvement |</p>
+<p>| <strong>Core components</strong> | Properties, Extensions, Data Elements, Rules, Environments |</p>
+<p>| <strong>Key benefit</strong> | Self-service, governed, fast tag deployment |</p>
+<p>| <strong>AEP role</strong> | Primary mechanism for deploying Web SDK and collecting data |</p>
+<p>| <strong>Replaces</strong> | Adobe DTM, manual tag implementation |</p>
+<p>| <strong>Supports</strong> | Web, Mobile, and Edge (server-side) properties |</p>
+</article>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Module 16: Adobe Tags, Web SDK, Data Streams, Edge Network & alloy.js\nQ1. What is Adobe Experience Platform Tags (formerly Launch)?", "acceptedAnswer": {"@type": "Answer", "text": "What is Adobe Experience Platform Tags (formerly Launch)? Video Walkthroughs \u25b6 Watch: Adobe Experience Platform Tags Overview(https://video.tv.adobe.com/v/3420226?quality=12&learn=on) This video provides a comprehensive overview of Adobe Experience Platform Tags and how it simplifies data collection and marketing technology deployment. \u25b6 Watch: Get Started with Adobe Experience Platform Tags(https://experienceleague.adobe.com/en/playlists/experience-platform-get-started-with-tags) This playlist walks through the complete process of creating and deploying Adobe Experience Platform Tags. --- Overview Adobe Experience Platform Tags (formerly known as Adobe Launch, and before that Adobe Dynamic Tag Manager) is a next-generation tag management system built natively into Adobe Experience Platform. It allows organizations to manage and deploy marketing, analytics, and personalization technologies on their websites and mobile apps \u2014 all without requiring developers to manually update code for every change. --- Key Definition Adobe Experience Platform Tags is a unified data collection platform that enables you to deploy, manage, and govern all your marketing and analytics tags from a single interface \u2014 reducing reliance on development teams and accelerating time to value. --- What Problem Does Tags Solve? Before Tags (Traditional Tag Management): Marketing Team needs new tracking pixel \u2193 Submit request to Development Team \u2193 Developer manually adds code to website \u2193 QA Testing required \u2193 Deployment cycle (days to weeks) \u2193 Goes live (finally!) PROBLEM: Slow, costly, error-prone, requires constant developer involvement After Tags (Modern Tag Management): Marketing Team needs new tracking pixel \u2193 Log into Tags UI \u2193 Add extension or create rule \u2193 Test in Development environment \u2193 Publish to Production (minutes) SOLUTION: Fast, self-service, governed, no developer required for most changes --- Core Architecture of Tags Tags is built around five core concepts: 1. Properties A\u2026"}}]}</script></div>
+  </body>
+</html>

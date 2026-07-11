@@ -1,0 +1,192 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/png" href="/tools/rovr/rovrlogo.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="build-date" content="2026-06-10" />
+    
+    
+    <script src="https://assets.adobedtm.com/204118644db8/290ae1adb65a/launch-e5ec7bf1a1ef-development.min.js" async></script>
+    <script type="module" crossorigin src="/tools/rovr/assets/index-6PtPUQd3.js"></script>
+    <link rel="stylesheet" crossorigin href="/tools/rovr/assets/index-C3YgbV_4.css">
+  <title>96. What causes event deduplication? expain with video walkthrough | Rovr</title>
+<meta name="description" content="What Causes Event Duplication? Video Walkthroughs ▶ Watch: Data Deduplication in Query Service(https://video.tv.adobe.com/v/3410710?quality=12&amp;learn=on) This…" />
+<link rel="canonical" href="https://thelearningproject.in/tools/rovr/q/96-what-causes-event-deduplication-expain-with-video-walkthr-1b64ee" />
+<meta property="og:title" content="96. What causes event deduplication? expain with video walkthrough" />
+<meta property="og:description" content="What Causes Event Duplication? Video Walkthroughs ▶ Watch: Data Deduplication in Query Service(https://video.tv.adobe.com/v/3410710?quality=12&amp;learn=on) This…" />
+<meta property="og:url" content="https://thelearningproject.in/tools/rovr/q/96-what-causes-event-deduplication-expain-with-video-walkthr-1b64ee" />
+<meta property="og:type" content="article" />
+<meta property="og:image" content="https://thelearningproject.in/tools/rovr/rovrlogo.png" />
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="96. What causes event deduplication? expain with video walkthrough" />
+<meta name="twitter:description" content="What Causes Event Duplication? Video Walkthroughs ▶ Watch: Data Deduplication in Query Service(https://video.tv.adobe.com/v/3410710?quality=12&amp;learn=on) This…" />
+</head>
+  <body>
+    <div id="root"><article><h1>96. What causes event deduplication? expain with video walkthrough</h1>
+<h2>What Causes Event Duplication?</h2>
+<h3>Video Walkthroughs</h3>
+<p><a href="https://video.tv.adobe.com/v/3410710?quality=12&amp;learn=on">▶ Watch: Data Deduplication in Query Service</a></p>
+<p>This video demonstrates how to use Adobe Experience Platform Query Service to identify and remove duplicate events from your datasets using SQL deduplication techniques.</p>
+<hr>
+<h3>Overview</h3>
+<p>Event duplication in Adobe Experience Platform refers to the occurrence of duplicate events during data ingestion. Understanding what causes duplicates is essential for maintaining data quality and accurate reporting.</p>
+<hr>
+<h3>Primary Causes of Event Duplication</h3>
+<h4>1. Network-Related Issues</h4>
+<p>Network connectivity problems between client-side SDKs and the Edge Network are a common source of event duplication:</p>
+<ul>
+<li><strong>Internet Service Provider (ISP) failures</strong> – Temporary network outages</li>
+<li><strong>Mobile signal loss</strong> – Network disconnections on mobile devices</li>
+<li><strong>General network failures</strong> – Poor connectivity between customer and Edge Network</li>
+<li><strong>Public internet instability</strong> – Since SDK-to-Edge Network communication occurs over the public internet, network reliability impacts event delivery</li>
+</ul>
+<p><strong>Why this causes duplication:</strong> When a network issue occurs, the SDK may not receive confirmation that an event was successfully delivered. As a result, the SDK retries sending the event, which can result in multiple copies of the same event reaching the platform.</p>
+<h4>2. Internal Experience Platform Auto-Scaling Events</h4>
+<p>Adobe Experience Platform infrastructure occasionally triggers auto-scaling events that can cause duplication:</p>
+<ul>
+<li><strong>Cloud infrastructure volatility</strong> – Temporary system scaling to handle traffic</li>
+<li><strong>Data rebalancing</strong> – System redistributes data across infrastructure during scaling</li>
+<li><strong>System maintenance</strong> – Internal platform operations that may cause temporary duplicates</li>
+</ul>
+<p><strong>Why this causes duplication:</strong> During auto-scaling events, data may be temporarily duplicated across different nodes before being consolidated.</p>
+<hr>
+<h3>The &quot;At-Least-Once&quot; Processing Guarantee</h3>
+<p>The Adobe Experience Platform data collection layer is designed to support <strong>&quot;at-least-once&quot; processing semantics</strong>.</p>
+<h4>What This Means:</h4>
+<ul>
+<li><strong>Guaranteed delivery</strong> – Every event is guaranteed to be delivered at least one time</li>
+<li><strong>Possible duplication</strong> – In rare, limited situations, events may be delivered more than once</li>
+<li><strong>No data loss</strong> – Events are never lost, but may be duplicated</li>
+</ul>
+<p>&gt; This is a fundamental design choice that prioritizes data completeness over perfect deduplication.</p>
+<p>To learn more about message delivery guarantees and &quot;at-least-once&quot; semantics, see this article on <a href="https://docs.confluent.io/kafka/design/delivery-semantics.html">message delivery guarantees</a>.</p>
+<hr>
+<h3>When Event Duplication Occurs</h3>
+<p>Event duplication is <strong>rare and limited</strong> but can happen in these scenarios:</p>
+<p>| Scenario | Cause | Frequency |</p>
+<p>|---|---|---|</p>
+<p>| <strong>Network retries</strong> | SDK retransmits after connection loss | Limited, occasional |</p>
+<p>| <strong>Auto-scaling events</strong> | Infrastructure rebalancing | Rare |</p>
+<p>| <strong>Edge Network timeouts</strong> | SDK doesn&#x27;t receive confirmation | Limited |</p>
+<p>| <strong>Mobile app crashes</strong> | App restarts and resends buffered events | Occasional |</p>
+<p>| <strong>Duplicate SDK initialization</strong> | Multiple SDK instances running | Configuration issue |</p>
+<hr>
+<h3>Event Deduplication Options</h3>
+<p>To address potential duplicate events, Adobe Experience Platform and Journey Optimizer provide <strong>deduplication capabilities</strong>:</p>
+<h4>Deduplication at the Query Level</h4>
+<p><strong>Adobe Experience Platform Query Service</strong> supports data deduplication using the `ROW_NUMBER()` function:</p>
+<p>```sql</p>
+<p>SELECT</p>
+<p>*</p>
+<p>FROM (</p>
+<p>SELECT</p>
+<p>*,</p>
+<p>ROW_NUMBER() OVER (PARTITION BY eventId ORDER BY timestamp) as rn</p>
+<p>FROM</p>
+<p>your_event_dataset</p>
+<p>)</p>
+<p>WHERE</p>
+<p>rn = 1</p>
+<p>```</p>
+<p>This query:</p>
+<ul>
+<li>Uses `ROW_NUMBER()` to identify duplicate events by `eventId`</li>
+<li>Keeps only the <strong>first instance</strong> (where `rn = 1`)</li>
+<li>Removes all subsequent duplicates</li>
+</ul>
+<h4>Deduplication Scope</h4>
+<p>Deduplication can be applied at different scopes:</p>
+<p>| Scope | Description |</p>
+<p>|---|---|</p>
+<p>| <strong>Global deduplication</strong> | Remove duplicates across all events |</p>
+<p>| <strong>Per-user deduplication</strong> | Remove duplicates within a single user&#x27;s event stream (using `identityMap`) |</p>
+<p>| <strong>Per-transaction deduplication</strong> | Remove duplicates for specific transaction types |</p>
+<h4>Common Use Cases for Deduplication</h4>
+<p>1. <strong>Experience Events</strong> – Remove duplicate page views or interaction events</p>
+<p>2. <strong>Purchase Events</strong> – Ensure purchase orders aren&#x27;t counted twice</p>
+<p>3. <strong>Metrics</strong> – Deduplicate metric calculations to avoid inflated counts</p>
+<h4>Deduplication for Experience Events Example</h4>
+<p>```sql</p>
+<p>SELECT</p>
+<p>timestamp,</p>
+<p>eventType,</p>
+<p>identityMap,</p>
+<p>xdm.commerce.purchases.value,</p>
+<p>ROW_NUMBER() OVER (PARTITION BY identityMap ORDER BY timestamp) as row_num</p>
+<p>FROM</p>
+<p>your_experience_events_dataset</p>
+<p>WHERE</p>
+<p>timestamp &gt; NOW() - INTERVAL &#x27;30 days&#x27;</p>
+<p>AND eventType = &#x27;commerce.purchases&#x27;</p>
+<p>QUALIFY</p>
+<p>row_num = 1</p>
+<p>```</p>
+<hr>
+<h3>Monitoring for Duplicates</h3>
+<h4>Check for Duplicate Events Using Query Service</h4>
+<p><strong>Query to identify duplicates:</strong></p>
+<p>```sql</p>
+<p>SELECT</p>
+<p>eventId,</p>
+<p>COUNT(*) as duplicate_count</p>
+<p>FROM</p>
+<p>your_event_dataset</p>
+<p>WHERE</p>
+<p>timestamp &gt; NOW() - INTERVAL &#x27;24 hours&#x27;</p>
+<p>GROUP BY</p>
+<p>eventId</p>
+<p>HAVING</p>
+<p>COUNT(*) &gt; 1</p>
+<p>ORDER BY</p>
+<p>duplicate_count DESC</p>
+<p>```</p>
+<p><strong>Query to see duplicate details:</strong></p>
+<p>```sql</p>
+<p>SELECT</p>
+<p>eventId,</p>
+<p>timestamp,</p>
+<p>identityMap,</p>
+<p>eventType,</p>
+<p>ROW_NUMBER() OVER (PARTITION BY eventId ORDER BY timestamp) as instance_number</p>
+<p>FROM</p>
+<p>your_event_dataset</p>
+<p>WHERE</p>
+<p>timestamp &gt; NOW() - INTERVAL &#x27;24 hours&#x27;</p>
+<p>ORDER BY</p>
+<p>eventId,</p>
+<p>timestamp</p>
+<p>```</p>
+<h4>Monitor in Journey Optimizer</h4>
+<ul>
+<li>Check <strong>journey execution logs</strong> for duplicate event entries</li>
+<li>Review <strong>journey step events dataset</strong> in AEP for repeat instances</li>
+<li>Monitor <strong>message feedback events</strong> for duplicate message sends</li>
+</ul>
+<hr>
+<h3>Best Practices to Minimize Duplication</h3>
+<p>✓ <strong>Use unique event IDs</strong> – Assign a unique `eventId` to every event for easy deduplication</p>
+<p>✓ <strong>Implement retry logic carefully</strong> – Configure SDK retry policies appropriately</p>
+<p>✓ <strong>Monitor network conditions</strong> – Track SDK-to-Edge Network connectivity</p>
+<p>✓ <strong>Test in poor network conditions</strong> – Simulate mobile signal loss and network failures</p>
+<p>✓ <strong>Implement deduplication in queries</strong> – Use `ROW_NUMBER()` for analytics queries</p>
+<p>✓ <strong>Monitor duplicate rates</strong> – Regularly check Query Service for duplicate patterns</p>
+<p>✓ <strong>Use idempotent operations</strong> – Design downstream systems to handle duplicate events gracefully</p>
+<hr>
+<h3>Important Caution</h3>
+<p>&gt; <strong>Deduplication at a person scope</strong> is evaluated by complete months in UTC time. A partial-month reporting window may not display all first or last instances if some occurred within the full month but outside of the reporting dates.</p>
+<p>This is important when creating deduplication rules based on person-level data — ensure your time windows account for UTC month boundaries.</p>
+<hr>
+<h3>Summary</h3>
+<p>Event duplication in Adobe Experience Platform is:</p>
+<ul>
+<li><strong>Rare and limited</strong> – Occurs only in specific circumstances</li>
+<li><strong>Caused by network issues or infrastructure events</strong> – Not a design flaw</li>
+<li><strong>Guaranteed not to lose data</strong> – &quot;At-least-once&quot; processing ensures completeness</li>
+<li><strong>Manageable with deduplication tools</strong> – Query Service and deduplication logic can remove duplicates</li>
+<li><strong>Monitored and preventable</strong> – Best practices minimize duplication risk</li>
+</ul>
+</article>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "96. What causes event deduplication? expain with video walkthrough", "acceptedAnswer": {"@type": "Answer", "text": "What Causes Event Duplication? Video Walkthroughs \u25b6 Watch: Data Deduplication in Query Service(https://video.tv.adobe.com/v/3410710?quality=12&learn=on) This video demonstrates how to use Adobe Experience Platform Query Service to identify and remove duplicate events from your datasets using SQL deduplication techniques. --- Overview Event duplication in Adobe Experience Platform refers to the occurrence of duplicate events during data ingestion. Understanding what causes duplicates is essential for maintaining data quality and accurate reporting. --- Primary Causes of Event Duplication 1. Network-Related Issues Network connectivity problems between client-side SDKs and the Edge Network are a common source of event duplication: - Internet Service Provider (ISP) failures \u2013 Temporary network outages - Mobile signal loss \u2013 Network disconnections on mobile devices - General network failures \u2013 Poor connectivity between customer and Edge Network - Public internet instability \u2013 Since SDK-to-Edge Network communication occurs over the public internet, network reliability impacts event delivery Why this causes duplication: When a network issue occurs, the SDK may not receive confirmation that an event was successfully delivered. As a result, the SDK retries sending the event, which can result in multiple copies of the same event reaching the platform. 2. Internal Experience Platform Auto-Scaling Events Adobe Experience Platform infrastructure occasionally triggers auto-scaling events that can cause duplication: - Cloud infrastructure volatility \u2013 Temporary system scaling to handle traffic - Data rebalancing \u2013 System redistributes data across infrastructure during scaling - System maintenance \u2013 Internal platform operations that may cause temporary duplicates Why this causes duplication: During auto-scaling events, data may be temporarily duplicated across different nodes before being consolidated. --- The \"At-Least-Once\" Processing Guarantee The Adobe Experience Platform\u2026"}}]}</script></div>
+  </body>
+</html>

@@ -1,0 +1,279 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/png" href="/tools/rovr/rovrlogo.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="build-date" content="2026-06-10" />
+    
+    
+    <script src="https://assets.adobedtm.com/204118644db8/290ae1adb65a/launch-e5ec7bf1a1ef-development.min.js" async></script>
+    <script type="module" crossorigin src="/tools/rovr/assets/index-6PtPUQd3.js"></script>
+    <link rel="stylesheet" crossorigin href="/tools/rovr/assets/index-C3YgbV_4.css">
+  <title>100. Explain a complex troubleshooting issue you solved in AEP (e.g.,
+profile not merging). expain with video walkthrought and screenshots. | Rovr</title>
+<meta name="description" content="Complex Troubleshooting: Profile Not Merging in AEP Video Walkthroughs ▶ Watch: View Identity Graphs(https://video.tv.adobe.com/v/331030?learn=on&amp;enablevpops)…" />
+<link rel="canonical" href="https://thelearningproject.in/tools/rovr/q/100-explain-a-complex-troubleshooting-issue-you-solved-in-ae-aeb202" />
+<meta property="og:title" content="100. Explain a complex troubleshooting issue you solved in AEP (e.g.,
+profile not merging). expain with video walkthrought and screenshots." />
+<meta property="og:description" content="Complex Troubleshooting: Profile Not Merging in AEP Video Walkthroughs ▶ Watch: View Identity Graphs(https://video.tv.adobe.com/v/331030?learn=on&amp;enablevpops)…" />
+<meta property="og:url" content="https://thelearningproject.in/tools/rovr/q/100-explain-a-complex-troubleshooting-issue-you-solved-in-ae-aeb202" />
+<meta property="og:type" content="article" />
+<meta property="og:image" content="https://thelearningproject.in/tools/rovr/rovrlogo.png" />
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="100. Explain a complex troubleshooting issue you solved in AEP (e.g.,
+profile not merging). expain with video walkthrought and screenshots." />
+<meta name="twitter:description" content="Complex Troubleshooting: Profile Not Merging in AEP Video Walkthroughs ▶ Watch: View Identity Graphs(https://video.tv.adobe.com/v/331030?learn=on&amp;enablevpops)…" />
+</head>
+  <body>
+    <div id="root"><article><h1>100. Explain a complex troubleshooting issue you solved in AEP (e.g.,
+profile not merging). expain with video walkthrought and screenshots.</h1>
+<h2>Complex Troubleshooting: Profile Not Merging in AEP</h2>
+<h3>Video Walkthroughs</h3>
+<p><a href="https://video.tv.adobe.com/v/331030?learn=on&amp;enablevpops">▶ Watch: View Identity Graphs</a></p>
+<p>This video demonstrates how to use the Identity Graph Viewer to diagnose profile merging issues.</p>
+<p><a href="https://video.tv.adobe.com/v/3448250/?learn=on&amp;enablevpops">▶ Watch: Identity Graph Linking Rules Overview</a></p>
+<p>This video explains how identity graph linking rules work and how to configure them to resolve profile merging issues.</p>
+<p><a href="https://video.tv.adobe.com/v/3444032/?learn=on&amp;enablevpops">▶ Watch: Identity Graph Linking Rules - Graph Simulation</a></p>
+<p>This video shows how to use Graph Simulation to test and validate identity linking rules before applying them to production.</p>
+<p><a href="https://video.tv.adobe.com/v/27251?learn=on&amp;enablevpops">▶ Watch: Real-Time Customer Profile Overview</a></p>
+<p>This video provides context on how Real-Time Customer Profile works and how profile merging is handled in AEP.</p>
+<hr>
+<h3>The Scenario</h3>
+<p><strong>Business Problem:</strong> A retail brand noticed that customers who browsed their website anonymously and later logged in were being treated as <strong>two separate profiles</strong> in Adobe Experience Platform. This caused:</p>
+<ul>
+<li><strong>Duplicate customer records</strong> in the profile store</li>
+<li><strong>Incorrect audience memberships</strong> — authenticated profiles missing behavioral data from anonymous sessions</li>
+<li><strong>Journey eligibility failures</strong> — customers not entering re-engagement journeys despite qualifying behavior</li>
+<li><strong>Inflated profile counts</strong> — reporting showing more profiles than actual customers</li>
+</ul>
+<hr>
+<h3>Step 1: Initial Investigation</h3>
+<h4>Check the Symptoms</h4>
+<p>The first step was to identify the scope of the problem:</p>
+<p>1. Navigate to <strong>Adobe Experience Platform</strong></p>
+<p>2. Go to <strong>Customer</strong> → <strong>Profiles</strong></p>
+<p>3. Search for a known test customer using their <strong>email address</strong></p>
+<p>4. Note the profile attributes and experience events attached</p>
+<p><strong>Observation:</strong> The authenticated profile (identified by email) showed <strong>no browsing history</strong> — all page view events were attached to a separate anonymous profile identified only by ECID.</p>
+<h4>Check Identity Graph</h4>
+<p>1. Navigate to <strong>Identities</strong> → <strong>Identity Graph</strong></p>
+<p>2. Enter the <strong>Email namespace</strong> and the customer&#x27;s email address</p>
+<p>3. Click <strong>View</strong></p>
+<p><strong>Observation:</strong> The identity graph showed <strong>only the email identity</strong> with no ECID linked to it — confirming the anonymous and authenticated profiles were completely disconnected.</p>
+<p><img src="https://experienceleague.adobe.com/docs/experience-platform/identity/images/graph-viewer/identity-graph.png" alt="Identity Graph showing disconnected email and ECID identities"></p>
+<hr>
+<h3>Step 2: Root Cause Analysis</h3>
+<h4>Investigate Event Data</h4>
+<p>Using <strong>Adobe Experience Platform Assurance</strong> to inspect Web SDK events:</p>
+<p>1. Navigate to <strong>Data Collection</strong> → <strong>Assurance</strong></p>
+<p>2. Create a new session and connect to the website</p>
+<p>3. Perform a test login flow</p>
+<p>4. Inspect the events fired during login</p>
+<p><strong>Finding:</strong> The login event payload was:</p>
+<p>```json</p>
+<p>{</p>
+<p>&quot;eventType&quot;: &quot;userAccount.login&quot;,</p>
+<p>&quot;identityMap&quot;: {</p>
+<p>&quot;Email&quot;: [</p>
+<p>{</p>
+<p>&quot;id&quot;: &quot;customer@example.com&quot;,</p>
+<p>&quot;authenticatedState&quot;: &quot;authenticated&quot;,</p>
+<p>&quot;primary&quot;: true</p>
+<p>}</p>
+<p>]</p>
+<p>}</p>
+<p>}</p>
+<p>```</p>
+<p><strong>Problem Identified:</strong> The login event was sending <strong>only the Email identity</strong> — the <strong>ECID was missing</strong> from the identity map. Without ECID in the login event, AEP had no way to link the authenticated email identity to the anonymous ECID session.</p>
+<h4>Verify in Dataset</h4>
+<p>Using <strong>Query Service</strong> to confirm the issue:</p>
+<p>```sql</p>
+<p>SELECT</p>
+<p>timestamp,</p>
+<p>eventType,</p>
+<p>identityMap,</p>
+<p>_id</p>
+<p>FROM</p>
+<p>web_events_dataset</p>
+<p>WHERE</p>
+<p>eventType = &#x27;userAccount.login&#x27;</p>
+<p>AND timestamp &gt; NOW() - INTERVAL &#x27;7 days&#x27;</p>
+<p>ORDER BY</p>
+<p>timestamp DESC</p>
+<p>LIMIT 20</p>
+<p>```</p>
+<p><strong>Query Result Confirmed:</strong> Login events had Email in `identityMap` but <strong>no ECID entry</strong> — confirming the root cause.</p>
+<hr>
+<h3>Step 3: Identity Namespace Configuration Review</h3>
+<h4>Check Identity Settings</h4>
+<p>1. Navigate to <strong>Identities</strong> → <strong>Identity Settings</strong></p>
+<p>2. Review configured namespaces and their priorities</p>
+<p><strong>Findings:</strong></p>
+<p>| Namespace | Type | Priority | Unique Per Graph |</p>
+<p>|---|---|---|---|</p>
+<p>| <strong>ECID</strong> | Device | Low | No |</p>
+<p>| <strong>Email</strong> | Person | High | Yes |</p>
+<p>| <strong>Phone</strong> | Person | Medium | Yes |</p>
+<p>| <strong>CRM ID</strong> | Person | High | Yes |</p>
+<p><strong>Observation:</strong> The namespace configuration looked correct — Email was set as high priority and unique per graph. The issue was purely in the <strong>data collection layer</strong>, not the identity configuration.</p>
+<h4>Check Schema Configuration</h4>
+<p>1. Navigate to <strong>Data Management</strong> → <strong>Schemas</strong></p>
+<p>2. Open the <strong>Web Events XDM Schema</strong></p>
+<p>3. Review identity field configuration</p>
+<p><strong>Finding:</strong> The schema had ECID configured as an identity field, but the <strong>Web SDK implementation was not including ECID</strong> in the login event&#x27;s identity map.</p>
+<hr>
+<h3>Step 4: Graph Simulation to Understand Impact</h3>
+<p>Before making any fixes, used <strong>Graph Simulation</strong> to understand the expected behavior:</p>
+<p>1. Navigate to <strong>Identities</strong> → <strong>Graph Simulation</strong></p>
+<p>2. Click <strong>Load</strong> → <strong>Existing graph</strong></p>
+<p>3. Enter the Email namespace and customer email value</p>
+<p><strong>Simulated the correct scenario:</strong></p>
+<p>Added both identities to the simulation:</p>
+<ul>
+<li>Email: `customer@example.com` (authenticated, primary)</li>
+<li>ECID: `12345678901234567890` (ambiguous)</li>
+</ul>
+<p><strong>Simulation Result:</strong> When both identities are present in the same event, AEP correctly merges them into a single graph — confirming the fix would resolve the issue.</p>
+<hr>
+<h3>Step 5: Implementing the Fix</h3>
+<h4>Fix 1: Update Web SDK Implementation</h4>
+<p>Updated the login event to include <strong>both Email and ECID</strong> in the identity map:</p>
+<p><strong>Before (broken):</strong></p>
+<p>```javascript</p>
+<p>alloy(&quot;sendEvent&quot;, {</p>
+<p>xdm: {</p>
+<p>eventType: &quot;userAccount.login&quot;,</p>
+<p>identityMap: {</p>
+<p>Email: [{</p>
+<p>id: &quot;customer@example.com&quot;,</p>
+<p>authenticatedState: &quot;authenticated&quot;,</p>
+<p>primary: true</p>
+<p>}]</p>
+<p>}</p>
+<p>}</p>
+<p>});</p>
+<p>```</p>
+<p><strong>After (fixed):</strong></p>
+<p>```javascript</p>
+<p>alloy(&quot;sendEvent&quot;, {</p>
+<p>xdm: {</p>
+<p>eventType: &quot;userAccount.login&quot;,</p>
+<p>identityMap: {</p>
+<p>Email: [{</p>
+<p>id: &quot;customer@example.com&quot;,</p>
+<p>authenticatedState: &quot;authenticated&quot;,</p>
+<p>primary: true</p>
+<p>}],</p>
+<p>ECID: [{</p>
+<p>id: &quot;12345678901234567890&quot;,</p>
+<p>authenticatedState: &quot;ambiguous&quot;,</p>
+<p>primary: false</p>
+<p>}]</p>
+<p>}</p>
+<p>}</p>
+<p>});</p>
+<p>```</p>
+<p>&gt; <strong>Note:</strong> The Web SDK automatically appends ECID to events when properly configured. The fix involved ensuring the `getIdentity()` API was called <strong>before</strong> sending the login event to retrieve the current ECID value.</p>
+<h4>Fix 2: Retrieve ECID Before Sending Login Event</h4>
+<p>```javascript</p>
+<p>// Step 1: Get current ECID</p>
+<p>alloy(&quot;getIdentity&quot;).then(function(result) {</p>
+<p>const ecid = result.identity.ECID;</p>
+<p>// Step 2: Send login event with both identities</p>
+<p>alloy(&quot;sendEvent&quot;, {</p>
+<p>xdm: {</p>
+<p>eventType: &quot;userAccount.login&quot;,</p>
+<p>identityMap: {</p>
+<p>Email: [{</p>
+<p>id: &quot;customer@example.com&quot;,</p>
+<p>authenticatedState: &quot;authenticated&quot;,</p>
+<p>primary: true</p>
+<p>}],</p>
+<p>ECID: [{</p>
+<p>id: ecid,</p>
+<p>authenticatedState: &quot;ambiguous&quot;,</p>
+<p>primary: false</p>
+<p>}]</p>
+<p>}</p>
+<p>}</p>
+<p>});</p>
+<p>});</p>
+<p>```</p>
+<hr>
+<h3>Step 6: Validation After Fix</h3>
+<h4>Validate with Assurance</h4>
+<p>1. Reconnect <strong>Assurance session</strong> to the updated website</p>
+<p>2. Perform a test login</p>
+<p>3. Inspect the login event payload</p>
+<p><strong>Confirmed:</strong> Login event now shows <strong>both Email and ECID</strong> in the identity map.</p>
+<h4>Validate Identity Graph</h4>
+<p>1. Navigate to <strong>Identities</strong> → <strong>Identity Graph</strong></p>
+<p>2. Search by Email namespace and customer email</p>
+<p>3. View the updated graph</p>
+<p><strong>Result:</strong> Identity graph now shows <strong>Email and ECID linked</strong> in the same graph — profiles successfully merged.</p>
+<h4>Validate Profile in AEP</h4>
+<p>1. Navigate to <strong>Customer</strong> → <strong>Profiles</strong></p>
+<p>2. Search by email address</p>
+<p>3. Review the <strong>Experience Events</strong> tab</p>
+<p><strong>Result:</strong> Authenticated profile now shows <strong>complete browsing history</strong> from anonymous sessions — full customer journey visible in a single profile.</p>
+<h4>Validate with Query Service</h4>
+<p>```sql</p>
+<p>-- Verify login events now contain both identities</p>
+<p>SELECT</p>
+<p>timestamp,</p>
+<p>eventType,</p>
+<p>identityMap</p>
+<p>FROM</p>
+<p>web_events_dataset</p>
+<p>WHERE</p>
+<p>eventType = &#x27;userAccount.login&#x27;</p>
+<p>AND timestamp &gt; NOW() - INTERVAL &#x27;1 hour&#x27;</p>
+<p>ORDER BY</p>
+<p>timestamp DESC</p>
+<p>LIMIT 5</p>
+<p>```</p>
+<p><strong>Query confirmed:</strong> All new login events contain both Email and ECID in the identity map.</p>
+<hr>
+<h3>Step 7: Monitor Results</h3>
+<h4>Identity Dashboard Monitoring</h4>
+<p>After deploying the fix:</p>
+<p>1. Navigate to <strong>Identities</strong> → <strong>Dashboard</strong></p>
+<p>2. Monitor <strong>Graphs with two or more identities</strong> metric</p>
+<p>3. Track the <strong>increase in multi-identity graphs</strong> as existing profiles merge</p>
+<p><strong>Observation:</strong> Over the following 24-48 hours:</p>
+<ul>
+<li>Multi-identity graph count increased as expected</li>
+<li>Single-identity ECID-only profiles decreased</li>
+<li>Profile count stabilized as duplicates merged</li>
+</ul>
+<h4>Journey Impact</h4>
+<p>After profile merging:</p>
+<ul>
+<li><strong>Re-engagement journeys</strong> started triggering correctly for qualified customers</li>
+<li><strong>Audience memberships</strong> updated to reflect complete behavioral history</li>
+<li><strong>Personalization</strong> improved as full customer context became available</li>
+</ul>
+<hr>
+<h3>Summary: Root Cause &amp; Resolution</h3>
+<p>| Aspect | Details |</p>
+<p>|---|---|</p>
+<p>| <strong>Problem</strong> | Anonymous and authenticated profiles not merging |</p>
+<p>| <strong>Root Cause</strong> | Login event missing ECID in identity map |</p>
+<p>| <strong>Discovery Tool</strong> | Assurance + Identity Graph Viewer + Query Service |</p>
+<p>| <strong>Simulation Tool</strong> | Graph Simulation to validate fix impact |</p>
+<p>| <strong>Fix Applied</strong> | Updated Web SDK login event to include both Email and ECID |</p>
+<p>| <strong>Validation</strong> | Assurance + Identity Graph Viewer + Profile UI + Query Service |</p>
+<p>| <strong>Business Impact</strong> | Correct audience membership, journey eligibility, and personalization |</p>
+<hr>
+<h3>Key Lessons Learned</h3>
+<p>✓ <strong>Always include ECID in authenticated events</strong> – Linking anonymous and authenticated sessions requires ECID in every identity event</p>
+<p>✓ <strong>Use Assurance for event debugging</strong> – Real-time payload inspection is the fastest way to find data collection issues</p>
+<p>✓ <strong>Simulate before fixing</strong> – Graph Simulation validates expected behavior before production changes</p>
+<p>✓ <strong>Query Service confirms at scale</strong> – SQL queries validate fixes across thousands of events</p>
+<p>✓ <strong>Monitor post-fix</strong> – Track Identity Dashboard metrics to confirm merging is happening correctly</p>
+<p>✓ <strong>Test the full journey</strong> – Validate that profile merging translates to correct journey and audience behavior</p>
+</article>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "100. Explain a complex troubleshooting issue you solved in AEP (e.g.,\nprofile not merging). expain with video walkthrought and screenshots.", "acceptedAnswer": {"@type": "Answer", "text": "Complex Troubleshooting: Profile Not Merging in AEP Video Walkthroughs \u25b6 Watch: View Identity Graphs(https://video.tv.adobe.com/v/331030?learn=on&enablevpops) This video demonstrates how to use the Identity Graph Viewer to diagnose profile merging issues. \u25b6 Watch: Identity Graph Linking Rules Overview(https://video.tv.adobe.com/v/3448250/?learn=on&enablevpops) This video explains how identity graph linking rules work and how to configure them to resolve profile merging issues. \u25b6 Watch: Identity Graph Linking Rules - Graph Simulation(https://video.tv.adobe.com/v/3444032/?learn=on&enablevpops) This video shows how to use Graph Simulation to test and validate identity linking rules before applying them to production. \u25b6 Watch: Real-Time Customer Profile Overview(https://video.tv.adobe.com/v/27251?learn=on&enablevpops) This video provides context on how Real-Time Customer Profile works and how profile merging is handled in AEP. --- The Scenario Business Problem: A retail brand noticed that customers who browsed their website anonymously and later logged in were being treated as two separate profiles in Adobe Experience Platform. This caused: - Duplicate customer records in the profile store - Incorrect audience memberships \u2014 authenticated profiles missing behavioral data from anonymous sessions - Journey eligibility failures \u2014 customers not entering re-engagement journeys despite qualifying behavior - Inflated profile counts \u2014 reporting showing more profiles than actual customers --- Step 1: Initial Investigation Check the Symptoms The first step was to identify the scope of the problem: 1. Navigate to Adobe Experience Platform 2. Go to Customer \u2192 Profiles 3. Search for a known test customer using their email address 4. Note the profile attributes and experience events attached Observation: The authenticated profile (identified by email) showed no browsing history \u2014 all page view events were attached to a separate anonymous profile identified only by ECID. Check\u2026"}}]}</script></div>
+  </body>
+</html>

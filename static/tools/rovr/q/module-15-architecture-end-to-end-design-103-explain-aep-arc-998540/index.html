@@ -1,0 +1,325 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/png" href="/tools/rovr/rovrlogo.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="build-date" content="2026-06-10" />
+    
+    
+    <script src="https://assets.adobedtm.com/204118644db8/290ae1adb65a/launch-e5ec7bf1a1ef-development.min.js" async></script>
+    <script type="module" crossorigin src="/tools/rovr/assets/index-6PtPUQd3.js"></script>
+    <link rel="stylesheet" crossorigin href="/tools/rovr/assets/index-C3YgbV_4.css">
+  <title>Module 15: Architecture &amp; End-to-End Design
+103. Explain AEP architecture end-to-end. | Rovr</title>
+<meta name="description" content="AEP Architecture End-to-End Video Walkthroughs ▶ Watch: Adobe Experience Platform Overview(https://video.tv.adobe.com/v/32456?learn=on&amp;enablevpops) This video…" />
+<link rel="canonical" href="https://thelearningproject.in/tools/rovr/q/module-15-architecture-end-to-end-design-103-explain-aep-arc-998540" />
+<meta property="og:title" content="Module 15: Architecture &amp; End-to-End Design
+103. Explain AEP architecture end-to-end." />
+<meta property="og:description" content="AEP Architecture End-to-End Video Walkthroughs ▶ Watch: Adobe Experience Platform Overview(https://video.tv.adobe.com/v/32456?learn=on&amp;enablevpops) This video…" />
+<meta property="og:url" content="https://thelearningproject.in/tools/rovr/q/module-15-architecture-end-to-end-design-103-explain-aep-arc-998540" />
+<meta property="og:type" content="article" />
+<meta property="og:image" content="https://thelearningproject.in/tools/rovr/rovrlogo.png" />
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="Module 15: Architecture &amp; End-to-End Design
+103. Explain AEP architecture end-to-end." />
+<meta name="twitter:description" content="AEP Architecture End-to-End Video Walkthroughs ▶ Watch: Adobe Experience Platform Overview(https://video.tv.adobe.com/v/32456?learn=on&amp;enablevpops) This video…" />
+</head>
+  <body>
+    <div id="root"><article><h1>Module 15: Architecture &amp; End-to-End Design
+103. Explain AEP architecture end-to-end.</h1>
+<h2>AEP Architecture End-to-End</h2>
+<h3>Video Walkthroughs</h3>
+<p><a href="https://video.tv.adobe.com/v/32456?learn=on&amp;enablevpops">▶ Watch: Adobe Experience Platform Overview</a></p>
+<p>This video provides a comprehensive overview of Adobe Experience Platform architecture and how all components work together.</p>
+<p><a href="https://video.tv.adobe.com/v/3422978?learn=on&amp;enablevpops">▶ Watch: AEP Architecture Overview</a></p>
+<p>This video walks through the complete end-to-end architecture of Adobe Experience Platform.</p>
+<hr>
+<h3>Overview</h3>
+<p>Adobe Experience Platform is the <strong>most powerful, flexible, and open system</strong> for building and managing complete solutions that drive customer experience. It enables organizations to:</p>
+<ul>
+<li><strong>Centralize and standardize</strong> customer data from any system</li>
+<li><strong>Apply data science and machine learning</strong> to improve experience delivery</li>
+<li><strong>Activate audiences</strong> to external destinations for personalization and engagement</li>
+</ul>
+<p><img src="./images/end-to-end-tutorial/platform-end-2-end-workflow.png" alt="Experience Platform end-to-end workflow"></p>
+<hr>
+<h3>AEP Architecture: The Big Picture</h3>
+<p>AEP architecture is organized into <strong>four major layers</strong>:</p>
+<p>```</p>
+<p>┌─────────────────────────────────────────────────────────┐</p>
+<p>│                    DATA SOURCES                          │</p>
+<p>│  Web SDK | Mobile SDK | APIs | CRM | ERP | Offline Data  │</p>
+<p>└─────────────────────────────────────────────────────────┘</p>
+<p>↓</p>
+<p>┌─────────────────────────────────────────────────────────┐</p>
+<p>│                 DATA COLLECTION LAYER                    │</p>
+<p>│     Tags | Web SDK | Mobile SDK | Edge Network           │</p>
+<p>│              Datastreams | Server API                    │</p>
+<p>└─────────────────────────────────────────────────────────┘</p>
+<p>↓</p>
+<p>┌─────────────────────────────────────────────────────────┐</p>
+<p>│              ADOBE EXPERIENCE PLATFORM CORE              │</p>
+<p>│  Data Ingestion → Data Lake → Profile Store → Segments   │</p>
+<p>│  Identity Service | Query Service | Data Governance      │</p>
+<p>│  AI/ML Services | Observability | Privacy &amp; Compliance   │</p>
+<p>└─────────────────────────────────────────────────────────┘</p>
+<p>↓</p>
+<p>┌─────────────────────────────────────────────────────────┐</p>
+<p>│                  ACTIVATION LAYER                        │</p>
+<p>│  Destinations | AJO | Target | RTCDP | Analytics        │</p>
+<p>└─────────────────────────────────────────────────────────┘</p>
+<p>```</p>
+<hr>
+<h3>Layer 1: Data Sources</h3>
+<p>AEP ingests data from virtually <strong>any source system</strong>:</p>
+<h4>Online Sources</h4>
+<ul>
+<li><strong>Web browsers</strong> – via Web SDK (alloy.js)</li>
+<li><strong>Mobile apps</strong> – via Mobile SDK (iOS/Android)</li>
+<li><strong>Single Page Applications</strong> – via Web SDK or API</li>
+<li><strong>IoT devices</strong> – via streaming APIs</li>
+</ul>
+<h4>Offline Sources</h4>
+<ul>
+<li><strong>CRM systems</strong> – Salesforce, Microsoft Dynamics</li>
+<li><strong>ERP systems</strong> – SAP, Oracle</li>
+<li><strong>Data warehouses</strong> – Snowflake, BigQuery, Redshift</li>
+<li><strong>Marketing platforms</strong> – Marketo, Campaign</li>
+<li><strong>Point of Sale systems</strong> – Retail transaction data</li>
+<li><strong>Call center data</strong> – Customer service interactions</li>
+</ul>
+<h4>Partner Sources</h4>
+<ul>
+<li><strong>Adobe Source Connectors</strong> – Pre-built connectors for 200+ sources</li>
+<li><strong>Streaming sources</strong> – Kafka, HTTP API</li>
+<li><strong>Batch sources</strong> – SFTP, S3, Azure Blob Storage</li>
+</ul>
+<hr>
+<h3>Layer 2: Data Collection Layer</h3>
+<h4>Adobe Tags (Launch)</h4>
+<p>Tags is the <strong>tag management system</strong> that deploys and manages data collection code:</p>
+<ul>
+<li><strong>Web Properties</strong> – JavaScript tags for websites</li>
+<li><strong>Mobile Properties</strong> – SDK configuration for mobile apps</li>
+<li><strong>Extensions</strong> – Pre-built integrations (Web SDK, Analytics, Target, etc.)</li>
+<li><strong>Rules</strong> – Event-driven logic for data collection</li>
+<li><strong>Data Elements</strong> – Variables that capture data layer values</li>
+</ul>
+<h4>Web SDK (alloy.js)</h4>
+<p>The <strong>primary data collection library</strong> for web-based implementations:</p>
+<ul>
+<li><strong>Single library</strong> – Replaces AppMeasurement, AT.js, and Visitor API</li>
+<li><strong>Edge Network communication</strong> – Sends data directly to Edge Network</li>
+<li><strong>XDM data format</strong> – All data structured in XDM schema format</li>
+<li><strong>Real-time personalization</strong> – Supports Target and AJO decisioning</li>
+<li><strong>Identity management</strong> – Handles ECID and identity stitching</li>
+</ul>
+<h4>Mobile SDK</h4>
+<p>The <strong>mobile data collection framework</strong> for iOS and Android:</p>
+<ul>
+<li><strong>Modular architecture</strong> – Core + extension-based design</li>
+<li><strong>Edge Network integration</strong> – Direct communication with Edge Network</li>
+<li><strong>Lifecycle tracking</strong> – App launches, upgrades, crashes</li>
+<li><strong>Assurance integration</strong> – Real-time debugging capability</li>
+</ul>
+<h4>Edge Network</h4>
+<p>The <strong>globally distributed data processing layer</strong>:</p>
+<ul>
+<li><strong>Low latency</strong> – Processes data close to the user&#x27;s location</li>
+<li><strong>Real-time processing</strong> – Events processed in milliseconds</li>
+<li><strong>Data routing</strong> – Routes data to appropriate AEP services</li>
+<li><strong>Personalization responses</strong> – Returns Target/AJO decisions in real-time</li>
+<li><strong>Identity resolution</strong> – Applies identity stitching at the edge</li>
+</ul>
+<h4>Datastreams</h4>
+<p><strong>Configuration layer</strong> for the Edge Network:</p>
+<ul>
+<li>Defines which <strong>AEP services</strong> receive data</li>
+<li>Controls <strong>data routing</strong> to Analytics, Target, AJO, etc.</li>
+<li>Manages <strong>data preparation</strong> and field mapping</li>
+<li>Configures <strong>bot detection</strong> and filtering</li>
+</ul>
+<hr>
+<h3>Layer 3: Adobe Experience Platform Core</h3>
+<h4>3a. Data Ingestion</h4>
+<p>AEP supports two primary ingestion methods:</p>
+<p>| Method | Description | Use Case |</p>
+<p>|---|---|---|</p>
+<p>| <strong>Streaming Ingestion</strong> | Real-time data via HTTP API or SDK | Web events, mobile events, real-time CRM updates |</p>
+<p>| <strong>Batch Ingestion</strong> | File-based data in scheduled batches | CRM exports, offline transactions, historical data |</p>
+<h4>3b. Data Lake</h4>
+<p>The <strong>central repository</strong> for all raw data in AEP:</p>
+<ul>
+<li><strong>Stores all ingested data</strong> regardless of format</li>
+<li><strong>XDM-structured</strong> – All data conforms to Experience Data Model</li>
+<li><strong>Queryable</strong> – Accessible via Query Service</li>
+<li><strong>Historical data retention</strong> – Configurable retention periods</li>
+<li><strong>Dataset management</strong> – Organized into datasets per data type</li>
+</ul>
+<h4>3c. Experience Data Model (XDM)</h4>
+<p>The <strong>standardized data model</strong> that powers AEP:</p>
+<ul>
+<li><strong>Schemas</strong> – Define the structure of data</li>
+<li><strong>Field Groups</strong> – Reusable collections of fields</li>
+<li><strong>Data Types</strong> – Custom field type definitions</li>
+<li><strong>Class-based</strong> – Profile, ExperienceEvent, Lookup, Summary classes</li>
+<li><strong>Extensible</strong> – Custom fields can be added to any schema</li>
+</ul>
+<h4>3d. Identity Service</h4>
+<p>Manages <strong>customer identity resolution</strong> across all data sources:</p>
+<ul>
+<li><strong>Identity Graph</strong> – Links multiple identities to a single customer</li>
+<li><strong>Namespace management</strong> – Organizes identities by type (Email, ECID, CRM ID, etc.)</li>
+<li><strong>Cross-device linking</strong> – Connects authenticated and anonymous identities</li>
+<li><strong>Graph Simulation</strong> – Test identity linking rules safely</li>
+<li><strong>Real-time resolution</strong> – Identity graphs updated as new data arrives</li>
+</ul>
+<h4>3e. Real-Time Customer Profile</h4>
+<p>Creates a <strong>unified, real-time view</strong> of each customer:</p>
+<ul>
+<li><strong>Profile store</strong> – Optimized database for fast profile lookups</li>
+<li><strong>Merge policies</strong> – Rules for combining data from multiple datasets</li>
+<li><strong>Profile attributes</strong> – Current state of customer data</li>
+<li><strong>Experience events</strong> – Time-series behavioral data</li>
+<li><strong>Computed attributes</strong> – Pre-calculated values based on event history</li>
+<li><strong>Real-time updates</strong> – Profile updated within seconds of new data</li>
+</ul>
+<h4>3f. Segmentation Service</h4>
+<p>Builds <strong>audience segments</strong> from profile data:</p>
+<p>| Segmentation Type | Description | Latency |</p>
+<p>|---|---|---|</p>
+<p>| <strong>Batch Segmentation</strong> | Scheduled evaluation of all profiles | Daily |</p>
+<p>| <strong>Streaming Segmentation</strong> | Real-time evaluation as events arrive | Seconds |</p>
+<p>| <strong>Edge Segmentation</strong> | On-device evaluation at Edge Network | Milliseconds |</p>
+<h4>3g. Query Service</h4>
+<p><strong>SQL-based analytics</strong> on all AEP data:</p>
+<ul>
+<li><strong>Standard SQL</strong> – Query data lake using familiar SQL syntax</li>
+<li><strong>Dataset exploration</strong> – Explore and validate ingested data</li>
+<li><strong>Data quality checks</strong> – Identify missing or incorrect data</li>
+<li><strong>Audience creation</strong> – Build audiences using SQL queries</li>
+<li><strong>BI tool integration</strong> – Connect Tableau, Power BI, Looker via PSQL</li>
+</ul>
+<h4>3h. Data Governance</h4>
+<p><strong>Privacy and compliance</strong> management across all data:</p>
+<ul>
+<li><strong>Data Usage Labels</strong> – Tag data with usage restrictions</li>
+<li><strong>Data Usage Policies</strong> – Define rules for how data can be used</li>
+<li><strong>Policy enforcement</strong> – Automatically block policy violations</li>
+<li><strong>Consent management</strong> – Respect customer consent preferences</li>
+<li><strong>Audit Logs</strong> – Track all data access and modifications</li>
+</ul>
+<h4>3i. AI/ML Services</h4>
+<p><strong>Intelligent insights</strong> powered by machine learning:</p>
+<p>| Service | Description |</p>
+<p>|---|---|</p>
+<p>| <strong>Attribution AI</strong> | Multi-touch attribution modeling |</p>
+<p>| <strong>Customer AI</strong> | Propensity scoring (churn, conversion) |</p>
+<p>| <strong>Content AI</strong> | Automated content tagging and similarity |</p>
+<hr>
+<h3>Layer 4: Activation Layer</h3>
+<h4>Adobe Journey Optimizer (AJO)</h4>
+<p><strong>Orchestrates customer journeys</strong> across all channels:</p>
+<ul>
+<li><strong>Journey Designer</strong> – Visual drag-and-drop journey canvas</li>
+<li><strong>Campaigns</strong> – Scheduled and API-triggered messages</li>
+<li><strong>Decision Management</strong> – AI-powered offer selection</li>
+<li><strong>Channels</strong> – Email, SMS, Push, In-App, Web, Direct Mail</li>
+<li><strong>Real-time triggering</strong> – Journeys triggered by AEP events</li>
+</ul>
+<h4>Adobe Real-Time CDP (RTCDP)</h4>
+<p><strong>Activates audiences</strong> to external destinations:</p>
+<ul>
+<li><strong>Destinations catalog</strong> – 200+ pre-built destination connectors</li>
+<li><strong>Audience activation</strong> – Send segments to ad platforms, CRMs, etc.</li>
+<li><strong>Real-time activation</strong> – Stream audiences as profiles qualify</li>
+<li><strong>B2B Edition</strong> – Account-based marketing capabilities</li>
+</ul>
+<h4>Adobe Target</h4>
+<p><strong>Delivers personalization</strong> on web and mobile:</p>
+<ul>
+<li><strong>A/B Testing</strong> – Experiment with different experiences</li>
+<li><strong>Multivariate Testing</strong> – Test multiple elements simultaneously</li>
+<li><strong>Automated Personalization</strong> – AI-powered content delivery</li>
+<li><strong>AEP integration</strong> – Uses AEP segments for targeting</li>
+</ul>
+<h4>Adobe Analytics</h4>
+<p><strong>Analyzes customer behavior</strong> across digital touchpoints:</p>
+<ul>
+<li><strong>Real-time reporting</strong> – Live visitor data</li>
+<li><strong>Analysis Workspace</strong> – Drag-and-drop analytics interface</li>
+<li><strong>AEP data sharing</strong> – Analytics data flows into AEP datasets</li>
+<li><strong>CJA integration</strong> – Cross-channel analysis with AEP data</li>
+</ul>
+<h4>Destinations</h4>
+<p><strong>Exports data and audiences</strong> to external systems:</p>
+<p>| Destination Type | Examples |</p>
+<p>|---|---|</p>
+<p>| <strong>Advertising</strong> | Google, Facebook, LinkedIn, The Trade Desk |</p>
+<p>| <strong>Email Marketing</strong> | Mailchimp, Salesforce Marketing Cloud |</p>
+<p>| <strong>CRM</strong> | Salesforce, Microsoft Dynamics |</p>
+<p>| <strong>Data Warehouses</strong> | Snowflake, BigQuery, Azure Data Lake |</p>
+<p>| <strong>Streaming</strong> | Kafka, HTTP API |</p>
+<hr>
+<h3>End-to-End Data Flow</h3>
+<p>Here is the complete data flow through AEP architecture:</p>
+<p>```</p>
+<p>1. CUSTOMER INTERACTION</p>
+<p>Customer visits website / uses mobile app / makes purchase</p>
+<p>2. DATA COLLECTION</p>
+<p>Web SDK / Mobile SDK captures interaction</p>
+<p>Tags rules fire and send XDM-formatted events</p>
+<p>Edge Network receives and routes the data</p>
+<p>3. DATA INGESTION</p>
+<p>Streaming: Events arrive in AEP in real-time (&lt;1 second)</p>
+<p>Batch: Offline data arrives in scheduled batches</p>
+<p>4. DATA PROCESSING</p>
+<p>Data Lake stores raw event data</p>
+<p>Identity Service links identities in the identity graph</p>
+<p>Real-Time Profile is updated with new attributes and events</p>
+<p>Segmentation evaluates profile against audience criteria</p>
+<p>5. INTELLIGENCE</p>
+<p>AI/ML services calculate propensity scores</p>
+<p>Computed attributes aggregate behavioral data</p>
+<p>Insights generated for marketing decisions</p>
+<p>6. ACTIVATION</p>
+<p>AJO triggers journeys based on profile events</p>
+<p>RTCDP activates audiences to ad platforms</p>
+<p>Target delivers personalized web experiences</p>
+<p>Analytics reports on customer behavior</p>
+<p>```</p>
+<hr>
+<h3>AEP Services Reference Map</h3>
+<p>| Category | Service | Purpose |</p>
+<p>|---|---|---|</p>
+<p>| <strong>Collection</strong> | Tags | Tag management and deployment |</p>
+<p>| <strong>Collection</strong> | Web SDK | Web data collection |</p>
+<p>| <strong>Collection</strong> | Mobile SDK | Mobile data collection |</p>
+<p>| <strong>Collection</strong> | Edge Network | Real-time data processing |</p>
+<p>| <strong>Foundation</strong> | XDM | Data standardization |</p>
+<p>| <strong>Foundation</strong> | Data Lake | Raw data storage |</p>
+<p>| <strong>Foundation</strong> | Identity Service | Identity resolution |</p>
+<p>| <strong>Foundation</strong> | Real-Time Profile | Unified customer profile |</p>
+<p>| <strong>Intelligence</strong> | Segmentation | Audience building |</p>
+<p>| <strong>Intelligence</strong> | Query Service | SQL analytics |</p>
+<p>| <strong>Intelligence</strong> | Customer AI | Propensity scoring |</p>
+<p>| <strong>Governance</strong> | Data Governance | Privacy and compliance |</p>
+<p>| <strong>Governance</strong> | Audit Logs | Activity tracking |</p>
+<p>| <strong>Activation</strong> | AJO | Journey orchestration |</p>
+<p>| <strong>Activation</strong> | RTCDP | Audience activation |</p>
+<p>| <strong>Activation</strong> | Target | Web personalization |</p>
+<p>| <strong>Activation</strong> | Destinations | External data export |</p>
+<hr>
+<h3>Key Architectural Principles</h3>
+<p>✓ <strong>Open and API-first</strong> – Every AEP capability is accessible via RESTful APIs</p>
+<p>✓ <strong>Real-time processing</strong> – Data is processed and profiles updated in seconds</p>
+<p>✓ <strong>Standardized data model</strong> – XDM ensures consistency across all data sources</p>
+<p>✓ <strong>Privacy by design</strong> – Data governance and consent built into the foundation</p>
+<p>✓ <strong>Scalable infrastructure</strong> – Cloud-native architecture scales to any data volume</p>
+<p>✓ <strong>Interoperable</strong> – Integrates with any Adobe or third-party solution</p>
+<p>✓ <strong>Intelligent</strong> – AI/ML services embedded throughout the platform</p>
+</article>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Module 15: Architecture & End-to-End Design\n103. Explain AEP architecture end-to-end.", "acceptedAnswer": {"@type": "Answer", "text": "AEP Architecture End-to-End Video Walkthroughs \u25b6 Watch: Adobe Experience Platform Overview(https://video.tv.adobe.com/v/32456?learn=on&enablevpops) This video provides a comprehensive overview of Adobe Experience Platform architecture and how all components work together. \u25b6 Watch: AEP Architecture Overview(https://video.tv.adobe.com/v/3422978?learn=on&enablevpops) This video walks through the complete end-to-end architecture of Adobe Experience Platform. --- Overview Adobe Experience Platform is the most powerful, flexible, and open system for building and managing complete solutions that drive customer experience. It enables organizations to: - Centralize and standardize customer data from any system - Apply data science and machine learning to improve experience delivery - Activate audiences to external destinations for personalization and engagement !Experience Platform end-to-end workflow(./images/end-to-end-tutorial/platform-end-2-end-workflow.png) --- AEP Architecture: The Big Picture AEP architecture is organized into four major layers: \u250c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2510 \u2502 DATA SOURCES \u2502 \u2502 Web SDK | Mobile SDK | APIs | CRM | ERP | Offline Data \u2502 \u2514\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2518 \u2193 \u250c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2510 \u2502 DATA COLLECTION LAYER \u2502 \u2502 Tags | Web SDK | Mobile SDK | Edge Network \u2502 \u2502 Datastreams | Server API \u2502 \u2514\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2518 \u2193 \u250c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2510 \u2502 ADOBE EXPERIENCE PLATFORM CORE \u2502 \u2502 Data Ingestion \u2192 Data Lake \u2192 Profile Store \u2192 Segments \u2502 \u2502 Identity Service | Query Service | Data Governance \u2502 \u2502 AI/ML Services | Observability | Privacy & Compliance \u2502 \u2514\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2518 \u2193 \u250c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2510 \u2502 ACTIVATION LAYER \u2502 \u2502 Destinations | AJO | Target | RTCDP | Analytics \u2502\u2026"}}]}</script></div>
+  </body>
+</html>

@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/png" href="/tools/rovr/rovrlogo.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="build-date" content="2026-06-10" />
+    
+    
+    <script src="https://assets.adobedtm.com/204118644db8/290ae1adb65a/launch-e5ec7bf1a1ef-development.min.js" async></script>
+    <script type="module" crossorigin src="/tools/rovr/assets/index-6PtPUQd3.js"></script>
+    <link rel="stylesheet" crossorigin href="/tools/rovr/assets/index-C3YgbV_4.css">
+  <title>82. What causes missing email delivery in AJO? | Rovr</title>
+<meta name="description" content="What Causes Missing Email Delivery in AJO Based on the documentation available, email delivery failures in Adobe Journey Optimizer can occur for multiple…" />
+<link rel="canonical" href="https://thelearningproject.in/tools/rovr/q/82-what-causes-missing-email-delivery-in-ajo-f72042" />
+<meta property="og:title" content="82. What causes missing email delivery in AJO?" />
+<meta property="og:description" content="What Causes Missing Email Delivery in AJO Based on the documentation available, email delivery failures in Adobe Journey Optimizer can occur for multiple…" />
+<meta property="og:url" content="https://thelearningproject.in/tools/rovr/q/82-what-causes-missing-email-delivery-in-ajo-f72042" />
+<meta property="og:type" content="article" />
+<meta property="og:image" content="https://thelearningproject.in/tools/rovr/rovrlogo.png" />
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="82. What causes missing email delivery in AJO?" />
+<meta name="twitter:description" content="What Causes Missing Email Delivery in AJO Based on the documentation available, email delivery failures in Adobe Journey Optimizer can occur for multiple…" />
+</head>
+  <body>
+    <div id="root"><article><h1>82. What causes missing email delivery in AJO?</h1>
+<h2>What Causes Missing Email Delivery in AJO</h2>
+<p>Based on the documentation available, email delivery failures in Adobe Journey Optimizer can occur for multiple reasons. Here are the key causes:</p>
+<h3>Email Delivery Errors</h3>
+<p>The Adobe Journey Optimizer system tracks all email delivery errors with specific error labels, types, and technical values. These errors are recorded in the <strong>AJO Message Feedback Event Dataset</strong>, which contains:</p>
+<ul>
+<li>Message delivery logs from all Journey Optimizer sends</li>
+<li>Feedback records from email ISPs on bounces</li>
+<li>Complete delivery failure information</li>
+</ul>
+<h3>Common Delivery Failure Categories</h3>
+<p>Email deliveries can fail due to:</p>
+<p>1. <strong>ISP Feedback Issues</strong> – Email service providers rejecting or bouncing messages</p>
+<p>2. <strong>Bounce-related errors</strong> – Hard bounces (invalid addresses) or soft bounces (temporary issues)</p>
+<p>3. <strong>Configuration problems</strong> – Email channel not properly set up</p>
+<p>4. <strong>Content validation failures</strong> – Email content not meeting delivery requirements</p>
+<p>5. <strong>Suppression and exclusion rules</strong> – Profiles on suppression lists or excluded from sends</p>
+<h3>Accessing Delivery Error Details</h3>
+<p>To diagnose missing email delivery:</p>
+<ul>
+<li><strong>Check the Message Feedback Event Dataset</strong> – This contains complete delivery logs and ISP feedback records for all messages sent from Journey Optimizer</li>
+<li><strong>Review journey execution reports</strong> – See which messages were sent, failed, or were blocked</li>
+<li><strong>Examine error codes and descriptions</strong> – Each delivery failure includes an error label, type, and technical value for troubleshooting</li>
+</ul>
+<h3>Prerequisites for Email Sending</h3>
+<p>Before emails can be delivered successfully:</p>
+<ul>
+<li><strong>Email channel must be configured</strong> – Ensure basic email settings are established in Journey Optimizer</li>
+<li><strong>Sender authentication</strong> – SPF, DKIM, and DMARC records should be verified</li>
+<li><strong>Subdomain delegation</strong> – Verify proper subdomain configuration for sending</li>
+</ul>
+<p>For detailed information about specific error codes and their meanings, consult the complete email delivery errors reference in the Message Feedback Event Dataset documentation.</p>
+</article>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "82. What causes missing email delivery in AJO?", "acceptedAnswer": {"@type": "Answer", "text": "What Causes Missing Email Delivery in AJO Based on the documentation available, email delivery failures in Adobe Journey Optimizer can occur for multiple reasons. Here are the key causes: Email Delivery Errors The Adobe Journey Optimizer system tracks all email delivery errors with specific error labels, types, and technical values. These errors are recorded in the AJO Message Feedback Event Dataset, which contains: - Message delivery logs from all Journey Optimizer sends - Feedback records from email ISPs on bounces - Complete delivery failure information Common Delivery Failure Categories Email deliveries can fail due to: 1. ISP Feedback Issues \u2013 Email service providers rejecting or bouncing messages 2. Bounce-related errors \u2013 Hard bounces (invalid addresses) or soft bounces (temporary issues) 3. Configuration problems \u2013 Email channel not properly set up 4. Content validation failures \u2013 Email content not meeting delivery requirements 5. Suppression and exclusion rules \u2013 Profiles on suppression lists or excluded from sends Accessing Delivery Error Details To diagnose missing email delivery: - Check the Message Feedback Event Dataset \u2013 This contains complete delivery logs and ISP feedback records for all messages sent from Journey Optimizer - Review journey execution reports \u2013 See which messages were sent, failed, or were blocked - Examine error codes and descriptions \u2013 Each delivery failure includes an error label, type, and technical value for troubleshooting Prerequisites for Email Sending Before emails can be delivered successfully: - Email channel must be configured \u2013 Ensure basic email settings are established in Journey Optimizer - Sender authentication \u2013 SPF, DKIM, and DMARC records should be verified - Subdomain delegation \u2013 Verify proper subdomain configuration for sending For detailed information about specific error codes and their meanings, consult the complete email delivery errors reference in the Message Feedback Event Dataset documentation."}}]}</script></div>
+  </body>
+</html>

@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/png" href="/tools/rovr/rovrlogo.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="build-date" content="2026-06-10" />
+    
+    
+    <script src="https://assets.adobedtm.com/204118644db8/290ae1adb65a/launch-e5ec7bf1a1ef-development.min.js" async></script>
+    <script type="module" crossorigin src="/tools/rovr/assets/index-6PtPUQd3.js"></script>
+    <link rel="stylesheet" crossorigin href="/tools/rovr/assets/index-C3YgbV_4.css">
+  <title>To move content form one sandbox to another in AJO? | Rovr</title>
+<meta name="description" content="Copying Objects Between Sandboxes in Adobe Journey Optimizer Adobe Journey Optimizer uses AEP Sandbox Tooling (package export and import) to move objects such…" />
+<link rel="canonical" href="https://thelearningproject.in/tools/rovr/q/to-move-content-form-one-sandbox-to-another-in-ajo-14003c" />
+<meta property="og:title" content="To move content form one sandbox to another in AJO?" />
+<meta property="og:description" content="Copying Objects Between Sandboxes in Adobe Journey Optimizer Adobe Journey Optimizer uses AEP Sandbox Tooling (package export and import) to move objects such…" />
+<meta property="og:url" content="https://thelearningproject.in/tools/rovr/q/to-move-content-form-one-sandbox-to-another-in-ajo-14003c" />
+<meta property="og:type" content="article" />
+<meta property="og:image" content="https://thelearningproject.in/tools/rovr/rovrlogo.png" />
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="To move content form one sandbox to another in AJO?" />
+<meta name="twitter:description" content="Copying Objects Between Sandboxes in Adobe Journey Optimizer Adobe Journey Optimizer uses AEP Sandbox Tooling (package export and import) to move objects such…" />
+</head>
+  <body>
+    <div id="root"><article><h1>To move content form one sandbox to another in AJO?</h1>
+<h2>Copying Objects Between Sandboxes in Adobe Journey Optimizer</h2>
+<p>Adobe Journey Optimizer uses <strong>AEP Sandbox Tooling</strong> (package export and import) to move objects such as journeys, campaigns, custom actions, content templates, and fragments between sandboxes.</p>
+<hr>
+<h3>Prerequisites</h3>
+<p>Before you begin, ensure you have the following <strong>Sandbox administration</strong> permissions:</p>
+<ul>
+<li><strong>Manage sandboxes</strong> (or <strong>View sandboxes</strong>)</li>
+<li><strong>Manage packages</strong></li>
+</ul>
+<hr>
+<h3>Overview of the Process</h3>
+<p>The copy process follows three main stages:</p>
+<p>1. <strong>Add the object to a package</strong> in the source sandbox</p>
+<p>2. <strong>Publish the package</strong></p>
+<p>3. <strong>Import the package</strong> in the target sandbox</p>
+<hr>
+<h3>Step-by-Step Process</h3>
+<h4>Step 1 — Add the Object to a Package (Source Sandbox)</h4>
+<p>1. Navigate to the object you want to copy (e.g., a journey, campaign, content template, or fragment) in your <strong>source sandbox</strong>.</p>
+<p>2. Use the <strong>Add to Package</strong> option on the object.</p>
+<p>3. Either create a new package or add it to an existing package.</p>
+<p>4. You can include <strong>multiple objects</strong> in a single package, but all objects must come from the <strong>same sandbox</strong>.</p>
+<p><img src="https://raw.githubusercontent.com/AdobeDocs/journey-optimizer.en/main/help/using/configuration/assets/journey-sandbox1.png" alt="Package export step"></p>
+<hr>
+<h4>Step 2 — Publish the Package</h4>
+<p>1. Once all desired objects are added, <strong>publish the package</strong> from the source sandbox.</p>
+<p>2. Publishing makes the package available for import into a target sandbox.</p>
+<p><img src="https://raw.githubusercontent.com/AdobeDocs/journey-optimizer.en/main/help/using/configuration/assets/journey-sandbox2.png" alt="Publish package"></p>
+<hr>
+<h4>Step 3 — Import the Package (Target Sandbox)</h4>
+<p>1. Switch to your <strong>target sandbox</strong>.</p>
+<p>2. Locate the published package and initiate the <strong>import</strong>.</p>
+<p>3. The system will automatically detect and reuse any existing matching objects (e.g., channel configurations) in the target sandbox.</p>
+<p>4. If no matching channel configuration is found, it will be skipped — you will need to <strong>manually update channel settings</strong> in the target sandbox after import.</p>
+<p><img src="https://raw.githubusercontent.com/AdobeDocs/journey-optimizer.en/main/help/using/configuration/assets/journey-sandbox4.png" alt="Import package"></p>
+<hr>
+<h3>Key Behaviors &amp; Guardrails</h3>
+<p>| Behavior | Detail |</p>
+<p>|---|---|</p>
+<p>| <strong>Channel configurations</strong> | Automatically reused if an identical one exists in the target sandbox; otherwise skipped and must be manually configured |</p>
+<p>| <strong>Dependent objects</strong> | Most dependencies are resolved automatically during import |</p>
+<p>| <strong>Data usage labels &amp; language settings</strong> | <strong>Not copied</strong> — must be recreated manually |</p>
+<p>| <strong>Existing experiments &amp; audiences</strong> | Can be reused in the target sandbox as dependent objects |</p>
+<p>| <strong>Decision items (offer items)</strong> | <strong>Not included automatically</strong> — must be added manually using <strong>Add to Package</strong> |</p>
+<p>| <strong>AI model ranking formulas</strong> | Copying is <strong>not currently supported</strong> |</p>
+<p>| <strong>Decision items copy order</strong> | Decision items must be copied <strong>before</strong> any other related Decisioning objects |</p>
+<hr>
+<h3>Video Walkthrough</h3>
+<p><a href="https://video.tv.adobe.com/v/3409593?quality=12&amp;learn=on">▶ Watch: Copy a Journey to Another Sandbox</a></p>
+<hr>
+<h3>Special Case: Decisioning Objects</h3>
+<p>For migrating <strong>Decision Management objects to Decisioning</strong>, use the dedicated <strong>Decisioning Migration API</strong> instead of sandbox tooling. It provides:</p>
+<ul>
+<li>Automated dependency resolution</li>
+<li>Rollback capabilities</li>
+<li>Purpose-built for decisioning entity migration</li>
+</ul>
+</article>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "To move content form one sandbox to another in AJO?", "acceptedAnswer": {"@type": "Answer", "text": "Copying Objects Between Sandboxes in Adobe Journey Optimizer Adobe Journey Optimizer uses AEP Sandbox Tooling (package export and import) to move objects such as journeys, campaigns, custom actions, content templates, and fragments between sandboxes. --- Prerequisites Before you begin, ensure you have the following Sandbox administration permissions: - Manage sandboxes (or View sandboxes) - Manage packages --- Overview of the Process The copy process follows three main stages: 1. Add the object to a package in the source sandbox 2. Publish the package 3. Import the package in the target sandbox --- Step-by-Step Process Step 1 \u2014 Add the Object to a Package (Source Sandbox) 1. Navigate to the object you want to copy (e.g., a journey, campaign, content template, or fragment) in your source sandbox. 2. Use the Add to Package option on the object. 3. Either create a new package or add it to an existing package. 4. You can include multiple objects in a single package, but all objects must come from the same sandbox. !Package export step(https://raw.githubusercontent.com/AdobeDocs/journey-optimizer.en/main/help/using/configuration/assets/journey-sandbox1.png) --- Step 2 \u2014 Publish the Package 1. Once all desired objects are added, publish the package from the source sandbox. 2. Publishing makes the package available for import into a target sandbox. !Publish package(https://raw.githubusercontent.com/AdobeDocs/journey-optimizer.en/main/help/using/configuration/assets/journey-sandbox2.png) --- Step 3 \u2014 Import the Package (Target Sandbox) 1. Switch to your target sandbox. 2. Locate the published package and initiate the import. 3. The system will automatically detect and reuse any existing matching objects (e.g., channel configurations) in the target sandbox. 4. If no matching channel configuration is found, it will be skipped \u2014 you will need to manually update channel settings in the target sandbox after import. !Import\u2026"}}]}</script></div>
+  </body>
+</html>

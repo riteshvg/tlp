@@ -1,0 +1,428 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/png" href="/tools/rovr/rovrlogo.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="build-date" content="2026-06-10" />
+    
+    
+    <script src="https://assets.adobedtm.com/204118644db8/290ae1adb65a/launch-e5ec7bf1a1ef-development.min.js" async></script>
+    <script type="module" crossorigin src="/tools/rovr/assets/index-6PtPUQd3.js"></script>
+    <link rel="stylesheet" crossorigin href="/tools/rovr/assets/index-C3YgbV_4.css">
+  <title>Q2. What is the relationship between Adobe Tags and the Web SDK (alloy.js)? | Rovr</title>
+<meta name="description" content="What is the Relationship Between Adobe Tags and Web SDK (alloy.js)? Video Walkthroughs ▶ Watch: Adobe Experience Platform Web SDK…" />
+<link rel="canonical" href="https://thelearningproject.in/tools/rovr/q/q2-what-is-the-relationship-between-adobe-tags-and-the-web-s-d3b8c6" />
+<meta property="og:title" content="Q2. What is the relationship between Adobe Tags and the Web SDK (alloy.js)?" />
+<meta property="og:description" content="What is the Relationship Between Adobe Tags and Web SDK (alloy.js)? Video Walkthroughs ▶ Watch: Adobe Experience Platform Web SDK…" />
+<meta property="og:url" content="https://thelearningproject.in/tools/rovr/q/q2-what-is-the-relationship-between-adobe-tags-and-the-web-s-d3b8c6" />
+<meta property="og:type" content="article" />
+<meta property="og:image" content="https://thelearningproject.in/tools/rovr/rovrlogo.png" />
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="Q2. What is the relationship between Adobe Tags and the Web SDK (alloy.js)?" />
+<meta name="twitter:description" content="What is the Relationship Between Adobe Tags and Web SDK (alloy.js)? Video Walkthroughs ▶ Watch: Adobe Experience Platform Web SDK…" />
+</head>
+  <body>
+    <div id="root"><article><h1>Q2. What is the relationship between Adobe Tags and the Web SDK (alloy.js)?</h1>
+<h2>What is the Relationship Between Adobe Tags and Web SDK (alloy.js)?</h2>
+<h3>Video Walkthroughs</h3>
+<p><a href="https://video.tv.adobe.com/v/34141?quality=12&amp;learn=on">▶ Watch: Adobe Experience Platform Web SDK Overview</a></p>
+<p>This video provides a comprehensive overview of the Web SDK and its relationship with Adobe Tags.</p>
+<p><a href="https://video.tv.adobe.com/v/3418167?quality=12&amp;learn=on">▶ Watch: Implement Web SDK using Adobe Tags</a></p>
+<p>This video demonstrates how to implement the Web SDK through Adobe Tags extensions.</p>
+<p><a href="https://video.tv.adobe.com/v/3418165?quality=12&amp;learn=on">▶ Watch: Web SDK Tag Extension Overview</a></p>
+<p>This video walks through the Web SDK tag extension configuration and capabilities.</p>
+<hr>
+<h3>Overview</h3>
+<p>The relationship between <strong>Adobe Tags</strong> and <strong>Web SDK (alloy.js)</strong> is best understood as:</p>
+<p>&gt; <strong>Adobe Tags is the DEPLOYMENT MECHANISM. Web SDK is the DATA COLLECTION ENGINE.</strong></p>
+<p>They are two separate but deeply integrated tools that work together to form the <strong>modern Adobe data collection stack</strong>.</p>
+<p>```</p>
+<p>┌─────────────────────────────────────────────────────────┐</p>
+<p>│                   ADOBE TAGS                             │</p>
+<p>│         (Deployment &amp; Configuration Layer)               │</p>
+<p>│                                                         │</p>
+<p>│  ┌─────────────────────────────────────────────────┐   │</p>
+<p>│  │          WEB SDK EXTENSION (alloy.js)            │   │</p>
+<p>│  │         (Data Collection Engine)                 │   │</p>
+<p>│  │                                                  │   │</p>
+<p>│  │  • Configure SDK settings                        │   │</p>
+<p>│  │  • Define data collection rules                  │   │</p>
+<p>│  │  • Map data elements to XDM                      │   │</p>
+<p>│  │  • Send events to Edge Network                   │   │</p>
+<p>│  └─────────────────────────────────────────────────┘   │</p>
+<p>└─────────────────────────────────────────────────────────┘</p>
+<p>↓</p>
+<p>Edge Network → AEP → Profile → AJO</p>
+<p>```</p>
+<hr>
+<h3>What is Adobe Tags in This Context?</h3>
+<p>Adobe Tags is the <strong>container and deployment system</strong> that:</p>
+<ul>
+<li><strong>Hosts</strong> the Web SDK JavaScript library on your website</li>
+<li><strong>Configures</strong> the Web SDK settings (datastream ID, org ID, etc.)</li>
+<li><strong>Controls</strong> when and how Web SDK events are fired</li>
+<li><strong>Maps</strong> website data layer values to XDM fields</li>
+<li><strong>Manages</strong> the deployment lifecycle (Dev → Staging → Production)</li>
+</ul>
+<h3>What is Web SDK (alloy.js) in This Context?</h3>
+<p>Web SDK is the <strong>core data collection library</strong> that:</p>
+<ul>
+<li><strong>Communicates</strong> with the Adobe Edge Network</li>
+<li><strong>Sends</strong> XDM-formatted events to Adobe services</li>
+<li><strong>Receives</strong> personalization decisions from Target/AJO</li>
+<li><strong>Manages</strong> visitor identity (ECID)</li>
+<li><strong>Handles</strong> consent management</li>
+</ul>
+<hr>
+<h3>Three Ways to Deploy Web SDK</h3>
+<p>Web SDK can be deployed in three ways — Tags being the most recommended:</p>
+<p>| Deployment Method | Description | Recommended For |</p>
+<p>|---|---|---|</p>
+<p>| <strong>Via Adobe Tags</strong> ✅ | Web SDK deployed as a Tags extension | Most implementations — non-technical marketers |</p>
+<p>| <strong>Via NPM Package</strong> | `npm install @adobe/alloy` in your codebase | Single-page apps, React/Angular/Vue |</p>
+<p>| <strong>Via CDN Script Tag</strong> | Direct `&lt;script&gt;` include of alloy.js | Simple implementations, quick POCs |</p>
+<hr>
+<h3>Method 1: Web SDK Deployed Via Adobe Tags (Recommended)</h3>
+<h4>How It Works</h4>
+<p>When you deploy Web SDK via Tags:</p>
+<p>1. Tags <strong>loads the alloy.js library</strong> from Adobe CDN</p>
+<p>2. Tags <strong>initializes Web SDK</strong> with your configuration</p>
+<p>3. Tags <strong>rules fire</strong> Web SDK commands based on user interactions</p>
+<p>4. Web SDK <strong>sends events</strong> to Edge Network</p>
+<h4>Step-by-Step Configuration</h4>
+<h5>Step 1: Install the Web SDK Extension</h5>
+<p>1. Log in to <strong>experience.adobe.com</strong></p>
+<p>2. Navigate to <strong>Data Collection</strong> → <strong>Tags</strong></p>
+<p>3. Open your <strong>Tag Property</strong></p>
+<p>4. Go to <strong>Extensions</strong> → <strong>Catalog</strong></p>
+<p>5. Search for <strong>Adobe Experience Platform Web SDK</strong></p>
+<p>6. Click <strong>Install</strong></p>
+<h5>Step 2: Configure the Web SDK Extension</h5>
+<p>After installation, configure the extension:</p>
+<p>1. Navigate to <strong>Extensions</strong> → <strong>Installed</strong></p>
+<p>2. Click <strong>Configure</strong> on the Web SDK extension</p>
+<p>3. Fill in the required settings:</p>
+<p><strong>Instance Configuration:</strong></p>
+<p>```</p>
+<p>Instance Name: alloy (default)</p>
+<p>IMS Org ID: YOUR_ORG_ID@AdobeOrg</p>
+<p>Edge Domain: data.example.com (custom first-party domain)</p>
+<p>```</p>
+<p><strong>Datastreams Configuration:</strong></p>
+<p>```</p>
+<p>Production Environment: prod-datastream-id</p>
+<p>Staging Environment: staging-datastream-id</p>
+<p>Development Environment: dev-datastream-id</p>
+<p>```</p>
+<p><strong>Privacy &amp; Consent:</strong></p>
+<p>```</p>
+<p>Default Consent: In / Out / Pending</p>
+<p>```</p>
+<p><strong>Identity:</strong></p>
+<p>```</p>
+<p>Migrate ECID from VisitorAPI: ✅ (if migrating from legacy)</p>
+<p>Authenticate State: Ambiguous / Authenticated / Logged Out</p>
+<p>```</p>
+<p><strong>Data Collection:</strong></p>
+<p>```</p>
+<p>On Before Event Send Callback: (custom code to modify events)</p>
+<p>On Before Link Click Send Callback: (for link tracking)</p>
+<p>Click Collection: Enabled ✅</p>
+<p>Download Links Qualifier: \.pdf$</p>
+<p>```</p>
+<p><strong>Advanced Settings:</strong></p>
+<p>```</p>
+<p>Edge Base Path: ee</p>
+<p>```</p>
+<h5>Step 3: Create XDM Data Elements</h5>
+<p>Map website data layer values to XDM fields using Tags data elements:</p>
+<p><strong>Data Element: XDM Page View Object</strong></p>
+<p>```javascript</p>
+<p>// Extension: Adobe Experience Platform Web SDK</p>
+<p>// Data Element Type: XDM Object</p>
+<p>{</p>
+<p>&quot;eventType&quot;: &quot;web.webpagedetails.pageViews&quot;,</p>
+<p>&quot;web&quot;: {</p>
+<p>&quot;webPageDetails&quot;: {</p>
+<p>&quot;name&quot;: &quot;%Page Name%&quot;,        // References Tags Data Element</p>
+<p>&quot;URL&quot;: &quot;%Page URL%&quot;,          // References Tags Data Element</p>
+<p>&quot;server&quot;: &quot;%Domain%&quot;,         // References Tags Data Element</p>
+<p>&quot;pageViews&quot;: {</p>
+<p>&quot;value&quot;: 1</p>
+<p>}</p>
+<p>},</p>
+<p>&quot;webReferrer&quot;: {</p>
+<p>&quot;URL&quot;: &quot;%Referring URL%&quot;</p>
+<p>}</p>
+<p>},</p>
+<p>&quot;environment&quot;: {</p>
+<p>&quot;type&quot;: &quot;%Environment Type%&quot;,</p>
+<p>&quot;browserDetails&quot;: {</p>
+<p>&quot;userAgent&quot;: &quot;%User Agent%&quot;</p>
+<p>}</p>
+<p>},</p>
+<p>&quot;device&quot;: {</p>
+<p>&quot;screenHeight&quot;: &quot;%Screen Height%&quot;,</p>
+<p>&quot;screenWidth&quot;: &quot;%Screen Width%&quot;</p>
+<p>}</p>
+<p>}</p>
+<p>```</p>
+<p><strong>Data Element: XDM Product View Object</strong></p>
+<p>```javascript</p>
+<p>{</p>
+<p>&quot;eventType&quot;: &quot;commerce.productViews&quot;,</p>
+<p>&quot;commerce&quot;: {</p>
+<p>&quot;productViews&quot;: {</p>
+<p>&quot;value&quot;: 1</p>
+<p>}</p>
+<p>},</p>
+<p>&quot;productListItems&quot;: [</p>
+<p>{</p>
+<p>&quot;SKU&quot;: &quot;%Product SKU%&quot;,</p>
+<p>&quot;name&quot;: &quot;%Product Name%&quot;,</p>
+<p>&quot;priceTotal&quot;: &quot;%Product Price%&quot;,</p>
+<p>&quot;quantity&quot;: &quot;%Product Quantity%&quot;,</p>
+<p>&quot;category&quot;: &quot;%Product Category%&quot;</p>
+<p>}</p>
+<p>]</p>
+<p>}</p>
+<p>```</p>
+<h5>Step 4: Create Rules to Fire Web SDK Events</h5>
+<p><strong>Rule 1: Page View Tracking</strong></p>
+<p>```</p>
+<p>Rule Name: &quot;AEP - Page View&quot;</p>
+<p>EVENT:</p>
+<p>Extension: Core</p>
+<p>Event Type: Library Loaded (Page Top)</p>
+<p>Order: 50</p>
+<p>CONDITIONS:</p>
+<p>None (fire on all pages)</p>
+<p>ACTIONS:</p>
+<p>Action 1:</p>
+<p>Extension: Adobe Experience Platform Web SDK</p>
+<p>Action Type: Send Event</p>
+<p>Type: web.webpagedetails.pageViews</p>
+<p>XDM Data: %XDM Page View Object%  ← References data element</p>
+<p>Send as Beacon: No</p>
+<p>Action 2:</p>
+<p>Extension: Adobe Experience Platform Web SDK</p>
+<p>Action Type: Apply Response</p>
+<p>(Handles personalization rendering)</p>
+<p>```</p>
+<p><strong>Rule 2: Product View Tracking</strong></p>
+<p>```</p>
+<p>Rule Name: &quot;AEP - Product View&quot;</p>
+<p>EVENT:</p>
+<p>Extension: Adobe Client Data Layer</p>
+<p>Event Type: Data Pushed</p>
+<p>Event Filter Key: event</p>
+<p>Event Filter Value: product-view</p>
+<p>CONDITIONS:</p>
+<p>Extension: Core</p>
+<p>Condition Type: Path Without Query String</p>
+<p>Path: /products/*</p>
+<p>ACTIONS:</p>
+<p>Action:</p>
+<p>Extension: Adobe Experience Platform Web SDK</p>
+<p>Action Type: Send Event</p>
+<p>Type: commerce.productViews</p>
+<p>XDM Data: %XDM Product View Object%</p>
+<p>```</p>
+<p><strong>Rule 3: Add to Cart Tracking</strong></p>
+<p>```</p>
+<p>Rule Name: &quot;AEP - Add to Cart&quot;</p>
+<p>EVENT:</p>
+<p>Extension: Core</p>
+<p>Event Type: Click</p>
+<p>Elements: .add-to-cart-button</p>
+<p>CONDITIONS:</p>
+<p>Extension: Core</p>
+<p>Condition Type: Variable</p>
+<p>Variable: %Cart Item Count%</p>
+<p>Operator: Greater Than</p>
+<p>Value: 0</p>
+<p>ACTIONS:</p>
+<p>Action:</p>
+<p>Extension: Adobe Experience Platform Web SDK</p>
+<p>Action Type: Send Event</p>
+<p>Type: commerce.productListAdds</p>
+<p>XDM Data: %XDM Add to Cart Object%</p>
+<p>```</p>
+<p><strong>Rule 4: Authenticated User Tracking</strong></p>
+<p>```</p>
+<p>Rule Name: &quot;AEP - User Login&quot;</p>
+<p>EVENT:</p>
+<p>Extension: Core</p>
+<p>Event Type: Custom Event</p>
+<p>Registered Event Types: user-authenticated</p>
+<p>CONDITIONS:</p>
+<p>Extension: Core</p>
+<p>Condition Type: Variable</p>
+<p>Variable: %User Email%</p>
+<p>Operator: Is Not Empty</p>
+<p>ACTIONS:</p>
+<p>Action:</p>
+<p>Extension: Adobe Experience Platform Web SDK</p>
+<p>Action Type: Send Event</p>
+<p>Type: userAccount.login</p>
+<p>XDM Data: %XDM Login Object%</p>
+<p>Identity Map: %Identity Map - Authenticated%</p>
+<p>```</p>
+<hr>
+<h3>Method 2: Web SDK Deployed Via NPM (Direct Implementation)</h3>
+<p>When Tags is <strong>not used</strong>, Web SDK is deployed directly in the website codebase:</p>
+<p>```javascript</p>
+<p>// Install: npm install @adobe/alloy</p>
+<p>import { createInstance } from &quot;@adobe/alloy&quot;;</p>
+<p>const alloy = createInstance({ name: &quot;alloy&quot; });</p>
+<p>// Configure Web SDK directly</p>
+<p>alloy(&quot;configure&quot;, {</p>
+<p>datastreamId: &quot;YOUR_DATASTREAM_ID&quot;,</p>
+<p>orgId: &quot;YOUR_ORG_ID@AdobeOrg&quot;,</p>
+<p>debugEnabled: false,</p>
+<p>defaultConsent: &quot;in&quot;,</p>
+<p>onBeforeEventSend: function(options) {</p>
+<p>// Modify XDM data before sending</p>
+<p>options.xdm._retail = {</p>
+<p>environment: &quot;production&quot;</p>
+<p>};</p>
+<p>return options;</p>
+<p>}</p>
+<p>});</p>
+<p>// Send events directly in JavaScript</p>
+<p>alloy(&quot;sendEvent&quot;, {</p>
+<p>xdm: {</p>
+<p>eventType: &quot;web.webpagedetails.pageViews&quot;,</p>
+<p>web: {</p>
+<p>webPageDetails: {</p>
+<p>name: document.title,</p>
+<p>URL: window.location.href</p>
+<p>}</p>
+<p>}</p>
+<p>}</p>
+<p>});</p>
+<p>```</p>
+<p><strong>Pros:</strong></p>
+<ul>
+<li>Full control over Web SDK initialization</li>
+<li>Better integration with JavaScript frameworks (React, Angular, Vue)</li>
+<li>No dependency on Tags</li>
+</ul>
+<p><strong>Cons:</strong></p>
+<ul>
+<li>Requires developer for every change</li>
+<li>No self-service for marketing team</li>
+<li>No visual rule builder</li>
+</ul>
+<hr>
+<h3>Method 3: Web SDK Deployed Via CDN</h3>
+<p>```html</p>
+<p>&lt;!-- Load alloy.js directly from CDN --&gt;</p>
+<p>&lt;script&gt;</p>
+<p>!function(n,o){o.forEach(function(o){n[o]||((n.__alloyNS=n.__alloyNS||</p>
+<p>[]).push(o),n[o]=function(){var u=arguments;return new Promise(</p>
+<p>function(i,l){n[o].q.push([i,l,u])})},n[o].q=[])})}</p>
+<p>(window,[&quot;alloy&quot;]);</p>
+<p>&lt;/script&gt;</p>
+<p>&lt;script src=&quot;https://cdn1.adoberesources.net/alloy/2.19.2/alloy.min.js&quot;</p>
+<p>async&gt;&lt;/script&gt;</p>
+<p>&lt;script&gt;</p>
+<p>alloy(&quot;configure&quot;, {</p>
+<p>datastreamId: &quot;YOUR_DATASTREAM_ID&quot;,</p>
+<p>orgId: &quot;YOUR_ORG_ID@AdobeOrg&quot;</p>
+<p>});</p>
+<p>&lt;/script&gt;</p>
+<p>```</p>
+<hr>
+<h3>How Tags and Web SDK Work Together at Runtime</h3>
+<p>Here is exactly what happens when a visitor loads a page:</p>
+<p>```</p>
+<p>1. VISITOR ARRIVES ON WEBSITE</p>
+<p>Browser requests www.retailstore.com</p>
+<p>2. PAGE LOADS TAGS EMBED CODE</p>
+<p>&lt;script src=&quot;//assets.adobedtm.com/launch-prod-abc123.min.js&quot;&gt;</p>
+<p>3. TAGS LIBRARY LOADS</p>
+<p>Tags JavaScript downloads and executes</p>
+<p>All configured extensions initialize</p>
+<p>4. WEB SDK EXTENSION INITIALIZES</p>
+<p>alloy(&quot;configure&quot;, { datastreamId: &quot;...&quot;, orgId: &quot;...&quot; })</p>
+<p>ECID cookie read or created</p>
+<p>Edge Network connection established</p>
+<p>5. TAGS RULES EVALUATE</p>
+<p>Rule: &quot;Page View&quot; → Event: Library Loaded → Conditions met</p>
+<p>Action fires: Web SDK &quot;Send Event&quot;</p>
+<p>6. WEB SDK SENDS XDM EVENT TO EDGE</p>
+<p>POST https://data.example.com/ee/v2/interact</p>
+<p>{</p>
+<p>&quot;events&quot;: [{</p>
+<p>&quot;xdm&quot;: {</p>
+<p>&quot;eventType&quot;: &quot;web.webpagedetails.pageViews&quot;,</p>
+<p>&quot;web&quot;: { &quot;webPageDetails&quot;: { &quot;name&quot;: &quot;Homepage&quot; } },</p>
+<p>&quot;identityMap&quot;: { &quot;ECID&quot;: [{&quot;id&quot;: &quot;98765432...&quot;}] }</p>
+<p>}</p>
+<p>}]</p>
+<p>}</p>
+<p>7. EDGE NETWORK PROCESSES REQUEST</p>
+<p>Routes to AEP, Analytics, Target per datastream config</p>
+<p>8. EDGE NETWORK RETURNS RESPONSE</p>
+<p>Personalization decisions, identity confirmation</p>
+<p>9. TAGS PROCESSES RESPONSE</p>
+<p>Web SDK extension renders personalization</p>
+<p>Analytics beacon confirmed</p>
+<p>Target experience applied</p>
+<p>```</p>
+<hr>
+<h3>Comparison: Tags + Web SDK vs. Web SDK Alone</h3>
+<p>| Aspect | Tags + Web SDK | Web SDK Alone |</p>
+<p>|---|---|---|</p>
+<p>| <strong>Setup complexity</strong> | Moderate (UI-based) | Low (code-based) |</p>
+<p>| <strong>Developer dependency</strong> | Low | High |</p>
+<p>| <strong>Marketing self-service</strong> | ✅ Full | ❌ None |</p>
+<p>| <strong>Rule-based logic</strong> | ✅ Visual builder | ❌ Code only |</p>
+<p>| <strong>Version control</strong> | ✅ Built-in environments | ❌ Manual |</p>
+<p>| <strong>Deployment speed</strong> | ✅ Minutes | ❌ Dev cycle |</p>
+<p>| <strong>Approval workflow</strong> | ✅ Built-in | ❌ Manual |</p>
+<p>| <strong>Debugging tools</strong> | ✅ Tags Debugger + Assurance | ⚠️ Assurance only |</p>
+<p>| <strong>Framework compatibility</strong> | ⚠️ Limited SPA support | ✅ Full |</p>
+<p>| <strong>Custom logic</strong> | ✅ Custom code actions | ✅ Full JavaScript |</p>
+<hr>
+<h3>Web SDK Actions Available in Tags Extension</h3>
+<p>The Web SDK Tags extension provides these <strong>action types</strong>:</p>
+<p>| Action Type | Description | Use Case |</p>
+<p>|---|---|---|</p>
+<p>| <strong>Send Event</strong> | Sends XDM event to Edge Network | Page views, interactions, purchases |</p>
+<p>| <strong>Apply Response</strong> | Handles Edge Network response | Personalization rendering |</p>
+<p>| <strong>Set Consent</strong> | Updates customer consent | GDPR/CCPA compliance |</p>
+<p>| <strong>Append Identity to URL</strong> | Adds identity to outbound links | Cross-domain tracking |</p>
+<p>| <strong>Reset Identity</strong> | Clears stored identity | Logout scenarios |</p>
+<p>| <strong>Get Identity</strong> | Retrieves current ECID | Identity-dependent operations |</p>
+<p>| <strong>Send Media Event</strong> | Tracks media playback | Video/audio analytics |</p>
+<p>| <strong>Create Media Session</strong> | Initializes media tracking | Streaming media |</p>
+<p>| <strong>Update Variable</strong> | Modifies XDM variable | Building XDM incrementally |</p>
+<p>| <strong>Send Image Beacon</strong> | Sends data via image request | Legacy compatibility |</p>
+<p>| <strong>Redirect With Identity</strong> | Cross-domain redirect with identity | Multi-domain tracking |</p>
+<hr>
+<h3>Data Elements Available in Tags Extension</h3>
+<p>The Web SDK Tags extension provides these <strong>data element types</strong>:</p>
+<p>| Data Element Type | Description |</p>
+<p>|---|---|</p>
+<p>| <strong>XDM Object</strong> | Build complete XDM payloads visually |</p>
+<p>| <strong>Variable</strong> | Create reusable XDM variable objects |</p>
+<p>| <strong>Identity Map</strong> | Define customer identity maps |</p>
+<p>| <strong>Media Collection Instance Details</strong> | Media tracking configuration |</p>
+<hr>
+<h3>Key Relationship Summary</h3>
+<p>```</p>
+<p>┌─────────────────────────────────────────────────────────┐</p>
+<p>│                TAGS (The Container)                      │</p>
+<p>│                                                         │</p>
+<p>│  PURPOSE: Deploy, configure &amp; control Web SDK           │</p>
+<p>│  ANALOGY: The &quot;operating system&quot;                        │</p>
+<p>│                                                         │</p>
+<p>│  ┌─────────────────────────────────────────────────┐   │</p>
+<p>│</p>
+</article>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Q2. What is the relationship between Adobe Tags and the Web SDK (alloy.js)?", "acceptedAnswer": {"@type": "Answer", "text": "What is the Relationship Between Adobe Tags and Web SDK (alloy.js)? Video Walkthroughs \u25b6 Watch: Adobe Experience Platform Web SDK Overview(https://video.tv.adobe.com/v/34141?quality=12&learn=on) This video provides a comprehensive overview of the Web SDK and its relationship with Adobe Tags. \u25b6 Watch: Implement Web SDK using Adobe Tags(https://video.tv.adobe.com/v/3418167?quality=12&learn=on) This video demonstrates how to implement the Web SDK through Adobe Tags extensions. \u25b6 Watch: Web SDK Tag Extension Overview(https://video.tv.adobe.com/v/3418165?quality=12&learn=on) This video walks through the Web SDK tag extension configuration and capabilities. --- Overview The relationship between Adobe Tags and Web SDK (alloy.js) is best understood as: Adobe Tags is the DEPLOYMENT MECHANISM. Web SDK is the DATA COLLECTION ENGINE. They are two separate but deeply integrated tools that work together to form the modern Adobe data collection stack. \u250c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2510 \u2502 ADOBE TAGS \u2502 \u2502 (Deployment & Configuration Layer) \u2502 \u2502 \u2502 \u2502 \u250c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2510 \u2502 \u2502 \u2502 WEB SDK EXTENSION (alloy.js) \u2502 \u2502 \u2502 \u2502 (Data Collection Engine) \u2502 \u2502 \u2502 \u2502 \u2502 \u2502 \u2502 \u2502 \u2022 Configure SDK settings \u2502 \u2502 \u2502 \u2502 \u2022 Define data collection rules \u2502 \u2502 \u2502 \u2502 \u2022 Map data elements to XDM \u2502 \u2502 \u2502 \u2502 \u2022 Send events to Edge Network \u2502 \u2502 \u2502 \u2514\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2518 \u2502 \u2514\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2518 \u2193 Edge Network \u2192 AEP \u2192 Profile \u2192 AJO --- What is Adobe Tags in This Context? Adobe Tags is the container and deployment system that: - Hosts the Web SDK JavaScript library on your website - Configures the Web SDK settings (datastream ID, org ID, etc.) - Controls when and how Web SDK events are fired - Maps website data layer values to XDM fields - Manages the deployment lifecycle (Dev \u2192 Staging \u2192 Production) What is Web SDK (alloy.js) in This Context? Web SDK is the core data collection library that: - Communicates with the\u2026"}}]}</script></div>
+  </body>
+</html>

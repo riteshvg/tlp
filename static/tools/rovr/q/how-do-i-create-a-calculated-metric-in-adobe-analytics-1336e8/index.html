@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/png" href="/tools/rovr/rovrlogo.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="build-date" content="2026-06-10" />
+    
+    
+    <script src="https://assets.adobedtm.com/204118644db8/290ae1adb65a/launch-e5ec7bf1a1ef-development.min.js" async></script>
+    <script type="module" crossorigin src="/tools/rovr/assets/index-6PtPUQd3.js"></script>
+    <link rel="stylesheet" crossorigin href="/tools/rovr/assets/index-C3YgbV_4.css">
+  <title>How do I create a calculated metric in Adobe Analytics? | Rovr</title>
+<meta name="description" content="Creating a Calculated Metric in Adobe Analytics Calculated metrics let you create new metrics from existing data without changing your implementation. They…" />
+<link rel="canonical" href="https://thelearningproject.in/tools/rovr/q/how-do-i-create-a-calculated-metric-in-adobe-analytics-1336e8" />
+<meta property="og:title" content="How do I create a calculated metric in Adobe Analytics?" />
+<meta property="og:description" content="Creating a Calculated Metric in Adobe Analytics Calculated metrics let you create new metrics from existing data without changing your implementation. They…" />
+<meta property="og:url" content="https://thelearningproject.in/tools/rovr/q/how-do-i-create-a-calculated-metric-in-adobe-analytics-1336e8" />
+<meta property="og:type" content="article" />
+<meta property="og:image" content="https://thelearningproject.in/tools/rovr/rovrlogo.png" />
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="How do I create a calculated metric in Adobe Analytics?" />
+<meta name="twitter:description" content="Creating a Calculated Metric in Adobe Analytics Calculated metrics let you create new metrics from existing data without changing your implementation. They…" />
+</head>
+  <body>
+    <div id="root"><article><h1>How do I create a calculated metric in Adobe Analytics?</h1>
+<h2>Creating a Calculated Metric in Adobe Analytics</h2>
+<p>Calculated metrics let you create new metrics from existing data <strong>without changing your implementation</strong>. They are available across Analysis Workspace projects and can use mathematical operators, statistical functions, segments, and more.</p>
+<p><a href="https://video.tv.adobe.com/v/25407/?quality=12&amp;learn=on">▶ Watch: Calculated Metrics - Implementation-less Metrics</a></p>
+<hr>
+<h3>Three Ways to Create a Calculated Metric</h3>
+<hr>
+<h4>Method 1: Calculated Metric Builder (Available Across All Projects)</h4>
+<p>The Calculated Metric Builder is the most full-featured option and makes the metric available organization-wide.</p>
+<p><img src="https://raw.githubusercontent.com/AdobeDocs/analytics.en/main/help/components/calculated-metrics/workflow/c-build-metrics/assets/calculated-metric-builder.png" alt="Calculated Metric Builder"></p>
+<p><strong>Steps:</strong></p>
+<p>1. In Adobe Analytics, navigate to <strong>Components</strong> &gt; <strong>Calculated Metrics</strong>.</p>
+<p>2. Click the <strong>+ Add</strong> button to open the Calculated Metric Builder.</p>
+<p>3. Enter a <strong>Name</strong> for your metric (e.g., `Revenue per Visit`).</p>
+<p>4. Optionally add a <strong>Description</strong> to help other users understand the metric&#x27;s purpose.</p>
+<p>5. Set the <strong>Format</strong> (Decimal, Time, Percent, or Currency) and number of <strong>Decimal Places</strong>.</p>
+<p>6. Choose a <strong>Polarity</strong> (whether an upward trend is good or bad).</p>
+<p>7. Drag and drop <strong>Metrics</strong>, <strong>Dimensions</strong>, <strong>Segments</strong>, and <strong>Functions</strong> from the left panel onto the <strong>Definition canvas</strong>.</p>
+<p>8. Use <strong>operators</strong> (add, subtract, multiply, divide) between components to build your formula.</p>
+<p>9. Preview the metric output in the <strong>Preview</strong> panel.</p>
+<p>10. Click <strong>Save</strong> when finished.</p>
+<p><img src="https://raw.githubusercontent.com/AdobeDocs/analytics.en/main/help/components/calculated-metrics/workflow/c-build-metrics/assets/create-edit-calculated-metric.png" alt="Create/Edit Calculated Metric"></p>
+<hr>
+<h4>Method 2: Quick Calculated Metric (Single Project Only)</h4>
+<p>This is the fastest way to create a calculated metric when you only need it for the current project.</p>
+<p>1. In an <strong>Analysis Workspace</strong> project, right-click on a metric column header in a freeform table.</p>
+<p>2. Select <strong>Create metric from selection</strong>.</p>
+<p>3. Configure the formula using the selected metrics.</p>
+<p>4. Click <strong>Apply</strong> — the metric is created and applied immediately but is <strong>only available within that project</strong>.</p>
+<hr>
+<h4>Method 3: Via the API</h4>
+<p>Use this method to programmatically create calculated metrics.</p>
+<p><strong>Prerequisites:</strong> Adobe Developer Console access with a valid token and your organization&#x27;s Global Company ID.</p>
+<p>1. Set the request URL to:</p>
+<p>```</p>
+<p>https://analytics.adobe.io/api/{GLOBALCOMPANYID}/calculatedmetrics</p>
+<p>```</p>
+<p>2. Set the request type to <strong>POST</strong>.</p>
+<p>3. Set <strong>Authorization</strong> to use your desired token.</p>
+<p>4. Add the `x-api-key` header with your <strong>Client ID</strong> from Adobe Developer Console.</p>
+<p>5. In the <strong>Body</strong>, set to <strong>Raw / JSON</strong> and paste your definition. Example — a metric that returns `Page Views + 1`:</p>
+<p>```json</p>
+<p>{</p>
+<p>&quot;rsid&quot;: &quot;examplersid&quot;,</p>
+<p>&quot;name&quot;: &quot;Example calculated metric&quot;,</p>
+<p>&quot;definition&quot;: {</p>
+<p>&quot;formula&quot;: {</p>
+<p>&quot;func&quot;: &quot;add&quot;,</p>
+<p>&quot;col1&quot;: {</p>
+<p>&quot;func&quot;: &quot;metric&quot;,</p>
+<p>&quot;name&quot;: &quot;metrics/pageviews&quot;,</p>
+<p>&quot;description&quot;: &quot;Page Views&quot;</p>
+<p>},</p>
+<p>&quot;col2&quot;: 1</p>
+<p>},</p>
+<p>&quot;func&quot;: &quot;calc-metric&quot;,</p>
+<p>&quot;version&quot;: [1, 0, 0]</p>
+<p>}</p>
+<p>}</p>
+<p>```</p>
+<p>6. Submit the request. The API returns a JSON object with the new metric&#x27;s `id`.</p>
+<p>7. Verify by navigating to <strong>Components</strong> &gt; <strong>Calculated Metrics</strong> in the Analytics UI — your new metric will appear there.</p>
+<p>8. To delete it later, call:</p>
+<p>```</p>
+<p>DELETE https://analytics.adobe.io/api/{GLOBALCOMPANYID}/calculatedmetrics/{ID}</p>
+<p>```</p>
+<hr>
+<h3>Key Benefits of Calculated Metrics</h3>
+<ul>
+<li><strong>No implementation changes required</strong> — build on data you already collect.</li>
+<li><strong>Always current</strong> — metrics update dynamically, unlike exported spreadsheets.</li>
+<li><strong>Scalable</strong> — apply the same metric across large datasets (e.g., conversion rate across 100,000 products) without manual calculation.</li>
+<li><strong>Reusable</strong> — once created in the Builder, available to your entire organization across all Workspace projects.</li>
+</ul>
+<hr>
+<h3>Availability by Package</h3>
+<p>| Capability | Foundation Pack | Full Analytics |</p>
+<p>|---|---|---|</p>
+<p>| Basic operators (add, subtract, multiply, divide) | ✓ | ✓ |</p>
+<p>| Format types (decimal, time, percent, currency) | ✓ | ✓ |</p>
+<p>| Advanced functions (statistical, regression, etc.) | ✗ | ✓ |</p>
+<p>| Participation metrics | ✗ | ✓ |</p>
+<h2>Sources</h2>
+<ul>
+<li><a href="https://developer.adobe.com/analytics-apis/docs/2.0/guides/use-cases/postman">Use Postman with Adobe Analytics</a></li>
+<li><a href="https://experienceleague.adobe.com/en/docs/analytics-learn/tutorials/components/calculated-metrics/take-your-data-analysis-to-the-next-level-with-calculated-metrics">Take your data analysis to the next level with Calculated Metrics</a></li>
+</ul></article>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "How do I create a calculated metric in Adobe Analytics?", "acceptedAnswer": {"@type": "Answer", "text": "Creating a Calculated Metric in Adobe Analytics Calculated metrics let you create new metrics from existing data without changing your implementation. They are available across Analysis Workspace projects and can use mathematical operators, statistical functions, segments, and more. \u25b6 Watch: Calculated Metrics - Implementation-less Metrics(https://video.tv.adobe.com/v/25407/?quality=12&learn=on) --- Three Ways to Create a Calculated Metric --- Method 1: Calculated Metric Builder (Available Across All Projects) The Calculated Metric Builder is the most full-featured option and makes the metric available organization-wide. !Calculated Metric Builder(https://raw.githubusercontent.com/AdobeDocs/analytics.en/main/help/components/calculated-metrics/workflow/c-build-metrics/assets/calculated-metric-builder.png) Steps: 1. In Adobe Analytics, navigate to Components Calculated Metrics. 2. Click the + Add button to open the Calculated Metric Builder. 3. Enter a Name for your metric (e.g., Revenue per Visit). 4. Optionally add a Description to help other users understand the metric's purpose. 5. Set the Format (Decimal, Time, Percent, or Currency) and number of Decimal Places. 6. Choose a Polarity (whether an upward trend is good or bad). 7. Drag and drop Metrics, Dimensions, Segments, and Functions from the left panel onto the Definition canvas. 8. Use operators (add, subtract, multiply, divide) between components to build your formula. 9. Preview the metric output in the Preview panel. 10. Click Save when finished. !Create/Edit Calculated Metric(https://raw.githubusercontent.com/AdobeDocs/analytics.en/main/help/components/calculated-metrics/workflow/c-build-metrics/assets/create-edit-calculated-metric.png) --- Method 2: Quick Calculated Metric (Single Project Only) This is the fastest way to create a calculated metric when you only need it for the current project. 1. In an Analysis Workspace project, right-click on a metric column header in a freeform table. 2. Select\u2026"}}]}</script></div>
+  </body>
+</html>
