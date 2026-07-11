@@ -1,0 +1,221 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/png" href="/tools/rovr/rovrlogo.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="build-date" content="2026-06-10" />
+    
+    
+    <script src="https://assets.adobedtm.com/204118644db8/290ae1adb65a/launch-e5ec7bf1a1ef-development.min.js" async></script>
+    <script type="module" crossorigin src="/tools/rovr/assets/index-6PtPUQd3.js"></script>
+    <link rel="stylesheet" crossorigin href="/tools/rovr/assets/index-C3YgbV_4.css">
+  <title>35. How Do Profiles Merge When There Are Conflicting IDs? | Rovr</title>
+<meta name="description" content="How Profiles Merge When There Are Conflicting IDs --- Overview When customer data comes from multiple sources with conflicting information, Adobe Experience…" />
+<link rel="canonical" href="https://thelearningproject.in/tools/rovr/q/35-how-do-profiles-merge-when-there-are-conflicting-ids-40797e" />
+<meta property="og:title" content="35. How Do Profiles Merge When There Are Conflicting IDs?" />
+<meta property="og:description" content="How Profiles Merge When There Are Conflicting IDs --- Overview When customer data comes from multiple sources with conflicting information, Adobe Experience…" />
+<meta property="og:url" content="https://thelearningproject.in/tools/rovr/q/35-how-do-profiles-merge-when-there-are-conflicting-ids-40797e" />
+<meta property="og:type" content="article" />
+<meta property="og:image" content="https://thelearningproject.in/tools/rovr/rovrlogo.png" />
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="35. How Do Profiles Merge When There Are Conflicting IDs?" />
+<meta name="twitter:description" content="How Profiles Merge When There Are Conflicting IDs --- Overview When customer data comes from multiple sources with conflicting information, Adobe Experience…" />
+</head>
+  <body>
+    <div id="root"><article><h1>35. How Do Profiles Merge When There Are Conflicting IDs?</h1>
+<h2>How Profiles Merge When There Are Conflicting IDs</h2>
+<hr>
+<h3>Overview</h3>
+<p>When customer data comes from multiple sources with conflicting information, Adobe Experience Platform uses <strong>merge policies</strong> to determine which data takes priority and how profile fragments are combined into a single unified customer view.</p>
+<hr>
+<h3>Understanding Profile Fragments vs. Merged Profiles</h3>
+<h4>Profile Fragments</h4>
+<ul>
+<li>Profile information for <strong>just one identity</strong> out of all the identities that exist for a customer</li>
+<li>Each fragment represents data from a single dataset for a single identity</li>
+<li>Multiple fragments can exist for the same customer across different datasets</li>
+</ul>
+<h4>Merged Profiles</h4>
+<ul>
+<li>The <strong>unified view</strong> created when multiple profile fragments are combined</li>
+<li>Based on a defined <strong>merge policy</strong> that resolves conflicts</li>
+<li>The total number of merged profiles is always <strong>lower</strong> than the total number of fragments</li>
+</ul>
+<p><strong>Key Point:</strong> Each merged profile is typically composed of <strong>multiple fragments from multiple datasets</strong>.</p>
+<p><img src="https://raw.githubusercontent.com/AdobeDocs/experience-platform.en/main/help/profile/images/profile-overview/profile-entity-composition.png" alt="Profile Entity Composition"></p>
+<hr>
+<h3>The Conflict Scenario: A Real Example</h3>
+<p>Let&#x27;s say a customer interacts with your brand across two channels, and you have conflicting data:</p>
+<p><strong>Loyalty System Data:</strong></p>
+<p>```</p>
+<p>First Name: Daniel</p>
+<p>City: New York City</p>
+<p>```</p>
+<p><strong>CRM System Data:</strong></p>
+<p>```</p>
+<p>First Name: Danny</p>
+<p>City: Portland</p>
+<p>```</p>
+<p><strong>Questions:</strong></p>
+<ul>
+<li>Which first name wins? Daniel or Danny?</li>
+<li>Which city wins? New York City or Portland?</li>
+<li>How does Platform decide?</li>
+</ul>
+<hr>
+<h3>How Conflicts Are Resolved: Merge Policies</h3>
+<p>A <strong>merge policy</strong> is a set of rules that tells Experience Platform <strong>which data to prioritize</strong> when fragments conflict.</p>
+<h4>Two Merge Methods Available</h4>
+<hr>
+<h3>1️⃣ Timestamp Ordered (Default)</h3>
+<p><strong>How It Works:</strong></p>
+<ul>
+<li>Gives priority to the profile fragment that was <strong>updated most recently</strong></li>
+<li>The most recent data automatically &quot;wins&quot; in a conflict</li>
+<li>No manual ordering required</li>
+</ul>
+<p><strong>Example:</strong></p>
+<p>```json</p>
+<p>{</p>
+<p>&quot;attributeMerge&quot;: {</p>
+<p>&quot;type&quot;: &quot;timestampOrdered&quot;</p>
+<p>}</p>
+<p>}</p>
+<p>```</p>
+<p><strong>Scenario:</strong></p>
+<ul>
+<li>CRM data (Danny, Portland) was uploaded <strong>after</strong> Loyalty data (Daniel, New York City)</li>
+<li>Result: Danny and Portland win because the CRM data has a more recent timestamp</li>
+</ul>
+<p><strong>When to Use:</strong></p>
+<ul>
+<li>When you trust the <strong>most recently updated source</strong> to have the correct data</li>
+<li>When data naturally gets cleaner/more accurate over time</li>
+</ul>
+<p><strong>Visual Confirmation in UI:</strong></p>
+<p><img src="https://raw.githubusercontent.com/AdobeDocs/experience-platform.en/main/help/profile/merge-policies/../images/merge-policies/landing.png" alt="Merge Policy Screen - Timestamp Ordered"></p>
+<hr>
+<h3>2️⃣ Dataset Precedence</h3>
+<p><strong>How It Works:</strong></p>
+<ul>
+<li>You <strong>manually define the priority order</strong> of datasets</li>
+<li>Conflicts are resolved based on which dataset ranks higher in your custom order</li>
+<li>The dataset with highest priority always wins, regardless of timestamps</li>
+</ul>
+<p><strong>Example:</strong></p>
+<p>```json</p>
+<p>{</p>
+<p>&quot;attributeMerge&quot;: {</p>
+<p>&quot;type&quot;: &quot;dataSetPrecedence&quot;,</p>
+<p>&quot;order&quot;: [</p>
+<p>&quot;dataSetId_2&quot;,    // Highest priority</p>
+<p>&quot;dataSetId_3&quot;,    // Second priority</p>
+<p>&quot;dataSetId_1&quot;,    // Third priority</p>
+<p>&quot;dataSetId_4&quot;     // Lowest priority</p>
+<p>]</p>
+<p>}</p>
+<p>}</p>
+<p>```</p>
+<p><strong>Scenario:</strong></p>
+<ul>
+<li>You decide Loyalty data is your <strong>source of truth</strong> (highest priority)</li>
+<li>Even if CRM was updated more recently, Loyalty data wins</li>
+<li>Result: Daniel and New York City win because Loyalty dataset has priority</li>
+</ul>
+<p><strong>When to Use:</strong></p>
+<ul>
+<li>When one system is <strong>more trusted or authoritative</strong> than others</li>
+<li>When you have a business rule like &quot;Loyalty data is always correct&quot;</li>
+<li>When you want to <strong>explicitly control</strong> which source wins</li>
+</ul>
+<p><strong>Important:</strong> Datasets not listed in the `order` array will <strong>not be merged</strong> — they must be explicitly included.</p>
+<hr>
+<h3>Real-World Decision Example</h3>
+<h4>Scenario: Customer Moves</h4>
+<p>A customer moves from Portland to New York City:</p>
+<p>| Data Point | Loyalty System | CRM System | Timestamp Ordered Result | Dataset Precedence Result (if Loyalty is Priority) |</p>
+<p>|---|---|---|---|---|</p>
+<p>| First Name | Daniel | Danny | Danny (CRM newer) | Daniel (Loyalty priority) |</p>
+<p>| City | Portland | New York City | New York City (CRM newer) | Portland (Loyalty priority) |</p>
+<p><strong>Interpretation with Timestamp Ordered:</strong></p>
+<ul>
+<li>CRM is considered the most recent source, so its data wins</li>
+<li>This makes sense if CRM was just updated with the customer&#x27;s new address</li>
+</ul>
+<p><strong>Interpretation with Dataset Precedence (Loyalty priority):</strong></p>
+<ul>
+<li>Loyalty is your source of truth, so its data always wins</li>
+<li>Useful if you&#x27;ve verified Loyalty data is cleaner/more accurate</li>
+</ul>
+<hr>
+<h3>How Identity Graph Affects Merging</h3>
+<h4>When Identity Graph Creates Multiple Identities</h4>
+<p>If a customer has <strong>multiple identities</strong> (email, phone, loyalty ID, etc.), the identity graph determines which identities belong to the same person. The merge policy then decides how to handle conflicting attributes across those identities.</p>
+<h4>The attributeMerge Object</h4>
+<p>When conflicts arise between profile attributes during merging, the `attributeMerge` object specifies resolution:</p>
+<p>```json</p>
+<p>{</p>
+<p>&quot;attributeMerge&quot;: {</p>
+<p>&quot;type&quot;: &quot;{ATTRIBUTE_MERGE_TYPE}&quot;</p>
+<p>}</p>
+<p>}</p>
+<p>```</p>
+<ul>
+<li><strong>`timestampOrdered`</strong> = Priority goes to most recently updated profile</li>
+<li><strong>`dataSetPrecedence`</strong> = Priority follows your manually defined dataset order</li>
+</ul>
+<hr>
+<h3>Union Schemas</h3>
+<p>When multiple schemas are enabled for profile, Experience Platform automatically creates a <strong>Union Schema</strong> for all profile-enabled record schemas sharing the same base class.</p>
+<p><strong>Key Point:</strong> Union Schemas don&#x27;t exist for ExperienceEvent data because:</p>
+<ul>
+<li>ExperienceEvent data is <strong>time-series based</strong></li>
+<li>Each event has a <strong>timestamp and unique ID</strong></li>
+<li><strong>Collisions are not a problem</strong> — events don&#x27;t conflict the way profile attributes do</li>
+</ul>
+<hr>
+<h3>Important Considerations for Merging</h3>
+<h4>Batch Segmentation &amp; Merges Don&#x27;t Immediately Update</h4>
+<p>When two profiles merge together:</p>
+<ul>
+<li>Changes <strong>will appear</strong> immediately in profile lookups</li>
+<li>Changes <strong>will NOT appear</strong> in segment membership (`segmentMembership` attribute) until the next batch segmentation job runs</li>
+</ul>
+<p><strong>Example:</strong></p>
+<ul>
+<li>You have two mutually exclusive audiences: &quot;Lives in Washington&quot; and &quot;Does NOT live in Washington&quot;</li>
+<li>Profile 1: Lives in Washington → qualifies for Audience A</li>
+<li>Profile 2: Lives in Oregon → qualifies for Audience B</li>
+<li><strong>After profiles merge</strong> (but before next batch job): The merged profile is in <strong>both audiences</strong> until batch segmentation re-evaluates (typically next day)</li>
+</ul>
+<hr>
+<h3>Interview Answer Structure</h3>
+<h4>Quick Version (1-2 minutes)</h4>
+<p>&gt; <em>&quot;When profiles have conflicting IDs and data, Experience Platform uses <strong>merge policies</strong> to resolve conflicts. There are two main methods:</em></p>
+<p>&gt; <em>1. <strong>Timestamp Ordered</strong> — The most recently updated fragment wins. This is the default and works well when data naturally improves over time.</em></p>
+<p>&gt; <em>2. <strong>Dataset Precedence</strong> — You manually rank datasets by importance, and the highest-priority dataset always wins regardless of timing. This is useful when one source (like Loyalty) is your source of truth.</em></p>
+<p>&gt; <em>For example, if Loyalty says &#x27;Daniel in New York&#x27; and CRM says &#x27;Danny in Portland,&#x27; timestamp ordered would pick CRM data if it was updated more recently. But if you set Loyalty as priority using dataset precedence, Loyalty data always wins.&quot;</em></p>
+<hr>
+<h4>Detailed Version (3-5 minutes)</h4>
+<p>Add these details:</p>
+<ul>
+<li>Explain <strong>profile fragments</strong> vs. <strong>merged profiles</strong></li>
+<li>Walk through the real example (Daniel/Danny scenario)</li>
+<li>Mention the <strong>identity graph&#x27;s role</strong> in determining which identities belong together</li>
+<li>Explain <strong>Union Schemas</strong> for record data (not event data)</li>
+<li>Discuss the <strong>batch segmentation timing</strong> caveat when profiles merge</li>
+<li>Note that <strong>datasets not in the precedence order won&#x27;t be merged</strong></li>
+</ul>
+<hr>
+<h3>🗣️ Key Phrases for Interviews</h3>
+<ul>
+<li><em>&quot;Merge policies are the rules that tell Platform which data wins during conflicts...&quot;</em></li>
+<li><em>&quot;Timestamp ordered prioritizes <strong>recency</strong>, while dataset precedence prioritizes <strong>authority</strong>...&quot;</em></li>
+<li><em>&quot;The identity graph identifies which identities belong to one person, and the merge policy decides how to combine their data...&quot;</em></li>
+<li>*&quot;Important: segment membership updates are <strong>delayed by 24 hours</strong></li>
+</ul>
+</article>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "35. How Do Profiles Merge When There Are Conflicting IDs?", "acceptedAnswer": {"@type": "Answer", "text": "How Profiles Merge When There Are Conflicting IDs --- Overview When customer data comes from multiple sources with conflicting information, Adobe Experience Platform uses merge policies to determine which data takes priority and how profile fragments are combined into a single unified customer view. --- Understanding Profile Fragments vs. Merged Profiles Profile Fragments - Profile information for just one identity out of all the identities that exist for a customer - Each fragment represents data from a single dataset for a single identity - Multiple fragments can exist for the same customer across different datasets Merged Profiles - The unified view created when multiple profile fragments are combined - Based on a defined merge policy that resolves conflicts - The total number of merged profiles is always lower than the total number of fragments Key Point: Each merged profile is typically composed of multiple fragments from multiple datasets. !Profile Entity Composition(https://raw.githubusercontent.com/AdobeDocs/experience-platform.en/main/help/profile/images/profile-overview/profile-entity-composition.png) --- The Conflict Scenario: A Real Example Let's say a customer interacts with your brand across two channels, and you have conflicting data: Loyalty System Data: First Name: Daniel City: New York City CRM System Data: First Name: Danny City: Portland Questions: - Which first name wins? Daniel or Danny? - Which city wins? New York City or Portland? - How does Platform decide? --- How Conflicts Are Resolved: Merge Policies A merge policy is a set of rules that tells Experience Platform which data to prioritize when fragments conflict. Two Merge Methods Available --- 1\ufe0f\u20e3 Timestamp Ordered (Default) How It Works: - Gives priority to the profile fragment that was updated most recently - The most recent data automatically \"wins\" in a conflict - No manual ordering required Example: json { \"attributeMerge\": { \"type\": \"timestampOrdered\" } } Scenario: - CRM data\u2026"}}]}</script></div>
+  </body>
+</html>

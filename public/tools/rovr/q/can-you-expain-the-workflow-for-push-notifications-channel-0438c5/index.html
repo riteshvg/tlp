@@ -1,0 +1,425 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/png" href="/tools/rovr/rovrlogo.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="build-date" content="2026-06-10" />
+    
+    
+    <script src="https://assets.adobedtm.com/204118644db8/290ae1adb65a/launch-e5ec7bf1a1ef-development.min.js" async></script>
+    <script type="module" crossorigin src="/tools/rovr/assets/index-6PtPUQd3.js"></script>
+    <link rel="stylesheet" crossorigin href="/tools/rovr/assets/index-C3YgbV_4.css">
+  <title>can you expain the workflow for push notifications channel? | Rovr</title>
+<meta name="description" content="Push Notification Channel Workflow in Adobe Journey Optimizer Overview The Push Notification channel in AJO enables you to send targeted, personalized…" />
+<link rel="canonical" href="https://thelearningproject.in/tools/rovr/q/can-you-expain-the-workflow-for-push-notifications-channel-0438c5" />
+<meta property="og:title" content="can you expain the workflow for push notifications channel?" />
+<meta property="og:description" content="Push Notification Channel Workflow in Adobe Journey Optimizer Overview The Push Notification channel in AJO enables you to send targeted, personalized…" />
+<meta property="og:url" content="https://thelearningproject.in/tools/rovr/q/can-you-expain-the-workflow-for-push-notifications-channel-0438c5" />
+<meta property="og:type" content="article" />
+<meta property="og:image" content="https://thelearningproject.in/tools/rovr/rovrlogo.png" />
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="can you expain the workflow for push notifications channel?" />
+<meta name="twitter:description" content="Push Notification Channel Workflow in Adobe Journey Optimizer Overview The Push Notification channel in AJO enables you to send targeted, personalized…" />
+</head>
+  <body>
+    <div id="root"><article><h1>can you expain the workflow for push notifications channel?</h1>
+<h2>Push Notification Channel Workflow in Adobe Journey Optimizer</h2>
+<h3>Overview</h3>
+<p>The Push Notification channel in AJO enables you to send <strong>targeted, personalized messages directly to customers&#x27; mobile devices</strong> — even when they are not actively using your app. Unlike SMS, push notifications require a <strong>mobile app with Adobe Mobile SDK integration</strong>.</p>
+<p><a href="https://video.tv.adobe.com/v/3432679/?learn=on">▶ Watch: Push Notifications Overview</a></p>
+<hr>
+<h3>Complete Push Notification Channel Workflow</h3>
+<p>```</p>
+<p>STEP 1: SET UP MOBILE APP WITH ADOBE MOBILE SDK</p>
+<p>↓</p>
+<p>STEP 2: CONFIGURE PUSH CREDENTIALS (APNs &amp; FCM)</p>
+<p>↓</p>
+<p>STEP 3: CREATE APP SURFACE (App Configuration)</p>
+<p>↓</p>
+<p>STEP 4: CREATE DATASTREAM &amp; TAG PROPERTY</p>
+<p>↓</p>
+<p>STEP 5: CREATE CHANNEL CONFIGURATION (Surface)</p>
+<p>↓</p>
+<p>STEP 6: CREATE JOURNEY OR CAMPAIGN</p>
+<p>↓</p>
+<p>STEP 7: BUILD PUSH NOTIFICATION CONTENT</p>
+<p>↓</p>
+<p>STEP 8: PERSONALIZATION &amp; DYNAMIC CONTENT</p>
+<p>↓</p>
+<p>STEP 9: TEST &amp; PREVIEW</p>
+<p>↓</p>
+<p>STEP 10: ACTIVATE / PUBLISH</p>
+<p>↓</p>
+<p>STEP 11: MONITOR &amp; REPORT</p>
+<p>```</p>
+<hr>
+<h3>Understanding Push Notification Architecture</h3>
+<p>Before diving into configuration, it is important to understand <strong>how push notifications flow</strong> from AJO to a customer&#x27;s device.</p>
+<p><img src="https://raw.githubusercontent.com/AdobeDocs/journey-optimizer.en/main/help/using/push/assets/push_alert.png" alt="Push Notification Data Flow"></p>
+<p>```</p>
+<p>PUSH NOTIFICATION FLOW:</p>
+<p>AJO sends push payload</p>
+<p>↓</p>
+<p>Adobe Experience Edge Network</p>
+<p>↓</p>
+<p>Push Service Gateway</p>
+<p>├── APNs (Apple Push Notification Service) → iOS Devices</p>
+<p>└── FCM (Firebase Cloud Messaging) → Android Devices</p>
+<p>↓</p>
+<p>Customer&#x27;s Mobile Device</p>
+<p>↓</p>
+<p>Push Notification Displayed</p>
+<p>```</p>
+<h4>Key Infrastructure Components</h4>
+<p>| Component | Purpose | Platform |</p>
+<p>|---|---|---|</p>
+<p>| <strong>APNs</strong> | Apple&#x27;s push delivery service | iOS, iPadOS, macOS, watchOS |</p>
+<p>| <strong>FCM</strong> | Google&#x27;s push delivery service | Android, Chrome |</p>
+<p>| <strong>Adobe Mobile SDK</strong> | Collects device tokens, sends events to AEP | iOS &amp; Android |</p>
+<p>| <strong>Datastream</strong> | Routes data from SDK to AEP/AJO | Both platforms |</p>
+<p>| <strong>App Surface</strong> | Registers app with push credentials in AJO | Both platforms |</p>
+<hr>
+<h3>STEP 1: Set Up Mobile App with Adobe Mobile SDK</h3>
+<h4>Why is this needed?</h4>
+<p>The <strong>Adobe Mobile SDK</strong> is the bridge between your mobile app and Adobe Experience Platform. It:</p>
+<ul>
+<li>✅ Collects and registers <strong>device push tokens</strong></li>
+<li>✅ Sends <strong>behavioral events</strong> to AEP (app opens, purchases, etc.)</li>
+<li>✅ Enables <strong>in-app messaging</strong> alongside push</li>
+<li>✅ Tracks <strong>push notification interactions</strong> (opens, dismissals)</li>
+<li>✅ Handles <strong>foreground/background</strong> notification delivery</li>
+</ul>
+<h4>Prerequisites for Mobile App Setup</h4>
+<p>```</p>
+<p>Mobile App Prerequisites:</p>
+<p>├── iOS App → Xcode project with iOS 14+ target ✅</p>
+<p>├── Android App → Android Studio project with API level 21+ ✅</p>
+<p>├── Apple Developer Account (for APNs certificates) ✅</p>
+<p>├── Google Firebase Project (for FCM credentials) ✅</p>
+<p>├── AEP Datastream configured ✅</p>
+<p>└── AEP Tag Property configured ✅</p>
+<p>```</p>
+<h4>Installing Adobe Mobile SDK</h4>
+<h5>For iOS (Swift):</h5>
+<p><strong>Step 1: Add SDK via Swift Package Manager or CocoaPods</strong></p>
+<p>```swift</p>
+<p>// Swift Package Manager</p>
+<p>// Add in Xcode → File → Add Packages:</p>
+<p>// https://github.com/adobe/aepsdk-core-ios</p>
+<p>// OR via CocoaPods (Podfile):</p>
+<p>pod &#x27;AEPCore&#x27;, &#x27;~&gt; 5.0&#x27;</p>
+<p>pod &#x27;AEPLifecycle&#x27;, &#x27;~&gt; 5.0&#x27;</p>
+<p>pod &#x27;AEPIdentity&#x27;, &#x27;~&gt; 5.0&#x27;</p>
+<p>pod &#x27;AEPEdge&#x27;, &#x27;~&gt; 5.0&#x27;</p>
+<p>pod &#x27;AEPEdgeIdentity&#x27;, &#x27;~&gt; 5.0&#x27;</p>
+<p>pod &#x27;AEPMessaging&#x27;, &#x27;~&gt; 5.0&#x27; // Required for Push + In-App</p>
+<p>```</p>
+<p><strong>Step 2: Initialize SDK in AppDelegate</strong></p>
+<p>```swift</p>
+<p>import AEPCore</p>
+<p>import AEPLifecycle</p>
+<p>import AEPIdentity</p>
+<p>import AEPEdge</p>
+<p>import AEPEdgeIdentity</p>
+<p>import AEPMessaging</p>
+<p>import UserNotifications</p>
+<p>@main</p>
+<p>class AppDelegate: UIResponder, UIApplicationDelegate {</p>
+<p>func application(</p>
+<p>_ application: UIApplication,</p>
+<p>didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?</p>
+<p>) -&gt; Bool {</p>
+<p>// Register Adobe Extensions</p>
+<p>MobileCore.registerExtensions([</p>
+<p>Lifecycle.self,</p>
+<p>Identity.self,</p>
+<p>Edge.self,</p>
+<p>AEPEdgeIdentity.Identity.self,</p>
+<p>Messaging.self // Required for Push Notifications</p>
+<p>]) {</p>
+<p>// Set your Datastream ID (from AEP Data Collection)</p>
+<p>MobileCore.configureWith(appId: &quot;YOUR_DATASTREAM_ID&quot;)</p>
+<p>// Set Environment (DEV/STAGING/PROD)</p>
+<p>MobileCore.updateConfigurationWith(configDict: [</p>
+<p>&quot;global.privacy&quot;: &quot;optedin&quot;</p>
+<p>])</p>
+<p>}</p>
+<p>// Request Push Notification Permission</p>
+<p>UNUserNotificationCenter.current().requestAuthorization(</p>
+<p>options: [.alert, .badge, .sound]</p>
+<p>) { granted, error in</p>
+<p>if granted {</p>
+<p>DispatchQueue.main.async {</p>
+<p>application.registerForRemoteNotifications()</p>
+<p>}</p>
+<p>}</p>
+<p>}</p>
+<p>return true</p>
+<p>}</p>
+<p>// Register Device Token with Adobe SDK</p>
+<p>func application(</p>
+<p>_ application: UIApplication,</p>
+<p>didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data</p>
+<p>) {</p>
+<p>MobileCore.setPushIdentifier(deviceToken)</p>
+<p>// This sends the device token to AEP for push targeting</p>
+<p>}</p>
+<p>// Handle Push Notification Receipt</p>
+<p>func application(</p>
+<p>_ application: UIApplication,</p>
+<p>didReceiveRemoteNotification userInfo: [AnyHashable: Any],</p>
+<p>fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -&gt; Void</p>
+<p>) {</p>
+<p>Messaging.handleNotificationResponse(...)</p>
+<p>completionHandler(.newData)</p>
+<p>}</p>
+<p>}</p>
+<p>```</p>
+<h5>For Android (Kotlin):</h5>
+<p><strong>Step 1: Add SDK dependencies in build.gradle</strong></p>
+<p>```kotlin</p>
+<p>// build.gradle (app level)</p>
+<p>dependencies {</p>
+<p>implementation(platform(&quot;com.adobe.marketing.mobile:sdk-bom:3.+&quot;))</p>
+<p>implementation(&quot;com.adobe.marketing.mobile:core&quot;)</p>
+<p>implementation(&quot;com.adobe.marketing.mobile:lifecycle&quot;)</p>
+<p>implementation(&quot;com.adobe.marketing.mobile:identity&quot;)</p>
+<p>implementation(&quot;com.adobe.marketing.mobile:edge&quot;)</p>
+<p>implementation(&quot;com.adobe.marketing.mobile:edgeidentity&quot;)</p>
+<p>implementation(&quot;com.adobe.marketing.mobile:messaging&quot;) // Required for Push</p>
+<p>// Firebase (for FCM)</p>
+<p>implementation(&quot;com.google.firebase:firebase-messaging:23.+&quot;)</p>
+<p>}</p>
+<p>```</p>
+<p><strong>Step 2: Initialize SDK in Application class</strong></p>
+<p>```kotlin</p>
+<p>import android.app.Application</p>
+<p>import com.adobe.marketing.mobile.*</p>
+<p>import com.adobe.marketing.mobile.edge.Edge</p>
+<p>import com.adobe.marketing.mobile.edge.identity.Identity</p>
+<p>import com.adobe.marketing.mobile.messaging.Messaging</p>
+<p>class MyApplication : Application() {</p>
+<p>override fun onCreate() {</p>
+<p>super.onCreate()</p>
+<p>// Register Adobe Extensions</p>
+<p>MobileCore.registerExtensions(</p>
+<p>listOf(</p>
+<p>Lifecycle.EXTENSION,</p>
+<p>Identity.EXTENSION,</p>
+<p>Edge.EXTENSION,</p>
+<p>Identity.EXTENSION,</p>
+<p>Messaging.EXTENSION // Required for Push</p>
+<p>)</p>
+<p>) {</p>
+<p>// Configure with Datastream ID</p>
+<p>MobileCore.configureWithAppID(&quot;YOUR_DATASTREAM_ID&quot;)</p>
+<p>}</p>
+<p>}</p>
+<p>}</p>
+<p>```</p>
+<p><strong>Step 3: Handle FCM Token Registration</strong></p>
+<p>```kotlin</p>
+<p>class MyFirebaseMessagingService : FirebaseMessagingService() {</p>
+<p>// Called when FCM token is generated or refreshed</p>
+<p>override fun onNewToken(token: String) {</p>
+<p>super.onNewToken(token)</p>
+<p>// Register FCM token with Adobe SDK</p>
+<p>MobileCore.setPushIdentifier(token)</p>
+<p>// This sends the FCM token to AEP for push targeting</p>
+<p>}</p>
+<p>// Handle incoming push messages when app is in foreground</p>
+<p>override fun onMessageReceived(remoteMessage: RemoteMessage) {</p>
+<p>super.onMessageReceived(remoteMessage)</p>
+<p>// Pass to Adobe Messaging extension for tracking</p>
+<p>Messaging.handleRemoteMessage(this, remoteMessage)</p>
+<p>}</p>
+<p>}</p>
+<p>```</p>
+<hr>
+<h3>STEP 2: Configure Push Credentials (APNs &amp; FCM)</h3>
+<h4>iOS: Apple Push Notification Service (APNs)</h4>
+<p><strong>You need APNs credentials</strong> to send push notifications to iOS devices.</p>
+<h5>Option A: APNs Authentication Key (Recommended)</h5>
+<p>```</p>
+<p>APNs Key Setup in Apple Developer Portal:</p>
+<p>1. Go to developer.apple.com</p>
+<p>2. Navigate to Certificates, IDs &amp; Profiles</p>
+<p>3. Click Keys → + (Add Key)</p>
+<p>4. Enable Apple Push Notifications service (APNs)</p>
+<p>5. Click Continue → Register</p>
+<p>6. Download the .p8 key file (SAVE THIS - you can only download once)</p>
+<p>7. Note the Key ID (10-character string)</p>
+<p>8. Note your Team ID (from Membership section)</p>
+<p>You will need:</p>
+<p>├── .p8 Key File ← Authentication Key</p>
+<p>├── Key ID ← 10-character identifier</p>
+<p>├── Team ID ← Your Apple Developer Team ID</p>
+<p>└── Bundle ID ← Your app&#x27;s bundle identifier</p>
+<p>(e.g., com.yourbrand.app)</p>
+<p>```</p>
+<h5>Option B: APNs Certificate (Legacy)</h5>
+<p>```</p>
+<p>APNs Certificate Setup:</p>
+<p>1. Go to developer.apple.com</p>
+<p>2. Navigate to Certificates, IDs &amp; Profiles</p>
+<p>3. Click Certificates → + (Add Certificate)</p>
+<p>4. Select Apple Push Notification service SSL</p>
+<p>5. Select your App ID</p>
+<p>6. Upload a Certificate Signing Request (CSR)</p>
+<p>7. Download the generated .p12 certificate</p>
+<p>8. Set a certificate password</p>
+<p>You will need:</p>
+<p>├── .p12 Certificate File</p>
+<p>├── Certificate Password</p>
+<p>└── Certificate Type (Development or Production)</p>
+<p>```</p>
+<h4>Android: Firebase Cloud Messaging (FCM)</h4>
+<p><strong>You need FCM credentials</strong> to send push notifications to Android devices.</p>
+<p>```</p>
+<p>FCM Setup in Firebase Console:</p>
+<p>1. Go to console.firebase.google.com</p>
+<p>2. Create a Firebase Project (or use existing)</p>
+<p>3. Add your Android app to the project:</p>
+<p>├── Enter Android package name (e.g., com.yourbrand.app)</p>
+<p>├── Download google-services.json</p>
+<p>└── Add to your Android project root</p>
+<p>4. Navigate to Project Settings → Cloud Messaging</p>
+<p>5. Get FCM Credentials:</p>
+<p>├── Option A: Server Key (Legacy - deprecated but still works)</p>
+<p>└── Option B: Service Account JSON (Recommended - V1 API)</p>
+<p>For Service Account (V1 API - Recommended):</p>
+<p>1. Go to Project Settings → Service Accounts</p>
+<p>2. Click Generate new private key</p>
+<p>3. Download the JSON file</p>
+<p>4. This JSON contains:</p>
+<p>├── Project ID</p>
+<p>├── Private Key ID</p>
+<p>├── Private Key</p>
+<p>├── Client Email</p>
+<p>└── Client ID</p>
+<p>```</p>
+<hr>
+<h3>STEP 3: Create App Surface (App Configuration)</h3>
+<h4>What is an App Surface?</h4>
+<p>An <strong>App Surface</strong> is the configuration in AJO that <strong>registers your mobile app</strong> with AJO and links it to your APNs and FCM credentials. It is the bridge between your mobile app and AJO&#x27;s push sending infrastructure.</p>
+<p>```</p>
+<p>App Surface connects:</p>
+<p>Mobile App (iOS/Android)</p>
+<p>↓</p>
+<p>APNs/FCM Credentials (Push delivery)</p>
+<p>↓</p>
+<p>AJO Sending Infrastructure</p>
+<p>```</p>
+<h4>How to Create an App Surface</h4>
+<p><strong>Prerequisites:</strong></p>
+<ul>
+<li>APNs credentials (for iOS) ✅</li>
+<li>FCM credentials (for Android) ✅</li>
+<li>System Administrator role ✅</li>
+</ul>
+<p><strong>Steps:</strong></p>
+<p>1. In AJO left navigation, go to <strong>Administration</strong> → <strong>Channels</strong> → <strong>App Surfaces</strong></p>
+<p>&gt; ⚠️ <strong>Note:</strong> In newer versions of AJO, App Surfaces have been moved to <strong>Adobe Experience Platform Data Collection</strong> → <strong>App Configurations</strong></p>
+<p>2. Click <strong>Create App Surface</strong></p>
+<p>3. Enter a <strong>Name</strong> (e.g., &quot;Luma Mobile App - Production&quot;)</p>
+<p>4. Enter your <strong>App Bundle ID</strong> (iOS) and/or <strong>App Package Name</strong> (Android)</p>
+<h4>iOS APNs Configuration</h4>
+<p>```</p>
+<p>iOS Push Credentials:</p>
+<p>App ID (Bundle ID): com.yourbrand.app</p>
+<p>APNs Authentication:</p>
+<p>├── Type: Authentication Key (recommended)</p>
+<p>│   ├── Key File: [Upload .p8 file]</p>
+<p>│   ├── Key ID: XXXXXXXXXX</p>
+<p>│   ├── Team ID: XXXXXXXXXX</p>
+<p>│   └── Environment:</p>
+<p>│       ├── Sandbox (Development/Testing)</p>
+<p>│       └── Production (Live App)</p>
+<p>│</p>
+<p>└── Type: Certificate (legacy)</p>
+<p>├── Certificate File: [Upload .p12 file]</p>
+<p>├── Certificate Password: [Enter password]</p>
+<p>└── Certificate Type: Production/Development</p>
+<p>```</p>
+<h4>Android FCM Configuration</h4>
+<p>```</p>
+<p>Android Push Credentials:</p>
+<p>App Package Name: com.yourbrand.app</p>
+<p>FCM Authentication:</p>
+<p>├── Type: Service Account JSON (V1 API - Recommended)</p>
+<p>│   └── Service Account JSON: [Upload JSON file]</p>
+<p>│</p>
+<p>└── Type: Server Key (Legacy)</p>
+<p>└── Server Key: [Paste FCM Server Key]</p>
+<p>```</p>
+<p>5. Click <strong>Save</strong></p>
+<p>6. App Surface is created and shows ✅ <strong>Active</strong></p>
+<hr>
+<h3>STEP 4: Create Datastream &amp; Tag Property</h3>
+<h4>What is a Datastream?</h4>
+<p>A <strong>Datastream</strong> is the server-side configuration that tells Adobe&#x27;s Edge Network <strong>where to route data</strong> from your mobile app.</p>
+<p>```</p>
+<p>Mobile App (Adobe Mobile SDK)</p>
+<p>↓</p>
+<p>Adobe Edge Network</p>
+<p>↓</p>
+<p>Datastream (routing rules)</p>
+<p>├── Route to AEP → Profile updates, event data</p>
+<p>├── Route to AJO → Push token registration, journey triggers</p>
+<p>└── Route to Analytics → Behavioral tracking</p>
+<p>```</p>
+<h4>How to Create a Datastream</h4>
+<p>1. Go to <strong>Adobe Experience Platform Data Collection</strong> (launch.adobe.com)</p>
+<p>2. Click <strong>Datastreams</strong> in the left navigation</p>
+<p>3. Click <strong>New Datastream</strong></p>
+<p>4. Enter:</p>
+<p>```</p>
+<p>Datastream Settings:</p>
+<p>├── Name: &quot;Luma Mobile App - Production&quot;</p>
+<p>├── Description: &quot;Datastream for Luma iOS and Android apps&quot;</p>
+<p>└── Event Schema: Select your XDM Mobile Schema</p>
+<p>```</p>
+<p>5. Click <strong>Save</strong></p>
+<p>6. Add <strong>Services</strong> to the datastream:</p>
+<p>```</p>
+<p>Services to Enable:</p>
+<p>├── Adobe Experience Platform</p>
+<p>│   ├── Sandbox: [Your sandbox]</p>
+<p>│   ├── Event Dataset: [Your mobile events dataset]</p>
+<p>│   └── Profile Dataset: [Your profile dataset]</p>
+<p>│</p>
+<p>└── Adobe Journey Optimizer</p>
+<p>└── Dataset: [Your AJO dataset for push]</p>
+<p>```</p>
+<p>7. Click <strong>Save</strong></p>
+<h4>How to Create a Tag Property (Mobile)</h4>
+<p>1. In Adobe Data Collection, click <strong>Tags</strong> → <strong>Properties</strong></p>
+<p>2. Click <strong>New Property</strong></p>
+<p>3. Select <strong>Mobile</strong> as platform</p>
+<p>4. Enter:</p>
+<p>```</p>
+<p>Property Settings:</p>
+<p>├── Name: &quot;Luma Mobile App&quot;</p>
+<p>└── Platform: Mobile</p>
+<p>```</p>
+<p>5. Click <strong>Save</strong></p>
+<p>6. Open the property and go to <strong>Extensions</strong></p>
+<p>7. Install required extensions:</p>
+<p>```</p>
+<p>Required Extensions:</p>
+<p>├── Mobile Core (installed by default)</p>
+<p>├── Profile</p>
+<p>├── Adobe Experience Platform Edge Network</p>
+<p>│   └── Configure: Select your Datastream</p>
+<p>├── Adobe Journey Optimizer (for Push + In-App)</p>
+<p>└── AEP Assurance (for testing/debugging)</p>
+<p>```</p>
+<p>8. Configure <strong>Edge Network Extension</strong>:</p>
+<p>```</p>
+<p>Edge Network Settings:</p>
+<p>└── Datastream: &quot;L</p>
+</article>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "can you expain the workflow for push notifications channel?", "acceptedAnswer": {"@type": "Answer", "text": "Push Notification Channel Workflow in Adobe Journey Optimizer Overview The Push Notification channel in AJO enables you to send targeted, personalized messages directly to customers' mobile devices \u2014 even when they are not actively using your app. Unlike SMS, push notifications require a mobile app with Adobe Mobile SDK integration. \u25b6 Watch: Push Notifications Overview(https://video.tv.adobe.com/v/3432679/?learn=on) --- Complete Push Notification Channel Workflow STEP 1: SET UP MOBILE APP WITH ADOBE MOBILE SDK \u2193 STEP 2: CONFIGURE PUSH CREDENTIALS (APNs & FCM) \u2193 STEP 3: CREATE APP SURFACE (App Configuration) \u2193 STEP 4: CREATE DATASTREAM & TAG PROPERTY \u2193 STEP 5: CREATE CHANNEL CONFIGURATION (Surface) \u2193 STEP 6: CREATE JOURNEY OR CAMPAIGN \u2193 STEP 7: BUILD PUSH NOTIFICATION CONTENT \u2193 STEP 8: PERSONALIZATION & DYNAMIC CONTENT \u2193 STEP 9: TEST & PREVIEW \u2193 STEP 10: ACTIVATE / PUBLISH \u2193 STEP 11: MONITOR & REPORT --- Understanding Push Notification Architecture Before diving into configuration, it is important to understand how push notifications flow from AJO to a customer's device. !Push Notification Data Flow(https://raw.githubusercontent.com/AdobeDocs/journey-optimizer.en/main/help/using/push/assets/pushalert.png) PUSH NOTIFICATION FLOW: AJO sends push payload \u2193 Adobe Experience Edge Network \u2193 Push Service Gateway \u251c\u2500\u2500 APNs (Apple Push Notification Service) \u2192 iOS Devices \u2514\u2500\u2500 FCM (Firebase Cloud Messaging) \u2192 Android Devices \u2193 Customer's Mobile Device \u2193 Push Notification Displayed Key Infrastructure Components | Component | Purpose | Platform | |---|---|---| | APNs | Apple's push delivery service | iOS, iPadOS, macOS, watchOS | | FCM | Google's push delivery service | Android, Chrome | | Adobe Mobile SDK | Collects device tokens, sends events to AEP | iOS & Android | | Datastream | Routes data from SDK to AEP/AJO | Both platforms | | App Surface | Registers app with push credentials in AJO | Both platforms | --- STEP 1: Set Up Mobile App with Adobe Mobile SDK Why is this\u2026"}}]}</script></div>
+  </body>
+</html>
