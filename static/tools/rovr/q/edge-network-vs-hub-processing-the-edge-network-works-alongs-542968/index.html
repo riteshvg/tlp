@@ -1,0 +1,377 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/png" href="/tools/rovr/rovrlogo.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="build-date" content="2026-06-10" />
+    
+    
+    <script src="https://assets.adobedtm.com/204118644db8/290ae1adb65a/launch-e5ec7bf1a1ef-development.min.js" async></script>
+    <script type="module" crossorigin src="/tools/rovr/assets/index-6PtPUQd3.js"></script>
+    <link rel="stylesheet" crossorigin href="/tools/rovr/assets/index-C3YgbV_4.css">
+  <title>Edge Network vs. Hub Processing
+
+The Edge Network works alongside the AEP Hub for different processing needs: | Rovr</title>
+<meta name="description" content="Edge Network vs. Hub Processing Video Walkthroughs ▶ Watch: Adobe Experience Platform Edge Network…" />
+<link rel="canonical" href="https://thelearningproject.in/tools/rovr/q/edge-network-vs-hub-processing-the-edge-network-works-alongs-542968" />
+<meta property="og:title" content="Edge Network vs. Hub Processing
+
+The Edge Network works alongside the AEP Hub for different processing needs:" />
+<meta property="og:description" content="Edge Network vs. Hub Processing Video Walkthroughs ▶ Watch: Adobe Experience Platform Edge Network…" />
+<meta property="og:url" content="https://thelearningproject.in/tools/rovr/q/edge-network-vs-hub-processing-the-edge-network-works-alongs-542968" />
+<meta property="og:type" content="article" />
+<meta property="og:image" content="https://thelearningproject.in/tools/rovr/rovrlogo.png" />
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="Edge Network vs. Hub Processing
+
+The Edge Network works alongside the AEP Hub for different processing needs:" />
+<meta name="twitter:description" content="Edge Network vs. Hub Processing Video Walkthroughs ▶ Watch: Adobe Experience Platform Edge Network…" />
+</head>
+  <body>
+    <div id="root"><article><h1>Edge Network vs. Hub Processing
+
+The Edge Network works alongside the AEP Hub for different processing needs:</h1>
+<h2>Edge Network vs. Hub Processing</h2>
+<h3>Video Walkthroughs</h3>
+<p><a href="https://video.tv.adobe.com/v/34505?quality=12&amp;learn=on">▶ Watch: Adobe Experience Platform Edge Network Overview</a></p>
+<p>This video explains how Edge Network processes data in real-time and how it differs from hub processing.</p>
+<p><a href="https://video.tv.adobe.com/v/3422978?learn=on&amp;enablevpops">▶ Watch: AEP Architecture Overview</a></p>
+<p>This video walks through the complete AEP architecture including both Edge Network and hub processing.</p>
+<hr>
+<h3>Overview</h3>
+<p>Adobe Experience Platform processes data in <strong>two distinct paths</strong>:</p>
+<p>1. <strong>Edge Network</strong> – Geographically distributed servers for real-time, low-latency processing</p>
+<p>2. <strong>AEP Hub</strong> – Centralized data center for comprehensive, thorough data processing</p>
+<p>Understanding when to use each path is <strong>fundamental to AEP architecture design</strong>.</p>
+<p>&gt; <strong>Core Principle:</strong></p>
+<p>&gt; - <strong>Edge Network</strong> = Optimized for <strong>SPEED</strong> (behavioral data, real-time personalization)</p>
+<p>&gt; - <strong>AEP Hub</strong> = Optimized for <strong>THOROUGHNESS</strong> (complete data, rich profiles, batch processing)</p>
+<hr>
+<h3>Side-by-Side Comparison</h3>
+<p>| Aspect | Edge Network | AEP Hub |</p>
+<p>|---|---|---|</p>
+<p>| <strong>Primary Optimization</strong> | Speed | Thoroughness |</p>
+<p>| <strong>Location</strong> | Globally distributed (close to user) | Centrally located data center |</p>
+<p>| <strong>Latency</strong> | Milliseconds to ~100ms | Seconds to minutes |</p>
+<p>| <strong>Data Processed</strong> | Behavioral data only | All data types |</p>
+<p>| <strong>Data Stored</strong> | Audience memberships, profile identities, personalization attributes | All historical data, complete profiles |</p>
+<p>| <strong>Profile Type</strong> | Edge Profile (lightweight) | Full Real-Time Customer Profile |</p>
+<p>| <strong>Segmentation</strong> | Edge Segmentation | Batch + Streaming Segmentation |</p>
+<p>| <strong>Use Case</strong> | Real-time personalization, tag management | Analytics, ML, batch activation |</p>
+<p>| <strong>API Access</strong> | Edge Network API | AEP APIs (Profile, Segmentation, etc.) |</p>
+<hr>
+<h3>Architecture Diagram</h3>
+<p>```</p>
+<p>┌─────────────────────────────────────────────────────────────────────┐</p>
+<p>│                        DATA SOURCES                                  │</p>
+<p>│         Web SDK | Mobile SDK | Server API | Batch Upload             │</p>
+<p>└────────────────────────┬────────────────────────────────────────────┘</p>
+<p>│</p>
+<p>┌────────────┴────────────┐</p>
+<p>│                         │</p>
+<p>▼                         ▼</p>
+<p>┌───────────────────────┐   ┌─────────────────────────────────────────┐</p>
+<p>│    EDGE NETWORK       │   │              AEP HUB                     │</p>
+<p>│  (Speed-Optimized)    │   │         (Thoroughness-Optimized)         │</p>
+<p>│                       │   │                                         │</p>
+<p>│  ┌─────────────────┐  │   │  ┌─────────────────────────────────┐   │</p>
+<p>│  │ Oregon Node     │  │   │  │         Data Lake                │   │</p>
+<p>│  │ Virginia Node   │  │   │  │   (All historical raw data)      │   │</p>
+<p>│  │ London Node     │  │   │  └─────────────────────────────────┘   │</p>
+<p>│  │ Singapore Node  │  │   │                                         │</p>
+<p>│  │ Tokyo Node      │  │   │  ┌─────────────────────────────────┐   │</p>
+<p>│  │ Sydney Node     │  │   │  │    Real-Time Customer Profile    │   │</p>
+<p>│  └─────────────────┘  │   │  │  (Complete unified profile)      │   │</p>
+<p>│                       │   │  └─────────────────────────────────┘   │</p>
+<p>│  Services:            │   │                                         │</p>
+<p>│  • Edge Segmentation  │   │  ┌─────────────────────────────────┐   │</p>
+<p>│  • Edge Profiles      │   │  │       Identity Service           │   │</p>
+<p>│  • Edge Destinations  │   │  │   (Full identity graph)          │   │</p>
+<p>│  • Data Collection    │   │  └─────────────────────────────────┘   │</p>
+<p>│  • SDK Extensions     │   │                                         │</p>
+<p>│  • Event Forwarding   │   │  ┌─────────────────────────────────┐   │</p>
+<p>│  • Tag Management     │   │  │      Segmentation Service        │   │</p>
+<p>│                       │   │  │  (Batch + Streaming)             │   │</p>
+<p>└───────────────────────┘   │  └─────────────────────────────────┘   │</p>
+<p>│               │                                         │</p>
+<p>│               │  ┌─────────────────────────────────┐   │</p>
+<p>│               │  │         Query Service            │   │</p>
+<p>└──────────────▶│  │   (SQL analytics on data lake)   │   │</p>
+<p>(Routes to Hub) │  └─────────────────────────────────┘   │</p>
+<p>│                                         │</p>
+<p>│  ┌─────────────────────────────────┐   │</p>
+<p>│  │       Data Distiller             │   │</p>
+<p>│  │   (Advanced data prep &amp; ML)      │   │</p>
+<p>│  └─────────────────────────────────┘   │</p>
+<p>│                                         │</p>
+<p>│  ┌─────────────────────────────────┐   │</p>
+<p>│  │         Destinations             │   │</p>
+<p>│  │   (Batch audience activation)    │   │</p>
+<p>│  └─────────────────────────────────┘   │</p>
+<p>│                                         │</p>
+<p>│  ┌─────────────────────────────────┐   │</p>
+<p>│  │       Source Connectors          │   │</p>
+<p>│  │   (CRM, ERP, Data Warehouse)     │   │</p>
+<p>│  └─────────────────────────────────┘   │</p>
+<p>└─────────────────────────────────────────┘</p>
+<p>```</p>
+<hr>
+<h3>Edge Network: Deep Dive</h3>
+<h4>What Lives on the Edge Network</h4>
+<p>The Edge Network <strong>only stores what is needed for real-time decisions</strong>:</p>
+<p>```</p>
+<p>Data Stored on Edge Network:</p>
+<p>─────────────────────────────</p>
+<p>✅ Audience Memberships</p>
+<p>→ Which segments a profile currently qualifies for</p>
+<p>→ Used for real-time personalization targeting</p>
+<p>✅ Profile Identities</p>
+<p>→ ECID, email, CRM ID (key identifiers only)</p>
+<p>→ Used for identity resolution at edge</p>
+<p>✅ Personalization Attributes</p>
+<p>→ Key profile attributes needed for decisions</p>
+<p>→ Example: loyaltyTier, preferredLanguage, country</p>
+<p>→ Subset of full hub profile</p>
+<p>✅ Consent Data</p>
+<p>→ Customer consent preferences</p>
+<p>→ Determines if data can be collected</p>
+<p>❌ NOT Stored on Edge:</p>
+<p>→ Full event history</p>
+<p>→ Complete attribute set</p>
+<p>→ All identity relationships</p>
+<p>→ Raw unprocessed data</p>
+<p>→ Historical behavioral data</p>
+<p>```</p>
+<h4>Edge Network Processing Pipeline</h4>
+<p>```</p>
+<p>1. REQUEST RECEIVED</p>
+<p>├── Validate datastreamId</p>
+<p>├── Authenticate organization</p>
+<p>└── Check rate limits</p>
+<p>2. IDENTITY RESOLUTION</p>
+<p>├── Read ECID from cookie</p>
+<p>├── Extract identity map from payload</p>
+<p>├── Look up identity cluster</p>
+<p>└── Route to correct edge node (for session continuity)</p>
+<p>3. EDGE PROFILE RETRIEVAL</p>
+<p>├── Load edge profile for resolved identity</p>
+<p>├── Get audience memberships</p>
+<p>└── Get personalization attributes</p>
+<p>4. DATA TRANSFORMATION</p>
+<p>├── Apply Data Prep field mappings</p>
+<p>├── Enrich with geolocation (from IP)</p>
+<p>├── Enrich with device data (from user agent)</p>
+<p>└── Apply calculated fields</p>
+<p>5. EDGE SEGMENTATION</p>
+<p>├── Evaluate edge-enabled segments</p>
+<p>├── Update audience memberships</p>
+<p>└── Make updated memberships available for step 6</p>
+<p>6. PERSONALIZATION DECISIONING</p>
+<p>├── Query Target for activity assignments</p>
+<p>├── Query AJO for offer decisions</p>
+<p>├── Apply audience memberships to decisions</p>
+<p>└── Select winning experiences</p>
+<p>7. SERVICE ROUTING (ASYNC)</p>
+<p>├── Route to AEP streaming ingestion</p>
+<p>├── Route to Analytics beacon processing</p>
+<p>├── Route to AJO journey triggering</p>
+<p>└── Route to event forwarding destinations</p>
+<p>8. RESPONSE ASSEMBLY</p>
+<p>├── Package personalization decisions</p>
+<p>├── Include identity results</p>
+<p>├── Include consent confirmations</p>
+<p>└── Return to Web SDK (~100ms)</p>
+<p>```</p>
+<h4>Services Available on Edge Network</h4>
+<p>| Service | Description | Use Case |</p>
+<p>|---|---|---|</p>
+<p>| <strong>Edge Segmentation</strong> | Real-time segment evaluation at edge | Instant audience qualification |</p>
+<p>| <strong>Edge Profiles</strong> | Lightweight profile cache at edge | Sub-millisecond profile lookups |</p>
+<p>| <strong>Edge Destinations</strong> | Real-time audience activation | Synchronous personalization |</p>
+<p>| <strong>Data Collection</strong> | Receive and process Web/Mobile SDK data | All data collection |</p>
+<p>| <strong>SDK Extensions</strong> | Process extension-specific logic | Tags extensions |</p>
+<p>| <strong>Event Forwarding</strong> | Server-side tag forwarding | Third-party integrations |</p>
+<p>| <strong>Tag Management</strong> | Deploy and manage tags | Website tag deployment |</p>
+<hr>
+<h3>AEP Hub: Deep Dive</h3>
+<h4>What Lives on AEP Hub</h4>
+<p>The Hub is the <strong>central repository for all data</strong> — no limits on completeness:</p>
+<p>```</p>
+<p>Data Stored on AEP Hub:</p>
+<p>────────────────────────</p>
+<p>✅ Complete Data Lake</p>
+<p>→ All raw events ever ingested</p>
+<p>→ Full event history for every customer</p>
+<p>→ All batch data from source connectors</p>
+<p>→ Queryable via Query Service</p>
+<p>✅ Full Real-Time Customer Profile</p>
+<p>→ All profile attributes from all datasets</p>
+<p>→ Complete experience event timeline</p>
+<p>→ Computed attributes (pre-calculated metrics)</p>
+<p>→ Full segment membership history</p>
+<p>✅ Complete Identity Graph</p>
+<p>→ All identity relationships across all namespaces</p>
+<p>→ Full identity history and link events</p>
+<p>→ Privacy deletion records</p>
+<p>✅ ML Model Training Data</p>
+<p>→ Customer AI propensity scores</p>
+<p>→ Attribution AI models</p>
+<p>→ Custom ML model inputs/outputs</p>
+<p>✅ Governance &amp; Compliance</p>
+<p>→ Data usage labels</p>
+<p>→ Policy enforcement records</p>
+<p>→ Consent histories</p>
+<p>→ Audit logs</p>
+<p>```</p>
+<h4>Hub Processing Pipeline</h4>
+<p>```</p>
+<p>1. STREAMING INGESTION</p>
+<p>├── Receive from Edge Network (async)</p>
+<p>├── Receive from Streaming API (direct)</p>
+<p>└── Validate XDM schema compliance</p>
+<p>2. BATCH INGESTION</p>
+<p>├── Source connector pull (Salesforce, Marketo, etc.)</p>
+<p>├── File upload (CSV, JSON, Parquet)</p>
+<p>└── Cloud storage sync (S3, Azure Blob, SFTP)</p>
+<p>3. DATA LAKE STORAGE</p>
+<p>├── Store raw event data</p>
+<p>├── Organize into datasets</p>
+<p>├── Apply data governance labels</p>
+<p>└── Index for Query Service access</p>
+<p>4. IDENTITY GRAPH UPDATES</p>
+<p>├── Process new identity links</p>
+<p>├── Resolve identity graph conflicts</p>
+<p>├── Apply identity optimization algorithm</p>
+<p>└── Update identity graph (full resolution)</p>
+<p>5. PROFILE UPDATES</p>
+<p>├── Merge new data with existing profile</p>
+<p>├── Apply merge policies</p>
+<p>├── Update computed attributes</p>
+<p>└── Publish updated profile snapshot</p>
+<p>6. STREAMING SEGMENTATION</p>
+<p>├── Evaluate streaming-eligible segments</p>
+<p>├── Update segment membership in real-time</p>
+<p>└── Trigger AJO journey entries</p>
+<p>7. BATCH SEGMENTATION (DAILY)</p>
+<p>├── Evaluate all profiles against all segments</p>
+<p>├── Generate complete audience membership snapshots</p>
+<p>└── Export to destinations</p>
+<p>8. ACTIVATION</p>
+<p>├── Export audiences to destinations</p>
+<p>├── Trigger AJO campaigns</p>
+<p>└── Update RTCDP audiences</p>
+<p>```</p>
+<h4>Services Available on AEP Hub</h4>
+<p>| Service | Description | Latency |</p>
+<p>|---|---|---|</p>
+<p>| <strong>Batch Segmentation</strong> | Daily evaluation of all profiles | Hours |</p>
+<p>| <strong>Streaming Segmentation</strong> | Real-time segment evaluation | Seconds |</p>
+<p>| <strong>Profiles</strong> | Complete unified customer profiles | Seconds |</p>
+<p>| <strong>Destinations</strong> | Batch audience export | Minutes to hours |</p>
+<p>| <strong>Identity Graph</strong> | Full identity resolution | Seconds |</p>
+<p>| <strong>Query Service</strong> | SQL analytics on data lake | Minutes |</p>
+<p>| <strong>Data Distiller</strong> | Advanced data preparation | Minutes to hours |</p>
+<p>| <strong>Source Connectors</strong> | Batch data ingestion | Minutes to hours |</p>
+<p>| <strong>AI/ML Services</strong> | Customer AI, Attribution AI | Hours to days |</p>
+<hr>
+<h3>When to Use Edge Network vs. Hub</h3>
+<h4>Use Edge Network When:</h4>
+<p>```</p>
+<p>Scenario 1: Real-Time Web Personalization</p>
+<p>Customer visits homepage</p>
+<p>→ Need personalized hero banner in &lt;100ms</p>
+<p>→ Use: Edge Network + Target/AJO</p>
+<p>→ Why: Edge profile + edge segmentation = instant decisions</p>
+<p>Scenario 2: A/B Testing</p>
+<p>Customer loads product page</p>
+<p>→ Need A/B test assignment before page renders</p>
+<p>→ Use: Edge Network + Target</p>
+<p>→ Why: Edge decision = no flicker, instant assignment</p>
+<p>Scenario 3: Live Event Tracking</p>
+<p>Customer clicks &quot;Add to Cart&quot; button</p>
+<p>→ Need to track behavioral event immediately</p>
+<p>→ Use: Web SDK → Edge Network → AEP</p>
+<p>→ Why: Edge Network processes and routes in real-time</p>
+<p>Scenario 4: Server-Side Tag Forwarding</p>
+<p>Customer triggers event</p>
+<p>→ Need to forward to Google Analytics, Snowflake, CRM</p>
+<p>→ Use: Edge Network Event Forwarding</p>
+<p>→ Why: Server-side is faster and more reliable than client-side</p>
+<p>```</p>
+<h4>Use AEP Hub When:</h4>
+<p>```</p>
+<p>Scenario 1: Batch Audience Building</p>
+<p>Marketing team needs &quot;all customers who spent $500+ in last 90 days&quot;</p>
+<p>→ Use: Hub Batch Segmentation + Query Service</p>
+<p>→ Why: Requires full event history analysis</p>
+<p>Scenario 2: ML Propensity Scoring</p>
+<p>Need to predict which customers will churn in next 30 days</p>
+<p>→ Use: Customer AI (Hub)</p>
+<p>→ Why: Requires months of behavioral history for training</p>
+<p>Scenario 3: Attribution Analysis</p>
+<p>Need to understand which marketing channels drive revenue</p>
+<p>→ Use: Attribution AI + Query Service (Hub)</p>
+<p>→ Why: Requires complete multi-touch event history</p>
+<p>Scenario 4: CRM Data Integration</p>
+<p>Need to ingest 5 years of customer purchase history from Salesforce</p>
+<p>→ Use: Salesforce Source Connector → Hub Batch Ingestion</p>
+<p>→ Why: Batch data ingestion, not real-time</p>
+<p>Scenario 5: Ad Audience Activation</p>
+<p>Need to push &quot;Loyal Customers&quot; segment to Google Ads</p>
+<p>→ Use: Hub Destinations</p>
+<p>→ Why: Batch audience export doesn&#x27;t require real-time</p>
+<p>```</p>
+<hr>
+<h3>Data Flow Between Edge Network and Hub</h3>
+<p>The Edge Network and Hub work <strong>together</strong> — not as alternatives:</p>
+<p>```</p>
+<p>Complete Data Flow:</p>
+<p>────────────────────</p>
+<p>STEP 1: Edge Network receives event</p>
+<p>Web SDK → Edge Network Node (nearest)</p>
+<p>Latency: ~5-10ms</p>
+<p>STEP 2: Edge Network processes for real-time needs</p>
+<p>• Identity resolution at edge</p>
+<p>• Edge profile update</p>
+<p>• Edge segmentation evaluation</p>
+<p>• Personalization decisioning</p>
+<p>Latency: ~50-100ms</p>
+<p>STEP 3: Edge Network returns real-time response</p>
+<p>• Personalization decisions</p>
+<p>• Identity confirmation</p>
+<p>• Consent confirmation</p>
+<p>Returned to Web SDK: ~100ms total</p>
+<p>STEP 4: Edge Network routes data to Hub (ASYNC)</p>
+<p>• Data forwarded to AEP streaming ingestion</p>
+<p>• Does NOT wait for hub processing</p>
+<p>• Customer already has personalization response</p>
+<p>Latency from customer&#x27;s perspective: 0ms additional</p>
+<p>STEP 5: Hub processes event comprehensively</p>
+<p>• Full identity graph update</p>
+<p>• Complete profile update</p>
+<p>• Streaming segmentation</p>
+<p>• Data lake storage</p>
+<p>Latency from event receipt: 1-30 seconds</p>
+<p>STEP 6: Hub updates edge profile (if needed)</p>
+<p>• Updated audience memberships pushed to edge</p>
+<p>• New personalization attributes available at edge</p>
+<p>• Next customer visit uses updated edge profile</p>
+<p>Propagation: Minutes</p>
+<p>```</p>
+<hr>
+<h3>Edge Profile vs. Full Hub Profile</h3>
+<p>These are <strong>two different profile representations</strong> serving different purposes:</p>
+<h4>Edge Profile (Lightweight)</h4>
+<p>```json</p>
+<p>{</p>
+<p>&quot;identities&quot;: {</p>
+<p>&quot;ECID&quot;: &quot;98765432109876543210&quot;,</p>
+<p>&quot;Email&quot;:</p>
+<h2>Sources</h2>
+<ul>
+<li><a href="https://experienceleague.adobe.com/en/docs/experience-platform/landing/edge-and-hub-comparison">Edge Network and hub comparison</a></li>
+</ul></article>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Edge Network vs. Hub Processing\n\nThe Edge Network works alongside the AEP Hub for different processing needs:", "acceptedAnswer": {"@type": "Answer", "text": "Edge Network vs. Hub Processing Video Walkthroughs \u25b6 Watch: Adobe Experience Platform Edge Network Overview(https://video.tv.adobe.com/v/34505?quality=12&learn=on) This video explains how Edge Network processes data in real-time and how it differs from hub processing. \u25b6 Watch: AEP Architecture Overview(https://video.tv.adobe.com/v/3422978?learn=on&enablevpops) This video walks through the complete AEP architecture including both Edge Network and hub processing. --- Overview Adobe Experience Platform processes data in two distinct paths: 1. Edge Network \u2013 Geographically distributed servers for real-time, low-latency processing 2. AEP Hub \u2013 Centralized data center for comprehensive, thorough data processing Understanding when to use each path is fundamental to AEP architecture design. Core Principle: - Edge Network = Optimized for SPEED (behavioral data, real-time personalization) - AEP Hub = Optimized for THOROUGHNESS (complete data, rich profiles, batch processing) --- Side-by-Side Comparison | Aspect | Edge Network | AEP Hub | |---|---|---| | Primary Optimization | Speed | Thoroughness | | Location | Globally distributed (close to user) | Centrally located data center | | Latency | Milliseconds to ~100ms | Seconds to minutes | | Data Processed | Behavioral data only | All data types | | Data Stored | Audience memberships, profile identities, personalization attributes | All historical data, complete profiles | | Profile Type | Edge Profile (lightweight) | Full Real-Time Customer Profile | | Segmentation | Edge Segmentation | Batch + Streaming Segmentation | | Use Case | Real-time personalization, tag management | Analytics, ML, batch activation | | API Access | Edge Network API | AEP APIs (Profile, Segmentation, etc.) | --- Architecture Diagram \u250c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2510 \u2502 DATA SOURCES \u2502 \u2502 Web SDK | Mobile SDK | Server API | Batch Upload \u2502 \u2514\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u252c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2518 \u2502\u2026"}}]}</script></div>
+  </body>
+</html>

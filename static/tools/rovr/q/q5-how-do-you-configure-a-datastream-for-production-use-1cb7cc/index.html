@@ -1,0 +1,422 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/png" href="/tools/rovr/rovrlogo.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="build-date" content="2026-06-10" />
+    
+    
+    <script src="https://assets.adobedtm.com/204118644db8/290ae1adb65a/launch-e5ec7bf1a1ef-development.min.js" async></script>
+    <script type="module" crossorigin src="/tools/rovr/assets/index-6PtPUQd3.js"></script>
+    <link rel="stylesheet" crossorigin href="/tools/rovr/assets/index-C3YgbV_4.css">
+  <title>Q5. How do you configure a Datastream for production use? | Rovr</title>
+<meta name="description" content="How Do You Configure a Datastream for Production Use? Video Walkthroughs ▶ Watch: Configure a…" />
+<link rel="canonical" href="https://thelearningproject.in/tools/rovr/q/q5-how-do-you-configure-a-datastream-for-production-use-1cb7cc" />
+<meta property="og:title" content="Q5. How do you configure a Datastream for production use?" />
+<meta property="og:description" content="How Do You Configure a Datastream for Production Use? Video Walkthroughs ▶ Watch: Configure a…" />
+<meta property="og:url" content="https://thelearningproject.in/tools/rovr/q/q5-how-do-you-configure-a-datastream-for-production-use-1cb7cc" />
+<meta property="og:type" content="article" />
+<meta property="og:image" content="https://thelearningproject.in/tools/rovr/rovrlogo.png" />
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="Q5. How do you configure a Datastream for production use?" />
+<meta name="twitter:description" content="How Do You Configure a Datastream for Production Use? Video Walkthroughs ▶ Watch: Configure a…" />
+</head>
+  <body>
+    <div id="root"><article><h1>Q5. How do you configure a Datastream for production use?</h1>
+<h2>How Do You Configure a Datastream for Production Use?</h2>
+<h3>Video Walkthroughs</h3>
+<p><a href="https://video.tv.adobe.com/v/39112?quality=12&amp;learn=on">▶ Watch: Configure a Datastream</a></p>
+<p>This video demonstrates the complete process of creating and configuring a datastream for production use.</p>
+<p><a href="https://video.tv.adobe.com/v/3423849?quality=12&amp;learn=on">▶ Watch: Datastream Configuration Best Practices</a></p>
+<p>This video walks through best practices for configuring datastreams in production environments.</p>
+<p><a href="https://video.tv.adobe.com/v/3420803?quality=12&amp;learn=on">▶ Watch: Set Up Adobe Analytics Service in Datastream</a></p>
+<p>This video shows how to configure the Adobe Analytics service within a datastream for production reporting.</p>
+<hr>
+<h3>Overview</h3>
+<p>Configuring a datastream for production use requires careful planning, sequential service configuration, validation, and governance controls. A production datastream is the <strong>live configuration</strong> that processes real customer data and drives business-critical Adobe services.</p>
+<hr>
+<h3>Prerequisites Before Configuration</h3>
+<p>Before creating a production datastream, ensure the following are in place:</p>
+<p>| Prerequisite | Description | Why Required |</p>
+<p>|---|---|---|</p>
+<p>| <strong>XDM Schema</strong> | Production XDM event schema created | Defines data structure for AEP ingestion |</p>
+<p>| <strong>AEP Datasets</strong> | Event and profile datasets created | Data storage for ingested events |</p>
+<p>| <strong>Identity Namespaces</strong> | Required namespaces configured | Enables identity resolution |</p>
+<p>| <strong>Analytics Report Suite</strong> | Production report suite available | Required for Analytics service |</p>
+<p>| <strong>Target Property Token</strong> | Production Target property created | Required for Target service |</p>
+<p>| <strong>AJO Configuration</strong> | Journey Optimizer provisioned | Required for AJO service |</p>
+<p>| <strong>Subdomain Delegation</strong> | First-party domain configured | Required for production identity |</p>
+<p>| <strong>User Permissions</strong> | Datastream manage permissions | Required to create/edit datastreams |</p>
+<hr>
+<h3>Step-by-Step: Configure a Production Datastream</h3>
+<h4>Step 1: Access Datastreams UI</h4>
+<p>1. Log in to <strong>experience.adobe.com</strong></p>
+<p>2. Navigate to <strong>Data Collection</strong> → <strong>Datastreams</strong></p>
+<p>3. Click <strong>New Datastream</strong></p>
+<p><img src="https://raw.githubusercontent.com/AdobeDocs/experience-platform.en/main/help/datastreams/assets/overview/datastreams-tab.png" alt="Datastreams tab in Adobe Experience Platform UI"></p>
+<h4>Step 2: Basic Datastream Configuration</h4>
+<p>Fill in the foundational settings:</p>
+<p>```</p>
+<p>Name: &quot;Retail Store - Production&quot;</p>
+<p>Description: &quot;Production datastream for retail e-commerce website</p>
+<p>and mobile app. Owner: Analytics Engineering Team.&quot;</p>
+<p>Default Environment: Production</p>
+<p>```</p>
+<p><strong>Best Practices for Naming:</strong></p>
+<p>```</p>
+<p>Recommended Naming Convention:</p>
+<p>[Brand] - [Environment] - [Property Type]</p>
+<p>Examples:</p>
+<p>✅ &quot;RetailStore - Production - Web&quot;</p>
+<p>✅ &quot;RetailStore - Production - Mobile iOS&quot;</p>
+<p>✅ &quot;RetailStore - Staging - Web&quot;</p>
+<p>✅ &quot;RetailStore - Development - Web&quot;</p>
+<p>Avoid:</p>
+<p>❌ &quot;Datastream 1&quot;</p>
+<p>❌ &quot;Test&quot;</p>
+<p>❌ &quot;My Datastream&quot;</p>
+<p>```</p>
+<h4>Step 3: Configure Advanced Settings</h4>
+<p>Before adding services, configure the <strong>advanced settings</strong>:</p>
+<h5>Geolocation &amp; Device Lookup</h5>
+<p>```</p>
+<p>Advanced Settings:</p>
+<p>─────────────────</p>
+<p>Geo Lookup:</p>
+<p>✅ Country</p>
+<p>✅ Region</p>
+<p>✅ City</p>
+<p>✅ Postal Code</p>
+<p>✅ Latitude/Longitude</p>
+<p>Device Lookup:</p>
+<p>✅ Device Type</p>
+<p>✅ Device Model</p>
+<p>✅ Browser</p>
+<p>✅ Operating System</p>
+<p>✅ Screen Resolution</p>
+<p>```</p>
+<p><img src="https://raw.githubusercontent.com/AdobeDocs/experience-platform.en/main/help/datastreams/assets/configure/geolookup.png" alt="Geolookup settings in datastream configuration"></p>
+<h5>Bot Detection</h5>
+<p>```</p>
+<p>Bot Detection:</p>
+<p>──────────────</p>
+<p>✅ Enable Bot Detection</p>
+<p>✅ Use IAB/ABC International Spiders &amp; Bots List</p>
+<p>Custom Bot Rules:</p>
+<p>Add known bot user agents for your environment</p>
+<p>Example: &quot;Googlebot&quot;, &quot;Bingbot&quot;, &quot;DatadogSynthetics&quot;</p>
+<p>```</p>
+<p><img src="https://raw.githubusercontent.com/AdobeDocs/experience-platform.en/main/help/datastreams/assets/configure/advanced-settings.png" alt="Advanced settings in datastream configuration"></p>
+<h5>Encryption Settings</h5>
+<p>```</p>
+<p>Enhanced Encryption:</p>
+<p>────────────────────</p>
+<p>✅ Enable Enhanced Encryption (for HIPAA/sensitive data)</p>
+<p>Note: Required if handling Protected Health Information (PHI)</p>
+<p>or other sensitive regulated data categories</p>
+<p>```</p>
+<h4>Step 4: Save Basic Configuration</h4>
+<p>Click <strong>Save</strong> to create the base datastream before adding services.</p>
+<p>&gt; <strong>Note:</strong> After saving changes to a datastream configuration, allow up to <strong>35 minutes</strong> for changes to propagate across the Edge Network. During this propagation window, requests may still be served with the previous configuration.</p>
+<hr>
+<h3>Step 5: Add Adobe Experience Platform Service</h3>
+<p>Click <strong>Add Service</strong> → Select <strong>Adobe Experience Platform</strong>:</p>
+<p>```</p>
+<p>Service: Adobe Experience Platform</p>
+<p>Enabled: ✅ ON</p>
+<p>Core Configuration:</p>
+<p>───────────────────</p>
+<p>Sandbox: prod</p>
+<p>Event Dataset: Retail Web Events Dataset (Production)</p>
+<p>Profile Dataset: Retail Customer Profile Dataset (Production)</p>
+<p>Profile &amp; Segmentation:</p>
+<p>────────────────────────</p>
+<p>✅ Edge Segmentation</p>
+<p>✅ Personalization Destinations</p>
+<p>✅ Adobe Journey Optimizer</p>
+<p>✅ Adobe Analytics for Edge (if applicable)</p>
+<p>Advanced Configuration:</p>
+<p>────────────────────────</p>
+<p>✅ Offer Decisioning (if using Decision Management)</p>
+<p>✅ Real-Time Customer Data Platform</p>
+<p>```</p>
+<p><strong>Dataset Selection Best Practices:</strong></p>
+<p>| Dataset Type | Production Setting | Considerations |</p>
+<p>|---|---|---|</p>
+<p>| <strong>Event Dataset</strong> | Dedicated production dataset | Never share with dev/staging |</p>
+<p>| <strong>Profile Dataset</strong> | Dedicated production dataset | Impacts Real-Time Profile |</p>
+<p>| <strong>Lookup Dataset</strong> | Shared (if reference data) | Can be shared across environments |</p>
+<hr>
+<h3>Step 6: Add Adobe Analytics Service</h3>
+<p>Click <strong>Add Service</strong> → Select <strong>Adobe Analytics</strong>:</p>
+<p>```</p>
+<p>Service: Adobe Analytics</p>
+<p>Enabled: ✅ ON</p>
+<p>Core Configuration:</p>
+<p>───────────────────</p>
+<p>Report Suite ID: retail-prod-rs (Production Report Suite)</p>
+<p>Tracking Server: metrics.retailstore.com</p>
+<p>Advanced Configuration:</p>
+<p>────────────────────────</p>
+<p>Visitor ID Namespace: ECID (default)</p>
+<p>Character Set: UTF-8</p>
+<p>Timestamp: Enabled (Optional - for timestamps)</p>
+<p>Backdated Sessions: Disabled (for production)</p>
+<p>```</p>
+<p><strong>Data Prep Configuration for Analytics:</strong></p>
+<p>Set up field mappings to route XDM data to Analytics:</p>
+<p>```</p>
+<p>XDM Source Field                    → Analytics Target Field</p>
+<p>──────────────────────────────────────────────────────────────</p>
+<p>commerce.productViews.value         → event1 (product views)</p>
+<p>commerce.productListAdds.value      → event2 (cart additions)</p>
+<p>commerce.purchases.value            → event3 (purchases)</p>
+<p>commerce.order.priceTotal           → purchase (revenue)</p>
+<p>productListItems[0].SKU             → eVar10 (product SKU)</p>
+<p>productListItems[0].name            → eVar11 (product name)</p>
+<p>productListItems[0].category        → eVar12 (product category)</p>
+<p>web.webPageDetails.name             → pageName</p>
+<p>web.webPageDetails.URL              → pageURL</p>
+<p>environment.type                    → prop5 (environment)</p>
+<p>device.type                         → prop10 (device type)</p>
+<p>```</p>
+<p><strong>Production-Specific Analytics Settings:</strong></p>
+<p>```</p>
+<p>✅ Use production report suite ONLY</p>
+<p>✅ Never map to development report suite in production datastream</p>
+<p>✅ Validate field mappings in development first</p>
+<p>✅ Test in staging before production promotion</p>
+<p>```</p>
+<hr>
+<h3>Step 7: Add Adobe Target Service</h3>
+<p>Click <strong>Add Service</strong> → Select <strong>Adobe Target</strong>:</p>
+<p>```</p>
+<p>Service: Adobe Target</p>
+<p>Enabled: ✅ ON</p>
+<p>Core Configuration:</p>
+<p>───────────────────</p>
+<p>Property Token: abc123def456-prod (Production property token)</p>
+<p>Environment ID: Production</p>
+<p>Namespace: ECID (default)</p>
+<p>Advanced Configuration:</p>
+<p>────────────────────────</p>
+<p>On-device Decisioning: Enabled (for millisecond personalization)</p>
+<p>Feature Flags: Disabled (unless using experimentation)</p>
+<p>```</p>
+<p><strong>Production Target Configuration:</strong></p>
+<p>```</p>
+<p>Property Token:</p>
+<p>✅ Use production property token</p>
+<p>✅ Never use development token in production datastream</p>
+<p>Environment:</p>
+<p>✅ Set to &quot;Production&quot; environment</p>
+<p>✅ Verify Target activities are published to production</p>
+<p>Personalization:</p>
+<p>✅ Enable edge decisioning for &lt;100ms responses</p>
+<p>✅ Configure appropriate timeout values</p>
+<p>```</p>
+<hr>
+<h3>Step 8: Add Adobe Journey Optimizer Service</h3>
+<p>Click <strong>Add Service</strong> → Select <strong>Adobe Journey Optimizer</strong>:</p>
+<p>```</p>
+<p>Service: Adobe Journey Optimizer</p>
+<p>Enabled: ✅ ON</p>
+<p>Core Configuration:</p>
+<p>───────────────────</p>
+<p>Inlet URL: (auto-populated by AJO configuration)</p>
+<p>Enabled: ✅ ON</p>
+<p>Offer Decisioning:</p>
+<p>──────────────────</p>
+<p>✅ Enable Offer Decisioning (if using Decision Management)</p>
+<p>```</p>
+<p><strong>Production AJO Configuration:</strong></p>
+<p>```</p>
+<p>Journey Triggers:</p>
+<p>✅ Verify journeys are in LIVE status (not draft)</p>
+<p>✅ Confirm event schemas match datastream XDM schema</p>
+<p>✅ Test journey entry events in development first</p>
+<p>Offer Decisioning:</p>
+<p>✅ Publish offers and collections before enabling</p>
+<p>✅ Configure fallback offers for all decisions</p>
+<p>✅ Validate offer eligibility rules</p>
+<p>```</p>
+<hr>
+<h3>Step 9: Configure Event Forwarding (Optional)</h3>
+<p>For <strong>server-side tag forwarding</strong> to external destinations:</p>
+<p>```</p>
+<p>Event Forwarding:</p>
+<p>──────────────────</p>
+<p>Property: &quot;Retail - Event Forwarding - Production&quot;</p>
+<p>Environment: Production</p>
+<p>Rules:</p>
+<p>Rule 1: Forward to CRM (Salesforce)</p>
+<p>Condition: eventType == &quot;commerce.purchases&quot;</p>
+<p>Action: HTTP POST to Salesforce API</p>
+<p>Rule 2: Forward to Data Warehouse (Snowflake)</p>
+<p>Condition: All events</p>
+<p>Action: HTTP POST to Snowflake Streaming API</p>
+<p>Rule 3: Forward to Loyalty Platform</p>
+<p>Condition: eventType == &quot;userAccount.login&quot;</p>
+<p>Action: HTTP POST to Loyalty Platform API</p>
+<p>```</p>
+<hr>
+<h3>Step 10: Configure Data Prep Mappings</h3>
+<p>Set up field transformations for production data quality:</p>
+<p>1. Navigate to <strong>Data Prep for Data Collection</strong> in the AEP service</p>
+<p>2. Click <strong>Add Mapping</strong></p>
+<p>3. Configure field mappings:</p>
+<p>```</p>
+<p>Production Data Prep Rules:</p>
+<p>────────────────────────────</p>
+<p>Rule 1: Email Normalization</p>
+<p>Source: identityMap.Email[0].id</p>
+<p>Transform: LOWERCASE(email)</p>
+<p>Target: normalizedEmail</p>
+<p>Rule 2: Product Price Formatting</p>
+<p>Source: productListItems[0].priceTotal</p>
+<p>Transform: ROUND(price, 2)</p>
+<p>Target: formattedPrice</p>
+<p>Rule 3: Timestamp Conversion</p>
+<p>Source: timestamp</p>
+<p>Transform: TO_UNIX_TIMESTAMP(timestamp)</p>
+<p>Target: unixTimestamp</p>
+<p>Rule 4: Country Code Normalization</p>
+<p>Source: placeContext.geo.countryCode</p>
+<p>Transform: UPPERCASE(countryCode)</p>
+<p>Target: normalizedCountryCode</p>
+<p>Rule 5: Currency Calculation</p>
+<p>Source: commerce.order.priceTotal</p>
+<p>Transform: MULTIPLY(priceTotal, 1.1)  // Add 10% tax</p>
+<p>Target: totalWithTax</p>
+<p>```</p>
+<hr>
+<h3>Step 11: Configure Datastream Overrides</h3>
+<p><strong>Datastream overrides</strong> allow you to change service configurations for specific events without creating separate datastreams:</p>
+<h4>When to Use Overrides:</h4>
+<p>```</p>
+<p>Use Case 1: Different Dataset per Business Unit</p>
+<p>Default Datastream: routes to &quot;All Events Dataset&quot;</p>
+<p>Override: Marketing events → &quot;Marketing Events Dataset&quot;</p>
+<p>Override: Commerce events → &quot;Commerce Events Dataset&quot;</p>
+<p>Use Case 2: Different Report Suite per Region</p>
+<p>Default: Global report suite</p>
+<p>Override: US events → US report suite</p>
+<p>Override: EU events → EU report suite</p>
+<p>Use Case 3: Different Sandbox per Team</p>
+<p>Default: Production sandbox</p>
+<p>Override: Internal test traffic → Staging sandbox</p>
+<p>```</p>
+<h4>Configuring Overrides:</h4>
+<p>```javascript</p>
+<p>// Web SDK implementation with override</p>
+<p>alloy(&quot;sendEvent&quot;, {</p>
+<p>xdm: {</p>
+<p>eventType: &quot;commerce.purchases&quot;</p>
+<p>},</p>
+<p>edgeConfigOverrides: {</p>
+<p>com_adobe_experience_platform: {</p>
+<p>datasets: {</p>
+<p>event: {</p>
+<p>datasetId: &quot;commerce-events-dataset-id&quot;</p>
+<p>}</p>
+<p>}</p>
+<p>},</p>
+<p>com_adobe_analytics: {</p>
+<p>reportSuites: [&quot;commerce-specific-rs&quot;]</p>
+<p>}</p>
+<p>}</p>
+<p>});</p>
+<p>```</p>
+<hr>
+<h3>Step 12: Validate Production Configuration</h3>
+<h4>Validation Checklist</h4>
+<p>| Validation Step | Method | Expected Result |</p>
+<p>|---|---|---|</p>
+<p>| <strong>Events reaching Edge Network</strong> | Assurance | Events visible in real-time |</p>
+<p>| <strong>Analytics data flowing</strong> | Analytics Real-time Report | Hits appearing within seconds |</p>
+<p>| <strong>Target personalization working</strong> | Target Activity QA | Correct experience rendered |</p>
+<p>| <strong>AEP datasets populating</strong> | Dataset Activity Monitor | Batches ingesting successfully |</p>
+<p>| <strong>AJO journeys triggering</strong> | Journey Live Reports | Profiles entering journeys |</p>
+<p>| <strong>Identity graph forming</strong> | Identity Graph Viewer | Identities correctly linked |</p>
+<p>| <strong>Profile updating</strong> | Profile Viewer | Attributes and events visible |</p>
+<h4>Using Assurance for Validation</h4>
+<p>1. Navigate to <strong>Data Collection</strong> → <strong>Assurance</strong></p>
+<p>2. Create a new <strong>Production session</strong></p>
+<p>3. Connect your production website</p>
+<p>4. Verify events in Assurance:</p>
+<p>```</p>
+<p>Expected Events in Assurance:</p>
+<p>✅ Web SDK Request/Response pairs</p>
+<p>✅ Identity resolution events</p>
+<p>✅ Analytics hit confirmation</p>
+<p>✅ Target decisioning response</p>
+<p>✅ AJO event forwarding confirmation</p>
+<p>✅ AEP ingestion confirmation</p>
+<p>```</p>
+<hr>
+<h3>Production Datastream Security Configuration</h3>
+<h4>Sensitive Data Handling</h4>
+<p>For production environments handling sensitive data:</p>
+<p>```</p>
+<p>Sensitive Data Configuration:</p>
+<p>──────────────────────────────</p>
+<p>Enhanced Encryption:</p>
+<p>✅ Enable for HIPAA-regulated data</p>
+<p>✅ Enable for financial data (PCI DSS)</p>
+<p>✅ Enable for PII-heavy implementations</p>
+<p>Data Governance:</p>
+<p>✅ Apply data usage labels to datasets</p>
+<p>✅ Configure consent management rules</p>
+<p>✅ Enable audit logging</p>
+<p>Access Control:</p>
+<p>✅ Restrict datastream edit permissions</p>
+<p>✅ Require approval workflow for changes</p>
+<p>✅ Limit production access to senior team members</p>
+<p>```</p>
+<h4>Audit Logs</h4>
+<p>Enable audit logging for production datastream changes:</p>
+<p>```</p>
+<p>Audit Log Configuration:</p>
+<p>─────────────────────────</p>
+<p>✅ Log all datastream modifications</p>
+<p>✅ Log service enable/disable events</p>
+<p>✅ Log field mapping changes</p>
+<p>✅ Alert on unauthorized access attempts</p>
+<p>✅ Review audit logs weekly</p>
+<p>```</p>
+<hr>
+<h3>Production Datastream vs. Development/Staging</h3>
+<p>| Setting | Development | Staging | Production |</p>
+<p>|---|---|---|---|</p>
+<p>| <strong>AEP Sandbox</strong> | Dev sandbox | Staging sandbox | Prod sandbox |</p>
+<p>| <strong>AEP Dataset</strong> | Dev events dataset | Staging events dataset | Prod events dataset |</p>
+<p>| <strong>Analytics Report Suite</strong> | Dev RS | Staging RS | Prod RS |</p>
+<p>| <strong>Target Environment</strong> | Development | Staging | Production |</p>
+<p>| <strong>Target Property</strong> | Dev property | Staging property | Prod property |</p>
+<p>| <strong>Bot Detection</strong> | Optional | Enabled | ✅ Always enabled |</p>
+<p>| <strong>Enhanced Encryption</strong> | Optional | Recommended | ✅ Required (if sensitive) |</p>
+<p>| <strong>Audit Logging</strong> | Optional | Recommended | ✅ Always enabled |</p>
+<p>| <strong>Access Control</strong> | Open | Restricted | ✅ Strictly restricted |</p>
+<hr>
+<h3>Separate Datastreams Per Environment</h3>
+<p>Always maintain <strong>separate datastreams</strong> for each environment:</p>
+<p>```</p>
+<p>Production Environment:</p>
+<p>Datastream: &quot;RetailStore - Production&quot;</p>
+<p>Used by: Live website, production app</p>
+<p>Data goes to: Production sandbox, prod report suite</p>
+<p>Staging Environment:</p>
+<p>Datastream: &quot;RetailStore - Staging&quot;</p>
+<p>Used by: Staging website, QA app</p>
+<p>Data goes to: Staging sandbox, staging report suite</p>
+<p>Development Environment:</p>
+<p>Datastream: &quot;RetailStore - Development&quot;</p>
+<p>Used by: Dev website, dev app builds</p>
+<p>Data goes to: Dev sandbox, dev report suite</p>
+<p>```</p>
+<p>**Tags Configuration for</p>
+</article>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Q5. How do you configure a Datastream for production use?", "acceptedAnswer": {"@type": "Answer", "text": "How Do You Configure a Datastream for Production Use? Video Walkthroughs \u25b6 Watch: Configure a Datastream(https://video.tv.adobe.com/v/39112?quality=12&learn=on) This video demonstrates the complete process of creating and configuring a datastream for production use. \u25b6 Watch: Datastream Configuration Best Practices(https://video.tv.adobe.com/v/3423849?quality=12&learn=on) This video walks through best practices for configuring datastreams in production environments. \u25b6 Watch: Set Up Adobe Analytics Service in Datastream(https://video.tv.adobe.com/v/3420803?quality=12&learn=on) This video shows how to configure the Adobe Analytics service within a datastream for production reporting. --- Overview Configuring a datastream for production use requires careful planning, sequential service configuration, validation, and governance controls. A production datastream is the live configuration that processes real customer data and drives business-critical Adobe services. --- Prerequisites Before Configuration Before creating a production datastream, ensure the following are in place: | Prerequisite | Description | Why Required | |---|---|---| | XDM Schema | Production XDM event schema created | Defines data structure for AEP ingestion | | AEP Datasets | Event and profile datasets created | Data storage for ingested events | | Identity Namespaces | Required namespaces configured | Enables identity resolution | | Analytics Report Suite | Production report suite available | Required for Analytics service | | Target Property Token | Production Target property created | Required for Target service | | AJO Configuration | Journey Optimizer provisioned | Required for AJO service | | Subdomain Delegation | First-party domain configured | Required for production identity | | User Permissions | Datastream manage permissions | Required to create/edit datastreams | --- Step-by-Step: Configure a Production Datastream Step 1: Access Datastreams UI 1. Log in to experience.adobe.com 2.\u2026"}}]}</script></div>
+  </body>
+</html>
