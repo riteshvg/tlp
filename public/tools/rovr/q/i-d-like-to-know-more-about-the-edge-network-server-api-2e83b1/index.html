@@ -1,0 +1,170 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/png" href="/tools/rovr/rovrlogo.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="build-date" content="2026-06-10" />
+    
+    
+    <script src="https://assets.adobedtm.com/204118644db8/290ae1adb65a/launch-e5ec7bf1a1ef-development.min.js" async></script>
+    <script type="module" crossorigin src="/tools/rovr/assets/index-Cnf1TPK2.js"></script>
+    <link rel="stylesheet" crossorigin href="/tools/rovr/assets/index-D1POE5XP.css">
+  <title>I&#x27;d like to know more about the Edge Network Server API | Rovr</title>
+<meta name="description" content="Adobe Experience Platform Edge Network Server API Overview The Edge Network Server API is a secure, authenticated server-side API that allows you to send data…" />
+<link rel="canonical" href="https://thelearningproject.in/tools/rovr/q/i-d-like-to-know-more-about-the-edge-network-server-api-2e83b1" />
+<meta property="og:title" content="I&#x27;d like to know more about the Edge Network Server API" />
+<meta property="og:description" content="Adobe Experience Platform Edge Network Server API Overview The Edge Network Server API is a secure, authenticated server-side API that allows you to send data…" />
+<meta property="og:url" content="https://thelearningproject.in/tools/rovr/q/i-d-like-to-know-more-about-the-edge-network-server-api-2e83b1" />
+<meta property="og:type" content="article" />
+<meta property="og:image" content="https://thelearningproject.in/tools/rovr/rovrlogo.png" />
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="I&#x27;d like to know more about the Edge Network Server API" />
+<meta name="twitter:description" content="Adobe Experience Platform Edge Network Server API Overview The Edge Network Server API is a secure, authenticated server-side API that allows you to send data…" />
+</head>
+  <body>
+    <div id="root"><article><h1>I&#x27;d like to know more about the Edge Network Server API</h1>
+<h2>Adobe Experience Platform Edge Network Server API</h2>
+<h3>Overview</h3>
+<p>The Edge Network Server API is a secure, authenticated server-side API that allows you to send data directly to the Adobe Experience Platform Edge Network from your servers. This enables data collection without relying on client-side SDKs deployed in browsers or mobile apps.</p>
+<p><a href="https://video.tv.adobe.com/v/341448?learn=on&amp;enablevpops">▶ Watch: Adobe Experience Platform Edge Network Server API overview</a></p>
+<hr>
+<h3>Key Use Cases</h3>
+<p>The Edge Network Server API is ideal for scenarios where <strong>client-side data collection isn&#x27;t practical or possible</strong>:</p>
+<h4>Primary Use Cases:</h4>
+<ul>
+<li><strong>IoT Devices</strong> — Smart devices, wearables, set-top boxes that can&#x27;t run browser-based SDKs</li>
+<li><strong>Desktop Applications</strong> — Native desktop software that needs to send data to Experience Platform</li>
+<li><strong>Server-to-Server Integration</strong> — Backend systems collecting and forwarding user activity</li>
+<li><strong>Sensitive Data Collection</strong> — Data that requires secure, authenticated transport across the network</li>
+</ul>
+<h4>When to Use Edge Network Server API vs. Web SDK:</h4>
+<p>| Scenario | Use Edge Network Server API |</p>
+<p>|---|---|</p>
+<p>| Collecting from IoT devices, set-top boxes | ✓ Yes |</p>
+<p>| Collecting from desktop applications | ✓ Yes |</p>
+<p>| Collecting from backend/server systems | ✓ Yes |</p>
+<p>| Require secure, authenticated data transmission | ✓ Yes |</p>
+<p>| Collecting from web browsers | ✗ Use Web SDK instead |</p>
+<hr>
+<h3>Benefits</h3>
+<p><strong>Secure, Authenticated Transport</strong></p>
+<ul>
+<li>Authentication layer protects sensitive data in transit</li>
+<li>Data is encrypted and validated before reaching the Edge Network</li>
+<li>Ideal for PII and regulated data</li>
+</ul>
+<p><strong>Server-Side Processing</strong></p>
+<ul>
+<li>No client-side exposure of tracking code</li>
+<li>Reduces attack surface for sensitive implementations</li>
+<li>Full control over data sent from your systems</li>
+</ul>
+<p><strong>Unified Data Collection</strong></p>
+<ul>
+<li>Same Edge Network infrastructure as Web SDK and Mobile SDK</li>
+<li>Data flows to the same destinations (Analytics, Audience Manager, Real-Time CDP, etc.)</li>
+<li>Consistent XDM schema usage across all collection methods</li>
+</ul>
+<p><strong>Real-Time Routing</strong></p>
+<ul>
+<li>Data is processed and routed to Adobe solutions in real time</li>
+<li>Same benefits as Web SDK for personalization, audience activation, and analytics</li>
+</ul>
+<hr>
+<h3>High-Level Implementation Overview</h3>
+<h4>Step 1: Define a Report Suite (for Analytics)</h4>
+<p>If sending data to Adobe Analytics, ensure you have a <strong>report suite defined</strong>.</p>
+<h4>Step 2: Set Up Schemas</h4>
+<p>Standardize your data using the <strong>Experience Data Model (XDM)</strong>:</p>
+<ul>
+<li>Create or leverage existing XDM schemas in the Schemas UI</li>
+<li>Map your server-side data fields to XDM schema fields</li>
+<li>This ensures your data is consistent with other Experience Platform implementations</li>
+</ul>
+<h4>Step 3: Configure a Datastream</h4>
+<p>A <strong>datastream</strong> represents the server-side configuration for the Edge Network Server API:</p>
+<ul>
+<li>Defines which Adobe services receive your data (Analytics, AEP, Audience Manager, etc.)</li>
+<li>Maps XDM data to solution-specific fields</li>
+<li>Handles data routing rules and transformations</li>
+<li>Sets up event forwarding destinations if needed</li>
+</ul>
+<h4>Step 4: Authenticate &amp; Call the API</h4>
+<ul>
+<li>Set up authentication credentials (API key or OAuth tokens)</li>
+<li>Make HTTP POST requests to the Edge Network Server API endpoint</li>
+<li>Send XDM-formatted event data in the request payload</li>
+</ul>
+<hr>
+<h3>Authentication</h3>
+<p>The Edge Network Server API supports secure, authenticated requests to protect sensitive data:</p>
+<p><strong>Key Security Features:</strong></p>
+<ul>
+<li><strong>Authentication required</strong> — All requests must include valid credentials</li>
+<li><strong>Encrypted transport</strong> — Data is encrypted in transit</li>
+<li><strong>Validation</strong> — Requests are validated before processing</li>
+</ul>
+<p>For detailed authentication setup, refer to the Authentication documentation in the Server API guide.</p>
+<hr>
+<h3>Data Flow Architecture</h3>
+<p>```</p>
+<p>Your Server/IoT Device</p>
+<p>↓</p>
+<p>[Edge Network Server API Call with XDM Data]</p>
+<p>↓</p>
+<p>Adobe Experience Platform Edge Network</p>
+<p>↓</p>
+<p>[Routed via Datastream Configuration]</p>
+<p>↓</p>
+<p>Analytics | AEP | Audience Manager | Event Forwarding Destinations</p>
+<p>```</p>
+<hr>
+<h3>Supported Scenarios</h3>
+<p><strong>Devices &amp; Systems:</strong></p>
+<ul>
+<li>IoT sensors and smart devices</li>
+<li>Set-top boxes and media devices</li>
+<li>Point-of-sale (POS) systems</li>
+<li>CRM backend systems</li>
+<li>Marketing automation platforms</li>
+<li>Custom backend applications</li>
+</ul>
+<p><strong>Data Types:</strong></p>
+<ul>
+<li>User interactions and events</li>
+<li>Purchase transactions</li>
+<li>Custom metrics and dimensions</li>
+<li>Cross-device data</li>
+<li>Offline data</li>
+<li>Real-time telemetry</li>
+</ul>
+<hr>
+<h3>Getting Started Resources</h3>
+<p>To implement the Edge Network Server API:</p>
+<p>1. <strong>Understand XDM</strong> — Learn the Experience Data Model schema structure</p>
+<p>2. <strong>Create a Datastream</strong> — Configure routing rules in Data Collection UI</p>
+<p>3. <strong>Review API Documentation</strong> — Check the Server API endpoint specifications</p>
+<p>4. <strong>Set Up Authentication</strong> — Configure secure credentials for API calls</p>
+<p>5. <strong>Test &amp; Validate</strong> — Verify data is flowing to your target solutions</p>
+<hr>
+<h3>Key Differences from Web SDK</h3>
+<p>| Aspect | Web SDK | Edge Network Server API |</p>
+<p>|---|---|---|</p>
+<p>| <strong>Deployment</strong> | Browser/client-side | Server/backend systems |</p>
+<p>| <strong>Ideal For</strong> | Web &amp; mobile apps | IoT, desktop apps, servers |</p>
+<p>| <strong>Authentication</strong> | Implicit (datastream-based) | Explicit (API key/OAuth) |</p>
+<p>| <strong>Use Case</strong> | Real-time web tracking | Device &amp; system integration |</p>
+<p>| <strong>Data Source</strong> | Browser events | Server systems, devices |</p>
+<hr>
+<p>Would you like more details on any specific aspect, such as:</p>
+<ul>
+<li>How to authenticate with the Server API?</li>
+<li>Datastream configuration specifics?</li>
+<li>XDM schema setup for server-side data?</li>
+<li>Code examples for API calls?</li>
+</ul>
+</article>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "I'd like to know more about the Edge Network Server API", "acceptedAnswer": {"@type": "Answer", "text": "Adobe Experience Platform Edge Network Server API Overview The Edge Network Server API is a secure, authenticated server-side API that allows you to send data directly to the Adobe Experience Platform Edge Network from your servers. This enables data collection without relying on client-side SDKs deployed in browsers or mobile apps. \u25b6 Watch: Adobe Experience Platform Edge Network Server API overview(https://video.tv.adobe.com/v/341448?learn=on&enablevpops) --- Key Use Cases The Edge Network Server API is ideal for scenarios where client-side data collection isn't practical or possible: Primary Use Cases: - IoT Devices \u2014 Smart devices, wearables, set-top boxes that can't run browser-based SDKs - Desktop Applications \u2014 Native desktop software that needs to send data to Experience Platform - Server-to-Server Integration \u2014 Backend systems collecting and forwarding user activity - Sensitive Data Collection \u2014 Data that requires secure, authenticated transport across the network When to Use Edge Network Server API vs. Web SDK: | Scenario | Use Edge Network Server API | |---|---| | Collecting from IoT devices, set-top boxes | \u2713 Yes | | Collecting from desktop applications | \u2713 Yes | | Collecting from backend/server systems | \u2713 Yes | | Require secure, authenticated data transmission | \u2713 Yes | | Collecting from web browsers | \u2717 Use Web SDK instead | --- Benefits Secure, Authenticated Transport - Authentication layer protects sensitive data in transit - Data is encrypted and validated before reaching the Edge Network - Ideal for PII and regulated data Server-Side Processing - No client-side exposure of tracking code - Reduces attack surface for sensitive implementations - Full control over data sent from your systems Unified Data Collection - Same Edge Network infrastructure as Web SDK and Mobile SDK - Data flows to the same destinations (Analytics, Audience Manager, Real-Time CDP, etc.) - Consistent XDM schema usage across all collection methods Real-Time Routing - Data is\u2026"}}]}</script></div>
+  </body>
+</html>

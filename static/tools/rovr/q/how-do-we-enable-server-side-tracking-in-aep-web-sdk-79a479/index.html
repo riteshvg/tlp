@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/png" href="/tools/rovr/rovrlogo.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="build-date" content="2026-06-10" />
+    
+    
+    <script src="https://assets.adobedtm.com/204118644db8/290ae1adb65a/launch-e5ec7bf1a1ef-development.min.js" async></script>
+    <script type="module" crossorigin src="/tools/rovr/assets/index-Cnf1TPK2.js"></script>
+    <link rel="stylesheet" crossorigin href="/tools/rovr/assets/index-D1POE5XP.css">
+  <title>How do we enable server side tracking in AEP Web SDK? | Rovr</title>
+<meta name="description" content="Based on the retrieved documentation context available to me, I have some information about the AEP Web SDK and its general architecture, but I do not have…" />
+<link rel="canonical" href="https://thelearningproject.in/tools/rovr/q/how-do-we-enable-server-side-tracking-in-aep-web-sdk-79a479" />
+<meta property="og:title" content="How do we enable server side tracking in AEP Web SDK?" />
+<meta property="og:description" content="Based on the retrieved documentation context available to me, I have some information about the AEP Web SDK and its general architecture, but I do not have…" />
+<meta property="og:url" content="https://thelearningproject.in/tools/rovr/q/how-do-we-enable-server-side-tracking-in-aep-web-sdk-79a479" />
+<meta property="og:type" content="article" />
+<meta property="og:image" content="https://thelearningproject.in/tools/rovr/rovrlogo.png" />
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="How do we enable server side tracking in AEP Web SDK?" />
+<meta name="twitter:description" content="Based on the retrieved documentation context available to me, I have some information about the AEP Web SDK and its general architecture, but I do not have…" />
+</head>
+  <body>
+    <div id="root"><article><h1>How do we enable server side tracking in AEP Web SDK?</h1>
+<p>Based on the retrieved documentation context available to me, I have some information about the AEP Web SDK and its general architecture, but I <strong>do not have specific step-by-step documentation on enabling server-side forwarding specifically within the AEP Web SDK implementation path</strong>.</p>
+<h3>What I Can Confirm from Context</h3>
+<p>The <strong>AEP Web SDK</strong> (`alloy.js`) works differently from the traditional AppMeasurement-based approach:</p>
+<ul>
+<li>Web SDK sends data in a <strong>solution-agnostic XDM format</strong> to the <strong>Adobe Experience Platform Edge Network</strong></li>
+<li>The Edge Network then <strong>maps and routes data</strong> to solution-specific destinations in real time</li>
+<li>This architecture is fundamentally <strong>server-side by design</strong> — the Edge Network handles data routing on Adobe&#x27;s servers after receiving a single payload from the browser</li>
+</ul>
+<h3>Key Architectural Difference</h3>
+<p>| Traditional Analytics | AEP Web SDK |</p>
+<p>|---|---|</p>
+<p>| AppMeasurement sends hits to Analytics; SSF configured separately to forward to Audience Manager | Web SDK sends XDM data to Edge Network; Edge Network routes to Analytics, Audience Manager, and other solutions simultaneously |</p>
+<h3>What I&#x27;d Recommend Investigating</h3>
+<p>For Web SDK implementations, the server-side forwarding configuration is typically managed through:</p>
+<p>1. <strong>Datastream configuration</strong> in Adobe Data Collection UI</p>
+<p>2. <strong>Edge Network service toggles</strong> for Analytics, Audience Manager, and other solutions</p>
+<p>However, since I don&#x27;t have the full retrieved documentation to confirm the exact steps, I don&#x27;t want to speculate on the precise procedure.</p>
+<p>Could you clarify whether you&#x27;re looking for:</p>
+<ul>
+<li><strong>Datastream-level configuration</strong> for routing data to multiple solutions?</li>
+<li><strong>Server-side API</strong> (non-browser) tracking with Web SDK?</li>
+</ul>
+<p>This will help me give you a more accurate and complete answer.</p>
+</article>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "How do we enable server side tracking in AEP Web SDK?", "acceptedAnswer": {"@type": "Answer", "text": "Based on the retrieved documentation context available to me, I have some information about the AEP Web SDK and its general architecture, but I do not have specific step-by-step documentation on enabling server-side forwarding specifically within the AEP Web SDK implementation path. What I Can Confirm from Context The AEP Web SDK (alloy.js) works differently from the traditional AppMeasurement-based approach: - Web SDK sends data in a solution-agnostic XDM format to the Adobe Experience Platform Edge Network - The Edge Network then maps and routes data to solution-specific destinations in real time - This architecture is fundamentally server-side by design \u2014 the Edge Network handles data routing on Adobe's servers after receiving a single payload from the browser Key Architectural Difference | Traditional Analytics | AEP Web SDK | |---|---| | AppMeasurement sends hits to Analytics; SSF configured separately to forward to Audience Manager | Web SDK sends XDM data to Edge Network; Edge Network routes to Analytics, Audience Manager, and other solutions simultaneously | What I'd Recommend Investigating For Web SDK implementations, the server-side forwarding configuration is typically managed through: 1. Datastream configuration in Adobe Data Collection UI 2. Edge Network service toggles for Analytics, Audience Manager, and other solutions However, since I don't have the full retrieved documentation to confirm the exact steps, I don't want to speculate on the precise procedure. Could you clarify whether you're looking for: - Datastream-level configuration for routing data to multiple solutions? - Server-side API (non-browser) tracking with Web SDK? This will help me give you a more accurate and complete answer."}}]}</script></div>
+  </body>
+</html>

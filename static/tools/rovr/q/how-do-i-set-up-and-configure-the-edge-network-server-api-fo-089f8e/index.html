@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/png" href="/tools/rovr/rovrlogo.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="build-date" content="2026-06-10" />
+    
+    
+    <script src="https://assets.adobedtm.com/204118644db8/290ae1adb65a/launch-e5ec7bf1a1ef-development.min.js" async></script>
+    <script type="module" crossorigin src="/tools/rovr/assets/index-Cnf1TPK2.js"></script>
+    <link rel="stylesheet" crossorigin href="/tools/rovr/assets/index-D1POE5XP.css">
+  <title>How do I set up and configure the Edge Network Server API for my servers? | Rovr</title>
+<meta name="description" content="Based on the retrieved documentation context available to me, I have some high-level information about the Edge Network Server API, but I do not have the…" />
+<link rel="canonical" href="https://thelearningproject.in/tools/rovr/q/how-do-i-set-up-and-configure-the-edge-network-server-api-fo-089f8e" />
+<meta property="og:title" content="How do I set up and configure the Edge Network Server API for my servers?" />
+<meta property="og:description" content="Based on the retrieved documentation context available to me, I have some high-level information about the Edge Network Server API, but I do not have the…" />
+<meta property="og:url" content="https://thelearningproject.in/tools/rovr/q/how-do-i-set-up-and-configure-the-edge-network-server-api-fo-089f8e" />
+<meta property="og:type" content="article" />
+<meta property="og:image" content="https://thelearningproject.in/tools/rovr/rovrlogo.png" />
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="How do I set up and configure the Edge Network Server API for my servers?" />
+<meta name="twitter:description" content="Based on the retrieved documentation context available to me, I have some high-level information about the Edge Network Server API, but I do not have the…" />
+</head>
+  <body>
+    <div id="root"><article><h1>How do I set up and configure the Edge Network Server API for my servers?</h1>
+<p>Based on the retrieved documentation context available to me, I have some high-level information about the Edge Network Server API, but I <strong>do not have the complete step-by-step setup and configuration documentation</strong> in my current context.</p>
+<h3>What I Can Confirm from Context</h3>
+<p>From the documentation retrieved, here is what I can confirm about the setup process:</p>
+<hr>
+<h3>High-Level Setup Steps</h3>
+<h4>Prerequisites</h4>
+<p>Before setting up the Edge Network Server API, you need:</p>
+<p>1. <strong>An active Adobe Experience Platform license</strong></p>
+<p>2. <strong>An Experience Cloud Organization</strong> with proper admin access</p>
+<p>3. <strong>A configured XDM Schema</strong> in Adobe Experience Platform</p>
+<p>4. <strong>A configured Datastream</strong> in Adobe Data Collection UI</p>
+<hr>
+<h3>General Configuration Flow</h3>
+<p>```</p>
+<p>Adobe Experience Platform Setup</p>
+<p>↓</p>
+<p>Create XDM Schema</p>
+<p>↓</p>
+<p>Configure Datastream</p>
+<p>↓</p>
+<p>Set Up Authentication Credentials</p>
+<p>↓</p>
+<p>Make Authenticated API Calls to Edge Network</p>
+<p>↓</p>
+<p>Validate Data in Target Solutions</p>
+<p>```</p>
+<hr>
+<h3>Ingesting Data via Edge Network Server API into Customer Journey Analytics</h3>
+<p>From the retrieved context, here is a documented use case for <strong>ingesting data into Customer Journey Analytics (CJA) via the Edge Network Server API</strong>:</p>
+<h4>Step 1: Create an XDM Schema</h4>
+<ul>
+<li>Navigate to <strong>Schemas</strong> in Adobe Experience Platform</li>
+<li>Create a new schema using the <strong>XDM ExperienceEvent</strong> class</li>
+<li>Add relevant field groups for your data</li>
+</ul>
+<h4>Step 2: Create a Dataset</h4>
+<ul>
+<li>Navigate to <strong>Datasets</strong> in Adobe Experience Platform</li>
+<li>Create a new dataset based on your XDM schema</li>
+<li>Enable the dataset for <strong>Profile</strong> if needed</li>
+</ul>
+<h4>Step 3: Configure a Datastream</h4>
+<ul>
+<li>Navigate to <strong>Data Collection</strong> in Adobe Experience Platform</li>
+<li>Create a new <strong>Datastream</strong></li>
+<li>Add <strong>Adobe Experience Platform</strong> as a service</li>
+<li>Select your schema and dataset</li>
+<li>Enable any additional services (Analytics, Audience Manager, etc.)</li>
+</ul>
+<h4>Step 4: Set Up Authentication</h4>
+<ul>
+<li>Generate API credentials in <strong>Adobe Developer Console</strong></li>
+<li>Set up <strong>OAuth Server-to-Server</strong> authentication</li>
+<li>Store credentials securely on your server</li>
+</ul>
+<h4>Step 5: Make API Calls</h4>
+<ul>
+<li>Send HTTP POST requests to the Edge Network endpoint</li>
+<li>Include authentication headers</li>
+<li>Format payload as <strong>XDM JSON</strong></li>
+</ul>
+<h4>Step 6: Validate Data</h4>
+<ul>
+<li>Check data flowing into your configured dataset in AEP</li>
+<li>Verify data appearing in CJA connections and data views</li>
+<li>Use Adobe Experience Platform <strong>Assurance</strong> or <strong>Debugger</strong> for troubleshooting</li>
+</ul>
+<hr>
+<h3>What I&#x27;m Missing from Context</h3>
+<p>I don&#x27;t have the <strong>specific technical details</strong> for the following in my current retrieved context:</p>
+<ul>
+<li><strong>Exact API endpoint URLs</strong> for the Edge Network Server API</li>
+<li><strong>Detailed authentication setup steps</strong> (OAuth token generation, header formats)</li>
+<li><strong>Complete request payload examples</strong> with XDM formatting</li>
+<li><strong>Rate limits and throttling</strong> specifics for the Server API</li>
+<li><strong>Error handling and response codes</strong></li>
+<li><strong>Environment-specific configurations</strong> (sandbox vs. production)</li>
+</ul>
+<hr>
+<h3>My Recommendation</h3>
+<p>For the complete and accurate setup guide, I&#x27;d recommend looking at the following specific documentation sections in <strong>Adobe Experience League</strong>:</p>
+<p>1. <strong>&quot;Edge Network Server API Overview&quot;</strong> — for authentication and endpoint details</p>
+<p>2. <strong>&quot;Ingest data via the Adobe Experience Platform Edge Network Server API&quot;</strong> — for CJA-specific setup</p>
+<p>3. <strong>&quot;Getting Started with the Server API&quot;</strong> — for complete API reference</p>
+<hr>
+<p>Would you like me to go deeper on any specific aspect that I <strong>do</strong> have context for, such as:</p>
+<ul>
+<li><strong>XDM Schema setup</strong>?</li>
+<li><strong>Datastream configuration</strong>?</li>
+<li><strong>Customer Journey Analytics connection setup</strong>?</li>
+<li><strong>Event Forwarding configuration</strong>?</li>
+</ul>
+</article>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "How do I set up and configure the Edge Network Server API for my servers?", "acceptedAnswer": {"@type": "Answer", "text": "Based on the retrieved documentation context available to me, I have some high-level information about the Edge Network Server API, but I do not have the complete step-by-step setup and configuration documentation in my current context. What I Can Confirm from Context From the documentation retrieved, here is what I can confirm about the setup process: --- High-Level Setup Steps Prerequisites Before setting up the Edge Network Server API, you need: 1. An active Adobe Experience Platform license 2. An Experience Cloud Organization with proper admin access 3. A configured XDM Schema in Adobe Experience Platform 4. A configured Datastream in Adobe Data Collection UI --- General Configuration Flow Adobe Experience Platform Setup \u2193 Create XDM Schema \u2193 Configure Datastream \u2193 Set Up Authentication Credentials \u2193 Make Authenticated API Calls to Edge Network \u2193 Validate Data in Target Solutions --- Ingesting Data via Edge Network Server API into Customer Journey Analytics From the retrieved context, here is a documented use case for ingesting data into Customer Journey Analytics (CJA) via the Edge Network Server API: Step 1: Create an XDM Schema - Navigate to Schemas in Adobe Experience Platform - Create a new schema using the XDM ExperienceEvent class - Add relevant field groups for your data Step 2: Create a Dataset - Navigate to Datasets in Adobe Experience Platform - Create a new dataset based on your XDM schema - Enable the dataset for Profile if needed Step 3: Configure a Datastream - Navigate to Data Collection in Adobe Experience Platform - Create a new Datastream - Add Adobe Experience Platform as a service - Select your schema and dataset - Enable any additional services (Analytics, Audience Manager, etc.) Step 4: Set Up Authentication - Generate API credentials in Adobe Developer Console - Set up OAuth Server-to-Server authentication - Store credentials securely on your server Step 5: Make API Calls - Send HTTP POST requests to the Edge Network endpoint - Include\u2026"}}]}</script></div>
+  </body>
+</html>
