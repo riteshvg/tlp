@@ -11,91 +11,40 @@
     <script type="module" crossorigin src="/tools/rovr/assets/index-Cnf1TPK2.js"></script>
     <link rel="stylesheet" crossorigin href="/tools/rovr/assets/index-D1POE5XP.css">
   <title>How would you meet regulatory requirements for capturing detailed metadata at each step of a journey and share it with downstream systems? | Rovr</title>
-<meta name="description" content="Meeting Regulatory Requirements for Journey Step Metadata Capture &amp; Downstream Sharing Based on the Adobe documentation, there are two complementary…" />
+<meta name="description" content="What the documentation confirms The executionMetadata helper allows you to capture custom key-value pairs during journey execution. These pairs are stored in…" />
 <link rel="canonical" href="https://thelearningproject.in/tools/rovr/q/how-would-you-meet-regulatory-requirements-for-capturing-det-058f14" />
 <meta property="og:title" content="How would you meet regulatory requirements for capturing detailed metadata at each step of a journey and share it with downstream systems?" />
-<meta property="og:description" content="Meeting Regulatory Requirements for Journey Step Metadata Capture &amp; Downstream Sharing Based on the Adobe documentation, there are two complementary…" />
+<meta property="og:description" content="What the documentation confirms The executionMetadata helper allows you to capture custom key-value pairs during journey execution. These pairs are stored in…" />
 <meta property="og:url" content="https://thelearningproject.in/tools/rovr/q/how-would-you-meet-regulatory-requirements-for-capturing-det-058f14" />
 <meta property="og:type" content="article" />
 <meta property="og:image" content="https://thelearningproject.in/tools/rovr/rovrlogo.png" />
 <meta name="twitter:card" content="summary" />
 <meta name="twitter:title" content="How would you meet regulatory requirements for capturing detailed metadata at each step of a journey and share it with downstream systems?" />
-<meta name="twitter:description" content="Meeting Regulatory Requirements for Journey Step Metadata Capture &amp; Downstream Sharing Based on the Adobe documentation, there are two complementary…" />
+<meta name="twitter:description" content="What the documentation confirms The executionMetadata helper allows you to capture custom key-value pairs during journey execution. These pairs are stored in…" />
 </head>
   <body>
     <div id="root"><article><h1>How would you meet regulatory requirements for capturing detailed metadata at each step of a journey and share it with downstream systems?</h1>
-<h2>Meeting Regulatory Requirements for Journey Step Metadata Capture &amp; Downstream Sharing</h2>
-<p>Based on the Adobe documentation, there are two complementary mechanisms you can leverage to capture detailed metadata at each journey step and share it with downstream systems.</p>
-<hr>
-<h3>1. Automatic Journey Step Event Streaming to AEP</h3>
-<p>Journey Optimizer <strong>automatically streams journey step event data to Adobe Experience Platform</strong> for every node traversal in a journey — no manual configuration required.</p>
-<h4>How It Works</h4>
+<h3>What the documentation confirms</h3>
+<p>The `executionMetadata` helper allows you to capture custom key-value pairs during journey execution. These pairs are stored in the <strong>Message Feedback Event Dataset</strong> under a standardized schema structure (`_experience.customerJourneyManagement.messageExecution.metadata`). This metadata can then be exported to external systems for tracking, analytics, and downstream processing purposes.</p>
+<h3>What it does NOT cover</h3>
+<p>The documentation does not specify:</p>
 <ul>
-<li>A <strong>step event</strong> is generated each time an individual moves from one node to another in a journey</li>
-<li>For example, a journey with one event, one condition, and one action generates <strong>three step events</strong> sent to AEP</li>
-<li>The schemas and datasets created for step events are <strong>provisioned automatically</strong> and are <strong>read-only</strong> (protecting data integrity for audit purposes)</li>
+<li>How to configure or manage the export of metadata to specific downstream systems</li>
+<li>Technical requirements for regulatory compliance frameworks or which regulations are supported</li>
+<li>Methods for querying or transforming this metadata after capture</li>
+<li>How to handle multi-brand governance of metadata collection</li>
+<li>Integration patterns with external reporting or compliance platforms</li>
 </ul>
-<h4>What This Gives You for Regulatory Purposes</h4>
+<h3>Where to find additional guidance</h3>
+<p>For multi-brand regulatory and governance considerations, consult:</p>
 <ul>
-<li>A complete, immutable record of every profile&#x27;s progression through a journey</li>
-<li>Data is stored in AEP datasets and can be combined with other digital or offline data sources</li>
-<li>Analyzable in <strong>Customer Journey Analytics (CJA)</strong> for advanced attribution modeling, cross-channel journey visualization, and predictive analytics</li>
+<li>https://experienceleague.adobe.com/en/docs/experience-platform/landing/multi-region-multi-brand-whitepaper</li>
 </ul>
-<hr>
-<h3>2. `executionMetadata` Helper for Custom Key-Value Metadata</h3>
-<p>For attaching <strong>custom regulatory or compliance context</strong> to specific delivery actions, use the `executionMetadata` helper in the personalization editor.</p>
-<h4>Syntax</h4>
-<p>```</p>
-<p>{{executionMetadata key=&quot;your_key&quot; value=&quot;your_value&quot;}}</p>
-<p>```</p>
-<h4>How to Implement</h4>
-<p>1. Open any channel content inside a <strong>campaign or journey</strong></p>
-<p>2. Navigate to the <strong>personalization editor</strong> for a specific content element</p>
-<p>3. Add the `executionMetadata` helper with your custom key-value pairs (e.g., consent version, regulation identifier, processing basis)</p>
-<p>4. Upon runtime, the metadata is appended to the existing <strong>Message Feedback Event Dataset</strong> under this schema path:</p>
-<p>```json</p>
-<p>&quot;_experience&quot;: {</p>
-<p>&quot;customerJourneyManagement&quot;: {</p>
-<p>&quot;messageExecution&quot;: {</p>
-<p>&quot;metadata&quot;: {</p>
-<p>&quot;your_key&quot;: &quot;your_value&quot;</p>
-<p>}</p>
-<p>}</p>
-<p>}</p>
-<p>}</p>
-<p>```</p>
-<h4>Regulatory Use Cases</h4>
-<p>| Metadata Key | Example Value | Purpose |</p>
-<p>|---|---|---|</p>
-<p>| `consent_version` | `v2.3` | Track which consent version was active at send time |</p>
-<p>| `legal_basis` | `legitimate_interest` | Record GDPR processing basis |</p>
-<p>| `data_residency_region` | `EU` | Tag geographic processing context |</p>
-<p>| `campaign_regulation_id` | `CCPA-2024-001` | Link to a specific regulatory requirement |</p>
-<hr>
-<h3>3. Key Limitations to Plan Around</h3>
+<p>Your implementation team should confirm with your compliance and data governance leads which specific regulatory requirements apply to your use case, and validate the 2 KB per-action limit meets your metadata volume needs.</p>
+<h2>Sources</h2>
 <ul>
-<li>`executionMetadata` is <strong>not supported</strong> in custom actions or inbound channels (Web, Code-based experience, In-App Message, Content Cards)</li>
-<li>There is a <strong>2KB upper limit</strong> on key-value pairs per action — if exceeded, the message still delivers but key-value pairs may be truncated</li>
-<li>The metadata is <strong>not visible</strong> when content is previewed or displayed</li>
-</ul>
-<hr>
-<h3>4. Downstream Sharing Architecture</h3>
-<p>```</p>
-<p>Journey Step Events (auto) ──► AEP Datasets ──► CJA (analysis &amp; reporting)</p>
-<p>│</p>
-<p>executionMetadata (custom) ──► Message Feedback Event Dataset ──► External Reporting/Compliance Systems</p>
-<p>```</p>
-<ul>
-<li>Both data streams land in <strong>AEP datasets</strong>, making them accessible via <strong>AEP Query Service</strong> for extraction, transformation, and export</li>
-<li>CJA can be configured to consume Journey Optimizer datasets for <strong>advanced attribution and cross-channel journey visualization</strong></li>
-<li>External compliance systems can be fed via AEP data export capabilities</li>
-</ul>
-<hr>
-<h3>Summary Recommendation</h3>
-<p>For full regulatory coverage, combine both approaches:</p>
-<p>1. Rely on <strong>automatic step event streaming</strong> for a tamper-proof, system-generated audit trail of all journey traversals</p>
-<p>2. Use <strong>`executionMetadata`</strong> to enrich outbound message events with specific compliance context (consent version, legal basis, etc.) for reconciliation with external reporting or DMP/consent management platforms</p>
-</article>
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "How would you meet regulatory requirements for capturing detailed metadata at each step of a journey and share it with downstream systems?", "acceptedAnswer": {"@type": "Answer", "text": "Meeting Regulatory Requirements for Journey Step Metadata Capture & Downstream Sharing Based on the Adobe documentation, there are two complementary mechanisms you can leverage to capture detailed metadata at each journey step and share it with downstream systems. --- 1. Automatic Journey Step Event Streaming to AEP Journey Optimizer automatically streams journey step event data to Adobe Experience Platform for every node traversal in a journey \u2014 no manual configuration required. How It Works - A step event is generated each time an individual moves from one node to another in a journey - For example, a journey with one event, one condition, and one action generates three step events sent to AEP - The schemas and datasets created for step events are provisioned automatically and are read-only (protecting data integrity for audit purposes) What This Gives You for Regulatory Purposes - A complete, immutable record of every profile's progression through a journey - Data is stored in AEP datasets and can be combined with other digital or offline data sources - Analyzable in Customer Journey Analytics (CJA) for advanced attribution modeling, cross-channel journey visualization, and predictive analytics --- 2. executionMetadata Helper for Custom Key-Value Metadata For attaching custom regulatory or compliance context to specific delivery actions, use the executionMetadata helper in the personalization editor. Syntax {{executionMetadata key=\"yourkey\" value=\"yourvalue\"}} How to Implement 1. Open any channel content inside a campaign or journey 2. Navigate to the personalization editor for a specific content element 3. Add the executionMetadata helper with your custom key-value pairs (e.g., consent version, regulation identifier, processing basis) 4. Upon runtime, the metadata is appended to the existing Message Feedback Event Dataset under this schema path: json \"experience\": { \"customerJourneyManagement\": { \"messageExecution\": { \"metadata\": { \"yourkey\": \"yourvalue\" } } }\u2026"}}]}</script></div>
+<li><a href="https://experienceleague.adobe.com/en/docs/experience-platform/landing/multi-region-multi-brand-whitepaper">Adobe Experience Platform for multi-region, multi-brand enterprises</a></li>
+</ul></article>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "How would you meet regulatory requirements for capturing detailed metadata at each step of a journey and share it with downstream systems?", "acceptedAnswer": {"@type": "Answer", "text": "What the documentation confirms The executionMetadata helper allows you to capture custom key-value pairs during journey execution. These pairs are stored in the Message Feedback Event Dataset under a standardized schema structure (experience.customerJourneyManagement.messageExecution.metadata). This metadata can then be exported to external systems for tracking, analytics, and downstream processing purposes. What it does NOT cover The documentation does not specify: - How to configure or manage the export of metadata to specific downstream systems - Technical requirements for regulatory compliance frameworks or which regulations are supported - Methods for querying or transforming this metadata after capture - How to handle multi-brand governance of metadata collection - Integration patterns with external reporting or compliance platforms Where to find additional guidance For multi-brand regulatory and governance considerations, consult: - https://experienceleague.adobe.com/en/docs/experience-platform/landing/multi-region-multi-brand-whitepaper Your implementation team should confirm with your compliance and data governance leads which specific regulatory requirements apply to your use case, and validate the 2 KB per-action limit meets your metadata volume needs."}}]}</script></div>
   </body>
 </html>

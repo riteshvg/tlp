@@ -1,0 +1,209 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/png" href="/tools/rovr/rovrlogo.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="build-date" content="2026-06-10" />
+    
+    
+    <script src="https://assets.adobedtm.com/204118644db8/290ae1adb65a/launch-e5ec7bf1a1ef-development.min.js" async></script>
+    <script type="module" crossorigin src="/tools/rovr/assets/index-Cnf1TPK2.js"></script>
+    <link rel="stylesheet" crossorigin href="/tools/rovr/assets/index-D1POE5XP.css">
+  <title>Describe an end-to-end business use case solved using AEP + AJO. | Rovr</title>
+<meta name="description" content="End-to-End Business Use Case: Personalized Customer Lifecycle Journey The Business Challenge A mid-size luxury fashion retailer faces critical business…" />
+<link rel="canonical" href="https://thelearningproject.in/tools/rovr/q/describe-an-end-to-end-business-use-case-solved-using-aep-aj-e95644" />
+<meta property="og:title" content="Describe an end-to-end business use case solved using AEP + AJO." />
+<meta property="og:description" content="End-to-End Business Use Case: Personalized Customer Lifecycle Journey The Business Challenge A mid-size luxury fashion retailer faces critical business…" />
+<meta property="og:url" content="https://thelearningproject.in/tools/rovr/q/describe-an-end-to-end-business-use-case-solved-using-aep-aj-e95644" />
+<meta property="og:type" content="article" />
+<meta property="og:image" content="https://thelearningproject.in/tools/rovr/rovrlogo.png" />
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="Describe an end-to-end business use case solved using AEP + AJO." />
+<meta name="twitter:description" content="End-to-End Business Use Case: Personalized Customer Lifecycle Journey The Business Challenge A mid-size luxury fashion retailer faces critical business…" />
+</head>
+  <body>
+    <div id="root"><article><h1>Describe an end-to-end business use case solved using AEP + AJO.</h1>
+<h2>End-to-End Business Use Case: Personalized Customer Lifecycle Journey</h2>
+<h3>The Business Challenge</h3>
+<p>A <strong>mid-size luxury fashion retailer</strong> faces critical business problems:</p>
+<ul>
+<li><strong>High cart abandonment rate:</strong> 65% of customers add items but don&#x27;t purchase</li>
+<li><strong>Poor customer retention:</strong> 40% of customers never return after first purchase</li>
+<li><strong>Inefficient marketing spend:</strong> Sending generic emails to all customers regardless of their behavior or preferences</li>
+<li><strong>Siloed customer data:</strong> Customer information scattered across CRM, e-commerce, email platform, and loyalty system</li>
+<li><strong>Manual processes:</strong> Marketing team manually segments customers and creates email campaigns</li>
+</ul>
+<p><strong>Business Goal:</strong> Implement a <strong>unified customer data platform powered by AEP + AJO</strong> to deliver personalized, real-time journeys that increase conversion rates, customer lifetime value, and marketing ROI.</p>
+<hr>
+<h3>Video Walkthroughs</h3>
+<p><a href="https://video.tv.adobe.com/v/32456?learn=on&amp;enablevpops">▶ Watch: Adobe Experience Platform Overview</a></p>
+<p>This video provides context on how AEP centralizes customer data.</p>
+<p><a href="https://video.tv.adobe.com/v/3424992?quality=12&amp;learn=on">▶ Watch: Create a Journey in Adobe Journey Optimizer</a></p>
+<p>This video demonstrates how to build journeys in AJO that respond to customer behavior.</p>
+<p><a href="https://video.tv.adobe.com/v/27251?learn=on&amp;enablevpops">▶ Watch: Real-Time Customer Profile and Segmentation</a></p>
+<p>This video explains how unified profiles enable real-time personalization.</p>
+<p><a href="https://video.tv.adobe.com/v/3424498?quality=12&amp;learn=on">▶ Watch: Introduction to Adobe Journey Optimizer</a></p>
+<p>This video introduces AJO and its key capabilities for orchestrating customer journeys.</p>
+<hr>
+<h3>Solution Architecture</h3>
+<p>```</p>
+<p>┌─────────────────────────────────────────────────────────────────┐</p>
+<p>│                    DATA SOURCES                                  │</p>
+<p>│  E-commerce Platform | CRM | Loyalty | Point of Sale | Website  │</p>
+<p>└─────────────────────────────────────────────────────────────────┘</p>
+<p>↓</p>
+<p>┌─────────────────────────────────────────────────────────────────┐</p>
+<p>│             ADOBE EXPERIENCE PLATFORM (AEP)                      │</p>
+<p>│  • Ingest: Web SDK, Batch uploads, API connections              │</p>
+<p>│  • Unify: Identity Service links all customer records            │</p>
+<p>│  • Profile: Real-Time Customer Profile built from all data       │</p>
+<p>│  • Segment: Streaming &amp; batch segmentation                      │</p>
+<p>│  • Govern: Data governance, consent management                   │</p>
+<p>└─────────────────────────────────────────────────────────────────┘</p>
+<p>↓</p>
+<p>┌─────────────────────────────────────────────────────────────────┐</p>
+<p>│        ADOBE JOURNEY OPTIMIZER (AJO)                             │</p>
+<p>│  • Orchestrate: Multi-channel customer journeys                  │</p>
+<p>│  • Personalize: Dynamic content &amp; offers                         │</p>
+<p>│  • Decide: AI-powered offer selection                            │</p>
+<p>│  • Engage: Email, SMS, Push, In-App messaging                    │</p>
+<p>└─────────────────────────────────────────────────────────────────┘</p>
+<p>↓</p>
+<p>┌─────────────────────────────────────────────────────────────────┐</p>
+<p>│                   CUSTOMER ENGAGEMENT                            │</p>
+<p>│  Email | SMS | Push Notifications | In-App Messages | Web       │</p>
+<p>└─────────────────────────────────────────────────────────────────┘</p>
+<p>```</p>
+<hr>
+<h3>Phase 1: Data Unification with AEP</h3>
+<h4>Step 1: Connect Data Sources</h4>
+<h5>E-Commerce Website (Web SDK Implementation)</h5>
+<p>Deploy Web SDK to capture all customer interactions:</p>
+<p>```javascript</p>
+<p>// Web SDK tracks customer behavior in real-time</p>
+<p>alloy(&quot;configure&quot;, {</p>
+<p>datastreamId: &quot;fashion-retail-prod&quot;,</p>
+<p>orgId: &quot;FASHION_ORG_ID@AdobeOrg&quot;</p>
+<p>});</p>
+<p>// Track product views</p>
+<p>alloy(&quot;sendEvent&quot;, {</p>
+<p>xdm: {</p>
+<p>eventType: &quot;commerce.productViews&quot;,</p>
+<p>productListItems: [{</p>
+<p>SKU: &quot;DRESS-BLACK-M&quot;,</p>
+<p>name: &quot;Elegant Black Evening Dress&quot;,</p>
+<p>priceTotal: 299.99,</p>
+<p>category: &quot;Dresses&quot;,</p>
+<p>_fashion: {</p>
+<p>material: &quot;Silk&quot;,</p>
+<p>collection: &quot;Spring 2024&quot;,</p>
+<p>size: &quot;Medium&quot;</p>
+<p>}</p>
+<p>}],</p>
+<p>identityMap: {</p>
+<p>ECID: [{&quot;id&quot;: &quot;98765432109876543210&quot;}]</p>
+<p>}</p>
+<p>}</p>
+<p>});</p>
+<p>// Track cart additions</p>
+<p>alloy(&quot;sendEvent&quot;, {</p>
+<p>xdm: {</p>
+<p>eventType: &quot;commerce.productListAdds&quot;,</p>
+<p>commerce: { productListAdds: { value: 1 } },</p>
+<p>productListItems: [{</p>
+<p>SKU: &quot;DRESS-BLACK-M&quot;,</p>
+<p>name: &quot;Elegant Black Evening Dress&quot;,</p>
+<p>priceTotal: 299.99</p>
+<p>}]</p>
+<p>}</p>
+<p>});</p>
+<p>```</p>
+<h5>CRM System (Batch Data Import)</h5>
+<p>Upload customer attributes from Salesforce CRM:</p>
+<p>```</p>
+<p>Customer Data via File Upload:</p>
+<p>├── Email Address</p>
+<p>├── First Name &amp; Last Name</p>
+<p>├── Lifetime Value</p>
+<p>├── Purchase History</p>
+<p>├── Loyalty Tier (Bronze/Silver/Gold/Platinum)</p>
+<p>├── Last Purchase Date</p>
+<p>├── Preferred Contact Method</p>
+<p>└── Marketing Preferences</p>
+<p>```</p>
+<h5>Loyalty Program (API Connection)</h5>
+<p>Real-time loyalty point updates via API:</p>
+<p>```json</p>
+<p>{</p>
+<p>&quot;identityMap&quot;: {</p>
+<p>&quot;Email&quot;: [{&quot;id&quot;: &quot;customer@email.com&quot;}]</p>
+<p>},</p>
+<p>&quot;attributes&quot;: {</p>
+<p>&quot;loyalty&quot;: {</p>
+<p>&quot;loyaltyPoints&quot;: 2450,</p>
+<p>&quot;loyaltyTier&quot;: &quot;Gold&quot;,</p>
+<p>&quot;membershipStatus&quot;: &quot;Active&quot;,</p>
+<p>&quot;joinDate&quot;: &quot;2020-03-15&quot;</p>
+<p>}</p>
+<p>}</p>
+<p>}</p>
+<p>```</p>
+<h4>Step 2: Build Unified Identity Graph</h4>
+<p><strong>Identity Service</strong> links all customer records:</p>
+<p>```</p>
+<p>Before Unification (Siloed Data):</p>
+<p>─────────────────────────────────</p>
+<p>CRM System:        John Smith (CRM-12345)</p>
+<p>E-commerce:        john.smith@email.com → ECID: 98765432...</p>
+<p>Loyalty Program:   LOYALTY-MEMBER-789</p>
+<p>Anonymous Website: ECID: 98765432... (not linked to CRM yet)</p>
+<p>After AEP Identity Unification:</p>
+<p>───────────────────────────────</p>
+<p>[CRM-12345]</p>
+<p>↕</p>
+<p>[john.smith@email.com] ← PRIMARY</p>
+<p>↕</p>
+<p>[ECID: 98765432...]</p>
+<p>↕</p>
+<p>[LOYALTY-MEMBER-789]</p>
+<p>RESULT: Single unified identity graph</p>
+<p>All data points to ONE customer</p>
+<p>```</p>
+<h4>Step 3: Create Unified Customer Profile</h4>
+<p>AEP builds Jane&#x27;s complete profile:</p>
+<p>```json</p>
+<p>{</p>
+<p>&quot;identityMap&quot;: {</p>
+<p>&quot;Email&quot;: [{&quot;id&quot;: &quot;jane.luxury@email.com&quot;}],</p>
+<p>&quot;CRM_ID&quot;: [{&quot;id&quot;: &quot;CRM-JANE-45678&quot;}],</p>
+<p>&quot;ECID&quot;: [{&quot;id&quot;: &quot;11223344556677889900&quot;}],</p>
+<p>&quot;Loyalty_ID&quot;: [{&quot;id&quot;: &quot;LYL-JANE-999&quot;}]</p>
+<p>},</p>
+<p>&quot;attributes&quot;: {</p>
+<p>&quot;person&quot;: {</p>
+<p>&quot;name&quot;: {&quot;firstName&quot;: &quot;Jane&quot;, &quot;lastName&quot;: &quot;Laurent&quot;},</p>
+<p>&quot;birthDate&quot;: &quot;1985-06-22&quot;,</p>
+<p>&quot;gender&quot;: &quot;female&quot;</p>
+<p>},</p>
+<p>&quot;personalEmail&quot;: {&quot;address&quot;: &quot;jane.luxury@email.com&quot;},</p>
+<p>&quot;mobilePhone&quot;: {&quot;number&quot;: &quot;+33-6-12-34-56-78&quot;},</p>
+<p>&quot;address&quot;: {</p>
+<p>&quot;street1&quot;: &quot;123 Rue de Paris&quot;,</p>
+<p>&quot;city&quot;: &quot;Paris&quot;,</p>
+<p>&quot;postalCode&quot;: &quot;75001&quot;,</p>
+<p>&quot;country&quot;: &quot;FR&quot;</p>
+<p>},</p>
+<p>&quot;loyalty&quot;: {</p>
+<p>&quot;loyaltyTier&quot;: &quot;Platinum&quot;,</p>
+<p>&quot;loyaltyPoints&quot;: 5600,</p>
+<p>&quot;memberSince&quot;: &quot;2018-09-10&quot;</p>
+<p>},</p>
+<p>&quot;preferences&quot;: {</p>
+<p>&quot;preferredLanguage&quot;: &quot;French&quot;,</p>
+<p>&quot;preferredChannel&quot;: &quot;Email&quot;,</p>
+<p>&quot;favor</p>
+</article>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Describe an end-to-end business use case solved using AEP + AJO.", "acceptedAnswer": {"@type": "Answer", "text": "End-to-End Business Use Case: Personalized Customer Lifecycle Journey The Business Challenge A mid-size luxury fashion retailer faces critical business problems: - High cart abandonment rate: 65% of customers add items but don't purchase - Poor customer retention: 40% of customers never return after first purchase - Inefficient marketing spend: Sending generic emails to all customers regardless of their behavior or preferences - Siloed customer data: Customer information scattered across CRM, e-commerce, email platform, and loyalty system - Manual processes: Marketing team manually segments customers and creates email campaigns Business Goal: Implement a unified customer data platform powered by AEP + AJO to deliver personalized, real-time journeys that increase conversion rates, customer lifetime value, and marketing ROI. --- Video Walkthroughs \u25b6 Watch: Adobe Experience Platform Overview(https://video.tv.adobe.com/v/32456?learn=on&enablevpops) This video provides context on how AEP centralizes customer data. \u25b6 Watch: Create a Journey in Adobe Journey Optimizer(https://video.tv.adobe.com/v/3424992?quality=12&learn=on) This video demonstrates how to build journeys in AJO that respond to customer behavior. \u25b6 Watch: Real-Time Customer Profile and Segmentation(https://video.tv.adobe.com/v/27251?learn=on&enablevpops) This video explains how unified profiles enable real-time personalization. \u25b6 Watch: Introduction to Adobe Journey Optimizer(https://video.tv.adobe.com/v/3424498?quality=12&learn=on) This video introduces AJO and its key capabilities for orchestrating customer journeys. --- Solution Architecture \u250c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2510 \u2502 DATA SOURCES \u2502 \u2502 E-commerce Platform | CRM | Loyalty | Point of Sale | Website \u2502 \u2514\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2518 \u2193 \u250c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2510 \u2502 ADOBE EXPERIENCE PLATFORM (AEP) \u2502 \u2502 \u2022 Ingest: Web SDK, Batch uploads, API\u2026"}}]}</script></div>
+  </body>
+</html>

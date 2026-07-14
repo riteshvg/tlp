@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/png" href="/tools/rovr/rovrlogo.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="build-date" content="2026-06-10" />
+    
+    
+    <script src="https://assets.adobedtm.com/204118644db8/290ae1adb65a/launch-e5ec7bf1a1ef-development.min.js" async></script>
+    <script type="module" crossorigin src="/tools/rovr/assets/index-Cnf1TPK2.js"></script>
+    <link rel="stylesheet" crossorigin href="/tools/rovr/assets/index-D1POE5XP.css">
+  <title>How do I send personalized email offers using AJO decisioning? | Rovr</title>
+<meta name="description" content="Sending Personalized Email Offers Using AJO Decisioning Adobe Journey Optimizer Decisioning allows you to automatically select and deliver the most relevant…" />
+<link rel="canonical" href="https://thelearningproject.in/tools/rovr/q/how-do-i-send-personalized-email-offers-using-ajo-decisionin-c36fef" />
+<meta property="og:title" content="How do I send personalized email offers using AJO decisioning?" />
+<meta property="og:description" content="Sending Personalized Email Offers Using AJO Decisioning Adobe Journey Optimizer Decisioning allows you to automatically select and deliver the most relevant…" />
+<meta property="og:url" content="https://thelearningproject.in/tools/rovr/q/how-do-i-send-personalized-email-offers-using-ajo-decisionin-c36fef" />
+<meta property="og:type" content="article" />
+<meta property="og:image" content="https://thelearningproject.in/tools/rovr/rovrlogo.png" />
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="How do I send personalized email offers using AJO decisioning?" />
+<meta name="twitter:description" content="Sending Personalized Email Offers Using AJO Decisioning Adobe Journey Optimizer Decisioning allows you to automatically select and deliver the most relevant…" />
+</head>
+  <body>
+    <div id="root"><article><h1>How do I send personalized email offers using AJO decisioning?</h1>
+<h2>Sending Personalized Email Offers Using AJO Decisioning</h2>
+<p>Adobe Journey Optimizer Decisioning allows you to automatically select and deliver the most relevant offer to each email recipient based on their profile attributes, eligibility rules, and constraints. Here is a complete end-to-end guide.</p>
+<hr>
+<h3>Prerequisites</h3>
+<ul>
+<li>Access to Adobe Experience Platform and Journey Optimizer</li>
+<li>Basic understanding of AEP concepts (Profiles, Audiences, Datasets)</li>
+<li>Email channel configured in Journey Optimizer</li>
+<li>Familiarity with Decision Management concepts (offers, decisions, selection strategies)</li>
+</ul>
+<hr>
+<h3>High-Level Steps</h3>
+<p>1. <strong>Ingest profiles / create audiences</strong></p>
+<p>2. <strong>Create decisioning components</strong> (offers, selection strategies, ranking formulas)</p>
+<p>3. <strong>Build and configure an email campaign</strong></p>
+<p>4. <strong>Insert a decision into the email</strong></p>
+<p>5. <strong>Publish and execute</strong></p>
+<hr>
+<h3>Step 1: Ingest Profiles and Create Audiences</h3>
+<p>Ensure your customer profiles exist in AEP with the relevant attributes you want to use for offer targeting (e.g., annual income, loyalty status). Create the appropriate audience segments that will be targeted by your campaign.</p>
+<hr>
+<h3>Step 2: Create Personalized Offers</h3>
+<p><strong>Prerequisite:</strong> You must have the Decision Management feature available in your Journey Optimizer instance.</p>
+<p>1. In the Journey Optimizer UI, select <strong>Offers</strong> from <strong>Decision Management</strong> in the left rail.</p>
+<p>2. In the <strong>Offers</strong> screen, select <strong>Browse</strong> to see the list of offers.</p>
+<p>3. Select <strong>Create offer</strong>.</p>
+<p>4. In the <strong>New offer</strong> dialog, select <strong>Personalized offer</strong> and click <strong>Next</strong>.</p>
+<p>5. In the <strong>Details</strong> step:</p>
+<ul>
+<li>Enter a <strong>Name</strong> for the offer (e.g., `Luma - Juno Jacket`).</li>
+<li>Enter a <strong>Start date and time</strong> and an <strong>End date and time</strong>. Only offers within these dates are selected by the Decisioning engine.</li>
+<li>Select <strong>Next</strong>.</li>
+</ul>
+<p>6. Add <strong>representations</strong> (the actual content — HTML, image, text) for each placement.</p>
+<p>7. Define <strong>eligibility rules</strong> and <strong>constraints</strong> (e.g., frequency capping, profile attributes like loyalty tier or income bracket).</p>
+<p>8. Save the offer.</p>
+<p>Repeat this process to create multiple personalized offers for different audience segments.</p>
+<hr>
+<h3>Step 3: Configure a Selection Strategy and Decision</h3>
+<ul>
+<li>Create a <strong>Selection Strategy</strong> that groups your offers and defines a <strong>Ranking Formula</strong> (how the engine scores and ranks offers per profile).</li>
+<li>Create a <strong>Decision</strong> that combines placements with your selection strategy, so the engine knows which offers to evaluate for which content slot.</li>
+</ul>
+<hr>
+<h3>Step 4: Create an Email Campaign and Insert the Decision</h3>
+<p>1. In Journey Optimizer, create a new <strong>Campaign</strong> and select <strong>Email</strong> as the action channel.</p>
+<p>2. Define basic campaign settings (name, audience, schedule).</p>
+<p>3. Open the <strong>Email Designer</strong> to design your message.</p>
+<p>4. Place your cursor in the area of the email where you want the personalized offer to appear.</p>
+<p>5. Use the <strong>personalization/offers</strong> component to <strong>insert a decision</strong>:</p>
+<ul>
+<li>Select the <strong>decision</strong> you configured in Step 3.</li>
+<li>The Decisioning engine will evaluate each recipient&#x27;s profile at send time and insert the winning offer&#x27;s content.</li>
+</ul>
+<p>6. You can also add a <strong>fallback offer</strong> to ensure every recipient sees something even if no personalized offer qualifies.</p>
+<p>&gt; <strong>Important:</strong> If changes are made to an offer decision being used in a journey&#x27;s message, you must unpublish the journey and republish it so the changes are incorporated.</p>
+<hr>
+<h3>Step 5: Preview, Test, and Publish</h3>
+<ul>
+<li>Use the <strong>Preview</strong> feature in the Email Designer to simulate how different profiles will see different offers.</li>
+<li>Once satisfied, <strong>activate</strong> the campaign.</li>
+<li>At send time, Journey Optimizer&#x27;s Decisioning engine automatically selects the best offer for each recipient based on their profile and the configured rules.</li>
+</ul>
+<hr>
+<h3>Video Tutorial</h3>
+<p><a href="https://video.tv.adobe.com/v/334088?quality=12&amp;learn=on">▶ Watch: Add Offers as Personalization to a Message</a></p>
+<hr>
+<h3>Key Concepts Summary</h3>
+<p>| Component | Purpose |</p>
+<p>|---|---|</p>
+<p>| <strong>Personalized Offer</strong> | Customizable marketing message with eligibility rules and constraints |</p>
+<p>| <strong>Selection Strategy</strong> | Defines which offers compete and how they are ranked |</p>
+<p>| <strong>Ranking Formula</strong> | Scores offers per profile to determine the best match |</p>
+<p>| <strong>Decision</strong> | Ties placements + selection strategies together |</p>
+<p>| <strong>Fallback Offer</strong> | Ensures delivery when no personalized offer qualifies |</p>
+<p>This end-to-end flow ensures that each customer receives the most relevant offer in their email, driven automatically by their real-time profile data.</p>
+</article>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "How do I send personalized email offers using AJO decisioning?", "acceptedAnswer": {"@type": "Answer", "text": "Sending Personalized Email Offers Using AJO Decisioning Adobe Journey Optimizer Decisioning allows you to automatically select and deliver the most relevant offer to each email recipient based on their profile attributes, eligibility rules, and constraints. Here is a complete end-to-end guide. --- Prerequisites - Access to Adobe Experience Platform and Journey Optimizer - Basic understanding of AEP concepts (Profiles, Audiences, Datasets) - Email channel configured in Journey Optimizer - Familiarity with Decision Management concepts (offers, decisions, selection strategies) --- High-Level Steps 1. Ingest profiles / create audiences 2. Create decisioning components (offers, selection strategies, ranking formulas) 3. Build and configure an email campaign 4. Insert a decision into the email 5. Publish and execute --- Step 1: Ingest Profiles and Create Audiences Ensure your customer profiles exist in AEP with the relevant attributes you want to use for offer targeting (e.g., annual income, loyalty status). Create the appropriate audience segments that will be targeted by your campaign. --- Step 2: Create Personalized Offers Prerequisite: You must have the Decision Management feature available in your Journey Optimizer instance. 1. In the Journey Optimizer UI, select Offers from Decision Management in the left rail. 2. In the Offers screen, select Browse to see the list of offers. 3. Select Create offer. 4. In the New offer dialog, select Personalized offer and click Next. 5. In the Details step: - Enter a Name for the offer (e.g., Luma - Juno Jacket). - Enter a Start date and time and an End date and time. Only offers within these dates are selected by the Decisioning engine. - Select Next. 6. Add representations (the actual content \u2014 HTML, image, text) for each placement. 7. Define eligibility rules and constraints (e.g., frequency capping, profile attributes like loyalty tier or income bracket). 8. Save the offer. Repeat this process to create multiple personalized\u2026"}}]}</script></div>
+  </body>
+</html>

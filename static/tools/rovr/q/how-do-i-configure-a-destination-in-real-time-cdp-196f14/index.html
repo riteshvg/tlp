@@ -11,69 +11,88 @@
     <script type="module" crossorigin src="/tools/rovr/assets/index-Cnf1TPK2.js"></script>
     <link rel="stylesheet" crossorigin href="/tools/rovr/assets/index-D1POE5XP.css">
   <title>How do I configure a destination in Real-Time CDP? | Rovr</title>
-<meta name="description" content="Configuring a Destination in Real-Time CDP Based on the available documentation, here is an overview of how destination configuration works in Real-Time CDP.…" />
+<meta name="description" content="Configuring a Destination in Real-Time CDP Destinations are pre-built integrations with destination platforms that allow for the seamless activation of data…" />
 <link rel="canonical" href="https://thelearningproject.in/tools/rovr/q/how-do-i-configure-a-destination-in-real-time-cdp-196f14" />
 <meta property="og:title" content="How do I configure a destination in Real-Time CDP?" />
-<meta property="og:description" content="Configuring a Destination in Real-Time CDP Based on the available documentation, here is an overview of how destination configuration works in Real-Time CDP.…" />
+<meta property="og:description" content="Configuring a Destination in Real-Time CDP Destinations are pre-built integrations with destination platforms that allow for the seamless activation of data…" />
 <meta property="og:url" content="https://thelearningproject.in/tools/rovr/q/how-do-i-configure-a-destination-in-real-time-cdp-196f14" />
 <meta property="og:type" content="article" />
 <meta property="og:image" content="https://thelearningproject.in/tools/rovr/rovrlogo.png" />
 <meta name="twitter:card" content="summary" />
 <meta name="twitter:title" content="How do I configure a destination in Real-Time CDP?" />
-<meta name="twitter:description" content="Configuring a Destination in Real-Time CDP Based on the available documentation, here is an overview of how destination configuration works in Real-Time CDP.…" />
+<meta name="twitter:description" content="Configuring a Destination in Real-Time CDP Destinations are pre-built integrations with destination platforms that allow for the seamless activation of data…" />
 </head>
   <body>
     <div id="root"><article><h1>How do I configure a destination in Real-Time CDP?</h1>
-<h3>Configuring a Destination in Real-Time CDP</h3>
-<p>Based on the available documentation, here is an overview of how destination configuration works in Real-Time CDP.</p>
+<h2>Configuring a Destination in Real-Time CDP</h2>
+<p>Destinations are pre-built integrations with destination platforms that allow for the seamless activation of data from Adobe Experience Platform. You can use destinations to activate your known and unknown data for cross-channel marketing campaigns, email campaigns, targeted advertising, and many other use cases.</p>
 <hr>
-<h3>What is a Destination?</h3>
-<p>Destinations are pre-built integrations with partner platforms that allow you to activate audience and profile data from Real-Time CDP. They are accessible via the <strong>Destinations Catalog</strong>, which displays available destination integration cards.</p>
-<p><img src="https://raw.githubusercontent.com/AdobeDocs/experience-platform.en/main/help/destinations/destination-sdk/assets/destinations-catalog-overview.png" alt="Destinations Catalog Overview"></p>
-<hr>
-<h3>General Configuration Steps</h3>
-<h4>Prerequisites</h4>
+<h3>Prerequisites</h3>
 <ul>
-<li>You must have the appropriate Adobe product licenses (e.g., an <strong>Audience Manager license</strong> is required to share audiences with Adobe Analytics)</li>
-<li>Ensure your data schemas and audiences are already set up in AEP</li>
+<li>Access to <strong>Real-Time Customer Data Platform</strong> in Adobe Experience Platform</li>
+<li>Appropriate <strong>permissions</strong> to manage destinations in your organization</li>
+<li>An existing <strong>audience</strong> or <strong>segment</strong> ready to activate</li>
+<li>Any destination-specific credentials or account details required (e.g., advertiser account ID, API keys, etc.)</li>
 </ul>
 <hr>
-<h4>Step-by-Step Configuration</h4>
-<p>1. <strong>Navigate to the Destinations Catalog</strong> in the Real-Time CDP UI and browse or search for your desired destination</p>
-<p>2. <strong>Select your destination card</strong> from the catalog</p>
-<p>3. <strong>Authenticate to the destination</strong> by filling in the required credential fields (e.g., username and password) and selecting <strong>Connect to destination</strong></p>
-<p>4. <strong>Fill in destination details</strong>, including:</p>
-<ul>
-<li><strong>Name</strong> – A recognizable name for this destination</li>
-<li><strong>Description</strong> – Helps identify the destination in the future</li>
-<li><strong>Company/Account-specific fields</strong> – Varies depending on the destination</li>
-</ul>
-<p>5. <strong>Configure grouping and governance policies</strong> if applicable</p>
-<p>6. <strong>Enable alerts</strong> to receive notifications about data flows to the destination</p>
-<p>7. <strong>Select the Create button</strong> to finalize the connection</p>
+<h3>Step 1: Navigate to the Destinations Catalog</h3>
+<p>1. Log in to <strong>Adobe Experience Platform</strong>.</p>
+<p>2. In the left navigation, click <strong>Destinations</strong>.</p>
+<p>3. Click the <strong>Catalog</strong> tab to browse all available destinations.</p>
+<p>4. Use the <strong>search bar</strong> or filter by category (Advertising, Social, Email, Cloud Storage, etc.) to find your desired destination.</p>
 <hr>
-<h3>Important Notes on Specific Destinations</h3>
+<h3>Step 2: Connect to a Destination</h3>
+<p>1. Click on your desired destination card in the catalog.</p>
+<p>2. Click <strong>Set up</strong> or <strong>Activate audiences</strong> (if already configured by your organization).</p>
+<p>3. You will be taken to the destination&#x27;s <strong>configuration screen</strong>.</p>
+<p>4. Enter the required <strong>authentication credentials</strong> for the destination (e.g., API key, OAuth login, advertiser account ID).</p>
+<p>5. Click <strong>Connect to destination</strong>.</p>
+<p>6. Provide a <strong>Name</strong> and optionally a <strong>Description</strong> for this destination connection.</p>
+<p>7. Configure any destination-specific settings (e.g., data export frequency, identity namespace mappings).</p>
+<p>8. Click <strong>Next</strong> to proceed.</p>
+<hr>
+<h3>Step 3: Configure Activation Settings</h3>
+<h4>Select Audiences</h4>
+<p>1. On the <strong>Activate audiences</strong> screen, select the audiences you want to send to this destination.</p>
+<p>2. Click <strong>Next</strong>.</p>
+<h4>Map Identities (if required)</h4>
+<p>Some destinations — particularly advertising and social platforms — require identity mapping so AEP knows which identifier to use for matching (e.g., email, phone, IDFA):</p>
+<p>1. In the <strong>Mapping</strong> step, click <strong>Add new mapping</strong>.</p>
+<p>2. Select the <strong>Source field</strong> (the identity or attribute from your profile).</p>
+<p>3. Select the <strong>Target field</strong> (the identifier the destination expects).</p>
+<p>4. Repeat for any additional identity mappings required.</p>
+<p>5. Click <strong>Next</strong>.</p>
+<h4>Schedule Activation</h4>
+<p>1. Set the <strong>Start date</strong> (and optionally an <strong>End date</strong>) for the audience export.</p>
+<p>2. Choose the <strong>export frequency</strong>:</p>
 <ul>
-<li><strong>Adobe Analytics</strong>: Audiences sent via the Experience Cloud Audiences destination do <strong>not</strong> appear automatically — you must implement the Experience Cloud Identity Service for Analytics and Audience Manager first</li>
-<li><strong>Adobe Target, Adobe Advertising, Marketo, Adobe Campaign</strong>: Adobe recommends using their <strong>dedicated destination cards</strong> rather than the generic Experience Cloud Audiences destination card for these solutions</li>
-<li>Sharing audiences with Adobe Analytics <strong>requires an Audience Manager license</strong>, but sharing with Adobe Target, Adobe Advertising, Marketo, and other solutions does <strong>not</strong></li>
+<li><strong>Streaming</strong> — sends updates in real time as profiles qualify/exit audiences</li>
+<li><strong>Batch</strong> — sends full audience exports on a scheduled cadence (daily, etc.)</li>
 </ul>
+<p>3. Click <strong>Next</strong>.</p>
+<hr>
+<h3>Step 4: Review and Finish</h3>
+<p>1. On the <strong>Review</strong> screen, verify all your configuration settings — destination name, selected audiences, identity mappings, and schedule.</p>
+<p>2. If everything looks correct, click <strong>Finish</strong>.</p>
+<p>Your destination is now active and audiences will begin flowing to the connected platform according to your configured schedule.</p>
 <hr>
 <h3>Available Destination Types</h3>
-<p>Real-Time CDP supports <strong>more than 60 destinations natively</strong>, including:</p>
-<ul>
-<li><strong>Advertising destinations</strong> (e.g., Google Customer Match, Amazon Ads, The Trade Desk)</li>
-<li><strong>Social destinations</strong> (e.g., Facebook, LinkedIn, TikTok, Snapchat, Pinterest)</li>
-<li><strong>Email marketing</strong> (e.g., Adobe Campaign)</li>
-<li><strong>Personalization</strong> (e.g., Adobe Target)</li>
-</ul>
+<p>Real-Time CDP supports <strong>more than 60 native destinations</strong>, including:</p>
+<p>| Category | Examples |</p>
+<p>|---|---|</p>
+<p>| <strong>Social</strong> | Facebook, LinkedIn, TikTok, Snapchat |</p>
+<p>| <strong>Advertising</strong> | Google Customer Match, The Trade Desk, Amazon Ads, Pinterest |</p>
+<p>| <strong>Email</strong> | Marketo, Salesforce Marketing Cloud |</p>
+<p>| <strong>Cloud Storage</strong> | Amazon S3, Azure Blob, Google Cloud Storage |</p>
+<p>| <strong>Analytics</strong> | Adobe Analytics, Customer Journey Analytics |</p>
+<p>Over <strong>20 of these destinations</strong> are advertising or social destinations that specifically support first-party audience matching — critical for cookieless targeting strategies.</p>
 <hr>
-<p>Would you like more detail on configuring a specific destination type?</p>
-<h2>Sources</h2>
-<ul>
-<li><a href="https://experienceleague.adobe.com/en/docs/experience-platform/destinations/catalog/adobe/experience-cloud-audiences">Experience Cloud Audiences</a></li>
-<li><a href="https://experienceleague.adobe.com/en/docs/experience-platform/destinations/destination-sdk/overview">Adobe Experience Platform Destination SDK</a></li>
-</ul></article>
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "How do I configure a destination in Real-Time CDP?", "acceptedAnswer": {"@type": "Answer", "text": "Configuring a Destination in Real-Time CDP Based on the available documentation, here is an overview of how destination configuration works in Real-Time CDP. --- What is a Destination? Destinations are pre-built integrations with partner platforms that allow you to activate audience and profile data from Real-Time CDP. They are accessible via the Destinations Catalog, which displays available destination integration cards. !Destinations Catalog Overview(https://raw.githubusercontent.com/AdobeDocs/experience-platform.en/main/help/destinations/destination-sdk/assets/destinations-catalog-overview.png) --- General Configuration Steps Prerequisites - You must have the appropriate Adobe product licenses (e.g., an Audience Manager license is required to share audiences with Adobe Analytics) - Ensure your data schemas and audiences are already set up in AEP --- Step-by-Step Configuration 1. Navigate to the Destinations Catalog in the Real-Time CDP UI and browse or search for your desired destination 2. Select your destination card from the catalog 3. Authenticate to the destination by filling in the required credential fields (e.g., username and password) and selecting Connect to destination 4. Fill in destination details, including: - Name \u2013 A recognizable name for this destination - Description \u2013 Helps identify the destination in the future - Company/Account-specific fields \u2013 Varies depending on the destination 5. Configure grouping and governance policies if applicable 6. Enable alerts to receive notifications about data flows to the destination 7. Select the Create button to finalize the connection --- Important Notes on Specific Destinations - Adobe Analytics: Audiences sent via the Experience Cloud Audiences destination do not appear automatically \u2014 you must implement the Experience Cloud Identity Service for Analytics and Audience Manager first - Adobe Target, Adobe Advertising, Marketo, Adobe Campaign: Adobe recommends using their dedicated destination cards\u2026"}}]}</script></div>
+<h3>People-Based Destinations Note</h3>
+<p>If you are migrating from <strong>Adobe Audience Manager</strong> and were previously using people-based destinations (Facebook, Google Customer Match, LinkedIn), Adobe strongly recommends:</p>
+<p>1. Push those segments to Real-Time CDP via the <strong>Audience Manager Source Connector</strong>.</p>
+<p>2. Re-activate them through Real-Time CDP destinations rather than continuing to use Audience Manager directly.</p>
+<p>All people-based destinations available in Audience Manager are also available natively in Real-Time CDP.</p>
+</article>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "How do I configure a destination in Real-Time CDP?", "acceptedAnswer": {"@type": "Answer", "text": "Configuring a Destination in Real-Time CDP Destinations are pre-built integrations with destination platforms that allow for the seamless activation of data from Adobe Experience Platform. You can use destinations to activate your known and unknown data for cross-channel marketing campaigns, email campaigns, targeted advertising, and many other use cases. --- Prerequisites - Access to Real-Time Customer Data Platform in Adobe Experience Platform - Appropriate permissions to manage destinations in your organization - An existing audience or segment ready to activate - Any destination-specific credentials or account details required (e.g., advertiser account ID, API keys, etc.) --- Step 1: Navigate to the Destinations Catalog 1. Log in to Adobe Experience Platform. 2. In the left navigation, click Destinations. 3. Click the Catalog tab to browse all available destinations. 4. Use the search bar or filter by category (Advertising, Social, Email, Cloud Storage, etc.) to find your desired destination. --- Step 2: Connect to a Destination 1. Click on your desired destination card in the catalog. 2. Click Set up or Activate audiences (if already configured by your organization). 3. You will be taken to the destination's configuration screen. 4. Enter the required authentication credentials for the destination (e.g., API key, OAuth login, advertiser account ID). 5. Click Connect to destination. 6. Provide a Name and optionally a Description for this destination connection. 7. Configure any destination-specific settings (e.g., data export frequency, identity namespace mappings). 8. Click Next to proceed. --- Step 3: Configure Activation Settings Select Audiences 1. On the Activate audiences screen, select the audiences you want to send to this destination. 2. Click Next. Map Identities (if required) Some destinations \u2014 particularly advertising and social platforms \u2014 require identity mapping so AEP knows which identifier to use for matching (e.g., email, phone, IDFA): 1. In\u2026"}}]}</script></div>
   </body>
 </html>

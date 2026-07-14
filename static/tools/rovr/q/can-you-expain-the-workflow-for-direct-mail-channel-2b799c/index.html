@@ -1,0 +1,139 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/png" href="/tools/rovr/rovrlogo.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="build-date" content="2026-06-10" />
+    
+    
+    <script src="https://assets.adobedtm.com/204118644db8/290ae1adb65a/launch-e5ec7bf1a1ef-development.min.js" async></script>
+    <script type="module" crossorigin src="/tools/rovr/assets/index-Cnf1TPK2.js"></script>
+    <link rel="stylesheet" crossorigin href="/tools/rovr/assets/index-D1POE5XP.css">
+  <title>can you expain the workflow for direct mail channel? | Rovr</title>
+<meta name="description" content="Direct Mail Channel Workflow in Adobe Journey Optimizer Direct mail is an offline channel that allows you to personalize and generate extraction files that…" />
+<link rel="canonical" href="https://thelearningproject.in/tools/rovr/q/can-you-expain-the-workflow-for-direct-mail-channel-2b799c" />
+<meta property="og:title" content="can you expain the workflow for direct mail channel?" />
+<meta property="og:description" content="Direct Mail Channel Workflow in Adobe Journey Optimizer Direct mail is an offline channel that allows you to personalize and generate extraction files that…" />
+<meta property="og:url" content="https://thelearningproject.in/tools/rovr/q/can-you-expain-the-workflow-for-direct-mail-channel-2b799c" />
+<meta property="og:type" content="article" />
+<meta property="og:image" content="https://thelearningproject.in/tools/rovr/rovrlogo.png" />
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="can you expain the workflow for direct mail channel?" />
+<meta name="twitter:description" content="Direct Mail Channel Workflow in Adobe Journey Optimizer Direct mail is an offline channel that allows you to personalize and generate extraction files that…" />
+</head>
+  <body>
+    <div id="root"><article><h1>can you expain the workflow for direct mail channel?</h1>
+<h2>Direct Mail Channel Workflow in Adobe Journey Optimizer</h2>
+<p>Direct mail is an <strong>offline channel</strong> that allows you to personalize and generate extraction files that third-party direct mail providers use to send physical mail to your customers. Here is the complete workflow:</p>
+<hr>
+<h3>How It Works — High Level</h3>
+<p>When a direct mail campaign or journey is activated, Journey Optimizer automatically:</p>
+<p>1. <strong>Generates an extraction file</strong> containing all targeted profiles and selected data (postal addresses, profile attributes, decision items, etc.)</p>
+<p>2. <strong>Exports that file</strong> to a server of your choice</p>
+<p>3. Your <strong>third-party direct mail provider</strong> picks up the file and handles the physical mailing</p>
+<p><img src="https://raw.githubusercontent.com/AdobeDocs/journey-optimizer.en/main/help/using/direct-mail/assets/dm-creation-process.png" alt="Direct mail creation process"></p>
+<p>&gt; <strong>Important:</strong> Adobe does not control or manage the physical mailing process. You must work with your chosen third-party provider to obtain any required consents from your customers.</p>
+<hr>
+<h3>Phase 1: Prerequisites &amp; Configuration</h3>
+<h4>Step 1 — Configure File Routing</h4>
+<p>File routing defines <strong>where</strong> the extraction file will be exported (i.e., your server or the direct mail provider&#x27;s server).</p>
+<p>1. Navigate to <strong>Administration</strong> → <strong>Channels</strong> → <strong>General settings</strong> → <strong>File routing configurations</strong>.</p>
+<p>2. Create a new file routing configuration, specifying:</p>
+<ul>
+<li>The server type and connection credentials</li>
+<li>The destination path where files will be deposited</li>
+</ul>
+<h4>Step 2 — Create a Direct Mail Channel Configuration</h4>
+<p>1. Navigate to <strong>Administration</strong> → <strong>Channels</strong> → <strong>General settings</strong> → <strong>Channel configurations</strong>.</p>
+<p>2. Click <strong>Create channel configuration</strong>.</p>
+<p>3. Enter a name for the configuration.</p>
+<p>4. Select <strong>Direct mail</strong> as the channel.</p>
+<p>5. Define the <strong>direct mail settings</strong>, including:</p>
+<ul>
+<li><strong>File format</strong> settings for the extraction file</li>
+<li><strong>File split threshold</strong> — the maximum number of records per file (between 1 and 200,000 records). When the threshold is reached, a new file is created for the remaining records.</li>
+</ul>
+<p>6. Select the <strong>file routing configuration</strong> you created in Step 1.</p>
+<p>7. Click <strong>Submit</strong>.</p>
+<p><img src="https://raw.githubusercontent.com/AdobeDocs/journey-optimizer.en/main/help/using/direct-mail/assets/direct-mail-add-journey.png" alt="Direct mail channel configuration screen"></p>
+<hr>
+<h3>Phase 2: Create the Direct Mail Message</h3>
+<p>You can deliver direct mail through either a <strong>Campaign</strong> or a <strong>Journey</strong>.</p>
+<h4>Option A — Campaign</h4>
+<p>1. Navigate to <strong>Campaigns</strong> and click <strong>Create campaign</strong>.</p>
+<p>2. Select the campaign type and choose <strong>Direct mail</strong> as the action.</p>
+<p>3. Select the <strong>channel configuration</strong> created in Phase 1.</p>
+<p>4. Define your <strong>audience</strong> (the targeted profiles).</p>
+<p>5. Set the <strong>schedule</strong> for when the extraction file should be generated.</p>
+<p>6. Click <strong>Edit content</strong> to configure the extraction file.</p>
+<h4>Option B — Journey</h4>
+<p>1. Open or create a <strong>Journey</strong>.</p>
+<p>2. Drag and drop a <strong>Direct mail</strong> activity from the <strong>Actions</strong> section of the palette onto the journey canvas.</p>
+<p>3. Provide basic information:</p>
+<ul>
+<li><strong>Label</strong> and <strong>description</strong></li>
+<li><strong>Category</strong></li>
+<li><strong>Channel configuration</strong> to use (pre-filled with the last used configuration by default)</li>
+</ul>
+<p>4. Click <strong>Edit content</strong> to configure the extraction file.</p>
+<p><img src="https://raw.githubusercontent.com/AdobeDocs/journey-optimizer.en/main/help/using/direct-mail/assets/direct-mail-add-journey.png" alt="Direct mail activity in a journey"></p>
+<hr>
+<h3>Phase 3: Configure the Extraction File</h3>
+<p>The extraction file is the core deliverable of the direct mail channel. You configure:</p>
+<ul>
+<li><strong>Filename</strong> — the name of the generated file</li>
+<li><strong>Columns to include</strong> — profile attributes such as:</li>
+<li>First name, last name</li>
+<li>Postal address, city, zip code, country</li>
+<li>Any other profile attributes relevant to your mailing</li>
+<li><strong>Sort order</strong> — how records are sorted within the file</li>
+<li><strong>Personalization</strong> — using profile attributes and contextual data to personalize field values per recipient</li>
+</ul>
+<h4>Optional: Batch Decisioning</h4>
+<p>If you are using <strong>Decisioning</strong>, you can include personalized decision items (e.g., best offer, recommended image) in the extraction file:</p>
+<ul>
+<li>Set the <strong>Number of items</strong> in the decision policy to return multiple items per profile.</li>
+<li>This supports two use cases:</li>
+<li><strong>Direct mail personalization</strong> — include offer attributes (e.g., image URLs, offer IDs) in the file for your print provider to use.</li>
+<li><strong>Batch export to downstream systems</strong> — export profiles and decisioning results to a third-party system for their own campaigns.</li>
+</ul>
+<hr>
+<h3>Phase 4: Preview, Validate &amp; Send</h3>
+<h4>Preview the Extraction File</h4>
+<ul>
+<li>Before activating, <strong>preview the extraction file</strong> to verify the data and formatting look correct.</li>
+<li>Check that all required columns are present and profile data is populating as expected.</li>
+</ul>
+<h4>Manage Postal Consent</h4>
+<ul>
+<li>Ensure that targeted profiles have the appropriate <strong>postal mail consent</strong> recorded.</li>
+<li>Journey Optimizer respects consent policies — profiles without consent will be excluded from the extraction file.</li>
+</ul>
+<h4>Activate the Campaign or Journey</h4>
+<p>1. Review the message summary and extraction file settings.</p>
+<p>2. Click <strong>Review to activate</strong> (for campaigns) or activate the journey.</p>
+<p>3. Journey Optimizer generates the extraction file and exports it to the configured server.</p>
+<p>4. Your third-party direct mail provider retrieves the file and proceeds with the physical mailing.</p>
+<p><a href="https://video.tv.adobe.com/v/3422019/?learn=on">▶ Watch: Direct Mail Channel Setup and Campaign Creation</a></p>
+<hr>
+<h3>Summary Flow</h3>
+<p>```</p>
+<p>File Routing Config → Channel Config → Campaign/Journey Setup</p>
+<p>→ Extraction File Configuration → (Optional) Batch Decisioning</p>
+<p>→ Preview &amp; Validate → Activate → File Exported to Server</p>
+<p>→ Third-Party Provider Sends Physical Mail</p>
+<p>```</p>
+<hr>
+<h3>Key Considerations</h3>
+<p>| Topic | Detail |</p>
+<p>|---|---|</p>
+<p>| <strong>File split</strong> | Files are automatically split when the record threshold (max 200,000) is reached |</p>
+<p>| <strong>Consent</strong> | Postal consent must be captured; non-consenting profiles are excluded |</p>
+<p>| <strong>Third-party responsibility</strong> | Adobe generates the file only — the provider handles physical delivery |</p>
+<p>| <strong>Personalization</strong> | Profile attributes and decision items can be included as columns |</p>
+<p>| <strong>Channels</strong> | Can be used in both Campaigns and Journeys |</p>
+</article>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "can you expain the workflow for direct mail channel?", "acceptedAnswer": {"@type": "Answer", "text": "Direct Mail Channel Workflow in Adobe Journey Optimizer Direct mail is an offline channel that allows you to personalize and generate extraction files that third-party direct mail providers use to send physical mail to your customers. Here is the complete workflow: --- How It Works \u2014 High Level When a direct mail campaign or journey is activated, Journey Optimizer automatically: 1. Generates an extraction file containing all targeted profiles and selected data (postal addresses, profile attributes, decision items, etc.) 2. Exports that file to a server of your choice 3. Your third-party direct mail provider picks up the file and handles the physical mailing !Direct mail creation process(https://raw.githubusercontent.com/AdobeDocs/journey-optimizer.en/main/help/using/direct-mail/assets/dm-creation-process.png) Important: Adobe does not control or manage the physical mailing process. You must work with your chosen third-party provider to obtain any required consents from your customers. --- Phase 1: Prerequisites & Configuration Step 1 \u2014 Configure File Routing File routing defines where the extraction file will be exported (i.e., your server or the direct mail provider's server). 1. Navigate to Administration \u2192 Channels \u2192 General settings \u2192 File routing configurations. 2. Create a new file routing configuration, specifying: - The server type and connection credentials - The destination path where files will be deposited Step 2 \u2014 Create a Direct Mail Channel Configuration 1. Navigate to Administration \u2192 Channels \u2192 General settings \u2192 Channel configurations. 2. Click Create channel configuration. 3. Enter a name for the configuration. 4. Select Direct mail as the channel. 5. Define the direct mail settings, including: - File format settings for the extraction file - File split threshold \u2014 the maximum number of records per file (between 1 and 200,000 records). When the threshold is reached, a new file is created for the remaining records. 6. Select the file routing\u2026"}}]}</script></div>
+  </body>
+</html>

@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/png" href="/tools/rovr/rovrlogo.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="build-date" content="2026-06-10" />
+    
+    
+    <script src="https://assets.adobedtm.com/204118644db8/290ae1adb65a/launch-e5ec7bf1a1ef-development.min.js" async></script>
+    <script type="module" crossorigin src="/tools/rovr/assets/index-Cnf1TPK2.js"></script>
+    <link rel="stylesheet" crossorigin href="/tools/rovr/assets/index-D1POE5XP.css">
+  <title>How do I hash email addresses and phone numbers for Facebook audience activation? | Rovr</title>
+<meta name="description" content="Hashing Email Addresses &amp; Phone Numbers for Facebook Audience Activation To achieve the highest audience match rates in Facebook, it is strongly recommended…" />
+<link rel="canonical" href="https://thelearningproject.in/tools/rovr/q/how-do-i-hash-email-addresses-and-phone-numbers-for-facebook-f6dce6" />
+<meta property="og:title" content="How do I hash email addresses and phone numbers for Facebook audience activation?" />
+<meta property="og:description" content="Hashing Email Addresses &amp; Phone Numbers for Facebook Audience Activation To achieve the highest audience match rates in Facebook, it is strongly recommended…" />
+<meta property="og:url" content="https://thelearningproject.in/tools/rovr/q/how-do-i-hash-email-addresses-and-phone-numbers-for-facebook-f6dce6" />
+<meta property="og:type" content="article" />
+<meta property="og:image" content="https://thelearningproject.in/tools/rovr/rovrlogo.png" />
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="How do I hash email addresses and phone numbers for Facebook audience activation?" />
+<meta name="twitter:description" content="Hashing Email Addresses &amp; Phone Numbers for Facebook Audience Activation To achieve the highest audience match rates in Facebook, it is strongly recommended…" />
+</head>
+  <body>
+    <div id="root"><article><h1>How do I hash email addresses and phone numbers for Facebook audience activation?</h1>
+<h2>Hashing Email Addresses &amp; Phone Numbers for Facebook Audience Activation</h2>
+<p>To achieve the <strong>highest audience match rates</strong> in Facebook, it is strongly recommended to use the `email_lc_sha256` and `phone_sha256` target identities, as these are the <strong>primary identifiers</strong> Facebook uses for matching audiences across their platforms.</p>
+<hr>
+<h3>Email Address Hashing</h3>
+<p>You have <strong>two options</strong> for handling email addresses:</p>
+<h4>Option 1: Ingest Raw Emails (Platform Hashes Automatically)</h4>
+<ul>
+<li>Ingest raw email addresses into Experience Platform</li>
+<li>AEP will automatically hash them upon activation</li>
+<li>No manual hashing required</li>
+</ul>
+<h4>Option 2: Pre-Hash Emails Before Ingestion</h4>
+<p>If you choose to hash emails yourself <strong>before</strong> ingesting into AEP, you must comply with the following normalization requirements:</p>
+<h5>Step-by-Step Email Normalization Rules</h5>
+<p>1. <strong>Remove leading and trailing spaces</strong> from the email address</p>
+<p>2. <strong>Convert all ASCII characters to lowercase</strong></p>
+<p>3. For <strong>`gmail.com` addresses specifically</strong>, also remove the following from the <strong>username part</strong>:</p>
+<ul>
+<li>The <strong>period (`.`)</strong> character (ASCII code 46)</li>
+<li>e.g., normalize `jane.doe@gmail.com` → `janedoe@gmail.com`</li>
+<li>The <strong>plus sign (`+`)</strong> character (ASCII code 43) and <strong>all characters after it</strong></li>
+<li>e.g., normalize `janedoe+home@gmail.com` → `janedoe@gmail.com`</li>
+</ul>
+<p>4. After normalization, apply <strong>SHA-256 hashing</strong> to the resulting string</p>
+<p>5. Always ingest pre-hashed emails into the <strong>`Email_LC_SHA256`</strong> namespace in AEP</p>
+<hr>
+<h3>Phone Number Hashing</h3>
+<p>There are <strong>two methods</strong> to activate phone numbers in Facebook:</p>
+<h4>Method 1: Ingest Raw Phone Numbers (Platform Hashes Automatically)</h4>
+<ul>
+<li>Ingest raw phone numbers in <strong>E.164 format</strong> into Experience Platform</li>
+<li>E.164 format example: `+14155552671`</li>
+<li>AEP will <strong>automatically hash</strong> them upon activation</li>
+<li>Always ingest raw phone numbers into the <strong>`Phone_E.164`</strong> namespace</li>
+</ul>
+<h4>Method 2: Pre-Hash Phone Numbers Before Ingestion</h4>
+<ul>
+<li>Hash your phone numbers <strong>before</strong> ingesting into AEP</li>
+<li>Apply <strong>SHA-256 hashing</strong> after proper normalization</li>
+<li>Always ingest pre-hashed phone numbers into the <strong>`Phone_SHA256`</strong> namespace</li>
+</ul>
+<p>&gt; ⚠️ <strong>Important:</strong> Phone numbers ingested into the generic <strong>`Phone`</strong> namespace <strong>cannot be activated</strong> in Facebook. You must use either `Phone_E.164` (raw) or `Phone_SHA256` (pre-hashed).</p>
+<hr>
+<h3>Summary Table</h3>
+<p>| Data Type | Raw Ingestion Namespace | Pre-Hashed Namespace | Hashed By |</p>
+<p>|---|---|---|---|</p>
+<p>| Email | <em>(ingest raw, auto-hashed)</em> | `Email_LC_SHA256` | You (pre-ingestion) |</p>
+<p>| Phone Number | `Phone_E.164` | `Phone_SHA256` | You (pre-ingestion) |</p>
+<hr>
+<h3>Identity Mapping in the Activation Workflow</h3>
+<p>When you reach the <strong>Mapping step</strong> during audience activation, map your source identity fields to the correct Facebook target identities:</p>
+<p><img src="https://raw.githubusercontent.com/AdobeDocs/experience-platform.en/main/help/destinations/catalog/social/../../assets/ui/activate-destinations/identity-mapping-transformation.png" alt="Identity mapping transformation"></p>
+<ul>
+<li>Source: Your profile attribute or identity namespace (e.g., `Email_LC_SHA256`)</li>
+<li>Target: Facebook&#x27;s expected identity (e.g., `email_lc_sha256`)</li>
+</ul>
+<p>Ensuring your data is correctly normalized, hashed, and mapped to the right namespaces is the <strong>single most important factor</strong> in achieving high match rates on Facebook Custom Audiences.</p>
+</article>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "How do I hash email addresses and phone numbers for Facebook audience activation?", "acceptedAnswer": {"@type": "Answer", "text": "Hashing Email Addresses & Phone Numbers for Facebook Audience Activation To achieve the highest audience match rates in Facebook, it is strongly recommended to use the emaillcsha256 and phonesha256 target identities, as these are the primary identifiers Facebook uses for matching audiences across their platforms. --- Email Address Hashing You have two options for handling email addresses: Option 1: Ingest Raw Emails (Platform Hashes Automatically) - Ingest raw email addresses into Experience Platform - AEP will automatically hash them upon activation - No manual hashing required Option 2: Pre-Hash Emails Before Ingestion If you choose to hash emails yourself before ingesting into AEP, you must comply with the following normalization requirements: Step-by-Step Email Normalization Rules 1. Remove leading and trailing spaces from the email address 2. Convert all ASCII characters to lowercase 3. For gmail.com addresses specifically, also remove the following from the username part: - The period (.) character (ASCII code 46) - e.g., normalize jane.doe@gmail.com \u2192 janedoe@gmail.com - The plus sign (+) character (ASCII code 43) and all characters after it - e.g., normalize janedoe+home@gmail.com \u2192 janedoe@gmail.com 4. After normalization, apply SHA-256 hashing to the resulting string 5. Always ingest pre-hashed emails into the EmailLCSHA256 namespace in AEP --- Phone Number Hashing There are two methods to activate phone numbers in Facebook: Method 1: Ingest Raw Phone Numbers (Platform Hashes Automatically) - Ingest raw phone numbers in E.164 format into Experience Platform - E.164 format example: +14155552671 - AEP will automatically hash them upon activation - Always ingest raw phone numbers into the PhoneE.164 namespace Method 2: Pre-Hash Phone Numbers Before Ingestion - Hash your phone numbers before ingesting into AEP - Apply SHA-256 hashing after proper normalization - Always ingest pre-hashed phone numbers into the PhoneSHA256 namespace \u26a0\ufe0f Important: Phone numbers\u2026"}}]}</script></div>
+  </body>
+</html>

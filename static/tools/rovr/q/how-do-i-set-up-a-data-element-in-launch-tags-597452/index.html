@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/png" href="/tools/rovr/rovrlogo.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="build-date" content="2026-06-10" />
+    
+    
+    <script src="https://assets.adobedtm.com/204118644db8/290ae1adb65a/launch-e5ec7bf1a1ef-development.min.js" async></script>
+    <script type="module" crossorigin src="/tools/rovr/assets/index-Cnf1TPK2.js"></script>
+    <link rel="stylesheet" crossorigin href="/tools/rovr/assets/index-D1POE5XP.css">
+  <title>How do I set up a data element in Launch/Tags? | Rovr</title>
+<meta name="description" content="Setting Up a Data Element in Adobe Tags (Launch) Data elements are Tags&#x27; version of a data layer — they store and reference values from query string…" />
+<link rel="canonical" href="https://thelearningproject.in/tools/rovr/q/how-do-i-set-up-a-data-element-in-launch-tags-597452" />
+<meta property="og:title" content="How do I set up a data element in Launch/Tags?" />
+<meta property="og:description" content="Setting Up a Data Element in Adobe Tags (Launch) Data elements are Tags&#x27; version of a data layer — they store and reference values from query string…" />
+<meta property="og:url" content="https://thelearningproject.in/tools/rovr/q/how-do-i-set-up-a-data-element-in-launch-tags-597452" />
+<meta property="og:type" content="article" />
+<meta property="og:image" content="https://thelearningproject.in/tools/rovr/rovrlogo.png" />
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="How do I set up a data element in Launch/Tags?" />
+<meta name="twitter:description" content="Setting Up a Data Element in Adobe Tags (Launch) Data elements are Tags&#x27; version of a data layer — they store and reference values from query string…" />
+</head>
+  <body>
+    <div id="root"><article><h1>How do I set up a data element in Launch/Tags?</h1>
+<h2>Setting Up a Data Element in Adobe Tags (Launch)</h2>
+<p>Data elements are Tags&#x27; version of a data layer — they store and reference values from query string parameters, cookies, JavaScript variables, DOM elements, local storage, and more. Once created, a data element acts as a reusable alias that rules and extensions can reference throughout your tag property.</p>
+<p><a href="https://video.tv.adobe.com/v/28733/?learn=on&amp;enablevpops">▶ Watch: Create Tag Data Elements</a></p>
+<hr>
+<h3>Prerequisites</h3>
+<ul>
+<li>An existing <strong>Tag Property</strong> in Adobe Data Collection (Experience Platform UI)</li>
+<li>Appropriate permissions to edit the property</li>
+<li>Knowledge of where the source data lives (e.g., a data layer object, cookie name, query string key, etc.)</li>
+</ul>
+<hr>
+<h3>Steps to Create a Data Element</h3>
+<p>1. Navigate to your <strong>Tag Property</strong> in the Adobe Data Collection UI.</p>
+<p>2. Click <strong>Data Elements</strong> in the left navigation bar.</p>
+<p><img src="https://raw.githubusercontent.com/AdobeDocs/experience-platform.en/main/help/tags/images/ui/tags-overview/tags-properties.png" alt="Tags properties in the Data Collection UI."></p>
+<p>3. Click the <strong>Create New Data Element</strong> button.</p>
+<p>4. <strong>Name</strong> your data element (e.g., `Page Name`). Use a clear, descriptive name since this is how rules and extensions will reference it.</p>
+<p>5. Select the appropriate <strong>Extension</strong> from the dropdown. The available <strong>Data Element Type</strong> options will populate based on the extension you choose (e.g., Core, Adobe Client Data Layer, etc.).</p>
+<p>6. Choose the <strong>Data Element Type</strong> that matches your data source. Common types include:</p>
+<ul>
+<li><strong>JavaScript Variable</strong> — points to a value in your data layer (e.g., `digitalData.page.pageInfo.pageName`)</li>
+<li><strong>Cookie</strong> — reads a named cookie value</li>
+<li><strong>Query String Parameter</strong> — reads a URL parameter</li>
+<li><strong>Local Storage</strong> — reads a named local storage item</li>
+<li><strong>DOM Attribute</strong> — reads an attribute from a page element</li>
+</ul>
+<p>7. Enter the <strong>source value</strong> for the data element type selected (e.g., the JavaScript variable path or cookie name).</p>
+<p>8. Configure optional settings as needed:</p>
+<ul>
+<li><strong>Force Lowercase Value</strong> — standardizes casing</li>
+<li><strong>Clean Text</strong> — removes extraneous whitespace</li>
+<li><strong>Storage Duration</strong> — choose <strong>None</strong>, <strong>Session</strong>, or <strong>Visitor</strong> depending on how long the value should persist. If the value changes page-to-page, leave it as <strong>None</strong>.</li>
+</ul>
+<p>9. Click <strong>Save</strong> to save the data element.</p>
+<hr>
+<h3>How Data Elements Are Used</h3>
+<p>Once created, data elements can be referenced in:</p>
+<ul>
+<li><strong>Rules</strong> — as trigger conditions (e.g., Data Element Change Event) or within rule actions</li>
+<li><strong>Extensions</strong> — passed as configuration values</li>
+<li><strong>Other data elements</strong> — composed together for derived values</li>
+</ul>
+<p>&gt; <strong>Key benefit:</strong> If your underlying data source ever changes (e.g., a site redesign renames a data layer variable), you only need to update the mapping <strong>once</strong> in the data element — all rules and extensions referencing it automatically use the new source value.</p>
+</article>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "How do I set up a data element in Launch/Tags?", "acceptedAnswer": {"@type": "Answer", "text": "Setting Up a Data Element in Adobe Tags (Launch) Data elements are Tags' version of a data layer \u2014 they store and reference values from query string parameters, cookies, JavaScript variables, DOM elements, local storage, and more. Once created, a data element acts as a reusable alias that rules and extensions can reference throughout your tag property. \u25b6 Watch: Create Tag Data Elements(https://video.tv.adobe.com/v/28733/?learn=on&enablevpops) --- Prerequisites - An existing Tag Property in Adobe Data Collection (Experience Platform UI) - Appropriate permissions to edit the property - Knowledge of where the source data lives (e.g., a data layer object, cookie name, query string key, etc.) --- Steps to Create a Data Element 1. Navigate to your Tag Property in the Adobe Data Collection UI. 2. Click Data Elements in the left navigation bar. !Tags properties in the Data Collection UI.(https://raw.githubusercontent.com/AdobeDocs/experience-platform.en/main/help/tags/images/ui/tags-overview/tags-properties.png) 3. Click the Create New Data Element button. 4. Name your data element (e.g., Page Name). Use a clear, descriptive name since this is how rules and extensions will reference it. 5. Select the appropriate Extension from the dropdown. The available Data Element Type options will populate based on the extension you choose (e.g., Core, Adobe Client Data Layer, etc.). 6. Choose the Data Element Type that matches your data source. Common types include: - JavaScript Variable \u2014 points to a value in your data layer (e.g., digitalData.page.pageInfo.pageName) - Cookie \u2014 reads a named cookie value - Query String Parameter \u2014 reads a URL parameter - Local Storage \u2014 reads a named local storage item - DOM Attribute \u2014 reads an attribute from a page element 7. Enter the source value for the data element type selected (e.g., the JavaScript variable path or cookie name). 8. Configure optional settings as needed: - Force Lowercase Value \u2014 standardizes casing - Clean Text \u2014 removes\u2026"}}]}</script></div>
+  </body>
+</html>

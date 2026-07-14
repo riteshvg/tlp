@@ -1,0 +1,210 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/png" href="/tools/rovr/rovrlogo.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="build-date" content="2026-06-10" />
+    
+    
+    <script src="https://assets.adobedtm.com/204118644db8/290ae1adb65a/launch-e5ec7bf1a1ef-development.min.js" async></script>
+    <script type="module" crossorigin src="/tools/rovr/assets/index-Cnf1TPK2.js"></script>
+    <link rel="stylesheet" crossorigin href="/tools/rovr/assets/index-D1POE5XP.css">
+  <title>How do I configure datastreams and schemas in AEP for use with AJO? | Rovr</title>
+<meta name="description" content="Configuring Datastreams and Schemas in AEP for Use with AJO This guide walks through the complete setup of XDM schemas and datastreams in Adobe Experience…" />
+<link rel="canonical" href="https://thelearningproject.in/tools/rovr/q/how-do-i-configure-datastreams-and-schemas-in-aep-for-use-wi-891f4b" />
+<meta property="og:title" content="How do I configure datastreams and schemas in AEP for use with AJO?" />
+<meta property="og:description" content="Configuring Datastreams and Schemas in AEP for Use with AJO This guide walks through the complete setup of XDM schemas and datastreams in Adobe Experience…" />
+<meta property="og:url" content="https://thelearningproject.in/tools/rovr/q/how-do-i-configure-datastreams-and-schemas-in-aep-for-use-wi-891f4b" />
+<meta property="og:type" content="article" />
+<meta property="og:image" content="https://thelearningproject.in/tools/rovr/rovrlogo.png" />
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="How do I configure datastreams and schemas in AEP for use with AJO?" />
+<meta name="twitter:description" content="Configuring Datastreams and Schemas in AEP for Use with AJO This guide walks through the complete setup of XDM schemas and datastreams in Adobe Experience…" />
+</head>
+  <body>
+    <div id="root"><article><h1>How do I configure datastreams and schemas in AEP for use with AJO?</h1>
+<h2>Configuring Datastreams and Schemas in AEP for Use with AJO</h2>
+<p>This guide walks through the complete setup of XDM schemas and datastreams in Adobe Experience Platform so that data flows correctly into Journey Optimizer for journey triggering, personalization, and profile-based targeting.</p>
+<hr>
+<h3>Prerequisites</h3>
+<ul>
+<li>Access to Adobe Experience Platform and Journey Optimizer</li>
+<li>Admin or data engineer permissions in AEP</li>
+<li>Adobe Experience Platform Web SDK or Mobile SDK implemented (or planned)</li>
+<li>Understanding of your data model (what customer attributes and events you need to capture)</li>
+</ul>
+<hr>
+<h3>Part 1: Schema Configuration</h3>
+<p>Schemas define the structure of all data flowing into AEP and subsequently into AJO. You need two core schema types.</p>
+<hr>
+<h4>Schema Type 1: XDM Individual Profile Schema</h4>
+<p>This schema stores <strong>persistent customer attributes</strong> (name, email, preferences, loyalty status, etc.) used for personalization in AJO.</p>
+<p>1. Navigate to <strong>Data Management → Schemas</strong> in the AEP UI</p>
+<p>2. Click <strong>Create Schema</strong></p>
+<p>3. Select <strong>XDM Individual Profile</strong> as the base class</p>
+<p>4. Click <strong>Add field groups</strong> to add pre-built field groups relevant to your use case:</p>
+<ul>
+<li><strong>Demographic Details</strong> — name, date of birth, gender</li>
+<li><strong>Personal Contact Details</strong> — email address, phone number</li>
+<li><strong>Consent and Preferences</strong> — for managing marketing opt-ins</li>
+<li><strong>Loyalty Details</strong> — if applicable to your use case</li>
+</ul>
+<p>5. For any custom attributes not covered by standard field groups, create a <strong>custom field group</strong>:</p>
+<ul>
+<li>Click <strong>Create new field group</strong></li>
+<li>Add your custom fields with the appropriate data types</li>
+</ul>
+<p>6. Mark the <strong>primary identity field</strong> (e.g., CRM ID or Email):</p>
+<ul>
+<li>Select the field</li>
+<li>Toggle <strong>Identity</strong> on</li>
+<li>Select the appropriate <strong>Identity Namespace</strong></li>
+<li>Check <strong>Primary Identity</strong></li>
+</ul>
+<p>7. Enable the schema for <strong>Real-Time Customer Profile</strong>:</p>
+<ul>
+<li>Toggle <strong>Profile</strong> on in the schema properties panel</li>
+<li>Confirm the enablement dialog</li>
+</ul>
+<p>8. Click <strong>Save</strong></p>
+<hr>
+<h4>Schema Type 2: XDM Experience Event Schema</h4>
+<p>This schema captures <strong>behavioral and interaction events</strong> (page views, form submissions, purchases, app interactions) that trigger journeys in AJO.</p>
+<p>1. Navigate to <strong>Data Management → Schemas</strong></p>
+<p>2. Click <strong>Create Schema</strong></p>
+<p>3. Select <strong>XDM ExperienceEvent</strong> as the base class</p>
+<p>4. Add relevant field groups:</p>
+<ul>
+<li><strong>AEP Web SDK ExperienceEvent</strong> — if using Web SDK for data collection</li>
+<li><strong>Consumer Experience Event</strong> — for commerce interactions</li>
+<li><strong>Environment Details</strong> — device, browser, OS information</li>
+<li>Any <strong>custom field groups</strong> specific to your events (e.g., form submission fields)</li>
+</ul>
+<p>5. Mark the <strong>identity field</strong> to link events to profiles:</p>
+<ul>
+<li>Typically <strong>ECID</strong> from the IdentityMap field group</li>
+<li>Add <strong>IdentityMap</strong> field group if not already present</li>
+</ul>
+<p>6. Enable the schema for <strong>Real-Time Customer Profile</strong>:</p>
+<ul>
+<li>Toggle <strong>Profile</strong> on</li>
+<li>This ensures events are stitched to the correct customer profile</li>
+</ul>
+<p>7. Click <strong>Save</strong></p>
+<hr>
+<h4>Schema Best Practices for AJO</h4>
+<p>| Best Practice | Reason |</p>
+<p>|---|---|</p>
+<p>| Always enable schemas for <strong>Profile</strong> | AJO reads from Real-Time Customer Profile |</p>
+<p>| Use <strong>IdentityMap</strong> on event schemas | Enables identity stitching across devices |</p>
+<p>| Set a clear <strong>Primary Identity</strong> on profile schemas | Ensures correct profile resolution in journeys |</p>
+<p>| Use standard <strong>XDM field groups</strong> where possible | Ensures compatibility with AJO out-of-the-box features |</p>
+<p>| Keep event schemas <strong>aligned to journey trigger conditions</strong> | Simplifies custom event configuration in AJO |</p>
+<hr>
+<h3>Part 2: Dataset Configuration</h3>
+<p>Each schema needs a corresponding dataset to store the actual data records.</p>
+<h4>Create a Profile Dataset</h4>
+<p>1. Navigate to <strong>Data Management → Datasets</strong></p>
+<p>2. Click <strong>Create Dataset</strong></p>
+<p>3. Select <strong>Create Dataset from Schema</strong></p>
+<p>4. Select your <strong>XDM Individual Profile</strong> schema</p>
+<p>5. Give the dataset a meaningful name (e.g., `CRM Profile Dataset`)</p>
+<p>6. Enable the dataset for <strong>Real-Time Customer Profile</strong>:</p>
+<ul>
+<li>Toggle <strong>Profile</strong> on in the dataset detail view</li>
+</ul>
+<p>7. Click <strong>Finish</strong></p>
+<h4>Create an Event Dataset</h4>
+<p>1. Repeat the same process selecting your <strong>XDM Experience Event</strong> schema</p>
+<p>2. Name it meaningfully (e.g., `Web Behavioral Events Dataset`)</p>
+<p>3. Enable for <strong>Real-Time Customer Profile</strong></p>
+<p>4. Click <strong>Finish</strong></p>
+<hr>
+<h3>Part 3: Datastream Configuration</h3>
+<p>Datastreams represent the <strong>server-side routing configuration</strong> that tells the Edge Network where to send data collected by the Web SDK or Mobile SDK.</p>
+<p><img src="https://raw.githubusercontent.com/AdobeDocs/experience-platform.en/main/help/datastreams/assets/overview/datastreams-tab.png" alt="Datastreams tab in AEP UI"></p>
+<h4>Create a New Datastream</h4>
+<p>1. Navigate to <strong>Data Collection → Datastreams</strong> in the AEP or Data Collection UI</p>
+<p>2. Click <strong>New Datastream</strong></p>
+<p>3. Provide a <strong>Name</strong> and optional <strong>Description</strong></p>
+<p>4. Select your <strong>XDM Experience Event schema</strong> in the <strong>Event Schema</strong> field</p>
+<p>5. Click <strong>Save</strong></p>
+<hr>
+<h4>Configure AEP Service on the Datastream</h4>
+<p>This routes incoming data to your AEP datasets and Real-Time Customer Profile.</p>
+<p>1. On your new datastream, click <strong>Add Service</strong></p>
+<p>2. Select <strong>Adobe Experience Platform</strong> from the service dropdown</p>
+<p>3. Configure the following:</p>
+<ul>
+<li><strong>Event Dataset</strong>: Select the XDM Experience Event dataset created in Part 2</li>
+<li><strong>Profile Dataset</strong>: Select the XDM Individual Profile dataset created in Part 2</li>
+<li><strong>Edge Segmentation</strong>: Toggle <strong>on</strong> if you need same-page or next-page personalization</li>
+<li><strong>Personalization Destinations</strong>: Toggle <strong>on</strong> if using AJO or Target for real-time personalization responses</li>
+<li><strong>Offer Decisioning</strong>: Toggle <strong>on</strong> if using AJO Decision Management for offer delivery</li>
+</ul>
+<p>4. Click <strong>Save</strong></p>
+<hr>
+<h4>Enable Adobe Journey Optimizer Service on the Datastream</h4>
+<p>This enables AJO to receive inbound events via the Edge Network and return personalization/offer responses.</p>
+<p>1. On the same datastream, click <strong>Add Service</strong> again</p>
+<p>2. Select <strong>Adobe Journey Optimizer</strong> from the service dropdown</p>
+<p>3. Ensure it is <strong>enabled</strong></p>
+<p>4. Click <strong>Save</strong></p>
+<hr>
+<h4>Advanced Datastream Settings</h4>
+<p><img src="https://raw.githubusercontent.com/AdobeDocs/experience-platform.en/main/help/datastreams/assets/configure/advanced-settings.png" alt="Advanced settings in datastream configuration"></p>
+<p>Additional optional settings available on your datastream:</p>
+<ul>
+<li><strong>Geo Lookup</strong>: Automatically appends geographic information (city, country, latitude/longitude) to incoming events</li>
+<li><strong>Device Lookup</strong>: Appends device and browser metadata to events</li>
+<li><strong>Bot Detection</strong>: Filters out non-human traffic before it reaches AEP and AJO</li>
+<li><strong>First Party ID Cookie</strong>: Enables first-party device ID persistence for better identity resolution</li>
+</ul>
+<p><img src="https://raw.githubusercontent.com/AdobeDocs/experience-platform.en/main/help/datastreams/assets/configure/geolookup.png" alt="Geo lookup configuration"></p>
+<hr>
+<h3>Part 4: Connecting It All Together</h3>
+<p>Once schemas, datasets, and datastreams are configured, reference the datastream in your Web SDK implementation:</p>
+<p>```javascript</p>
+<p>alloy(&quot;configure&quot;, {</p>
+<p>datastreamId: &quot;YOUR_DATASTREAM_ID&quot;,</p>
+<p>orgId: &quot;YOUR_ORG_ID@AdobeOrg&quot;</p>
+<p>});</p>
+<p>```</p>
+<p>Then send events conforming to your XDM Experience Event schema:</p>
+<p>```javascript</p>
+<p>alloy(&quot;sendEvent&quot;, {</p>
+<p>xdm: {</p>
+<p>eventType: &quot;web.formFilledOut&quot;,</p>
+<p>_yourTenant: {</p>
+<p>formName: &quot;Contact Us&quot;,</p>
+<p>assetClassSelected: &quot;Equities&quot;</p>
+<p>},</p>
+<p>identityMap: {</p>
+<p>ECID: [{</p>
+<p>id: &quot;YOUR_ECID_VALUE&quot;,</p>
+<p>primary: true</p>
+<p>}]</p>
+<p>}</p>
+<p>}</p>
+<p>});</p>
+<p>```</p>
+<hr>
+<h3>End-to-End Configuration Checklist</h3>
+<p>| Step | Component | Status Check |</p>
+<p>|---|---|---|</p>
+<p>| 1 | XDM Individual Profile schema created and Profile-enabled | ✓ |</p>
+<p>| 2 | XDM Experience Event schema created and Profile-enabled | ✓ |</p>
+<p>| 3 | Primary identity set on Profile schema | ✓ |</p>
+<p>| 4 | IdentityMap field group added to Event schema | ✓ |</p>
+<p>| 5 | Profile dataset created and Profile-enabled | ✓ |</p>
+<p>| 6 | Event dataset created and Profile-enabled | ✓ |</p>
+<p>| 7 | Datastream created with correct event schema | ✓ |</p>
+<p>| 8 | AEP service added to datastream with both datasets | ✓ |</p>
+<p>| 9 | AJO service enabled on datastream | ✓ |</p>
+<p>| 10 | Datastream ID referenced in Web SDK configuration | ✓ |</p>
+<p>Following this complete setup ensures that all data collected from your digital properties flows correctly through the Edge Network into AEP profiles and datasets, and is immediately available to Adobe Journey Optimizer for journey triggering, audience evaluation, and personalized communications.</p>
+</article>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "How do I configure datastreams and schemas in AEP for use with AJO?", "acceptedAnswer": {"@type": "Answer", "text": "Configuring Datastreams and Schemas in AEP for Use with AJO This guide walks through the complete setup of XDM schemas and datastreams in Adobe Experience Platform so that data flows correctly into Journey Optimizer for journey triggering, personalization, and profile-based targeting. --- Prerequisites - Access to Adobe Experience Platform and Journey Optimizer - Admin or data engineer permissions in AEP - Adobe Experience Platform Web SDK or Mobile SDK implemented (or planned) - Understanding of your data model (what customer attributes and events you need to capture) --- Part 1: Schema Configuration Schemas define the structure of all data flowing into AEP and subsequently into AJO. You need two core schema types. --- Schema Type 1: XDM Individual Profile Schema This schema stores persistent customer attributes (name, email, preferences, loyalty status, etc.) used for personalization in AJO. 1. Navigate to Data Management \u2192 Schemas in the AEP UI 2. Click Create Schema 3. Select XDM Individual Profile as the base class 4. Click Add field groups to add pre-built field groups relevant to your use case: - Demographic Details \u2014 name, date of birth, gender - Personal Contact Details \u2014 email address, phone number - Consent and Preferences \u2014 for managing marketing opt-ins - Loyalty Details \u2014 if applicable to your use case 5. For any custom attributes not covered by standard field groups, create a custom field group: - Click Create new field group - Add your custom fields with the appropriate data types 6. Mark the primary identity field (e.g., CRM ID or Email): - Select the field - Toggle Identity on - Select the appropriate Identity Namespace - Check Primary Identity 7. Enable the schema for Real-Time Customer Profile: - Toggle Profile on in the schema properties panel - Confirm the enablement dialog 8. Click Save --- Schema Type 2: XDM Experience Event Schema This schema captures behavioral and interaction events (page views, form submissions, purchases, app\u2026"}}]}</script></div>
+  </body>
+</html>

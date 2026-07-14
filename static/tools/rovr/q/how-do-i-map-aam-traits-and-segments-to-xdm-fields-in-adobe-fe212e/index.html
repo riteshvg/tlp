@@ -1,0 +1,347 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/png" href="/tools/rovr/rovrlogo.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="build-date" content="2026-06-10" />
+    
+    
+    <script src="https://assets.adobedtm.com/204118644db8/290ae1adb65a/launch-e5ec7bf1a1ef-development.min.js" async></script>
+    <script type="module" crossorigin src="/tools/rovr/assets/index-Cnf1TPK2.js"></script>
+    <link rel="stylesheet" crossorigin href="/tools/rovr/assets/index-D1POE5XP.css">
+  <title>How do I map AAM traits and segments to XDM fields in Adobe Experience Platform? | Rovr</title>
+<meta name="description" content="Mapping AAM Traits and Segments to XDM Fields in Adobe Experience Platform This guide provides a complete, detailed walkthrough of how AAM traits and segments…" />
+<link rel="canonical" href="https://thelearningproject.in/tools/rovr/q/how-do-i-map-aam-traits-and-segments-to-xdm-fields-in-adobe-fe212e" />
+<meta property="og:title" content="How do I map AAM traits and segments to XDM fields in Adobe Experience Platform?" />
+<meta property="og:description" content="Mapping AAM Traits and Segments to XDM Fields in Adobe Experience Platform This guide provides a complete, detailed walkthrough of how AAM traits and segments…" />
+<meta property="og:url" content="https://thelearningproject.in/tools/rovr/q/how-do-i-map-aam-traits-and-segments-to-xdm-fields-in-adobe-fe212e" />
+<meta property="og:type" content="article" />
+<meta property="og:image" content="https://thelearningproject.in/tools/rovr/rovrlogo.png" />
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="How do I map AAM traits and segments to XDM fields in Adobe Experience Platform?" />
+<meta name="twitter:description" content="Mapping AAM Traits and Segments to XDM Fields in Adobe Experience Platform This guide provides a complete, detailed walkthrough of how AAM traits and segments…" />
+</head>
+  <body>
+    <div id="root"><article><h1>How do I map AAM traits and segments to XDM fields in Adobe Experience Platform?</h1>
+<h2>Mapping AAM Traits and Segments to XDM Fields in Adobe Experience Platform</h2>
+<p>This guide provides a complete, detailed walkthrough of how AAM traits and segments are mapped to XDM schemas and fields within Adobe Experience Platform.</p>
+<hr>
+<h3>Overview</h3>
+<p>When AAM data is ingested into AEP via the <strong>Adobe Audience Manager Source Connector</strong>, the data must be structured according to the <strong>Experience Data Model (XDM)</strong> standard. XDM is the foundational schema language of AEP that ensures all customer data is represented in a unified, consistent format.</p>
+<p><img src="https://raw.githubusercontent.com/AdobeDocs/experience-platform.en/main/help/destinations/assets/common/adobe-commerce-metrics.png" alt="AEP Data Flow"></p>
+<hr>
+<h3>Understanding the AAM-to-XDM Data Structure</h3>
+<p>Before mapping, it is essential to understand how AAM data types correspond to XDM concepts:</p>
+<p>| AAM Data Type | XDM Equivalent | XDM Location |</p>
+<p>|---|---|---|</p>
+<p>| <strong>AAM Segments</strong> | Audience/Segment Membership | `xdm:segmentMembership` |</p>
+<p>| <strong>Rule-based Traits</strong> | Profile Attributes | `xdm:traits` |</p>
+<p>| <strong>Onboarded Traits</strong> | Record Data Fields | Custom XDM field groups |</p>
+<p>| <strong>AAM UUID</strong> | Identity Namespace | `identityMap` |</p>
+<p>| <strong>ECID</strong> | Identity Namespace | `identityMap.ECID` |</p>
+<p>| <strong>Declared IDs</strong> | Identity Namespace | Custom identity namespace |</p>
+<p>| <strong>Signals/Key-Value Pairs</strong> | Context Data | Custom XDM fields |</p>
+<hr>
+<h3>Prerequisites</h3>
+<p>Before beginning the mapping process, ensure you have:</p>
+<ul>
+<li>✅ <strong>System Administrator</strong> or <strong>Data Engineer</strong> role in AEP</li>
+<li>✅ AAM and AEP provisioned under the <strong>same IMS Organization</strong></li>
+<li>✅ At least one <strong>XDM Schema</strong> already created in AEP</li>
+<li>✅ Familiarity with <strong>XDM Schema Editor</strong> in AEP</li>
+<li>✅ AAM Source Connector already configured (see previous guide)</li>
+<li>✅ Understanding of <strong>XDM field types</strong> (String, Integer, Boolean, Array, Map)</li>
+</ul>
+<hr>
+<h3>Phase 1: Preparing Your XDM Schema for AAM Data</h3>
+<h4>Step 1: Navigate to the Schema Editor</h4>
+<p>1. Log in to <strong>Adobe Experience Platform</strong>.</p>
+<p>2. From the left navigation, click <strong>Data Management &gt; Schemas</strong>.</p>
+<p>3. The <strong>Schemas</strong> workspace opens showing all existing schemas.</p>
+<p>4. Click <strong>Create schema</strong> in the top-right corner.</p>
+<p>5. Select the appropriate <strong>schema class</strong>:</p>
+<p>| Use Case | Recommended Class |</p>
+<p>|---|---|</p>
+<p>| AAM Segment Membership (Profile data) | <strong>XDM Individual Profile</strong> |</p>
+<p>| AAM Behavioral/Event data | <strong>XDM ExperienceEvent</strong> |</p>
+<p>| AAM Prospect data | <strong>XDM Individual Prospect Profile</strong> |</p>
+<p>6. Click <strong>Next</strong> to proceed to the Schema Editor.</p>
+<hr>
+<h4>Step 2: Add Required Field Groups to Your Schema</h4>
+<p>Field groups are pre-built collections of XDM fields. For AAM data, you need specific field groups:</p>
+<p>1. In the <strong>Schema Editor</strong>, click <strong>Add</strong> next to <strong>Field groups</strong> in the left panel.</p>
+<p>2. Search for and add the following field groups:</p>
+<h5>For Segment Membership Data:</h5>
+<ul>
+<li><strong>Segment Membership Details</strong> — contains the `segmentMembership` map field</li>
+<li><strong>IdentityMap</strong> — contains the `identityMap` field for ECID and AAM UUID</li>
+</ul>
+<h5>For Profile/Trait Data:</h5>
+<ul>
+<li><strong>Profile Personal Details</strong> — name, email, demographics</li>
+<li><strong>Profile Work Details</strong> — B2B-related fields</li>
+<li><strong>Demographic Details</strong> — age, gender, household data</li>
+</ul>
+<h5>For Media/Behavioral Data:</h5>
+<ul>
+<li><strong>MediaAnalytics Interaction Details</strong> — media session and interaction fields</li>
+<li><strong>Session details information</strong> — contains redirect indicators and session data</li>
+</ul>
+<p>3. Select each field group and click <strong>Add field groups</strong>.</p>
+<p>4. Verify all selected field groups appear in the <strong>Schema Editor</strong> canvas.</p>
+<hr>
+<h4>Step 3: Add Custom Fields for AAM Traits</h4>
+<p>AAM rule-based and onboarded traits often require <strong>custom XDM fields</strong> since they represent your organization&#x27;s unique data attributes.</p>
+<p>1. In the <strong>Schema Editor</strong>, click the <strong>schema name</strong> at the top of the field hierarchy.</p>
+<p>2. In the right-hand panel, click <strong>Add field</strong> (the <strong>+</strong> icon).</p>
+<p>3. Configure each custom field:</p>
+<h5>Example: Mapping an AAM Trait &quot;Has Purchased&quot; to XDM</h5>
+<p>| Setting | Value |</p>
+<p>|---|---|</p>
+<p>| <strong>Field Name</strong> | `hasPurchased` |</p>
+<p>| <strong>Display Name</strong> | Has Purchased |</p>
+<p>| <strong>Type</strong> | Boolean |</p>
+<p>| <strong>Description</strong> | AAM trait indicating purchase behavior |</p>
+<p>| <strong>Required</strong> | No |</p>
+<p>4. Click <strong>Apply</strong> to save the field.</p>
+<p>5. Repeat this process for <strong>each AAM trait</strong> you want to map.</p>
+<hr>
+<h4>Step 4: Define Field Types for Different AAM Trait Categories</h4>
+<p>Different AAM trait types require different XDM field configurations:</p>
+<h5>Rule-Based Traits (Behavioral)</h5>
+<p>```</p>
+<p>Field Type: Boolean or Integer</p>
+<p>Example: &quot;Visited Product Page&quot; → Boolean (true/false)</p>
+<p>Example: &quot;Visit Count&quot; → Integer</p>
+<p>XDM Path: _tenantId.traits.visitedProductPage</p>
+<p>```</p>
+<h5>Onboarded Traits (CRM/Offline Data)</h5>
+<p>```</p>
+<p>Field Type: String or Integer</p>
+<p>Example: &quot;Customer Tier&quot; → String (&quot;Gold&quot;, &quot;Silver&quot;, &quot;Bronze&quot;)</p>
+<p>Example: &quot;Lifetime Value&quot; → Number (decimal)</p>
+<p>XDM Path: _tenantId.traits.customerTier</p>
+<p>```</p>
+<h5>Algorithmic Traits (Model-Based)</h5>
+<p>```</p>
+<p>Field Type: Number (0.0 to 1.0 score)</p>
+<p>Example: &quot;Propensity to Purchase Score&quot; → Number</p>
+<p>XDM Path: _tenantId.traits.propensityScore</p>
+<p>```</p>
+<hr>
+<h3>Phase 2: Mapping AAM Segments to XDM Segment Membership</h3>
+<h4>Step 5: Understand the segmentMembership XDM Structure</h4>
+<p>AAM segments map to the <strong>`xdm:segmentMembership`</strong> field in XDM, which is a <strong>Map data type</strong>. The structure is:</p>
+<p>```json</p>
+<p>{</p>
+<p>&quot;xdm:segmentMembership&quot;: {</p>
+<p>&quot;AAM&quot;: {</p>
+<p>&quot;segment_id_12345&quot;: {</p>
+<p>&quot;xdm:status&quot;: &quot;realized&quot;,</p>
+<p>&quot;xdm:lastQualificationTime&quot;: &quot;2024-01-15T10:30:00Z&quot;,</p>
+<p>&quot;xdm:version&quot;: &quot;1&quot;,</p>
+<p>&quot;xdm:payload&quot;: {</p>
+<p>&quot;xdm:payloadType&quot;: &quot;string&quot;,</p>
+<p>&quot;xdm:payloadStringValue&quot;: &quot;AAM Segment Name&quot;</p>
+<p>}</p>
+<p>}</p>
+<p>}</p>
+<p>}</p>
+<p>}</p>
+<p>```</p>
+<h5>Key Fields Within segmentMembership:</h5>
+<p>| Field | Type | Description |</p>
+<p>|---|---|---|</p>
+<p>| `xdm:status` | String | `realized`, `existing`, or `exited` |</p>
+<p>| `xdm:lastQualificationTime` | DateTime | When the profile last qualified |</p>
+<p>| `xdm:version` | String | Segment version number |</p>
+<p>| `xdm:validUntil` | DateTime | Expiry of segment membership |</p>
+<p>| `xdm:payload` | Object | Additional segment metadata |</p>
+<hr>
+<h4>Step 6: Map AAM Segment Status Values to XDM</h4>
+<p>AAM uses specific status terminology that maps to XDM segment membership statuses:</p>
+<p>| AAM Status | XDM Status | Meaning |</p>
+<p>|---|---|---|</p>
+<p>| <strong>Active/Realized</strong> | `realized` | Profile just qualified for segment |</p>
+<p>| <strong>Existing</strong> | `existing` | Profile continues to be in segment |</p>
+<p>| <strong>Dropped/Exited</strong> | `exited` | Profile no longer qualifies |</p>
+<hr>
+<h3>Phase 3: Mapping AAM Identity Data to XDM</h3>
+<h4>Step 7: Map AAM Identifiers to XDM identityMap</h4>
+<p>AAM uses several identifiers that must be mapped to the <strong>`identityMap`</strong> field in XDM:</p>
+<p>1. In the <strong>Schema Editor</strong>, ensure the <strong>IdentityMap</strong> field group is added.</p>
+<p>2. The `identityMap` field supports the following AAM identity mappings:</p>
+<p>```json</p>
+<p>{</p>
+<p>&quot;identityMap&quot;: {</p>
+<p>&quot;ECID&quot;: [</p>
+<p>{</p>
+<p>&quot;id&quot;: &quot;37657579838757832&quot;,</p>
+<p>&quot;authenticatedState&quot;: &quot;ambiguous&quot;,</p>
+<p>&quot;primary&quot;: true</p>
+<p>}</p>
+<p>],</p>
+<p>&quot;AAM_UUID&quot;: [</p>
+<p>{</p>
+<p>&quot;id&quot;: &quot;64980308716806280&quot;,</p>
+<p>&quot;authenticatedState&quot;: &quot;ambiguous&quot;,</p>
+<p>&quot;primary&quot;: false</p>
+<p>}</p>
+<p>],</p>
+<p>&quot;EMAIL&quot;: [</p>
+<p>{</p>
+<p>&quot;id&quot;: &quot;hashed_email@domain.com&quot;,</p>
+<p>&quot;authenticatedState&quot;: &quot;authenticated&quot;,</p>
+<p>&quot;primary&quot;: false</p>
+<p>}</p>
+<p>]</p>
+<p>}</p>
+<p>}</p>
+<p>```</p>
+<h5>Identity Namespace Mapping Table:</h5>
+<p>| AAM Identity | AEP Identity Namespace | Authentication State |</p>
+<p>|---|---|---|</p>
+<p>| <strong>ECID (MID)</strong> | `ECID` | `ambiguous` |</p>
+<p>| <strong>AAM UUID (demdex)</strong> | `AAM_UUID` | `ambiguous` |</p>
+<p>| <strong>Declared ID (CRM)</strong> | Custom namespace | `authenticated` |</p>
+<p>| <strong>Hashed Email</strong> | `Email` | `authenticated` |</p>
+<p>| <strong>Device ID (IDFA/GAID)</strong> | `IDFA` / `GAID` | `ambiguous` |</p>
+<hr>
+<h4>Step 8: Set Identity Fields as Primary Identifiers</h4>
+<p>1. In the <strong>Schema Editor</strong>, locate the `identityMap` field.</p>
+<p>2. Click on the <strong>ECID</strong> identity field.</p>
+<p>3. In the right panel, toggle <strong>Identity</strong> to <strong>ON</strong>.</p>
+<p>4. Check the <strong>Primary Identity</strong> checkbox.</p>
+<p>5. Select <strong>ECID</strong> from the <strong>Identity Namespace</strong> dropdown.</p>
+<p>6. Click <strong>Apply</strong>.</p>
+<p>&gt; <strong>Important:</strong> Only one field can be set as the <strong>Primary Identity</strong> per schema. ECID is the recommended primary identity for web-based AAM data.</p>
+<hr>
+<h3>Phase 4: Using the Data Mapping Interface in AEP Sources</h3>
+<h4>Step 9: Access the Mapping Interface During Source Setup</h4>
+<p>When setting up the AAM Source Connector dataflow, AEP provides a <strong>graphical mapping interface</strong>:</p>
+<p>1. During the <strong>AAM Source Connector</strong> setup flow, after selecting traits and segments, you reach the <strong>Mapping</strong> step.</p>
+<p>2. The mapping interface displays two columns:</p>
+<ul>
+<li><strong>Left column:</strong> AAM Source Fields</li>
+<li><strong>Right column:</strong> XDM Target Fields</li>
+</ul>
+<hr>
+<h4>Step 10: Create Field Mappings in the UI</h4>
+<h5>Mapping AAM Traits to XDM Fields:</h5>
+<p>1. Click <strong>Add new mapping</strong> in the mapping interface.</p>
+<p>2. In the <strong>Source field</strong> column, click the field selector icon.</p>
+<p>3. Browse or search for the <strong>AAM trait field</strong> (e.g., `properties.trait_12345`).</p>
+<p>4. In the <strong>Target field</strong> column, click the field selector icon.</p>
+<p>5. Browse the XDM schema hierarchy to find your <strong>target XDM field</strong>.</p>
+<p>6. Select the field and click <strong>Select</strong>.</p>
+<p>7. The mapping row is now configured.</p>
+<p>8. Repeat for all traits you want to map.</p>
+<h5>Example Trait Mappings:</h5>
+<p>| AAM Source Field | XDM Target Field |</p>
+<p>|---|---|</p>
+<p>| `properties.trait.gender` | `xdm:person.xdm:gender` |</p>
+<p>| `properties.trait.age_range` | `xdm:person.xdm:birthYear` |</p>
+<p>| `properties.trait.income_bracket` | `_tenantId.traits.incomeBracket` |</p>
+<p>| `properties.trait.has_purchased` | `_tenantId.traits.hasPurchased` |</p>
+<p>| `properties.trait.product_category` | `_tenantId.traits.productCategory` |</p>
+<hr>
+<h4>Step 11: Use Calculated Fields for Data Transformation</h4>
+<p>Some AAM fields require <strong>transformation</strong> before mapping to XDM. AEP&#x27;s mapping interface supports <strong>calculated fields</strong> using functions:</p>
+<p>1. Click <strong>Add calculated field</strong> in the mapping interface.</p>
+<p>2. The <strong>calculated field editor</strong> opens.</p>
+<p>3. Use built-in functions to transform data:</p>
+<h5>Common Transformation Examples:</h5>
+<p><strong>Convert AAM timestamp to XDM DateTime format:</strong></p>
+<p>```</p>
+<p>toDate(properties.lastQualificationTime, &quot;yyyy-MM-dd&#x27;T&#x27;HH:mm:ss&#x27;Z&#x27;&quot;)</p>
+<p>```</p>
+<p><strong>Convert AAM string to lowercase for email matching:</strong></p>
+<p>```</p>
+<p>toLowerCase(properties.emailAddress)</p>
+<p>```</p>
+<p><strong>Concatenate AAM fields:</strong></p>
+<p>```</p>
+<p>concat(properties.firstName, &quot; &quot;, properties.lastName)</p>
+<p>```</p>
+<p><strong>Convert AAM integer trait to Boolean:</strong></p>
+<p>```</p>
+<p>properties.hasPurchased == 1 ? true : false</p>
+<p>```</p>
+<p>4. After defining the transformation, click <strong>Save</strong>.</p>
+<p>5. Map the calculated field to the appropriate <strong>XDM target field</strong>.</p>
+<hr>
+<h4>Step 12: Validate Your Mappings</h4>
+<p>Before finalizing the dataflow:</p>
+<p>1. Review each mapping row in the interface.</p>
+<p>2. Check for <strong>warning icons</strong> — these indicate:</p>
+<ul>
+<li>Type mismatch between source and target fields</li>
+<li>Missing required target fields</li>
+<li>Invalid transformation functions</li>
+</ul>
+<p>3. Resolve all warnings before proceeding.</p>
+<p>4. Click <strong>Preview</strong> to see a sample of how the data will look after mapping.</p>
+<p>5. Verify the mapped values are correct in the preview.</p>
+<hr>
+<h3>Phase 5: Managing and Updating XDM Schemas for AAM Data</h3>
+<h4>Step 13: Edit Existing Schema Relationships</h4>
+<p>AEP now supports updating schema relationships directly in the Schema Editor UI:</p>
+<p>1. Navigate to <strong>Data Management &gt; Schemas</strong>.</p>
+<p>2. Open your AAM target schema.</p>
+<p>3. In the <strong>Schema Editor</strong>, locate the <strong>relationship fields</strong>.</p>
+<p>4. Click on a relationship field to:</p>
+<ul>
+<li><strong>Update</strong> the reference schema</li>
+<li><strong>Rename</strong> the relationship</li>
+<li><strong>Remove</strong> the relationship</li>
+</ul>
+<p>5. Save changes — these propagate automatically to all datasets using this schema.</p>
+<hr>
+<h4>Step 14: Add New AAM Traits to an Existing Schema</h4>
+<p>As your AAM implementation evolves, you may need to add new traits to your schema:</p>
+<p>1. Navigate to the existing <strong>AAM XDM schema</strong>.</p>
+<p>2. In the <strong>Schema Editor</strong>, locate your <strong>custom field group</strong>.</p>
+<p>3. Click <strong>Add field</strong> within the field group.</p>
+<p>4. Define the new field following <strong>Step 3</strong> above.</p>
+<p>5. Click <strong>Save</strong>.</p>
+<p>&gt; <strong>Important:</strong> XDM schemas are <strong>append-only</strong> — you can add new fields but cannot remove or rename existing fields once data has been ingested. Plan your schema carefully before ingestion.</p>
+<hr>
+<h4>Step 15: Use ML-Assisted Schema Creation for AAM Data</h4>
+<p>AEP now offers <strong>ML-assisted schema creation</strong> to automatically generate XDM schemas from sample AAM data files:</p>
+<p>1. Navigate to <strong>Data Management &gt; Schemas</strong>.</p>
+<p>2. Click <strong>Create schema</strong>.</p>
+<p>3. Select <strong>Upload sample file</strong> instead of manually building.</p>
+<p>4. Upload a <strong>sample CSV or JSON</strong> file exported from AAM containing trait data.</p>
+<p>5. AEP&#x27;s ML algorithm analyzes the file and:</p>
+<ul>
+<li>Recommends appropriate <strong>XDM field types</strong></li>
+<li>Suggests <strong>standard XDM fields</strong> where applicable</li>
+<li>Creates <strong>custom fields</strong> for AAM-specific attributes</li>
+</ul>
+<p>6. Review the ML-generated schema in the <strong>Flat View editor</strong>.</p>
+<p>7. Add, remove, or modify fields as needed.</p>
+<p>8. Click <strong>Save</strong> to finalize the schema.</p>
+<hr>
+<h3>Complete Mapping Reference Table</h3>
+<h4>AAM Traits → XDM Field Mappings</h4>
+<p>| AAM Trait Category | AAM Field | XDM Field Path | XDM Type |</p>
+<p>|---|---|---|---|</p>
+<p>| <strong>Demographics</strong> | Gender | `xdm:person.xdm:gender` | String |</p>
+<p>| <strong>Demographics</strong> | Age | `xdm:person.xdm:birthYear` | Integer |</p>
+<p>| <strong>Demographics</strong> | Income | `_tenantId.traits.incomeBracket` | String |</p>
+<p>| <strong>Behavioral</strong> | Has Purchased | `_tenantId.traits.hasPurchased` | Boolean |</p>
+<p>| <strong>Behavioral</strong> | Visit Count | `_tenantId.traits.visitCount` | Integer |</p>
+<p>| <strong>Behavioral</strong> | Product Category | `_tenantId.traits.productCategory` | String |</p>
+<p>| <strong>Algorithmic</strong> | Propensity Score | `_tenantId.traits.propensityScore` | Number |</p>
+<p>| <strong>Commerce</strong> | Cart Value | `xdm:commerce.xdm:order.xdm:priceTotal` | Number |</p>
+<p>| <strong>Commerce</strong> | Order Count | `xdm:commerce.xdm:purchases.x</p>
+<h2>Sources</h2>
+<ul>
+<li><a href="https://experienceleague.adobe.com/en/docs/experience-platform/release-notes/2023/april-2023">Adobe Experience Platform Release Notes April 2023</a></li>
+<li><a href="https://experienceleague.adobe.com/en/docs/experience-platform/release-notes/2022/september-2022">Adobe Experience Platform Release Notes September 2022</a></li>
+<li><a href="https://experienceleague.adobe.com/en/docs/experience-platform/release-notes/2023/may-2023">Adobe Experience Platform Release Notes May 2023</a></li>
+</ul></article>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "How do I map AAM traits and segments to XDM fields in Adobe Experience Platform?", "acceptedAnswer": {"@type": "Answer", "text": "Mapping AAM Traits and Segments to XDM Fields in Adobe Experience Platform This guide provides a complete, detailed walkthrough of how AAM traits and segments are mapped to XDM schemas and fields within Adobe Experience Platform. --- Overview When AAM data is ingested into AEP via the Adobe Audience Manager Source Connector, the data must be structured according to the Experience Data Model (XDM) standard. XDM is the foundational schema language of AEP that ensures all customer data is represented in a unified, consistent format. !AEP Data Flow(https://raw.githubusercontent.com/AdobeDocs/experience-platform.en/main/help/destinations/assets/common/adobe-commerce-metrics.png) --- Understanding the AAM-to-XDM Data Structure Before mapping, it is essential to understand how AAM data types correspond to XDM concepts: | AAM Data Type | XDM Equivalent | XDM Location | |---|---|---| | AAM Segments | Audience/Segment Membership | xdm:segmentMembership | | Rule-based Traits | Profile Attributes | xdm:traits | | Onboarded Traits | Record Data Fields | Custom XDM field groups | | AAM UUID | Identity Namespace | identityMap | | ECID | Identity Namespace | identityMap.ECID | | Declared IDs | Identity Namespace | Custom identity namespace | | Signals/Key-Value Pairs | Context Data | Custom XDM fields | --- Prerequisites Before beginning the mapping process, ensure you have: - \u2705 System Administrator or Data Engineer role in AEP - \u2705 AAM and AEP provisioned under the same IMS Organization - \u2705 At least one XDM Schema already created in AEP - \u2705 Familiarity with XDM Schema Editor in AEP - \u2705 AAM Source Connector already configured (see previous guide) - \u2705 Understanding of XDM field types (String, Integer, Boolean, Array, Map) --- Phase 1: Preparing Your XDM Schema for AAM Data Step 1: Navigate to the Schema Editor 1. Log in to Adobe Experience Platform. 2. From the left navigation, click Data Management Schemas. 3. The Schemas workspace opens showing all existing schemas. 4. Click\u2026"}}]}</script></div>
+  </body>
+</html>

@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/png" href="/tools/rovr/rovrlogo.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="build-date" content="2026-06-10" />
+    
+    
+    <script src="https://assets.adobedtm.com/204118644db8/290ae1adb65a/launch-e5ec7bf1a1ef-development.min.js" async></script>
+    <script type="module" crossorigin src="/tools/rovr/assets/index-Cnf1TPK2.js"></script>
+    <link rel="stylesheet" crossorigin href="/tools/rovr/assets/index-D1POE5XP.css">
+  <title>how do i activate audience to a destination eg- facebook. | Rovr</title>
+<meta name="description" content="Activating an Audience to a Destination (e.g., Facebook) in Adobe Experience Platform Prerequisites Before activating audiences, ensure you have the…" />
+<link rel="canonical" href="https://thelearningproject.in/tools/rovr/q/how-do-i-activate-audience-to-a-destination-eg-facebook-e5134d" />
+<meta property="og:title" content="how do i activate audience to a destination eg- facebook." />
+<meta property="og:description" content="Activating an Audience to a Destination (e.g., Facebook) in Adobe Experience Platform Prerequisites Before activating audiences, ensure you have the…" />
+<meta property="og:url" content="https://thelearningproject.in/tools/rovr/q/how-do-i-activate-audience-to-a-destination-eg-facebook-e5134d" />
+<meta property="og:type" content="article" />
+<meta property="og:image" content="https://thelearningproject.in/tools/rovr/rovrlogo.png" />
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="how do i activate audience to a destination eg- facebook." />
+<meta name="twitter:description" content="Activating an Audience to a Destination (e.g., Facebook) in Adobe Experience Platform Prerequisites Before activating audiences, ensure you have the…" />
+</head>
+  <body>
+    <div id="root"><article><h1>how do i activate audience to a destination eg- facebook.</h1>
+<h2>Activating an Audience to a Destination (e.g., Facebook) in Adobe Experience Platform</h2>
+<h3>Prerequisites</h3>
+<p>Before activating audiences, ensure you have the following:</p>
+<ul>
+<li><strong>[!UICONTROL View Destinations]</strong> and <strong>[!UICONTROL Activate Destinations]</strong> access control permissions</li>
+<li>A configured Adobe Experience Platform instance with audiences already built</li>
+<li>For Facebook specifically:</li>
+<li>A valid Facebook ad account</li>
+<li>Audience data must use <strong>hashed identifiers</strong> (hashed emails, hashed phone numbers, GAID, IDFA, or custom external IDs) — Facebook does not accept PII in clear text</li>
+</ul>
+<hr>
+<h3>Step 1: Navigate to the Destinations Catalog</h3>
+<p>1. In the left sidebar, go to <strong>Connections</strong> → <strong>Destinations</strong> → <strong>Catalog</strong></p>
+<p>2. Browse the catalog — for Facebook, look under the <strong>Social</strong> category</p>
+<p>3. Locate the <strong>Facebook Custom Audiences</strong> destination tile</p>
+<p><img src="https://raw.githubusercontent.com/AdobeDocs/experience-platform.en/main/help/expanded-activation/assets/destination-catalog.png" alt="Destination catalog for activation"></p>
+<hr>
+<h3>Step 2: Create a Connection to the Destination</h3>
+<p>1. Select the Facebook destination tile and click <strong>Set up</strong> or <strong>Activate audiences</strong></p>
+<p>2. Authenticate with your Facebook ad account credentials</p>
+<p>3. Fill in the <strong>destination details</strong>:</p>
+<ul>
+<li><strong>Name</strong>: A recognizable name for this destination connection</li>
+<li><strong>Description</strong>: An optional description</li>
+</ul>
+<p>4. Select <strong>Connect to destination</strong> to complete authentication</p>
+<p>5. Each Facebook destination in Experience Platform maps <strong>1:1 to a Facebook ad account</strong> — you can create multiple destination connections for separate ad accounts</p>
+<hr>
+<h3>Step 3: Activate Audiences to the Destination</h3>
+<p>1. Once the destination connection is created, navigate to <strong>Connections</strong> → <strong>Destinations</strong></p>
+<p>2. Find your configured Facebook destination and select <strong>Activate audiences</strong></p>
+<p><img src="https://raw.githubusercontent.com/AdobeDocs/experience-platform.en/main/help/expanded-activation/assets/activate-audiences.png" alt="Activate audiences screen"></p>
+<p>3. Select the audiences you want to send to Facebook</p>
+<p>4. In the <strong>Mapping</strong> step, map your identity fields (e.g., hashed email → Facebook&#x27;s expected identifier)</p>
+<p>5. Set your <strong>schedule</strong> — define start/end dates and export frequency</p>
+<p>6. Proceed through the workflow steps and reach the <strong>Review</strong> screen</p>
+<hr>
+<h3>Step 4: Review and Finish</h3>
+<p>1. On the <strong>Review</strong> screen, verify:</p>
+<ul>
+<li>Destination connection status</li>
+<li>Selected audiences and their mapping</li>
+</ul>
+<p>2. If everything looks correct, select <strong>Finish</strong> to activate</p>
+<p>3. Each selected audience is sent as a separate call to the destination</p>
+<hr>
+<h3>Step 5: Verify Activation</h3>
+<ul>
+<li>Navigate to <strong>Connections</strong> → <strong>Destinations</strong> → select your destination</li>
+<li>Use the <strong>Destination Monitoring</strong> view to track the flow of data and confirm audiences are being exported successfully</li>
+</ul>
+<hr>
+<h3>Key Notes for Facebook</h3>
+<p>| Supported Identities | Details |</p>
+<p>|---|---|</p>
+<p>| Hashed Emails | SHA-256 hashed |</p>
+<p>| Hashed Phone Numbers | SHA-256 hashed |</p>
+<p>| GAID | Android Advertising ID |</p>
+<p>| IDFA | Apple Advertising ID |</p>
+<p>| Custom External IDs | Partner-defined IDs |</p>
+<ul>
+<li>You can create <strong>multiple Facebook destinations</strong> for different Facebook ad accounts — there is no limit</li>
+<li>Once activated, you choose which app (Facebook, Instagram, Audience Network, Messenger) to run campaigns against at the <strong>placement level inside Facebook Ads Manager</strong></li>
+</ul>
+<h2>Sources</h2>
+<ul>
+<li><a href="https://experienceleague.adobe.com/en/docs/experience-platform/destinations/destinations-faq">Frequently asked questions</a></li>
+</ul></article>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "how do i activate audience to a destination eg- facebook.", "acceptedAnswer": {"@type": "Answer", "text": "Activating an Audience to a Destination (e.g., Facebook) in Adobe Experience Platform Prerequisites Before activating audiences, ensure you have the following: - !UICONTROL View Destinations and !UICONTROL Activate Destinations access control permissions - A configured Adobe Experience Platform instance with audiences already built - For Facebook specifically: - A valid Facebook ad account - Audience data must use hashed identifiers (hashed emails, hashed phone numbers, GAID, IDFA, or custom external IDs) \u2014 Facebook does not accept PII in clear text --- Step 1: Navigate to the Destinations Catalog 1. In the left sidebar, go to Connections \u2192 Destinations \u2192 Catalog 2. Browse the catalog \u2014 for Facebook, look under the Social category 3. Locate the Facebook Custom Audiences destination tile !Destination catalog for activation(https://raw.githubusercontent.com/AdobeDocs/experience-platform.en/main/help/expanded-activation/assets/destination-catalog.png) --- Step 2: Create a Connection to the Destination 1. Select the Facebook destination tile and click Set up or Activate audiences 2. Authenticate with your Facebook ad account credentials 3. Fill in the destination details: - Name: A recognizable name for this destination connection - Description: An optional description 4. Select Connect to destination to complete authentication 5. Each Facebook destination in Experience Platform maps 1:1 to a Facebook ad account \u2014 you can create multiple destination connections for separate ad accounts --- Step 3: Activate Audiences to the Destination 1. Once the destination connection is created, navigate to Connections \u2192 Destinations 2. Find your configured Facebook destination and select Activate audiences !Activate audiences screen(https://raw.githubusercontent.com/AdobeDocs/experience-platform.en/main/help/expanded-activation/assets/activate-audiences.png) 3. Select the audiences you want to send to Facebook 4. In the Mapping step, map your identity fields (e.g., hashed email \u2192\u2026"}}]}</script></div>
+  </body>
+</html>

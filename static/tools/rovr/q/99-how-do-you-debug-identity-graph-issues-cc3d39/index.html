@@ -1,0 +1,253 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/png" href="/tools/rovr/rovrlogo.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="build-date" content="2026-06-10" />
+    
+    
+    <script src="https://assets.adobedtm.com/204118644db8/290ae1adb65a/launch-e5ec7bf1a1ef-development.min.js" async></script>
+    <script type="module" crossorigin src="/tools/rovr/assets/index-Cnf1TPK2.js"></script>
+    <link rel="stylesheet" crossorigin href="/tools/rovr/assets/index-D1POE5XP.css">
+  <title>99. How do you debug identity graph issues? | Rovr</title>
+<meta name="description" content="How Do You Debug Identity Graph Issues? Overview Debugging identity graph issues in Adobe Experience Platform requires understanding how identities are…" />
+<link rel="canonical" href="https://thelearningproject.in/tools/rovr/q/99-how-do-you-debug-identity-graph-issues-cc3d39" />
+<meta property="og:title" content="99. How do you debug identity graph issues?" />
+<meta property="og:description" content="How Do You Debug Identity Graph Issues? Overview Debugging identity graph issues in Adobe Experience Platform requires understanding how identities are…" />
+<meta property="og:url" content="https://thelearningproject.in/tools/rovr/q/99-how-do-you-debug-identity-graph-issues-cc3d39" />
+<meta property="og:type" content="article" />
+<meta property="og:image" content="https://thelearningproject.in/tools/rovr/rovrlogo.png" />
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="99. How do you debug identity graph issues?" />
+<meta name="twitter:description" content="How Do You Debug Identity Graph Issues? Overview Debugging identity graph issues in Adobe Experience Platform requires understanding how identities are…" />
+</head>
+  <body>
+    <div id="root"><article><h1>99. How do you debug identity graph issues?</h1>
+<h2>How Do You Debug Identity Graph Issues?</h2>
+<h3>Overview</h3>
+<p>Debugging identity graph issues in Adobe Experience Platform requires understanding how identities are linked, visualizing graph structures, and using the available tools to diagnose problems. AEP provides several dedicated tools for identity graph debugging and validation.</p>
+<hr>
+<h3>Video Walkthrough</h3>
+<p><a href="https://video.tv.adobe.com/v/331030?quality=12&amp;learn=on">▶ Watch: View Identity Graphs</a></p>
+<p>This video demonstrates how to use the identity graph viewer feature to search, explore, and filter identity graphs for validation and debugging.</p>
+<hr>
+<h3>1. Identity Graph Viewer</h3>
+<p>The <strong>Identity Graph Viewer</strong> is the primary tool for visualizing and debugging identity graph issues in Adobe Experience Platform.</p>
+<h4>How to Access:</h4>
+<p>1. Navigate to <strong>Adobe Experience Platform</strong></p>
+<p>2. Select <strong>Identities</strong> in the left navigation</p>
+<p>3. Select <strong>Identity Graph</strong> from the list of tabs in the header</p>
+<p><img src="../images/graph-viewer/identity-graph.png" alt="The Identities workspace in the Experience Platform UI, with the Identity Graph tab selected."></p>
+<h4>How to View a Specific Identity Graph:</h4>
+<p>1. <strong>Select your identity namespace</strong> (e.g., Email, Phone, ECID, CRM ID)</p>
+<p>2. <strong>Enter the corresponding identity value</strong> for the profile you want to inspect</p>
+<p>3. Click <strong>View</strong> to load the identity graph</p>
+<p>&gt; <strong>Tip:</strong> Select the table icon to see a panel with a list of all identity namespaces available in your organization. You can use any identity namespace as long as you have a valid identity value connected to it.</p>
+<h4>What You Can See in the Graph Viewer:</h4>
+<ul>
+<li><strong>Identity nodes</strong> – Each unique identity value as a node</li>
+<li><strong>Identity links</strong> – Connections between different namespaces</li>
+<li><strong>Namespace labels</strong> – Which namespace each identity belongs to</li>
+<li><strong>Graph relationships</strong> – How identities are stitched together</li>
+<li><strong>Linked profiles</strong> – All profiles connected through shared identities</li>
+</ul>
+<hr>
+<h3>2. Identity Dashboard</h3>
+<p>The <strong>Identity Dashboard</strong> provides high-level insights into the state of your identity graphs across your entire organization.</p>
+<h4>How to Access:</h4>
+<p>1. Navigate to <strong>Adobe Experience Platform</strong></p>
+<p>2. Select <strong>Identities</strong> in the left navigation</p>
+<p>3. Select the <strong>Dashboard</strong> tab</p>
+<p><img src="../images/implementation/identity_dashboard.png" alt="The identity dashboard in the Identity Service UI workspace."></p>
+<h4>What You Can Monitor:</h4>
+<ul>
+<li><strong>Overall identity count</strong> – Total number of identities in your organization</li>
+<li><strong>Graph count trends</strong> – How identity graphs are growing over time</li>
+<li><strong>Identity count by namespace</strong> – Distribution of identities across namespaces</li>
+<li><strong>Graph count by graph size</strong> – Breakdown of single vs. multi-identity graphs</li>
+<li><strong>Graphs with two or more identities</strong> – Trends organized by namespace</li>
+</ul>
+<h4>Checking for Collapsed Graphs:</h4>
+<p>1. Select the <strong>ellipses (...)</strong> next to any metric</p>
+<p>2. Select <strong>View more</strong> for further information</p>
+<p>3. Validate that there are <strong>no collapsed graphs</strong></p>
+<p><img src="../images/implementation/graphs.png" alt="The pop-up window for graphs with multiple identities."></p>
+<p>&gt; In the example above, both email and phone are marked as unique namespace, so therefore there are no collapsed graphs in the sandbox.</p>
+<hr>
+<h3>3. Graph Simulation Tool</h3>
+<p>The <strong>Graph Simulation</strong> tool allows you to test identity linking rules and simulate graph behavior <strong>before applying them to production</strong>.</p>
+<h4>How to Access:</h4>
+<p>1. Navigate to <strong>Adobe Experience Platform</strong></p>
+<p>2. Go to <strong>Identities</strong> → <strong>Graph Simulation</strong></p>
+<h4>How to Load an Existing Graph:</h4>
+<p>1. Click <strong>Load</strong></p>
+<p>2. Select <strong>Existing graph</strong></p>
+<p><img src="../images/graph-simulation/load-existing.png" alt="Load menu expanded with Existing graph selected to import a graph already stored in Identity Service."></p>
+<p>3. In the dialog, <strong>enter a namespace and identity value</strong> that belong to the graph you want to inspect</p>
+<p><img src="../images/graph-simulation/identify-graph.png" alt="Identify existing graph dialog with fields to enter a namespace and identity value."></p>
+<p>4. When the load succeeds, Graph Simulation shows the graph with its:</p>
+<ul>
+<li><strong>Activities</strong> – All identity linking events</li>
+<li><strong>Algorithm configuration</strong> – Current identity optimization settings</li>
+<li><strong>Graph view</strong> – Visual representation of the loaded graph</li>
+</ul>
+<p><img src="../images/graph-simulation/existing-graph-loaded.png" alt="Graph Simulation populated from an existing graph."></p>
+<h4>Key Uses for Debugging:</h4>
+<ul>
+<li><strong>Simulate rule changes</strong> – Test how new identity linking rules would affect existing graphs</li>
+<li><strong>Validate algorithm settings</strong> – Confirm identity optimization algorithm is working correctly</li>
+<li><strong>Preview graph changes</strong> – See impact of configuration changes before going live</li>
+<li><strong>Test unique namespace settings</strong> – Verify namespace priority and uniqueness rules</li>
+</ul>
+<hr>
+<h3>4. Common Identity Graph Issues &amp; Solutions</h3>
+<h4>Issue 1: Graph Collapse (Too Many Identities Merged)</h4>
+<p><strong>Symptoms:</strong></p>
+<ul>
+<li>One identity graph contains too many unrelated profiles</li>
+<li>Customer profiles are incorrectly merged together</li>
+<li>Shared devices (e.g., family computers) causing identity merging issues</li>
+</ul>
+<p><strong>Causes:</strong></p>
+<ul>
+<li>Shared device identifiers being used as linking identities</li>
+<li>Missing unique namespace configuration</li>
+<li>Incorrect identity priority settings</li>
+</ul>
+<p><strong>Solutions:</strong></p>
+<ul>
+<li><strong>Configure unique namespaces</strong> – Mark authenticated identifiers (email, phone) as unique</li>
+<li><strong>Review namespace priority</strong> – Ensure high-priority namespaces take precedence</li>
+<li><strong>Use Identity Optimization Algorithm</strong> – Configure rules to prevent over-merging</li>
+<li><strong>Check Graph Simulation</strong> – Test rule changes before applying to production</li>
+</ul>
+<h4>Issue 2: Identities Not Being Linked</h4>
+<p><strong>Symptoms:</strong></p>
+<ul>
+<li>Profiles that should be merged remain separate</li>
+<li>Customer journey shows fragmented profile history</li>
+<li>Audience membership not reflecting full customer history</li>
+</ul>
+<p><strong>Causes:</strong></p>
+<ul>
+<li>Missing identity namespace in event data</li>
+<li>Identity values not matching across datasets</li>
+<li>Incorrect XDM field mapping for identity fields</li>
+<li>Namespace not configured as identity in schema</li>
+</ul>
+<p><strong>Solutions:</strong></p>
+<ul>
+<li><strong>Verify event data</strong> – Check that identity fields are populated in ingested events</li>
+<li><strong>Review schema configuration</strong> – Ensure identity fields are correctly marked in XDM schema</li>
+<li><strong>Check namespace mapping</strong> – Verify identity namespaces match across all datasets</li>
+<li><strong>Use Query Service</strong> – Query datasets to verify identity values are consistent</li>
+</ul>
+<h4>Issue 3: Dangling LoginID Scenario</h4>
+<p><strong>Symptoms:</strong></p>
+<ul>
+<li>LoginID (e.g., CRM ID) exists in graph without being linked to a primary identifier</li>
+<li>Profile data associated with LoginID not accessible via primary identity</li>
+<li>Incomplete customer profile data</li>
+</ul>
+<p><strong>Causes:</strong></p>
+<ul>
+<li>LoginID was ingested without a corresponding primary identifier (e.g., ECID)</li>
+<li>Event data missing required identity fields</li>
+<li>Incorrect identity linking order</li>
+</ul>
+<p><strong>Solutions:</strong></p>
+<ul>
+<li><strong>Review ingestion order</strong> – Ensure primary identifiers are ingested before or alongside LoginIDs</li>
+<li><strong>Check event payloads</strong> – Verify all required identity fields are present in each event</li>
+<li><strong>Use Graph Simulation</strong> – Simulate the dangling LoginID scenario to understand impact</li>
+<li><strong>Implement identity settings</strong> – Configure identity settings to handle LoginID scenarios correctly</li>
+</ul>
+<h4>Issue 4: Incorrect Namespace Priority</h4>
+<p><strong>Symptoms:</strong></p>
+<ul>
+<li>Wrong identity being used as primary identifier in merged profiles</li>
+<li>Profiles merging based on lower-priority identifiers</li>
+<li>Identity resolution not matching expected behavior</li>
+</ul>
+<p><strong>Solutions:</strong></p>
+<ul>
+<li><strong>Review namespace priority settings</strong> – Check current priority configuration in Identity Settings UI</li>
+<li><strong>Reconfigure namespace priority</strong> – Adjust priority to reflect your identity resolution strategy</li>
+<li><strong>Test with Graph Simulation</strong> – Validate priority changes before applying to production</li>
+</ul>
+<hr>
+<h3>5. Identity Settings UI</h3>
+<p><strong>Identity Settings</strong> allow you to configure how identities are linked and prioritized across your organization.</p>
+<h4>How to Access:</h4>
+<p>1. Navigate to <strong>Adobe Experience Platform</strong></p>
+<p>2. Go to <strong>Identities</strong> → <strong>Identity Settings</strong></p>
+<h4>Key Configuration Options:</h4>
+<ul>
+<li><strong>Unique namespaces</strong> – Mark namespaces that should only have one identity per graph</li>
+<li><strong>Namespace priority</strong> – Set the order of importance for identity resolution</li>
+<li><strong>Identity Optimization Algorithm</strong> – Configure rules for preventing graph collapse</li>
+</ul>
+<hr>
+<h3>6. Debugging with Query Service</h3>
+<p>Use <strong>Query Service</strong> to programmatically investigate identity issues:</p>
+<p><strong>Check identity distribution across namespaces:</strong></p>
+<p>```sql</p>
+<p>SELECT</p>
+<p>namespace,</p>
+<p>COUNT(*) as identity_count</p>
+<p>FROM</p>
+<p>identity_dataset</p>
+<p>GROUP BY</p>
+<p>namespace</p>
+<p>ORDER BY</p>
+<p>identity_count DESC</p>
+<p>```</p>
+<p><strong>Find profiles with multiple identities:</strong></p>
+<p>```sql</p>
+<p>SELECT</p>
+<p>identityMap,</p>
+<p>COUNT(*) as linked_identities</p>
+<p>FROM</p>
+<p>your_profile_dataset</p>
+<p>GROUP BY</p>
+<p>identityMap</p>
+<p>HAVING</p>
+<p>COUNT(*) &gt; 5</p>
+<p>ORDER BY</p>
+<p>linked_identities DESC</p>
+<p>```</p>
+<p><strong>Check for missing identity values:</strong></p>
+<p>```sql</p>
+<p>SELECT</p>
+<p>COUNT(*) as records_without_identity</p>
+<p>FROM</p>
+<p>your_event_dataset</p>
+<p>WHERE</p>
+<p>identityMap IS NULL</p>
+<p>OR identityMap = &#x27;{}&#x27;</p>
+<p>```</p>
+<hr>
+<h3>Quick Debugging Checklist</h3>
+<p>| Step | Tool | What to Check |</p>
+<p>|---|---|---|</p>
+<p>| <strong>1. Visualize the graph</strong> | Identity Graph Viewer | View all linked identities for a profile |</p>
+<p>| <strong>2. Check dashboard metrics</strong> | Identity Dashboard | Monitor graph count and collapse indicators |</p>
+<p>| <strong>3. Simulate rule changes</strong> | Graph Simulation | Test identity linking rules safely |</p>
+<p>| <strong>4. Review namespace config</strong> | Identity Settings UI | Verify unique namespace and priority settings |</p>
+<p>| <strong>5. Query identity data</strong> | Query Service | Programmatic investigation of identity issues |</p>
+<p>| <strong>6. Check event data</strong> | Assurance / Datasets | Verify identity fields in ingested events |</p>
+<p>| <strong>7. Review schema config</strong> | Schema Editor | Confirm identity fields are correctly marked |</p>
+<hr>
+<h3>Best Practices</h3>
+<p>✓ <strong>Use Graph Simulation first</strong> – Always test rule changes in simulation before applying to production</p>
+<p>✓ <strong>Configure unique namespaces</strong> – Prevent graph collapse by marking authenticated IDs as unique</p>
+<p>✓ <strong>Monitor the Identity Dashboard</strong> – Regularly check for collapsed graphs and anomalies</p>
+<p>✓ <strong>Set correct namespace priority</strong> – Ensure your most reliable identifiers have highest priority</p>
+<p>✓ <strong>Validate event data</strong> – Use Assurance to verify identity fields in SDK events</p>
+<p>✓ <strong>Test with real graphs</strong> – Load existing graphs in Graph Simulation to validate configuration</p>
+<p>✓ <strong>Document identity strategy</strong> – Maintain clear records of your identity linking rules</p>
+</article>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "99. How do you debug identity graph issues?", "acceptedAnswer": {"@type": "Answer", "text": "How Do You Debug Identity Graph Issues? Overview Debugging identity graph issues in Adobe Experience Platform requires understanding how identities are linked, visualizing graph structures, and using the available tools to diagnose problems. AEP provides several dedicated tools for identity graph debugging and validation. --- Video Walkthrough \u25b6 Watch: View Identity Graphs(https://video.tv.adobe.com/v/331030?quality=12&learn=on) This video demonstrates how to use the identity graph viewer feature to search, explore, and filter identity graphs for validation and debugging. --- 1. Identity Graph Viewer The Identity Graph Viewer is the primary tool for visualizing and debugging identity graph issues in Adobe Experience Platform. How to Access: 1. Navigate to Adobe Experience Platform 2. Select Identities in the left navigation 3. Select Identity Graph from the list of tabs in the header !The Identities workspace in the Experience Platform UI, with the Identity Graph tab selected.(../images/graph-viewer/identity-graph.png) How to View a Specific Identity Graph: 1. Select your identity namespace (e.g., Email, Phone, ECID, CRM ID) 2. Enter the corresponding identity value for the profile you want to inspect 3. Click View to load the identity graph Tip: Select the table icon to see a panel with a list of all identity namespaces available in your organization. You can use any identity namespace as long as you have a valid identity value connected to it. What You Can See in the Graph Viewer: - Identity nodes \u2013 Each unique identity value as a node - Identity links \u2013 Connections between different namespaces - Namespace labels \u2013 Which namespace each identity belongs to - Graph relationships \u2013 How identities are stitched together - Linked profiles \u2013 All profiles connected through shared identities --- 2. Identity Dashboard The Identity Dashboard provides high-level insights into the state of your identity graphs across your entire organization. How to Access: 1. Navigate to\u2026"}}]}</script></div>
+  </body>
+</html>

@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/png" href="/tools/rovr/rovrlogo.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="build-date" content="2026-06-10" />
+    
+    
+    <script src="https://assets.adobedtm.com/204118644db8/290ae1adb65a/launch-e5ec7bf1a1ef-development.min.js" async></script>
+    <script type="module" crossorigin src="/tools/rovr/assets/index-Cnf1TPK2.js"></script>
+    <link rel="stylesheet" crossorigin href="/tools/rovr/assets/index-D1POE5XP.css">
+  <title>How do I migrate projects and components from Adobe Analytics to Customer Journey Analytics? | Rovr</title>
+<meta name="description" content="Migrating Projects and Components from Adobe Analytics to Customer Journey Analytics Overview The migration process involves two main activities: -…" />
+<link rel="canonical" href="https://thelearningproject.in/tools/rovr/q/how-do-i-migrate-projects-and-components-from-adobe-analytic-f93a63" />
+<meta property="og:title" content="How do I migrate projects and components from Adobe Analytics to Customer Journey Analytics?" />
+<meta property="og:description" content="Migrating Projects and Components from Adobe Analytics to Customer Journey Analytics Overview The migration process involves two main activities: -…" />
+<meta property="og:url" content="https://thelearningproject.in/tools/rovr/q/how-do-i-migrate-projects-and-components-from-adobe-analytic-f93a63" />
+<meta property="og:type" content="article" />
+<meta property="og:image" content="https://thelearningproject.in/tools/rovr/rovrlogo.png" />
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="How do I migrate projects and components from Adobe Analytics to Customer Journey Analytics?" />
+<meta name="twitter:description" content="Migrating Projects and Components from Adobe Analytics to Customer Journey Analytics Overview The migration process involves two main activities: -…" />
+</head>
+  <body>
+    <div id="root"><article><h1>How do I migrate projects and components from Adobe Analytics to Customer Journey Analytics?</h1>
+<h2>Migrating Projects and Components from Adobe Analytics to Customer Journey Analytics</h2>
+<h3>Overview</h3>
+<p>The migration process involves two main activities:</p>
+<ul>
+<li><strong>Re-creating Adobe Analytics projects</strong> in Customer Journey Analytics</li>
+<li><strong>Mapping dimensions and metrics</strong> from Adobe Analytics report suites to dimensions and metrics in Customer Journey Analytics data views</li>
+</ul>
+<p>Segments are also migrated but <strong>do not need to be manually mapped</strong>. All migrated components appear in a migration summary when the migration completes.</p>
+<hr>
+<h3>Prerequisites</h3>
+<p>Before migrating, you must complete the following preparation steps:</p>
+<h4>1. Ingest Data into Adobe Experience Platform</h4>
+<p>You need to get your Adobe Analytics report suite data into CJA using one of two methods:</p>
+<p><strong>Option A — Adobe Analytics Source Connector:</strong></p>
+<p>1. Set up report suites for ingestion into Adobe Experience Platform and Customer Journey Analytics</p>
+<p>2. Ingest and use the data via the Analytics source connector</p>
+<p><strong>Option B — Web SDK:</strong></p>
+<p>1. Set up report suites for ingestion into Adobe Experience Platform and Customer Journey Analytics</p>
+<p>2. Ingest data via the Adobe Experience Platform Web SDK</p>
+<p>&gt; ⚠️ When using the Web SDK, <strong>all schema fields must be manually mapped</strong></p>
+<h4>2. Create a Connection and Data View in CJA</h4>
+<p>You will need a <strong>Customer Journey Analytics data view ID</strong> ready before migration, as it is required to map components from your Adobe Analytics report suite.</p>
+<h4>3. Conduct an Analytics Inventory</h4>
+<p>Use the <strong>Adobe Analytics Inventory</strong> tool (available to Analytics administrators) to understand what projects, components, and assets exist before migrating.</p>
+<hr>
+<h3>Migration Steps (UI Method)</h3>
+<p>1. <strong>Log in as an Adobe Analytics Administrator</strong> — migration is an admin-only function.</p>
+<p>2. <strong>Navigate to the migration tool</strong> in the Adobe Analytics admin interface.</p>
+<p>3. <strong>Select the projects</strong> you want to migrate to Customer Journey Analytics.</p>
+<p>4. <strong>Map dimensions and metrics:</strong></p>
+<ul>
+<li>Some dimensions and metrics are <strong>automatically mapped</strong></li>
+<li>Others require <strong>manual mapping</strong> to their corresponding CJA data view dimensions and metrics</li>
+</ul>
+<p><img src="https://raw.githubusercontent.com/AdobeDocs/analytics.en/main/help/admin/tools/component-migration/assets/project-migration-schema.png" alt="Project migration schema"></p>
+<p><img src="https://raw.githubusercontent.com/AdobeDocs/analytics.en/main/help/admin/tools/component-migration/assets/schema-manual-map.png" alt="Manual mapping interface"></p>
+<p><img src="https://raw.githubusercontent.com/AdobeDocs/analytics.en/main/help/admin/tools/component-migration/assets/schema-manual-map-drop-down.png" alt="Manual mapping drop-down"></p>
+<p>5. <strong>Review the migration summary</strong> — once the migration completes, all migrated components are listed here.</p>
+<p>6. <strong>Verify the migrated projects</strong> in Customer Journey Analytics Analysis Workspace.</p>
+<hr>
+<h3>Migration via API (Alternative Method)</h3>
+<p>You can also perform the migration using the <strong>Adobe Analytics 2.0 APIs</strong>. The two migration API endpoints support:</p>
+<ul>
+<li>Segments</li>
+<li>Calculated metrics</li>
+<li>Date ranges</li>
+<li>Dimensions and metrics (if mapped beforehand)</li>
+</ul>
+<p><strong>Required identifiers for API migration:</strong></p>
+<ul>
+<li>Adobe Analytics <strong>project ID</strong></li>
+<li>Adobe Analytics <strong>report suite ID</strong></li>
+<li>Customer Journey Analytics <strong>data view ID</strong></li>
+</ul>
+<p>&gt; ⚠️ If you plan to migrate dimensions and metrics via API, <strong>use the mappings APIs first</strong> so the project ID can be associated with those mappings before running the project migration.</p>
+<hr>
+<h3>What Gets Migrated</h3>
+<p>| Component | Migrated? | Requires Mapping? |</p>
+<p>|---|---|---|</p>
+<p>| Projects (Analysis Workspace) | ✅ Yes | No (re-created automatically) |</p>
+<p>| Dimensions &amp; Metrics | ✅ Yes | Yes (some auto, some manual) |</p>
+<p>| Segments | ✅ Yes | No |</p>
+<p>| Calculated Metrics | ✅ Yes | No |</p>
+<p>| Date Ranges | ✅ Yes | No |</p>
+<hr>
+<h3>Post-Migration: User Onboarding</h3>
+<p>Plan <strong>3–6 months</strong> for users to become familiar with the key differences between Analysis Workspace in Adobe Analytics and Customer Journey Analytics. While Analysis Workspace is the primary tool in both products, there are meaningful differences in how it works in CJA, particularly around cross-channel data and the connection/data view model.</p>
+</article>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "How do I migrate projects and components from Adobe Analytics to Customer Journey Analytics?", "acceptedAnswer": {"@type": "Answer", "text": "Migrating Projects and Components from Adobe Analytics to Customer Journey Analytics Overview The migration process involves two main activities: - Re-creating Adobe Analytics projects in Customer Journey Analytics - Mapping dimensions and metrics from Adobe Analytics report suites to dimensions and metrics in Customer Journey Analytics data views Segments are also migrated but do not need to be manually mapped. All migrated components appear in a migration summary when the migration completes. --- Prerequisites Before migrating, you must complete the following preparation steps: 1. Ingest Data into Adobe Experience Platform You need to get your Adobe Analytics report suite data into CJA using one of two methods: Option A \u2014 Adobe Analytics Source Connector: 1. Set up report suites for ingestion into Adobe Experience Platform and Customer Journey Analytics 2. Ingest and use the data via the Analytics source connector Option B \u2014 Web SDK: 1. Set up report suites for ingestion into Adobe Experience Platform and Customer Journey Analytics 2. Ingest data via the Adobe Experience Platform Web SDK \u26a0\ufe0f When using the Web SDK, all schema fields must be manually mapped 2. Create a Connection and Data View in CJA You will need a Customer Journey Analytics data view ID ready before migration, as it is required to map components from your Adobe Analytics report suite. 3. Conduct an Analytics Inventory Use the Adobe Analytics Inventory tool (available to Analytics administrators) to understand what projects, components, and assets exist before migrating. --- Migration Steps (UI Method) 1. Log in as an Adobe Analytics Administrator \u2014 migration is an admin-only function. 2. Navigate to the migration tool in the Adobe Analytics admin interface. 3. Select the projects you want to migrate to Customer Journey Analytics. 4. Map dimensions and metrics: - Some dimensions and metrics are automatically mapped - Others require manual mapping to their corresponding CJA data view dimensions\u2026"}}]}</script></div>
+  </body>
+</html>

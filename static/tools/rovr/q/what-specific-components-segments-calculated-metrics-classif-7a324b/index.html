@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/png" href="/tools/rovr/rovrlogo.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="build-date" content="2026-06-10" />
+    
+    
+    <script src="https://assets.adobedtm.com/204118644db8/290ae1adb65a/launch-e5ec7bf1a1ef-development.min.js" async></script>
+    <script type="module" crossorigin src="/tools/rovr/assets/index-Cnf1TPK2.js"></script>
+    <link rel="stylesheet" crossorigin href="/tools/rovr/assets/index-D1POE5XP.css">
+  <title>What specific components (segments, calculated metrics, classifications) can be migrated and which ones need to be recreated? | Rovr</title>
+<meta name="description" content="Component Migration: What Migrates vs. What Must Be Recreated --- Overview When migrating from Adobe Analytics to Customer Journey Analytics, components fall…" />
+<link rel="canonical" href="https://thelearningproject.in/tools/rovr/q/what-specific-components-segments-calculated-metrics-classif-7a324b" />
+<meta property="og:title" content="What specific components (segments, calculated metrics, classifications) can be migrated and which ones need to be recreated?" />
+<meta property="og:description" content="Component Migration: What Migrates vs. What Must Be Recreated --- Overview When migrating from Adobe Analytics to Customer Journey Analytics, components fall…" />
+<meta property="og:url" content="https://thelearningproject.in/tools/rovr/q/what-specific-components-segments-calculated-metrics-classif-7a324b" />
+<meta property="og:type" content="article" />
+<meta property="og:image" content="https://thelearningproject.in/tools/rovr/rovrlogo.png" />
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="What specific components (segments, calculated metrics, classifications) can be migrated and which ones need to be recreated?" />
+<meta name="twitter:description" content="Component Migration: What Migrates vs. What Must Be Recreated --- Overview When migrating from Adobe Analytics to Customer Journey Analytics, components fall…" />
+</head>
+  <body>
+    <div id="root"><article><h1>What specific components (segments, calculated metrics, classifications) can be migrated and which ones need to be recreated?</h1>
+<h2>Component Migration: What Migrates vs. What Must Be Recreated</h2>
+<hr>
+<h3>Overview</h3>
+<p>When migrating from Adobe Analytics to Customer Journey Analytics, components fall into three categories:</p>
+<ul>
+<li>✅ <strong>Automatically migrated</strong></li>
+<li>⚠️ <strong>Partially migrated</strong> (some attributes are not carried over)</li>
+<li>❌ <strong>Must be manually recreated</strong></li>
+</ul>
+<hr>
+<h3>Detailed Component Breakdown</h3>
+<h4>📊 Dimensions &amp; Metrics</h4>
+<p>| Attribute | Migrated? |</p>
+<p>|---|---|</p>
+<p>| The dimension/metric itself | ⚠️ Partially — some auto-mapped, some require manual mapping |</p>
+<p>| <strong>Owner</strong> | ❌ Not migrated |</p>
+<p>| <strong>Sharing settings</strong> | ❌ Not migrated |</p>
+<p>| <strong>Descriptions</strong> | ❌ Not migrated |</p>
+<p>| <strong>Tags</strong> | ❌ Not migrated |</p>
+<p>| <strong>Attribution (on dimensions)</strong> | ❌ Not migrated |</p>
+<p>&gt; ⚠️ After migration, you will need to <strong>manually re-apply</strong> descriptions, tags, sharing settings, attribution models, and ownership in CJA.</p>
+<hr>
+<h4>🔍 Segments</h4>
+<p>| Attribute | Migrated? |</p>
+<p>|---|---|</p>
+<p>| Segment definition | ✅ Yes — re-created in CJA |</p>
+<p>| <strong>Owner</strong> | ✅ Yes |</p>
+<p>| <strong>Descriptions</strong> | ✅ Yes |</p>
+<p>| <strong>Sharing settings</strong> | ❌ Not migrated |</p>
+<p>| <strong>Tags</strong> | ❌ Not migrated |</p>
+<p>| <strong>Attribution</strong> | ❌ Not migrated |</p>
+<p>&gt; ✅ Segments are <strong>automatically re-created</strong> in CJA based on the mapped dimensions and metrics — no manual mapping required.</p>
+<hr>
+<h4>🧮 Calculated Metrics</h4>
+<p>| Attribute | Migrated? |</p>
+<p>|---|---|</p>
+<p>| Calculated metric definition | ✅ Yes — re-created in CJA |</p>
+<p>| <strong>Owner</strong> | ❌ Not migrated |</p>
+<p>| <strong>Sharing settings</strong> | ❌ Not migrated |</p>
+<p>| <strong>Descriptions</strong> | ❌ Not migrated |</p>
+<p>| <strong>Tags</strong> | ❌ Not migrated |</p>
+<p>&gt; ✅ Calculated metrics are <strong>automatically re-created</strong> in CJA based on the mapped dimensions and metrics.</p>
+<p>&gt; ❌ However, <strong>owner, descriptions, tags, and sharing</strong> must be manually re-applied in CJA after migration.</p>
+<hr>
+<h4>📅 Date Ranges</h4>
+<p>| Attribute | Migrated? |</p>
+<p>|---|---|</p>
+<p>| Date range definition | ✅ Yes — re-created in CJA |</p>
+<p>| <strong>Owner</strong> | ✅ Yes |</p>
+<p>| <strong>Descriptions</strong> | ✅ Yes |</p>
+<p>| <strong>Sharing settings</strong> | ❌ Not migrated |</p>
+<p>| <strong>Tags</strong> | ❌ Not migrated |</p>
+<p>&gt; ✅ Date ranges are <strong>automatically re-created</strong> in CJA.</p>
+<p>&gt; ❌ Sharing settings and tags must be manually re-applied.</p>
+<hr>
+<h4>🗂️ Classifications</h4>
+<p>| Attribute | Migrated? |</p>
+<p>|---|---|</p>
+<p>| Classification sets | ❌ Not migrated |</p>
+<p>| Classification rules | ❌ Not migrated |</p>
+<p>| Classification importer data | ❌ Not migrated |</p>
+<p>&gt; ❌ <strong>Classifications are not migrated</strong> as part of the component migration process. They must be <strong>manually recreated</strong> in CJA using lookup datasets in Adobe Experience Platform.</p>
+<p>&gt; ⚠️ <strong>Important deprecation notice:</strong></p>
+<p>&gt; - <strong>Classification Rules Builder</strong> will be deprecated after <strong>February 28, 2027</strong></p>
+<p>&gt; - <strong>Classification Importer</strong> (including FTP imports) will be deprecated after <strong>August 31, 2026</strong></p>
+<p>&gt;</p>
+<p>&gt; Adobe recommends transitioning to <strong>Classification Sets</strong>, the primary and simplified interface for managing classifications going forward.</p>
+<hr>
+<h4>🗃️ Analysis Workspace Projects</h4>
+<p>| Attribute | Migrated? |</p>
+<p>|---|---|</p>
+<p>| Project structure &amp; visualizations | ✅ Yes — re-created in CJA |</p>
+<p>| Panels and freeform tables | ✅ Yes |</p>
+<p>| Associated segments | ✅ Yes |</p>
+<p>| Associated calculated metrics | ✅ Yes |</p>
+<p>| Associated date ranges | ✅ Yes |</p>
+<p>| Dimension/metric mappings | ⚠️ Requires prior mapping setup |</p>
+<hr>
+<h3>Summary Table</h3>
+<p>| Component | Migrates? | Manual Action Required |</p>
+<p>|---|---|---|</p>
+<p>| <strong>Workspace Projects</strong> | ✅ Yes | Map dimensions/metrics first |</p>
+<p>| <strong>Segments</strong> | ✅ Yes (definition, owner, description) | Re-apply tags &amp; sharing |</p>
+<p>| <strong>Calculated Metrics</strong> | ✅ Yes (definition only) | Re-apply owner, description, tags, sharing |</p>
+<p>| <strong>Date Ranges</strong> | ✅ Yes (definition, owner, description) | Re-apply tags &amp; sharing |</p>
+<p>| <strong>Dimensions</strong> | ⚠️ Partial | Manual mapping + re-apply all attributes |</p>
+<p>| <strong>Metrics</strong> | ⚠️ Partial | Manual mapping + re-apply all attributes |</p>
+<p>| <strong>Classifications</strong> | ❌ No | Fully recreate as AEP lookup datasets |</p>
+<p>| <strong>Sharing settings</strong> | ❌ No | Manually re-apply for all components |</p>
+<p>| <strong>Tags</strong> | ❌ No | Manually re-apply for all components |</p>
+<p>| <strong>Attribution models</strong> | ❌ No | Manually re-apply in CJA data view |</p>
+<hr>
+<h3>Post-Migration Checklist</h3>
+<p>After completing the migration, manually address the following in CJA:</p>
+<p>1. ✅ Re-apply <strong>ownership</strong> to calculated metrics</p>
+<p>2. ✅ Re-add <strong>descriptions</strong> to dimensions, metrics, and calculated metrics</p>
+<p>3. ✅ Re-apply <strong>tags</strong> to all component types</p>
+<p>4. ✅ Re-configure <strong>sharing settings</strong> for all components</p>
+<p>5. ✅ Re-apply <strong>attribution models</strong> to dimensions in your CJA data view</p>
+<p>6. ✅ <strong>Recreate classifications</strong> as lookup datasets in AEP</p>
+<p>7. ✅ Validate all <strong>migrated projects</strong> in CJA Analysis Workspace for accuracy</p>
+</article>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "What specific components (segments, calculated metrics, classifications) can be migrated and which ones need to be recreated?", "acceptedAnswer": {"@type": "Answer", "text": "Component Migration: What Migrates vs. What Must Be Recreated --- Overview When migrating from Adobe Analytics to Customer Journey Analytics, components fall into three categories: - \u2705 Automatically migrated - \u26a0\ufe0f Partially migrated (some attributes are not carried over) - \u274c Must be manually recreated --- Detailed Component Breakdown \ud83d\udcca Dimensions & Metrics | Attribute | Migrated? | |---|---| | The dimension/metric itself | \u26a0\ufe0f Partially \u2014 some auto-mapped, some require manual mapping | | Owner | \u274c Not migrated | | Sharing settings | \u274c Not migrated | | Descriptions | \u274c Not migrated | | Tags | \u274c Not migrated | | Attribution (on dimensions) | \u274c Not migrated | \u26a0\ufe0f After migration, you will need to manually re-apply descriptions, tags, sharing settings, attribution models, and ownership in CJA. --- \ud83d\udd0d Segments | Attribute | Migrated? | |---|---| | Segment definition | \u2705 Yes \u2014 re-created in CJA | | Owner | \u2705 Yes | | Descriptions | \u2705 Yes | | Sharing settings | \u274c Not migrated | | Tags | \u274c Not migrated | | Attribution | \u274c Not migrated | \u2705 Segments are automatically re-created in CJA based on the mapped dimensions and metrics \u2014 no manual mapping required. --- \ud83e\uddee Calculated Metrics | Attribute | Migrated? | |---|---| | Calculated metric definition | \u2705 Yes \u2014 re-created in CJA | | Owner | \u274c Not migrated | | Sharing settings | \u274c Not migrated | | Descriptions | \u274c Not migrated | | Tags | \u274c Not migrated | \u2705 Calculated metrics are automatically re-created in CJA based on the mapped dimensions and metrics. \u274c However, owner, descriptions, tags, and sharing must be manually re-applied in CJA after migration. --- \ud83d\udcc5 Date Ranges | Attribute | Migrated? | |---|---| | Date range definition | \u2705 Yes \u2014 re-created in CJA | | Owner | \u2705 Yes | | Descriptions | \u2705 Yes | | Sharing settings | \u274c Not migrated | | Tags | \u274c Not migrated | \u2705 Date ranges are automatically re-created in CJA. \u274c Sharing settings and tags must be manually re-applied. --- \ud83d\uddc2\ufe0f Classifications | Attribute | Migrated? | |---|---| |\u2026"}}]}</script></div>
+  </body>
+</html>

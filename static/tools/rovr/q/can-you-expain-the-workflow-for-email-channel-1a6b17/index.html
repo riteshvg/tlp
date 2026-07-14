@@ -1,0 +1,405 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/png" href="/tools/rovr/rovrlogo.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="build-date" content="2026-06-10" />
+    
+    
+    <script src="https://assets.adobedtm.com/204118644db8/290ae1adb65a/launch-e5ec7bf1a1ef-development.min.js" async></script>
+    <script type="module" crossorigin src="/tools/rovr/assets/index-Cnf1TPK2.js"></script>
+    <link rel="stylesheet" crossorigin href="/tools/rovr/assets/index-D1POE5XP.css">
+  <title>can you expain the workflow for email channel? | Rovr</title>
+<meta name="description" content="Email Channel Workflow in Adobe Journey Optimizer Overview The email channel in AJO follows a structured workflow from initial configuration all the way to…" />
+<link rel="canonical" href="https://thelearningproject.in/tools/rovr/q/can-you-expain-the-workflow-for-email-channel-1a6b17" />
+<meta property="og:title" content="can you expain the workflow for email channel?" />
+<meta property="og:description" content="Email Channel Workflow in Adobe Journey Optimizer Overview The email channel in AJO follows a structured workflow from initial configuration all the way to…" />
+<meta property="og:url" content="https://thelearningproject.in/tools/rovr/q/can-you-expain-the-workflow-for-email-channel-1a6b17" />
+<meta property="og:type" content="article" />
+<meta property="og:image" content="https://thelearningproject.in/tools/rovr/rovrlogo.png" />
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="can you expain the workflow for email channel?" />
+<meta name="twitter:description" content="Email Channel Workflow in Adobe Journey Optimizer Overview The email channel in AJO follows a structured workflow from initial configuration all the way to…" />
+</head>
+  <body>
+    <div id="root"><article><h1>can you expain the workflow for email channel?</h1>
+<h2>Email Channel Workflow in Adobe Journey Optimizer</h2>
+<h3>Overview</h3>
+<p>The email channel in AJO follows a <strong>structured workflow</strong> from initial configuration all the way to delivery and measurement. Every step builds on the previous one.</p>
+<p><a href="https://video.tv.adobe.com/v/334343?quality=12&amp;learn=on">▶ Watch: Configure an Email Channel in Journey Optimizer</a></p>
+<hr>
+<h3>Complete Email Channel Workflow</h3>
+<p>```</p>
+<p>STEP 1: SUBDOMAIN DELEGATION</p>
+<p>↓</p>
+<p>STEP 2: IP POOL CREATION</p>
+<p>↓</p>
+<p>STEP 3: CHANNEL CONFIGURATION (Surface Setup)</p>
+<p>↓</p>
+<p>STEP 4: CREATE JOURNEY OR CAMPAIGN</p>
+<p>↓</p>
+<p>STEP 5: BUILD EMAIL CONTENT</p>
+<p>↓</p>
+<p>STEP 6: PERSONALIZATION &amp; DYNAMIC CONTENT</p>
+<p>↓</p>
+<p>STEP 7: TEST &amp; PREVIEW</p>
+<p>↓</p>
+<p>STEP 8: ACTIVATE / PUBLISH</p>
+<p>↓</p>
+<p>STEP 9: MONITOR &amp; REPORT</p>
+<p>```</p>
+<hr>
+<h3>STEP 1: Subdomain Delegation</h3>
+<h4>What is it?</h4>
+<p>Before sending any emails, you must <strong>delegate a subdomain to Adobe</strong> so that AJO can manage sending infrastructure, tracking URLs, and mirror page hosting on your behalf.</p>
+<h4>Why is it needed?</h4>
+<ul>
+<li>✅ Establishes <strong>sender reputation</strong> with email providers (Gmail, Outlook, Yahoo)</li>
+<li>✅ Enables <strong>DMARC, DKIM, SPF</strong> email authentication records</li>
+<li>✅ Powers <strong>tracking URLs</strong> for click and open tracking</li>
+<li>✅ Hosts <strong>mirror page URLs</strong> for email preview</li>
+<li>✅ Protects your <strong>main domain reputation</strong> by isolating marketing email sending</li>
+</ul>
+<h4>Types of Subdomain Delegation</h4>
+<p>| Type | Description | Best For |</p>
+<p>|---|---|---|</p>
+<p>| <strong>Full Delegation</strong> | Adobe fully manages the subdomain DNS | Recommended — simplest approach |</p>
+<p>| <strong>CNAME Delegation</strong> | You keep DNS control, point to Adobe via CNAME | Organizations with strict DNS policies |</p>
+<p>| <strong>Custom Delegation</strong> | Partially delegated with custom setup | Advanced use cases |</p>
+<h4>How to Delegate a Subdomain</h4>
+<p><strong>Prerequisites:</strong></p>
+<ul>
+<li>System Administrator role in AJO</li>
+<li>Access to your organization&#x27;s DNS records</li>
+</ul>
+<p><strong>Steps:</strong></p>
+<p>1. In AJO left navigation, go to <strong>Administration</strong> → <strong>Channels</strong> → <strong>Subdomains</strong></p>
+<p>2. Click <strong>Set up subdomain</strong></p>
+<p>3. Choose delegation type: <strong>Full delegation</strong> (recommended)</p>
+<p>4. Enter your subdomain name (e.g., `email.yourbrand.com`)</p>
+<p>5. AJO generates the <strong>DNS records</strong> required</p>
+<p>6. Copy the DNS records and add them to your <strong>DNS provider</strong> (GoDaddy, Cloudflare, Route53, etc.)</p>
+<p>7. Click <strong>Submit</strong> and wait for DNS propagation</p>
+<p>8. AJO verifies the subdomain automatically</p>
+<p>9. Status changes to ✅ <strong>Success</strong></p>
+<p><img src="https://raw.githubusercontent.com/AdobeDocs/journey-optimizer.en/main/help/using/configuration/assets/subdomain-list.png" alt="Subdomain List"></p>
+<h4>What Gets Set Up Automatically:</h4>
+<p>```</p>
+<p>After Subdomain Delegation:</p>
+<p>├── SPF Record (Sender Policy Framework)</p>
+<p>├── DKIM Record (DomainKeys Identified Mail)</p>
+<p>├── DMARC Record (Domain-based Message Authentication)</p>
+<p>├── Tracking Subdomain (click.email.yourbrand.com)</p>
+<p>├── Mirror Page Subdomain (view.email.yourbrand.com)</p>
+<p>└── Bounce Handling (bounces.email.yourbrand.com)</p>
+<p>```</p>
+<hr>
+<h3>STEP 2: IP Pool Creation</h3>
+<h4>What is it?</h4>
+<p>An <strong>IP Pool</strong> is a group of dedicated IP addresses that are used to send emails on behalf of your organization.</p>
+<h4>Why is it needed?</h4>
+<ul>
+<li>✅ <strong>Reputation isolation</strong> — Separate IPs for marketing vs. transactional email</li>
+<li>✅ <strong>Volume distribution</strong> — Spread sending load across multiple IPs</li>
+<li>✅ <strong>IP warmup</strong> — Gradually increase sending volume on new IPs</li>
+<li>✅ <strong>Brand separation</strong> — Different IP pools for different brands or regions</li>
+</ul>
+<h4>IP Pool Strategy</h4>
+<p>```</p>
+<p>IP Pool: Marketing Emails</p>
+<p>├── IP: 203.0.113.10 (warm)</p>
+<p>├── IP: 203.0.113.11 (warm)</p>
+<p>└── IP: 203.0.113.12 (warm)</p>
+<p>IP Pool: Transactional Emails</p>
+<p>├── IP: 203.0.113.20 (dedicated)</p>
+<p>└── IP: 203.0.113.21 (dedicated)</p>
+<p>IP Pool: EMEA Region</p>
+<p>├── IP: 203.0.113.30</p>
+<p>└── IP: 203.0.113.31</p>
+<p>```</p>
+<h4>How to Create an IP Pool</h4>
+<p><strong>Steps:</strong></p>
+<p>1. Go to <strong>Administration</strong> → <strong>Channels</strong> → <strong>IP Pools</strong></p>
+<p>2. Click <strong>Create IP Pool</strong></p>
+<p>3. Enter a <strong>Name</strong> (e.g., &quot;Marketing Email Pool&quot;)</p>
+<p>4. Select <strong>IP addresses</strong> to include in the pool</p>
+<p>5. Click <strong>Submit</strong></p>
+<p><img src="https://raw.githubusercontent.com/AdobeDocs/journey-optimizer.en/main/help/using/configuration/assets/ip-pool-create.png" alt="IP Pool Create"></p>
+<h4>IP Warmup Plan</h4>
+<p>When using <strong>new IP addresses</strong>, you must gradually increase sending volume to build sender reputation:</p>
+<p>```</p>
+<p>Week 1: Send to 500 most-engaged subscribers/day</p>
+<p>Week 2: Send to 2,000 most-engaged subscribers/day</p>
+<p>Week 3: Send to 10,000 subscribers/day</p>
+<p>Week 4: Send to 50,000 subscribers/day</p>
+<p>Week 5+: Full volume (millions/day)</p>
+<p>```</p>
+<p><strong>Why warmup matters:</strong></p>
+<ul>
+<li>Cold IPs with sudden high volume = ❌ Spam filters triggered</li>
+<li>Gradually warmed IPs = ✅ Trusted by email providers</li>
+</ul>
+<hr>
+<h3>STEP 3: Channel Configuration (Surface Setup)</h3>
+<h4>What is it?</h4>
+<p>A <strong>Channel Configuration</strong> (previously called a &quot;channel surface&quot; or &quot;message preset&quot;) is a <strong>pre-configured set of technical parameters</strong> that defines HOW emails are sent — the sending infrastructure, authentication, tracking, and compliance settings.</p>
+<p>Think of it as the <strong>&quot;profile&quot; for sending emails</strong> that gets reused across multiple journeys and campaigns.</p>
+<h4>How to Create an Email Channel Configuration</h4>
+<p><strong>Prerequisites:</strong></p>
+<ul>
+<li>Subdomain delegated ✅</li>
+<li>IP Pool created ✅</li>
+<li><strong>Manage Messages Presets</strong> permission ✅</li>
+</ul>
+<p><strong>Steps:</strong></p>
+<p>1. Go to <strong>Administration</strong> → <strong>Channels</strong> → <strong>Channel Configurations</strong></p>
+<p>2. Click <strong>Create channel configuration</strong></p>
+<p><img src="https://raw.githubusercontent.com/AdobeDocs/journey-optimizer.en/main/help/using/configuration/assets/preset-create.png" alt="Preset Create"></p>
+<p>3. Enter a <strong>Name</strong> (e.g., &quot;Marketing Email - US&quot;)</p>
+<p>4. Select <strong>Email</strong> as the channel type</p>
+<p><img src="https://raw.githubusercontent.com/AdobeDocs/journey-optimizer.en/main/help/using/configuration/assets/preset-general.png" alt="Preset General"></p>
+<p>5. Configure the following technical parameters:</p>
+<h4>Email Configuration Parameters</h4>
+<h5>Sender Information</h5>
+<p>```</p>
+<p>From Name: &quot;Luma Brand&quot; (shown in inbox)</p>
+<p>From Email: marketing@email.yourbrand.com</p>
+<p>Reply-to Email: support@yourbrand.com</p>
+<p>Error Email: bounces@email.yourbrand.com</p>
+<p>```</p>
+<h5>Subdomain &amp; IP Pool Assignment</h5>
+<p>```</p>
+<p>Subdomain: email.yourbrand.com ← select delegated subdomain</p>
+<p>IP Pool: Marketing Email Pool ← select IP pool</p>
+<p>```</p>
+<h5>Email Type</h5>
+<p>```</p>
+<p>Email Type:</p>
+<p>├── Marketing → Subject to frequency capping and unsubscribe</p>
+<p>└── Transactional → Bypasses frequency caps (for order confirmations, etc.)</p>
+<p>```</p>
+<h5>Unsubscribe Management</h5>
+<p>```</p>
+<p>Unsubscribe Options:</p>
+<p>├── One-click unsubscribe (List-Unsubscribe header) → ✅ Enable (recommended)</p>
+<p>├── Unsubscribe link in footer → ✅ Required for CAN-SPAM/GDPR</p>
+<p>└── Opt-out landing page URL → Configure custom unsubscribe page</p>
+<p>```</p>
+<h5>Retry Settings</h5>
+<p>```</p>
+<p>Retry Period: 3.5 days (default)</p>
+<p>Retry Frequency: Every hour</p>
+<p>Max Retries: 84 attempts</p>
+<p>```</p>
+<p><strong>Why retry matters:</strong></p>
+<ul>
+<li>Email delivery sometimes fails temporarily (inbox full, server down)</li>
+<li>AJO automatically retries within the configured period</li>
+<li>After max retries, email is marked as bounced</li>
+</ul>
+<h5>Tracking Parameters</h5>
+<p>```</p>
+<p>URL Tracking:</p>
+<p>├── Enable click tracking: ✅ YES</p>
+<p>├── Enable open tracking: ✅ YES</p>
+<p>├── Custom UTM parameters:</p>
+<p>│   ├── utm_source = AJO</p>
+<p>│   ├── utm_medium = email</p>
+<p>│   └── utm_campaign = {{campaign.name}}</p>
+<p>└── Tracking subdomain: click.email.yourbrand.com</p>
+<p>```</p>
+<h5>BCC (Blind Carbon Copy)</h5>
+<p>```</p>
+<p>BCC Email:</p>
+<p>├── Enable BCC: ✅ YES (optional - for compliance/archiving)</p>
+<p>└── BCC Address: archive@yourbrand.com</p>
+<p>```</p>
+<h5>Seed List</h5>
+<p>```</p>
+<p>Seed List (optional):</p>
+<p>├── Add internal email addresses</p>
+<p>├── These receive a copy of every send</p>
+<p>└── Used for QA and compliance monitoring</p>
+<p>```</p>
+<p>6. Assign <strong>Marketing Action</strong> for data governance:</p>
+<p><img src="https://raw.githubusercontent.com/AdobeDocs/journey-optimizer.en/main/help/using/configuration/assets/surface-marketing-action.png" alt="Surface Marketing Action"></p>
+<p>7. Click <strong>Submit</strong></p>
+<p><img src="https://raw.githubusercontent.com/AdobeDocs/journey-optimizer.en/main/help/using/configuration/assets/preset-submit.png" alt="Preset Submit"></p>
+<p>8. Configuration status moves to ✅ <strong>Active</strong></p>
+<hr>
+<h3>STEP 4: Create Journey or Campaign</h3>
+<p>Once the channel configuration is active, you create the <strong>delivery vehicle</strong> — either a <strong>Journey</strong> or a <strong>Campaign</strong>.</p>
+<h4>Option A: Journey (Event-Triggered Email)</h4>
+<p><strong>Use when:</strong> Email should be sent in response to a customer event</p>
+<p>```</p>
+<p>Example: Cart Abandonment Journey</p>
+<p>Event: User adds items to cart but doesn&#x27;t purchase</p>
+<p>↓</p>
+<p>Wait: 1 hour</p>
+<p>↓</p>
+<p>Condition: Cart still abandoned?</p>
+<p>├── YES → Send &quot;Cart Abandonment Email&quot;</p>
+<p>│          ↓</p>
+<p>│        Wait 24 hours</p>
+<p>│          ↓</p>
+<p>│        Purchased?</p>
+<p>│          ├── YES → Exit Journey (success)</p>
+<p>│          └── NO → Send &quot;Final Reminder Email&quot;</p>
+<p>│</p>
+<p>└── NO → Exit Journey (purchased)</p>
+<p>```</p>
+<p><strong>How to create a Journey:</strong></p>
+<p>1. Go to <strong>Journey Management</strong> → <strong>Journeys</strong></p>
+<p>2. Click <strong>Create Journey</strong></p>
+<p>3. Name the journey (e.g., &quot;Cart Abandonment - Email&quot;)</p>
+<p>4. Set journey properties:</p>
+<ul>
+<li><strong>Timeout</strong>: Maximum journey duration</li>
+<li><strong>Re-entry</strong>: Allow profiles to re-enter? YES/NO</li>
+<li><strong>Re-entry wait period</strong>: If yes, how long to wait</li>
+</ul>
+<p>5. Add <strong>Event trigger</strong> (e.g., `cartAbandoned`)</p>
+<p>6. Drag and drop <strong>Email action</strong> onto canvas</p>
+<p>7. Select the <strong>Channel Configuration</strong> created in Step 3</p>
+<p>8. Create or select email <strong>content</strong></p>
+<h4>Option B: Campaign (Scheduled Email)</h4>
+<p><strong>Use when:</strong> Email should be sent to an audience at a scheduled time</p>
+<p>```</p>
+<p>Example: Monthly Newsletter Campaign</p>
+<p>Define Audience: &quot;All Newsletter Subscribers&quot;</p>
+<p>↓</p>
+<p>Create Email Content: Monthly newsletter template</p>
+<p>↓</p>
+<p>Schedule: First Monday of every month, 9:00 AM local time</p>
+<p>↓</p>
+<p>Execute: AJO sends to all qualifying profiles at scheduled time</p>
+<p>↓</p>
+<p>Measure: Opens, clicks, conversions</p>
+<p>```</p>
+<p><strong>How to create a Campaign:</strong></p>
+<p>1. Go to <strong>Journey Management</strong> → <strong>Campaigns</strong></p>
+<p>2. Click <strong>Create Campaign</strong></p>
+<p>3. Select campaign type:</p>
+<ul>
+<li><strong>Scheduled</strong> — for newsletter/promotional</li>
+<li><strong>API-Triggered</strong> — for transactional messages</li>
+</ul>
+<p>4. Select <strong>Email</strong> as the action</p>
+<p>5. Select the <strong>Channel Configuration</strong> from Step 3</p>
+<p>6. Define <strong>Audience</strong> (AEP segment or inline audience)</p>
+<p>7. Set <strong>Schedule</strong> (date, time, timezone, recurrence)</p>
+<p>8. Create <strong>email content</strong></p>
+<hr>
+<h3>STEP 5: Build Email Content</h3>
+<p>AJO provides a powerful <strong>Email Designer</strong> for creating email content.</p>
+<h4>Accessing the Email Designer</h4>
+<p>1. In your journey (email action) or campaign, click <strong>Edit Content</strong></p>
+<p>2. The Email Designer opens with options:</p>
+<p>```</p>
+<p>Content Creation Options:</p>
+<p>├── Design from scratch → Drag-and-drop canvas</p>
+<p>├── Start from template → Choose from template library</p>
+<p>├── Import HTML → Paste or upload custom HTML</p>
+<p>└── Select saved content → Reuse existing emails</p>
+<p>```</p>
+<h4>Email Designer Components</h4>
+<h5>Layout Structures</h5>
+<p>```</p>
+<p>Available Layout Structures:</p>
+<p>├── 1 Column</p>
+<p>├── 2 Columns (50/50)</p>
+<p>├── 2 Columns (33/67)</p>
+<p>├── 3 Columns</p>
+<p>├── 4 Columns</p>
+<p>└── Custom structure</p>
+<p>```</p>
+<h5>Content Blocks</h5>
+<p>```</p>
+<p>Available Content Blocks:</p>
+<p>├── Text → Paragraphs, headings, lists</p>
+<p>├── Image → Static images, GIFs</p>
+<p>├── Button → CTA buttons with links</p>
+<p>├── Divider → Horizontal lines</p>
+<p>├── HTML → Custom HTML code block</p>
+<p>├── Video → Embedded video thumbnails</p>
+<p>├── Social → Social media icons/links</p>
+<p>└── Navigation → Header navigation links</p>
+<p>```</p>
+<h5>Email Header Settings</h5>
+<p>```</p>
+<p>Header Settings:</p>
+<p>├── Subject Line: &quot;Your cart is waiting! 🛒&quot;</p>
+<p>├── Preview Text: &quot;Complete your purchase and save 10%&quot;</p>
+<p>├── From Name: &quot;Luma Brand&quot; (pulled from channel config)</p>
+<p>└── From Email: marketing@email.yourbrand.com (from config)</p>
+<p>```</p>
+<hr>
+<h3>STEP 6: Personalization &amp; Dynamic Content</h3>
+<h4>Expression Editor</h4>
+<p>AJO uses the <strong>Expression Editor</strong> for personalization using <strong>profile attributes</strong>, <strong>event data</strong>, and <strong>decision management offers</strong>.</p>
+<h5>Personalization Syntax</h5>
+<p>```</p>
+<p>Hello {{profile.person.name.firstName}}!</p>
+<p>Your order {{event.commerceOrder.orderNumber}} has been confirmed.</p>
+<p>You have {{profile.loyaltyPoints}} points in your account.</p>
+<p>```</p>
+<h4>Dynamic Content Blocks</h4>
+<p>Create <strong>content variations</strong> based on conditions:</p>
+<p>```</p>
+<p>Dynamic Content Block: Hero Banner</p>
+<p>Condition 1: IF profile.loyaltyTier = &quot;Gold&quot;</p>
+<p>→ Show: Gold Member Banner Image</p>
+<p>→ Text: &quot;Exclusive Gold Member Offer: 30% Off&quot;</p>
+<p>Condition 2: IF profile.loyaltyTier = &quot;Silver&quot;</p>
+<p>→ Show: Silver Member Banner Image</p>
+<p>→ Text: &quot;Silver Member Offer: 20% Off&quot;</p>
+<p>Default: (No tier)</p>
+<p>→ Show: Generic Banner Image</p>
+<p>→ Text: &quot;Special Offer: 10% Off&quot;</p>
+<p>```</p>
+<h4>Offer Integration (Decision Management)</h4>
+<p>```</p>
+<p>Email Template includes Decision Activity</p>
+<p>↓</p>
+<p>At send time, Decision Engine evaluates:</p>
+<p>├── Profile eligibility for each offer</p>
+<p>├── AI ranking score for eligible offers</p>
+<p>└── Frequency cap status for each offer</p>
+<p>↓</p>
+<p>Best offer is dynamically inserted into email</p>
+<p>↓</p>
+<p>Each recipient sees their personalized offer</p>
+<p>```</p>
+<h4>Personalization Examples</h4>
+<p>| Use Case | Expression |</p>
+<p>|---|---|</p>
+<p>| First name greeting | `{{profile.person.name.firstName}}` |</p>
+<p>| Abandoned cart items | `{{event.cartItems[0].productName}}` |</p>
+<p>| Loyalty points balance | `{{profile.loyaltyPoints}}` |</p>
+<p>| Last purchase date | `{{profile.lastPurchaseDate}}` |</p>
+<p>| Recommended product | `{{offer.content.productName}}` |</p>
+<p>| Unsubscribe link | `{{profile.unsubscribeLink}}` |</p>
+<hr>
+<h3>STEP 7: Test &amp; Preview</h3>
+<p>Before publishing, AJO provides multiple <strong>testing tools</strong> to validate your email.</p>
+<h4>Preview Mode</h4>
+<p>1. Click <strong>Simulate Content</strong> in the Email Designer</p>
+<p>2. Select a <strong>test profile</strong> (real or simulated)</p>
+<p>3. See how the email renders with actual profile data</p>
+<p>4. Switch between <strong>desktop and mobile</strong> preview</p>
+<p>5. Check <strong>subject line and preview text</strong> rendering</p>
+<h4>Send Test Emails (Proofs)</h4>
+<p>1. Click <strong>Send Test</strong> (or <strong>Send Proof</strong>)</p>
+<p>2. Select recipients for the test send:</p>
+<p>```</p>
+<p>Test Recipients:</p>
+<p>├── Internal team email addresses</p>
+<p>├── Seed list addresses</p>
+<p>└── Specific test profile emails</p>
+<p>```</p>
+<p>3. Click <strong>Send Email Test</strong></p>
+</article>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "can you expain the workflow for email channel?", "acceptedAnswer": {"@type": "Answer", "text": "Email Channel Workflow in Adobe Journey Optimizer Overview The email channel in AJO follows a structured workflow from initial configuration all the way to delivery and measurement. Every step builds on the previous one. \u25b6 Watch: Configure an Email Channel in Journey Optimizer(https://video.tv.adobe.com/v/334343?quality=12&learn=on) --- Complete Email Channel Workflow STEP 1: SUBDOMAIN DELEGATION \u2193 STEP 2: IP POOL CREATION \u2193 STEP 3: CHANNEL CONFIGURATION (Surface Setup) \u2193 STEP 4: CREATE JOURNEY OR CAMPAIGN \u2193 STEP 5: BUILD EMAIL CONTENT \u2193 STEP 6: PERSONALIZATION & DYNAMIC CONTENT \u2193 STEP 7: TEST & PREVIEW \u2193 STEP 8: ACTIVATE / PUBLISH \u2193 STEP 9: MONITOR & REPORT --- STEP 1: Subdomain Delegation What is it? Before sending any emails, you must delegate a subdomain to Adobe so that AJO can manage sending infrastructure, tracking URLs, and mirror page hosting on your behalf. Why is it needed? - \u2705 Establishes sender reputation with email providers (Gmail, Outlook, Yahoo) - \u2705 Enables DMARC, DKIM, SPF email authentication records - \u2705 Powers tracking URLs for click and open tracking - \u2705 Hosts mirror page URLs for email preview - \u2705 Protects your main domain reputation by isolating marketing email sending Types of Subdomain Delegation | Type | Description | Best For | |---|---|---| | Full Delegation | Adobe fully manages the subdomain DNS | Recommended \u2014 simplest approach | | CNAME Delegation | You keep DNS control, point to Adobe via CNAME | Organizations with strict DNS policies | | Custom Delegation | Partially delegated with custom setup | Advanced use cases | How to Delegate a Subdomain Prerequisites: - System Administrator role in AJO - Access to your organization's DNS records Steps: 1. In AJO left navigation, go to Administration \u2192 Channels \u2192 Subdomains 2. Click Set up subdomain 3. Choose delegation type: Full delegation (recommended) 4. Enter your subdomain name (e.g., email.yourbrand.com) 5. AJO generates the DNS records required 6. Copy the DNS records and add them\u2026"}}]}</script></div>
+  </body>
+</html>

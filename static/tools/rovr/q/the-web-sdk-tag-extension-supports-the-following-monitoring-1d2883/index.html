@@ -1,0 +1,227 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/png" href="/tools/rovr/rovrlogo.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="build-date" content="2026-06-10" />
+    
+    
+    <script src="https://assets.adobedtm.com/204118644db8/290ae1adb65a/launch-e5ec7bf1a1ef-development.min.js" async></script>
+    <script type="module" crossorigin src="/tools/rovr/assets/index-Cnf1TPK2.js"></script>
+    <link rel="stylesheet" crossorigin href="/tools/rovr/assets/index-D1POE5XP.css">
+  <title>The Web SDK tag extension supports the following monitoring hooks: | Rovr</title>
+<meta name="description" content="Web SDK Tag Extension Monitoring Hooks Available Monitoring Hooks The Web SDK tag extension supports the following monitoring hooks that allow you to capture…" />
+<link rel="canonical" href="https://thelearningproject.in/tools/rovr/q/the-web-sdk-tag-extension-supports-the-following-monitoring-1d2883" />
+<meta property="og:title" content="The Web SDK tag extension supports the following monitoring hooks:" />
+<meta property="og:description" content="Web SDK Tag Extension Monitoring Hooks Available Monitoring Hooks The Web SDK tag extension supports the following monitoring hooks that allow you to capture…" />
+<meta property="og:url" content="https://thelearningproject.in/tools/rovr/q/the-web-sdk-tag-extension-supports-the-following-monitoring-1d2883" />
+<meta property="og:type" content="article" />
+<meta property="og:image" content="https://thelearningproject.in/tools/rovr/rovrlogo.png" />
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="The Web SDK tag extension supports the following monitoring hooks:" />
+<meta name="twitter:description" content="Web SDK Tag Extension Monitoring Hooks Available Monitoring Hooks The Web SDK tag extension supports the following monitoring hooks that allow you to capture…" />
+</head>
+  <body>
+    <div id="root"><article><h1>The Web SDK tag extension supports the following monitoring hooks:</h1>
+<h2>Web SDK Tag Extension Monitoring Hooks</h2>
+<h3>Available Monitoring Hooks</h3>
+<p>The Web SDK tag extension supports the following monitoring hooks that allow you to capture and monitor all SDK system events:</p>
+<p>| Hook Event | Triggered When | Use Case |</p>
+<p>|---|---|---|</p>
+<p>| <strong>onBeforeConfigure</strong> | Before SDK configure command | Modify configuration before initialization |</p>
+<p>| <strong>onAfterConfigure</strong> | After SDK configure command completes | Verify configuration was applied |</p>
+<p>| <strong>onBeforeSendEvent</strong> | Before sendEvent is processed | Modify XDM data before sending |</p>
+<p>| <strong>onAfterSendEvent</strong> | After sendEvent completes | Monitor event success/failure |</p>
+<p>| <strong>onBeforeDatastreamConfiguration</strong> | Before datastream config applied | Inspect datastream settings |</p>
+<p>| <strong>onAfterDatastreamConfiguration</strong> | After datastream config applied | Verify routing configuration |</p>
+<p>| <strong>onSendEventResponse</strong> | When Edge Network response received | Inspect personalization decisions |</p>
+<p>| <strong>onNetworkRequest</strong> | When network request made | Monitor all Edge Network calls |</p>
+<p>| <strong>onNetworkResponse</strong> | When network response received | Inspect response data |</p>
+<p>| <strong>onNetworkError</strong> | When network error occurs | Debug connection issues |</p>
+<p>| <strong>onConsentChange</strong> | When consent preference changes | Track consent changes |</p>
+<p>| <strong>onRequestStart</strong> | Request processing begins | Time request duration |</p>
+<p>| <strong>onRequestComplete</strong> | Request processing ends | Calculate processing time |</p>
+<h4>Accessing Monitoring Hooks</h4>
+<p>Monitoring hooks are accessed via the <strong>global `__alloyMonitors` object</strong>:</p>
+<p>```javascript</p>
+<p>// Define monitoring hooks BEFORE Web SDK loads</p>
+<p>window.__alloyMonitors = window.__alloyMonitors || [];</p>
+<p>window.__alloyMonitors.push({</p>
+<p>// Hook for sendEvent</p>
+<p>onBeforeSendEvent: function(options) {</p>
+<p>console.log(&quot;sendEvent called with:&quot;, options);</p>
+<p>console.log(&quot;XDM Data:&quot;, options.xdm);</p>
+<p>},</p>
+<p>// Hook for network requests</p>
+<p>onNetworkRequest: function(request) {</p>
+<p>console.log(&quot;Network request:&quot;, request.url);</p>
+<p>console.log(&quot;Request payload:&quot;, request.body);</p>
+<p>},</p>
+<p>// Hook for network responses</p>
+<p>onNetworkResponse: function(response) {</p>
+<p>console.log(&quot;Network response status:&quot;, response.status);</p>
+<p>console.log(&quot;Response data:&quot;, response.body);</p>
+<p>},</p>
+<p>// Hook for errors</p>
+<p>onNetworkError: function(error) {</p>
+<p>console.error(&quot;Network error:&quot;, error.message);</p>
+<p>}</p>
+<p>});</p>
+<p>```</p>
+<h4>Practical Monitoring Hook Examples</h4>
+<h5>Example 1: Monitor All sendEvent Calls</h5>
+<p>```javascript</p>
+<p>window.__alloyMonitors = window.__alloyMonitors || [];</p>
+<p>window.__alloyMonitors.push({</p>
+<p>onBeforeSendEvent: function(options) {</p>
+<p>console.group(&quot;📤 Web SDK sendEvent&quot;);</p>
+<p>console.log(&quot;Event Type:&quot;, options.xdm?.eventType);</p>
+<p>console.log(&quot;Full Payload:&quot;, JSON.stringify(options, null, 2));</p>
+<p>console.groupEnd();</p>
+<p>// Track in custom analytics</p>
+<p>if (window.myCustomAnalytics) {</p>
+<p>myCustomAnalytics.trackEvent({</p>
+<p>type: &quot;web-sdk-event&quot;,</p>
+<p>eventType: options.xdm?.eventType</p>
+<p>});</p>
+<p>}</p>
+<p>},</p>
+<p>onAfterSendEvent: function(result) {</p>
+<p>console.log(&quot;✅ sendEvent succeeded:&quot;, result);</p>
+<p>}</p>
+<p>});</p>
+<p>```</p>
+<h5>Example 2: Monitor Consent Changes</h5>
+<p>```javascript</p>
+<p>window.__alloyMonitors = window.__alloyMonitors || [];</p>
+<p>window.__alloyMonitors.push({</p>
+<p>onConsentChange: function(consent) {</p>
+<p>console.group(&quot;🔐 Consent Changed&quot;);</p>
+<p>console.log(&quot;New Consent Value:&quot;, consent);</p>
+<p>console.log(&quot;Timestamp:&quot;, new Date().toISOString());</p>
+<p>console.groupEnd();</p>
+<p>// Log to your CMP/consent tracking system</p>
+<p>if (window.consentLogger) {</p>
+<p>consentLogger.logConsentChange({</p>
+<p>consentValue: consent,</p>
+<p>timestamp: new Date().toISOString()</p>
+<p>});</p>
+<p>}</p>
+<p>}</p>
+<p>});</p>
+<p>```</p>
+<h5>Example 3: Monitor Network Performance</h5>
+<p>```javascript</p>
+<p>window.__alloyMonitors = window.__alloyMonitors || [];</p>
+<p>window.__alloyMonitors.push({</p>
+<p>onRequestStart: function(request) {</p>
+<p>window._sdkRequestStart = performance.now();</p>
+<p>},</p>
+<p>onRequestComplete: function(response) {</p>
+<p>var duration = performance.now() - window._sdkRequestStart;</p>
+<p>console.log(&quot;🚀 Web SDK Request Duration:&quot;, duration + &quot;ms&quot;);</p>
+<p>// Alert if response slow</p>
+<p>if (duration &gt; 500) {</p>
+<p>console.warn(&quot;⚠️ Slow Web SDK response:&quot;, duration + &quot;ms&quot;);</p>
+<p>}</p>
+<p>},</p>
+<p>onNetworkError: function(error) {</p>
+<p>console.error(&quot;❌ Network Error:&quot;, error);</p>
+<p>// Send to error tracking service</p>
+<p>if (window.errorTracker) {</p>
+<p>errorTracker.captureError({</p>
+<p>type: &quot;web-sdk-network-error&quot;,</p>
+<p>error: error.message</p>
+<p>});</p>
+<p>}</p>
+<p>}</p>
+<p>});</p>
+<p>```</p>
+<h5>Example 4: Monitor Personalization Decisions</h5>
+<p>```javascript</p>
+<p>window.__alloyMonitors = window.__alloyMonitors || [];</p>
+<p>window.__alloyMonitors.push({</p>
+<p>onSendEventResponse: function(response) {</p>
+<p>console.group(&quot;🎯 Personalization Decisions&quot;);</p>
+<p>if (response.decisions &amp;&amp; response.decisions.length &gt; 0) {</p>
+<p>response.decisions.forEach(function(decision, index) {</p>
+<p>console.log(</p>
+<p>&quot;Decision &quot; + (index + 1) + &quot;:&quot;,</p>
+<p>decision.id,</p>
+<p>&quot;Scope:&quot;,</p>
+<p>decision.scope</p>
+<p>);</p>
+<p>});</p>
+<p>} else {</p>
+<p>console.log(&quot;No personalization decisions returned&quot;);</p>
+<p>}</p>
+<p>console.groupEnd();</p>
+<p>}</p>
+<p>});</p>
+<p>```</p>
+<hr>
+<h3>Tool 6: Query Service Validation</h3>
+<p>After debugging Web SDK in the browser, validate data reached AEP correctly:</p>
+<h4>Querying Ingested Events</h4>
+<p>```sql</p>
+<p>-- Check if events reached AEP</p>
+<p>SELECT</p>
+<p>timestamp,</p>
+<p>eventType,</p>
+<p>identityMap,</p>
+<p>web.webPageDetails.name as page_name,</p>
+<p>_id</p>
+<p>FROM</p>
+<p>web_events_dataset</p>
+<p>WHERE</p>
+<p>timestamp &gt; NOW() - INTERVAL &#x27;1 hour&#x27;</p>
+<p>AND eventType = &#x27;commerce.productViews&#x27;</p>
+<p>ORDER BY</p>
+<p>timestamp DESC</p>
+<p>LIMIT 10;</p>
+<p>```</p>
+<p><strong>Expected Results:</strong></p>
+<p>```</p>
+<p>timestamp               eventType                    page_name           _id</p>
+<p>────────────────────────────────────────────────────────────────────────────</p>
+<p>2024-01-15 10:05:23    commerce.productViews        Product Detail      abc123</p>
+<p>2024-01-15 10:03:45    commerce.productViews        Product Detail      def456</p>
+<p>2024-01-15 10:01:12    commerce.productViews        Product Detail      ghi789</p>
+<p>```</p>
+<h4>Checking for Data Quality Issues</h4>
+<p>```sql</p>
+<p>-- Find events missing required fields</p>
+<p>SELECT</p>
+<p>timestamp,</p>
+<p>eventType,</p>
+<p>CASE</p>
+<p>WHEN productListItems IS NULL THEN &#x27;Missing productListItems&#x27;</p>
+<p>WHEN productListItems[0].SKU IS NULL THEN &#x27;Missing SKU&#x27;</p>
+<p>WHEN productListItems[0].name IS NULL THEN &#x27;Missing product name&#x27;</p>
+<p>WHEN productListItems[0].priceTotal IS NULL THEN &#x27;Missing price&#x27;</p>
+<p>ELSE &#x27;Complete&#x27;</p>
+<p>END as data_quality</p>
+<p>FROM</p>
+<p>web_events_dataset</p>
+<p>WHERE</p>
+<p>timestamp &gt; NOW() - INTERVAL &#x27;24 hours&#x27;</p>
+<p>AND eventType = &#x27;commerce.productViews&#x27;</p>
+<p>GROUP BY</p>
+<p>data_quality</p>
+<p>ORDER BY</p>
+<p>COUNT(*) DESC;</p>
+<p>```</p>
+<hr>
+<h3>Production Debugging Checklist</h3>
+<p>Use this checklist when debugging Web SDK implementations in production:</p>
+<p>| Step | Tool | What to Check | Expected Result |</p>
+<p>|---|---|---|---|</p>
+<p>| <strong>1. Verify Tags Load</strong> | Browser Console | Check embed code present | No 404 errors on script |</p>
+<p>| <strong>2. Check SDK Initialize</strong> | AEP Debugger | Web SDK tab shows events | configure event visible |</p>
+<p>| <strong>3. Monitor Events</strong> | AEP Assurance | Real-time event stream | Events appearing in real-time |</p>
+<p>| <strong>4. Inspect XDM Data</strong> | AEP Debugger | Expand event details | XDM</p>
+</article>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "The Web SDK tag extension supports the following monitoring hooks:", "acceptedAnswer": {"@type": "Answer", "text": "Web SDK Tag Extension Monitoring Hooks Available Monitoring Hooks The Web SDK tag extension supports the following monitoring hooks that allow you to capture and monitor all SDK system events: | Hook Event | Triggered When | Use Case | |---|---|---| | onBeforeConfigure | Before SDK configure command | Modify configuration before initialization | | onAfterConfigure | After SDK configure command completes | Verify configuration was applied | | onBeforeSendEvent | Before sendEvent is processed | Modify XDM data before sending | | onAfterSendEvent | After sendEvent completes | Monitor event success/failure | | onBeforeDatastreamConfiguration | Before datastream config applied | Inspect datastream settings | | onAfterDatastreamConfiguration | After datastream config applied | Verify routing configuration | | onSendEventResponse | When Edge Network response received | Inspect personalization decisions | | onNetworkRequest | When network request made | Monitor all Edge Network calls | | onNetworkResponse | When network response received | Inspect response data | | onNetworkError | When network error occurs | Debug connection issues | | onConsentChange | When consent preference changes | Track consent changes | | onRequestStart | Request processing begins | Time request duration | | onRequestComplete | Request processing ends | Calculate processing time | Accessing Monitoring Hooks Monitoring hooks are accessed via the global alloyMonitors object: javascript // Define monitoring hooks BEFORE Web SDK loads window.alloyMonitors = window.alloyMonitors || ; window.alloyMonitors.push({ // Hook for sendEvent onBeforeSendEvent: function(options) { console.log(\"sendEvent called with:\", options); console.log(\"XDM Data:\", options.xdm); }, // Hook for network requests onNetworkRequest: function(request) { console.log(\"Network request:\", request.url); console.log(\"Request payload:\", request.body); }, // Hook for network responses onNetworkResponse: function(response) {\u2026"}}]}</script></div>
+  </body>
+</html>
