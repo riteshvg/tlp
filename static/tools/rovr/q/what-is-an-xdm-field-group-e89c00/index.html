@@ -11,52 +11,47 @@
     <script type="module" crossorigin src="/tools/rovr/assets/index-Cnf1TPK2.js"></script>
     <link rel="stylesheet" crossorigin href="/tools/rovr/assets/index-D1POE5XP.css">
   <title>What is an XDM field group? | Rovr</title>
-<meta name="description" content="What Is an XDM Field Group? An XDM field group (also called a &quot;schema field group&quot; or &quot;mixin&quot;) is a reusable collection of related fields that you can add to…" />
+<meta name="description" content="What is an XDM Field Group? An XDM field group (also called a schema field group) is a reusable component in Adobe Experience Platform that defines a…" />
 <link rel="canonical" href="https://thelearningproject.in/tools/rovr/q/what-is-an-xdm-field-group-e89c00" />
 <meta property="og:title" content="What is an XDM field group?" />
-<meta property="og:description" content="What Is an XDM Field Group? An XDM field group (also called a &quot;schema field group&quot; or &quot;mixin&quot;) is a reusable collection of related fields that you can add to…" />
+<meta property="og:description" content="What is an XDM Field Group? An XDM field group (also called a schema field group) is a reusable component in Adobe Experience Platform that defines a…" />
 <meta property="og:url" content="https://thelearningproject.in/tools/rovr/q/what-is-an-xdm-field-group-e89c00" />
 <meta property="og:type" content="article" />
 <meta property="og:image" content="https://thelearningproject.in/tools/rovr/rovrlogo.png" />
 <meta name="twitter:card" content="summary" />
 <meta name="twitter:title" content="What is an XDM field group?" />
-<meta name="twitter:description" content="What Is an XDM Field Group? An XDM field group (also called a &quot;schema field group&quot; or &quot;mixin&quot;) is a reusable collection of related fields that you can add to…" />
+<meta name="twitter:description" content="What is an XDM Field Group? An XDM field group (also called a schema field group) is a reusable component in Adobe Experience Platform that defines a…" />
 </head>
   <body>
     <div id="root"><article><h1>What is an XDM field group?</h1>
-<h2>What Is an XDM Field Group?</h2>
-<p>An <strong>XDM field group</strong> (also called a &quot;schema field group&quot; or &quot;mixin&quot;) is a reusable collection of related fields that you can add to an Experience Data Model (XDM) schema. Field groups standardize how specific types of data are structured and named across Adobe Experience Platform and downstream services.</p>
-<hr>
-<h3>Core Purpose</h3>
-<p>Field groups allow you to:</p>
+<h3>What is an XDM Field Group?</h3>
+<p>An <strong>XDM field group</strong> (also called a schema field group) is a reusable component in Adobe Experience Platform that defines a collection of related fields. Think of it as a template or building block for XDM schemas.</p>
+<h4>Key Characteristics</h4>
 <ul>
-<li><strong>Reuse common data structures</strong> — Instead of defining the same fields repeatedly, add a pre-built field group to any schema that needs those fields.</li>
-<li><strong>Maintain consistency</strong> — All schemas using the same field group represent data the same way, enabling better data integration and analysis across AEP services.</li>
-<li><strong>Speed up schema creation</strong> — Start with Adobe&#x27;s pre-defined field groups rather than building from scratch.</li>
-<li><strong>Ensure compatibility</strong> — Use Adobe&#x27;s recommended field groups (like <strong>AEP Web SDK ExperienceEvent</strong> and <strong>Consumer Experience Event</strong>) to ensure your data works seamlessly with Web SDK, Analytics, Target, and other Adobe services.</li>
+<li><strong>Reusable</strong>: A single field group can be applied to multiple schemas, promoting consistency across your data structures</li>
+<li><strong>Modular</strong>: Field groups contain logically grouped fields that represent related data concepts</li>
+<li><strong>Standardized</strong>: XDM provides pre-built field groups for common business use cases, or you can create custom ones</li>
+<li><strong>Composable</strong>: You combine multiple field groups together with an XDM class to create a complete schema</li>
 </ul>
-<hr>
-<h3>Pre-defined vs. Custom Field Groups</h3>
-<p><strong>Pre-defined Field Groups</strong> — Adobe provides industry-standard field groups that cover common use cases (web events, commerce transactions, customer profiles, etc.). These are product-agnostic and follow naming conventions that work across all Adobe services.</p>
-<p><strong>Custom Field Groups</strong> — When your organization has data that doesn&#x27;t fit into pre-defined groups, you can create your own field group to capture those unique attributes and behaviors.</p>
-<hr>
-<h3>Common Pre-defined Field Groups for Web Data</h3>
-<p>When setting up XDM schemas for web data collection, Adobe recommends adding these two field groups:</p>
-<p>1. <strong>AEP Web SDK ExperienceEvent</strong> — Captures standard web interaction data (page views, clicks, scrolls, form submissions, etc.) in a format optimized for the Web SDK.</p>
-<p>2. <strong>Consumer Experience Event</strong> — Provides additional commerce and behavioral fields for tracking customer interactions across touchpoints.</p>
-<hr>
-<h3>How to Add a Field Group to Your Schema</h3>
-<p>1. Open the <strong>Schema Editor</strong> in the Adobe Experience Platform UI.</p>
-<p>2. Select your schema (or create a new one).</p>
-<p>3. In the <strong>Field groups</strong> section, click <strong>Add</strong>.</p>
-<p>4. Search for the field group by name (e.g., `AEP Web SDK ExperienceEvent`).</p>
-<p>5. Check the box next to the field group.</p>
-<p>6. Click <strong>Add field groups</strong> to include it in your schema.</p>
-<p>Once added, all the fields within that field group become part of your schema and can be populated with data.</p>
-<hr>
-<h3>Key Takeaway</h3>
-<p>Field groups are the building blocks of XDM schemas. They bundle related fields together so that your customer experience data follows standardized structures—enabling consistent data collection, integration, and activation across Adobe Experience Platform and all downstream analytics, personalization, and orchestration tools.</p>
-</article>
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "What is an XDM field group?", "acceptedAnswer": {"@type": "Answer", "text": "What Is an XDM Field Group? An XDM field group (also called a \"schema field group\" or \"mixin\") is a reusable collection of related fields that you can add to an Experience Data Model (XDM) schema. Field groups standardize how specific types of data are structured and named across Adobe Experience Platform and downstream services. --- Core Purpose Field groups allow you to: - Reuse common data structures \u2014 Instead of defining the same fields repeatedly, add a pre-built field group to any schema that needs those fields. - Maintain consistency \u2014 All schemas using the same field group represent data the same way, enabling better data integration and analysis across AEP services. - Speed up schema creation \u2014 Start with Adobe's pre-defined field groups rather than building from scratch. - Ensure compatibility \u2014 Use Adobe's recommended field groups (like AEP Web SDK ExperienceEvent and Consumer Experience Event) to ensure your data works seamlessly with Web SDK, Analytics, Target, and other Adobe services. --- Pre-defined vs. Custom Field Groups Pre-defined Field Groups \u2014 Adobe provides industry-standard field groups that cover common use cases (web events, commerce transactions, customer profiles, etc.). These are product-agnostic and follow naming conventions that work across all Adobe services. Custom Field Groups \u2014 When your organization has data that doesn't fit into pre-defined groups, you can create your own field group to capture those unique attributes and behaviors. --- Common Pre-defined Field Groups for Web Data When setting up XDM schemas for web data collection, Adobe recommends adding these two field groups: 1. AEP Web SDK ExperienceEvent \u2014 Captures standard web interaction data (page views, clicks, scrolls, form submissions, etc.) in a format optimized for the Web SDK. 2. Consumer Experience Event \u2014 Provides additional commerce and behavioral fields for tracking customer interactions across touchpoints. --- How to Add a Field Group to Your Schema 1. Open\u2026"}}]}</script></div>
+<h4>How Field Groups Work</h4>
+<p>Field groups are added to schemas that are based on XDM classes (like the XDM Individual Profile class). The class defines the base structure, and field groups add specialized fields on top of it.</p>
+<h4>Examples of Field Groups</h4>
+<p>Common Adobe-provided field groups include:</p>
+<ul>
+<li><strong>IdentityMap</strong> – Manages user identities and identity resolution</li>
+<li><strong>XDM Business Person Details</strong> – Business-specific profile information</li>
+<li><strong>XDM Business Person Components</strong> – Additional business person attributes</li>
+</ul>
+<h4>Custom vs. Standard Field Groups</h4>
+<ul>
+<li><strong>Standard/Pre-built</strong>: Adobe provides tested field groups for common scenarios</li>
+<li><strong>Custom</strong>: You can create your own field groups tailored to your organization&#x27;s specific data needs</li>
+</ul>
+<p>Field groups are essential for structuring how data flows into AEP and ensuring consistency across your schemas and datasets.</p>
+<h2>Sources</h2>
+<ul>
+<li><a href="https://experienceleague.adobe.com/en/docs/experience-platform/sources/connectors/adobe-applications/mapping/salesforce">Salesforce Mapping Fields</a></li>
+</ul></article>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "What is an XDM field group?", "acceptedAnswer": {"@type": "Answer", "text": "What is an XDM Field Group? An XDM field group (also called a schema field group) is a reusable component in Adobe Experience Platform that defines a collection of related fields. Think of it as a template or building block for XDM schemas. Key Characteristics - Reusable: A single field group can be applied to multiple schemas, promoting consistency across your data structures - Modular: Field groups contain logically grouped fields that represent related data concepts - Standardized: XDM provides pre-built field groups for common business use cases, or you can create custom ones - Composable: You combine multiple field groups together with an XDM class to create a complete schema How Field Groups Work Field groups are added to schemas that are based on XDM classes (like the XDM Individual Profile class). The class defines the base structure, and field groups add specialized fields on top of it. Examples of Field Groups Common Adobe-provided field groups include: - IdentityMap \u2013 Manages user identities and identity resolution - XDM Business Person Details \u2013 Business-specific profile information - XDM Business Person Components \u2013 Additional business person attributes Custom vs. Standard Field Groups - Standard/Pre-built: Adobe provides tested field groups for common scenarios - Custom: You can create your own field groups tailored to your organization's specific data needs Field groups are essential for structuring how data flows into AEP and ensuring consistency across your schemas and datasets."}}]}</script></div>
   </body>
 </html>

@@ -1,0 +1,128 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/png" href="/tools/rovr/rovrlogo.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="build-date" content="2026-06-10" />
+    
+    
+    <script src="https://assets.adobedtm.com/204118644db8/290ae1adb65a/launch-e5ec7bf1a1ef-development.min.js" async></script>
+    <script type="module" crossorigin src="/tools/rovr/assets/index-Cnf1TPK2.js"></script>
+    <link rel="stylesheet" crossorigin href="/tools/rovr/assets/index-D1POE5XP.css">
+  <title>How do I set up Delta Sharing in Adobe Experience Platform? | Rovr</title>
+<meta name="description" content="Setting Up Delta Sharing in Adobe Experience Platform !NOTE Delta Sharing is currently in limited beta and will only be available until July 15, 2026. Contact…" />
+<link rel="canonical" href="https://thelearningproject.in/tools/rovr/q/how-do-i-set-up-delta-sharing-in-adobe-experience-platform-44a8f1" />
+<meta property="og:title" content="How do I set up Delta Sharing in Adobe Experience Platform?" />
+<meta property="og:description" content="Setting Up Delta Sharing in Adobe Experience Platform !NOTE Delta Sharing is currently in limited beta and will only be available until July 15, 2026. Contact…" />
+<meta property="og:url" content="https://thelearningproject.in/tools/rovr/q/how-do-i-set-up-delta-sharing-in-adobe-experience-platform-44a8f1" />
+<meta property="og:type" content="article" />
+<meta property="og:image" content="https://thelearningproject.in/tools/rovr/rovrlogo.png" />
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="How do I set up Delta Sharing in Adobe Experience Platform?" />
+<meta name="twitter:description" content="Setting Up Delta Sharing in Adobe Experience Platform !NOTE Delta Sharing is currently in limited beta and will only be available until July 15, 2026. Contact…" />
+</head>
+  <body>
+    <div id="root"><article><h1>How do I set up Delta Sharing in Adobe Experience Platform?</h1>
+<h2>Setting Up Delta Sharing in Adobe Experience Platform</h2>
+<p>&gt;[!NOTE]</p>
+<p>&gt; Delta Sharing is currently in <strong>limited beta</strong> and will only be available until <strong>July 15, 2026</strong>. Contact your Adobe account team to request access before proceeding.</p>
+<hr>
+<h3>What Is Delta Sharing?</h3>
+<p>The <strong>Delta Sharing source connector</strong> allows you to securely connect to your <strong>Databricks Delta Sharing</strong> source and create <strong>virtual datasets</strong> in Adobe Experience Platform. Key characteristics:</p>
+<ul>
+<li>Shared data is <strong>not physically ingested or copied</strong> into the Experience Platform data lake</li>
+<li>Data is represented through <strong>relational schemas</strong> as virtual datasets</li>
+<li>You can query and work with external tables through Experience Platform services (Query Service / Data Distiller)</li>
+<li>Reduces duplicate data storage, lowers storage costs, and simplifies data management</li>
+</ul>
+<hr>
+<h3>Prerequisites</h3>
+<p>Before connecting, ensure the following requirements are met:</p>
+<h4>Databricks Provider Prerequisites</h4>
+<ul>
+<li>The <strong>Databricks Delta Sharing</strong> source must be configured and accessible</li>
+<li>Shared tables you want to use must be <strong>available through Delta Sharing</strong></li>
+<li>Shared tables must be representable through <strong>relational schemas</strong> in Experience Platform</li>
+</ul>
+<h4>Experience Platform Knowledge Requirements</h4>
+<p>Ensure you have a working understanding of the following Platform components:</p>
+<p>| Component | Purpose |</p>
+<p>|---|---|</p>
+<p>| <strong>Sources</strong> | Create connections and dataflows for supported external data sources |</p>
+<p>| <strong>XDM Schemas</strong> | Shared tables are represented in Experience Platform through relational schemas |</p>
+<p>| <strong>Datasets</strong> | Shared data is represented as virtual datasets |</p>
+<p>| <strong>Query Service / Data Distiller</strong> | Used to query and work with virtual datasets |</p>
+<hr>
+<h3>Setup Steps in the UI</h3>
+<h4>Step 1: Access the Sources Catalog</h4>
+<p>1. Log in to your <strong>Adobe Experience Platform</strong> instance</p>
+<p>2. Navigate to the <strong>Sources</strong> section from the left navigation</p>
+<p>3. Browse the sources catalog to locate the <strong>Delta Sharing</strong> connector</p>
+<h4>Step 2: Review Schema Structure</h4>
+<p>&gt;[!IMPORTANT]</p>
+<p>&gt; Carefully review your <strong>schema structure</strong> before proceeding. Once you move forward, you will <strong>no longer be able to make changes</strong> to your schema.</p>
+<ul>
+<li>Ensure your shared tables map correctly to the relational schema representation in Experience Platform</li>
+<li>Confirm the schema aligns with your downstream use cases in Query Service or Data Distiller</li>
+</ul>
+<h4>Step 3: Connect Your Databricks Delta Sharing Account</h4>
+<p>1. Select the <strong>Delta Sharing</strong> source connector from the catalog</p>
+<p>2. Provide your <strong>Databricks Delta Sharing</strong> connection credentials</p>
+<p>3. Validate the connection to confirm access to your shared tables</p>
+<h4>Step 4: Configure Virtual Datasets</h4>
+<ul>
+<li>Select the shared tables you want to represent as virtual datasets in Experience Platform</li>
+<li>Map the tables to the appropriate <strong>XDM relational schemas</strong></li>
+<li>Virtual datasets will be created without physically copying source data into Platform</li>
+</ul>
+<h4>Step 5: Query with Query Service or Data Distiller</h4>
+<p>Once configured, use <strong>Query Service</strong> or <strong>Data Distiller</strong> to:</p>
+<ul>
+<li>Query virtual datasets as if they were native Platform datasets</li>
+<li>Join shared external data with other Experience Platform data sources</li>
+<li>Build downstream workflows, segments, or analytics use cases</li>
+</ul>
+<hr>
+<h3>Key Limitations to Plan Around</h3>
+<p>| Limitation | Detail |</p>
+<p>|---|---|</p>
+<p>| <strong>Beta availability</strong> | Only available until July 15, 2026 |</p>
+<p>| <strong>No physical ingestion</strong> | Data is not copied into the Platform data lake |</p>
+<p>| <strong>Schema immutability</strong> | Schema cannot be changed after initial setup |</p>
+<p>| <strong>Relational schema requirement</strong> | Shared tables must be representable as relational schemas |</p>
+<p>| <strong>Access requirement</strong> | Must contact Adobe account team for beta access |</p>
+<hr>
+<h3>Summary Architecture</h3>
+<p>```</p>
+<p>Databricks Delta Sharing ──► AEP Delta Sharing Source Connector</p>
+<p>│</p>
+<p>▼</p>
+<p>Virtual Datasets (no physical copy)</p>
+<p>│</p>
+<p>▼</p>
+<p>Query Service / Data Distiller ──► Downstream Analytics &amp; Workflows</p>
+<p>```</p>
+<hr>
+<h3>Next Steps</h3>
+<ul>
+<li>Read the full <strong>Delta Sharing overview</strong> documentation before connecting your account to ensure all prerequisite steps are completed</li>
+<li>Contact your <strong>Adobe account team</strong> to confirm beta access is enabled for your organization</li>
+<li>Plan your schema structure carefully before initiating the connection, as it cannot be modified post-setup</li>
+</ul>
+<h2>Sources</h2>
+<ul>
+<li><a href="https://experienceleague.adobe.com/en/docs/experience-platform/landing/glossary">Adobe Experience Platform Glossary</a></li>
+<li><a href="https://experienceleague.adobe.com/en/docs/experience-platform/release-notes/2022/september-2022">Adobe Experience Platform Release Notes September 2022</a></li>
+<li><a href="https://experienceleague.adobe.com/en/docs/experience-platform/release-notes/2023/april-2023">Adobe Experience Platform Release Notes April 2023</a></li>
+<li><a href="https://experienceleague.adobe.com/en/docs/experience-platform/release-notes/2023/july-2023">Adobe Experience Platform Release Notes July 2023</a></li>
+<li><a href="https://experienceleague.adobe.com/en/docs/experience-platform/release-notes/2023/march-2023">Adobe Experience Platform Release Notes March 2023</a></li>
+<li><a href="https://experienceleague.adobe.com/en/docs/experience-platform/release-notes/2023/october-2023">Adobe Experience Platform Release Notes October 2023</a></li>
+<li><a href="https://experienceleague.adobe.com/en/docs/experience-platform/release-notes/2026/april-2026">Adobe Experience Platform Release Notes April 2026</a></li>
+<li><a href="https://experienceleague.adobe.com/en/docs/experience-platform/landing/home">Adobe Experience Platform Overview</a></li>
+<li><a href="https://experienceleague.adobe.com/en/docs/experience-platform/release-notes/2025/april-2025">Adobe Experience Platform Release Notes April 2025</a></li>
+<li><a href="https://experienceleague.adobe.com/en/docs/experience-platform/sources/connectors/data-sharing/delta-sharing">Delta Sharing</a></li>
+</ul></article>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "How do I set up Delta Sharing in Adobe Experience Platform?", "acceptedAnswer": {"@type": "Answer", "text": "Setting Up Delta Sharing in Adobe Experience Platform !NOTE Delta Sharing is currently in limited beta and will only be available until July 15, 2026. Contact your Adobe account team to request access before proceeding. --- What Is Delta Sharing? The Delta Sharing source connector allows you to securely connect to your Databricks Delta Sharing source and create virtual datasets in Adobe Experience Platform. Key characteristics: - Shared data is not physically ingested or copied into the Experience Platform data lake - Data is represented through relational schemas as virtual datasets - You can query and work with external tables through Experience Platform services (Query Service / Data Distiller) - Reduces duplicate data storage, lowers storage costs, and simplifies data management --- Prerequisites Before connecting, ensure the following requirements are met: Databricks Provider Prerequisites - The Databricks Delta Sharing source must be configured and accessible - Shared tables you want to use must be available through Delta Sharing - Shared tables must be representable through relational schemas in Experience Platform Experience Platform Knowledge Requirements Ensure you have a working understanding of the following Platform components: | Component | Purpose | |---|---| | Sources | Create connections and dataflows for supported external data sources | | XDM Schemas | Shared tables are represented in Experience Platform through relational schemas | | Datasets | Shared data is represented as virtual datasets | | Query Service / Data Distiller | Used to query and work with virtual datasets | --- Setup Steps in the UI Step 1: Access the Sources Catalog 1. Log in to your Adobe Experience Platform instance 2. Navigate to the Sources section from the left navigation 3. Browse the sources catalog to locate the Delta Sharing connector Step 2: Review Schema Structure !IMPORTANT Carefully review your schema structure before proceeding. Once you move forward, you will no\u2026"}}]}</script></div>
+  </body>
+</html>

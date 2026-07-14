@@ -11,209 +11,130 @@
     <script type="module" crossorigin src="/tools/rovr/assets/index-Cnf1TPK2.js"></script>
     <link rel="stylesheet" crossorigin href="/tools/rovr/assets/index-D1POE5XP.css">
   <title>How does identity management work in the Experience Platform Web SDK? | Rovr</title>
-<meta name="description" content="Identity Management in the Experience Platform Web SDK Overview Identity management in the Experience Platform Web SDK centers on accurately identifying users…" />
+<meta name="description" content="Identity Management in Experience Platform Web SDK Based on the available documentation, here is a comprehensive overview of how identity management works in…" />
 <link rel="canonical" href="https://thelearningproject.in/tools/rovr/q/how-does-identity-management-work-in-the-experience-platform-172107" />
 <meta property="og:title" content="How does identity management work in the Experience Platform Web SDK?" />
-<meta property="og:description" content="Identity Management in the Experience Platform Web SDK Overview Identity management in the Experience Platform Web SDK centers on accurately identifying users…" />
+<meta property="og:description" content="Identity Management in Experience Platform Web SDK Based on the available documentation, here is a comprehensive overview of how identity management works in…" />
 <meta property="og:url" content="https://thelearningproject.in/tools/rovr/q/how-does-identity-management-work-in-the-experience-platform-172107" />
 <meta property="og:type" content="article" />
 <meta property="og:image" content="https://thelearningproject.in/tools/rovr/rovrlogo.png" />
 <meta name="twitter:card" content="summary" />
 <meta name="twitter:title" content="How does identity management work in the Experience Platform Web SDK?" />
-<meta name="twitter:description" content="Identity Management in the Experience Platform Web SDK Overview Identity management in the Experience Platform Web SDK centers on accurately identifying users…" />
+<meta name="twitter:description" content="Identity Management in Experience Platform Web SDK Based on the available documentation, here is a comprehensive overview of how identity management works in…" />
 </head>
   <body>
     <div id="root"><article><h1>How does identity management work in the Experience Platform Web SDK?</h1>
-<h2>Identity Management in the Experience Platform Web SDK</h2>
+<h2>Identity Management in Experience Platform Web SDK</h2>
+<p>Based on the available documentation, here is a comprehensive overview of how identity management works in the Experience Platform Web SDK.</p>
+<hr>
 <h3>Overview</h3>
-<p>Identity management in the Experience Platform Web SDK centers on accurately identifying users across devices, sessions, and channels. The Web SDK handles identity through a combination of <strong>automatic identity generation</strong>, <strong>custom identity configuration</strong>, and <strong>identity stitching</strong> — all feeding into the Adobe Experience Platform Identity Service and Real-Time Customer Profile.</p>
+<p>The Web SDK handles identity management through a combination of <strong>identity namespaces</strong>, <strong>identity maps</strong>, and integration with the <strong>Adobe Experience Platform Edge Network</strong>. It replaces several legacy identity libraries with a unified approach.</p>
 <hr>
-<h3>The Foundation: Identity Namespaces</h3>
-<p>Identity namespaces provide <strong>context for what an identifier represents</strong>. Without a namespace, a value like `12345` is meaningless — it could be a CRM ID, a loyalty number, or anything else. Namespaces disambiguate identity values across systems.</p>
-<h4>Standard Namespaces</h4>
-<p>AEP provides built-in namespaces including:</p>
-<ul>
-<li><strong>ECID</strong> — Experience Cloud ID (cookie-based, automatically managed by Web SDK)</li>
-<li><strong>Email</strong> — Hashed or plain email addresses</li>
-<li><strong>Phone</strong> — Phone numbers</li>
-<li><strong>AAID</strong> — Adobe Analytics ID</li>
-<li><strong>IDFA / GAID</strong> — Mobile device identifiers</li>
-</ul>
-<h4>Custom Namespaces</h4>
-<p>You can create your own namespaces for proprietary identifiers:</p>
-<p><strong>Prerequisites:</strong> Access to the <strong>Adobe Experience Platform UI</strong> or <strong>Data Collection UI</strong></p>
-<p>1. In the Data Collection interface, select <strong>[!UICONTROL Identities]</strong> from the left-rail navigation</p>
-<p>2. Select <strong>[!UICONTROL Create identity namespace]</strong></p>
-<p>3. Provide a <strong>[!UICONTROL Display name]</strong> (e.g., `Luma CRM ID`) and an <strong>[!UICONTROL Identity symbol]</strong> value (e.g., `lumaCRMId`)</p>
-<p>4. Select the identity type — <strong>[!UICONTROL Cross-device ID]</strong> for person-level identifiers like CRM IDs</p>
-<p>5. Select <strong>[!UICONTROL Create]</strong></p>
-<p><img src="assets/identity-create.png" alt="create identity namespace"></p>
-<p>&gt; ⚠️ <strong>Critical Configuration Warning:</strong> Choosing the wrong identity type causes serious graph corruption:</p>
-<p>&gt; - <strong>Person-level identifiers</strong> (CRM IDs, email) → must use <strong>Cross-device ID</strong></p>
-<p>&gt; - <strong>Device/browser identifiers</strong> (cookies, device IDs) → must use <strong>Cookie ID</strong> or <strong>Device ID</strong></p>
-<p>&gt;</p>
-<p>&gt; Misconfiguration requires manual correction by Adobe Engineering and cannot be self-remedied in production.</p>
-<hr>
-<h3>The ECID: Web SDK&#x27;s Automatic Identity</h3>
-<p>The <strong>Experience Cloud ID (ECID)</strong> is the cornerstone of Web SDK identity management.</p>
-<h4>How the ECID Works</h4>
-<ul>
-<li>The Web SDK <strong>automatically generates and manages</strong> the ECID — no manual configuration required</li>
-<li>It is stored in a <strong>first-party cookie</strong> in the user&#x27;s browser</li>
-<li>It persists across sessions for the same browser</li>
-<li>Every Web SDK event automatically includes the ECID</li>
-<li>It serves as the <strong>anonymous identifier</strong> that links browsing behavior before a user authenticates</li>
-</ul>
-<h4>ECID Lifecycle</h4>
-<p>```</p>
-<p>First Visit → ECID Generated → Stored in Cookie</p>
-<p>↓</p>
-<p>Subsequent Visits → ECID Retrieved from Cookie → Sent with Every Event</p>
-<p>↓</p>
-<p>User Authenticates → CRM ID Linked to ECID → Identity Graph Updated</p>
-<p>↓</p>
-<p>Cross-Device Recognition → Unified Profile Built</p>
-<p>```</p>
-<h4>Mobile SDK ECID Behavior</h4>
-<p>On mobile, the ECID works differently:</p>
-<ul>
-<li>The Mobile SDK generates a <strong>unique ECID when the app is first installed</strong></li>
-<li>It is stored in <strong>persistent memory</strong> on the device</li>
-<li>It is sent with <strong>every hit</strong></li>
-<li>It is <strong>removed when the user uninstalls the app</strong> or sets global privacy status to opt out</li>
-<li>Reinstalling the app creates a <strong>new profile with a new unique ECID</strong></li>
-</ul>
-<hr>
-<h3>The identityMap: Sending Custom Identities</h3>
-<p>The `identityMap` is the <strong>primary mechanism</strong> for passing custom identity data through the Web SDK.</p>
-<h4>What is identityMap?</h4>
-<p>`identityMap` is a <strong>special XDM field</strong> automatically included in all schemas using the <strong>XDM ExperienceEvent</strong> class. It is:</p>
-<ul>
-<li>A <strong>must-have object</strong> for any web-related data collection</li>
-<li>The container for the ECID required for web user identification</li>
-<li>The key mechanism for setting <strong>internal customer IDs for authenticated users</strong></li>
-</ul>
-<p><img src="assets/schema-identityMap.png" alt="identityMap field in XDM schema"></p>
-<h4>identityMap Structure</h4>
-<p>```javascript</p>
-<p>alloy(&quot;sendEvent&quot;, {</p>
-<p>xdm: {</p>
-<p>identityMap: {</p>
-<p>// Namespace symbol as key</p>
-<p>&quot;lumaCRMId&quot;: [</p>
-<p>{</p>
-<p>id: &quot;ABC123&quot;,           // The identity value</p>
-<p>authenticatedState: &quot;authenticated&quot;,  // Authentication state</p>
-<p>primary: true           // Primary identity flag</p>
-<p>}</p>
-<p>],</p>
-<p>&quot;Email&quot;: [</p>
-<p>{</p>
-<p>id: &quot;user@example.com&quot;,</p>
-<p>authenticatedState: &quot;authenticated&quot;,</p>
-<p>primary: false</p>
-<p>}</p>
-<p>]</p>
-<p>}</p>
-<p>}</p>
-<p>});</p>
-<p>```</p>
-<h4>Authentication States</h4>
-<p>Every identity in the `identityMap` must declare an <strong>authenticated state</strong>:</p>
-<p>| State | Description | When to Use |</p>
-<p>|---|---|---|</p>
-<p>| `authenticated` | User has actively logged in during this session | Post-login events |</p>
-<p>| `ambiguous` | Identity present but authentication not confirmed | Default/unknown state |</p>
-<p>| `loggedOut` | User has explicitly logged out | Post-logout events |</p>
-<p>&gt; ✅ <strong>Best Practice:</strong> Only set `authenticatedState: &quot;authenticated&quot;` after a user has actively logged in during the current session. This ensures identity stitching only occurs for verified users.</p>
-<h4>Primary Identity Flag</h4>
-<ul>
-<li>Only <strong>one identity per event</strong> should be marked `primary: true`</li>
-<li>The primary identity is used as the <strong>main lookup key</strong> for the Real-Time Customer Profile</li>
-<li>If no primary identity is explicitly set, the <strong>ECID is used as the primary identity</strong> by default</li>
-</ul>
-<hr>
-<h3>How Identity Stitching Works</h3>
-<p>Identity stitching (also called <strong>identity graph linking</strong>) connects anonymous and known identities into a unified profile.</p>
-<h4>The Stitching Process</h4>
-<p>1. <strong>Anonymous Phase</strong> — User browses the site; Web SDK sends events with only an ECID</p>
-<p>2. <strong>Authentication Event</strong> — User logs in; Web SDK sends an event with both ECID and CRM ID in `identityMap`</p>
-<p>3. <strong>Graph Linking</strong> — Identity Service detects both identifiers in the same event and creates a link between them</p>
-<p>4. <strong>Profile Merging</strong> — All previous anonymous behavior (tied to the ECID) is now associated with the known customer profile (tied to the CRM ID)</p>
-<p>5. <strong>Cross-Device Recognition</strong> — If the same customer logs in on another device, their identities are further linked</p>
-<h4>Practical Example</h4>
-<p>```</p>
-<p>Day 1: Anonymous browsing</p>
-<p>→ ECID: abc-123 (browser cookie)</p>
-<p>→ Events recorded against ECID only</p>
-<p>Day 3: User logs in</p>
-<p>→ ECID: abc-123 + CRM ID: customer-456</p>
-<p>→ Identity graph links abc-123 ↔ customer-456</p>
-<p>→ All Day 1 behavior now attributed to customer-456</p>
-<p>Day 5: Same user logs in on mobile</p>
-<p>→ ECID: xyz-789 (mobile device) + CRM ID: customer-456</p>
-<p>→ Identity graph: abc-123 ↔ customer-456 ↔ xyz-789</p>
-<p>→ Unified cross-device profile created</p>
-<p>```</p>
-<hr>
-<h3>Configuring Identities in Your Web SDK Implementation</h3>
-<h4>Method 1: Via the Data Element (Tag-Based Implementation)</h4>
-<p>If you are using <strong>Adobe Tags (Launch)</strong> with the Web SDK extension:</p>
-<p>1. In the <strong>Tags UI</strong>, create a new <strong>[!UICONTROL Data Element]</strong></p>
-<p>2. Select <strong>[!UICONTROL Adobe Experience Platform Web SDK]</strong> as the extension</p>
-<p>3. Select <strong>[!UICONTROL Identity Map]</strong> as the data element type</p>
-<p>4. Configure your namespace and identity value mappings</p>
-<p>5. Reference this data element in your <strong>XDM object data element</strong></p>
-<h4>Method 2: Directly in Web SDK JavaScript</h4>
-<p>Pass identity data directly in the `sendEvent` command:</p>
-<p>```javascript</p>
-<p>alloy(&quot;sendEvent&quot;, {</p>
-<p>xdm: {</p>
-<p>identityMap: {</p>
-<p>&quot;lumaCRMId&quot;: [{</p>
-<p>id: getUserCRMId(),  // Retrieve from your data layer</p>
-<p>authenticatedState: &quot;authenticated&quot;,</p>
-<p>primary: true</p>
-<p>}]</p>
-<p>}</p>
-<p>}</p>
-<p>});</p>
-<p>```</p>
-<h4>Method 3: Using the setConsent Command</h4>
-<p>For privacy-compliant identity management, use the `setConsent` command before sending identity data to respect user consent choices:</p>
-<p>```javascript</p>
-<p>alloy(&quot;setConsent&quot;, {</p>
-<p>consent: [{</p>
-<p>standard: &quot;Adobe&quot;,</p>
-<p>version: &quot;2.0&quot;,</p>
-<p>value: {</p>
-<p>general: &quot;in&quot;</p>
-<p>}</p>
-<p>}]</p>
-<p>});</p>
-<p>```</p>
-<hr>
-<h3>Identity Management Integration Points</h3>
-<p>Identity data collected by the Web SDK flows into the broader AEP ecosystem:</p>
-<p>| Downstream System | How Identity is Used |</p>
+<h3>What the Web SDK Replaces</h3>
+<p>The Web SDK consolidates identity management from multiple legacy libraries into a single implementation:</p>
+<p>| Legacy Library | Replaced By |</p>
 <p>|---|---|</p>
-<p>| <strong>Identity Service</strong> | Builds and updates the identity graph |</p>
-<p>| <strong>Real-Time Customer Profile</strong> | Merges data from all linked identities into one profile |</p>
-<p>| <strong>Audience Segmentation</strong> | Evaluates profile membership based on unified identity |</p>
-<p>| <strong>Adobe Target</strong> | Personalizes experiences using the unified profile |</p>
-<p>| <strong>Adobe Analytics</strong> | Stitches visitor data across authenticated sessions |</p>
-<p>| <strong>Adobe Journey Optimizer</strong> | Triggers journeys based on known customer identity |</p>
-<p>| <strong>Destinations</strong> | Activates audiences using identity namespaces (e.g., hashed email) |</p>
+<p>| `Visitor.js` (Experience Cloud ID Service) | Web SDK |</p>
+<p>| `AppMeasurement.js` (Adobe Analytics) | Web SDK |</p>
+<p>| `AT.js` (Adobe Target) | Web SDK |</p>
+<p>| `DIL.js` (Adobe Audience Manager) | Web SDK |</p>
+<p>Previously, <strong>multiple calls</strong> were needed for each data collection library to handle identities. Now, a <strong>single call</strong> through the Edge Network can:</p>
+<ul>
+<li>Retrieve an ID</li>
+<li>Fetch a Target experience</li>
+<li>Send data to Audience Manager</li>
+<li>Pass data to Adobe Experience Platform</li>
+</ul>
 <hr>
-<h3>Key Best Practices</h3>
-<p>✅ <strong>Always include ECID</strong> — Let the Web SDK manage this automatically; never suppress it</p>
-<p>✅ <strong>Use correct identity types</strong> — Person-level IDs must use Cross-device ID namespace type</p>
-<p>✅ <strong>Set authenticated state accurately</strong> — Only mark identities as `authenticated` after confirmed login</p>
-<p>✅ <strong>Designate one primary identity</strong> — Avoid multiple primary identities in a single event</p>
-<p>✅ <strong>Respect consent</strong> — Only send known identity data after obtaining appropriate user consent</p>
-<p>✅ <strong>Test with Assurance</strong> — Use Adobe Experience Platform Assurance to validate identity data is being sent correctly before going to production</p>
-<p>✅ <strong>Plan your namespace strategy</strong> — Define all custom namespaces before implementation begins to avoid rework</p>
-</article>
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "How does identity management work in the Experience Platform Web SDK?", "acceptedAnswer": {"@type": "Answer", "text": "Identity Management in the Experience Platform Web SDK Overview Identity management in the Experience Platform Web SDK centers on accurately identifying users across devices, sessions, and channels. The Web SDK handles identity through a combination of automatic identity generation, custom identity configuration, and identity stitching \u2014 all feeding into the Adobe Experience Platform Identity Service and Real-Time Customer Profile. --- The Foundation: Identity Namespaces Identity namespaces provide context for what an identifier represents. Without a namespace, a value like 12345 is meaningless \u2014 it could be a CRM ID, a loyalty number, or anything else. Namespaces disambiguate identity values across systems. Standard Namespaces AEP provides built-in namespaces including: - ECID \u2014 Experience Cloud ID (cookie-based, automatically managed by Web SDK) - Email \u2014 Hashed or plain email addresses - Phone \u2014 Phone numbers - AAID \u2014 Adobe Analytics ID - IDFA / GAID \u2014 Mobile device identifiers Custom Namespaces You can create your own namespaces for proprietary identifiers: Prerequisites: Access to the Adobe Experience Platform UI or Data Collection UI 1. In the Data Collection interface, select !UICONTROL Identities from the left-rail navigation 2. Select !UICONTROL Create identity namespace 3. Provide a !UICONTROL Display name (e.g., Luma CRM ID) and an !UICONTROL Identity symbol value (e.g., lumaCRMId) 4. Select the identity type \u2014 !UICONTROL Cross-device ID for person-level identifiers like CRM IDs 5. Select !UICONTROL Create !create identity namespace(assets/identity-create.png) \u26a0\ufe0f Critical Configuration Warning: Choosing the wrong identity type causes serious graph corruption: - Person-level identifiers (CRM IDs, email) \u2192 must use Cross-device ID - Device/browser identifiers (cookies, device IDs) \u2192 must use Cookie ID or Device ID Misconfiguration requires manual correction by Adobe Engineering and cannot be self-remedied in production. --- The ECID: Web SDK's Automatic\u2026"}}]}</script></div>
+<h3>Identity Namespaces</h3>
+<p><strong>Identity namespaces</strong> are a core concept in how the Web SDK classifies and manages identities.</p>
+<h4>What They Are</h4>
+<ul>
+<li>Identity namespaces describe the <strong>type of a specific identity</strong></li>
+<li>For example, a namespace called `Email` identifies a value like `name@email.com` as an email address</li>
+<li>They are configured in <strong>Adobe Experience Platform</strong> and referenced in Web SDK implementations</li>
+</ul>
+<h4>Types of Identity Namespaces</h4>
+<p>| Type | Description |</p>
+<p>|---|---|</p>
+<p>| <strong>Standard namespaces</strong> | Pre-built namespaces provided by Adobe (e.g., `Email`, `Phone`, `ECID`) |</p>
+<p>| <strong>Custom namespaces</strong> | Namespaces you create for your own identity types (e.g., a loyalty ID or CRM ID) |</p>
+<h4>Configuring Identity Namespaces</h4>
+<p>Identity namespaces must be configured in AEP before they can be used in your Web SDK implementation. This is covered as part of the standard Web SDK implementation tutorial, which includes:</p>
+<p>1. Setting up your <strong>datastream</strong></p>
+<p>2. Configuring your <strong>XDM schema</strong></p>
+<p>3. Defining your <strong>identity namespaces</strong></p>
+<hr>
+<h3>Identity Map Data Element</h3>
+<p>The <strong>Identity Map data element</strong> in Adobe Data Collection (Tags) is the primary mechanism for capturing user IDs in a Web SDK implementation.</p>
+<h4>What It Does</h4>
+<ul>
+<li>Captures <strong>user identifiers</strong> (e.g., CRM IDs, email addresses, loyalty IDs) from your data layer</li>
+<li>Maps those identifiers to the appropriate <strong>identity namespace</strong></li>
+<li>Sends the identity data to the Edge Network as part of XDM payloads</li>
+</ul>
+<h4>How to Configure It</h4>
+<p><strong>Prerequisites:</strong></p>
+<ul>
+<li>A Tags property with the Web SDK extension installed</li>
+<li>Identity namespaces configured in AEP</li>
+<li>User IDs available in your website&#x27;s data layer</li>
+</ul>
+<p><strong>Steps:</strong></p>
+<p>1. In <strong>Adobe Data Collection</strong>, open your Tags property</p>
+<p>2. Navigate to <strong>Data Elements</strong> and click <strong>Add Data Element</strong></p>
+<p>3. Select <strong>Adobe Experience Platform Web SDK</strong> as the extension</p>
+<p>4. Select <strong>Identity Map</strong> as the data element type</p>
+<p>5. Define one or more identity entries, each with:</p>
+<ul>
+<li><strong>Namespace</strong> — the identity namespace (e.g., `Email`, `CRM_ID`)</li>
+<li><strong>ID Value</strong> — the actual identifier value pulled from your data layer</li>
+<li><strong>Authenticated State</strong> — one of:</li>
+<li>`Ambiguous`</li>
+<li>`Authenticated`</li>
+<li>`Logged Out`</li>
+<li><strong>Primary</strong> — flag to designate whether this is the primary identity</li>
+</ul>
+<p>6. Save the data element and reference it in your <strong>XDM object</strong> data element</p>
+<hr>
+<h3>How Identities Flow Through the Web SDK</h3>
+<p>Here is the end-to-end flow:</p>
+<p>```</p>
+<p>Website Data Layer</p>
+<p>↓</p>
+<p>Identity Map Data Element (Tags)</p>
+<p>↓</p>
+<p>XDM Object Data Element</p>
+<p>↓</p>
+<p>Web SDK sendEvent call</p>
+<p>↓</p>
+<p>Adobe Experience Platform Edge Network</p>
+<p>↓</p>
+<p>AEP Identity Service → Real-Time Customer Profile (Identity Graph)</p>
+<p>```</p>
+<hr>
+<h3>Key Considerations</h3>
+<p>| Topic | Detail |</p>
+<p>|---|---|</p>
+<p>| <strong>ECID</strong> | The Experience Cloud ID (ECID) is automatically managed by the Web SDK — you do not need to manually configure it |</p>
+<p>| <strong>Authenticated state</strong> | Always pass the correct authenticated state to ensure identity stitching works correctly |</p>
+<p>| <strong>Primary identity</strong> | Only one identity per namespace should be marked as primary |</p>
+<p>| <strong>Streaming destinations</strong> | At least one target identity namespace must be mapped when activating audiences to streaming destinations |</p>
+<p>| <strong>File-based destinations</strong> | Identity namespace configuration is optional for file-based destinations |</p>
+<hr>
+<h3>Implementation Tutorial</h3>
+<p>Adobe provides a full end-to-end tutorial — <strong>&quot;Implement Adobe Experience Cloud with Web SDK&quot;</strong> — that walks through:</p>
+<p>1. Configuring identity namespaces in AEP</p>
+<p>2. Capturing identities using the Identity Map data element in Tags</p>
+<p>3. Sending identity data via the Web SDK to the Edge Network</p>
+<p>4. Validating identity resolution using <strong>Experience Platform Debugger</strong> and <strong>Assurance</strong></p>
+<p>The tutorial uses a sample retail website called <strong>Luma</strong> to demonstrate a realistic implementation across Adobe Experience Cloud applications including Analytics, Target, Audience Manager, and AEP.</p>
+<hr>
+<p>Would you like more detail on any specific aspect, such as configuring the Identity Map data element step by step, or how identity stitching works in AEP&#x27;s Identity Graph?</p>
+<h2>Sources</h2>
+<ul>
+<li><a href="https://experienceleague.adobe.com/en/docs/experience-platform/destinations/destination-sdk/functionality/destination-configuration/identity-namespace-configuration">Identity namespace configuration</a></li>
+</ul></article>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "How does identity management work in the Experience Platform Web SDK?", "acceptedAnswer": {"@type": "Answer", "text": "Identity Management in Experience Platform Web SDK Based on the available documentation, here is a comprehensive overview of how identity management works in the Experience Platform Web SDK. --- Overview The Web SDK handles identity management through a combination of identity namespaces, identity maps, and integration with the Adobe Experience Platform Edge Network. It replaces several legacy identity libraries with a unified approach. --- What the Web SDK Replaces The Web SDK consolidates identity management from multiple legacy libraries into a single implementation: | Legacy Library | Replaced By | |---|---| | Visitor.js (Experience Cloud ID Service) | Web SDK | | AppMeasurement.js (Adobe Analytics) | Web SDK | | AT.js (Adobe Target) | Web SDK | | DIL.js (Adobe Audience Manager) | Web SDK | Previously, multiple calls were needed for each data collection library to handle identities. Now, a single call through the Edge Network can: - Retrieve an ID - Fetch a Target experience - Send data to Audience Manager - Pass data to Adobe Experience Platform --- Identity Namespaces Identity namespaces are a core concept in how the Web SDK classifies and manages identities. What They Are - Identity namespaces describe the type of a specific identity - For example, a namespace called Email identifies a value like name@email.com as an email address - They are configured in Adobe Experience Platform and referenced in Web SDK implementations Types of Identity Namespaces | Type | Description | |---|---| | Standard namespaces | Pre-built namespaces provided by Adobe (e.g., Email, Phone, ECID) | | Custom namespaces | Namespaces you create for your own identity types (e.g., a loyalty ID or CRM ID) | Configuring Identity Namespaces Identity namespaces must be configured in AEP before they can be used in your Web SDK implementation. This is covered as part of the standard Web SDK implementation tutorial, which includes: 1. Setting up your datastream 2. Configuring your XDM schema 3.\u2026"}}]}</script></div>
   </body>
 </html>

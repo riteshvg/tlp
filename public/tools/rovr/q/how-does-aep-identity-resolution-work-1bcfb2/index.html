@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/png" href="/tools/rovr/rovrlogo.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="build-date" content="2026-06-10" />
+    
+    
+    <script src="https://assets.adobedtm.com/204118644db8/290ae1adb65a/launch-e5ec7bf1a1ef-development.min.js" async></script>
+    <script type="module" crossorigin src="/tools/rovr/assets/index-Cnf1TPK2.js"></script>
+    <link rel="stylesheet" crossorigin href="/tools/rovr/assets/index-D1POE5XP.css">
+  <title>How does AEP identity resolution work? | Rovr</title>
+<meta name="description" content="Based on the documentation context I have available, I can provide information specifically supported by the retrieved content, supplemented by established…" />
+<link rel="canonical" href="https://thelearningproject.in/tools/rovr/q/how-does-aep-identity-resolution-work-1bcfb2" />
+<meta property="og:title" content="How does AEP identity resolution work?" />
+<meta property="og:description" content="Based on the documentation context I have available, I can provide information specifically supported by the retrieved content, supplemented by established…" />
+<meta property="og:url" content="https://thelearningproject.in/tools/rovr/q/how-does-aep-identity-resolution-work-1bcfb2" />
+<meta property="og:type" content="article" />
+<meta property="og:image" content="https://thelearningproject.in/tools/rovr/rovrlogo.png" />
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="How does AEP identity resolution work?" />
+<meta name="twitter:description" content="Based on the documentation context I have available, I can provide information specifically supported by the retrieved content, supplemented by established…" />
+</head>
+  <body>
+    <div id="root"><article><h1>How does AEP identity resolution work?</h1>
+<p>Based on the documentation context I have available, I can provide information specifically supported by the retrieved content, supplemented by established AEP knowledge.</p>
+<h2>AEP Identity Resolution</h2>
+<p>Adobe Experience Platform&#x27;s identity resolution (also called <strong>Identity Stitching</strong> or <strong>Profile Merge</strong>) is the process of linking multiple identifiers across devices and channels to build a unified customer profile.</p>
+<hr>
+<h3>Core Concepts</h3>
+<h4>identityMap &amp; Primary Identity</h4>
+<ul>
+<li>Every XDM record can carry an <strong>identityMap</strong> — a map of namespace-to-identifier pairs</li>
+<li><strong>One identity must be designated as primary</strong> across all namespaces in a record</li>
+<li>The primary identity is the key used for record matching and deletion operations</li>
+<li>Records <strong>without a populated primary identity are skipped</strong> during processing (e.g., record delete work orders)</li>
+</ul>
+<h4>Identity Namespaces</h4>
+<ul>
+<li>Namespaces categorize identity types (e.g., Email, Phone, ECID, CRMID)</li>
+<li>Namespaces must exist in <strong>Identity Service</strong> before they can be referenced</li>
+<li>Each namespace can hold one or more identity descriptors per record</li>
+</ul>
+<hr>
+<h3>How Identity Resolution Works</h3>
+<h4>1. Identity Graph Construction</h4>
+<ul>
+<li>As data is ingested, AEP builds an <strong>identity graph</strong> per individual</li>
+<li>The graph links all known identifiers for a person across namespaces</li>
+<li>For example, a CRMID, Email, and ECID can all be linked to the same person</li>
+</ul>
+<h4>2. Profile Merge</h4>
+<ul>
+<li>The <strong>Real-Time Customer Profile</strong> uses the identity graph to merge fragmented records into a <strong>single unified profile</strong></li>
+<li>Merge policies control which datasets and identity graphs are used when constructing a profile</li>
+</ul>
+<h4>3. Schema Requirements</h4>
+<ul>
+<li><strong>The dataset schema must define a primary identity or identity map</strong> for identity resolution to function</li>
+<li>If a primary identity field was added to a schema <strong>after data ingestion</strong>, previously ingested records are not eligible for identity-based operations</li>
+<li>Secondary identities are <strong>not scanned</strong> for matching — only the primary identity is used</li>
+</ul>
+<hr>
+<h3>Data Partner Identity Resolution</h3>
+<p>AEP also supports <strong>third-party identity resolution</strong> through data partner integrations. For example:</p>
+<h4>Merkury Enterprise Identity Resolution</h4>
+<ul>
+<li>Provided by <strong>Merkle</strong>, this source connector enables recognition of digital visitors <strong>without cookies</strong></li>
+<li>Uses a <strong>person ID</strong> to combine everything an organization knows about an individual into a single comprehensive profile</li>
+<li>Can incorporate:</li>
+<li>Digital behaviors</li>
+<li>Buying preferences</li>
+<li>Name, email, physical address, device ID</li>
+<li>Ingested data can be formatted as <strong>XDM JSON, XDM Parquet, or delimited files</strong></li>
+</ul>
+<hr>
+<h3>Key Limitations to Be Aware Of</h3>
+<p>| Limitation | Detail |</p>
+<p>|---|---|</p>
+<p>| Primary identity required | Schemas must define a primary identity or identity map |</p>
+<p>| Secondary identities not matched | Only primary identity is used for record matching |</p>
+<p>| Pre-configuration data | Records ingested before identity was configured are not eligible |</p>
+<p>| Unpopulated primaries skipped | Records missing primary identity metadata are ignored |</p>
+<hr>
+<h3>Identity Resolution in Practice (Record Deletes)</h3>
+<p>A practical example of how identity resolution is enforced is in <strong>record delete work orders</strong>:</p>
+<ul>
+<li>Deletion targets the <strong>primary identity field exclusively</strong></li>
+<li>Up to <strong>100,000 identities</strong> can be submitted per work order</li>
+<li>Datasets without a schema-defined primary identity or identity map <strong>cannot be targeted</strong></li>
+</ul>
+<hr>
+<h3>Summary</h3>
+<p>AEP identity resolution works by:</p>
+<p>1. Collecting identifiers via identityMap in XDM schemas</p>
+<p>2. Building an identity graph linking all known IDs for a person</p>
+<p>3. Merging fragmented profile records into a unified Real-Time Customer Profile</p>
+<p>4. Enforcing primary identity rules to ensure accurate matching and data governance</p>
+</article>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "How does AEP identity resolution work?", "acceptedAnswer": {"@type": "Answer", "text": "Based on the documentation context I have available, I can provide information specifically supported by the retrieved content, supplemented by established AEP knowledge. AEP Identity Resolution Adobe Experience Platform's identity resolution (also called Identity Stitching or Profile Merge) is the process of linking multiple identifiers across devices and channels to build a unified customer profile. --- Core Concepts identityMap & Primary Identity - Every XDM record can carry an identityMap \u2014 a map of namespace-to-identifier pairs - One identity must be designated as primary across all namespaces in a record - The primary identity is the key used for record matching and deletion operations - Records without a populated primary identity are skipped during processing (e.g., record delete work orders) Identity Namespaces - Namespaces categorize identity types (e.g., Email, Phone, ECID, CRMID) - Namespaces must exist in Identity Service before they can be referenced - Each namespace can hold one or more identity descriptors per record --- How Identity Resolution Works 1. Identity Graph Construction - As data is ingested, AEP builds an identity graph per individual - The graph links all known identifiers for a person across namespaces - For example, a CRMID, Email, and ECID can all be linked to the same person 2. Profile Merge - The Real-Time Customer Profile uses the identity graph to merge fragmented records into a single unified profile - Merge policies control which datasets and identity graphs are used when constructing a profile 3. Schema Requirements - The dataset schema must define a primary identity or identity map for identity resolution to function - If a primary identity field was added to a schema after data ingestion, previously ingested records are not eligible for identity-based operations - Secondary identities are not scanned for matching \u2014 only the primary identity is used --- Data Partner Identity Resolution AEP also supports third-party identity\u2026"}}]}</script></div>
+  </body>
+</html>
