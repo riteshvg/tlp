@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/png" href="/tools/rovr/rovrlogo.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="build-date" content="2026-06-10" />
+    
+    
+    <script src="https://assets.adobedtm.com/204118644db8/290ae1adb65a/launch-e5ec7bf1a1ef-development.min.js" async></script>
+    <script type="module" crossorigin src="/tools/rovr/assets/index-Cnf1TPK2.js"></script>
+    <link rel="stylesheet" crossorigin href="/tools/rovr/assets/index-D1POE5XP.css">
+  <title>What is Server Side tracking in Adobe Analytics? How does it work? | Rovr</title>
+<meta name="description" content="Server-Side Forwarding in Adobe Analytics Server-side forwarding is a data collection feature that automatically sends data from Adobe Analytics to other…" />
+<link rel="canonical" href="https://thelearningproject.in/tools/rovr/q/what-is-server-side-tracking-in-adobe-analytics-how-does-it-8a06d8" />
+<meta property="og:title" content="What is Server Side tracking in Adobe Analytics? How does it work?" />
+<meta property="og:description" content="Server-Side Forwarding in Adobe Analytics Server-side forwarding is a data collection feature that automatically sends data from Adobe Analytics to other…" />
+<meta property="og:url" content="https://thelearningproject.in/tools/rovr/q/what-is-server-side-tracking-in-adobe-analytics-how-does-it-8a06d8" />
+<meta property="og:type" content="article" />
+<meta property="og:image" content="https://thelearningproject.in/tools/rovr/rovrlogo.png" />
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="What is Server Side tracking in Adobe Analytics? How does it work?" />
+<meta name="twitter:description" content="Server-Side Forwarding in Adobe Analytics Server-side forwarding is a data collection feature that automatically sends data from Adobe Analytics to other…" />
+</head>
+  <body>
+    <div id="root"><article><h1>What is Server Side tracking in Adobe Analytics? How does it work?</h1>
+<h2>Server-Side Forwarding in Adobe Analytics</h2>
+<p>Server-side forwarding is a data collection feature that automatically sends data from Adobe Analytics to other Adobe Experience Cloud solutions (like Audience Manager) in real time, without requiring additional page calls.</p>
+<h3>How It Works</h3>
+<p>When server-side forwarding is enabled, Analytics processes your data on Adobe&#x27;s servers and forwards it to other CX Enterprise solutions during the data collection process. This happens automatically after your Analytics hit is sent — no additional client-side code is needed to pass data to these other solutions.</p>
+<h3>Key Benefits</h3>
+<p>Server-side forwarding improves your implementation in several ways:</p>
+<ul>
+<li><strong>Reduces page load time</strong> — Eliminates the need for separate data collection calls (like DIL calls in Audience Manager). Fewer calls mean faster page performance and a better customer experience.</li>
+</ul>
+<ul>
+<li><strong>Enables real-time data sharing</strong> — Allows Analytics to push data to other CX Enterprise solutions, and those solutions can push data back to Analytics during the same collection process.</li>
+</ul>
+<ul>
+<li><strong>Follows best practices</strong> — Represents the recommended approach for implementing code across Adobe&#x27;s CX Enterprise solutions.</li>
+</ul>
+<ul>
+<li><strong>Simplifies implementation</strong> — Removes the need to manually forward data through additional tags or code.</li>
+</ul>
+<h3>Important Considerations</h3>
+<p><strong>GDPR &amp; Privacy Compliance:</strong> If you need to comply with EU cookie regulations, Analytics can restrict pre-consent data from being forwarded to Audience Manager until proper consent is received. You can flag hits where consent hasn&#x27;t been received to prevent them from being server-side forwarded.</p>
+<p><strong>Legacy vs. New Methods:</strong> Adobe continues to support the legacy tracking server-based server-side forwarding method, but the newer report suite-based server-side forwarding is recommended — especially if you want to share Audience Manager segments back into Analytics.</p>
+</article>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "What is Server Side tracking in Adobe Analytics? How does it work?", "acceptedAnswer": {"@type": "Answer", "text": "Server-Side Forwarding in Adobe Analytics Server-side forwarding is a data collection feature that automatically sends data from Adobe Analytics to other Adobe Experience Cloud solutions (like Audience Manager) in real time, without requiring additional page calls. How It Works When server-side forwarding is enabled, Analytics processes your data on Adobe's servers and forwards it to other CX Enterprise solutions during the data collection process. This happens automatically after your Analytics hit is sent \u2014 no additional client-side code is needed to pass data to these other solutions. Key Benefits Server-side forwarding improves your implementation in several ways: - Reduces page load time \u2014 Eliminates the need for separate data collection calls (like DIL calls in Audience Manager). Fewer calls mean faster page performance and a better customer experience. - Enables real-time data sharing \u2014 Allows Analytics to push data to other CX Enterprise solutions, and those solutions can push data back to Analytics during the same collection process. - Follows best practices \u2014 Represents the recommended approach for implementing code across Adobe's CX Enterprise solutions. - Simplifies implementation \u2014 Removes the need to manually forward data through additional tags or code. Important Considerations GDPR & Privacy Compliance: If you need to comply with EU cookie regulations, Analytics can restrict pre-consent data from being forwarded to Audience Manager until proper consent is received. You can flag hits where consent hasn't been received to prevent them from being server-side forwarded. Legacy vs. New Methods: Adobe continues to support the legacy tracking server-based server-side forwarding method, but the newer report suite-based server-side forwarding is recommended \u2014 especially if you want to share Audience Manager segments back into Analytics."}}]}</script></div>
+  </body>
+</html>

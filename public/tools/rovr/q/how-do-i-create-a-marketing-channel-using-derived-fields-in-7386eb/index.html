@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/png" href="/tools/rovr/rovrlogo.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="build-date" content="2026-06-10" />
+    
+    
+    <script src="https://assets.adobedtm.com/204118644db8/290ae1adb65a/launch-e5ec7bf1a1ef-development.min.js" async></script>
+    <script type="module" crossorigin src="/tools/rovr/assets/index-Cnf1TPK2.js"></script>
+    <link rel="stylesheet" crossorigin href="/tools/rovr/assets/index-D1POE5XP.css">
+  <title>How do I create a marketing channel using Derived Fields in CJA? | Rovr</title>
+<meta name="description" content="Creating a Marketing Channel Using Derived Fields in CJA Prerequisites - You must be a CJA Administrator - You need an existing Data View to add the derived…" />
+<link rel="canonical" href="https://thelearningproject.in/tools/rovr/q/how-do-i-create-a-marketing-channel-using-derived-fields-in-7386eb" />
+<meta property="og:title" content="How do I create a marketing channel using Derived Fields in CJA?" />
+<meta property="og:description" content="Creating a Marketing Channel Using Derived Fields in CJA Prerequisites - You must be a CJA Administrator - You need an existing Data View to add the derived…" />
+<meta property="og:url" content="https://thelearningproject.in/tools/rovr/q/how-do-i-create-a-marketing-channel-using-derived-fields-in-7386eb" />
+<meta property="og:type" content="article" />
+<meta property="og:image" content="https://thelearningproject.in/tools/rovr/rovrlogo.png" />
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="How do I create a marketing channel using Derived Fields in CJA?" />
+<meta name="twitter:description" content="Creating a Marketing Channel Using Derived Fields in CJA Prerequisites - You must be a CJA Administrator - You need an existing Data View to add the derived…" />
+</head>
+  <body>
+    <div id="root"><article><h1>How do I create a marketing channel using Derived Fields in CJA?</h1>
+<h2>Creating a Marketing Channel Using Derived Fields in CJA</h2>
+<h3>Prerequisites</h3>
+<ul>
+<li>You must be a <strong>CJA Administrator</strong></li>
+<li>You need an existing <strong>Data View</strong> to add the derived field to</li>
+<li>Your underlying datasets should include fields you want to use as channel signals (e.g., referrer URL, UTM parameters, page URL, tracking codes)</li>
+</ul>
+<hr>
+<h3>Step-by-Step Instructions</h3>
+<p>1. In Customer Journey Analytics, select the <strong>Data View</strong> where you want to add marketing channels.</p>
+<p>2. In the data view, select the <strong>[!UICONTROL Components]</strong> tab.</p>
+<p>3. Select <strong>[!UICONTROL Create derived field]</strong> in the left rail.</p>
+<p>4. In the <strong>[!UICONTROL Create derived field]</strong> dialog box, select <strong>[!UICONTROL Function templates]</strong> from the drop-down menu.</p>
+<p><img src="https://raw.githubusercontent.com/AdobeDocs/analytics-platform.en/main/help/use-cases/data-views/derived-fields/assets/best-practices-over-complex-case-when.png" alt="Create derived field function templates"></p>
+<p>5. Drag the <strong>[!UICONTROL Marketing channels]</strong> template onto the blank canvas.</p>
+<p>6. Customize the logic for each marketing channel to ensure it matches the logic you use to identify each channel in your Adobe Analytics environment (if migrating) or define your new channel rules.</p>
+<p>7. Optionally, modify the <strong>output channel names</strong> or add logic to identify additional channels specific to your organization.</p>
+<p>8. In the right column, specify a <strong>name</strong> and a <strong>description</strong> for the marketing channel derived field.</p>
+<p>9. Select <strong>[!UICONTROL Save]</strong>.</p>
+<hr>
+<h3>Tips for Customizing Channel Logic</h3>
+<ul>
+<li><strong>Replicate existing Adobe Analytics rules</strong>: If you&#x27;re migrating from Adobe Analytics, match the same conditions you had in your Marketing Channel processing rules</li>
+<li><strong>Add organization-specific channels</strong>: You can extend the default template with additional conditions unique to your business</li>
+<li><strong>Use any available XDM field</strong>: Channel conditions can be based on referrer URL, UTM parameters, page URL, query string parameters, or any other field in your dataset</li>
+<li><strong>Order matters</strong>: Rules are evaluated top-to-bottom, so place more specific conditions before broader ones</li>
+</ul>
+<hr>
+<h3>After Saving</h3>
+<p>Once the derived field is saved, it becomes available as a <strong>dimension component</strong> in the data view. You can then:</p>
+<ul>
+<li>Use it in <strong>Analysis Workspace</strong> freeform tables</li>
+<li>Apply different <strong>attribution models</strong> (first touch, last touch, custom)</li>
+<li>Combine it with other dimensions and metrics for channel performance reporting</li>
+</ul>
+<hr>
+<p><a href="https://video.tv.adobe.com/v/3420258/?learn=on">▶ Watch: Create derived fields in Customer Journey Analytics</a></p>
+</article>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "How do I create a marketing channel using Derived Fields in CJA?", "acceptedAnswer": {"@type": "Answer", "text": "Creating a Marketing Channel Using Derived Fields in CJA Prerequisites - You must be a CJA Administrator - You need an existing Data View to add the derived field to - Your underlying datasets should include fields you want to use as channel signals (e.g., referrer URL, UTM parameters, page URL, tracking codes) --- Step-by-Step Instructions 1. In Customer Journey Analytics, select the Data View where you want to add marketing channels. 2. In the data view, select the !UICONTROL Components tab. 3. Select !UICONTROL Create derived field in the left rail. 4. In the !UICONTROL Create derived field dialog box, select !UICONTROL Function templates from the drop-down menu. !Create derived field function templates(https://raw.githubusercontent.com/AdobeDocs/analytics-platform.en/main/help/use-cases/data-views/derived-fields/assets/best-practices-over-complex-case-when.png) 5. Drag the !UICONTROL Marketing channels template onto the blank canvas. 6. Customize the logic for each marketing channel to ensure it matches the logic you use to identify each channel in your Adobe Analytics environment (if migrating) or define your new channel rules. 7. Optionally, modify the output channel names or add logic to identify additional channels specific to your organization. 8. In the right column, specify a name and a description for the marketing channel derived field. 9. Select !UICONTROL Save. --- Tips for Customizing Channel Logic - Replicate existing Adobe Analytics rules: If you're migrating from Adobe Analytics, match the same conditions you had in your Marketing Channel processing rules - Add organization-specific channels: You can extend the default template with additional conditions unique to your business - Use any available XDM field: Channel conditions can be based on referrer URL, UTM parameters, page URL, query string parameters, or any other field in your dataset - Order matters: Rules are evaluated top-to-bottom, so place more specific conditions before broader ones\u2026"}}]}</script></div>
+  </body>
+</html>

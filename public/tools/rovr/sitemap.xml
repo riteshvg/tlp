@@ -4,7 +4,39 @@
     <loc>https://thelearningproject.in/tools/rovr/</loc>
   </url>
   <url>
-    <loc>https://thelearningproject.in/tools/rovr/q/what-is-sub-hit-analysis-in-adobe-analytics-a1b6a5</loc>
+    <loc>https://thelearningproject.in/tools/rovr/q/what-are-the-different-ecommerce-dimensions-available-in-aep-239600</loc>
+    <lastmod>2026-07-15</lastmod>
+  </url>
+  <url>
+    <loc>https://thelearningproject.in/tools/rovr/q/how-do-i-apply-conditional-logic-like-if-then-statements-to-588905</loc>
+    <lastmod>2026-07-15</lastmod>
+  </url>
+  <url>
+    <loc>https://thelearningproject.in/tools/rovr/q/how-do-i-create-a-marketing-channel-using-derived-fields-in-7386eb</loc>
+    <lastmod>2026-07-15</lastmod>
+  </url>
+  <url>
+    <loc>https://thelearningproject.in/tools/rovr/q/what-are-the-differences-between-using-derived-fields-and-th-30fc5d</loc>
+    <lastmod>2026-07-15</lastmod>
+  </url>
+  <url>
+    <loc>https://thelearningproject.in/tools/rovr/q/how-does-marketing-channel-work-in-customer-journey-analytic-bd9c40</loc>
+    <lastmod>2026-07-15</lastmod>
+  </url>
+  <url>
+    <loc>https://thelearningproject.in/tools/rovr/q/how-can-i-test-and-validate-my-marketing-channel-rules-once-ba94d9</loc>
+    <lastmod>2026-07-15</lastmod>
+  </url>
+  <url>
+    <loc>https://thelearningproject.in/tools/rovr/q/what-are-the-steps-to-configure-marketing-channel-rules-in-c-5ff4f2</loc>
+    <lastmod>2026-07-15</lastmod>
+  </url>
+  <url>
+    <loc>https://thelearningproject.in/tools/rovr/q/how-does-marketing-channel-work-within-cja-9db70a</loc>
+    <lastmod>2026-07-15</lastmod>
+  </url>
+  <url>
+    <loc>https://thelearningproject.in/tools/rovr/q/what-is-sub-hit-analysis-in-adobe-analytics-cf92b8</loc>
     <lastmod>2026-07-15</lastmod>
   </url>
   <url>
@@ -12,19 +44,47 @@
     <lastmod>2026-07-15</lastmod>
   </url>
   <url>
-    <loc>https://thelearningproject.in/tools/rovr/q/how-do-i-change-the-color-theme-of-the-analysis-workspace-ui-e28325</loc>
+    <loc>https://thelearningproject.in/tools/rovr/q/interact-calls-blocked-with-adblocker-target-rendering-of-pa-e5fda1</loc>
+    <lastmod>2026-07-15</lastmod>
+  </url>
+  <url>
+    <loc>https://thelearningproject.in/tools/rovr/q/how-do-i-set-up-and-configure-the-edge-network-server-api-fo-089f8e</loc>
     <lastmod>2026-07-14</lastmod>
   </url>
   <url>
-    <loc>https://thelearningproject.in/tools/rovr/q/what-is-a-share-query-1d56de</loc>
+    <loc>https://thelearningproject.in/tools/rovr/q/if-a-client-doesn-t-want-to-use-client-side-tracking-for-ado-64db84</loc>
     <lastmod>2026-07-14</lastmod>
   </url>
   <url>
-    <loc>https://thelearningproject.in/tools/rovr/q/how-do-i-set-up-delta-sharing-in-adobe-experience-platform-44a8f1</loc>
+    <loc>https://thelearningproject.in/tools/rovr/q/i-d-like-to-know-more-about-the-edge-network-server-api-2e83b1</loc>
     <lastmod>2026-07-14</lastmod>
   </url>
   <url>
-    <loc>https://thelearningproject.in/tools/rovr/q/explain-delta-enablement-a541ab</loc>
+    <loc>https://thelearningproject.in/tools/rovr/q/i-want-to-know-more-about-the-event-forwarding-setup-2737d7</loc>
+    <lastmod>2026-07-14</lastmod>
+  </url>
+  <url>
+    <loc>https://thelearningproject.in/tools/rovr/q/what-documentation-or-resources-are-available-for-server-sid-beb5b5</loc>
+    <lastmod>2026-07-14</lastmod>
+  </url>
+  <url>
+    <loc>https://thelearningproject.in/tools/rovr/q/how-do-we-enable-server-side-tracking-in-aep-web-sdk-79a479</loc>
+    <lastmod>2026-07-14</lastmod>
+  </url>
+  <url>
+    <loc>https://thelearningproject.in/tools/rovr/q/what-are-the-prerequisites-or-requirements-to-set-up-server-08203b</loc>
+    <lastmod>2026-07-14</lastmod>
+  </url>
+  <url>
+    <loc>https://thelearningproject.in/tools/rovr/q/what-is-server-side-tracking-in-adobe-analytics-how-does-it-8a06d8</loc>
+    <lastmod>2026-07-14</lastmod>
+  </url>
+  <url>
+    <loc>https://thelearningproject.in/tools/rovr/q/what-are-the-implementation-requirements-for-setting-up-serv-13acc5</loc>
+    <lastmod>2026-07-14</lastmod>
+  </url>
+  <url>
+    <loc>https://thelearningproject.in/tools/rovr/q/what-is-server-side-tracking-in-adobe-analytics-30df19</loc>
     <lastmod>2026-07-14</lastmod>
   </url>
   <url>
@@ -32,27 +92,103 @@
     <lastmod>2026-07-14</lastmod>
   </url>
   <url>
-    <loc>https://thelearningproject.in/tools/rovr/q/what-are-the-performance-implications-of-using-multiple-data-73b59c</loc>
+    <loc>https://thelearningproject.in/tools/rovr/q/what-tools-or-features-does-adobe-provide-to-help-automate-t-94d370</loc>
+    <lastmod>2026-07-14</lastmod>
+  </url>
+  <url>
+    <loc>https://thelearningproject.in/tools/rovr/q/how-do-i-migrate-projects-and-components-from-adobe-analytic-f93a63</loc>
+    <lastmod>2026-07-14</lastmod>
+  </url>
+  <url>
+    <loc>https://thelearningproject.in/tools/rovr/q/how-to-configure-a-consent-policy-in-rtcdp-to-evaluate-iab-c-3ad0ec</loc>
+    <lastmod>2026-07-14</lastmod>
+  </url>
+  <url>
+    <loc>https://thelearningproject.in/tools/rovr/q/can-you-walk-me-through-creating-a-journey-kpi-and-how-it-di-017b46</loc>
+    <lastmod>2026-07-14</lastmod>
+  </url>
+  <url>
+    <loc>https://thelearningproject.in/tools/rovr/q/how-do-i-track-conversion-metrics-and-roi-for-email-campaign-31ed59</loc>
+    <lastmod>2026-07-14</lastmod>
+  </url>
+  <url>
+    <loc>https://thelearningproject.in/tools/rovr/q/what-are-the-main-kpi-metrics-available-for-email-and-push-n-53eec1</loc>
+    <lastmod>2026-07-14</lastmod>
+  </url>
+  <url>
+    <loc>https://thelearningproject.in/tools/rovr/q/what-specific-components-segments-calculated-metrics-classif-7a324b</loc>
+    <lastmod>2026-07-14</lastmod>
+  </url>
+  <url>
+    <loc>https://thelearningproject.in/tools/rovr/q/how-can-i-migrate-components-and-projects-from-aa-to-cja-53604a</loc>
+    <lastmod>2026-07-14</lastmod>
+  </url>
+  <url>
+    <loc>https://thelearningproject.in/tools/rovr/q/what-is-the-path-to-migrate-from-aa-to-cja-973255</loc>
+    <lastmod>2026-07-14</lastmod>
+  </url>
+  <url>
+    <loc>https://thelearningproject.in/tools/rovr/q/how-do-i-create-an-audience-segment-in-aep-b7f0ba</loc>
+    <lastmod>2026-07-14</lastmod>
+  </url>
+  <url>
+    <loc>https://thelearningproject.in/tools/rovr/q/can-you-expain-checking-the-destination-monitoring-view-in-a-978884</loc>
+    <lastmod>2026-07-14</lastmod>
+  </url>
+  <url>
+    <loc>https://thelearningproject.in/tools/rovr/q/how-long-does-it-take-for-an-audience-to-appear-in-facebook-9c3834</loc>
+    <lastmod>2026-07-14</lastmod>
+  </url>
+  <url>
+    <loc>https://thelearningproject.in/tools/rovr/q/can-you-show-how-the-audiences-look-like-when-shared-to-face-b9f4c3</loc>
+    <lastmod>2026-07-14</lastmod>
+  </url>
+  <url>
+    <loc>https://thelearningproject.in/tools/rovr/q/how-do-i-hash-email-addresses-and-phone-numbers-for-facebook-f6dce6</loc>
+    <lastmod>2026-07-14</lastmod>
+  </url>
+  <url>
+    <loc>https://thelearningproject.in/tools/rovr/q/how-do-i-activate-audience-to-a-destination-eg-facebook-e5134d</loc>
+    <lastmod>2026-07-14</lastmod>
+  </url>
+  <url>
+    <loc>https://thelearningproject.in/tools/rovr/q/i-want-to-create-a-segment-that-gives-me-mobile-visitors-by-754391</loc>
     <lastmod>2026-07-13</lastmod>
   </url>
   <url>
-    <loc>https://thelearningproject.in/tools/rovr/q/what-are-some-common-use-cases-for-datastream-overrides-86eb23</loc>
+    <loc>https://thelearningproject.in/tools/rovr/q/what-is-adobe-marketo-8b159c</loc>
     <lastmod>2026-07-13</lastmod>
   </url>
   <url>
-    <loc>https://thelearningproject.in/tools/rovr/q/what-is-a-datastream-override-66be25</loc>
+    <loc>https://thelearningproject.in/tools/rovr/q/what-specific-tasks-can-adobe-cx-enterprise-coworker-help-wi-9e1d55</loc>
     <lastmod>2026-07-13</lastmod>
   </url>
   <url>
-    <loc>https://thelearningproject.in/tools/rovr/q/what-is-an-audience-agent-how-does-it-work-c80ddd</loc>
+    <loc>https://thelearningproject.in/tools/rovr/q/what-is-adobe-cx-enterprise-coworker-8c4b27</loc>
     <lastmod>2026-07-13</lastmod>
   </url>
   <url>
-    <loc>https://thelearningproject.in/tools/rovr/q/what-is-the-agent-orchestrator-c4029c</loc>
+    <loc>https://thelearningproject.in/tools/rovr/q/are-there-other-purpose-built-agents-besides-the-data-insigh-afbddf</loc>
     <lastmod>2026-07-13</lastmod>
   </url>
   <url>
-    <loc>https://thelearningproject.in/tools/rovr/q/what-are-the-latest-release-notes-for-cja-cd9810</loc>
+    <loc>https://thelearningproject.in/tools/rovr/q/what-are-the-main-types-of-purpose-built-agents-available-in-9b1730</loc>
+    <lastmod>2026-07-13</lastmod>
+  </url>
+  <url>
+    <loc>https://thelearningproject.in/tools/rovr/q/what-is-agent-orchestrator-a305d1</loc>
+    <lastmod>2026-07-13</lastmod>
+  </url>
+  <url>
+    <loc>https://thelearningproject.in/tools/rovr/q/what-is-data-insights-agent-dbcfdc</loc>
+    <lastmod>2026-07-13</lastmod>
+  </url>
+  <url>
+    <loc>https://thelearningproject.in/tools/rovr/q/what-is-data-validation-agent-and-how-does-it-work-55c72b</loc>
+    <lastmod>2026-07-13</lastmod>
+  </url>
+  <url>
+    <loc>https://thelearningproject.in/tools/rovr/q/what-types-of-ingestion-speeds-exist-in-aep-7f30f3</loc>
     <lastmod>2026-07-13</lastmod>
   </url>
   <url>
@@ -60,19 +196,7 @@
     <lastmod>2026-07-13</lastmod>
   </url>
   <url>
-    <loc>https://thelearningproject.in/tools/rovr/q/how-does-personalization-work-in-adobe-3ab3bc</loc>
-    <lastmod>2026-07-13</lastmod>
-  </url>
-  <url>
-    <loc>https://thelearningproject.in/tools/rovr/q/what-permissions-and-roles-are-required-to-manage-ajo-email-1f171e</loc>
-    <lastmod>2026-07-13</lastmod>
-  </url>
-  <url>
-    <loc>https://thelearningproject.in/tools/rovr/q/what-are-the-technical-parameters-i-need-to-configure-for-aj-fd212d</loc>
-    <lastmod>2026-07-13</lastmod>
-  </url>
-  <url>
-    <loc>https://thelearningproject.in/tools/rovr/q/is-there-a-guide-for-setting-up-ajo-email-channels-852057</loc>
+    <loc>https://thelearningproject.in/tools/rovr/q/how-does-identity-management-work-in-the-experience-platform-172107</loc>
     <lastmod>2026-07-13</lastmod>
   </url>
   <url>
@@ -80,103 +204,415 @@
     <lastmod>2026-07-13</lastmod>
   </url>
   <url>
-    <loc>https://thelearningproject.in/tools/rovr/q/how-does-identity-management-work-in-the-experience-platform-172107</loc>
+    <loc>https://thelearningproject.in/tools/rovr/q/how-do-i-create-a-journey-in-adobe-journey-optimizer-dbfa24</loc>
     <lastmod>2026-07-13</lastmod>
   </url>
   <url>
-    <loc>https://thelearningproject.in/tools/rovr/q/where-can-i-find-documentation-on-aep-dataset-schemas-42234b</loc>
+    <loc>https://thelearningproject.in/tools/rovr/q/what-is-adobe-journey-optimizer-and-how-does-it-differ-from-be88d3</loc>
     <lastmod>2026-07-13</lastmod>
   </url>
   <url>
-    <loc>https://thelearningproject.in/tools/rovr/q/should-i-use-cja-or-adobe-analytics-for-cross-channel-report-11c9b0</loc>
+    <loc>https://thelearningproject.in/tools/rovr/q/what-is-a-datastream-in-adobe-experience-platform-and-how-do-7304fa</loc>
     <lastmod>2026-07-13</lastmod>
   </url>
   <url>
-    <loc>https://thelearningproject.in/tools/rovr/q/what-are-the-steps-to-create-a-segment-in-cja-and-export-it-81c547</loc>
+    <loc>https://thelearningproject.in/tools/rovr/q/what-is-the-edge-network-server-api-and-when-should-i-use-it-0ded34</loc>
     <lastmod>2026-07-13</lastmod>
   </url>
   <url>
-    <loc>https://thelearningproject.in/tools/rovr/q/what-s-new-in-the-latest-aep-release-a78ae0</loc>
-    <lastmod>2026-07-13</lastmod>
-  </url>
-  <url>
-    <loc>https://thelearningproject.in/tools/rovr/q/what-is-a-journey-in-ajo-0af3db</loc>
-    <lastmod>2026-07-13</lastmod>
-  </url>
-  <url>
-    <loc>https://thelearningproject.in/tools/rovr/q/what-is-a-schema-in-aep-40ed9a</loc>
-    <lastmod>2026-07-13</lastmod>
-  </url>
-  <url>
-    <loc>https://thelearningproject.in/tools/rovr/q/when-would-i-choose-a-rule-based-target-over-ai-based-target-80a178</loc>
-    <lastmod>2026-07-13</lastmod>
-  </url>
-  <url>
-    <loc>https://thelearningproject.in/tools/rovr/q/what-is-the-difference-between-auto-target-and-auto-allocate-1b7f20</loc>
-    <lastmod>2026-07-13</lastmod>
-  </url>
-  <url>
-    <loc>https://thelearningproject.in/tools/rovr/q/how-does-aep-identity-resolution-work-1bcfb2</loc>
-    <lastmod>2026-07-13</lastmod>
-  </url>
-  <url>
-    <loc>https://thelearningproject.in/tools/rovr/q/what-is-ajo-journey-testing-3d8de2</loc>
-    <lastmod>2026-07-13</lastmod>
-  </url>
-  <url>
-    <loc>https://thelearningproject.in/tools/rovr/q/what-is-identitymap-used-for-in-ajo-cfe51d</loc>
+    <loc>https://thelearningproject.in/tools/rovr/q/how-does-identity-resolution-work-in-adobe-experience-platfo-3731d4</loc>
     <lastmod>2026-07-13</lastmod>
   </url>
   <url>
     <loc>https://thelearningproject.in/tools/rovr/q/how-does-ajo-event-triggering-work-d1fa83</loc>
-    <lastmod>2026-07-13</lastmod>
+    <lastmod>2026-07-12</lastmod>
+  </url>
+  <url>
+    <loc>https://thelearningproject.in/tools/rovr/q/what-are-the-different-types-of-destinations-available-in-re-582b7f</loc>
+    <lastmod>2026-07-12</lastmod>
+  </url>
+  <url>
+    <loc>https://thelearningproject.in/tools/rovr/q/should-i-use-cja-or-adobe-analytics-for-cross-channel-report-11c9b0</loc>
+    <lastmod>2026-07-12</lastmod>
+  </url>
+  <url>
+    <loc>https://thelearningproject.in/tools/rovr/q/how-do-i-map-aam-traits-and-segments-to-xdm-fields-in-adobe-fe212e</loc>
+    <lastmod>2026-07-12</lastmod>
+  </url>
+  <url>
+    <loc>https://thelearningproject.in/tools/rovr/q/how-do-i-integrate-adobe-audience-manager-segments-with-adob-dd0e39</loc>
+    <lastmod>2026-07-12</lastmod>
+  </url>
+  <url>
+    <loc>https://thelearningproject.in/tools/rovr/q/what-is-auto-target-in-adobe-target-and-how-does-it-use-mach-e02089</loc>
+    <lastmod>2026-07-11</lastmod>
+  </url>
+  <url>
+    <loc>https://thelearningproject.in/tools/rovr/q/what-is-the-global-mbox-in-adobe-target-and-how-do-i-configu-194ed1</loc>
+    <lastmod>2026-07-11</lastmod>
+  </url>
+  <url>
+    <loc>https://thelearningproject.in/tools/rovr/q/what-are-all-the-steps-from-creating-a-schema-in-aep-to-acti-21b41d</loc>
+    <lastmod>2026-07-11</lastmod>
+  </url>
+  <url>
+    <loc>https://thelearningproject.in/tools/rovr/q/q12-what-s-a-common-real-world-implementation-pitfall-with-t-44a122</loc>
+    <lastmod>2026-07-11</lastmod>
+  </url>
+  <url>
+    <loc>https://thelearningproject.in/tools/rovr/q/the-web-sdk-tag-extension-supports-the-following-monitoring-1d2883</loc>
+    <lastmod>2026-07-11</lastmod>
+  </url>
+  <url>
+    <loc>https://thelearningproject.in/tools/rovr/q/q11-how-do-you-debug-a-web-sdk-tags-implementation-in-produc-0dfe6a</loc>
+    <lastmod>2026-07-11</lastmod>
+  </url>
+  <url>
+    <loc>https://thelearningproject.in/tools/rovr/q/q10-what-is-a-rule-data-element-and-extension-in-adobe-tags-b6d863</loc>
+    <lastmod>2026-07-11</lastmod>
+  </url>
+  <url>
+    <loc>https://thelearningproject.in/tools/rovr/q/q9-how-do-you-handle-consent-e-g-gdpr-ccpa-in-a-web-sdk-tags-ff8c3c</loc>
+    <lastmod>2026-07-11</lastmod>
+  </url>
+  <url>
+    <loc>https://thelearningproject.in/tools/rovr/q/q8-how-does-identity-ecid-work-with-the-web-sdk-compared-to-5d41cc</loc>
+    <lastmod>2026-07-11</lastmod>
+  </url>
+  <url>
+    <loc>https://thelearningproject.in/tools/rovr/q/edge-network-vs-hub-processing-the-edge-network-works-alongs-542968</loc>
+    <lastmod>2026-07-11</lastmod>
+  </url>
+  <url>
+    <loc>https://thelearningproject.in/tools/rovr/q/q7-what-is-the-role-of-the-edge-network-in-a-web-sdk-impleme-348e46</loc>
+    <lastmod>2026-07-11</lastmod>
+  </url>
+  <url>
+    <loc>https://thelearningproject.in/tools/rovr/q/q6-what-is-the-difference-between-the-web-sdk-extension-s-co-c82635</loc>
+    <lastmod>2026-07-11</lastmod>
+  </url>
+  <url>
+    <loc>https://thelearningproject.in/tools/rovr/q/q5-how-do-you-configure-a-datastream-for-production-use-1cb7cc</loc>
+    <lastmod>2026-07-11</lastmod>
+  </url>
+  <url>
+    <loc>https://thelearningproject.in/tools/rovr/q/data-prep-in-datastreams-8c0ec0</loc>
+    <lastmod>2026-07-11</lastmod>
+  </url>
+  <url>
+    <loc>https://thelearningproject.in/tools/rovr/q/q4-what-is-a-datastream-in-aep-edge-network-ba5bd3</loc>
+    <lastmod>2026-07-11</lastmod>
+  </url>
+  <url>
+    <loc>https://thelearningproject.in/tools/rovr/q/q2-what-is-the-relationship-between-adobe-tags-and-the-web-s-d3b8c6</loc>
+    <lastmod>2026-07-11</lastmod>
+  </url>
+  <url>
+    <loc>https://thelearningproject.in/tools/rovr/q/module-16-adobe-tags-web-sdk-data-streams-edge-network-alloy-85f534</loc>
+    <lastmod>2026-07-11</lastmod>
+  </url>
+  <url>
+    <loc>https://thelearningproject.in/tools/rovr/q/describe-an-end-to-end-business-use-case-solved-using-aep-aj-e95644</loc>
+    <lastmod>2026-07-11</lastmod>
+  </url>
+  <url>
+    <loc>https://thelearningproject.in/tools/rovr/q/105-what-is-the-full-flow-of-web-sdk-edge-aep-profile-ajo-cu-827bae</loc>
+    <lastmod>2026-07-11</lastmod>
+  </url>
+  <url>
+    <loc>https://thelearningproject.in/tools/rovr/q/what-is-the-full-flow-of-web-sdk-edge-aep-profile-activation-a809eb</loc>
+    <lastmod>2026-07-11</lastmod>
+  </url>
+  <url>
+    <loc>https://thelearningproject.in/tools/rovr/q/104-what-is-the-full-flow-of-web-sdk-edge-aep-profile-activa-d2681e</loc>
+    <lastmod>2026-07-11</lastmod>
+  </url>
+  <url>
+    <loc>https://thelearningproject.in/tools/rovr/q/module-15-architecture-end-to-end-design-103-explain-aep-arc-998540</loc>
+    <lastmod>2026-07-11</lastmod>
+  </url>
+  <url>
+    <loc>https://thelearningproject.in/tools/rovr/q/100-explain-a-complex-troubleshooting-issue-you-solved-in-ae-aeb202</loc>
+    <lastmod>2026-07-11</lastmod>
+  </url>
+  <url>
+    <loc>https://thelearningproject.in/tools/rovr/q/99-how-do-you-debug-identity-graph-issues-expain-with-video-0cb003</loc>
+    <lastmod>2026-07-11</lastmod>
+  </url>
+  <url>
+    <loc>https://thelearningproject.in/tools/rovr/q/99-how-do-you-debug-identity-graph-issues-cc3d39</loc>
+    <lastmod>2026-07-11</lastmod>
+  </url>
+  <url>
+    <loc>https://thelearningproject.in/tools/rovr/q/96-what-causes-event-deduplication-expain-with-video-walkthr-1b64ee</loc>
+    <lastmod>2026-07-11</lastmod>
+  </url>
+  <url>
+    <loc>https://thelearningproject.in/tools/rovr/q/96-what-causes-event-deduplication-a2ffdf</loc>
+    <lastmod>2026-07-11</lastmod>
+  </url>
+  <url>
+    <loc>https://thelearningproject.in/tools/rovr/q/94-how-do-you-verify-event-ingestion-from-web-mobile-sdk-exp-c5af68</loc>
+    <lastmod>2026-07-11</lastmod>
+  </url>
+  <url>
+    <loc>https://thelearningproject.in/tools/rovr/q/94-how-do-you-verify-event-ingestion-from-web-mobile-sdk-bfe16a</loc>
+    <lastmod>2026-07-11</lastmod>
+  </url>
+  <url>
+    <loc>https://thelearningproject.in/tools/rovr/q/module-14-monitoring-troubleshooting-93-where-do-you-check-j-b043c5</loc>
+    <lastmod>2026-07-11</lastmod>
+  </url>
+  <url>
+    <loc>https://thelearningproject.in/tools/rovr/q/module-13-custom-actions-external-integrations-90-where-do-y-33c12e</loc>
+    <lastmod>2026-07-11</lastmod>
+  </url>
+  <url>
+    <loc>https://thelearningproject.in/tools/rovr/q/module-12-decision-management-offers-85-what-is-the-role-of-2c6246</loc>
+    <lastmod>2026-07-11</lastmod>
+  </url>
+  <url>
+    <loc>https://thelearningproject.in/tools/rovr/q/82-what-causes-missing-email-delivery-in-ajo-f72042</loc>
+    <lastmod>2026-07-11</lastmod>
+  </url>
+  <url>
+    <loc>https://thelearningproject.in/tools/rovr/q/82-what-causes-missing-email-delivery-in-ajo-explain-using-v-246f9d</loc>
+    <lastmod>2026-07-11</lastmod>
+  </url>
+  <url>
+    <loc>https://thelearningproject.in/tools/rovr/q/81-how-do-you-test-personalization-before-sending-explain-us-1605ea</loc>
+    <lastmod>2026-07-11</lastmod>
+  </url>
+  <url>
+    <loc>https://thelearningproject.in/tools/rovr/q/81-how-do-you-test-personalization-before-sending-9f9d31</loc>
+    <lastmod>2026-07-11</lastmod>
+  </url>
+  <url>
+    <loc>https://thelearningproject.in/tools/rovr/q/80-what-is-send-time-optimization-3ba5be</loc>
+    <lastmod>2026-07-11</lastmod>
+  </url>
+  <url>
+    <loc>https://thelearningproject.in/tools/rovr/q/79-how-do-you-insert-dynamic-subject-line-content-bc5e13</loc>
+    <lastmod>2026-07-11</lastmod>
+  </url>
+  <url>
+    <loc>https://thelearningproject.in/tools/rovr/q/65-what-channels-are-supported-by-ajo-85f2de</loc>
+    <lastmod>2026-07-11</lastmod>
+  </url>
+  <url>
+    <loc>https://thelearningproject.in/tools/rovr/q/can-you-expain-the-workflow-for-custom-actions-webhooks-chan-6a54ba</loc>
+    <lastmod>2026-07-11</lastmod>
+  </url>
+  <url>
+    <loc>https://thelearningproject.in/tools/rovr/q/can-you-expain-the-workflow-for-direct-mail-channel-2b799c</loc>
+    <lastmod>2026-07-11</lastmod>
+  </url>
+  <url>
+    <loc>https://thelearningproject.in/tools/rovr/q/can-you-expain-the-workflow-for-in-app-messages-channel-14ceb2</loc>
+    <lastmod>2026-07-11</lastmod>
+  </url>
+  <url>
+    <loc>https://thelearningproject.in/tools/rovr/q/to-move-content-form-one-sandbox-to-another-in-ajo-14003c</loc>
+    <lastmod>2026-07-11</lastmod>
+  </url>
+  <url>
+    <loc>https://thelearningproject.in/tools/rovr/q/how-do-i-use-adobe-experience-platform-audiences-in-adobe-ta-bc3591</loc>
+    <lastmod>2026-07-11</lastmod>
   </url>
   <url>
     <loc>https://thelearningproject.in/tools/rovr/q/how-do-i-configure-a-destination-in-real-time-cdp-196f14</loc>
-    <lastmod>2026-07-13</lastmod>
+    <lastmod>2026-07-11</lastmod>
   </url>
   <url>
     <loc>https://thelearningproject.in/tools/rovr/q/what-is-an-xdm-field-group-e89c00</loc>
-    <lastmod>2026-07-13</lastmod>
+    <lastmod>2026-07-11</lastmod>
   </url>
   <url>
-    <loc>https://thelearningproject.in/tools/rovr/q/what-is-identitymap-used-for-in-ajo-30f7e3</loc>
-    <lastmod>2026-07-13</lastmod>
+    <loc>https://thelearningproject.in/tools/rovr/q/how-do-i-create-a-calculated-metric-in-adobe-analytics-1336e8</loc>
+    <lastmod>2026-07-11</lastmod>
   </url>
   <url>
-    <loc>https://thelearningproject.in/tools/rovr/q/what-s-the-full-process-for-building-a-calculated-metric-in-91cc96</loc>
+    <loc>https://thelearningproject.in/tools/rovr/q/what-is-a-journey-in-ajo-0af3db</loc>
+    <lastmod>2026-07-11</lastmod>
+  </url>
+  <url>
+    <loc>https://thelearningproject.in/tools/rovr/q/how-do-i-set-up-a-data-element-in-launch-tags-597452</loc>
+    <lastmod>2026-07-11</lastmod>
+  </url>
+  <url>
+    <loc>https://thelearningproject.in/tools/rovr/q/how-do-i-create-a-segment-in-cja-a0ad84</loc>
+    <lastmod>2026-07-11</lastmod>
+  </url>
+  <url>
+    <loc>https://thelearningproject.in/tools/rovr/q/what-is-a-schema-in-aep-40ed9a</loc>
+    <lastmod>2026-07-11</lastmod>
+  </url>
+  <url>
+    <loc>https://thelearningproject.in/tools/rovr/q/what-are-the-different-types-of-offers-in-adobe-target-45a321</loc>
+    <lastmod>2026-07-11</lastmod>
+  </url>
+  <url>
+    <loc>https://thelearningproject.in/tools/rovr/q/my-streaming-ingestion-in-aep-is-failing-what-logs-should-i-c0c3c3</loc>
+    <lastmod>2026-07-11</lastmod>
+  </url>
+  <url>
+    <loc>https://thelearningproject.in/tools/rovr/q/can-you-expain-the-workflow-for-web-personalization-channel-0fe54d</loc>
+    <lastmod>2026-07-11</lastmod>
+  </url>
+  <url>
+    <loc>https://thelearningproject.in/tools/rovr/q/can-you-expain-the-workflow-for-push-notifications-channel-0438c5</loc>
+    <lastmod>2026-07-11</lastmod>
+  </url>
+  <url>
+    <loc>https://thelearningproject.in/tools/rovr/q/can-you-expain-the-workflow-for-sms-channel-10ca17</loc>
+    <lastmod>2026-07-11</lastmod>
+  </url>
+  <url>
+    <loc>https://thelearningproject.in/tools/rovr/q/what-are-the-prerequisites-needed-before-configuring-the-ema-e62cd3</loc>
+    <lastmod>2026-07-11</lastmod>
+  </url>
+  <url>
+    <loc>https://thelearningproject.in/tools/rovr/q/can-you-expain-the-workflow-for-email-channel-1a6b17</loc>
+    <lastmod>2026-07-11</lastmod>
+  </url>
+  <url>
+    <loc>https://thelearningproject.in/tools/rovr/q/what-are-the-key-components-and-features-of-adobe-journey-op-04df29</loc>
+    <lastmod>2026-07-11</lastmod>
+  </url>
+  <url>
+    <loc>https://thelearningproject.in/tools/rovr/q/module-9-ajo-fundamentals-60-what-is-adobe-journey-optimizer-37fff4</loc>
+    <lastmod>2026-07-11</lastmod>
+  </url>
+  <url>
+    <loc>https://thelearningproject.in/tools/rovr/q/59-how-do-data-governance-and-consent-policies-prevent-activ-c1cbb5</loc>
+    <lastmod>2026-07-11</lastmod>
+  </url>
+  <url>
+    <loc>https://thelearningproject.in/tools/rovr/q/57-what-are-consent-policies-how-do-they-enforce-restriction-e42414</loc>
+    <lastmod>2026-07-11</lastmod>
+  </url>
+  <url>
+    <loc>https://thelearningproject.in/tools/rovr/q/module-8-governance-privacy-compliance-56-what-are-data-usag-5e248a</loc>
+    <lastmod>2026-07-11</lastmod>
+  </url>
+  <url>
+    <loc>https://thelearningproject.in/tools/rovr/q/54-how-do-data-governance-and-consent-policies-prevent-activ-5fc127</loc>
+    <lastmod>2026-07-11</lastmod>
+  </url>
+  <url>
+    <loc>https://thelearningproject.in/tools/rovr/q/53-what-are-consent-policies-how-do-they-enforce-restriction-0334fa</loc>
+    <lastmod>2026-07-11</lastmod>
+  </url>
+  <url>
+    <loc>https://thelearningproject.in/tools/rovr/q/52-what-are-data-usage-labels-why-are-they-important-ea1ffa</loc>
+    <lastmod>2026-07-11</lastmod>
+  </url>
+  <url>
+    <loc>https://thelearningproject.in/tools/rovr/q/51-what-is-audience-activation-in-aep-with-images-38454f</loc>
+    <lastmod>2026-07-11</lastmod>
+  </url>
+  <url>
+    <loc>https://thelearningproject.in/tools/rovr/q/51-what-is-audience-activation-in-aep-try-to-share-all-the-s-ae29c0</loc>
+    <lastmod>2026-07-11</lastmod>
+  </url>
+  <url>
+    <loc>https://thelearningproject.in/tools/rovr/q/explain-ctas-and-itas-capability-of-data-distiller-12b154</loc>
+    <lastmod>2026-07-11</lastmod>
+  </url>
+  <url>
+    <loc>https://thelearningproject.in/tools/rovr/q/35-how-do-profiles-merge-when-there-are-conflicting-ids-40797e</loc>
+    <lastmod>2026-07-11</lastmod>
+  </url>
+  <url>
+    <loc>https://thelearningproject.in/tools/rovr/q/46-explain-edge-segmentation-when-is-it-used-117a71</loc>
+    <lastmod>2026-07-11</lastmod>
+  </url>
+  <url>
+    <loc>https://thelearningproject.in/tools/rovr/q/21-how-do-you-verify-event-ingestion-from-web-mobile-sdk-dd8bd5</loc>
+    <lastmod>2026-07-11</lastmod>
+  </url>
+  <url>
+    <loc>https://thelearningproject.in/tools/rovr/q/what-is-the-difference-between-a-b-testing-and-multivariate-85249c</loc>
+    <lastmod>2026-07-10</lastmod>
+  </url>
+  <url>
+    <loc>https://thelearningproject.in/tools/rovr/q/what-permissions-or-roles-are-required-to-use-sandbox-toolin-f03dcd</loc>
+    <lastmod>2026-07-10</lastmod>
+  </url>
+  <url>
+    <loc>https://thelearningproject.in/tools/rovr/q/how-to-move-package-from-one-sandbox-to-another-how-to-creat-bc2a4d</loc>
+    <lastmod>2026-07-10</lastmod>
+  </url>
+  <url>
+    <loc>https://thelearningproject.in/tools/rovr/q/hi-thehaseen-did-prasad-taught-how-to-move-package-from-one-8262fb</loc>
+    <lastmod>2026-07-10</lastmod>
+  </url>
+  <url>
+    <loc>https://thelearningproject.in/tools/rovr/q/what-are-all-the-steps-from-creating-a-schema-in-aep-to-acti-52da17</loc>
+    <lastmod>2026-07-10</lastmod>
+  </url>
+  <url>
+    <loc>https://thelearningproject.in/tools/rovr/q/what-s-the-role-of-real-time-cdp-in-feeding-both-target-and-b05b6a</loc>
     <lastmod>2026-07-09</lastmod>
   </url>
   <url>
-    <loc>https://thelearningproject.in/tools/rovr/q/how-does-adobe-target-integrate-with-adobe-analytics-and-exp-96ef8e</loc>
+    <loc>https://thelearningproject.in/tools/rovr/q/how-do-i-set-up-a-journey-in-ajo-that-uses-both-an-event-bas-1f6041</loc>
     <lastmod>2026-07-09</lastmod>
   </url>
   <url>
-    <loc>https://thelearningproject.in/tools/rovr/q/what-are-the-main-factors-that-influence-adobe-target-implem-451d52</loc>
+    <loc>https://thelearningproject.in/tools/rovr/q/what-is-data-mirror-ab8de9</loc>
     <lastmod>2026-07-09</lastmod>
   </url>
   <url>
-    <loc>https://thelearningproject.in/tools/rovr/q/what-is-the-typical-cost-and-implementation-timeline-for-set-e141f6</loc>
+    <loc>https://thelearningproject.in/tools/rovr/q/what-is-the-difference-between-field-based-and-graph-based-s-5e4989</loc>
     <lastmod>2026-07-09</lastmod>
   </url>
   <url>
-    <loc>https://thelearningproject.in/tools/rovr/q/what-are-the-main-features-and-pricing-tiers-available-in-ad-6d0896</loc>
+    <loc>https://thelearningproject.in/tools/rovr/q/what-does-ajo-push-tracking-experience-event-dataset-contain-c5756f</loc>
     <lastmod>2026-07-09</lastmod>
   </url>
   <url>
-    <loc>https://thelearningproject.in/tools/rovr/q/what-is-adobe-target-20b661</loc>
-    <lastmod>2026-07-09</lastmod>
-  </url>
-  <url>
-    <loc>https://thelearningproject.in/tools/rovr/q/give-me-an-overview-of-journey-optimizer-s-key-capabilities-adba07</loc>
+    <loc>https://thelearningproject.in/tools/rovr/q/what-metrics-does-adobe-journey-optimizer-track-by-default-43eb65</loc>
     <lastmod>2026-07-08</lastmod>
   </url>
   <url>
-    <loc>https://thelearningproject.in/tools/rovr/q/how-do-i-set-up-identity-stitching-between-a-known-user-and-2f3a5c</loc>
+    <loc>https://thelearningproject.in/tools/rovr/q/what-are-the-ootb-metrics-from-ajo-available-in-aep-3c444c</loc>
     <lastmod>2026-07-08</lastmod>
   </url>
   <url>
-    <loc>https://thelearningproject.in/tools/rovr/q/how-do-i-create-a-campaign-using-decisioning-to-personalize-77068b</loc>
+    <loc>https://thelearningproject.in/tools/rovr/q/what-are-the-key-features-and-capabilities-of-adobe-journey-ba8ee6</loc>
+    <lastmod>2026-07-08</lastmod>
+  </url>
+  <url>
+    <loc>https://thelearningproject.in/tools/rovr/q/how-do-i-create-an-a-b-test-activity-in-adobe-target-6b1d01</loc>
+    <lastmod>2026-07-08</lastmod>
+  </url>
+  <url>
+    <loc>https://thelearningproject.in/tools/rovr/q/how-do-i-configure-datastreams-and-schemas-in-aep-for-use-wi-891f4b</loc>
+    <lastmod>2026-07-08</lastmod>
+  </url>
+  <url>
+    <loc>https://thelearningproject.in/tools/rovr/q/what-are-the-steps-required-to-connect-ajo-to-aep-a15a46</loc>
+    <lastmod>2026-07-08</lastmod>
+  </url>
+  <url>
+    <loc>https://thelearningproject.in/tools/rovr/q/how-do-i-trigger-a-journey-when-a-form-is-submitted-in-ajo-1c8241</loc>
+    <lastmod>2026-07-08</lastmod>
+  </url>
+  <url>
+    <loc>https://thelearningproject.in/tools/rovr/q/how-do-i-send-personalized-email-offers-using-ajo-decisionin-c36fef</loc>
+    <lastmod>2026-07-08</lastmod>
+  </url>
+  <url>
+    <loc>https://thelearningproject.in/tools/rovr/q/aep-ai-for-segmentation-and-personalization-bb768e</loc>
+    <lastmod>2026-07-08</lastmod>
+  </url>
+  <url>
+    <loc>https://thelearningproject.in/tools/rovr/q/what-is-adobe-tags-formerly-launch-and-how-does-it-work-as-a-b84695</loc>
+    <lastmod>2026-07-08</lastmod>
+  </url>
+  <url>
+    <loc>https://thelearningproject.in/tools/rovr/q/how-do-i-configure-drill-down-interactions-and-filters-for-c-78a271</loc>
     <lastmod>2026-07-08</lastmod>
   </url>
   <url>
@@ -184,15 +620,71 @@
     <lastmod>2026-07-08</lastmod>
   </url>
   <url>
-    <loc>https://thelearningproject.in/tools/rovr/q/i-m-new-to-cja-how-do-i-set-it-up-step-by-step-1e0a47</loc>
-    <lastmod>2026-07-03</lastmod>
+    <loc>https://thelearningproject.in/tools/rovr/q/how-can-i-get-initial-access-to-adobe-journey-optimizer-if-i-0960f0</loc>
+    <lastmod>2026-07-08</lastmod>
   </url>
   <url>
-    <loc>https://thelearningproject.in/tools/rovr/q/how-do-i-use-segments-in-cja-c43682</loc>
-    <lastmod>2026-07-02</lastmod>
+    <loc>https://thelearningproject.in/tools/rovr/q/what-are-the-differences-between-sandbox-environments-and-pr-358385</loc>
+    <lastmod>2026-07-08</lastmod>
   </url>
   <url>
-    <loc>https://thelearningproject.in/tools/rovr/q/how-do-i-set-up-tags-in-adobe-launch-da62aa</loc>
-    <lastmod>2026-07-02</lastmod>
+    <loc>https://thelearningproject.in/tools/rovr/q/are-there-any-free-trials-or-sandbox-environments-available-de2776</loc>
+    <lastmod>2026-07-08</lastmod>
+  </url>
+  <url>
+    <loc>https://thelearningproject.in/tools/rovr/q/what-is-xdm-schema-and-how-does-schema-composition-work-in-a-eab752</loc>
+    <lastmod>2026-07-07</lastmod>
+  </url>
+  <url>
+    <loc>https://thelearningproject.in/tools/rovr/q/how-do-i-create-a-segment-in-adobe-analytics-251228</loc>
+    <lastmod>2026-07-07</lastmod>
+  </url>
+  <url>
+    <loc>https://thelearningproject.in/tools/rovr/q/how-do-i-setup-cja-in-my-enterprise-4808ab</loc>
+    <lastmod>2026-07-07</lastmod>
+  </url>
+  <url>
+    <loc>https://thelearningproject.in/tools/rovr/q/how-to-enable-the-cross-site-mid-value-stitching-for-adobe-a-9a545f</loc>
+    <lastmod>2026-07-07</lastmod>
+  </url>
+  <url>
+    <loc>https://thelearningproject.in/tools/rovr/q/who-is-the-founder-of-adobe-analytics-456846</loc>
+    <lastmod>2026-07-07</lastmod>
+  </url>
+  <url>
+    <loc>https://thelearningproject.in/tools/rovr/q/what-is-cx-enterprise-coworker-c333f7</loc>
+    <lastmod>2026-07-07</lastmod>
+  </url>
+  <url>
+    <loc>https://thelearningproject.in/tools/rovr/q/what-is-adobe-analytics-8a96d9</loc>
+    <lastmod>2026-07-06</lastmod>
+  </url>
+  <url>
+    <loc>https://thelearningproject.in/tools/rovr/q/what-are-the-different-ways-to-ingest-data-into-adobe-experi-e27bd3</loc>
+    <lastmod>2026-07-06</lastmod>
+  </url>
+  <url>
+    <loc>https://thelearningproject.in/tools/rovr/q/can-i-modify-data-elements-or-rules-dynamically-using-the-sa-08d95d</loc>
+    <lastmod>2026-07-05</lastmod>
+  </url>
+  <url>
+    <loc>https://thelearningproject.in/tools/rovr/q/by-reading-the-satellite-object-from-the-browser-can-we-get-4e0a89</loc>
+    <lastmod>2026-07-05</lastmod>
+  </url>
+  <url>
+    <loc>https://thelearningproject.in/tools/rovr/q/what-are-the-most-important-features-or-modules-i-should-foc-f9ab1c</loc>
+    <lastmod>2026-07-05</lastmod>
+  </url>
+  <url>
+    <loc>https://thelearningproject.in/tools/rovr/q/what-is-the-best-way-to-practice-and-gain-hands-on-experienc-df3c14</loc>
+    <lastmod>2026-07-05</lastmod>
+  </url>
+  <url>
+    <loc>https://thelearningproject.in/tools/rovr/q/what-is-campaign-production-agent-99ba34</loc>
+    <lastmod>2026-07-05</lastmod>
+  </url>
+  <url>
+    <loc>https://thelearningproject.in/tools/rovr/q/what-is-ai-decisioning-in-adobe-journey-optimizer-c326c8</loc>
+    <lastmod>2026-07-04</lastmod>
   </url>
 </urlset>

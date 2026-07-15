@@ -1,0 +1,174 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/png" href="/tools/rovr/rovrlogo.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="build-date" content="2026-06-10" />
+    
+    
+    <script src="https://assets.adobedtm.com/204118644db8/290ae1adb65a/launch-e5ec7bf1a1ef-development.min.js" async></script>
+    <script type="module" crossorigin src="/tools/rovr/assets/index-Cnf1TPK2.js"></script>
+    <link rel="stylesheet" crossorigin href="/tools/rovr/assets/index-D1POE5XP.css">
+  <title>Module 14: Monitoring &amp; Troubleshooting
+93. Where do you check journey execution logs? | Rovr</title>
+<meta name="description" content="Where Do You Check Journey Execution Logs in AJO? Overview Adobe Journey Optimizer provides multiple locations and methods to access journey execution logs,…" />
+<link rel="canonical" href="https://thelearningproject.in/tools/rovr/q/module-14-monitoring-troubleshooting-93-where-do-you-check-j-b043c5" />
+<meta property="og:title" content="Module 14: Monitoring &amp; Troubleshooting
+93. Where do you check journey execution logs?" />
+<meta property="og:description" content="Where Do You Check Journey Execution Logs in AJO? Overview Adobe Journey Optimizer provides multiple locations and methods to access journey execution logs,…" />
+<meta property="og:url" content="https://thelearningproject.in/tools/rovr/q/module-14-monitoring-troubleshooting-93-where-do-you-check-j-b043c5" />
+<meta property="og:type" content="article" />
+<meta property="og:image" content="https://thelearningproject.in/tools/rovr/rovrlogo.png" />
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="Module 14: Monitoring &amp; Troubleshooting
+93. Where do you check journey execution logs?" />
+<meta name="twitter:description" content="Where Do You Check Journey Execution Logs in AJO? Overview Adobe Journey Optimizer provides multiple locations and methods to access journey execution logs,…" />
+</head>
+  <body>
+    <div id="root"><article><h1>Module 14: Monitoring &amp; Troubleshooting
+93. Where do you check journey execution logs?</h1>
+<h2>Where Do You Check Journey Execution Logs in AJO?</h2>
+<h3>Overview</h3>
+<p>Adobe Journey Optimizer provides multiple locations and methods to access journey execution logs, helping you monitor performance, diagnose issues, and optimize customer experiences.</p>
+<hr>
+<h3>1. Journey Live Reports</h3>
+<p><strong>Live Reports</strong> provide real-time monitoring of journey execution data for the <strong>last 24 hours</strong>.</p>
+<h4>How to Access:</h4>
+<p>1. Navigate to <strong>Journeys</strong> in the left menu</p>
+<p>2. Open your journey</p>
+<p>3. Click the <strong>Reports</strong> tab at the top</p>
+<p>4. Select <strong>Last 24 hrs</strong> to view live execution data</p>
+<h4>What You Can See:</h4>
+<ul>
+<li><strong>Profiles entered</strong> – Number of profiles that entered the journey</li>
+<li><strong>Profiles exited</strong> – Number of profiles that completed or exited</li>
+<li><strong>Errors</strong> – Actions or steps that failed</li>
+<li><strong>Messages sent</strong> – Delivery counts per channel</li>
+<li><strong>Real-time interactions</strong> – Active customer interactions</li>
+</ul>
+<hr>
+<h3>2. Journey Global Reports</h3>
+<p><strong>Global Reports</strong> provide comprehensive journey performance metrics across <strong>all time</strong> or a selected date range.</p>
+<h4>How to Access:</h4>
+<p>1. Navigate to <strong>Journeys</strong> in the left menu</p>
+<p>2. Open your journey</p>
+<p>3. Click the <strong>Reports</strong> tab</p>
+<p>4. Select <strong>All time</strong> or a custom date range</p>
+<h4>What You Can See:</h4>
+<ul>
+<li><strong>Journey performance metrics</strong> – Entry, exit, and completion rates</li>
+<li><strong>Channel performance</strong> – Email, SMS, push delivery metrics</li>
+<li><strong>Step-by-step analysis</strong> – How profiles move through journey steps</li>
+<li><strong>Error rates</strong> – Failed actions and error details</li>
+</ul>
+<hr>
+<h3>3. Journey Step Events</h3>
+<p><strong>Journey Step Events</strong> provide the most detailed, granular view of journey execution — tracking every step a profile takes through a journey.</p>
+<h4>How to Access:</h4>
+<p>1. Navigate to <strong>Adobe Experience Platform</strong></p>
+<p>2. Go to <strong>Datasets</strong></p>
+<p>3. Look for the <strong>AJO Journey Step Events</strong> dataset</p>
+<p>4. Query the dataset using <strong>Query Service</strong></p>
+<h4>What You Can See:</h4>
+<ul>
+<li><strong>Step-by-step execution details</strong> – Every node a profile passes through</li>
+<li><strong>Timestamps</strong> – Exact timing of each step</li>
+<li><strong>Error messages</strong> – Detailed error information per step</li>
+<li><strong>Profile identifiers</strong> – Which profiles triggered which steps</li>
+<li><strong>Action results</strong> – Success or failure of each action</li>
+</ul>
+<h4>Sample Query:</h4>
+<p>```sql</p>
+<p>SELECT</p>
+<p>journeyName,</p>
+<p>profileId,</p>
+<p>stepName,</p>
+<p>stepStatus,</p>
+<p>errorMessage,</p>
+<p>timestamp</p>
+<p>FROM</p>
+<p>ajo_journey_step_events</p>
+<p>WHERE</p>
+<p>journeyName = &#x27;Your Journey Name&#x27;</p>
+<p>AND timestamp &gt; NOW() - INTERVAL &#x27;7 days&#x27;</p>
+<p>ORDER BY</p>
+<p>timestamp DESC</p>
+<p>```</p>
+<hr>
+<h3>4. Audit Logs</h3>
+<p><strong>Audit Logs</strong> track all actions performed by users in the system, providing visibility into configuration changes and administrative activities.</p>
+<h4>How to Access:</h4>
+<p>1. Navigate to <strong>Adobe Experience Platform</strong></p>
+<p>2. Go to <strong>Governance</strong> → <strong>Audit Logs</strong></p>
+<p>3. Filter by <strong>resource type</strong> (Journey, Message, etc.)</p>
+<p>4. Filter by <strong>date range</strong> and <strong>user</strong></p>
+<p><img src="https://raw.githubusercontent.com/AdobeDocs/journey-optimizer.en/main/help/using/privacy/assets/audit-logs.png" alt="Audit Logs"></p>
+<h4>What You Can See:</h4>
+<ul>
+<li><strong>User actions</strong> – Who made what changes and when</li>
+<li><strong>Configuration changes</strong> – Journey edits, publishes, and deletions</li>
+<li><strong>System events</strong> – Administrative actions across AJO services</li>
+</ul>
+<p>&gt; <strong>Important:</strong> To view and export audit logs, you must have the <strong>View User Activity Log</strong> permission granted.</p>
+<hr>
+<h3>5. AJO System Datasets in AEP</h3>
+<p>Journey Optimizer automatically generates system datasets in Adobe Experience Platform that contain detailed execution logs:</p>
+<p>| Dataset | Contents |</p>
+<p>|---|---|</p>
+<p>| <strong>AJO Journey Step Events</strong> | Step-by-step journey execution details |</p>
+<p>| <strong>AJO Message Feedback Event Dataset</strong> | Email/SMS delivery logs and ISP feedback |</p>
+<p>| <strong>AJO Email Tracking Experience Event Dataset</strong> | Email open, click, and tracking events |</p>
+<p>| <strong>AJO Push Tracking Experience Event Dataset</strong> | Push notification interaction events |</p>
+<p>| <strong>AJO BCC Feedback Event Dataset</strong> | BCC email tracking records |</p>
+<h4>How to Access:</h4>
+<p>1. Navigate to <strong>Adobe Experience Platform</strong></p>
+<p>2. Go to <strong>Data Management</strong> → <strong>Datasets</strong></p>
+<p>3. Search for <strong>AJO</strong> to filter Journey Optimizer datasets</p>
+<p>4. Click on a dataset to explore its data</p>
+<p>5. Use <strong>Query Service</strong> for detailed analysis</p>
+<hr>
+<h3>6. Deliverability Monitoring</h3>
+<p>For email-specific delivery issues, use the <strong>Deliverability Monitoring</strong> tools:</p>
+<h4>How to Access:</h4>
+<p>1. Navigate to <strong>Administration</strong> in the left menu</p>
+<p>2. Click on <strong>Channels</strong> → <strong>Email Settings</strong></p>
+<p>3. Select <strong>Deliverability</strong> to view delivery metrics</p>
+<h4>What You Can See:</h4>
+<ul>
+<li><strong>Bounce rates</strong> – Hard and soft bounce tracking</li>
+<li><strong>Spam complaints</strong> – ISP feedback on spam reports</li>
+<li><strong>Delivery rates</strong> – Success rates across ISPs</li>
+<li><strong>IP warm-up status</strong> – IP reputation monitoring</li>
+</ul>
+<hr>
+<h3>7. Inbound Action Logs</h3>
+<p>For inbound actions (in-app, web personalization), access specific troubleshooting tools:</p>
+<p>1. Navigate to <strong>Journeys</strong></p>
+<p>2. Open your journey with inbound actions</p>
+<p>3. Click <strong>More actions</strong> → <strong>View inbound action logs</strong></p>
+<p>4. Review execution details for inbound interactions</p>
+<hr>
+<h3>Quick Reference: Which Log to Use?</h3>
+<p>| Scenario | Best Log Source |</p>
+<p>|---|---|</p>
+<p>| <strong>Real-time journey monitoring</strong> | Journey Live Reports |</p>
+<p>| <strong>Historical performance analysis</strong> | Journey Global Reports |</p>
+<p>| <strong>Detailed step-by-step troubleshooting</strong> | Journey Step Events Dataset |</p>
+<p>| <strong>Email delivery failures</strong> | Message Feedback Event Dataset |</p>
+<p>| <strong>User configuration changes</strong> | Audit Logs |</p>
+<p>| <strong>Email tracking (opens/clicks)</strong> | Email Tracking Dataset |</p>
+<p>| <strong>Push notification tracking</strong> | Push Tracking Dataset |</p>
+<p>| <strong>Inbound action issues</strong> | Inbound Action Logs |</p>
+<hr>
+<h3>Best Practices</h3>
+<p>✓ <strong>Start with Live Reports</strong> – Quick overview of real-time issues</p>
+<p>✓ <strong>Use Journey Step Events</strong> – For deep-dive troubleshooting of specific profiles</p>
+<p>✓ <strong>Query AEP Datasets</strong> – For custom analysis and reporting</p>
+<p>✓ <strong>Monitor Audit Logs</strong> – Track configuration changes that may impact journeys</p>
+<p>✓ <strong>Set up Alerts</strong> – Configure Adobe Experience Platform alerts for journey failures</p>
+<p>✓ <strong>Cross-reference datasets</strong> – Combine step events with message feedback for complete picture</p>
+</article>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Module 14: Monitoring & Troubleshooting\n93. Where do you check journey execution logs?", "acceptedAnswer": {"@type": "Answer", "text": "Where Do You Check Journey Execution Logs in AJO? Overview Adobe Journey Optimizer provides multiple locations and methods to access journey execution logs, helping you monitor performance, diagnose issues, and optimize customer experiences. --- 1. Journey Live Reports Live Reports provide real-time monitoring of journey execution data for the last 24 hours. How to Access: 1. Navigate to Journeys in the left menu 2. Open your journey 3. Click the Reports tab at the top 4. Select Last 24 hrs to view live execution data What You Can See: - Profiles entered \u2013 Number of profiles that entered the journey - Profiles exited \u2013 Number of profiles that completed or exited - Errors \u2013 Actions or steps that failed - Messages sent \u2013 Delivery counts per channel - Real-time interactions \u2013 Active customer interactions --- 2. Journey Global Reports Global Reports provide comprehensive journey performance metrics across all time or a selected date range. How to Access: 1. Navigate to Journeys in the left menu 2. Open your journey 3. Click the Reports tab 4. Select All time or a custom date range What You Can See: - Journey performance metrics \u2013 Entry, exit, and completion rates - Channel performance \u2013 Email, SMS, push delivery metrics - Step-by-step analysis \u2013 How profiles move through journey steps - Error rates \u2013 Failed actions and error details --- 3. Journey Step Events Journey Step Events provide the most detailed, granular view of journey execution \u2014 tracking every step a profile takes through a journey. How to Access: 1. Navigate to Adobe Experience Platform 2. Go to Datasets 3. Look for the AJO Journey Step Events dataset 4. Query the dataset using Query Service What You Can See: - Step-by-step execution details \u2013 Every node a profile passes through - Timestamps \u2013 Exact timing of each step - Error messages \u2013 Detailed error information per step - Profile identifiers \u2013 Which profiles triggered which steps - Action results \u2013 Success or failure of each action Sample Query: sql\u2026"}}]}</script></div>
+  </body>
+</html>

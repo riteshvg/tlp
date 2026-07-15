@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/png" href="/tools/rovr/rovrlogo.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="build-date" content="2026-06-10" />
+    
+    
+    <script src="https://assets.adobedtm.com/204118644db8/290ae1adb65a/launch-e5ec7bf1a1ef-development.min.js" async></script>
+    <script type="module" crossorigin src="/tools/rovr/assets/index-Cnf1TPK2.js"></script>
+    <link rel="stylesheet" crossorigin href="/tools/rovr/assets/index-D1POE5XP.css">
+  <title>How do I create a segment in Adobe Analytics? | Rovr</title>
+<meta name="description" content="Creating a Segment in Adobe Analytics Adobe Analytics provides several ways to create segments, depending on your needs and where you&#x27;re working. ---…" />
+<link rel="canonical" href="https://thelearningproject.in/tools/rovr/q/how-do-i-create-a-segment-in-adobe-analytics-251228" />
+<meta property="og:title" content="How do I create a segment in Adobe Analytics?" />
+<meta property="og:description" content="Creating a Segment in Adobe Analytics Adobe Analytics provides several ways to create segments, depending on your needs and where you&#x27;re working. ---…" />
+<meta property="og:url" content="https://thelearningproject.in/tools/rovr/q/how-do-i-create-a-segment-in-adobe-analytics-251228" />
+<meta property="og:type" content="article" />
+<meta property="og:image" content="https://thelearningproject.in/tools/rovr/rovrlogo.png" />
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="How do I create a segment in Adobe Analytics?" />
+<meta name="twitter:description" content="Creating a Segment in Adobe Analytics Adobe Analytics provides several ways to create segments, depending on your needs and where you&#x27;re working. ---…" />
+</head>
+  <body>
+    <div id="root"><article><h1>How do I create a segment in Adobe Analytics?</h1>
+<h2>Creating a Segment in Adobe Analytics</h2>
+<p>Adobe Analytics provides several ways to create segments, depending on your needs and where you&#x27;re working.</p>
+<hr>
+<h3>Prerequisites</h3>
+<ul>
+<li>Ensure you have the appropriate segment creation rights for your role in your organization.</li>
+<li>Segments can be scoped to a single Workspace project or shared across all projects.</li>
+</ul>
+<hr>
+<h3>Ways to Create a Segment</h3>
+<p><img src="https://raw.githubusercontent.com/AdobeDocs/analytics.en/main/help/components/segmentation/segmentation-workflow/assets/create-segment.png" alt="Ways to create a segment"></p>
+<p>There are six entry points for creating a segment:</p>
+<p>| Option | How |</p>
+<p>|--------|-----|</p>
+<p>| <strong>A</strong> – Segment Manager | In the main interface, select <strong>Components</strong> &gt; <strong>Segments</strong>, then click ![Add] <strong>Add</strong> in the Segment Manager. |</p>
+<p>| <strong>B</strong> – Workspace Components Panel | In a Workspace project, find the <strong>Segments</strong> section in the left Components panel and click the <strong>+</strong> (Add) icon. |</p>
+<p>| <strong>C</strong> – Visualization Context Menu | In a Workspace project, right-click within a visualization and select <strong>Create segment from selection</strong>. |</p>
+<p>| <strong>D</strong> – Workspace Menu Bar | In a Workspace project, select <strong>Components</strong> from the top menu, then choose <strong>Create segment</strong>. |</p>
+<p>| <strong>E</strong> – Keyboard Shortcut | In a Workspace project, press <strong>Shift + Cmd + E</strong> (macOS) or <strong>Shift + Ctrl + E</strong> (Windows). |</p>
+<p>| <strong>F</strong> – Drop Zone | Drag and drop into any <strong><em>Drop a segment here</strong></em> zone — this creates a <strong>Project-only segment</strong>. |</p>
+<hr>
+<h3>Building the Segment (Segment Builder)</h3>
+<p>Once you open the segment creation dialog, the <strong>Segment Builder</strong> appears:</p>
+<p><img src="https://raw.githubusercontent.com/AdobeDocs/analytics.en/main/help/components/segmentation/segmentation-workflow/assets/new-segment.png" alt="Segment Builder"></p>
+<p>1. <strong>Name your segment</strong> — Give it a clear, descriptive title.</p>
+<p>2. <strong>Add a definition</strong> — Drag dimensions, metrics, or events into the definition area to set your segment criteria.</p>
+<p>3. <strong>Set the container level</strong> — Choose between <strong>Hit</strong>, <strong>Visit</strong>, or <strong>Visitor</strong> scope depending on how broadly you want the segment to apply.</p>
+<p>4. <strong>Combine conditions</strong> — Use <strong>AND</strong> / <strong>OR</strong> / <strong>THEN</strong> logic to refine your criteria.</p>
+<p>5. <strong>Preview the data</strong> — The builder shows a data preview based on the last 90 days so you can validate your segment before saving.</p>
+<p>6. <strong>Check product compatibility</strong> — A small number of segment criteria are not compatible with all Adobe Analytics tools; the builder indicates which tools are compatible.</p>
+<p>7. <strong>Save</strong> — Click <strong>Save</strong> to make the segment available across projects, or save it as a project-only segment if that is your intent.</p>
+<hr>
+<h3>Quick Segments (Simplified Option)</h3>
+<p>If you&#x27;re inside a Workspace project and need a fast, simple segment, you can use <strong>Quick Segment</strong> creation — a streamlined version of the Segment Builder that lets you define basic conditions without leaving your analysis flow.</p>
+<hr>
+<h3>Performance Tip</h3>
+<p>If your segment requires many OR conditions on the same variable (e.g., Page equals X OR Page equals Y OR Page equals Z for hundreds of values), consider using <strong>Classifications</strong> instead:</p>
+<p>1. Create a classification for the variable.</p>
+<p>2. Download and fill in the classification template, assigning the same value to all dimension items you want to include.</p>
+<p>3. Import the classification back into Adobe Analytics.</p>
+<p>4. Once processed, build a segment using the single classified value.</p>
+<p>This dramatically improves segment performance and makes future edits much easier.</p>
+<hr>
+<h3>Moving Segments to Customer Journey Analytics</h3>
+<p>If you plan to use your segments in <strong>Customer Journey Analytics</strong>, note that segments are called <strong>filters</strong> in CJA. The logic can be re-created using CJA&#x27;s Filter Builder.</p>
+<p><a href="https://video.tv.adobe.com/v/31982/?quality=12&amp;learn=on">▶ Watch: Move Adobe Analytics Segments to Customer Journey Analytics</a></p>
+<h2>Sources</h2>
+<ul>
+<li><a href="https://experienceleague.adobe.com/en/docs/analytics/components/segmentation/segmentation-workflow/seg-create">Create Segments</a></li>
+</ul></article>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "How do I create a segment in Adobe Analytics?", "acceptedAnswer": {"@type": "Answer", "text": "Creating a Segment in Adobe Analytics Adobe Analytics provides several ways to create segments, depending on your needs and where you're working. --- Prerequisites - Ensure you have the appropriate segment creation rights for your role in your organization. - Segments can be scoped to a single Workspace project or shared across all projects. --- Ways to Create a Segment !Ways to create a segment(https://raw.githubusercontent.com/AdobeDocs/analytics.en/main/help/components/segmentation/segmentation-workflow/assets/create-segment.png) There are six entry points for creating a segment: | Option | How | |--------|-----| | A \u2013 Segment Manager | In the main interface, select Components Segments, then click !Add Add in the Segment Manager. | | B \u2013 Workspace Components Panel | In a Workspace project, find the Segments section in the left Components panel and click the + (Add) icon. | | C \u2013 Visualization Context Menu | In a Workspace project, right-click within a visualization and select Create segment from selection. | | D \u2013 Workspace Menu Bar | In a Workspace project, select Components from the top menu, then choose Create segment. | | E \u2013 Keyboard Shortcut | In a Workspace project, press Shift + Cmd + E (macOS) or Shift + Ctrl + E (Windows). | | F \u2013 Drop Zone | Drag and drop into any Drop a segment here zone \u2014 this creates a Project-only segment. | --- Building the Segment (Segment Builder) Once you open the segment creation dialog, the Segment Builder appears: !Segment Builder(https://raw.githubusercontent.com/AdobeDocs/analytics.en/main/help/components/segmentation/segmentation-workflow/assets/new-segment.png) 1. Name your segment \u2014 Give it a clear, descriptive title. 2. Add a definition \u2014 Drag dimensions, metrics, or events into the definition area to set your segment criteria. 3. Set the container level \u2014 Choose between Hit, Visit, or Visitor scope depending on how broadly you want the segment to apply. 4. Combine conditions \u2014 Use AND / OR / THEN logic to refine\u2026"}}]}</script></div>
+  </body>
+</html>

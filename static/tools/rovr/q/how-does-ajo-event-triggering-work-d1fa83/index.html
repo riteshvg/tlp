@@ -11,68 +11,30 @@
     <script type="module" crossorigin src="/tools/rovr/assets/index-Dei2hK2h.js"></script>
     <link rel="stylesheet" crossorigin href="/tools/rovr/assets/index--8rF9pj7.css">
   <title>How does AJO event triggering work? | Rovr</title>
-<meta name="description" content="How AJO Event Triggering Works In Adobe Journey Optimizer, events are the real-time triggers that launch journeys. When an event is received, AJO delivers…" />
+<meta name="description" content="What the documentation confirms The CONTEXT shows that AJO supports three types of events that trigger journeys: 1. Unitary events — linked to a specific…" />
 <link rel="canonical" href="https://thelearningproject.in/tools/rovr/q/how-does-ajo-event-triggering-work-d1fa83" />
 <meta property="og:title" content="How does AJO event triggering work?" />
-<meta property="og:description" content="How AJO Event Triggering Works In Adobe Journey Optimizer, events are the real-time triggers that launch journeys. When an event is received, AJO delivers…" />
+<meta property="og:description" content="What the documentation confirms The CONTEXT shows that AJO supports three types of events that trigger journeys: 1. Unitary events — linked to a specific…" />
 <meta property="og:url" content="https://thelearningproject.in/tools/rovr/q/how-does-ajo-event-triggering-work-d1fa83" />
 <meta property="og:type" content="article" />
 <meta property="og:image" content="https://thelearningproject.in/tools/rovr/rovrlogo.png" />
 <meta name="twitter:card" content="summary" />
 <meta name="twitter:title" content="How does AJO event triggering work?" />
-<meta name="twitter:description" content="How AJO Event Triggering Works In Adobe Journey Optimizer, events are the real-time triggers that launch journeys. When an event is received, AJO delivers…" />
+<meta name="twitter:description" content="What the documentation confirms The CONTEXT shows that AJO supports three types of events that trigger journeys: 1. Unitary events — linked to a specific…" />
 </head>
   <body>
     <div id="root"><article><h1>How does AJO event triggering work?</h1>
-<h3>How AJO Event Triggering Works</h3>
-<p>In Adobe Journey Optimizer, <strong>events</strong> are the real-time triggers that launch journeys. When an event is received, AJO delivers messages individually to each user as they enter the journey.</p>
-<hr>
-<h3>The Three Types of Events</h3>
-<h4>1. Unitary Events</h4>
-<ul>
-<li>Linked to a <strong>specific person&#x27;s behavior</strong> — such as a purchase, a loyalty milestone, or a product view</li>
-<li>Triggers a journey for a <strong>single profile</strong> at a time</li>
-<li>Best for real-time, individual-level responses</li>
-</ul>
-<h4>2. Business Events</h4>
-<ul>
-<li>Triggered by a <strong>global occurrence</strong> — such as a flight cancellation or a stock update</li>
-<li>Not tied to a single person&#x27;s behavior</li>
-<li>Can trigger journeys for <strong>many profiles simultaneously</strong> based on the business occurrence</li>
-</ul>
-<h4>3. Audience Qualification Events</h4>
-<ul>
-<li>Triggered when a <strong>profile enters or exits an audience</strong></li>
-<li>Allows journeys to react to audience membership changes in real time</li>
-</ul>
-<hr>
-<h3>How Events Are Configured</h3>
-<ul>
-<li>Event configuration is <strong>mandatory</strong> and must be performed by a <strong>Data Engineer</strong></li>
-<li>Events are configured in the <strong>event configuration</strong> section of AJO before they can be used in journeys</li>
-<li>Incoming event data is <strong>normalized following Adobe Experience Data Model (XDM)</strong> standards</li>
-<li>Events come from <strong>Streaming Ingestion APIs</strong> for both authenticated and unauthenticated events (such as Adobe Mobile SDK events)</li>
-</ul>
-<hr>
-<h3>Flexibility of Event Usage</h3>
-<ul>
-<li>You can use <strong>multiple events</strong> in different steps of a single journey</li>
-<li><strong>Several journeys</strong> can use the same event — meaning one event can trigger multiple journeys simultaneously</li>
-</ul>
-<hr>
-<h3>Important Guardrails</h3>
-<p>There are requirements and limitations around events related to:</p>
-<ul>
-<li><strong>Streaming ingestion</strong></li>
-<li><strong>Query Service</strong></li>
-<li><strong>Batch ingestion</strong></li>
-</ul>
-<p>These guardrails define the boundaries within which event triggering operates reliably in AJO.</p>
-<hr>
-<h3>Key Takeaway</h3>
-<p>The event triggering model in AJO is designed around <strong>real-time, profile-level orchestration</strong>. Each event type serves a distinct use case — unitary for individual behaviors, business for global occurrences, and audience qualification for segment-based triggers — giving you flexible control over when and how journeys are launched.</p>
-<p>Would you like more detail on configuring a specific event type?</p>
+<h3>What the documentation confirms</h3>
+<p>The CONTEXT shows that AJO supports <strong>three types of events</strong> that trigger journeys:</p>
+<p>1. <strong>Unitary events</strong> — linked to a specific person&#x27;s behavior (such as a purchase or loyalty milestone)</p>
+<p>2. <strong>Business events</strong> — triggered by a global occurrence (such as a flight cancellation or stock update)</p>
+<p>3. <strong>Audience qualification events</strong> — triggered when a profile enters or exits an audience</p>
+<p>Events are described as &quot;real-time triggers that launch your journeys&quot; and require mandatory configuration by a Data engineer.</p>
+<h3>What it does NOT cover</h3>
+<p>The provided documentation does not explain the technical mechanics of how event triggering actually works — such as how events are detected, validated, matched to journey entry conditions, or processed through the system pipeline.</p>
+<h3>For additional details</h3>
+<p>Consult the official Journey Optimizer documentation on event configuration and journey guardrails, which should contain the technical triggering mechanisms and event processing details not covered here.</p>
 </article>
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "How does AJO event triggering work?", "acceptedAnswer": {"@type": "Answer", "text": "How AJO Event Triggering Works In Adobe Journey Optimizer, events are the real-time triggers that launch journeys. When an event is received, AJO delivers messages individually to each user as they enter the journey. --- The Three Types of Events 1. Unitary Events - Linked to a specific person's behavior \u2014 such as a purchase, a loyalty milestone, or a product view - Triggers a journey for a single profile at a time - Best for real-time, individual-level responses 2. Business Events - Triggered by a global occurrence \u2014 such as a flight cancellation or a stock update - Not tied to a single person's behavior - Can trigger journeys for many profiles simultaneously based on the business occurrence 3. Audience Qualification Events - Triggered when a profile enters or exits an audience - Allows journeys to react to audience membership changes in real time --- How Events Are Configured - Event configuration is mandatory and must be performed by a Data Engineer - Events are configured in the event configuration section of AJO before they can be used in journeys - Incoming event data is normalized following Adobe Experience Data Model (XDM) standards - Events come from Streaming Ingestion APIs for both authenticated and unauthenticated events (such as Adobe Mobile SDK events) --- Flexibility of Event Usage - You can use multiple events in different steps of a single journey - Several journeys can use the same event \u2014 meaning one event can trigger multiple journeys simultaneously --- Important Guardrails There are requirements and limitations around events related to: - Streaming ingestion - Query Service - Batch ingestion These guardrails define the boundaries within which event triggering operates reliably in AJO. --- Key Takeaway The event triggering model in AJO is designed around real-time, profile-level orchestration. Each event type serves a distinct use case \u2014 unitary for individual behaviors, business for global occurrences, and audience qualification for\u2026"}}]}</script></div>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "How does AJO event triggering work?", "acceptedAnswer": {"@type": "Answer", "text": "What the documentation confirms The CONTEXT shows that AJO supports three types of events that trigger journeys: 1. Unitary events \u2014 linked to a specific person's behavior (such as a purchase or loyalty milestone) 2. Business events \u2014 triggered by a global occurrence (such as a flight cancellation or stock update) 3. Audience qualification events \u2014 triggered when a profile enters or exits an audience Events are described as \"real-time triggers that launch your journeys\" and require mandatory configuration by a Data engineer. What it does NOT cover The provided documentation does not explain the technical mechanics of how event triggering actually works \u2014 such as how events are detected, validated, matched to journey entry conditions, or processed through the system pipeline. For additional details Consult the official Journey Optimizer documentation on event configuration and journey guardrails, which should contain the technical triggering mechanisms and event processing details not covered here."}}]}</script></div>
   </body>
 </html>

@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/png" href="/tools/rovr/rovrlogo.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="build-date" content="2026-06-10" />
+    
+    
+    <script src="https://assets.adobedtm.com/204118644db8/290ae1adb65a/launch-e5ec7bf1a1ef-development.min.js" async></script>
+    <script type="module" crossorigin src="/tools/rovr/assets/index-Cnf1TPK2.js"></script>
+    <link rel="stylesheet" crossorigin href="/tools/rovr/assets/index-D1POE5XP.css">
+  <title>What is the path to migrate from AA to CJA? | Rovr</title>
+<meta name="description" content="Migrating from Adobe Analytics to Customer Journey Analytics There are multiple upgrade paths available, and the best choice depends on your current Adobe…" />
+<link rel="canonical" href="https://thelearningproject.in/tools/rovr/q/what-is-the-path-to-migrate-from-aa-to-cja-973255" />
+<meta property="og:title" content="What is the path to migrate from AA to CJA?" />
+<meta property="og:description" content="Migrating from Adobe Analytics to Customer Journey Analytics There are multiple upgrade paths available, and the best choice depends on your current Adobe…" />
+<meta property="og:url" content="https://thelearningproject.in/tools/rovr/q/what-is-the-path-to-migrate-from-aa-to-cja-973255" />
+<meta property="og:type" content="article" />
+<meta property="og:image" content="https://thelearningproject.in/tools/rovr/rovrlogo.png" />
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="What is the path to migrate from AA to CJA?" />
+<meta name="twitter:description" content="Migrating from Adobe Analytics to Customer Journey Analytics There are multiple upgrade paths available, and the best choice depends on your current Adobe…" />
+</head>
+  <body>
+    <div id="root"><article><h1>What is the path to migrate from AA to CJA?</h1>
+<h2>Migrating from Adobe Analytics to Customer Journey Analytics</h2>
+<p>There are multiple upgrade paths available, and the best choice depends on your current Adobe Analytics implementation. Here&#x27;s a comprehensive breakdown:</p>
+<hr>
+<h3>Available Upgrade Paths</h3>
+<h4>If you&#x27;re using <strong>AppMeasurement</strong> or the <strong>Adobe Analytics Extension (Tags)</strong>:</h4>
+<p>1. <strong>New implementation of the Experience Platform Web SDK</strong> <em>(high effort, highest long-term viability)</em></p>
+<p>2. <strong>Migrate Adobe Analytics to the Web SDK</strong> <em>(medium effort)</em></p>
+<p>3. <strong>Analytics Source Connector</strong> <em>(lower effort, lower long-term viability)</em></p>
+<p>4. ✅ <strong>(Recommended) New implementation of the Experience Platform Web SDK + Analytics Source Connector</strong></p>
+<h4>If you&#x27;re already using the <strong>Web SDK</strong>:</h4>
+<p>1. <strong>Configure your existing Web SDK implementation to send data to Platform</strong></p>
+<p>2. ✅ <strong>(Recommended) New implementation of the Experience Platform Web SDK + Analytics Source Connector</strong></p>
+<hr>
+<h3>Visualizing the Upgrade Paths</h3>
+<p>The following diagram illustrates where each upgrade path falls on the spectrum of <strong>level of effort</strong> vs. <strong>long-term viability</strong>:</p>
+<p><img src="https://raw.githubusercontent.com/AdobeDocs/analytics.en/main/help/admin/tools/component-migration/assets/project-migration-schema.png" alt="cja upgrade paths"></p>
+<hr>
+<h3>Step-by-Step: High-Level Migration Process</h3>
+<h4>Prerequisites</h4>
+<ul>
+<li>Adobe Analytics administrator access</li>
+<li>Access to Adobe Experience Platform and Customer Journey Analytics</li>
+</ul>
+<h4>Steps</h4>
+<p>1. <strong>Ingest your data into Adobe Experience Platform</strong> using one of these methods:</p>
+<ul>
+<li><strong>Analytics Source Connector:</strong></li>
+<li>Set up your report suites for ingestion into AEP and CJA</li>
+<li>Ingest and use the data via the source connector</li>
+</ul>
+<ul>
+<li><strong>Web SDK:</strong></li>
+<li>Set up your report suites for ingestion into AEP and CJA</li>
+<li>Ingest data via the Adobe Experience Platform Web SDK</li>
+<li>Note: All schema fields must be <strong>manually mapped</strong> when using Web SDK</li>
+</ul>
+<p>2. <strong>Prepare for component migration:</strong></p>
+<ul>
+<li>Perform an <strong>Adobe Analytics Inventory</strong> using the tool available to Analytics administrators</li>
+<li>Review migration preparation guidelines before migrating any projects</li>
+</ul>
+<p>3. <strong>Migrate projects and components:</strong></p>
+<ul>
+<li>Re-create Adobe Analytics projects in Customer Journey Analytics</li>
+<li>Map <strong>dimensions and metrics</strong> from Adobe Analytics report suites to CJA data views</li>
+<li>Some dimensions/metrics are <strong>automatically mapped</strong></li>
+<li>Others require <strong>manual mapping</strong></li>
+<li><strong>Segments</strong> are migrated automatically and do not require mapping</li>
+</ul>
+<p>4. <strong>Review the migration summary:</strong></p>
+<ul>
+<li>All migrated components are displayed in the migration summary upon completion</li>
+</ul>
+<p>&gt; 💡 <strong>Tip:</strong> Migration can be performed either through the <strong>UI</strong> or via the <strong>Adobe Analytics 2.0 APIs</strong>, depending on your preference and scale of migration.</p>
+<hr>
+<h3>Key Recommendation</h3>
+<p>Adobe&#x27;s recommended path for most organizations is:</p>
+<p>&gt; <strong>New implementation of the Experience Platform Web SDK</strong> combined with the <strong>Analytics Source Connector</strong> for historical data continuity.</p>
+<p>Contact your <strong>Adobe representative</strong> if you need more specific guidance tailored to your organization&#x27;s implementation.</p>
+</article>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "What is the path to migrate from AA to CJA?", "acceptedAnswer": {"@type": "Answer", "text": "Migrating from Adobe Analytics to Customer Journey Analytics There are multiple upgrade paths available, and the best choice depends on your current Adobe Analytics implementation. Here's a comprehensive breakdown: --- Available Upgrade Paths If you're using AppMeasurement or the Adobe Analytics Extension (Tags): 1. New implementation of the Experience Platform Web SDK (high effort, highest long-term viability) 2. Migrate Adobe Analytics to the Web SDK (medium effort) 3. Analytics Source Connector (lower effort, lower long-term viability) 4. \u2705 (Recommended) New implementation of the Experience Platform Web SDK + Analytics Source Connector If you're already using the Web SDK: 1. Configure your existing Web SDK implementation to send data to Platform 2. \u2705 (Recommended) New implementation of the Experience Platform Web SDK + Analytics Source Connector --- Visualizing the Upgrade Paths The following diagram illustrates where each upgrade path falls on the spectrum of level of effort vs. long-term viability: !cja upgrade paths(https://raw.githubusercontent.com/AdobeDocs/analytics.en/main/help/admin/tools/component-migration/assets/project-migration-schema.png) --- Step-by-Step: High-Level Migration Process Prerequisites - Adobe Analytics administrator access - Access to Adobe Experience Platform and Customer Journey Analytics Steps 1. Ingest your data into Adobe Experience Platform using one of these methods: - Analytics Source Connector: - Set up your report suites for ingestion into AEP and CJA - Ingest and use the data via the source connector - Web SDK: - Set up your report suites for ingestion into AEP and CJA - Ingest data via the Adobe Experience Platform Web SDK - Note: All schema fields must be manually mapped when using Web SDK 2. Prepare for component migration: - Perform an Adobe Analytics Inventory using the tool available to Analytics administrators - Review migration preparation guidelines before migrating any projects 3. Migrate projects and components:\u2026"}}]}</script></div>
+  </body>
+</html>
