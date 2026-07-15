@@ -1,0 +1,429 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/png" href="/tools/rovr/rovrlogo.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="build-date" content="2026-06-10" />
+    
+    
+    <script src="https://assets.adobedtm.com/204118644db8/290ae1adb65a/launch-e5ec7bf1a1ef-development.min.js" async></script>
+    <script type="module" crossorigin src="/tools/rovr/assets/index-Cnf1TPK2.js"></script>
+    <link rel="stylesheet" crossorigin href="/tools/rovr/assets/index-D1POE5XP.css">
+  <title>105. What is the full flow of Web SDK → Edge → AEP → Profile →
+AJO → Customer? expain with video walk through and screenshots | Rovr</title>
+<meta name="description" content="Full Flow: Web SDK → Edge → AEP → Profile → AJO → Customer Video Walkthroughs ▶ Watch: Adobe Experience Platform Web SDK and Edge Network…" />
+<link rel="canonical" href="https://thelearningproject.in/tools/rovr/q/105-what-is-the-full-flow-of-web-sdk-edge-aep-profile-ajo-cu-827bae" />
+<meta property="og:title" content="105. What is the full flow of Web SDK → Edge → AEP → Profile →
+AJO → Customer? expain with video walk through and screenshots" />
+<meta property="og:description" content="Full Flow: Web SDK → Edge → AEP → Profile → AJO → Customer Video Walkthroughs ▶ Watch: Adobe Experience Platform Web SDK and Edge Network…" />
+<meta property="og:url" content="https://thelearningproject.in/tools/rovr/q/105-what-is-the-full-flow-of-web-sdk-edge-aep-profile-ajo-cu-827bae" />
+<meta property="og:type" content="article" />
+<meta property="og:image" content="https://thelearningproject.in/tools/rovr/rovrlogo.png" />
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="105. What is the full flow of Web SDK → Edge → AEP → Profile →
+AJO → Customer? expain with video walk through and screenshots" />
+<meta name="twitter:description" content="Full Flow: Web SDK → Edge → AEP → Profile → AJO → Customer Video Walkthroughs ▶ Watch: Adobe Experience Platform Web SDK and Edge Network…" />
+</head>
+  <body>
+    <div id="root"><article><h1>105. What is the full flow of Web SDK → Edge → AEP → Profile →
+AJO → Customer? expain with video walk through and screenshots</h1>
+<h2>Full Flow: Web SDK → Edge → AEP → Profile → AJO → Customer</h2>
+<h3>Video Walkthroughs</h3>
+<p><a href="https://video.tv.adobe.com/v/34141?quality=12&amp;learn=on">▶ Watch: Adobe Experience Platform Web SDK and Edge Network Overview</a></p>
+<p>This video provides a comprehensive overview of the Web SDK and Edge Network communication.</p>
+<p><a href="https://video.tv.adobe.com/v/3424498?quality=12&amp;learn=on">▶ Watch: Introduction to Adobe Journey Optimizer</a></p>
+<p>This video introduces AJO and how it orchestrates customer journeys using AEP profile data.</p>
+<p><a href="https://video.tv.adobe.com/v/27251?learn=on&amp;enablevpops">▶ Watch: Real-Time Customer Profile Overview</a></p>
+<p>This video explains how Real-Time Customer Profile receives and processes data to power journey decisions.</p>
+<p><a href="https://video.tv.adobe.com/v/3424992?quality=12&amp;learn=on">▶ Watch: Create a Journey in AJO</a></p>
+<p>This video walks through creating journeys that are triggered by AEP events and profile data.</p>
+<p><a href="https://video.tv.adobe.com/v/39112?quality=12&amp;learn=on">▶ Watch: Set Up a Datastream</a></p>
+<p>This video shows how datastreams control data routing from Web SDK through Edge Network to AEP services.</p>
+<hr>
+<h3>Overview</h3>
+<p>This end-to-end flow represents the <strong>complete customer experience lifecycle</strong> — from a customer interaction on a website, all the way through data processing, profile building, journey orchestration, and final message delivery back to the customer.</p>
+<p>```</p>
+<p>┌──────────┐   ┌──────────┐   ┌──────────┐   ┌──────────┐   ┌──────────┐   ┌──────────┐</p>
+<p>│  WEB SDK │──▶│   EDGE   │──▶│   AEP    │──▶│ PROFILE  │──▶│   AJO    │──▶│ CUSTOMER │</p>
+<p>│(Browser) │   │ NETWORK  │   │(Platform)│   │  STORE   │   │(Journey) │   │(Channel) │</p>
+<p>└──────────┘   └──────────┘   └──────────┘   └──────────┘   └──────────┘   └──────────┘</p>
+<p>5ms           100ms          1-5 sec        Real-time      Seconds       Seconds-Min</p>
+<p>```</p>
+<hr>
+<h3>The Real-World Scenario</h3>
+<p>To make this flow tangible, we&#x27;ll use a <strong>real-world retail scenario</strong> throughout:</p>
+<p>&gt; <strong>Jane Smith</strong> visits an e-commerce website, browses running shoes, adds a pair to her cart but <strong>abandons without purchasing</strong>. AJO detects this behavior and sends her a <strong>personalized cart abandonment email</strong> with the exact shoes she viewed, followed by an <strong>SMS reminder</strong> if she doesn&#x27;t open the email within 24 hours.</p>
+<hr>
+<h3>Stage 1: Web SDK (Browser)</h3>
+<h4>What Happens</h4>
+<p>Jane visits the website. The <strong>Web SDK (alloy.js)</strong> is loaded and captures her interactions in real-time.</p>
+<h4>Web SDK Initialization</h4>
+<p>```javascript</p>
+<p>// Web SDK configured via Adobe Tags or direct implementation</p>
+<p>alloy(&quot;configure&quot;, {</p>
+<p>datastreamId: &quot;retail-prod-datastream-id&quot;,</p>
+<p>orgId: &quot;ADOBE_ORG_ID@AdobeOrg&quot;,</p>
+<p>debugEnabled: false,</p>
+<p>defaultConsent: &quot;in&quot;,</p>
+<p>onBeforeEventSend: function(options) {</p>
+<p>// Enrich XDM with data layer values</p>
+<p>options.xdm.commerce = window.dataLayer.commerce;</p>
+<p>return options;</p>
+<p>}</p>
+<p>});</p>
+<p>```</p>
+<h4>Events Captured During Jane&#x27;s Session</h4>
+<h5>Event 1: Page View (Homepage)</h5>
+<p>```javascript</p>
+<p>alloy(&quot;sendEvent&quot;, {</p>
+<p>xdm: {</p>
+<p>eventType: &quot;web.webpagedetails.pageViews&quot;,</p>
+<p>web: {</p>
+<p>webPageDetails: {</p>
+<p>name: &quot;Homepage&quot;,</p>
+<p>URL: &quot;https://www.retailstore.com&quot;</p>
+<p>}</p>
+<p>},</p>
+<p>identityMap: {</p>
+<p>ECID: [{</p>
+<p>id: &quot;98765432109876543210&quot;,</p>
+<p>authenticatedState: &quot;ambiguous&quot;,</p>
+<p>primary: true</p>
+<p>}]</p>
+<p>}</p>
+<p>}</p>
+<p>});</p>
+<p>```</p>
+<h5>Event 2: Product View (Running Shoes)</h5>
+<p>```javascript</p>
+<p>alloy(&quot;sendEvent&quot;, {</p>
+<p>xdm: {</p>
+<p>eventType: &quot;commerce.productViews&quot;,</p>
+<p>commerce: {</p>
+<p>productViews: { value: 1 }</p>
+<p>},</p>
+<p>productListItems: [{</p>
+<p>SKU: &quot;SHOE-RUN-001&quot;,</p>
+<p>name: &quot;Pro Runner X1&quot;,</p>
+<p>priceTotal: 129.99,</p>
+<p>quantity: 1,</p>
+<p>category: &quot;Running&quot;,</p>
+<p>_retailstore: {</p>
+<p>productColor: &quot;Blue&quot;,</p>
+<p>productSize: &quot;10&quot;</p>
+<p>}</p>
+<p>}],</p>
+<p>identityMap: {</p>
+<p>ECID: [{</p>
+<p>id: &quot;98765432109876543210&quot;,</p>
+<p>authenticatedState: &quot;ambiguous&quot;,</p>
+<p>primary: true</p>
+<p>}]</p>
+<p>}</p>
+<p>}</p>
+<p>});</p>
+<p>```</p>
+<h5>Event 3: Add to Cart</h5>
+<p>```javascript</p>
+<p>alloy(&quot;sendEvent&quot;, {</p>
+<p>xdm: {</p>
+<p>eventType: &quot;commerce.productListAdds&quot;,</p>
+<p>commerce: {</p>
+<p>productListAdds: { value: 1 }</p>
+<p>},</p>
+<p>productListItems: [{</p>
+<p>SKU: &quot;SHOE-RUN-001&quot;,</p>
+<p>name: &quot;Pro Runner X1&quot;,</p>
+<p>priceTotal: 129.99,</p>
+<p>quantity: 1</p>
+<p>}],</p>
+<p>identityMap: {</p>
+<p>ECID: [{</p>
+<p>id: &quot;98765432109876543210&quot;,</p>
+<p>authenticatedState: &quot;ambiguous&quot;,</p>
+<p>primary: true</p>
+<p>}]</p>
+<p>}</p>
+<p>}</p>
+<p>});</p>
+<p>```</p>
+<h5>Event 4: Login (Jane authenticates)</h5>
+<p>```javascript</p>
+<p>alloy(&quot;getIdentity&quot;).then(function(result) {</p>
+<p>alloy(&quot;sendEvent&quot;, {</p>
+<p>xdm: {</p>
+<p>eventType: &quot;userAccount.login&quot;,</p>
+<p>identityMap: {</p>
+<p>Email: [{</p>
+<p>id: &quot;jane.smith@email.com&quot;,</p>
+<p>authenticatedState: &quot;authenticated&quot;,</p>
+<p>primary: true</p>
+<p>}],</p>
+<p>ECID: [{</p>
+<p>id: result.identity.ECID,</p>
+<p>authenticatedState: &quot;ambiguous&quot;,</p>
+<p>primary: false</p>
+<p>}],</p>
+<p>CRM_ID: [{</p>
+<p>id: &quot;CRM-JANE-12345&quot;,</p>
+<p>authenticatedState: &quot;authenticated&quot;,</p>
+<p>primary: false</p>
+<p>}]</p>
+<p>}</p>
+<p>}</p>
+<p>});</p>
+<p>});</p>
+<p>```</p>
+<h5>Event 5: Session Abandonment (Jane leaves without purchasing)</h5>
+<ul>
+<li>Jane closes the browser tab</li>
+<li>No `commerce.purchases` event is fired</li>
+<li>Cart abandonment is detected via <strong>absence of purchase event</strong> within a defined time window</li>
+</ul>
+<h4>What Web SDK Does With Each Event</h4>
+<p>```</p>
+<p>Jane&#x27;s Interaction</p>
+<p>↓</p>
+<p>Web SDK captures DOM event (click, page load, etc.)</p>
+<p>↓</p>
+<p>Tags rules fire (if using Adobe Tags)</p>
+<p>↓</p>
+<p>XDM payload constructed from data layer</p>
+<p>↓</p>
+<p>Identity map populated (ECID auto-managed by Web SDK)</p>
+<p>↓</p>
+<p>HTTPS POST to adobedc.net (Edge Network)</p>
+<p>↓</p>
+<p>Web SDK awaits response for personalization</p>
+<p>```</p>
+<hr>
+<h3>Stage 2: Edge Network (Global Processing)</h3>
+<h4>What Happens</h4>
+<p>Each Web SDK event hits the <strong>nearest Edge Network node</strong> (e.g., San Francisco for a US West Coast visitor). The Edge Network processes the request in ~100ms.</p>
+<h4>Edge Network Processing Flow</h4>
+<p>```</p>
+<p>Jane&#x27;s Web SDK Event Arrives</p>
+<p>↓</p>
+<p>┌─────────────────────────────────────────────────────┐</p>
+<p>│              EDGE NETWORK PROCESSING                 │</p>
+<p>│                                                      │</p>
+<p>│  ① Validate request &amp; datastream ID                 │</p>
+<p>│  ② Apply datastream configuration                   │</p>
+<p>│  ③ Bot detection &amp; filtering                        │</p>
+<p>│  ④ Data Prep field transformations                  │</p>
+<p>│  ⑤ Identity resolution (ECID lookup)                │</p>
+<p>│  ⑥ Edge profile lookup                              │</p>
+<p>│  ⑦ Edge segmentation evaluation                     │</p>
+<p>│  ⑧ Target/AJO decisioning (if applicable)           │</p>
+<p>│  ⑨ Route data to AEP Hub (async)                   │</p>
+<p>│  ⑩ Return response to Web SDK                       │</p>
+<p>└─────────────────────────────────────────────────────┘</p>
+<p>```</p>
+<h4>Datastream Configuration</h4>
+<p>The datastream routes Jane&#x27;s events to:</p>
+<p>| Service | Configuration | Purpose |</p>
+<p>|---|---|---|</p>
+<p>| <strong>Adobe Experience Platform</strong> | Prod Sandbox, Event Dataset | Store events for profile building |</p>
+<p>| <strong>Adobe Analytics</strong> | Report Suite: retail-prod | Real-time analytics reporting |</p>
+<p>| <strong>Adobe Target</strong> | Property token: xyz | Real-time personalization |</p>
+<p>| <strong>Adobe Journey Optimizer</strong> | AJO enabled | Journey triggering |</p>
+<h4>Data Prep Transformations</h4>
+<p>Edge Network transforms XDM fields:</p>
+<p>```</p>
+<p>XDM Field                           → Mapped To</p>
+<p>────────────────────────────────────────────────────────</p>
+<p>productListItems[0].SKU            → Analytics eVar10</p>
+<p>commerce.productListAdds.value     → Analytics event2</p>
+<p>web.webPageDetails.name            → Analytics pageName</p>
+<p>productListItems[0].priceTotal     → Analytics currency event</p>
+<p>identityMap.Email[0].id            → Analytics visitorID</p>
+<p>```</p>
+<h4>Identity Resolution at Edge</h4>
+<p>For Jane&#x27;s login event:</p>
+<p>```</p>
+<p>Login event arrives with:</p>
+<p>Email: jane.smith@email.com (authenticated)</p>
+<p>ECID:  98765432109876543210 (ambiguous)</p>
+<p>CRM_ID: CRM-JANE-12345 (authenticated)</p>
+<p>Edge Network Identity Resolution:</p>
+<p>1. Looks up ECID: 98765432109876543210 → Found in edge profile</p>
+<p>2. Looks up Email: jane.smith@email.com → Found in profile store</p>
+<p>3. Links all three identities → Single identity graph updated</p>
+<p>4. Anonymous session data now linked to Jane&#x27;s authenticated profile</p>
+<p>```</p>
+<h4>Edge Segmentation</h4>
+<p>For Jane&#x27;s &quot;add to cart&quot; event, Edge Network evaluates:</p>
+<p>```</p>
+<p>Edge-enabled segment: &quot;Active Cart - No Purchase&quot;</p>
+<p>Criteria: productListAdds event in last 30 minutes</p>
+<p>AND no commerce.purchases event</p>
+<p>Result: Jane QUALIFIES → Audience membership updated in edge profile</p>
+<p>```</p>
+<h4>Edge Network Response to Web SDK</h4>
+<p>```json</p>
+<p>{</p>
+<p>&quot;requestId&quot;: &quot;req-jane-001&quot;,</p>
+<p>&quot;handle&quot;: [</p>
+<p>{</p>
+<p>&quot;type&quot;: &quot;identity:result&quot;,</p>
+<p>&quot;payload&quot;: [{</p>
+<p>&quot;id&quot;: &quot;98765432109876543210&quot;,</p>
+<p>&quot;namespace&quot;: {&quot;code&quot;: &quot;ECID&quot;},</p>
+<p>&quot;primary&quot;: true</p>
+<p>}]</p>
+<p>},</p>
+<p>{</p>
+<p>&quot;type&quot;: &quot;personalization:decisions&quot;,</p>
+<p>&quot;payload&quot;: [{</p>
+<p>&quot;scope&quot;: &quot;homepage-banner&quot;,</p>
+<p>&quot;items&quot;: [{</p>
+<p>&quot;data&quot;: {</p>
+<p>&quot;content&quot;: &quot;&lt;div&gt;Free shipping on orders over $100!&lt;/div&gt;&quot;</p>
+<p>}</p>
+<p>}]</p>
+<p>}]</p>
+<p>},</p>
+<p>{</p>
+<p>&quot;type&quot;: &quot;state:store&quot;,</p>
+<p>&quot;payload&quot;: [{</p>
+<p>&quot;key&quot;: &quot;kndctr_orgId_AdobeOrg_cluster&quot;,</p>
+<p>&quot;value&quot;: &quot;or2&quot;,</p>
+<p>&quot;maxAge&quot;: 1800</p>
+<p>}]</p>
+<p>}</p>
+<p>]</p>
+<p>}</p>
+<p>```</p>
+<p>Web SDK processes this response and:</p>
+<ul>
+<li><strong>Renders</strong> the personalized banner</li>
+<li><strong>Stores</strong> identity and cluster cookies</li>
+<li><strong>Confirms</strong> event was successfully sent</li>
+</ul>
+<hr>
+<h3>Stage 3: Adobe Experience Platform (Data Processing)</h3>
+<h4>What Happens</h4>
+<p>Data routed from Edge Network to AEP Hub undergoes <strong>comprehensive ingestion, storage, and processing</strong>.</p>
+<h4>3a. Streaming Ingestion</h4>
+<p>Jane&#x27;s events flow from Edge Network to AEP:</p>
+<p>```</p>
+<p>Edge Network</p>
+<p>↓ (Async, ~1 second latency)</p>
+<p>AEP Streaming Ingestion API</p>
+<p>↓</p>
+<p>XDM Schema Validation</p>
+<p>↓</p>
+<p>Data Lake Storage (Raw Events)</p>
+<p>↓</p>
+<p>Identity Service Processing</p>
+<p>↓</p>
+<p>Real-Time Profile Update</p>
+<p>```</p>
+<h4>3b. Identity Service Processing</h4>
+<p>Identity Service processes Jane&#x27;s login event:</p>
+<p>```</p>
+<p>Before Login Event:</p>
+<p>─────────────────</p>
+<p>Identity Graph:</p>
+<p>[ECID: 98765432109876543210] ← Standalone anonymous node</p>
+<p>After Login Event:</p>
+<p>─────────────────</p>
+<p>Identity Graph:</p>
+<p>[Email: jane.smith@email.com]</p>
+<p>↕ linked</p>
+<p>[ECID: 98765432109876543210]</p>
+<p>↕ linked</p>
+<p>[CRM_ID: CRM-JANE-12345]</p>
+<p>Result: All three identities linked in single graph</p>
+<p>Anonymous session data now associated with Jane</p>
+<p>```</p>
+<h4>3c. Data Lake Storage</h4>
+<p>Jane&#x27;s events stored in AEP datasets:</p>
+<p>| Dataset | Records Stored | Query Example |</p>
+<p>|---|---|---|</p>
+<p>| <strong>Web Events Dataset</strong> | Page views, product views, cart events | All of Jane&#x27;s session events |</p>
+<p>| <strong>Profile Dataset</strong> | CRM attributes from batch ingestion | Jane&#x27;s name, loyalty tier, preferences |</p>
+<p>| <strong>Identity Dataset</strong> | Identity link records | Email ↔ ECID ↔ CRM_ID connections |</p>
+<p><strong>Query Jane&#x27;s events in Query Service:</strong></p>
+<p>```sql</p>
+<p>SELECT</p>
+<p>timestamp,</p>
+<p>eventType,</p>
+<p>productListItems[0].SKU as sku,</p>
+<p>productListItems[0].name as product_name,</p>
+<p>commerce.productListAdds.value as added_to_cart,</p>
+<p>commerce.purchases.value as purchased</p>
+<p>FROM</p>
+<p>web_events_dataset</p>
+<p>WHERE</p>
+<p>identityMap[&#x27;Email&#x27;][0].id = &#x27;jane.smith@email.com&#x27;</p>
+<p>AND timestamp &gt; NOW() - INTERVAL &#x27;24 hours&#x27;</p>
+<p>ORDER BY</p>
+<p>timestamp ASC</p>
+<p>```</p>
+<p><strong>Query Result:</strong></p>
+<p>```</p>
+<p>timestamp               eventType                    sku           added_to_cart  purchased</p>
+<p>──────────────────────────────────────────────────────────────────────────────────────────</p>
+<p>2024-01-15 10:00:00    web.webpagedetails.pageViews  null          null           null</p>
+<p>2024-01-15 10:05:00    commerce.productViews         SHOE-RUN-001  null           null</p>
+<p>2024-01-15 10:08:00    commerce.productListAdds      SHOE-RUN-001  1              null</p>
+<p>2024-01-15 10:10:00    userAccount.login             null          null           null</p>
+<p>[No purchase event recorded → Cart abandonment confirmed]</p>
+<p>```</p>
+<hr>
+<h3>Stage 4: Real-Time Customer Profile</h3>
+<h4>What Happens</h4>
+<p>Jane&#x27;s <strong>unified profile</strong> is built and continuously updated as new events arrive.</p>
+<h4>Jane&#x27;s Unified Profile Structure</h4>
+<p>```json</p>
+<p>{</p>
+<p>&quot;identityMap&quot;: {</p>
+<p>&quot;Email&quot;: [{&quot;id&quot;: &quot;jane.smith@email.com&quot;, &quot;primary&quot;: true}],</p>
+<p>&quot;ECID&quot;: [{&quot;id&quot;: &quot;98765432109876543210&quot;, &quot;primary&quot;: false}],</p>
+<p>&quot;CRM_ID&quot;: [{&quot;id&quot;: &quot;CRM-JANE-12345&quot;, &quot;primary&quot;: false}]</p>
+<p>},</p>
+<p>&quot;attributes&quot;: {</p>
+<p>&quot;person&quot;: {</p>
+<p>&quot;name&quot;: {</p>
+<p>&quot;firstName&quot;: &quot;Jane&quot;,</p>
+<p>&quot;lastName&quot;: &quot;Smith&quot;</p>
+<p>},</p>
+<p>&quot;birthDate&quot;: &quot;1988-05-15&quot;,</p>
+<p>&quot;gender&quot;: &quot;female&quot;</p>
+<p>},</p>
+<p>&quot;personalEmail&quot;: {</p>
+<p>&quot;address&quot;: &quot;jane.smith@email.com&quot;</p>
+<p>},</p>
+<p>&quot;mobilePhone&quot;: {</p>
+<p>&quot;number&quot;: &quot;+1-555-123-4567&quot;</p>
+<p>},</p>
+<p>&quot;loyalty&quot;: {</p>
+<p>&quot;tier&quot;: &quot;Gold&quot;,</p>
+<p>&quot;points&quot;: 2450</p>
+<p>},</p>
+<p>&quot;preferences&quot;: {</p>
+<p>&quot;favoriteCategory&quot;: &quot;Running&quot;,</p>
+<p>&quot;preferredChannel&quot;: &quot;Email&quot;</p>
+<p>}</p>
+<p>},</p>
+<p>&quot;computedAttributes&quot;: {</p>
+<p>&quot;totalPurchaseValue90Days&quot;: 387.50,</p>
+<p>&quot;purchaseCount30Days&quot;: 2,</p>
+<p>&quot;daysSinceLastPurchase&quot;: 15,</p>
+<p>&quot;averageOrderValue&quot;: 193.75</p>
+<p>},</p>
+<p>&quot;experienceEvents&quot;: [</p>
+<p>{</p>
+<p>&quot;eventType&quot;: &quot;web.webpagedetails.pageViews&quot;,</p>
+<p>&quot;timestamp&quot;: &quot;2024-01-15T10:00:00Z&quot;</p>
+<p>},</p>
+<p>{</p>
+<p>&quot;eventType&quot;: &quot;commerce.productViews&quot;,</p>
+<p>&quot;timestamp&quot;: &quot;2024-01-15T10:05:00Z&quot;,</p>
+<p>&quot;productListItems&quot;: [</p>
+</article>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "105. What is the full flow of Web SDK \u2192 Edge \u2192 AEP \u2192 Profile \u2192\nAJO \u2192 Customer? expain with video walk through and screenshots", "acceptedAnswer": {"@type": "Answer", "text": "Full Flow: Web SDK \u2192 Edge \u2192 AEP \u2192 Profile \u2192 AJO \u2192 Customer Video Walkthroughs \u25b6 Watch: Adobe Experience Platform Web SDK and Edge Network Overview(https://video.tv.adobe.com/v/34141?quality=12&learn=on) This video provides a comprehensive overview of the Web SDK and Edge Network communication. \u25b6 Watch: Introduction to Adobe Journey Optimizer(https://video.tv.adobe.com/v/3424498?quality=12&learn=on) This video introduces AJO and how it orchestrates customer journeys using AEP profile data. \u25b6 Watch: Real-Time Customer Profile Overview(https://video.tv.adobe.com/v/27251?learn=on&enablevpops) This video explains how Real-Time Customer Profile receives and processes data to power journey decisions. \u25b6 Watch: Create a Journey in AJO(https://video.tv.adobe.com/v/3424992?quality=12&learn=on) This video walks through creating journeys that are triggered by AEP events and profile data. \u25b6 Watch: Set Up a Datastream(https://video.tv.adobe.com/v/39112?quality=12&learn=on) This video shows how datastreams control data routing from Web SDK through Edge Network to AEP services. --- Overview This end-to-end flow represents the complete customer experience lifecycle \u2014 from a customer interaction on a website, all the way through data processing, profile building, journey orchestration, and final message delivery back to the customer. \u250c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2510 \u250c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2510 \u250c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2510 \u250c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2510 \u250c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2510 \u250c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2510 \u2502 WEB SDK \u2502\u2500\u2500\u25b6\u2502 EDGE \u2502\u2500\u2500\u25b6\u2502 AEP \u2502\u2500\u2500\u25b6\u2502 PROFILE \u2502\u2500\u2500\u25b6\u2502 AJO \u2502\u2500\u2500\u25b6\u2502 CUSTOMER \u2502 \u2502(Browser) \u2502 \u2502 NETWORK \u2502 \u2502(Platform)\u2502 \u2502 STORE \u2502 \u2502(Journey) \u2502 \u2502(Channel) \u2502 \u2514\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2518 \u2514\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2518 \u2514\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2518 \u2514\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2518 \u2514\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2518 \u2514\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2518 5ms 100ms 1-5 sec Real-time Seconds Seconds-Min --- The Real-World Scenario To make this flow tangible, we'll use a real-world retail scenario throughout: Jane Smith visits an e-commerce website, browses running shoes, adds a pair to her cart but abandons without purchasing. AJO detects this behavior and sends her a personalized cart abandonment email with\u2026"}}]}</script></div>
+  </body>
+</html>

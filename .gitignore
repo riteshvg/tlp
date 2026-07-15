@@ -1,3 +1,10 @@
+# Local Netlify folder
+.netlify
+node_modules/
+screenshots/
+.DS_Store
+*.md~
+
 public/*
 # The publish-landing-pages workflow (in the chatbot repo) intentionally
 # commits generated SEO landing pages here — keep this one path trackable.
@@ -6,6 +13,6 @@ public/*
 !public/tools
 public/tools/*
 !public/tools/rovr
+
 resources/
 .hugo_build.lock
-.DS_Store

@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/png" href="/tools/rovr/rovrlogo.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="build-date" content="2026-06-10" />
+    
+    
+    <script src="https://assets.adobedtm.com/204118644db8/290ae1adb65a/launch-e5ec7bf1a1ef-development.min.js" async></script>
+    <script type="module" crossorigin src="/tools/rovr/assets/index-Cnf1TPK2.js"></script>
+    <link rel="stylesheet" crossorigin href="/tools/rovr/assets/index-D1POE5XP.css">
+  <title>what is data mirror? | Rovr</title>
+<meta name="description" content="Data Mirror Overview Data Mirror is an Adobe Experience Platform capability that enables row-level change ingestion from external databases directly into the…" />
+<link rel="canonical" href="https://thelearningproject.in/tools/rovr/q/what-is-data-mirror-ab8de9" />
+<meta property="og:title" content="what is data mirror?" />
+<meta property="og:description" content="Data Mirror Overview Data Mirror is an Adobe Experience Platform capability that enables row-level change ingestion from external databases directly into the…" />
+<meta property="og:url" content="https://thelearningproject.in/tools/rovr/q/what-is-data-mirror-ab8de9" />
+<meta property="og:type" content="article" />
+<meta property="og:image" content="https://thelearningproject.in/tools/rovr/rovrlogo.png" />
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="what is data mirror?" />
+<meta name="twitter:description" content="Data Mirror Overview Data Mirror is an Adobe Experience Platform capability that enables row-level change ingestion from external databases directly into the…" />
+</head>
+  <body>
+    <div id="root"><article><h1>what is data mirror?</h1>
+<h2>Data Mirror Overview</h2>
+<p>Data Mirror is an Adobe Experience Platform capability that enables <strong>row-level change ingestion from external databases</strong> directly into the data lake using relational schemas. It synchronizes data changes from your external data warehouse without requiring upstream extract, transform, and load (ETL) processes.</p>
+<h3>Key Capabilities</h3>
+<p>Data Mirror allows you to:</p>
+<ul>
+<li><strong>Synchronize data changes</strong> (inserts, updates, and deletes) from external data warehouse native solutions like Snowflake, Azure Databricks, or Google BigQuery</li>
+<li><strong>Preserve database relationships</strong> and enforce data integrity during ingestion</li>
+<li><strong>Maintain your existing database model structure</strong> within the Experience Platform data lake</li>
+<li><strong>Track precise changes</strong> with upserts and deletes using change data capture</li>
+</ul>
+<h3>How It Works</h3>
+<p>Data Mirror operates through <strong>relational schemas</strong>, which are flexible data structures with enforced constraints. Unlike standard XDM schemas, relational schemas:</p>
+<ul>
+<li>Do not require classes or field groups</li>
+<li>Enforce primary keys and support version identifiers</li>
+<li>Define schema-to-schema relationships using primary and foreign keys</li>
+<li>Are optimized for change data capture ingestion workflows</li>
+</ul>
+<h3>Requirements</h3>
+<p>Your setup must include:</p>
+<ul>
+<li><strong>Primary key and version descriptor</strong> in all schemas</li>
+<li><strong>Timestamp descriptor</strong> if working with time-series data</li>
+<li><strong>Unique identifiers</strong> in source data (single field or composite primary key)</li>
+<li><strong>Version information</strong> so the system applies updates in the correct order</li>
+<li>A `_change_request_type` column to identify whether records are upserts or deletes</li>
+</ul>
+<h3>When to Use Data Mirror</h3>
+<p>Use Data Mirror when you need to synchronize data changes from external systems while preserving database relationships and supporting advanced analytics and journey orchestration.</p>
+</article>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "what is data mirror?", "acceptedAnswer": {"@type": "Answer", "text": "Data Mirror Overview Data Mirror is an Adobe Experience Platform capability that enables row-level change ingestion from external databases directly into the data lake using relational schemas. It synchronizes data changes from your external data warehouse without requiring upstream extract, transform, and load (ETL) processes. Key Capabilities Data Mirror allows you to: - Synchronize data changes (inserts, updates, and deletes) from external data warehouse native solutions like Snowflake, Azure Databricks, or Google BigQuery - Preserve database relationships and enforce data integrity during ingestion - Maintain your existing database model structure within the Experience Platform data lake - Track precise changes with upserts and deletes using change data capture How It Works Data Mirror operates through relational schemas, which are flexible data structures with enforced constraints. Unlike standard XDM schemas, relational schemas: - Do not require classes or field groups - Enforce primary keys and support version identifiers - Define schema-to-schema relationships using primary and foreign keys - Are optimized for change data capture ingestion workflows Requirements Your setup must include: - Primary key and version descriptor in all schemas - Timestamp descriptor if working with time-series data - Unique identifiers in source data (single field or composite primary key) - Version information so the system applies updates in the correct order - A changerequesttype column to identify whether records are upserts or deletes When to Use Data Mirror Use Data Mirror when you need to synchronize data changes from external systems while preserving database relationships and supporting advanced analytics and journey orchestration."}}]}</script></div>
+  </body>
+</html>

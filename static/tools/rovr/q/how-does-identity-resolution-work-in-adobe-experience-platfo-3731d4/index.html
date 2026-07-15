@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/png" href="/tools/rovr/rovrlogo.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="build-date" content="2026-06-10" />
+    
+    
+    <script src="https://assets.adobedtm.com/204118644db8/290ae1adb65a/launch-e5ec7bf1a1ef-development.min.js" async></script>
+    <script type="module" crossorigin src="/tools/rovr/assets/index-Cnf1TPK2.js"></script>
+    <link rel="stylesheet" crossorigin href="/tools/rovr/assets/index-D1POE5XP.css">
+  <title>How does identity resolution work in Adobe Experience Platform? | Rovr</title>
+<meta name="description" content="Identity Resolution in Adobe Experience Platform Overview Adobe Experience Platform Identity Service provides a comprehensive view of your customers and their…" />
+<link rel="canonical" href="https://thelearningproject.in/tools/rovr/q/how-does-identity-resolution-work-in-adobe-experience-platfo-3731d4" />
+<meta property="og:title" content="How does identity resolution work in Adobe Experience Platform?" />
+<meta property="og:description" content="Identity Resolution in Adobe Experience Platform Overview Adobe Experience Platform Identity Service provides a comprehensive view of your customers and their…" />
+<meta property="og:url" content="https://thelearningproject.in/tools/rovr/q/how-does-identity-resolution-work-in-adobe-experience-platfo-3731d4" />
+<meta property="og:type" content="article" />
+<meta property="og:image" content="https://thelearningproject.in/tools/rovr/rovrlogo.png" />
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="How does identity resolution work in Adobe Experience Platform?" />
+<meta name="twitter:description" content="Identity Resolution in Adobe Experience Platform Overview Adobe Experience Platform Identity Service provides a comprehensive view of your customers and their…" />
+</head>
+  <body>
+    <div id="root"><article><h1>How does identity resolution work in Adobe Experience Platform?</h1>
+<h2>Identity Resolution in Adobe Experience Platform</h2>
+<h3>Overview</h3>
+<p>Adobe Experience Platform Identity Service provides a comprehensive view of your customers and their behavior by <strong>bridging identities across devices and systems</strong>. This allows you to deliver impactful, personalized digital experiences in real time.</p>
+<h3>Core Concept: The Identity Graph</h3>
+<p>At the heart of identity resolution in AEP is the <strong>identity graph</strong> — a map of relationships between different identities belonging to the same individual. Each graph links identities across devices, channels, and systems (e.g., CRM IDs, email addresses, cookie IDs, mobile device IDs) into a unified customer profile.</p>
+<h4>How It Works</h4>
+<p>1. <strong>Data Ingestion</strong> — Customer experience data is collected from client-side and server-side sources and sent to the <strong>Adobe Experience Platform Edge Network</strong>.</p>
+<p>2. <strong>Identity Linking</strong> — As data arrives, Identity Service detects and links known identifiers (e.g., a logged-in CRM ID) with anonymous identifiers (e.g., a cookie or device ID), stitching them together in the identity graph.</p>
+<p>3. <strong>Graph Updates</strong> — Each time new identity data is ingested, the graph is updated to reflect the latest known relationships between identifiers.</p>
+<p>4. <strong>Profile Enrichment</strong> — The unified identity graph powers the <strong>Real-Time Customer Profile</strong>, enabling a single, merged view of the customer across all touchpoints.</p>
+<hr>
+<h3>Identity Types &amp; Namespaces</h3>
+<p>Identities are organized using <strong>identity namespaces</strong>, which provide context for what a given identifier represents. Key distinctions include:</p>
+<ul>
+<li><strong>Cross-device identity types</strong> — e.g., CRM IDs, email addresses (tied to a person)</li>
+<li><strong>Cookie/device identity types</strong> — e.g., ECID, cookie IDs (tied to a device or browser)</li>
+</ul>
+<p>&gt; ⚠️ <strong>Important:</strong> Configuring person-level identifiers (like CRM IDs) as cookie/device identity types — or vice versa — can cause unintended graph behavior. Adobe Engineering must manually correct such misconfigurations.</p>
+<hr>
+<h3>Identity Graph Limits (Guardrails)</h3>
+<p>AEP enforces guardrails to maintain graph accuracy and performance:</p>
+<p>| Guardrail | Detail |</p>
+<p>|---|---|</p>
+<p>| <strong>Identities per graph</strong> | Limit of <strong>50 identities per graph</strong> (updated limit) |</p>
+<p>| <strong>Eviction policy</strong> | When the limit is reached, the <strong>oldest identity is deleted</strong> based on ingestion timestamp and identity type |</p>
+<p>| <strong>Eviction priority</strong> | <strong>Cookie identity types are deleted first</strong> |</p>
+<p>Previously, the limit was 150 identities per graph; once reached, graphs were no longer updated. The updated 50-identity limit ensures graphs remain current by evicting stale identities.</p>
+<hr>
+<h3>Key Benefits</h3>
+<ul>
+<li><strong>Real-time stitching</strong> — Identities are linked as data is ingested, keeping profiles current</li>
+<li><strong>Cross-device recognition</strong> — Connects anonymous browsing behavior to known customer profiles upon authentication</li>
+<li><strong>Personalization at scale</strong> — The resolved identity graph powers audience segmentation, activation, and real-time personalization across Adobe and non-Adobe destinations</li>
+</ul>
+<hr>
+<h3>Important Configuration Consideration</h3>
+<p>If your <strong>production sandbox</strong> contains:</p>
+<ul>
+<li>A custom namespace where <strong>person identifiers (e.g., CRM IDs) are configured as cookie/device identity type</strong>, or</li>
+<li>A custom namespace where <strong>cookie/device identifiers are configured as cross-device identity type</strong></li>
+</ul>
+<p>You should contact your <strong>Adobe account representative</strong> to request a corrective identity type change, as this requires manual processing by Adobe Engineering.</p>
+<h2>Sources</h2>
+<ul>
+<li><a href="https://experienceleague.adobe.com/en/docs/experience-platform/release-notes/2022/september-2022">Adobe Experience Platform Release Notes September 2022</a></li>
+<li><a href="https://experienceleague.adobe.com/en/docs/experience-platform/release-notes/2023/april-2023">Adobe Experience Platform Release Notes April 2023</a></li>
+<li><a href="https://experienceleague.adobe.com/en/docs/experience-platform/release-notes/2023/july-2023">Adobe Experience Platform Release Notes July 2023</a></li>
+<li><a href="https://experienceleague.adobe.com/en/docs/experience-platform/release-notes/2023/march-2023">Adobe Experience Platform Release Notes March 2023</a></li>
+<li><a href="https://experienceleague.adobe.com/en/docs/experience-platform/release-notes/2023/october-2023">Adobe Experience Platform Release Notes October 2023</a></li>
+<li><a href="https://experienceleague.adobe.com/en/docs/experience-platform/release-notes/2022/june-2022">Adobe Experience Platform Release Notes June 2022</a></li>
+<li><a href="https://experienceleague.adobe.com/en/docs/experience-platform/release-notes/2024/april-2024">Adobe Experience Platform Release Notes April 2024</a></li>
+<li><a href="https://experienceleague.adobe.com/en/docs/experience-platform/release-notes/2026/april-2026">Adobe Experience Platform Release Notes April 2026</a></li>
+<li><a href="https://experienceleague.adobe.com/en/docs/experience-platform/landing/home">Adobe Experience Platform Overview</a></li>
+</ul></article>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "How does identity resolution work in Adobe Experience Platform?", "acceptedAnswer": {"@type": "Answer", "text": "Identity Resolution in Adobe Experience Platform Overview Adobe Experience Platform Identity Service provides a comprehensive view of your customers and their behavior by bridging identities across devices and systems. This allows you to deliver impactful, personalized digital experiences in real time. Core Concept: The Identity Graph At the heart of identity resolution in AEP is the identity graph \u2014 a map of relationships between different identities belonging to the same individual. Each graph links identities across devices, channels, and systems (e.g., CRM IDs, email addresses, cookie IDs, mobile device IDs) into a unified customer profile. How It Works 1. Data Ingestion \u2014 Customer experience data is collected from client-side and server-side sources and sent to the Adobe Experience Platform Edge Network. 2. Identity Linking \u2014 As data arrives, Identity Service detects and links known identifiers (e.g., a logged-in CRM ID) with anonymous identifiers (e.g., a cookie or device ID), stitching them together in the identity graph. 3. Graph Updates \u2014 Each time new identity data is ingested, the graph is updated to reflect the latest known relationships between identifiers. 4. Profile Enrichment \u2014 The unified identity graph powers the Real-Time Customer Profile, enabling a single, merged view of the customer across all touchpoints. --- Identity Types & Namespaces Identities are organized using identity namespaces, which provide context for what a given identifier represents. Key distinctions include: - Cross-device identity types \u2014 e.g., CRM IDs, email addresses (tied to a person) - Cookie/device identity types \u2014 e.g., ECID, cookie IDs (tied to a device or browser) \u26a0\ufe0f Important: Configuring person-level identifiers (like CRM IDs) as cookie/device identity types \u2014 or vice versa \u2014 can cause unintended graph behavior. Adobe Engineering must manually correct such misconfigurations. --- Identity Graph Limits (Guardrails) AEP enforces guardrails to maintain graph accuracy\u2026"}}]}</script></div>
+  </body>
+</html>

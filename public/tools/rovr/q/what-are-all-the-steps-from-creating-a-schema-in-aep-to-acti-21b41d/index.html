@@ -1,0 +1,173 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/png" href="/tools/rovr/rovrlogo.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="build-date" content="2026-06-10" />
+    
+    
+    <script src="https://assets.adobedtm.com/204118644db8/290ae1adb65a/launch-e5ec7bf1a1ef-development.min.js" async></script>
+    <script type="module" crossorigin src="/tools/rovr/assets/index-Cnf1TPK2.js"></script>
+    <link rel="stylesheet" crossorigin href="/tools/rovr/assets/index-D1POE5XP.css">
+  <title>What are all the steps from creating a schema in AEP to activating a dataset to a destination? expain with screenshots | Rovr</title>
+<meta name="description" content="Steps from Creating a Schema to Activating a Dataset to a Destination in AEP (with Screenshots) Here&#x27;s a comprehensive walkthrough with visual examples: 1.…" />
+<link rel="canonical" href="https://thelearningproject.in/tools/rovr/q/what-are-all-the-steps-from-creating-a-schema-in-aep-to-acti-21b41d" />
+<meta property="og:title" content="What are all the steps from creating a schema in AEP to activating a dataset to a destination? expain with screenshots" />
+<meta property="og:description" content="Steps from Creating a Schema to Activating a Dataset to a Destination in AEP (with Screenshots) Here&#x27;s a comprehensive walkthrough with visual examples: 1.…" />
+<meta property="og:url" content="https://thelearningproject.in/tools/rovr/q/what-are-all-the-steps-from-creating-a-schema-in-aep-to-acti-21b41d" />
+<meta property="og:type" content="article" />
+<meta property="og:image" content="https://thelearningproject.in/tools/rovr/rovrlogo.png" />
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="What are all the steps from creating a schema in AEP to activating a dataset to a destination? expain with screenshots" />
+<meta name="twitter:description" content="Steps from Creating a Schema to Activating a Dataset to a Destination in AEP (with Screenshots) Here&#x27;s a comprehensive walkthrough with visual examples: 1.…" />
+</head>
+  <body>
+    <div id="root"><article><h1>What are all the steps from creating a schema in AEP to activating a dataset to a destination? expain with screenshots</h1>
+<h2>Steps from Creating a Schema to Activating a Dataset to a Destination in AEP (with Screenshots)</h2>
+<p>Here&#x27;s a comprehensive walkthrough with visual examples:</p>
+<h3>1. Create an Experience Data Model (XDM) Schema</h3>
+<p><strong>Step 1: Open the Schema Editor</strong></p>
+<p><img src="https://raw.githubusercontent.com/AdobeDocs/experience-platform.en/main/help/xdm/tutorials/../images/ui/resources/schemas/create-schema.png" alt="The Schemas workspace with Create schema highlighted and the Select schema type dropdown displayed."></p>
+<p>In the Schemas workspace, select <strong>[!UICONTROL Create schema]</strong> in the top-right corner. A dropdown menu appears with options for:</p>
+<ul>
+<li><strong>[!UICONTROL Standard]</strong> schemas</li>
+<li><strong>[!UICONTROL Relational]</strong> schemas</li>
+</ul>
+<p><strong>Step 2: Choose Your Schema Type and Define the Structure</strong></p>
+<p>Once you select your schema type, the Schema Editor opens with an interactive visual canvas. Here&#x27;s an example of a loyalty program schema:</p>
+<p><img src="https://raw.githubusercontent.com/AdobeDocs/experience-platform.en/main/help/xdm/tutorials/../images/tutorials/create-schema/loyalty-members-schema-editor.png" alt="Example schema editor showing the structure of a loyalty members schema with fields organized in the canvas."></p>
+<p>In this editor, you can:</p>
+<ul>
+<li>View your schema structure on the canvas</li>
+<li>Add field groups to include pre-built fields</li>
+<li>Configure individual fields and their properties</li>
+<li>Define relationships between data elements</li>
+</ul>
+<p><strong>Step 3: Add Field Groups</strong></p>
+<p>Click the <strong>[!UICONTROL Add]</strong> button to add schema field groups (reusable collections of fields):</p>
+<p><img src="https://raw.githubusercontent.com/AdobeDocs/experience-platform.en/main/help/xdm/tutorials/../images/tutorials/create-schema/add-field-group-button.png" alt="The Add Field Group button highlighted in the Schema Editor interface."></p>
+<p>Field groups provide pre-configured fields for common data types. For example, demographic field groups include structured fields for personal information:</p>
+<p><img src="https://raw.githubusercontent.com/AdobeDocs/experience-platform.en/main/help/xdm/tutorials/../images/tutorials/create-schema/demographic-details-structure.png" alt="The structure of demographic details showing fields organized hierarchically."></p>
+<p><strong>Step 4: Configure Your Schema</strong></p>
+<p>The complete schema dialog shows all your selected components:</p>
+<p><img src="https://raw.githubusercontent.com/AdobeDocs/experience-platform.en/main/help/xdm/tutorials/../images/tutorials/create-schema/create-a-schema-dialog.png" alt="The schema creation dialog displaying the final schema configuration with all selected field groups and custom fields."></p>
+<p>Once your schema is configured:</p>
+<ul>
+<li>Define your class (foundation of the schema)</li>
+<li>Add additional field groups as needed</li>
+<li>Customize individual fields</li>
+<li>Configure data types and relationships</li>
+<li>Save your completed schema</li>
+</ul>
+<hr>
+<h3>2. Ingest Data into Datasets</h3>
+<p>Once your schema is created, data ingestion occurs:</p>
+<ul>
+<li>Your data is mapped to the XDM schema you created</li>
+<li>Data is successfully ingested and stored as <strong>datasets</strong> in the Data Lake</li>
+<li>Datasets are structured as tables with:</li>
+<li>Columns (schema fields)</li>
+<li>Rows (individual records)</li>
+<li>Metadata (descriptive information about the data)</li>
+</ul>
+<hr>
+<h3>3. Prepare Data for Activation</h3>
+<p>Your ingested data flows through Experience Platform services:</p>
+<ul>
+<li><strong>[!DNL Identity Service]</strong> - resolves and manages identities across your data</li>
+<li><strong>[!DNL Real-Time Customer Profile]</strong> - creates unified, real-time consumer profiles by aggregating data from multiple sources</li>
+</ul>
+<hr>
+<h3>4. Create and Configure a Destination Connection</h3>
+<p><strong>Navigate to Destinations:</strong></p>
+<p>In the Experience Platform UI, go to the Destinations workspace and:</p>
+<p>1. <strong>Select a destination</strong> from the catalog</p>
+<p>2. <strong>Configure the connection</strong> with:</p>
+<ul>
+<li>Authentication credentials</li>
+<li>Connection details specific to your destination platform</li>
+<li>Destination name and description</li>
+</ul>
+<p>3. <strong>Enable alerts</strong> (optional) - Subscribe to notifications about the status of your dataflow to receive updates on successful activations or errors</p>
+<p>4. <strong>Complete the setup</strong> by selecting <strong>[!UICONTROL Next]</strong> after providing all connection details</p>
+<hr>
+<h3>5. Export and Activate Your Dataset</h3>
+<p><strong>Step 1: Select Datasets to Activate</strong></p>
+<p>After configuring your destination connection, you&#x27;ll reach the <strong>[!UICONTROL Export datasets]</strong> step:</p>
+<ul>
+<li>Choose which datasets you want to activate to the destination</li>
+<li>Select from the available datasets in your organization</li>
+</ul>
+<p><strong>Step 2: Map Fields</strong></p>
+<p>Configure how fields from your dataset map to the destination&#x27;s expected format:</p>
+<ul>
+<li>Identify source fields from your dataset</li>
+<li>Map them to corresponding destination fields</li>
+<li>Ensure data compatibility</li>
+</ul>
+<p><strong>Step 3: Schedule Activation</strong></p>
+<p>Set up the activation schedule:</p>
+<ul>
+<li>Choose activation frequency (one-time, daily, scheduled intervals)</li>
+<li>Configure any destination-specific scheduling options</li>
+<li>Confirm your activation settings</li>
+</ul>
+<p><strong>Step 4: Review and Activate</strong></p>
+<p>Review all your configuration:</p>
+<ul>
+<li>Destination details</li>
+<li>Selected datasets</li>
+<li>Field mappings</li>
+<li>Activation schedule</li>
+</ul>
+<p>Then activate by selecting the final confirmation button.</p>
+<hr>
+<h3>6. Monitor Dataflows</h3>
+<p><strong>After Activation:</strong></p>
+<p>Use the Destinations workspace to monitor your dataflows:</p>
+<ul>
+<li><strong>Track dataflow status</strong> - See which dataflows are active, paused, or have errors</li>
+<li><strong>View flow statistics</strong> - Monitor:</li>
+<li>Records successfully processed</li>
+<li>Records that encountered errors</li>
+<li>Data delivery status</li>
+<li><strong>Check execution details</strong> - Review individual batch runs and their outcomes</li>
+</ul>
+<p>Monitor dataflows for destinations in the UI to ensure your data is being successfully activated to external partners.</p>
+<hr>
+<h3>7. Validate Data Export</h3>
+<p><strong>Confirm successful delivery:</strong></p>
+<ul>
+<li>Verify that your dataset has successfully reached your destination platform</li>
+<li>For example, if your destination is a Snowflake data warehouse, check that data appears in the expected tables</li>
+<li>Validate record counts and data integrity</li>
+<li>Check that data formatting matches your requirements</li>
+</ul>
+<hr>
+<h3>Key Prerequisites Throughout the Process</h3>
+<p>✓ <strong>Understanding of XDM</strong> - Knowledge of how schemas are composed and structured</p>
+<p>✓ <strong>Required Permissions:</strong></p>
+<ul>
+<li><strong>View Destinations</strong></li>
+<li><strong>View Datasets</strong></li>
+<li><strong>Manage and Activate Dataset Destinations</strong></li>
+</ul>
+<p>✓ <strong>Sandbox access</strong> - Work in appropriate development or production sandboxes</p>
+<p>✓ <strong>Destination compatibility</strong> - Ensure your chosen destination supports dataset export</p>
+<hr>
+<h3>Complete Workflow Diagram</h3>
+<p><img src="https://raw.githubusercontent.com/AdobeDocs/experience-platform.en/main/help/xdm/tutorials/../images/api/export-datasets/export-datasets-api-workflow-get-started.png" alt="Overview showing the steps to create a destination and export datasets in the workflow."></p>
+<p>This complete workflow enables you to:</p>
+<ul>
+<li>✓ Create structured schemas for your data</li>
+<li>✓ Ingest data into organized datasets</li>
+<li>✓ Build unified customer profiles</li>
+<li>✓ Activate data to external destinations</li>
+<li>✓ Run cross-channel marketing campaigns</li>
+<li>✓ Enable targeted advertising and personalization use cases</li>
+</ul>
+</article>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "What are all the steps from creating a schema in AEP to activating a dataset to a destination? expain with screenshots", "acceptedAnswer": {"@type": "Answer", "text": "Steps from Creating a Schema to Activating a Dataset to a Destination in AEP (with Screenshots) Here's a comprehensive walkthrough with visual examples: 1. Create an Experience Data Model (XDM) Schema Step 1: Open the Schema Editor !The Schemas workspace with Create schema highlighted and the Select schema type dropdown displayed.(https://raw.githubusercontent.com/AdobeDocs/experience-platform.en/main/help/xdm/tutorials/../images/ui/resources/schemas/create-schema.png) In the Schemas workspace, select !UICONTROL Create schema in the top-right corner. A dropdown menu appears with options for: - !UICONTROL Standard schemas - !UICONTROL Relational schemas Step 2: Choose Your Schema Type and Define the Structure Once you select your schema type, the Schema Editor opens with an interactive visual canvas. Here's an example of a loyalty program schema: !Example schema editor showing the structure of a loyalty members schema with fields organized in the canvas.(https://raw.githubusercontent.com/AdobeDocs/experience-platform.en/main/help/xdm/tutorials/../images/tutorials/create-schema/loyalty-members-schema-editor.png) In this editor, you can: - View your schema structure on the canvas - Add field groups to include pre-built fields - Configure individual fields and their properties - Define relationships between data elements Step 3: Add Field Groups Click the !UICONTROL Add button to add schema field groups (reusable collections of fields): !The Add Field Group button highlighted in the Schema Editor interface.(https://raw.githubusercontent.com/AdobeDocs/experience-platform.en/main/help/xdm/tutorials/../images/tutorials/create-schema/add-field-group-button.png) Field groups provide pre-configured fields for common data types. For example, demographic field groups include structured fields for personal information: !The structure of demographic details showing fields organized\u2026"}}]}</script></div>
+  </body>
+</html>

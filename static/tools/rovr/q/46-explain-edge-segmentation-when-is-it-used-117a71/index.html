@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/png" href="/tools/rovr/rovrlogo.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="build-date" content="2026-06-10" />
+    
+    
+    <script src="https://assets.adobedtm.com/204118644db8/290ae1adb65a/launch-e5ec7bf1a1ef-development.min.js" async></script>
+    <script type="module" crossorigin src="/tools/rovr/assets/index-Cnf1TPK2.js"></script>
+    <link rel="stylesheet" crossorigin href="/tools/rovr/assets/index-D1POE5XP.css">
+  <title>46. Explain Edge Segmentation. When is it Used? | Rovr</title>
+<meta name="description" content="Edge Segmentation What is Edge Segmentation? Edge segmentation is the ability to evaluate segment definitions in Adobe Experience Platform instantaneously on…" />
+<link rel="canonical" href="https://thelearningproject.in/tools/rovr/q/46-explain-edge-segmentation-when-is-it-used-117a71" />
+<meta property="og:title" content="46. Explain Edge Segmentation. When is it Used?" />
+<meta property="og:description" content="Edge Segmentation What is Edge Segmentation? Edge segmentation is the ability to evaluate segment definitions in Adobe Experience Platform instantaneously on…" />
+<meta property="og:url" content="https://thelearningproject.in/tools/rovr/q/46-explain-edge-segmentation-when-is-it-used-117a71" />
+<meta property="og:type" content="article" />
+<meta property="og:image" content="https://thelearningproject.in/tools/rovr/rovrlogo.png" />
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="46. Explain Edge Segmentation. When is it Used?" />
+<meta name="twitter:description" content="Edge Segmentation What is Edge Segmentation? Edge segmentation is the ability to evaluate segment definitions in Adobe Experience Platform instantaneously on…" />
+</head>
+  <body>
+    <div id="root"><article><h1>46. Explain Edge Segmentation. When is it Used?</h1>
+<h2>Edge Segmentation</h2>
+<h3>What is Edge Segmentation?</h3>
+<p>Edge segmentation is the ability to evaluate segment definitions in Adobe Experience Platform <strong>instantaneously on the edge</strong>, enabling same-page and next-page personalization use cases.</p>
+<p>Rather than waiting for batch processing or streaming evaluation, edge segmentation processes audience evaluations at the edge servers closest to where data was collected, delivering real-time results for immediate personalization decisions.</p>
+<h3>Key Characteristics</h3>
+<h4>Real-Time Evaluation</h4>
+<ul>
+<li>Segments are evaluated in near real-time as requests come in</li>
+<li>Results are immediately available for personalization decisions</li>
+<li>No delay waiting for batch jobs or streaming pipelines</li>
+</ul>
+<h4>Edge Processing</h4>
+<ul>
+<li>Data is processed on edge servers located closest to data collection points</li>
+<li>Edge servers dynamically load the metadata required for evaluation</li>
+<li>Data may be stored in edge locations rather than the hub/principal Adobe Experience Platform data center</li>
+</ul>
+<h4>Identity Requirements</h4>
+<ul>
+<li>The edge segmentation engine honors requests where there is <strong>one primary marked identity</strong></li>
+<li>This is consistent with non-edge-based primary identity requirements</li>
+<li>Proper identity resolution is critical for accurate segmentation</li>
+</ul>
+<h3>When to Use Edge Segmentation</h3>
+<p>Edge segmentation is specifically designed for:</p>
+<p>1. <strong>Same-page personalization</strong> — Personalize content on the current page immediately</p>
+<p>2. <strong>Next-page personalization</strong> — Segment users for the next page they visit</p>
+<p>3. <strong>Real-time decisioning</strong> — Make instant audience qualification decisions at request time</p>
+<p>4. <strong>High-volume, low-latency use cases</strong> — Process requests at scale with minimal delay</p>
+<h3>Important Considerations</h3>
+<h4>Cold-Start Latency</h4>
+<p>Since edge servers dynamically load metadata on-demand, the first calls may experience &quot;cold-start&quot; latency regardless of sandbox type. During this window, initial evaluation calls may result in timeouts.</p>
+<p><strong>Recommendation:</strong> Run a brief pre-warm burst or realistic load before testing to eliminate false-positive failures.</p>
+<h4>Comparison with Other Methods</h4>
+<ul>
+<li><strong>Streaming Segmentation</strong> — Focuses on data richness; evaluates as data lands in Experience Platform</li>
+<li><strong>Edge Segmentation</strong> — Focuses on same-page/next-page personalization; evaluates at the edge for immediate decisions</li>
+</ul>
+<p>For more detailed setup and configuration, refer to the edge segmentation UI guide and documentation.</p>
+</article>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "46. Explain Edge Segmentation. When is it Used?", "acceptedAnswer": {"@type": "Answer", "text": "Edge Segmentation What is Edge Segmentation? Edge segmentation is the ability to evaluate segment definitions in Adobe Experience Platform instantaneously on the edge, enabling same-page and next-page personalization use cases. Rather than waiting for batch processing or streaming evaluation, edge segmentation processes audience evaluations at the edge servers closest to where data was collected, delivering real-time results for immediate personalization decisions. Key Characteristics Real-Time Evaluation - Segments are evaluated in near real-time as requests come in - Results are immediately available for personalization decisions - No delay waiting for batch jobs or streaming pipelines Edge Processing - Data is processed on edge servers located closest to data collection points - Edge servers dynamically load the metadata required for evaluation - Data may be stored in edge locations rather than the hub/principal Adobe Experience Platform data center Identity Requirements - The edge segmentation engine honors requests where there is one primary marked identity - This is consistent with non-edge-based primary identity requirements - Proper identity resolution is critical for accurate segmentation When to Use Edge Segmentation Edge segmentation is specifically designed for: 1. Same-page personalization \u2014 Personalize content on the current page immediately 2. Next-page personalization \u2014 Segment users for the next page they visit 3. Real-time decisioning \u2014 Make instant audience qualification decisions at request time 4. High-volume, low-latency use cases \u2014 Process requests at scale with minimal delay Important Considerations Cold-Start Latency Since edge servers dynamically load metadata on-demand, the first calls may experience \"cold-start\" latency regardless of sandbox type. During this window, initial evaluation calls may result in timeouts. Recommendation: Run a brief pre-warm burst or realistic load before testing to eliminate false-positive failures.\u2026"}}]}</script></div>
+  </body>
+</html>

@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/png" href="/tools/rovr/rovrlogo.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="build-date" content="2026-06-10" />
+    
+    
+    <script src="https://assets.adobedtm.com/204118644db8/290ae1adb65a/launch-e5ec7bf1a1ef-development.min.js" async></script>
+    <script type="module" crossorigin src="/tools/rovr/assets/index-Cnf1TPK2.js"></script>
+    <link rel="stylesheet" crossorigin href="/tools/rovr/assets/index-D1POE5XP.css">
+  <title>How does personalization work in Adobe? | Rovr</title>
+<meta name="description" content="Personalization in Adobe Journey Optimizer Personalization in AJO empowers you to craft tailored, impactful customer experiences by dynamically customizing…" />
+<link rel="canonical" href="https://thelearningproject.in/tools/rovr/q/how-does-personalization-work-in-adobe-3ab3bc" />
+<meta property="og:title" content="How does personalization work in Adobe?" />
+<meta property="og:description" content="Personalization in Adobe Journey Optimizer Personalization in AJO empowers you to craft tailored, impactful customer experiences by dynamically customizing…" />
+<meta property="og:url" content="https://thelearningproject.in/tools/rovr/q/how-does-personalization-work-in-adobe-3ab3bc" />
+<meta property="og:type" content="article" />
+<meta property="og:image" content="https://thelearningproject.in/tools/rovr/rovrlogo.png" />
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="How does personalization work in Adobe?" />
+<meta name="twitter:description" content="Personalization in Adobe Journey Optimizer Personalization in AJO empowers you to craft tailored, impactful customer experiences by dynamically customizing…" />
+</head>
+  <body>
+    <div id="root"><article><h1>How does personalization work in Adobe?</h1>
+<h2>Personalization in Adobe Journey Optimizer</h2>
+<p>Personalization in AJO empowers you to craft tailored, impactful customer experiences by dynamically customizing content based on <strong>individual profiles</strong>, <strong>behaviors</strong>, and <strong>contextual data</strong>. Whether you&#x27;re creating personalized emails, notifications, or offers, the tools and techniques provided make it easy to connect the right message to the right person at the right time.</p>
+<hr>
+<h3>Foundation: Profile Data</h3>
+<p>Personalization is based on profile data managed by the <strong>XDM Individual Profile</strong> schema defined in Adobe Experience Platform. This is the <strong>only schema</strong> you can use to personalize content in Journey Optimizer.</p>
+<p>You can also leverage:</p>
+<ul>
+<li><strong>Computed attributes</strong> — Summarize individual behavioral events into computed profile attributes available on AEP</li>
+<li><strong>AEP datasets</strong> — Leverage data from Adobe Experience Platform for lookup personalization (currently in beta — datasets must first be enabled via API call)</li>
+</ul>
+<hr>
+<h3>The Personalization Editor</h3>
+<p>The personalization editor is the centerpiece of personalization in Journey Optimizer. It is available in every context where you need to define personalization, such as <strong>emails</strong>, <strong>push notifications</strong>, and <strong>offers</strong>.</p>
+<p><img src="https://raw.githubusercontent.com/AdobeDocs/journey-optimizer.en/main/help/using/personalization/assets/inline-profile-attributes.png" alt="Personalization Editor"></p>
+<p>Using the editor, you can:</p>
+<ul>
+<li><strong>Select</strong> data from available personalization sources</li>
+<li><strong>Arrange</strong> and combine multiple data points</li>
+<li><strong>Customize</strong> expressions using Handlebars syntax and helper functions</li>
+<li><strong>Validate</strong> your expressions before publishing</li>
+</ul>
+<hr>
+<h3>Personalization Sources</h3>
+<p>| Source | Syntax | Description |</p>
+<p>|--------|--------|-------------|</p>
+<p>| <strong>Profile attributes</strong> | `profile.*` | Individual profile fields from AEP XDM Individual Profile schema |</p>
+<p>| <strong>Audiences</strong> | `inAudience()` | Audience membership checks |</p>
+<p>| <strong>Offer decisions</strong> | Decision management | Personalized offers from Offer Decisioning |</p>
+<p>| <strong>Target attributes</strong> | Orchestrated campaigns only | Attributes calculated on the campaign canvas, including enrichment collection arrays |</p>
+<p>| <strong>Tokens</strong> | `context.token` | Session or authentication tokens |</p>
+<hr>
+<h3>Personalization Syntax</h3>
+<h4>Message Content — Handlebars</h4>
+<p>In message content (emails, push, etc.), personalization uses <strong>Handlebars syntax</strong> with `{{#each}}` loops for iterating over arrays and dynamic content rendering.</p>
+<h4>Journey Expressions — Expression Editor</h4>
+<p>When configuring journey activities such as conditions or custom action parameters, you use the <strong>Journey Expression Editor</strong> with functions like `first`, `all`, and `serializeList`.</p>
+<p>&gt; ⚠️ These are two <strong>different syntaxes</strong> — Handlebars for message content, and Journey expressions for journey configuration.</p>
+<hr>
+<h3>Key Personalization Features</h3>
+<ul>
+<li><strong>Expression Fragments</strong> — Reusable content blocks that can be used across multiple messages</li>
+<li><strong>Helper Functions</strong> — Advanced functions to unlock deeper personalization possibilities</li>
+<li><strong>AI Assistant for Personalization Expressions</strong> — AI-powered assistance for building personalization expressions</li>
+<li><strong>Personalization Playground</strong> — An interactive tool to learn and experiment with personalization using sample data without requiring live datasets</li>
+</ul>
+<p><img src="https://raw.githubusercontent.com/AdobeDocs/journey-optimizer.en/main/help/using/personalization/assets/playground.png" alt="Personalization Playground"></p>
+<hr>
+<h3>Personalization in Web/App Channels (Web SDK)</h3>
+<p>For web and app personalization, common implementation topics include:</p>
+<ul>
+<li><strong>Prevent flicker</strong> — Hide and reveal containers during personalization loading</li>
+<li><strong>Track displayed content</strong> — Record display events for rendered personalized content</li>
+<li><strong>Top/bottom of page events</strong> — Request decisions early, then include measurement metrics later</li>
+</ul>
+<p>Adobe also maintains a repository of <strong>Web SDK sample applications</strong> covering:</p>
+<ul>
+<li>Client-side personalization</li>
+<li>Server-side personalization</li>
+<li>Hybrid personalization</li>
+<li>Personalization in single-page applications (SPAs)</li>
+</ul>
+<hr>
+<h3>Personalization Schema Types</h3>
+<p>When working with personalization decisions delivered via the Edge Network, several schema types govern how content is handled:</p>
+<p>| Schema | Purpose |</p>
+<p>|--------|---------|</p>
+<p>| `https://ns.adobe.com/personalization/measurement` | Tracks clicks and interactions on personalized offers |</p>
+<p>| `https://ns.adobe.com/personalization/default-content-item` | Fallback/default content when no personalized offer is eligible |</p>
+<p>| `https://ns.adobe.com/personalization/eventHistoryOperation` | Tracks which experiences have been delivered or blocked |</p>
+</article>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "How does personalization work in Adobe?", "acceptedAnswer": {"@type": "Answer", "text": "Personalization in Adobe Journey Optimizer Personalization in AJO empowers you to craft tailored, impactful customer experiences by dynamically customizing content based on individual profiles, behaviors, and contextual data. Whether you're creating personalized emails, notifications, or offers, the tools and techniques provided make it easy to connect the right message to the right person at the right time. --- Foundation: Profile Data Personalization is based on profile data managed by the XDM Individual Profile schema defined in Adobe Experience Platform. This is the only schema you can use to personalize content in Journey Optimizer. You can also leverage: - Computed attributes \u2014 Summarize individual behavioral events into computed profile attributes available on AEP - AEP datasets \u2014 Leverage data from Adobe Experience Platform for lookup personalization (currently in beta \u2014 datasets must first be enabled via API call) --- The Personalization Editor The personalization editor is the centerpiece of personalization in Journey Optimizer. It is available in every context where you need to define personalization, such as emails, push notifications, and offers. !Personalization Editor(https://raw.githubusercontent.com/AdobeDocs/journey-optimizer.en/main/help/using/personalization/assets/inline-profile-attributes.png) Using the editor, you can: - Select data from available personalization sources - Arrange and combine multiple data points - Customize expressions using Handlebars syntax and helper functions - Validate your expressions before publishing --- Personalization Sources | Source | Syntax | Description | |--------|--------|-------------| | Profile attributes | profile. | Individual profile fields from AEP XDM Individual Profile schema | | Audiences | inAudience() | Audience membership checks | | Offer decisions | Decision management | Personalized offers from Offer Decisioning | | Target attributes | Orchestrated campaigns only | Attributes calculated on the\u2026"}}]}</script></div>
+  </body>
+</html>

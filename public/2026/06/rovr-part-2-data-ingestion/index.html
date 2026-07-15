@@ -1,0 +1,641 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+     <script type="application/ld+json">
+
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Rovr: Part 2 - Data Ingestion",
+  
+  "image": "https://d2coej5ollyd8p.cloudfront.net/tools/exl-annoucement.png",
+  
+  "datePublished": "2026-06-12T00:00:00Z",
+  "dateModified": "2026-06-12T00:00:00Z",
+  "author": {
+    "@type": "Person",
+    "name":  null ,
+    
+  },
+  "mainEntityOfPage": { 
+    "@type": "WebPage",
+    "@id": "https:\/\/thelearningproject.in\/2026\/06\/rovr-part-2-data-ingestion\/" 
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "The Learning Project",
+    
+  },
+  "description": "This is Part 2 of the deep dive series on Rovr - a conversational chat bot I created covering docs for Adobe Experience League. The intro covered the idea, the tech stack and a high level overview of the application. I also covered the most important decision of moving from Streamlit to React + FastAPI. This post, and the future ones will talk about the application, architecture, technology, mistakes, learnings in detail.\n",
+  "keywords": [, "adobe experience cloud, adobe launch, adobe analytics, adobe experience platform, multi solution architect, business analytics"]
+}
+
+</script> <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="generator" content="Hugo 0.147.8 with theme Tranquilpeak 0.5.3-BETA">
+<meta name="author" content="">
+<meta name="keywords" content=", adobe experience cloud, adobe launch, adobe analytics, adobe experience platform, multi solution architect, business analytics">
+<meta name="description" content="This is Part 2 of the deep dive series on 
+  Rovr
+
+ - a conversational chat bot I created covering docs for Adobe Experience League. The 
+  intro
+
+ covered the idea, the tech stack and a high level overview of the application. I also covered the most important decision of moving from Streamlit to React &#43; FastAPI. This post, and the future ones will talk about the application, architecture, technology, mistakes, learnings in detail.">
+
+
+<meta property="og:description" content="This is Part 2 of the deep dive series on 
+  Rovr
+
+ - a conversational chat bot I created covering docs for Adobe Experience League. The 
+  intro
+
+ covered the idea, the tech stack and a high level overview of the application. I also covered the most important decision of moving from Streamlit to React &#43; FastAPI. This post, and the future ones will talk about the application, architecture, technology, mistakes, learnings in detail.">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Rovr: Part 2 - Data Ingestion">
+<meta name="twitter:title" content="Rovr: Part 2 - Data Ingestion">
+<meta property="og:url" content="https://thelearningproject.in/2026/06/rovr-part-2-data-ingestion/">
+<meta property="twitter:url" content="https://thelearningproject.in/2026/06/rovr-part-2-data-ingestion/">
+<meta property="og:site_name" content="The Learning Project">
+<meta property="og:description" content="This is Part 2 of the deep dive series on 
+  Rovr
+
+ - a conversational chat bot I created covering docs for Adobe Experience League. The 
+  intro
+
+ covered the idea, the tech stack and a high level overview of the application. I also covered the most important decision of moving from Streamlit to React &#43; FastAPI. This post, and the future ones will talk about the application, architecture, technology, mistakes, learnings in detail.">
+<meta name="twitter:description" content="This is Part 2 of the deep dive series on 
+  Rovr
+
+ - a conversational chat bot I created covering docs for Adobe Experience League. The 
+  intro
+
+ covered the idea, the tech stack and a high level overview of the application. I also covered the most important decision of moving from Streamlit to React &#43; FastAPI. This post, and the future ones will talk about the application, architecture, technology, mistakes, learnings in detail.">
+<meta property="og:locale" content="en-us">
+
+  
+    <meta property="article:published_time" content="2026-06-12T00:00:00">
+  
+  
+    <meta property="article:modified_time" content="2026-06-12T00:00:00">
+  
+  
+  
+  
+    
+      <meta property="article:tag" content="post">
+    
+      <meta property="article:tag" content="Adobe Tags">
+    
+      <meta property="article:tag" content="Adobe Experience League">
+    
+  
+
+
+<meta name="twitter:card" content="summary">
+
+
+
+
+
+
+
+
+
+
+
+  <meta property="og:image" content="https://d2coej5ollyd8p.cloudfront.net/tools/exl-annoucement.png">
+  <meta property="twitter:image" content="https://d2coej5ollyd8p.cloudfront.net/tools/exl-annoucement.png">
+
+
+    <title>Rovr: Part 2 - Data Ingestion</title>
+
+    <link
+      rel="icon"
+      href="https://thelearningproject.in/favicon.png"
+    />
+     
+
+    <link rel="canonical" href="https://thelearningproject.in/2026/06/rovr-part-2-data-ingestion/" />
+
+    
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+      integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css"
+      integrity="sha512-H9jrZiiopUdsLpg94A333EfumgUBpO9MdbxStdeITo+KEIMaNfHNvwyjjDJb+ERPaRS6DpyRlKbvPUasNItRyw=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    
+    
+    
+    <link rel="stylesheet" href="https://thelearningproject.in/css/style-h6ccsoet3mzkbb0wngshlfbaweimexgqcxj0h5hu4h82olsdzz6wmqdkajm.min.css" />
+    
+    
+    
+  </head>
+
+  <body>
+    <div id="blog">
+      <header id="header" data-behavior="3">
+  <i id="btn-open-sidebar" class="fa fa-lg fa-bars"></i>
+  <div class="header-title">
+    <a class="header-title-link" href="../../../" aria-label="Go to homepage">The Learning Project</a>
+  </div>
+  
+    
+      <a class="header-right-picture "
+         href="../../../about" aria-label="Open the link: /about">
+    
+    
+    
+      
+    
+    </a>
+  
+</header>
+
+      <nav id="sidebar" data-behavior="3">
+  <div class="sidebar-container">
+    
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="../../../" title="Home">
+    
+      <i class="sidebar-button-icon fas fa-lg fa-home" aria-hidden="true"></i>
+      
+      <span class="sidebar-button-desc">Home</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="../../../about" title="About">
+    
+      <i class="sidebar-button-icon fas fa-lg fa-code" aria-hidden="true"></i>
+      
+      <span class="sidebar-button-desc">About</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="../../../tools" title="Tools">
+    
+      <i class="sidebar-button-icon fas fa-lg fa-anchor" aria-hidden="true"></i>
+      
+      <span class="sidebar-button-desc">Tools</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="../../../todayilearned.html" title="Today I Learned">
+    
+      <i class="sidebar-button-icon fas fa-lg fa-book" aria-hidden="true"></i>
+      
+      <span class="sidebar-button-desc">Today I Learned</span>
+    </a>
+  </li>
+
+
+    </ul>
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://github.com/riteshvg" target="_blank" rel="noopener" title="GitHub">
+    
+      <i class="sidebar-button-icon fab fa-lg fa-github" aria-hidden="true"></i>
+      
+      <span class="sidebar-button-desc">GitHub</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://www.linkedin.com/in/riteshvgupta/" target="_blank" rel="noopener" title="LinkedIn">
+    
+      <i class="sidebar-button-icon fab fa-lg fa-linkedin" aria-hidden="true"></i>
+      
+      <span class="sidebar-button-desc">LinkedIn</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://twitter.com/riteshvg" target="_blank" rel="noopener" title="Twitter">
+    
+      <i class="sidebar-button-icon fab fa-lg fa-twitter" aria-hidden="true"></i>
+      
+      <span class="sidebar-button-desc">Twitter</span>
+    </a>
+  </li>
+
+
+    </ul>
+    <ul class="sidebar-buttons">
+      
+
+    </ul>
+  </div>
+</nav>
+
+      
+
+      <div id="main" data-behavior="3"
+        class="
+               hasCoverMetaIn
+               ">
+        <article class="post" id="top">
+          
+          
+            <div class="post-header main-content-wrap text-left">
+  
+    <h1 class="post-title">
+      Rovr: Part 2 - Data Ingestion
+    </h1>
+  
+  
+  <div class="postShorten-meta post-meta">
+    
+      <time datetime="2026-06-12T00:00:00Z">
+        
+  June 12, 2026
+
+      </time>
+    
+    
+  </div>
+
+</div>
+          
+          <div class="post-content markdown">
+            <div class="main-content-wrap">
+              <p>This is Part 2 of the deep dive series on <a href="https://thelearningproject.in/tools/rovr/" target="_blank" rel="noopener">
+  Rovr
+</a>
+ - a conversational chat bot I created covering docs for Adobe Experience League. The <a href="https://thelearningproject.in/2026/06/rovr-a-conversational-engine-for-adobe-experience-league/" target="_blank" rel="noopener">
+  intro
+</a>
+ covered the idea, the tech stack and a high level overview of the application. I also covered the most important decision of moving from Streamlit to React + FastAPI. This post, and the future ones will talk about the application, architecture, technology, mistakes, learnings in detail.</p>
+<p><a href="https://thelearningproject.in/tools/rovr/" target="_blank" rel="noopener">
+  Rovr
+</a>
+ is a RAG system that retrieves and presents data sourced from <a href="https://experienceleague.adobe.com/docs/" target="_blank" rel="noopener">
+  Adobe Experience Cloud
+</a>
+. And a RAG system is only as good as the underlying data that it has indexed. The retrieval can be well-designed, the prompt can be carefully engineered, and the UI can be polished — but if the knowledge base has bad chunks, wrong URLs, or stale content, the whole thing falls apart at query time.</p>
+<p>I deliberately spent more time on this layer than on any other part of the project, and most of that time was on problems I didn&rsquo;t anticipate.</p>
+<p>This post covers the full ingestion pipeline end to end: where the docs come from, how do they stay current, how they get chunked and embedded, the metadata registry that makes citations work, and the hard-won lessons at the end.</p>
+<h3 id="the-full-data-ingestion-pipeline">The Full Data Ingestion Pipeline</h3>
+<p>The data ingestion pipeline is a fundamental part of the entire application. So, it was imperative that I had to make it streamlined, expandable and agile from the initial design. There were a series of decisions that I had to make even before I had began the actual work. The points ranged from:</p>
+<ul>
+<li>location of the documents</li>
+<li>recency and frequency of updates</li>
+<li>frequency of ingestion in the knowledge bank</li>
+<li>storage and retrieval of data</li>
+<li>multi media support</li>
+<li>expandability</li>
+</ul>
+<p>All these decisions were important enough to spend weeks on them. I initially decided to cover only <em>Adobe Analytics</em> and <em>Customer Journey Analytics</em>, and just text. But then the design was getting text heavy and with just two solutions I was aiming for a very narrow audience. The scope kept on expanding and the ingestion architecture started taking shape. Here&rsquo;s the ingestion pipeline as it stands today.</p>
+<p><img src="https://d2coej5ollyd8p.cloudfront.net/tools/ingestionworkflow.png" alt="ingestionpipeline.png"></p>
+<p><strong>Step 1</strong> — <em>Source: AdobeDocs GitHub Repos</em>
+Adobe maintains public Markdown documentation repos for each product (AdobeDocs/analytics.en, AdobeDocs/experience-platform.en, etc.). Every .md file is one documentation page, continuously updated by Adobe&rsquo;s technical writers. This is both the advantage (the source is always current) and the engineering challenge (the pipeline needs to track what changed without re-processing everything every time).</p>
+<hr>
+<p><strong>Step 2</strong> — <em>SHA Delta Sync: GitHub → S3</em>
+Instead of downloading everything weekly, sync_docs_to_s3.py calls GitHub&rsquo;s tree API — one request per repo that returns every file&rsquo;s path and SHA hash. Only files whose SHA has changed since the last run get downloaded and uploaded to S3. A manifest (sync_manifest.json) stored in S3 records the last-seen SHA for each file so future runs know what to skip. This decision was important as it meant significant cost savings because only changed files are uploaded by Adobe Engineering to Github.</p>
+<hr>
+<p><strong>Step 3</strong> — <em>Chunking: Markdown → Text Chunks</em>
+Each changed document is split into ~500-token chunks. The strategy is hierarchical — first split on H2/H3 headers, then on paragraph breaks, then hard-split oversized paragraphs as a last resort. Each chunk gets a stable ID (s3_key#chunk_index) so re-ingesting an updated file overwrites the right records. This strategy took some time to finalize as it depends on the document design. So it makes sense to understand your content well before deciding on a chunking strategy. Don&rsquo;t go blind into it.</p>
+<hr>
+<p><strong>Step 4</strong> — <em>Embedding: Chunks → Vectors</em>
+Each chunk is passed to AWS Bedrock Titan Embed v2, which returns a 1,024-dimension vector representing the semantic meaning of that text. Only changed documents get re-embedded — unchanged chunks already in ChromaDB are untouched. Three reasons Titan Embed v2 specifically: AWS credentials are already in the project for S3, so there is no refactoring for access, plus Titan Embed is Amazon&rsquo;s first-party model so no additional setup is required and you also get vector quality at reasonable size so dimensions are large enough to capture semantic nuance in technical documentation.</p>
+<p>One practical limit: Titan Embed v2 has an 8,000-character input cap. Some AEP reference pages run 12,000+ characters. The chunking strategy mostly prevents this since chunks target ~2,000 characters, but an explicit text[:8000] guard sits in the ingest loop as a safety net.</p>
+<hr>
+<p><strong>Step 5</strong> — <em>Storage: Vectors → ChromaDB</em>
+Each chunk is upserted into ChromaDB with its vector and metadata: product, url, title, doc_type, s3_key, chunk_index. ChromaDB uses a cosine-similarity. HNSW index for fast nearest-neighbour lookup at query time.</p>
+<hr>
+<p><strong>Step 6</strong> — <em>Media Enrichment</em>
+A second pass over ChromaDB extracts video URLs (&gt;[!VIDEO] tags), thumbnail CDN links (frontmatter thumbnail: field), and screenshot image paths from each chunk&rsquo;s raw Markdown. These are written back to the chunk metadata and later surfaced in the UI alongside text responses. This makes the responses richer mimicking the actual docs as published. This was also an important decision to ensure the difference between a regular text based chatbot and a rich multimedia one.</p>
+<hr>
+<p><strong>Step 7</strong> — <em>Publish: ChromaDB → S3</em>
+The entire chroma_db/ directory is compressed to chroma_db.tar.gz and uploaded to S3. The production backend on Railway downloads this archive on cold start, so every deployment gets the latest vector index without needing to re-embed anything.</p>
+<p><strong>Ingestion Update</strong></p>
+<p>Here is an outcome of this process. The ingestion this week updated the docs in the database to 5400 docs</p>
+<p><img src="https://d2coej5ollyd8p.cloudfront.net/tools/datarecency.png" alt="datarecency.png"></p>
+<p><strong>Key Takeaways</strong></p>
+<ul>
+<li>SHA delta syncing via the GitHub tree API makes weekly ingestion fast — compare hashes first, download only what changed</li>
+<li>S3 as the intermediate store decouples sync timing from ingestion and makes re-embedding a product filter away</li>
+<li>Documentation has logical structure — respect it in your chunking strategy. Header → paragraph → hard-split with overlap is a reasonable three-level cascade</li>
+<li>Normalise embedding vectors and match the vector store&rsquo;s distance metric. For ChromaDB with cosine similarity: normalize: True in Titan and hnsw:space: cosine in the collection config</li>
+<li>Build the metadata registry before you build the UI. Wrong citation URLs destroy trust faster than missing citations</li>
+<li>The main branch name: AdobeDocs repos don&rsquo;t use master. Every raw GitHub CDN URL needs this right or images silently fail</li>
+<li>Search all chunks for images, not just chunk 0. Screenshots are in the body</li>
+<li>Set your similarity threshold empirically, not by intuition. Niche technical topics score lower than you expect</li>
+<li>Update the S3 snapshot before any production redeploy — Railway&rsquo;s ephemeral filesystem means the snapshot is the only persistence</li>
+</ul>
+<p><strong>My Learnings</strong></p>
+<p>This 7 step ingestion is a crucial part contributing to <a href="https://thelearningproject.in/tools/rovr/" target="_blank" rel="noopener">
+  Rovr&rsquo;s
+</a>
+ usability. The steps look very logical and streamlined. But this was the hardest part of building the application. With no knowledge in data retrieval, it took me some iterations. But thanks to AI, I could iterate faster, learn quicker and get to the optimal workflow with minimal efforts.</p>
+<p>My one key learning with the data ingestion process is</p>
+<div class="alert alert-primary"> 
+  Always take time to understand the content, your audience, cost limitations and overall UX experience before you actually get to work.
+</div>
+<p>I appreciate you taking out time and taking <a href="https://thelearningproject.in/tools/rovr/" target="_blank" rel="noopener">
+  Rovr
+</a>
+ for a spin. If you have any difficulty in using <a href="https://thelearningproject.in/tools/rovr/" target="_blank" rel="noopener">
+  Rovr
+</a>
+, or have any feature request, please drop me a line at <a href="mailto:ritesh@thelearningproject.in">
+  ritesh@thelearningproject.in
+</a>
+.</p>
+              
+
+
+            </div>
+          </div>
+          <div id="post-footer" class="post-footer main-content-wrap">
+            
+              
+                
+                
+                  <div class="post-footer-tags">
+                    <span class="text-color-light text-small">TAGGED IN</span><br/>
+                    
+  <a class="tag tag--primary tag--small" href="../../../tags/post/">post</a>
+
+  <a class="tag tag--primary tag--small" href="../../../tags/adobe-tags/">Adobe Tags</a>
+
+  <a class="tag tag--primary tag--small" href="../../../tags/adobe-experience-league/">Adobe Experience League</a>
+
+                  </div>
+                
+              
+            
+            
+<div class="post-actions-wrap">
+  <nav >
+    <ul class="post-actions post-action-nav">
+      
+        <li class="post-action">
+          
+            <a class="post-action-btn btn btn--default tooltip--top" href="../../../2026/06/rovr-a-conversational-engine-for-adobe-experience-league/" data-tooltip="Rovr: A conversational engine for Adobe Experience League" aria-label="PREVIOUS: Rovr: A conversational engine for Adobe Experience League">
+          
+              <i class="fa fa-angle-left"></i>
+              <span class="hide-xs hide-sm text-small icon-ml">PREVIOUS</span>
+            </a>
+        </li>
+        <li class="post-action">
+          
+            <a class="post-action-btn btn btn--default tooltip--top" href="../../../2026/06/rovr-part-3-query-processing/" data-tooltip="Rovr: Part 3 - Query Processing" aria-label="NEXT: Rovr: Part 3 - Query Processing">
+          
+              <span class="hide-xs hide-sm text-small icon-mr">NEXT</span>
+              <i class="fa fa-angle-right"></i>
+            </a>
+        </li>
+      
+    </ul>
+  </nav>
+<ul class="post-actions post-action-share" >
+  
+    <li class="post-action hide-lg hide-md hide-sm">
+      <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions" aria-label="Share this post">
+        <i class="fa fa-share-alt" aria-hidden="true"></i>
+      </a>
+    </li>
+    
+      <li class="post-action hide-xs">
+        <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://thelearningproject.in/2026/06/rovr-part-2-data-ingestion/" title="Share on Twitter" aria-label="Share on Twitter">
+          <i class="fab fa-twitter" aria-hidden="true"></i>
+        </a>
+      </li>
+    
+      <li class="post-action hide-xs">
+        <a class="post-action-btn btn btn--default" target="new" href="https://www.linkedin.com/sharing/share-offsite/?url=https://thelearningproject.in/2026/06/rovr-part-2-data-ingestion/" title="Share on Linkedin" aria-label="Share on Linkedin">
+          <i class="fab fa-linkedin" aria-hidden="true"></i>
+        </a>
+      </li>
+    
+  
+  
+  <li class="post-action">
+    
+      <a class="post-action-btn btn btn--default" href="#top" aria-label="Back to top">
+      <i class="fa fa-arrow-up" aria-hidden="true"></i>
+    
+    </a>
+  </li>
+</ul>
+</div>
+
+
+            
+  
+
+
+          </div>
+        </article>
+        <footer id="footer" class="main-content-wrap">
+  <span class="copyrights">
+    &copy; 2026 The Learning Project. All Rights Reserved
+  </span>
+</footer>
+
+      </div>
+      <div id="bottom-bar" class="post-bottom-bar" data-behavior="3">
+        
+<div class="post-actions-wrap">
+  <nav >
+    <ul class="post-actions post-action-nav">
+      
+        <li class="post-action">
+          
+            <a class="post-action-btn btn btn--default tooltip--top" href="../../../2026/06/rovr-a-conversational-engine-for-adobe-experience-league/" data-tooltip="Rovr: A conversational engine for Adobe Experience League" aria-label="PREVIOUS: Rovr: A conversational engine for Adobe Experience League">
+          
+              <i class="fa fa-angle-left"></i>
+              <span class="hide-xs hide-sm text-small icon-ml">PREVIOUS</span>
+            </a>
+        </li>
+        <li class="post-action">
+          
+            <a class="post-action-btn btn btn--default tooltip--top" href="../../../2026/06/rovr-part-3-query-processing/" data-tooltip="Rovr: Part 3 - Query Processing" aria-label="NEXT: Rovr: Part 3 - Query Processing">
+          
+              <span class="hide-xs hide-sm text-small icon-mr">NEXT</span>
+              <i class="fa fa-angle-right"></i>
+            </a>
+        </li>
+      
+    </ul>
+  </nav>
+<ul class="post-actions post-action-share" >
+  
+    <li class="post-action hide-lg hide-md hide-sm">
+      <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions" aria-label="Share this post">
+        <i class="fa fa-share-alt" aria-hidden="true"></i>
+      </a>
+    </li>
+    
+      <li class="post-action hide-xs">
+        <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://thelearningproject.in/2026/06/rovr-part-2-data-ingestion/" title="Share on Twitter" aria-label="Share on Twitter">
+          <i class="fab fa-twitter" aria-hidden="true"></i>
+        </a>
+      </li>
+    
+      <li class="post-action hide-xs">
+        <a class="post-action-btn btn btn--default" target="new" href="https://www.linkedin.com/sharing/share-offsite/?url=https://thelearningproject.in/2026/06/rovr-part-2-data-ingestion/" title="Share on Linkedin" aria-label="Share on Linkedin">
+          <i class="fab fa-linkedin" aria-hidden="true"></i>
+        </a>
+      </li>
+    
+  
+  
+  <li class="post-action">
+    
+      <a class="post-action-btn btn btn--default" href="#top" aria-label="Back to top">
+      <i class="fa fa-arrow-up" aria-hidden="true"></i>
+    
+    </a>
+  </li>
+</ul>
+</div>
+
+
+      </div>
+      
+<div id="share-options-bar" class="share-options-bar" data-behavior="3">
+  <i id="btn-close-shareoptions" class="fa fa-times"></i>
+  <ul class="share-options">
+    
+      <li class="share-option">
+        <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=https%3A%2F%2Fthelearningproject.in%2F2026%2F06%2Frovr-part-2-data-ingestion%2F" aria-label="Share on Twitter">
+          <i class="fab fa-twitter" aria-hidden="true"></i><span>Share on Twitter</span>
+        </a>
+      </li>
+    
+      <li class="share-option">
+        <a class="share-option-btn" target="new" href="https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Fthelearningproject.in%2F2026%2F06%2Frovr-part-2-data-ingestion%2F" aria-label="Share on Linkedin">
+          <i class="fab fa-linkedin" aria-hidden="true"></i><span>Share on Linkedin</span>
+        </a>
+      </li>
+    
+  </ul>
+</div>
+<div id="share-options-mask" class="share-options-mask"></div>
+
+
+    </div>
+    
+    <div id="about">
+  <div id="about-card">
+    <div id="about-btn-close">
+      <i class="fa fa-times"></i>
+    </div>
+    
+    <h4 id="about-card-name"></h4>
+    
+    
+    
+  </div>
+</div>
+
+    
+
+    
+  
+    
+      <div id="cover" style="background-image:url('https://thelearningproject.in/images/cover-v1.2.0.jpg');"></div>
+    
+  
+
+
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/highlight.min.js" integrity="sha512-z+/WWfyD5tccCukM4VvONpEtLmbAm5LDu7eKiyMQJ9m7OfPEDL7gENyDRL3Yfe8XAuGsS2fS4xSMnl6d30kqGQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js" integrity="sha512-uURl+ZXMBrF4AwGaWmEetzrd+J5/8NRkWAvJx5sbPSSuOb0bZLqf+tOzniObO00BjHa/dD7gub9oCGMLPQHtQA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+
+<script src="https://thelearningproject.in/js/script-yqzy9wdlzix4lbbwdnzvwx3egsne77earqmn73v9uno8aupuph8wfguccut.min.js"></script>
+
+
+  
+    <script async crossorigin="anonymous" defer integrity="sha512-gE8KAQyFIzV1C9+GZ8TKJHZS2s+n7EjNtC+IMRn1l5+WYJTHOODUM6JSjZhFhqXmc7bG8Av6XXpckA4tYhflnw==" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/languages/apache.min.js"></script>
+  
+
+  
+    <script async crossorigin="anonymous" defer integrity="sha512-EWROca+bote+7Oaaar1F6y74iZj1r1F9rm/ly7o+/FwJopbBaWtsFDmaKoZDd3QiGU2pGacBirHJNivmGLYrow==" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/languages/go.min.js"></script>
+  
+
+  
+    <script async crossorigin="anonymous" defer integrity="sha512-GDVzAn0wpx1yVtQsRWmFc6PhJiLBPdUic+h4GWgljBh904O3JU10fk9EKNpVyIoPqkFn54rgL2QBG4BmUTMpiQ==" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/languages/http.min.js"></script>
+  
+
+  
+    <script async crossorigin="anonymous" defer integrity="sha512-UgZlma8NzkrDb/NWgmLIcTrH7i/CSnLLDRFqCSNF5NGPpjKmzyM25qcoXGOup8+cDakKyaiTDd7N4dyH4YT+IA==" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/languages/less.min.js"></script>
+  
+
+  
+    <script async crossorigin="anonymous" defer integrity="sha512-lot9koe73sfXIrUvIPM/UEhuMciN56RPyBdOyZgfO53P2lkWyyXN7J+njcxIIBRV+nVDQeiWtiXg+bLAJZDTfg==" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/languages/nginx.min.js"></script>
+  
+
+  
+    <script async crossorigin="anonymous" defer integrity="sha512-Zd3e7XxHP00TD0Imr0PIfeM0fl0v95kMWuhyAS3Wn1UTSXTkz0OhtRgBAr4JlmADRgiXr4x7lpeUdqaGN8xIog==" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/languages/puppet.min.js"></script>
+  
+
+  
+    <script async crossorigin="anonymous" defer integrity="sha512-qtqDO052iXMSP+5d/aE/jMtL9vIIGvONgTJziC2K/ZIB1yEGa55WVxGE9/08rSQ62EoDifS9SWVGZ7ihSLhzMA==" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/languages/scss.min.js"></script>
+  
+
+  
+    <script async crossorigin="anonymous" defer integrity="sha512-1NmkjnEDnwwwcu28KoQF8vs3oaPFokQHbmbtwGhFfeDsQZtVFI8zW2aE9O8yMYdpdyKV/5blE4pSWw4Z/Sv97w==" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/languages/stylus.min.js"></script>
+  
+
+  
+    <script async crossorigin="anonymous" defer integrity="sha512-B2wSfruPjr8EJL6IIzQr1eAuDwrsfIfccNf/LCEdxELCgC/S/ZMt/Uvk80aD79m7IqOqW+Sw8nbkvha20yZpzg==" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/languages/swift.min.js"></script>
+  
+
+  
+    <script async crossorigin="anonymous" defer integrity="sha512-28oDiQZGKUVN6wQ7PSLPNipOcmkCALXKwOi7bnkyFf8QiMZQxG9EQoy/iiNx6Zxj2cG2SbVa4dXKigQhu7GiFw==" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/languages/yaml.min.js"></script>
+  
+
+  
+    <script async crossorigin="anonymous" src="https://assets.adobedtm.com/204118644db8/437cd1c7d72a/launch-a040553a1374.min.js"></script>
+  
+
+
+<script>
+$(document).ready(function() {
+  hljs.configure({ classPrefix: '', useBR: false });
+  $('pre.code-highlight > code, pre > code').each(function(i, block) {
+    if (!$(this).hasClass('codeblock')) {
+      $(this).addClass('codeblock');
+    }
+    hljs.highlightBlock(block);
+  });
+});
+</script>
+
+
+
+
+    
+  </body>
+</html>
+

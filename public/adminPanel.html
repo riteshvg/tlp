@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Admin Panel | The Learning Project</title>
+
+    <!-- CSS Global -->
+    <link href="./assets/css/styles.css" rel="stylesheet" />
+    <link rel="stylesheet" href="./assets/css/style.css" />
+    <link href="./assets/css/styles_blue.css" rel="stylesheet" />
+
+    <!-- Font Awesome -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+    />
+
+    <!-- Supabase -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+    <style>
+      .admin-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 30px;
+        padding-bottom: 15px;
+        border-bottom: 1px solid #eee;
+      }
+      .admin-actions {
+        display: flex;
+        gap: 10px;
+      }
+      .job-table {
+        width: 100%;
+        border-collapse: collapse;
+      }
+      .job-table th,
+      .job-table td {
+        padding: 12px 15px;
+        text-align: left;
+        border-bottom: 1px solid #eee;
+      }
+      .job-table th {
+        background-color: #f8f9fa;
+        font-weight: 600;
+      }
+      .job-table tr:hover {
+        background-color: #f5f5f5;
+      }
+      .status-active {
+        color: #27ae60;
+        font-weight: 600;
+      }
+      .status-inactive {
+        color: #e74c3c;
+        font-weight: 600;
+      }
+      .action-btn {
+        padding: 6px 12px;
+        border-radius: 4px;
+        cursor: pointer;
+        margin-right: 5px;
+        border: none;
+      }
+      .edit-btn {
+        background-color: #3498db;
+        color: white;
+      }
+      .toggle-btn {
+        background-color: #f39c12;
+        color: white;
+      }
+      .delete-btn {
+        background-color: #e74c3c;
+        color: white;
+      }
+      .modal {
+        display: none;
+        position: fixed;
+        z-index: 1000;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.5);
+      }
+      .modal-content {
+        background-color: #fff;
+        margin: 5% auto;
+        padding: 20px;
+        border-radius: 5px;
+        width: 70%;
+        max-width: 800px;
+      }
+      .close-btn {
+        float: right;
+        font-size: 28px;
+        font-weight: bold;
+        cursor: pointer;
+      }
+      .form-row {
+        margin-bottom: 15px;
+      }
+      .form-row label {
+        display: block;
+        margin-bottom: 5px;
+        font-weight: 600;
+      }
+      .form-control {
+        width: 100%;
+        padding: 10px;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+      }
+      textarea.form-control {
+        min-height: 150px;
+      }
+      .form-actions {
+        margin-top: 20px;
+        text-align: right;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="admin-header">
+        <h1><i class="fas fa-cogs"></i> Job Listings Admin</h1>
+        <div class="admin-actions">
+          <button id="add-job-btn" class="btn btn-primary">
+            <i class="fas fa-plus"></i> Add New Job
+          </button>
+          <button id="logout-btn" class="btn">
+            <i class="fas fa-sign-out-alt"></i> Logout
+          </button>
+        </div>
+      </div>
+
+      <div id="jobs-container">
+        <table class="job-table">
+          <thead>
+            <tr>
+              <th>Title</th>
+              <th>Company</th>
+              <th>Location</th>
+              <th>Posted Date</th>
+              <th>Status</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody id="jobs-list">
+            <!-- Jobs will be loaded here dynamically -->
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- Edit/Add Job Modal -->
+    <div id="job-modal" class="modal">
+      <div class="modal-content">
+        <span class="close-btn">&times;</span>
+        <h2 id="modal-title">Edit Job</h2>
+        <form id="job-form">
+          <input type="hidden" id="job-id" />
+
+          <div class="form-row">
+            <label for="job-title">Job Title</label>
+            <input type="text" id="job-title" class="form-control" required />
+          </div>
+
+          <div class="form-row">
+            <label for="job-company">Company</label>
+            <input type="text" id="job-company" class="form-control" required />
+          </div>
+
+          <div class="form-row">
+            <label for="job-location">Location</label>
+            <input
+              type="text"
+              id="job-location"
+              class="form-control"
+              required
+            />
+          </div>
+
+          <div class="form-row">
+            <label for="job-type">Job Type</label>
+            <input
+              type="text"
+              id="job-type"
+              class="form-control"
+              placeholder="Full-time, Part-time, Contract, etc."
+            />
+          </div>
+
+          <div class="form-row">
+            <label for="job-description">Description</label>
+            <textarea
+              id="job-description"
+              class="form-control"
+              required
+            ></textarea>
+          </div>
+
+          <div class="form-row">
+            <label for="job-requirements">Requirements</label>
+            <textarea
+              id="job-requirements"
+              class="form-control"
+              required
+            ></textarea>
+          </div>
+
+          <div class="form-row">
+            <label for="job-link">Application Link</label>
+            <input
+              type="url"
+              id="job-link"
+              class="form-control"
+              placeholder="https://..."
+            />
+          </div>
+
+          <div class="form-row">
+            <label for="job-status">Status</label>
+            <select id="job-status" class="form-control">
+              <option value="active">Active</option>
+              <option value="inactive">Inactive</option>
+            </select>
+          </div>
+
+          <div class="form-actions">
+            <button type="button" class="btn" id="cancel-btn">Cancel</button>
+            <button type="submit" class="btn btn-primary" id="save-btn">
+              Save Job
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <script src="./assets/js/adminPanel.js"></script>
+  </body>
+</html>

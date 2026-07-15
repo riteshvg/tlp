@@ -1,0 +1,16 @@
+{{ if .Params.developed_for }}<li>Developed for: {{ .Params.developed_for }}</li>{{ end }}
+{{ if .Params.platform }}<li>Platform: {{ .Params.platform }}</li>{{ end }}
+{{ if .Params.developer }}<li>Developer: {{ .Params.developer }}</li>{{ end }}
+{{ if .Params.description }}<li>Description: {{ .Params.description }}</li>{{ end }}
+{{ if .Params.status }}<li>Status: {{ .Params.status }}</li>{{ end }}
+{{ if .Params.links }}
+<li>Links:
+  {{ if eq (printf "%T" .Params.links) "string" }}
+    {{ .Params.links }}
+  {{ else }}
+    {{ range $i, $link := .Params.links }}
+      {{ if $i }} & {{ end }}<a href="{{ $link.url }}">{{ $link.text }}</a>
+    {{ end }}
+  {{ end }}
+</li>
+{{ end }}

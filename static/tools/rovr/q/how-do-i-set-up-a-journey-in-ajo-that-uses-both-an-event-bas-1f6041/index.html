@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/png" href="/tools/rovr/rovrlogo.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="build-date" content="2026-06-10" />
+    
+    
+    <script src="https://assets.adobedtm.com/204118644db8/290ae1adb65a/launch-e5ec7bf1a1ef-development.min.js" async></script>
+    <script type="module" crossorigin src="/tools/rovr/assets/index-Cnf1TPK2.js"></script>
+    <link rel="stylesheet" crossorigin href="/tools/rovr/assets/index-D1POE5XP.css">
+  <title>How do I set up a journey in AJO that uses both an event-based trigger and a scheduled trigger? | Rovr</title>
+<meta name="description" content="Setting Up a Journey in AJO with Both Event-Based and Scheduled Triggers Based on the available documentation context, I can explain what is directly…" />
+<link rel="canonical" href="https://thelearningproject.in/tools/rovr/q/how-do-i-set-up-a-journey-in-ajo-that-uses-both-an-event-bas-1f6041" />
+<meta property="og:title" content="How do I set up a journey in AJO that uses both an event-based trigger and a scheduled trigger?" />
+<meta property="og:description" content="Setting Up a Journey in AJO with Both Event-Based and Scheduled Triggers Based on the available documentation context, I can explain what is directly…" />
+<meta property="og:url" content="https://thelearningproject.in/tools/rovr/q/how-do-i-set-up-a-journey-in-ajo-that-uses-both-an-event-bas-1f6041" />
+<meta property="og:type" content="article" />
+<meta property="og:image" content="https://thelearningproject.in/tools/rovr/rovrlogo.png" />
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="How do I set up a journey in AJO that uses both an event-based trigger and a scheduled trigger?" />
+<meta name="twitter:description" content="Setting Up a Journey in AJO with Both Event-Based and Scheduled Triggers Based on the available documentation context, I can explain what is directly…" />
+</head>
+  <body>
+    <div id="root"><article><h1>How do I set up a journey in AJO that uses both an event-based trigger and a scheduled trigger?</h1>
+<h3>Setting Up a Journey in AJO with Both Event-Based and Scheduled Triggers</h3>
+<p>Based on the available documentation context, I can explain what is directly supported, and clarify an important architectural point about how AJO journeys work.</p>
+<hr>
+<h3>Important: AJO Journey Entry Types Are Mutually Exclusive</h3>
+<p>In Adobe Journey Optimizer, a single journey uses <strong>one</strong> entry type — either:</p>
+<ul>
+<li><strong>Event-triggered</strong> (Unitary Event or Business Event), or</li>
+<li><strong>Audience-based / Scheduled</strong> (Read Audience, which runs on a schedule or one-time)</li>
+</ul>
+<p>A single journey <strong>cannot</strong> have both an event trigger and a scheduled trigger simultaneously on the same entry point. These are fundamentally different journey types configured at creation.</p>
+<hr>
+<h3>Option 1: Event-Triggered Journey</h3>
+<p>This triggers a journey in real time when a specific event occurs (e.g., a form submission, a login).</p>
+<p><strong>Prerequisites:</strong></p>
+<ul>
+<li>Access to Adobe Experience Platform</li>
+<li>Access to Adobe Journey Optimizer</li>
+<li>An XDM event schema and dataset configured in AEP</li>
+<li>An email channel configuration (or other channel)</li>
+</ul>
+<p><strong>Steps:</strong></p>
+<p>1. Log in to <strong>Journey Optimizer</strong></p>
+<p>2. Navigate to <strong>Administration → Configurations</strong></p>
+<p>3. Click <strong>Manage</strong> on the <strong>Events</strong> card, then click <strong>Create Event</strong></p>
+<p>4. Define your custom event (e.g., a form submission event or login event), specifying the event type, schema, and key identifier fields</p>
+<p>5. <strong>Save</strong> the event</p>
+<p>6. Navigate to <strong>Journeys → Create Journey</strong></p>
+<p>7. Drag your custom event onto the canvas as the <strong>entry node</strong></p>
+<p>8. Add subsequent steps (email, wait, condition, etc.)</p>
+<p>9. <strong>Publish</strong> the journey</p>
+<p><a href="https://video.tv.adobe.com/v/3478471">▶ Watch: Trigger Journey on Form Submission</a></p>
+<p><a href="https://video.tv.adobe.com/v/3478483">▶ Watch: Create a Custom Event</a></p>
+<hr>
+<h3>Option 2: Scheduled (Read Audience) Journey</h3>
+<p>This triggers a journey for an entire audience on a defined schedule (daily, weekly, one-time).</p>
+<p><strong>Steps:</strong></p>
+<p>1. Log in to <strong>Journey Optimizer</strong></p>
+<p>2. Navigate to <strong>Journeys → Create Journey</strong></p>
+<p>3. In the journey properties, select <strong>Read Audience</strong> as the entry type</p>
+<p>4. Choose your target audience</p>
+<p>5. Set the <strong>schedule</strong> (one-time, daily, weekly, or monthly)</p>
+<p>6. Add your journey steps (email, wait, condition, etc.)</p>
+<p>7. <strong>Publish</strong> the journey</p>
+<hr>
+<h3>Option 3: Achieving &quot;Both&quot; via Complementary Journeys</h3>
+<p>If your use case requires both behaviors, the recommended approach is to <strong>run two separate journeys</strong>:</p>
+<p>| Journey | Type | Purpose |</p>
+<p>|---|---|---|</p>
+<p>| Journey A | Event-triggered | Responds immediately when a user takes an action (e.g., form submission, login) |</p>
+<p>| Journey B | Scheduled / Read Audience | Sends batch communications to a segment on a defined cadence |</p>
+<p>You can coordinate these by:</p>
+<ul>
+<li>Using <strong>audience membership</strong> updated by Journey A&#x27;s event to feed into Journey B&#x27;s scheduled read</li>
+<li>Using <strong>suppression logic</strong> (conditions checking profile attributes) to prevent double-messaging users already touched by Journey A</li>
+</ul>
+<hr>
+<h3>Summary</h3>
+<p>| Capability | Event Journey | Scheduled Journey |</p>
+<p>|---|---|---|</p>
+<p>| Real-time trigger | ✅ | ❌ |</p>
+<p>| Scheduled cadence | ❌ | ✅ |</p>
+<p>| Single profile entry | ✅ | ✅ |</p>
+<p>| Batch audience entry | ❌ | ✅ |</p>
+<p>If you can share more about your specific use case, I can help you design the right journey architecture to meet your goals.</p>
+</article>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "How do I set up a journey in AJO that uses both an event-based trigger and a scheduled trigger?", "acceptedAnswer": {"@type": "Answer", "text": "Setting Up a Journey in AJO with Both Event-Based and Scheduled Triggers Based on the available documentation context, I can explain what is directly supported, and clarify an important architectural point about how AJO journeys work. --- Important: AJO Journey Entry Types Are Mutually Exclusive In Adobe Journey Optimizer, a single journey uses one entry type \u2014 either: - Event-triggered (Unitary Event or Business Event), or - Audience-based / Scheduled (Read Audience, which runs on a schedule or one-time) A single journey cannot have both an event trigger and a scheduled trigger simultaneously on the same entry point. These are fundamentally different journey types configured at creation. --- Option 1: Event-Triggered Journey This triggers a journey in real time when a specific event occurs (e.g., a form submission, a login). Prerequisites: - Access to Adobe Experience Platform - Access to Adobe Journey Optimizer - An XDM event schema and dataset configured in AEP - An email channel configuration (or other channel) Steps: 1. Log in to Journey Optimizer 2. Navigate to Administration \u2192 Configurations 3. Click Manage on the Events card, then click Create Event 4. Define your custom event (e.g., a form submission event or login event), specifying the event type, schema, and key identifier fields 5. Save the event 6. Navigate to Journeys \u2192 Create Journey 7. Drag your custom event onto the canvas as the entry node 8. Add subsequent steps (email, wait, condition, etc.) 9. Publish the journey \u25b6 Watch: Trigger Journey on Form Submission(https://video.tv.adobe.com/v/3478471) \u25b6 Watch: Create a Custom Event(https://video.tv.adobe.com/v/3478483) --- Option 2: Scheduled (Read Audience) Journey This triggers a journey for an entire audience on a defined schedule (daily, weekly, one-time). Steps: 1. Log in to Journey Optimizer 2. Navigate to Journeys \u2192 Create Journey 3. In the journey properties, select Read Audience as the entry type 4. Choose your target audience 5. Set the\u2026"}}]}</script></div>
+  </body>
+</html>

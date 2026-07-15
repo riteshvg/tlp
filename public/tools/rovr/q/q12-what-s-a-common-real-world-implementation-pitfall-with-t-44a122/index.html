@@ -1,0 +1,271 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/png" href="/tools/rovr/rovrlogo.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="build-date" content="2026-06-10" />
+    
+    
+    <script src="https://assets.adobedtm.com/204118644db8/290ae1adb65a/launch-e5ec7bf1a1ef-development.min.js" async></script>
+    <script type="module" crossorigin src="/tools/rovr/assets/index-Cnf1TPK2.js"></script>
+    <link rel="stylesheet" crossorigin href="/tools/rovr/assets/index-D1POE5XP.css">
+  <title>Q12. What&#x27;s a common real-world implementation pitfall with the Web SDK? | Rovr</title>
+<meta name="description" content="Common Real-World Implementation Pitfalls with Web SDK Video Walkthroughs ▶ Watch: Web SDK Common Implementation…" />
+<link rel="canonical" href="https://thelearningproject.in/tools/rovr/q/q12-what-s-a-common-real-world-implementation-pitfall-with-t-44a122" />
+<meta property="og:title" content="Q12. What&#x27;s a common real-world implementation pitfall with the Web SDK?" />
+<meta property="og:description" content="Common Real-World Implementation Pitfalls with Web SDK Video Walkthroughs ▶ Watch: Web SDK Common Implementation…" />
+<meta property="og:url" content="https://thelearningproject.in/tools/rovr/q/q12-what-s-a-common-real-world-implementation-pitfall-with-t-44a122" />
+<meta property="og:type" content="article" />
+<meta property="og:image" content="https://thelearningproject.in/tools/rovr/rovrlogo.png" />
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="Q12. What&#x27;s a common real-world implementation pitfall with the Web SDK?" />
+<meta name="twitter:description" content="Common Real-World Implementation Pitfalls with Web SDK Video Walkthroughs ▶ Watch: Web SDK Common Implementation…" />
+</head>
+  <body>
+    <div id="root"><article><h1>Q12. What&#x27;s a common real-world implementation pitfall with the Web SDK?</h1>
+<h2>Common Real-World Implementation Pitfalls with Web SDK</h2>
+<h3>Video Walkthroughs</h3>
+<p><a href="https://video.tv.adobe.com/v/3418165?quality=12&amp;learn=on">▶ Watch: Web SDK Common Implementation Mistakes</a></p>
+<p>This video highlights common Web SDK implementation errors and how to avoid them.</p>
+<p><a href="https://video.tv.adobe.com/v/3424753?quality=12&amp;learn=on">▶ Watch: Debug and Validate Your Web SDK Migration</a></p>
+<p>This video walks through debugging Web SDK implementations and identifying common issues.</p>
+<hr>
+<h3>Overview</h3>
+<p>While Web SDK is powerful and elegant, <strong>real-world implementations frequently encounter pitfalls</strong> that impact data quality, performance, and user experience. Understanding the most common mistakes helps you avoid them.</p>
+<hr>
+<h3>Pitfall 1: ECID Loss at Login/Authentication</h3>
+<h4>The Problem</h4>
+<p>This is the <strong>#1 issue</strong> in Web SDK implementations:</p>
+<p>```</p>
+<p>Scenario: Customer Journey</p>
+<p>──────────────────────────</p>
+<p>1. Customer visits website (anonymous)</p>
+<p>→ Web SDK generates ECID: 98765432109876543210</p>
+<p>→ Tracked as anonymous visitor for 10 minutes</p>
+<p>2. Customer clicks &quot;Login&quot; button</p>
+<p>→ Login event fired with Email identity</p>
+<p>→ BUT ECID NOT included in identity map</p>
+<p>→ Edge Network sees two separate identities:</p>
+<p>• ECID: 98765432109876543210 (previous session)</p>
+<p>• Email: jane@email.com (authenticated session)</p>
+<p>→ Identity graph FAILS to link them</p>
+<p>→ Profile merge DOESN&#x27;T HAPPEN</p>
+<p>3. Result:</p>
+<p>❌ Anonymous browsing history lost</p>
+<p>❌ Customer appears as TWO profiles</p>
+<p>❌ Journey abandonment recovery fails</p>
+<p>❌ Personalization broken</p>
+<p>❌ Attribution broken</p>
+<p>```</p>
+<h4>Why This Happens</h4>
+<p>```</p>
+<p>Common Implementation Error:</p>
+<p>────────────────────────────</p>
+<p>Incorrect sendEvent on login:</p>
+<p>alloy(&quot;sendEvent&quot;, {</p>
+<p>xdm: {</p>
+<p>eventType: &quot;userAccount.login&quot;,</p>
+<p>identityMap: {</p>
+<p>Email: [{</p>
+<p>id: &quot;jane@email.com&quot;,</p>
+<p>authenticatedState: &quot;authenticated&quot;,</p>
+<p>primary: true</p>
+<p>}]</p>
+<p>// ❌ MISSING: ECID not included!</p>
+<p>}</p>
+<p>}</p>
+<p>});</p>
+<p>```</p>
+<p>Web SDK has no way to connect the new Email identity to the existing ECID from the cookie because <strong>the ECID is not explicitly mentioned in this event</strong>.</p>
+<h4>The Fix</h4>
+<p>```javascript</p>
+<p>// CORRECT: Include BOTH Email AND ECID in login event</p>
+<p>alloy(&quot;getIdentity&quot;).then(function(result) {</p>
+<p>var ecid = result.identity.ECID;</p>
+<p>alloy(&quot;sendEvent&quot;, {</p>
+<p>xdm: {</p>
+<p>eventType: &quot;userAccount.login&quot;,</p>
+<p>identityMap: {</p>
+<p>Email: [{</p>
+<p>id: &quot;jane@email.com&quot;,</p>
+<p>authenticatedState: &quot;authenticated&quot;,</p>
+<p>primary: true  // Email is primary when authenticated</p>
+<p>}],</p>
+<p>ECID: [{</p>
+<p>id: ecid,  // ✅ INCLUDE the ECID</p>
+<p>authenticatedState: &quot;ambiguous&quot;,</p>
+<p>primary: false</p>
+<p>}]</p>
+<p>},</p>
+<p>person: {</p>
+<p>name: {</p>
+<p>firstName: &quot;Jane&quot;,</p>
+<p>lastName: &quot;Smith&quot;</p>
+<p>}</p>
+<p>}</p>
+<p>}</p>
+<p>});</p>
+<p>});</p>
+<p>```</p>
+<p><strong>Why This Works:</strong></p>
+<p>```</p>
+<p>With ECID Included:</p>
+<p>──────────────────</p>
+<p>1. Login event arrives at Edge Network with:</p>
+<p>Email: jane@email.com</p>
+<p>ECID: 98765432109876543210</p>
+<p>2. Identity Service links them:</p>
+<p>ECID: 98765432109876543210</p>
+<p>↕ linked</p>
+<p>Email: jane@email.com</p>
+<p>3. Single unified identity graph created</p>
+<p>4. Profile merge happens:</p>
+<p>✅ Anonymous browsing history linked</p>
+<p>✅ Single customer profile created</p>
+<p>✅ All data consolidated</p>
+<p>```</p>
+<h4>Prevention</h4>
+<p>Create a <strong>reusable Web SDK login rule</strong> in Tags:</p>
+<p>```</p>
+<p>Rule Name: &quot;AEP - User Login&quot;</p>
+<p>EVENT:</p>
+<p>Type: Custom Event</p>
+<p>Event: user-login</p>
+<p>ACTIONS:</p>
+<p>Action 1:</p>
+<p>Extension: Web SDK</p>
+<p>Type: Get Identity</p>
+<p>Store result in data element: &quot;Current ECID&quot;</p>
+<p>Action 2:</p>
+<p>Extension: Web SDK</p>
+<p>Type: Send Event</p>
+<p>XDM Data:</p>
+<p>{</p>
+<p>eventType: &quot;userAccount.login&quot;,</p>
+<p>identityMap: {</p>
+<p>Email: [{</p>
+<p>id: &quot;%User Email%&quot;,</p>
+<p>authenticatedState: &quot;authenticated&quot;,</p>
+<p>primary: true</p>
+<p>}],</p>
+<p>ECID: [{</p>
+<p>id: &quot;%Current ECID%&quot;,</p>
+<p>authenticatedState: &quot;ambiguous&quot;,</p>
+<p>primary: false</p>
+<p>}]</p>
+<p>}</p>
+<p>}</p>
+<p>```</p>
+<hr>
+<h3>Pitfall 2: Missing Identity Namespace Configuration</h3>
+<h4>The Problem</h4>
+<p>```</p>
+<p>Scenario: Multiple Identity Namespaces</p>
+<p>────────────────────────────────────────</p>
+<p>Your implementation uses:</p>
+<p>• Email (customer email)</p>
+<p>• ECID (device ID)</p>
+<p>• CRM_ID (customer database ID)</p>
+<p>• Phone (phone number)</p>
+<p>• Username (login handle)</p>
+<p>Issue: If these namespaces are NOT configured as identities</p>
+<p>in your XDM schema, they are treated as REGULAR DATA,</p>
+<p>not as identity links.</p>
+<p>Result:</p>
+<p>❌ Graph collapse (unrelated profiles merged)</p>
+<p>❌ Identity resolution fails</p>
+<p>❌ Segment qualification doesn&#x27;t work</p>
+<p>❌ Journey entry conditions fail</p>
+<p>```</p>
+<h4>Why This Happens</h4>
+<p>```</p>
+<p>Common Mistake: Not Marking Namespaces as Identities</p>
+<p>──────────────────────────────────────────────────────</p>
+<p>In XDM Schema, identity fields must be configured with</p>
+<p>&quot;Identity&quot; metadata. If they&#x27;re just regular fields,</p>
+<p>Identity Service can&#x27;t use them for graph linking.</p>
+<p>Incorrect Configuration:</p>
+<p>{</p>
+<p>&quot;identityMap&quot;: {</p>
+<p>&quot;Email&quot;: [{</p>
+<p>&quot;id&quot;: &quot;customer@email.com&quot;</p>
+<p>// Field NOT marked as identity in schema</p>
+<p>// Treated as data, not identity</p>
+<p>}]</p>
+<p>}</p>
+<p>}</p>
+<p>Correct Configuration:</p>
+<p>1. Schema includes &quot;Identity Map&quot; field group</p>
+<p>2. Email namespace registered in AEP</p>
+<p>3. Email field marked with identity metadata</p>
+<p>4. Identity graph can now link Email to ECID</p>
+<p>```</p>
+<h4>The Fix</h4>
+<p><strong>Step 1: Register Identity Namespaces</strong></p>
+<p>1. Navigate to <strong>Adobe Experience Platform</strong> → <strong>Identities</strong></p>
+<p>2. Click <strong>Browse</strong> in left sidebar</p>
+<p>3. Click <strong>Create identity namespace</strong></p>
+<p>```</p>
+<p>Namespace Name: Email</p>
+<p>Code: Email</p>
+<p>Type: Individual</p>
+<p>Description: Customer email address</p>
+<p>Namespace Name: CRM_ID</p>
+<p>Code: CRM_ID</p>
+<p>Type: Individual</p>
+<p>Description: Customer CRM database ID</p>
+<p>```</p>
+<p><strong>Step 2: Add Identity Map Field Group to Schema</strong></p>
+<p>1. Navigate to <strong>Schemas</strong> in AEP</p>
+<p>2. Open your <strong>Event Schema</strong></p>
+<p>3. Click <strong>Add</strong> → <strong>Field Groups</strong></p>
+<p>4. Search for <strong>&quot;Identity Map&quot;</strong></p>
+<p>5. Add the field group</p>
+<p><strong>Step 3: Verify Fields Marked as Identity</strong></p>
+<p>In schema editor:</p>
+<p>```</p>
+<p>identityMap (required)</p>
+<p>└─ Email</p>
+<p>└─ id (mark as Identity: checked ✅)</p>
+<p>└─ CRM_ID</p>
+<p>└─ id (mark as Identity: checked ✅)</p>
+<p>└─ ECID</p>
+<p>└─ id (mark as Identity: checked ✅)</p>
+<p>```</p>
+<p><strong>Step 4: Send Events with All Namespaces</strong></p>
+<p>```javascript</p>
+<p>alloy(&quot;sendEvent&quot;, {</p>
+<p>xdm: {</p>
+<p>eventType: &quot;commerce.purchases&quot;,</p>
+<p>identityMap: {</p>
+<p>Email: [{</p>
+<p>id: &quot;jane@email.com&quot;,</p>
+<p>authenticatedState: &quot;authenticated&quot;,</p>
+<p>primary: true</p>
+<p>}],</p>
+<p>CRM_ID: [{</p>
+<p>id: &quot;CRM-JANE-12345&quot;,</p>
+<p>authenticatedState: &quot;authenticated&quot;,</p>
+<p>primary: false</p>
+<p>}],</p>
+<p>ECID: [{</p>
+<p>id: &quot;98765432109876543210&quot;,</p>
+<p>authenticatedState: &quot;ambiguous&quot;,</p>
+<p>primary: false</p>
+<p>}]</p>
+<p>}</p>
+<p>}</p>
+<p>});</p>
+<p>```</p>
+<hr>
+<h3>Pitfall 3: Flicker Before Personalization Renders</h3>
+<h4>The Problem</h4>
+<p>```</p>
+<p>Customer Timeline:</p>
+<p>──────────────────</p>
+<p>1. Page</p>
+</article>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Q12. What's a common real-world implementation pitfall with the Web SDK?", "acceptedAnswer": {"@type": "Answer", "text": "Common Real-World Implementation Pitfalls with Web SDK Video Walkthroughs \u25b6 Watch: Web SDK Common Implementation Mistakes(https://video.tv.adobe.com/v/3418165?quality=12&learn=on) This video highlights common Web SDK implementation errors and how to avoid them. \u25b6 Watch: Debug and Validate Your Web SDK Migration(https://video.tv.adobe.com/v/3424753?quality=12&learn=on) This video walks through debugging Web SDK implementations and identifying common issues. --- Overview While Web SDK is powerful and elegant, real-world implementations frequently encounter pitfalls that impact data quality, performance, and user experience. Understanding the most common mistakes helps you avoid them. --- Pitfall 1: ECID Loss at Login/Authentication The Problem This is the 1 issue in Web SDK implementations: Scenario: Customer Journey \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500 1. Customer visits website (anonymous) \u2192 Web SDK generates ECID: 98765432109876543210 \u2192 Tracked as anonymous visitor for 10 minutes 2. Customer clicks \"Login\" button \u2192 Login event fired with Email identity \u2192 BUT ECID NOT included in identity map \u2192 Edge Network sees two separate identities: \u2022 ECID: 98765432109876543210 (previous session) \u2022 Email: jane@email.com (authenticated session) \u2192 Identity graph FAILS to link them \u2192 Profile merge DOESN'T HAPPEN 3. Result: \u274c Anonymous browsing history lost \u274c Customer appears as TWO profiles \u274c Journey abandonment recovery fails \u274c Personalization broken \u274c Attribution broken Why This Happens Common Implementation Error: \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500 Incorrect sendEvent on login: alloy(\"sendEvent\", { xdm: { eventType: \"userAccount.login\", identityMap: { Email: { id: \"jane@email.com\", authenticatedState: \"authenticated\", primary: true } // \u274c MISSING: ECID not included! } } }); Web SDK has no way to connect the new Email identity to the existing ECID from the cookie because the ECID is not explicitly mentioned in this event. The Fix javascript // CORRECT: Include BOTH Email AND ECID in login\u2026"}}]}</script></div>
+  </body>
+</html>

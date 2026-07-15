@@ -1,0 +1,130 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/png" href="/tools/rovr/rovrlogo.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="build-date" content="2026-06-10" />
+    
+    
+    <script src="https://assets.adobedtm.com/204118644db8/290ae1adb65a/launch-e5ec7bf1a1ef-development.min.js" async></script>
+    <script type="module" crossorigin src="/tools/rovr/assets/index-Cnf1TPK2.js"></script>
+    <link rel="stylesheet" crossorigin href="/tools/rovr/assets/index-D1POE5XP.css">
+  <title>What is a datastream in Adobe Experience Platform and how does it route data to different services? | Rovr</title>
+<meta name="description" content="Datastreams in Adobe Experience Platform What is a Datastream? A datastream represents the server-side configuration for the Adobe Experience Platform Web and…" />
+<link rel="canonical" href="https://thelearningproject.in/tools/rovr/q/what-is-a-datastream-in-adobe-experience-platform-and-how-do-7304fa" />
+<meta property="og:title" content="What is a datastream in Adobe Experience Platform and how does it route data to different services?" />
+<meta property="og:description" content="Datastreams in Adobe Experience Platform What is a Datastream? A datastream represents the server-side configuration for the Adobe Experience Platform Web and…" />
+<meta property="og:url" content="https://thelearningproject.in/tools/rovr/q/what-is-a-datastream-in-adobe-experience-platform-and-how-do-7304fa" />
+<meta property="og:type" content="article" />
+<meta property="og:image" content="https://thelearningproject.in/tools/rovr/rovrlogo.png" />
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="What is a datastream in Adobe Experience Platform and how does it route data to different services?" />
+<meta name="twitter:description" content="Datastreams in Adobe Experience Platform What is a Datastream? A datastream represents the server-side configuration for the Adobe Experience Platform Web and…" />
+</head>
+  <body>
+    <div id="root"><article><h1>What is a datastream in Adobe Experience Platform and how does it route data to different services?</h1>
+<h2>Datastreams in Adobe Experience Platform</h2>
+<h3>What is a Datastream?</h3>
+<p>A <strong>datastream</strong> represents the <strong>server-side configuration</strong> for the Adobe Experience Platform Web and Mobile SDKs. While the SDK&#x27;s <a href="/help/collection/js/commands/configure/overview.md">`configure`</a> command handles client-side settings (like the `edgeDomain`), datastreams manage all other configurations on the server.</p>
+<p>When you send a request to the Edge Network, the `datastreamId` references the datastream where the data is sent. This allows you to <strong>update your server-side configuration without changing your website&#x27;s code</strong>.</p>
+<p><img src="https://raw.githubusercontent.com/AdobeDocs/experience-platform.en/main/help/datastreams/assets/overview/datastreams-tab.png" alt="Screenshot of the Datastreams tab in the Adobe Experience Platform UI."></p>
+<hr>
+<h3>How Datastreams Route Data</h3>
+<h4>Core Architecture</h4>
+<p>1. <strong>Data Collection</strong> — Your Web SDK or Mobile SDK collects customer experience data</p>
+<p>2. <strong>Edge Network Reception</strong> — Data is sent to the Adobe Experience Platform Edge Network using the datastream ID</p>
+<p>3. <strong>Service Routing</strong> — The datastream configuration determines where and how that data flows to downstream services</p>
+<p>4. <strong>Enrichment &amp; Transformation</strong> — Data can be enriched, validated, and transformed before delivery</p>
+<p>5. <strong>Destination Delivery</strong> — Data routes to Adobe destinations (Analytics, Target, Journey Optimizer, Real-Time CDP) and non-Adobe destinations</p>
+<h4>The Datastream Configuration Flow</h4>
+<p>```</p>
+<p>Client-side Data Collection (Web/Mobile SDK)</p>
+<p>↓</p>
+<p>Edge Network (with datastreamId)</p>
+<p>↓</p>
+<p>Datastream Configuration (Server-side)</p>
+<p>↓</p>
+<p>Service Routing &amp; Enrichment</p>
+<p>↓</p>
+<p>Adobe Destinations │ Non-Adobe Destinations</p>
+<p>• Analytics    │  • Ad platforms</p>
+<p>• Target       │  • CDPs</p>
+<p>• AJO          │  • Analytics tools</p>
+<p>• RTCDP        │  • Marketing platforms</p>
+<p>```</p>
+<hr>
+<h3>Key Datastream Capabilities</h3>
+<h4>1. <strong>Multi-Destination Routing</strong></h4>
+<p>A single datastream can route the same data to multiple services simultaneously:</p>
+<ul>
+<li><strong>Adobe Experience Platform</strong> — Feeds the Real-Time Customer Profile and Data Lake</li>
+<li><strong>Adobe Analytics</strong> — For analytics reporting</li>
+<li><strong>Adobe Target</strong> — For personalization and A/B testing</li>
+<li><strong>Adobe Journey Optimizer</strong> — For omnichannel messaging</li>
+<li><strong>Non-Adobe destinations</strong> — Third-party platforms via event forwarding and configured integrations</li>
+</ul>
+<h4>2. <strong>Data Prep for Data Collection</strong></h4>
+<p>Transform and validate data before it reaches downstream services:</p>
+<ul>
+<li>Map incoming data to your XDM schema</li>
+<li>Add calculated fields</li>
+<li>Delete unwanted fields</li>
+<li>Validate data quality</li>
+</ul>
+<h4>3. <strong>Bot Detection</strong></h4>
+<p>Configure automated bot detection rules to filter out non-human traffic before data is processed.</p>
+<h4>4. <strong>Event Forwarding</strong></h4>
+<p>Send events directly to server-side destinations (like AWS, Google Ads, webhooks) without storing data in Experience Platform first.</p>
+<h4>5. <strong>Datastream Overrides</strong></h4>
+<p>Override datastream settings at the request level for:</p>
+<ul>
+<li>Different property IDs</li>
+<li>Report suite configurations</li>
+<li>Destination settings</li>
+<li>Analytics reporting data</li>
+</ul>
+<h4>6. <strong>Enhanced Encryption</strong> (for sensitive data)</h4>
+<ul>
+<li>Encrypt sensitive customer data (PHI, PCI, etc.) before transmission</li>
+<li>Decrypt only at authorized destinations</li>
+</ul>
+<hr>
+<h3>Managing Datastreams</h3>
+<p>You can create and manage datastreams by selecting <strong>[!UICONTROL Datastreams]</strong> in the left navigation within:</p>
+<ul>
+<li>The <strong>Adobe Experience Platform UI</strong>, or</li>
+<li>The <strong>Data Collection UI</strong></li>
+</ul>
+<p>For detailed configuration instructions, see the datastream configuration guide.</p>
+<hr>
+<h3>Important: Sensitive Data Handling</h3>
+<p>&gt; ⚠️ <strong>Important:</strong> If your organization collects sensitive data (Protected Health Information, Payment Card Information, etc.), datastreams provide three methods to handle it securely:</p>
+<p>&gt;</p>
+<p>&gt; 1. <strong>Enhanced encryption</strong> — Encrypt data in transit</p>
+<p>&gt; 2. <strong>Data governance</strong> — Policy-based controls on data use</p>
+<p>&gt; 3. <strong>Audit logs</strong> — Track all data access and modifications</p>
+<p>Consult your company&#x27;s legal and compliance teams when handling sensitive customer data, as regulatory requirements (like HIPAA, GDPR, CCPA) may apply.</p>
+<hr>
+<h3>Summary</h3>
+<p>Datastreams are the <strong>central hub for server-side data routing</strong> in Adobe Experience Platform. They decouple your client-side code from backend configurations, enabling you to:</p>
+<p>✅ Route data to multiple Adobe and non-Adobe services</p>
+<p>✅ Transform and validate data in real time</p>
+<p>✅ Update configurations without code changes</p>
+<p>✅ Control sensitive data handling securely</p>
+<p>✅ Activate customer data to personalization and marketing destinations</p>
+<h2>Sources</h2>
+<ul>
+<li><a href="https://experienceleague.adobe.com/en/docs/experience-platform/release-notes/2022/september-2022">Adobe Experience Platform Release Notes September 2022</a></li>
+<li><a href="https://experienceleague.adobe.com/en/docs/experience-platform/release-notes/2023/april-2023">Adobe Experience Platform Release Notes April 2023</a></li>
+<li><a href="https://experienceleague.adobe.com/en/docs/experience-platform/release-notes/2023/july-2023">Adobe Experience Platform Release Notes July 2023</a></li>
+<li><a href="https://experienceleague.adobe.com/en/docs/experience-platform/release-notes/2023/march-2023">Adobe Experience Platform Release Notes March 2023</a></li>
+<li><a href="https://experienceleague.adobe.com/en/docs/experience-platform/release-notes/2023/october-2023">Adobe Experience Platform Release Notes October 2023</a></li>
+<li><a href="https://experienceleague.adobe.com/en/docs/experience-platform/release-notes/2022/june-2022">Adobe Experience Platform Release Notes June 2022</a></li>
+<li><a href="https://experienceleague.adobe.com/en/docs/experience-platform/release-notes/2024/april-2024">Adobe Experience Platform Release Notes April 2024</a></li>
+<li><a href="https://experienceleague.adobe.com/en/docs/experience-platform/release-notes/2026/april-2026">Adobe Experience Platform Release Notes April 2026</a></li>
+<li><a href="https://experienceleague.adobe.com/en/docs/experience-platform/landing/home">Adobe Experience Platform Overview</a></li>
+</ul></article>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "What is a datastream in Adobe Experience Platform and how does it route data to different services?", "acceptedAnswer": {"@type": "Answer", "text": "Datastreams in Adobe Experience Platform What is a Datastream? A datastream represents the server-side configuration for the Adobe Experience Platform Web and Mobile SDKs. While the SDK's configure(/help/collection/js/commands/configure/overview.md) command handles client-side settings (like the edgeDomain), datastreams manage all other configurations on the server. When you send a request to the Edge Network, the datastreamId references the datastream where the data is sent. This allows you to update your server-side configuration without changing your website's code. !Screenshot of the Datastreams tab in the Adobe Experience Platform UI.(https://raw.githubusercontent.com/AdobeDocs/experience-platform.en/main/help/datastreams/assets/overview/datastreams-tab.png) --- How Datastreams Route Data Core Architecture 1. Data Collection \u2014 Your Web SDK or Mobile SDK collects customer experience data 2. Edge Network Reception \u2014 Data is sent to the Adobe Experience Platform Edge Network using the datastream ID 3. Service Routing \u2014 The datastream configuration determines where and how that data flows to downstream services 4. Enrichment & Transformation \u2014 Data can be enriched, validated, and transformed before delivery 5. Destination Delivery \u2014 Data routes to Adobe destinations (Analytics, Target, Journey Optimizer, Real-Time CDP) and non-Adobe destinations The Datastream Configuration Flow Client-side Data Collection (Web/Mobile SDK) \u2193 Edge Network (with datastreamId) \u2193 Datastream Configuration (Server-side) \u2193 Service Routing & Enrichment \u2193 Adobe Destinations \u2502 Non-Adobe Destinations \u2022 Analytics \u2502 \u2022 Ad platforms \u2022 Target \u2502 \u2022 CDPs \u2022 AJO \u2502 \u2022 Analytics tools \u2022 RTCDP \u2502 \u2022 Marketing platforms --- Key Datastream Capabilities 1. Multi-Destination Routing A single datastream can route the same data to multiple services simultaneously: - Adobe Experience Platform \u2014 Feeds the Real-Time Customer Profile and Data Lake - Adobe Analytics \u2014 For analytics reporting - Adobe Target \u2014 For\u2026"}}]}</script></div>
+  </body>
+</html>

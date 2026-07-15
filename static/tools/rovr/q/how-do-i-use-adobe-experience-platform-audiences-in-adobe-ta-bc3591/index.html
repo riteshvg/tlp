@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/png" href="/tools/rovr/rovrlogo.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="build-date" content="2026-06-10" />
+    
+    
+    <script src="https://assets.adobedtm.com/204118644db8/290ae1adb65a/launch-e5ec7bf1a1ef-development.min.js" async></script>
+    <script type="module" crossorigin src="/tools/rovr/assets/index-Cnf1TPK2.js"></script>
+    <link rel="stylesheet" crossorigin href="/tools/rovr/assets/index-D1POE5XP.css">
+  <title>How do I use Adobe Experience Platform audiences in Adobe Target for personalisation? | Rovr</title>
+<meta name="description" content="Using Adobe Experience Platform Audiences in Adobe Target for Personalisation This integration allows you to share AEP audiences and profile attributes with…" />
+<link rel="canonical" href="https://thelearningproject.in/tools/rovr/q/how-do-i-use-adobe-experience-platform-audiences-in-adobe-ta-bc3591" />
+<meta property="og:title" content="How do I use Adobe Experience Platform audiences in Adobe Target for personalisation?" />
+<meta property="og:description" content="Using Adobe Experience Platform Audiences in Adobe Target for Personalisation This integration allows you to share AEP audiences and profile attributes with…" />
+<meta property="og:url" content="https://thelearningproject.in/tools/rovr/q/how-do-i-use-adobe-experience-platform-audiences-in-adobe-ta-bc3591" />
+<meta property="og:type" content="article" />
+<meta property="og:image" content="https://thelearningproject.in/tools/rovr/rovrlogo.png" />
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="How do I use Adobe Experience Platform audiences in Adobe Target for personalisation?" />
+<meta name="twitter:description" content="Using Adobe Experience Platform Audiences in Adobe Target for Personalisation This integration allows you to share AEP audiences and profile attributes with…" />
+</head>
+  <body>
+    <div id="root"><article><h1>How do I use Adobe Experience Platform audiences in Adobe Target for personalisation?</h1>
+<h2>Using Adobe Experience Platform Audiences in Adobe Target for Personalisation</h2>
+<p>This integration allows you to share AEP audiences and profile attributes with Adobe Target, enabling powerful edge-based personalisation experiences.</p>
+<hr>
+<h3>Prerequisites</h3>
+<p>Before you begin, ensure you have:</p>
+<ul>
+<li>Access to <strong>Adobe Experience Platform</strong> with the ability to create and activate audiences</li>
+<li>An <strong>Adobe Target</strong> instance connected as a destination in AEP</li>
+<li>A configured <strong>Datastream</strong> with Adobe Target enabled on the Edge Network</li>
+<li>A sandbox environment in AEP</li>
+</ul>
+<hr>
+<h3>High-Level Workflow</h3>
+<p>The end-to-end process follows these stages:</p>
+<p><img src="https://raw.githubusercontent.com/AdobeDocs/experience-platform.en/main/help/destinations/assets/common/adobe-commerce-metrics.png" alt="AEP End-to-End Workflow"></p>
+<p>1. Build your audience in AEP</p>
+<p>2. Activate the audience to Adobe Target as a destination</p>
+<p>3. Select profile attributes to share alongside the audience</p>
+<p>4. Use the audience and attributes inside a Target activity for personalisation</p>
+<hr>
+<h3>Step-by-Step Guide</h3>
+<h4>Step 1 – Build Your Audience in AEP</h4>
+<p>1. Navigate to <strong>Audiences</strong> in the AEP left rail.</p>
+<p>2. Click <strong>Create Audience</strong> and define your segment rules using profile, behavioural, or event-based criteria.</p>
+<p>3. Save and publish the audience.</p>
+<hr>
+<h4>Step 2 – Activate the Audience to Adobe Target</h4>
+<p>1. Go to <strong>Destinations</strong> in AEP.</p>
+<p>2. Find and select your <strong>Adobe Target</strong> destination.</p>
+<p>3. Click <strong>Activate Audiences</strong>.</p>
+<p>4. Select the audience(s) you want to send to Target.</p>
+<p>5. During activation, select any <strong>profile attributes</strong> you want to make available for personalisation — for example, `person.name.firstName`.</p>
+<p>6. Complete the activation flow.</p>
+<hr>
+<h4>Step 3 – Create a Target Activity Using the AEP Audience</h4>
+<p>1. Log in to <strong>Adobe Target</strong>.</p>
+<p>2. Create a new activity — for example, an <strong>Experience Targeting (XT)</strong> activity using the <strong>Form-Based Experience Composer</strong>.</p>
+<p>3. Name your activity clearly (e.g., `RTCDP - XT (Form)`).</p>
+<p>4. Select the AEP-activated audience as the target audience for the experience.</p>
+<hr>
+<h4>Step 4 – Insert AEP Profile Attribute Tokens for Personalisation</h4>
+<p>Once inside the activity editor, you can use shared profile attributes as personalisation tokens:</p>
+<p>1. Locate the content area you want to personalise (e.g., an `h1` heading).</p>
+<p>2. In the code, position your cursor where you want to insert the dynamic value:</p>
+<p>```</p>
+<p>document.querySelector(&quot;h1&quot;).innerHTML = &quot;Hi there &quot;;</p>
+<p>```</p>
+<p>3. Add the profile attribute token by selecting:</p>
+<ul>
+<li><strong>Source:</strong> Adobe Experience Platform</li>
+<li><strong>Sandbox:</strong> your sandbox name</li>
+<li><strong>Attribute:</strong> `person.name.firstName`</li>
+</ul>
+<p>4. Click <strong>Add</strong>. The code will update to include the token:</p>
+<p>```</p>
+<p>document.querySelector(&quot;h1&quot;).innerHTML = &quot;Hi there ${aep.person.name.firstName}&quot;;</p>
+<p>```</p>
+<p>5. Click <strong>Next</strong> to proceed through the activity setup.</p>
+<hr>
+<h4>Step 5 – Set Goals and Activate the Activity</h4>
+<p>1. On the <strong>Goals &amp; Settings</strong> page, go to <strong>Goal Metrics</strong>.</p>
+<p>2. Set the <strong>Primary Goal</strong> — for example, <strong>Engagement → Time On Site</strong>.</p>
+<p>3. Click <strong>Save &amp; Close</strong>.</p>
+<p>4. On the <strong>Activity Overview</strong> page, click the <strong>Inactive</strong> dropdown and select <strong>Activate</strong>.</p>
+<p>5. You will receive a visual confirmation that the activity is now <strong>live</strong>.</p>
+<hr>
+<h3>Key Points to Remember</h3>
+<ul>
+<li>Profile attributes must be <strong>explicitly selected</strong> during the audience activation step in AEP — only then are they available as tokens in Target.</li>
+<li>The integration works via the <strong>Edge Network</strong>, meaning personalisation decisions happen at the edge for low latency.</li>
+<li>AEP audiences appear in Target automatically once activation is complete — no manual import is needed.</li>
+<li>This approach does <strong>not</strong> rely on third-party cookies, making it resilient to browser privacy changes.</li>
+</ul>
+<hr>
+<p>Once live, your Target activity will deliver personalised experiences to visitors who match your AEP audience, with content dynamically populated using real-time profile attributes from AEP.</p>
+<h2>Sources</h2>
+<ul>
+<li><a href="https://experienceleague.adobe.com/en/docs/experience-platform/release-notes/2022/september-2022">Adobe Experience Platform Release Notes September 2022</a></li>
+<li><a href="https://experienceleague.adobe.com/en/docs/experience-platform/release-notes/2023/april-2023">Adobe Experience Platform Release Notes April 2023</a></li>
+<li><a href="https://experienceleague.adobe.com/en/docs/experience-platform/release-notes/2023/july-2023">Adobe Experience Platform Release Notes July 2023</a></li>
+<li><a href="https://experienceleague.adobe.com/en/docs/experience-platform/release-notes/2023/march-2023">Adobe Experience Platform Release Notes March 2023</a></li>
+<li><a href="https://experienceleague.adobe.com/en/docs/experience-platform/release-notes/2023/october-2023">Adobe Experience Platform Release Notes October 2023</a></li>
+</ul></article>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "How do I use Adobe Experience Platform audiences in Adobe Target for personalisation?", "acceptedAnswer": {"@type": "Answer", "text": "Using Adobe Experience Platform Audiences in Adobe Target for Personalisation This integration allows you to share AEP audiences and profile attributes with Adobe Target, enabling powerful edge-based personalisation experiences. --- Prerequisites Before you begin, ensure you have: - Access to Adobe Experience Platform with the ability to create and activate audiences - An Adobe Target instance connected as a destination in AEP - A configured Datastream with Adobe Target enabled on the Edge Network - A sandbox environment in AEP --- High-Level Workflow The end-to-end process follows these stages: !AEP End-to-End Workflow(https://raw.githubusercontent.com/AdobeDocs/experience-platform.en/main/help/destinations/assets/common/adobe-commerce-metrics.png) 1. Build your audience in AEP 2. Activate the audience to Adobe Target as a destination 3. Select profile attributes to share alongside the audience 4. Use the audience and attributes inside a Target activity for personalisation --- Step-by-Step Guide Step 1 \u2013 Build Your Audience in AEP 1. Navigate to Audiences in the AEP left rail. 2. Click Create Audience and define your segment rules using profile, behavioural, or event-based criteria. 3. Save and publish the audience. --- Step 2 \u2013 Activate the Audience to Adobe Target 1. Go to Destinations in AEP. 2. Find and select your Adobe Target destination. 3. Click Activate Audiences. 4. Select the audience(s) you want to send to Target. 5. During activation, select any profile attributes you want to make available for personalisation \u2014 for example, person.name.firstName. 6. Complete the activation flow. --- Step 3 \u2013 Create a Target Activity Using the AEP Audience 1. Log in to Adobe Target. 2. Create a new activity \u2014 for example, an Experience Targeting (XT) activity using the Form-Based Experience Composer. 3. Name your activity clearly (e.g., RTCDP - XT (Form)). 4. Select the AEP-activated audience as the target audience for the experience. --- Step 4 \u2013 Insert AEP Profile\u2026"}}]}</script></div>
+  </body>
+</html>

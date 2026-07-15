@@ -1,0 +1,895 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex, nofollow">
+  <title>Image Admin — The Learning Project</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Segoe UI', system-ui, sans-serif;
+      background: #f0f2f5;
+      color: #1a1a2e;
+      min-height: 100vh;
+    }
+
+    /* ── Auth gate ─────────────────────────────── */
+    #auth-gate {
+      position: fixed; inset: 0;
+      background: #1a1a2e;
+      display: flex; align-items: center; justify-content: center;
+      z-index: 100;
+    }
+    #auth-gate.hidden { display: none; }
+
+    .auth-box {
+      background: #fff;
+      border-radius: 16px;
+      padding: 40px;
+      width: 360px;
+      text-align: center;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.4);
+    }
+    .auth-box h1 { font-size: 1.4rem; margin-bottom: 6px; }
+    .auth-box p { font-size: 0.9rem; color: #888; margin-bottom: 24px; }
+    .auth-box input {
+      width: 100%; padding: 12px 14px;
+      border: 1.5px solid #e2e6ea; border-radius: 8px;
+      font-size: 1rem; margin-bottom: 14px; outline: none;
+    }
+    .auth-box input:focus { border-color: #7c5cbf; }
+    .auth-box button {
+      width: 100%; padding: 12px;
+      background: #7c5cbf; color: #fff;
+      border: none; border-radius: 8px;
+      font-size: 1rem; font-weight: 700; cursor: pointer;
+    }
+    .auth-box button:hover { background: #6a4ca8; }
+    .auth-error { color: #e53e3e; font-size: 0.85rem; margin-top: 10px; }
+
+    /* ── Header ────────────────────────────────── */
+    header {
+      background: #1a1a2e;
+      color: #fff;
+      padding: 14px 32px;
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    header h1 { font-size: 1.1rem; font-weight: 700; letter-spacing: 0.02em; }
+    header span { font-size: 0.8rem; color: #9eabb3; }
+    #logout-btn {
+      background: rgba(255,255,255,0.1);
+      color: #fff; border: none;
+      padding: 6px 16px; border-radius: 6px;
+      cursor: pointer; font-size: 0.85rem;
+    }
+    #logout-btn:hover { background: rgba(255,255,255,0.2); }
+
+    /* ── Layout ────────────────────────────────── */
+    main { max-width: 1100px; margin: 32px auto; padding: 0 24px; display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+
+    .card {
+      background: #fff; border-radius: 14px;
+      border: 1px solid #e2e6ea;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.06);
+      padding: 24px;
+    }
+    .card h2 { font-size: 1rem; font-weight: 700; margin-bottom: 16px; color: #1a1a2e; }
+
+    /* ── Tabs ──────────────────────────────────── */
+    .tabs { display: flex; gap: 6px; margin-bottom: 20px; }
+    .tab {
+      padding: 7px 16px; border-radius: 8px;
+      border: 1.5px solid #e2e6ea;
+      background: #fff; cursor: pointer;
+      font-size: 0.88rem; font-weight: 600; color: #555;
+      transition: all 0.15s;
+    }
+    .tab.active { background: #7c5cbf; border-color: #7c5cbf; color: #fff; }
+
+    /* ── Drop zone ─────────────────────────────── */
+    #drop-zone {
+      border: 2px dashed #c8d0d8;
+      border-radius: 10px;
+      padding: 36px 20px;
+      text-align: center;
+      cursor: pointer;
+      transition: border-color 0.15s, background 0.15s;
+      margin-bottom: 20px;
+    }
+    #drop-zone:hover, #drop-zone.drag-over { border-color: #7c5cbf; background: #f7f4ff; }
+    #drop-zone .icon { font-size: 2.2rem; margin-bottom: 8px; }
+    #drop-zone p { font-size: 0.9rem; color: #888; }
+    #drop-zone strong { color: #7c5cbf; cursor: pointer; }
+    #file-input { display: none; }
+
+    /* ── Form fields ───────────────────────────── */
+    .field { margin-bottom: 16px; }
+    .field label { display: block; font-size: 0.82rem; font-weight: 700; color: #555; margin-bottom: 6px; text-transform: uppercase; letter-spacing: 0.04em; }
+    .field input, .field select {
+      width: 100%; padding: 10px 12px;
+      border: 1.5px solid #e2e6ea; border-radius: 8px;
+      font-size: 0.95rem; outline: none; color: #1a1a2e;
+    }
+    .field input:focus, .field select:focus { border-color: #7c5cbf; }
+
+    /* ── Size presets ──────────────────────────── */
+    .presets { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 16px; }
+    .preset {
+      padding: 5px 12px; border-radius: 6px;
+      border: 1.5px solid #e2e6ea;
+      font-size: 0.8rem; font-weight: 600; cursor: pointer;
+      transition: all 0.15s; color: #555;
+    }
+    .preset:hover { border-color: #7c5cbf; color: #7c5cbf; }
+    .preset.active { background: #7c5cbf; border-color: #7c5cbf; color: #fff; }
+
+    .size-inputs { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 16px; }
+    .size-inputs input { padding: 8px 10px; border: 1.5px solid #e2e6ea; border-radius: 8px; font-size: 0.9rem; outline: none; text-align: center; }
+    .size-inputs input:focus { border-color: #7c5cbf; }
+    .size-label { font-size: 0.78rem; color: #888; text-align: center; display: block; margin-top: 3px; }
+
+    /* ── Upload button ─────────────────────────── */
+    #upload-btn {
+      width: 100%; padding: 13px;
+      background: #7c5cbf; color: #fff;
+      border: none; border-radius: 8px;
+      font-size: 1rem; font-weight: 700; cursor: pointer;
+      transition: background 0.15s;
+      margin-top: 4px;
+    }
+    #upload-btn:hover:not(:disabled) { background: #6a4ca8; }
+    #upload-btn:disabled { background: #c5b8e0; cursor: not-allowed; }
+
+    /* ── Progress ──────────────────────────────── */
+    #progress-wrap { margin-top: 14px; display: none; }
+    #progress-bar-bg { background: #f0ebff; border-radius: 100px; height: 8px; overflow: hidden; }
+    #progress-bar { height: 100%; background: #7c5cbf; border-radius: 100px; width: 0%; transition: width 0.2s; }
+    #progress-label { font-size: 0.82rem; color: #888; margin-top: 6px; text-align: center; }
+
+    /* ── Preview panel ─────────────────────────── */
+    #preview-section { display: flex; flex-direction: column; gap: 20px; }
+
+    #image-preview-wrap {
+      background: #f0f2f5; border-radius: 10px;
+      border: 1.5px solid #e2e6ea;
+      height: 260px; display: flex;
+      align-items: center; justify-content: center;
+      overflow: hidden; position: relative;
+    }
+    #image-preview-wrap .placeholder { color: #c0c8d0; font-size: 0.9rem; text-align: center; }
+    #preview-img { max-width: 100%; max-height: 100%; object-fit: contain; display: none; }
+    #resize-canvas { display: none; }
+
+    .meta-row { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 8px; }
+    .meta-badge {
+      font-size: 0.78rem; padding: 3px 10px;
+      background: #f0f2f5; border-radius: 6px; color: #555;
+    }
+
+    /* ── Result card ───────────────────────────── */
+    #result-card {
+      background: #f0fff4; border: 1.5px solid #9ae6b4;
+      border-radius: 10px; padding: 16px; display: none;
+    }
+    #result-card h3 { font-size: 0.9rem; color: #276749; margin-bottom: 10px; }
+    .url-row { display: flex; gap: 8px; align-items: center; }
+    #cdn-url-display {
+      flex: 1; font-size: 0.8rem; color: #1a1a2e;
+      background: #fff; border: 1px solid #c6f6d5;
+      border-radius: 6px; padding: 8px 10px;
+      word-break: break-all;
+    }
+    .action-btn {
+      padding: 7px 14px; border-radius: 6px;
+      border: none; cursor: pointer;
+      font-size: 0.82rem; font-weight: 700;
+      white-space: nowrap;
+    }
+    #copy-btn { background: #276749; color: #fff; }
+    #copy-btn:hover { background: #1f5237; }
+    #invalidate-btn { background: #ed8936; color: #fff; margin-top: 10px; width: 100%; }
+    #invalidate-btn:hover { background: #c97b2a; }
+    #invalidate-status { font-size: 0.8rem; margin-top: 6px; color: #555; }
+
+    /* ── Upload history ────────────────────────── */
+    #history-list { list-style: none; display: flex; flex-direction: column; gap: 8px; max-height: 300px; overflow-y: auto; }
+    #history-list li {
+      display: flex; align-items: center; gap: 10px;
+      background: #f8f9fa; border-radius: 8px; padding: 8px 12px;
+      font-size: 0.82rem;
+    }
+    #history-list li .h-name { flex: 1; color: #1a1a2e; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+    #history-list li .h-folder { color: #7c5cbf; font-weight: 700; flex-shrink: 0; }
+    #history-list li .h-copy { background: none; border: 1px solid #e2e6ea; border-radius: 4px; padding: 2px 8px; cursor: pointer; font-size: 0.76rem; color: #555; }
+    #history-list li .h-copy:hover { background: #f0ebff; }
+
+    /* ── Media library ─────────────────────────── */
+    #library-section { display: none; max-width: 1100px; margin: 0 auto 32px; padding: 0 24px; }
+    .library-toolbar { display: flex; gap: 10px; align-items: center; margin-bottom: 16px; flex-wrap: wrap; }
+    .lib-filter { padding: 6px 14px; border-radius: 8px; border: 1.5px solid #e2e6ea; font-size: 0.85rem; font-weight: 600; cursor: pointer; color: #555; background: #fff; }
+    .lib-filter.active { background: #7c5cbf; border-color: #7c5cbf; color: #fff; }
+    #lib-search { flex: 1; min-width: 160px; padding: 8px 12px; border: 1.5px solid #e2e6ea; border-radius: 8px; font-size: 0.9rem; outline: none; }
+    #lib-search:focus { border-color: #7c5cbf; }
+    #lib-refresh { padding: 7px 16px; background: #f0f2f5; border: none; border-radius: 8px; cursor: pointer; font-size: 0.85rem; font-weight: 600; color: #555; }
+    #lib-refresh:hover { background: #e2e6ea; }
+    #lib-count { font-size: 0.82rem; color: #888; }
+
+    .lib-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 14px; }
+    .lib-card {
+      background: #fff; border: 1px solid #e2e6ea; border-radius: 10px;
+      overflow: hidden; cursor: pointer;
+      transition: box-shadow 0.15s, transform 0.15s;
+    }
+    .lib-card:hover { box-shadow: 0 4px 16px rgba(0,0,0,0.1); transform: translateY(-2px); }
+    .lib-card.selected { border-color: #7c5cbf; box-shadow: 0 0 0 2px #7c5cbf; }
+    .lib-thumb {
+      width: 100%; height: 120px; object-fit: cover;
+      background: #f0f2f5; display: block;
+    }
+    .lib-thumb-placeholder { width: 100%; height: 120px; background: #f0ebff; display: flex; align-items: center; justify-content: center; font-size: 2rem; }
+    .lib-info { padding: 8px 10px; }
+    .lib-filename { font-size: 0.78rem; font-weight: 600; color: #1a1a2e; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+    .lib-meta { font-size: 0.72rem; color: #888; margin-top: 2px; }
+    .lib-folder-tag { display: inline-block; font-size: 0.68rem; font-weight: 700; text-transform: uppercase; padding: 1px 6px; border-radius: 4px; margin-top: 4px; }
+    .lib-folder-tools { background: #f0ebff; color: #7c5cbf; }
+    .lib-folder-blog  { background: #e6f7f5; color: #1a9e8f; }
+    .lib-folder-hero  { background: #fff0e8; color: #d95f2b; }
+
+    /* ── Selected image detail ─────────────────── */
+    #lib-detail {
+      position: fixed; right: 0; top: 0; bottom: 0; width: 320px;
+      background: #fff; border-left: 1px solid #e2e6ea;
+      box-shadow: -4px 0 20px rgba(0,0,0,0.08);
+      display: none; flex-direction: column; z-index: 50;
+    }
+    #lib-detail.open { display: flex; }
+    .lib-detail-header { padding: 16px 20px; border-bottom: 1px solid #e2e6ea; display: flex; justify-content: space-between; align-items: center; }
+    .lib-detail-header h3 { font-size: 0.95rem; }
+    #lib-detail-close { background: none; border: none; font-size: 1.2rem; cursor: pointer; color: #888; }
+    #lib-detail-img { width: 100%; height: 200px; object-fit: contain; background: #f0f2f5; border-bottom: 1px solid #e2e6ea; }
+    .lib-detail-body { padding: 16px 20px; display: flex; flex-direction: column; gap: 12px; flex: 1; overflow-y: auto; }
+    .lib-detail-row { font-size: 0.82rem; }
+    .lib-detail-label { font-weight: 700; color: #888; text-transform: uppercase; font-size: 0.72rem; letter-spacing: 0.05em; display: block; margin-bottom: 3px; }
+    .lib-detail-url { word-break: break-all; color: #1a1a2e; background: #f8f9fa; border-radius: 6px; padding: 8px 10px; font-size: 0.78rem; }
+    .lib-detail-actions { display: flex; flex-direction: column; gap: 8px; margin-top: auto; }
+    .lib-copy-md { padding: 9px; background: #7c5cbf; color: #fff; border: none; border-radius: 8px; cursor: pointer; font-size: 0.85rem; font-weight: 700; }
+    .lib-copy-url { padding: 9px; background: #f0ebff; color: #7c5cbf; border: none; border-radius: 8px; cursor: pointer; font-size: 0.85rem; font-weight: 700; }
+    .lib-copy-yaml { padding: 9px; background: #e6f7f5; color: #1a9e8f; border: none; border-radius: 8px; cursor: pointer; font-size: 0.85rem; font-weight: 700; }
+
+    /* ── Nav tabs (top level) ──────────────────── */
+    .nav-tabs { display: flex; gap: 4px; padding: 0 24px; max-width: 1100px; margin: 0 auto 0; }
+    .nav-tab { padding: 10px 20px; font-size: 0.9rem; font-weight: 700; cursor: pointer; border-bottom: 3px solid transparent; color: #888; background: none; border-top: none; border-left: none; border-right: none; }
+    .nav-tab.active { color: #7c5cbf; border-bottom-color: #7c5cbf; }
+
+    #lib-loading { text-align: center; padding: 40px; color: #888; font-size: 0.9rem; }
+    #lib-empty { text-align: center; padding: 40px; color: #888; font-size: 0.9rem; display: none; }
+
+    @media (max-width: 768px) {
+      main { grid-template-columns: 1fr; }
+      #lib-detail { width: 100%; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- Auth gate -->
+<div id="auth-gate">
+  <div class="auth-box">
+    <h1>🔐 Image Admin</h1>
+    <p>The Learning Project — Media Manager</p>
+    <input type="password" id="pw-input" placeholder="Enter admin password" autocomplete="current-password">
+    <button id="pw-submit">Sign in</button>
+    <div class="auth-error" id="auth-error"></div>
+  </div>
+</div>
+
+<!-- Main app -->
+<header>
+  <div>
+    <h1>Image Admin — The Learning Project</h1>
+    <span id="header-user"></span>
+  </div>
+  <button id="logout-btn">Sign out</button>
+</header>
+
+<!-- Top nav -->
+<div style="background:#fff; border-bottom:1px solid #e2e6ea;">
+  <div class="nav-tabs">
+    <button class="nav-tab active" id="nav-upload" onclick="switchNav('upload')">⬆ Upload</button>
+    <button class="nav-tab" id="nav-library" onclick="switchNav('library')">🖼 Media Library</button>
+  </div>
+</div>
+
+<!-- Media Library -->
+<div id="library-section">
+  <div class="library-toolbar" style="margin-top:24px;">
+    <button class="lib-filter active" data-folder="all" onclick="filterLib(this,'all')">All</button>
+    <button class="lib-filter" data-folder="tools" onclick="filterLib(this,'tools')">Tools</button>
+    <button class="lib-filter" data-folder="blog" onclick="filterLib(this,'blog')">Blog</button>
+    <button class="lib-filter" data-folder="hero" onclick="filterLib(this,'hero')">Hero</button>
+    <input type="text" id="lib-search" placeholder="Search filename..." oninput="renderLib()">
+    <button id="lib-refresh" onclick="loadLibrary()">↻ Refresh</button>
+    <span id="lib-count"></span>
+  </div>
+  <div id="lib-loading">Loading images...</div>
+  <div id="lib-empty">No images found.</div>
+  <div class="lib-grid" id="lib-grid"></div>
+</div>
+
+<!-- Image detail panel -->
+<div id="lib-detail">
+  <div class="lib-detail-header">
+    <h3 id="lib-detail-name">Image</h3>
+    <button id="lib-detail-close" onclick="closeDetail()">✕</button>
+  </div>
+  <img id="lib-detail-img" src="" alt="">
+  <div class="lib-detail-body">
+    <div class="lib-detail-row">
+      <span class="lib-detail-label">CDN URL</span>
+      <div class="lib-detail-url" id="lib-detail-url"></div>
+    </div>
+    <div class="lib-detail-row">
+      <span class="lib-detail-label">Folder</span>
+      <span id="lib-detail-folder"></span>
+    </div>
+    <div class="lib-detail-row">
+      <span class="lib-detail-label">Size</span>
+      <span id="lib-detail-size"></span>
+    </div>
+    <div class="lib-detail-row">
+      <span class="lib-detail-label">Uploaded</span>
+      <span id="lib-detail-date"></span>
+    </div>
+    <div class="lib-detail-actions">
+      <button class="lib-copy-url" onclick="copyDetail('url')">Copy CDN URL</button>
+      <button class="lib-copy-md"  onclick="copyDetail('md')">Copy Markdown ![img](url)</button>
+      <button class="lib-copy-yaml" onclick="copyDetail('yaml')">Copy YAML  image: url</button>
+    </div>
+  </div>
+</div>
+
+<main id="upload-section">
+  <!-- Left: upload controls -->
+  <div>
+    <div class="card">
+      <h2>Upload Image</h2>
+
+      <!-- Category tabs -->
+      <div class="tabs">
+        <button class="tab active" data-cat="tools" data-folder="tools">Tools</button>
+        <button class="tab" data-cat="blog" data-folder="blog">Blog</button>
+        <button class="tab" data-cat="hero" data-folder="hero">Hero</button>
+      </div>
+
+      <!-- Drop zone -->
+      <div id="drop-zone">
+        <div class="icon">🖼️</div>
+        <p>Drag & drop an image here, or <strong id="browse-link">browse</strong></p>
+        <p style="font-size:0.78rem; margin-top:4px;">PNG, JPG, WebP, GIF</p>
+      </div>
+      <input type="file" id="file-input" accept="image/*">
+
+      <!-- Size presets -->
+      <div class="field">
+        <label>Size Preset</label>
+        <div class="presets" id="presets-container"></div>
+      </div>
+
+      <!-- Custom dimensions -->
+      <div class="size-inputs">
+        <div>
+          <input type="number" id="width-input" placeholder="Width">
+          <span class="size-label">Width (px)</span>
+        </div>
+        <div>
+          <input type="number" id="height-input" placeholder="Height">
+          <span class="size-label">Height (px)</span>
+        </div>
+      </div>
+
+      <!-- Filename -->
+      <div class="field">
+        <label>Filename</label>
+        <input type="text" id="filename-input" placeholder="e.g. tagscanner-preview.png">
+      </div>
+
+      <button id="upload-btn" disabled>Upload to S3</button>
+
+      <!-- Progress -->
+      <div id="progress-wrap">
+        <div id="progress-bar-bg"><div id="progress-bar"></div></div>
+        <div id="progress-label">Uploading...</div>
+      </div>
+    </div>
+
+    <!-- History -->
+    <div class="card" style="margin-top:0;">
+      <h2>Recent Uploads</h2>
+      <ul id="history-list"><li style="color:#888; font-size:0.85rem;">No uploads yet this session.</li></ul>
+    </div>
+  </div>
+
+  <!-- Right: preview + result -->
+  <div id="preview-section">
+    <div class="card">
+      <h2>Preview</h2>
+      <div id="image-preview-wrap">
+        <div class="placeholder">📷<br>Select an image to preview</div>
+        <img id="preview-img" alt="preview">
+      </div>
+      <div class="meta-row" id="image-meta"></div>
+      <canvas id="resize-canvas"></canvas>
+    </div>
+
+    <div class="card">
+      <h2>Result</h2>
+      <div id="result-card">
+        <h3>✅ Upload successful</h3>
+        <div class="url-row">
+          <div id="cdn-url-display"></div>
+          <button class="action-btn" id="copy-btn">Copy URL</button>
+        </div>
+        <button class="action-btn" id="invalidate-btn">🔄 Invalidate CloudFront Cache</button>
+        <div id="invalidate-status"></div>
+      </div>
+      <div id="result-empty" style="color:#888; font-size:0.88rem;">Upload an image to see the CDN URL here.</div>
+    </div>
+  </div>
+</main>
+
+<script>
+  // ── Config ──────────────────────────────────────
+  const PRESETS = {
+    tools: [
+      { label: 'Card Banner', w: 1200, h: 630 },
+      { label: 'Square Icon', w: 512, h: 512 },
+      { label: 'Original', w: 0, h: 0 },
+    ],
+    blog: [
+      { label: 'Featured', w: 1200, h: 628 },
+      { label: 'Thumbnail', w: 800, h: 450 },
+      { label: 'Inline', w: 800, h: 450 },
+      { label: 'Original', w: 0, h: 0 },
+    ],
+    hero: [
+      { label: 'Full Banner', w: 1920, h: 600 },
+      { label: 'Medium', w: 1440, h: 500 },
+      { label: 'Original', w: 0, h: 0 },
+    ],
+  };
+
+  // ── State ────────────────────────────────────────
+  let password = '';
+  let currentFile = null;
+  let currentCat = 'tools';
+  let currentFolder = 'tools';
+  let uploadHistory = [];
+
+  // ── Auth ─────────────────────────────────────────
+  document.getElementById('pw-submit').addEventListener('click', tryLogin);
+  document.getElementById('pw-input').addEventListener('keydown', e => { if (e.key === 'Enter') tryLogin(); });
+
+  async function tryLogin() {
+    const pw = document.getElementById('pw-input').value.trim();
+    if (!pw) return;
+
+    // Validate by calling get-upload-url with a dummy payload
+    try {
+      const res = await fetch('/api/get-upload-url', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ password: pw, filename: '__auth_check__', contentType: 'image/png', folder: 'test' }),
+      });
+      if (res.status === 401) {
+        document.getElementById('auth-error').textContent = 'Wrong password. Try again.';
+        return;
+      }
+      password = pw;
+      document.getElementById('auth-gate').classList.add('hidden');
+      document.getElementById('header-user').textContent = 'Logged in';
+    } catch {
+      document.getElementById('auth-error').textContent = 'Could not reach server. Are you on the live site?';
+    }
+  }
+
+  document.getElementById('logout-btn').addEventListener('click', () => {
+    password = '';
+    document.getElementById('auth-gate').classList.remove('hidden');
+    document.getElementById('pw-input').value = '';
+    document.getElementById('auth-error').textContent = '';
+  });
+
+  // ── Category tabs ────────────────────────────────
+  document.querySelectorAll('.tab').forEach(tab => {
+    tab.addEventListener('click', () => {
+      document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      currentCat = tab.dataset.cat;
+      currentFolder = tab.dataset.folder;
+      renderPresets();
+      suggestFilename();
+    });
+  });
+
+  function renderPresets() {
+    const container = document.getElementById('presets-container');
+    container.innerHTML = '';
+    PRESETS[currentCat].forEach((p, i) => {
+      const btn = document.createElement('button');
+      btn.className = 'preset' + (i === 0 ? ' active' : '');
+      btn.textContent = p.w ? `${p.label} (${p.w}×${p.h})` : p.label;
+      btn.dataset.w = p.w;
+      btn.dataset.h = p.h;
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('.preset').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        document.getElementById('width-input').value = p.w || '';
+        document.getElementById('height-input').value = p.h || '';
+        if (currentFile) updatePreview();
+      });
+      container.appendChild(btn);
+    });
+    // Set defaults
+    const first = PRESETS[currentCat][0];
+    document.getElementById('width-input').value = first.w || '';
+    document.getElementById('height-input').value = first.h || '';
+  }
+
+  // ── File handling ─────────────────────────────────
+  const dropZone = document.getElementById('drop-zone');
+  const fileInput = document.getElementById('file-input');
+
+  document.getElementById('browse-link').addEventListener('click', () => fileInput.click());
+  dropZone.addEventListener('click', () => fileInput.click());
+
+  dropZone.addEventListener('dragover', e => { e.preventDefault(); dropZone.classList.add('drag-over'); });
+  dropZone.addEventListener('dragleave', () => dropZone.classList.remove('drag-over'));
+  dropZone.addEventListener('drop', e => {
+    e.preventDefault();
+    dropZone.classList.remove('drag-over');
+    const f = e.dataTransfer.files[0];
+    if (f && f.type.startsWith('image/')) handleFile(f);
+  });
+  fileInput.addEventListener('change', () => {
+    if (fileInput.files[0]) handleFile(fileInput.files[0]);
+  });
+
+  function handleFile(file) {
+    currentFile = file;
+    suggestFilename();
+    updatePreview();
+    document.getElementById('upload-btn').disabled = false;
+  }
+
+  function suggestFilename() {
+    if (!currentFile) return;
+    const base = currentFile.name.replace(/\.[^.]+$/, '').toLowerCase().replace(/\s+/g, '-');
+    const ext = currentFile.name.split('.').pop().toLowerCase();
+    document.getElementById('filename-input').value = `${base}.${ext}`;
+  }
+
+  // ── Preview + resize ──────────────────────────────
+  function updatePreview() {
+    if (!currentFile) return;
+    const w = parseInt(document.getElementById('width-input').value) || 0;
+    const h = parseInt(document.getElementById('height-input').value) || 0;
+    const img = document.getElementById('preview-img');
+    const wrap = document.getElementById('image-preview-wrap');
+
+    const url = URL.createObjectURL(currentFile);
+    img.onload = () => {
+      const origW = img.naturalWidth;
+      const origH = img.naturalHeight;
+      const finalW = w || origW;
+      const finalH = h || origH;
+
+      document.getElementById('image-meta').innerHTML = `
+        <span class="meta-badge">Original: ${origW}×${origH}</span>
+        <span class="meta-badge">Output: ${finalW}×${finalH}</span>
+        <span class="meta-badge">${(currentFile.size / 1024).toFixed(0)} KB</span>
+      `;
+      URL.revokeObjectURL(url);
+    };
+    img.src = url;
+    img.style.display = 'block';
+    wrap.querySelector('.placeholder') && (wrap.querySelector('.placeholder').style.display = 'none');
+  }
+
+  // Resize using canvas
+  async function getResizedBlob(file, targetW, targetH) {
+    if (!targetW && !targetH) return file;
+    return new Promise((resolve) => {
+      const img = new Image();
+      const url = URL.createObjectURL(file);
+      img.onload = () => {
+        const canvas = document.getElementById('resize-canvas');
+        canvas.width = targetW || img.naturalWidth;
+        canvas.height = targetH || img.naturalHeight;
+        const ctx = canvas.getContext('2d');
+        const scale = Math.max(canvas.width / img.naturalWidth, canvas.height / img.naturalHeight);
+        const sw = img.naturalWidth * scale;
+        const sh = img.naturalHeight * scale;
+        const sx = (canvas.width - sw) / 2;
+        const sy = (canvas.height - sh) / 2;
+        ctx.drawImage(img, sx, sy, sw, sh);
+        canvas.toBlob(blob => { URL.revokeObjectURL(url); resolve(blob); }, file.type, 0.88);
+      };
+      img.src = url;
+    });
+  }
+
+  // ── Upload ────────────────────────────────────────
+  document.getElementById('upload-btn').addEventListener('click', uploadImage);
+
+  async function uploadImage() {
+    if (!currentFile || !password) return;
+
+    const filename = document.getElementById('filename-input').value.trim();
+    if (!filename) { alert('Please enter a filename.'); return; }
+
+    const w = parseInt(document.getElementById('width-input').value) || 0;
+    const h = parseInt(document.getElementById('height-input').value) || 0;
+
+    const btn = document.getElementById('upload-btn');
+    btn.disabled = true;
+    btn.textContent = 'Preparing...';
+    showProgress(0, 'Resizing image...');
+
+    try {
+      // Resize
+      const blob = await getResizedBlob(currentFile, w, h);
+      showProgress(20, 'Getting upload URL...');
+
+      // Get pre-signed URL
+      const urlRes = await fetch('/api/get-upload-url', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ password, filename, contentType: currentFile.type, folder: currentFolder }),
+      });
+
+      if (!urlRes.ok) {
+        const err = await urlRes.json();
+        throw new Error(err.error || 'Failed to get upload URL');
+      }
+
+      const { uploadUrl, cdnUrl, key } = await urlRes.json();
+      showProgress(40, 'Uploading to S3...');
+
+      // Upload via XHR for progress
+      await uploadWithProgress(uploadUrl, blob, currentFile.type, (pct) => {
+        showProgress(40 + pct * 0.6, `Uploading... ${pct}%`);
+      });
+
+      showProgress(100, 'Done!');
+
+      // Show result
+      document.getElementById('cdn-url-display').textContent = cdnUrl;
+      document.getElementById('result-card').style.display = 'block';
+      document.getElementById('result-empty').style.display = 'none';
+      document.getElementById('invalidate-btn').dataset.key = key;
+      document.getElementById('invalidate-status').textContent = '';
+
+      // Add to history
+      addHistory(filename, currentFolder, cdnUrl);
+
+      setTimeout(() => {
+        hideProgress();
+        btn.disabled = false;
+        btn.textContent = 'Upload to S3';
+      }, 1500);
+
+    } catch (err) {
+      hideProgress();
+      alert('Upload failed: ' + err.message);
+      btn.disabled = false;
+      btn.textContent = 'Upload to S3';
+    }
+  }
+
+  function uploadWithProgress(url, blob, contentType, onProgress) {
+    return new Promise((resolve, reject) => {
+      const xhr = new XMLHttpRequest();
+      xhr.open('PUT', url);
+      xhr.setRequestHeader('Content-Type', contentType);
+      xhr.upload.onprogress = (e) => {
+        if (e.lengthComputable) onProgress(Math.round((e.loaded / e.total) * 100));
+      };
+      xhr.onload = () => xhr.status < 300 ? resolve() : reject(new Error(`S3 responded with ${xhr.status}`));
+      xhr.onerror = () => reject(new Error('Network error during upload'));
+      xhr.send(blob);
+    });
+  }
+
+  function showProgress(pct, label) {
+    document.getElementById('progress-wrap').style.display = 'block';
+    document.getElementById('progress-bar').style.width = pct + '%';
+    document.getElementById('progress-label').textContent = label;
+    document.getElementById('upload-btn').textContent = label;
+  }
+
+  function hideProgress() {
+    document.getElementById('progress-wrap').style.display = 'none';
+  }
+
+  // ── Copy URL ──────────────────────────────────────
+  document.getElementById('copy-btn').addEventListener('click', () => {
+    const url = document.getElementById('cdn-url-display').textContent;
+    navigator.clipboard.writeText(url).then(() => {
+      const btn = document.getElementById('copy-btn');
+      btn.textContent = 'Copied!';
+      setTimeout(() => btn.textContent = 'Copy URL', 1500);
+    });
+  });
+
+  // ── CloudFront invalidation ────────────────────────
+  document.getElementById('invalidate-btn').addEventListener('click', async () => {
+    const key = document.getElementById('invalidate-btn').dataset.key;
+    const status = document.getElementById('invalidate-status');
+    if (!key) return;
+    status.textContent = 'Invalidating...';
+    try {
+      const res = await fetch('/api/invalidate-cache', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ password, path: key }),
+      });
+      const data = await res.json();
+      status.textContent = data.success ? '✅ Cache invalidated — changes live in ~30s' : '❌ ' + data.error;
+    } catch {
+      status.textContent = '❌ Invalidation failed.';
+    }
+  });
+
+  // ── History ───────────────────────────────────────
+  function addHistory(filename, folder, url) {
+    uploadHistory.unshift({ filename, folder, url });
+    renderHistory();
+  }
+
+  function renderHistory() {
+    const list = document.getElementById('history-list');
+    if (!uploadHistory.length) {
+      list.innerHTML = '<li style="color:#888; font-size:0.85rem;">No uploads yet this session.</li>';
+      return;
+    }
+    list.innerHTML = uploadHistory.map(({ filename, folder, url }) => `
+      <li>
+        <span class="h-folder">${folder}/</span>
+        <span class="h-name">${filename}</span>
+        <button class="h-copy" onclick="copyText('${url}', this)">Copy</button>
+      </li>
+    `).join('');
+  }
+
+  function copyText(text, btn) {
+    navigator.clipboard.writeText(text).then(() => {
+      btn.textContent = 'Copied!';
+      setTimeout(() => btn.textContent = 'Copy', 1500);
+    });
+  }
+
+  // ── Width/height changes ──────────────────────────
+  ['width-input', 'height-input'].forEach(id => {
+    document.getElementById(id).addEventListener('input', () => {
+      document.querySelectorAll('.preset').forEach(b => b.classList.remove('active'));
+      if (currentFile) updatePreview();
+    });
+  });
+
+  // ── Nav ───────────────────────────────────────────
+  function switchNav(tab) {
+    document.getElementById('upload-section').style.display = tab === 'upload' ? 'grid' : 'none';
+    document.getElementById('library-section').style.display = tab === 'library' ? 'block' : 'none';
+    document.getElementById('nav-upload').classList.toggle('active', tab === 'upload');
+    document.getElementById('nav-library').classList.toggle('active', tab === 'library');
+    if (tab === 'library' && !libLoaded) loadLibrary();
+  }
+
+  // ── Media Library ─────────────────────────────────
+  let allImages = [];
+  let libLoaded = false;
+  let libFolder = 'all';
+  let selectedImage = null;
+
+  async function loadLibrary() {
+    if (!password) return;
+    document.getElementById('lib-loading').style.display = 'block';
+    document.getElementById('lib-grid').innerHTML = '';
+    document.getElementById('lib-empty').style.display = 'none';
+    try {
+      const res = await fetch('/api/list-images', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ password }),
+      });
+      const data = await res.json();
+      if (!res.ok || data.error) {
+        document.getElementById('lib-loading').textContent = 'Error: ' + (data.error || res.status);
+        return;
+      }
+      allImages = data.images || [];
+      libLoaded = true;
+      document.getElementById('lib-loading').style.display = 'none';
+      renderLib();
+    } catch (err) {
+      document.getElementById('lib-loading').textContent = 'Failed to load: ' + err.message;
+    }
+  }
+
+  function filterLib(btn, folder) {
+    document.querySelectorAll('.lib-filter').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    libFolder = folder;
+    renderLib();
+  }
+
+  function renderLib() {
+    const search = document.getElementById('lib-search').value.toLowerCase();
+    const filtered = allImages.filter(img =>
+      (libFolder === 'all' || img.folder === libFolder) &&
+      (!search || img.filename.toLowerCase().includes(search))
+    );
+    document.getElementById('lib-count').textContent = `${filtered.length} image${filtered.length !== 1 ? 's' : ''}`;
+    document.getElementById('lib-empty').style.display = filtered.length === 0 ? 'block' : 'none';
+    const grid = document.getElementById('lib-grid');
+    grid.innerHTML = filtered.map((img) => `
+      <div class="lib-card ${selectedImage?.key === img.key ? 'selected' : ''}" onclick="selectImage('${img.key}')">
+        <img class="lib-thumb" src="${img.url}" alt="${img.filename}" loading="lazy"
+          onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+        <div class="lib-thumb-placeholder" style="display:none">🖼️</div>
+        <div class="lib-info">
+          <div class="lib-filename">${img.filename}</div>
+          <div class="lib-meta">${formatSize(img.size)} · ${new Date(img.lastModified).toLocaleDateString('en-GB',{day:'numeric',month:'short',year:'numeric'})}</div>
+          <span class="lib-folder-tag lib-folder-${img.folder}">${img.folder}</span>
+        </div>
+      </div>
+    `).join('');
+  }
+
+  function selectImage(key) {
+    selectedImage = allImages.find(i => i.key === key);
+    if (!selectedImage) return;
+    document.getElementById('lib-detail').classList.add('open');
+    document.getElementById('lib-detail-name').textContent = selectedImage.filename;
+    document.getElementById('lib-detail-img').src = selectedImage.url;
+    document.getElementById('lib-detail-url').textContent = selectedImage.url;
+    document.getElementById('lib-detail-folder').textContent = selectedImage.folder;
+    document.getElementById('lib-detail-size').textContent = formatSize(selectedImage.size);
+    document.getElementById('lib-detail-date').textContent = new Date(selectedImage.lastModified).toLocaleDateString('en-GB',{day:'numeric',month:'short',year:'numeric'});
+    renderLib();
+  }
+
+  function closeDetail() {
+    selectedImage = null;
+    document.getElementById('lib-detail').classList.remove('open');
+    renderLib();
+  }
+
+  function copyDetail(type) {
+    if (!selectedImage) return;
+    const url = selectedImage.url;
+    const text = type === 'url' ? url
+      : type === 'md'   ? `![${selectedImage.filename}](${url})`
+      : `image: ${url}`;
+    navigator.clipboard.writeText(text).then(() => {
+      const map = { url: '.lib-copy-url', md: '.lib-copy-md', yaml: '.lib-copy-yaml' };
+      const btn = document.querySelector(map[type]);
+      const orig = btn.textContent;
+      btn.textContent = '✅ Copied!';
+      setTimeout(() => btn.textContent = orig, 1500);
+    });
+  }
+
+  function formatSize(bytes) {
+    if (bytes < 1024) return bytes + ' B';
+    if (bytes < 1024 * 1024) return (bytes / 1024).toFixed(1) + ' KB';
+    return (bytes / 1024 / 1024).toFixed(1) + ' MB';
+  }
+
+  // ── Init ──────────────────────────────────────────
+  renderPresets();
+</script>
+</body>
+</html>

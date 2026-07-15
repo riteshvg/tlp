@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="ATLAS Helper browser extension privacy policy">
+    <title>Privacy Policy - ATLAS Helper</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        h1 { font-size: 2em; margin-bottom: 0.5em; }
+        h2 { font-size: 1.5em; margin-top: 1.2em; margin-bottom: 0.5em; }
+        h3 { font-size: 1.1em; margin-top: 1em; margin-bottom: 0.4em; }
+        .header { margin-bottom: 2em; }
+        .contact { font-weight: 500; margin-bottom: 0.5em; }
+        p { margin-bottom: 1em; }
+        ul { margin-bottom: 1em; padding-left: 20px; }
+        li { margin-bottom: 0.5em; }
+        .note { background-color: #f5f5f5; padding: 10px; border-left: 4px solid #ddd; margin: 1em 0; }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <p class="contact"><strong>Developer:</strong> Ritesh Gupta</p>
+        <p class="contact"><strong>Contact:</strong> <a href="mailto:ritesh@thelearningproject.in">ritesh@thelearningproject.in</a></p>
+    </div>
+
+    <h1>Privacy Policy</h1>
+
+    <h2>1. Introduction</h2>
+    <p>ATLAS Helper ("the Extension") is a companion browser extension for ATLAS.ai. It provides a client-side bridge so ATLAS features—Tag Scanner and QA Automator—can access browser-side information needed for Adobe Experience Platform / Adobe Launch–related workflows (for example, runtime context on a page and network-related signals used for validation).</p>
+    <p>This policy describes what the Extension may access and how it is used. By installing the Extension, you agree to this policy.</p>
+
+    <h2>2. Single Purpose</h2>
+    <p>The Extension has one narrow purpose: to support ATLAS Tag Scanner and QA Automator when you use ATLAS.ai. It is not intended for unrelated features (for example, ad blocking, shopping, or general web browsing tools).</p>
+
+    <h2>3. Data the Extension May Access</h2>
+
+    <h3>3.1 Tab and Page Context</h3>
+    <p>The Extension may use the tabs permission to identify the active tab and relate operations to the correct page when you initiate a scan or QA workflow from ATLAS.</p>
+
+    <h3>3.2 Script Bridge on ATLAS Web App Pages</h3>
+    <p>The Extension injects packaged scripts (scripting, content scripts) only on URLs matched in the manifest:</p>
+    <ul>
+        <li><strong>Local development:</strong> http(s)://localhost:3000/* and http(s)://127.0.0.1:3000/*</li>
+        <li><strong>Adobe corporate:</strong> https://*.corp.adobe.com/*</li>
+    </ul>
+    <p>These scripts allow the ATLAS web application to communicate with the Extension in a controlled way.</p>
+
+    <h3>3.3 Debugger / DevTools Protocol (debugger)</h3>
+    <p>The Extension uses the debugger permission to attach to the browser's debugging interface for CDP-style capabilities required by QA Automator (for example, network-related inspection tied to validation workflows). This permission is used only to support the Extension's stated ATLAS workflows—not for unrelated debugging or surveillance.</p>
+
+    <h3>3.4 Host Access (<code>&lt;all_urls&gt;</code>)</h3>
+    <p>The manifest includes broad host access because users may run Tag Scanner / QA Automator against different customer websites and environments that are not known in advance. Access is tied to workflows you start in ATLAS (for example, scanning or validating a site you choose). The Extension does not use this access to run unrelated background crawling of your browsing activity.</p>
+
+    <h3>3.5 Categories of Information</h3>
+    <p>Depending on how you use ATLAS and which page you target, the Extension may process:</p>
+    <ul>
+        <li><strong>Technical / website content signals</strong> needed for implementation review (for example, page URL, and runtime-related data such as Adobe Launch <code>_satellite</code> / container-related context where present)</li>
+        <li><strong>Network-related technical signals</strong> used for QA Automator validation workflows</li>
+    </ul>
+    <p>The Extension is not designed to collect passwords, payment card data, or the contents of private communications as a product feature.</p>
+
+    <h2>4. Where Data Goes</h2>
+    <p>The Extension processes data locally and only passes minimal results to ATLAS when you explicitly run a workflow.</p>
+    <div class="note">
+        <strong>Note:</strong> [Add detail if this is accurate.]
+    </div>
+
+    <h2>5. Retention</h2>
+    <p>Browser-side processing is ephemeral during the workflow. Any server-side logs or outputs follow standard data retention practices.</p>
+
+    <h2>6. Security</h2>
+    <p>We use reasonable measures to protect data in transit (for example, HTTPS where applicable for service communication). No method is 100% secure.</p>
+
+    <h2>7. Your Choices</h2>
+    <p>You can remove the Extension at any time via Chrome's extension management. Uninstalling stops further access via the Extension.</p>
+
+    <h2>8. Children</h2>
+    <p>The Extension is intended for business / professional use and is not directed at children.</p>
+
+    <h2>9. Changes to This Policy</h2>
+    <p>We may update this policy by posting a new version on this page and updating the "Last updated" date. Continued use after changes means you accept the updated policy.</p>
+
+    <h2>10. Contact</h2>
+    <p>Questions about this policy: <a href="mailto:ritesh@thelearningproject.in">ritesh@thelearningproject.in</a></p>
+
+</body>
+</html>

@@ -1,0 +1,400 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/png" href="/tools/rovr/rovrlogo.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="build-date" content="2026-06-10" />
+    
+    
+    <script src="https://assets.adobedtm.com/204118644db8/290ae1adb65a/launch-e5ec7bf1a1ef-development.min.js" async></script>
+    <script type="module" crossorigin src="/tools/rovr/assets/index-Cnf1TPK2.js"></script>
+    <link rel="stylesheet" crossorigin href="/tools/rovr/assets/index-D1POE5XP.css">
+  <title>can you expain the workflow for web personalization channel? | Rovr</title>
+<meta name="description" content="Web Personalization Channel Workflow in Adobe Journey Optimizer Overview The Web Personalization channel in AJO allows you to deliver real-time, personalized…" />
+<link rel="canonical" href="https://thelearningproject.in/tools/rovr/q/can-you-expain-the-workflow-for-web-personalization-channel-0fe54d" />
+<meta property="og:title" content="can you expain the workflow for web personalization channel?" />
+<meta property="og:description" content="Web Personalization Channel Workflow in Adobe Journey Optimizer Overview The Web Personalization channel in AJO allows you to deliver real-time, personalized…" />
+<meta property="og:url" content="https://thelearningproject.in/tools/rovr/q/can-you-expain-the-workflow-for-web-personalization-channel-0fe54d" />
+<meta property="og:type" content="article" />
+<meta property="og:image" content="https://thelearningproject.in/tools/rovr/rovrlogo.png" />
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="can you expain the workflow for web personalization channel?" />
+<meta name="twitter:description" content="Web Personalization Channel Workflow in Adobe Journey Optimizer Overview The Web Personalization channel in AJO allows you to deliver real-time, personalized…" />
+</head>
+  <body>
+    <div id="root"><article><h1>can you expain the workflow for web personalization channel?</h1>
+<h2>Web Personalization Channel Workflow in Adobe Journey Optimizer</h2>
+<h3>Overview</h3>
+<p>The <strong>Web Personalization channel</strong> in AJO allows you to deliver <strong>real-time, personalized experiences directly on your website</strong> — modifying content, layouts, images, and text for different audience segments without requiring constant developer involvement.</p>
+<p><a href="https://video.tv.adobe.com/v/3432678/?learn=on">▶ Watch: Web Personalization Overview</a></p>
+<p><img src="https://raw.githubusercontent.com/AdobeDocs/journey-optimizer.en/main/help/using/../rn/assets/do-not-localize/web-authoring.gif" alt="Web Authoring"></p>
+<hr>
+<h3>Complete Web Personalization Channel Workflow</h3>
+<p>```</p>
+<p>STEP 1: IMPLEMENT WEB SDK ON YOUR WEBSITE</p>
+<p>↓</p>
+<p>STEP 2: CONFIGURE DATASTREAM</p>
+<p>↓</p>
+<p>STEP 3: INSTALL VISUAL EDITING HELPER EXTENSION</p>
+<p>↓</p>
+<p>STEP 4: CONFIGURE WEB CHANNEL SURFACE</p>
+<p>↓</p>
+<p>STEP 5: CREATE JOURNEY OR CAMPAIGN</p>
+<p>↓</p>
+<p>STEP 6: BUILD WEB EXPERIENCE (Visual or Code Editor)</p>
+<p>↓</p>
+<p>STEP 7: PERSONALIZATION &amp; DYNAMIC CONTENT</p>
+<p>↓</p>
+<p>STEP 8: SET UP EXPERIMENTS (A/B Testing)</p>
+<p>↓</p>
+<p>STEP 9: TEST &amp; PREVIEW</p>
+<p>↓</p>
+<p>STEP 10: PUBLISH &amp; ACTIVATE</p>
+<p>↓</p>
+<p>STEP 11: MONITOR &amp; REPORT</p>
+<p>```</p>
+<hr>
+<h3>Understanding Web Personalization Architecture</h3>
+<p>Before configuring, it is important to understand <strong>how web personalization flows</strong> from AJO to your website visitor.</p>
+<p>```</p>
+<p>WEB PERSONALIZATION FLOW:</p>
+<p>Visitor lands on your website</p>
+<p>↓</p>
+<p>Web SDK (alloy.js) fires sendEvent</p>
+<p>↓</p>
+<p>Adobe Edge Network receives request</p>
+<p>↓</p>
+<p>AJO evaluates:</p>
+<p>├── Is visitor in a personalized audience?</p>
+<p>├── Is there an active web campaign/journey?</p>
+<p>├── What content modifications apply?</p>
+<p>└── What offers are eligible?</p>
+<p>↓</p>
+<p>AJO returns personalization decisions</p>
+<p>↓</p>
+<p>Web SDK applies DOM modifications</p>
+<p>↓</p>
+<p>Visitor sees personalized experience</p>
+<p>```</p>
+<hr>
+<h3>Supported Implementation Types</h3>
+<p>AJO supports <strong>two implementation modes</strong> for web personalization:</p>
+<p>| Mode | Description | Best For |</p>
+<p>|---|---|---|</p>
+<p>| <strong>Client-Side Only</strong> | Web SDK on page requests and renders personalization | Most websites |</p>
+<p>| <strong>Hybrid Mode</strong> | Server-side API fetches decisions, Web SDK renders | Performance-critical sites |</p>
+<p>&gt; ⚠️ <strong>Server-side only implementation is NOT supported</strong> for the Web channel. If you have server-side only implementation, use the <strong>Code-based Experience channel</strong> instead.</p>
+<hr>
+<h3>STEP 1: Implement Web SDK on Your Website</h3>
+<h4>What is the Web SDK?</h4>
+<p>The <strong>Adobe Experience Platform Web SDK</strong> (also called `alloy.js`) is a <strong>JavaScript library</strong> that:</p>
+<ul>
+<li>✅ Sends visitor behavioral events to AEP</li>
+<li>✅ Requests personalization decisions from AJO</li>
+<li>✅ Renders DOM modifications on the page</li>
+<li>✅ Tracks interactions (clicks, impressions, conversions)</li>
+<li>✅ Manages visitor identity (ECID)</li>
+</ul>
+<p>&gt; ⚠️ <strong>Important:</strong> Your Web SDK version must be <strong>2.16 or above</strong> for web channel support.</p>
+<h4>Implementation Option A: Via Adobe Tags (Recommended)</h4>
+<p><strong>Prerequisites:</strong></p>
+<ul>
+<li>Adobe Data Collection access ✅</li>
+<li>Access to your website&#x27;s `&lt;head&gt;` tag ✅</li>
+</ul>
+<p><strong>Steps:</strong></p>
+<p>1. Go to <strong>Adobe Experience Platform Data Collection</strong> (launch.adobe.com)</p>
+<p>2. Click <strong>Tags</strong> → <strong>Properties</strong></p>
+<p>3. Click <strong>New Property</strong></p>
+<p>4. Enter:</p>
+<p>```</p>
+<p>Property Settings:</p>
+<p>├── Name: &quot;Luma Website - Production&quot;</p>
+<p>├── Platform: Web</p>
+<p>├── Domain: www.yourbrand.com</p>
+<p>└── Advanced Settings: default</p>
+<p>```</p>
+<p>5. Click <strong>Save</strong></p>
+<p>6. Open the property → click <strong>Extensions</strong></p>
+<p>7. Click <strong>Catalog</strong> → find <strong>Adobe Experience Platform Web SDK</strong></p>
+<p>8. Click <strong>Install</strong></p>
+<p>9. Configure Web SDK Extension:</p>
+<p>```</p>
+<p>Web SDK Extension Settings:</p>
+<p>├── Name: &quot;AEP Web SDK&quot;</p>
+<p>├── IMS Org ID: [Your Org ID - auto populated]</p>
+<p>├── Edge Domain: edge.adobedc.net (default)</p>
+<p>├── Datastream:</p>
+<p>│   ├── Production: [Your Production Datastream]</p>
+<p>│   ├── Staging: [Your Staging Datastream]</p>
+<p>│   └── Development: [Your Dev Datastream]</p>
+<p>└── Privacy:</p>
+<p>├── Default Consent: In (or Pending for consent-first)</p>
+<p>└── IDFA: Enabled</p>
+<p>```</p>
+<p>10. Click <strong>Save</strong></p>
+<p>11. Create a <strong>Rule</strong> for page load:</p>
+<p>```</p>
+<p>Rule Name: &quot;Send Page View Event&quot;</p>
+<p>Event:</p>
+<p>├── Extension: Core</p>
+<p>├── Event Type: Page Bottom (or Library Loaded)</p>
+<p>└── Order: 50</p>
+<p>Action:</p>
+<p>├── Extension: AEP Web SDK</p>
+<p>├── Action Type: Send Event</p>
+<p>├── Type: web.webpagedetails.pageViews</p>
+<p>├── XDM Data:</p>
+<p>│   ├── web.webPageDetails.name: {{Page Name}}</p>
+<p>│   ├── web.webPageDetails.URL: {{Page URL}}</p>
+<p>│   └── web.webReferrer.URL: {{Referring URL}}</p>
+<p>└── Render Decisions: ✅ TRUE (enables personalization rendering)</p>
+<p>```</p>
+<p>12. Click <strong>Save</strong> → <strong>Build</strong> → <strong>Publish</strong></p>
+<p>13. Copy the <strong>Tag embed code</strong> and paste into your website&#x27;s `&lt;head&gt;`:</p>
+<p>```html</p>
+<p>&lt;!-- Adobe Tags Embed Code --&gt;</p>
+<p>&lt;script src=&quot;https://assets.adobedtm.com/YOUR_PROPERTY_ID/launch-EN.min.js&quot;</p>
+<p>async&gt;&lt;/script&gt;</p>
+<p>```</p>
+<h4>Implementation Option B: Direct JavaScript (Manual)</h4>
+<p>If you prefer not to use Tags, implement Web SDK directly:</p>
+<p>```html</p>
+<p>&lt;!-- Step 1: Load Web SDK --&gt;</p>
+<p>&lt;script&gt;</p>
+<p>!function(n,o){o.forEach(function(o){n[o]||((n.__alloyNS=</p>
+<p>n.__alloyNS||[]).push(o),n[o]=function(){var u=arguments;</p>
+<p>return new Promise(function(i,l){n[o].q.push([i,l,u])})},</p>
+<p>n[o].q=[])})}(window,[&quot;alloy&quot;]);</p>
+<p>&lt;/script&gt;</p>
+<p>&lt;script src=&quot;https://cdn1.adoberesources.net/alloy/2.20.0/alloy.min.js&quot;</p>
+<p>async&gt;&lt;/script&gt;</p>
+<p>&lt;!-- Step 2: Configure Web SDK --&gt;</p>
+<p>&lt;script&gt;</p>
+<p>alloy(&quot;configure&quot;, {</p>
+<p>datastreamId: &quot;YOUR_DATASTREAM_ID&quot;,</p>
+<p>orgId: &quot;YOUR_ORG_ID@AdobeOrg&quot;,</p>
+<p>defaultConsent: &quot;in&quot;,</p>
+<p>clickCollectionEnabled: true,</p>
+<p>onBeforeEventSend: function(options) {</p>
+<p>// Add custom data before each event</p>
+<p>}</p>
+<p>});</p>
+<p>&lt;/script&gt;</p>
+<p>&lt;!-- Step 3: Send Page View &amp; Request Personalization --&gt;</p>
+<p>&lt;script&gt;</p>
+<p>alloy(&quot;sendEvent&quot;, {</p>
+<p>renderDecisions: true, // Enables automatic personalization rendering</p>
+<p>xdm: {</p>
+<p>eventType: &quot;web.webpagedetails.pageViews&quot;,</p>
+<p>web: {</p>
+<p>webPageDetails: {</p>
+<p>name: document.title,</p>
+<p>URL: window.location.href</p>
+<p>}</p>
+<p>}</p>
+<p>}</p>
+<p>});</p>
+<p>&lt;/script&gt;</p>
+<p>```</p>
+<h4>Implementation Option C: Hybrid Mode</h4>
+<p>For performance-critical websites that render server-side:</p>
+<p>```javascript</p>
+<p>// SERVER-SIDE: Fetch personalization decisions via Edge Network Server API</p>
+<p>POST https://server.adobedc.net/v2/interact</p>
+<p>Headers:</p>
+<p>├── Authorization: Bearer {ACCESS_TOKEN}</p>
+<p>├── x-gw-ims-org-id: {ORG_ID}</p>
+<p>└── Content-Type: application/json</p>
+<p>Body:</p>
+<p>{</p>
+<p>&quot;event&quot;: {</p>
+<p>&quot;xdm&quot;: {</p>
+<p>&quot;eventType&quot;: &quot;web.webpagedetails.pageViews&quot;,</p>
+<p>&quot;identityMap&quot;: {</p>
+<p>&quot;ECID&quot;: [{&quot;id&quot;: &quot;VISITOR_ECID&quot;, &quot;primary&quot;: true}]</p>
+<p>}</p>
+<p>}</p>
+<p>},</p>
+<p>&quot;query&quot;: {</p>
+<p>&quot;personalization&quot;: {</p>
+<p>&quot;surfaces&quot;: [&quot;web://www.yourbrand.com/home&quot;]</p>
+<p>}</p>
+<p>}</p>
+<p>}</p>
+<p>// CLIENT-SIDE: Apply the decisions received from server using Web SDK</p>
+<p>alloy(&quot;applyPropositions&quot;, {</p>
+<p>propositions: SERVER_RESPONSE.propositions</p>
+<p>});</p>
+<p>```</p>
+<hr>
+<h3>STEP 2: Configure Datastream</h3>
+<h4>Why is a Datastream Needed?</h4>
+<p>The <strong>Datastream</strong> tells Adobe&#x27;s Edge Network how to route data from your website to the correct AEP services.</p>
+<p>```</p>
+<p>Website (Web SDK)</p>
+<p>↓</p>
+<p>Adobe Edge Network</p>
+<p>↓</p>
+<p>Datastream (routing configuration)</p>
+<p>├── Adobe Experience Platform → Profile + Events</p>
+<p>├── Adobe Journey Optimizer → Personalization decisions</p>
+<p>└── Adobe Analytics → Reporting (optional)</p>
+<p>```</p>
+<h4>How to Configure Datastream for Web Personalization</h4>
+<p>1. Go to <strong>Adobe Data Collection</strong> → <strong>Datastreams</strong></p>
+<p>2. Click <strong>New Datastream</strong> (or edit existing)</p>
+<p>3. Enter:</p>
+<p>```</p>
+<p>Datastream Settings:</p>
+<p>├── Name: &quot;Luma Website - Production&quot;</p>
+<p>├── Event Schema: [Your XDM Web Schema]</p>
+<p>└── Description: &quot;Production datastream for website&quot;</p>
+<p>```</p>
+<p>4. Click <strong>Save</strong></p>
+<p>5. Add <strong>Adobe Experience Platform</strong> service:</p>
+<p>```</p>
+<p>AEP Service Settings:</p>
+<p>├── Enabled: ✅ YES</p>
+<p>├── Sandbox: [Your sandbox name]</p>
+<p>├── Event Dataset: [Your web events dataset]</p>
+<p>├── Profile Dataset: [Your profile dataset]</p>
+<p>├── Edge Segmentation: ✅ YES (enables real-time segment evaluation)</p>
+<p>├── Personalization Destinations: ✅ YES</p>
+<p>└── Adobe Journey Optimizer: ✅ YES (CRITICAL for web personalization)</p>
+<p>```</p>
+<p>&gt; ⚠️ <strong>Critical:</strong> You MUST enable <strong>Adobe Journey Optimizer</strong> in the datastream service for web personalization to work.</p>
+<p>```</p>
+<p>AJO Settings in Datastream:</p>
+<p>├── Adobe Journey Optimizer: ✅ ENABLED</p>
+<p>└── Dataset: [AJO Proposition Interactions Dataset]</p>
+<p>```</p>
+<p>6. Optionally add <strong>Adobe Analytics</strong> service:</p>
+<p>```</p>
+<p>Analytics Service Settings:</p>
+<p>├── Enabled: ✅ YES (if using Analytics for reporting)</p>
+<p>└── Report Suite: [Your report suite ID]</p>
+<p>```</p>
+<p>7. Click <strong>Save</strong></p>
+<p><img src="https://raw.githubusercontent.com/AdobeDocs/journey-optimizer.en/main/help/using/web/assets/web-aep-datastream-ajo.png" alt="AEP Datastream AJO"></p>
+<hr>
+<h3>STEP 3: Install Visual Editing Helper Extension</h3>
+<h4>What is the Visual Editing Helper?</h4>
+<p>The <strong>Adobe Experience Cloud Visual Editing Helper</strong> is a <strong>Chrome/Edge browser extension</strong> that enables the <strong>visual web designer</strong> in AJO to load your website inside the composer and make visual modifications.</p>
+<p><img src="https://raw.githubusercontent.com/AdobeDocs/journey-optimizer.en/main/help/using/web/assets/web-visual-editing-extension-edge.png" alt="Visual Editing Helper Extension"></p>
+<h4>Why is it needed?</h4>
+<p>Without the extension:</p>
+<ul>
+<li>❌ AJO cannot load your website inside the visual composer</li>
+<li>❌ Cross-origin restrictions prevent DOM inspection</li>
+<li>❌ Web SDK interactions cannot be simulated</li>
+</ul>
+<p>With the extension:</p>
+<ul>
+<li>✅ Your website loads inside the AJO visual composer</li>
+<li>✅ You can click on any element to modify it</li>
+<li>✅ Changes preview in real-time</li>
+<li>✅ Web SDK can be bypassed for authoring purposes</li>
+</ul>
+<h4>How to Install</h4>
+<p>1. Open <strong>Google Chrome</strong> or <strong>Microsoft Edge</strong></p>
+<p>2. Go to the Chrome Web Store</p>
+<p>3. Search for <strong>&quot;Adobe Experience Cloud Visual Editing Helper&quot;</strong></p>
+<p>4. Click <strong>Add to Chrome</strong> (or Add to Edge)</p>
+<p>5. Click <strong>Add Extension</strong> in the confirmation dialog</p>
+<p>6. The extension icon appears in your browser toolbar ✅</p>
+<h4>Extension Configuration</h4>
+<p>After installing:</p>
+<p>```</p>
+<p>Extension Settings:</p>
+<p>├── Allow on all sites: ✅ YES (recommended for authoring)</p>
+<p>├── Enable on specific sites:</p>
+<p>│   └── yourbrand.com ✅</p>
+<p>└── Disable on: (none)</p>
+<p>```</p>
+<p>&gt; ⚠️ <strong>Note:</strong> The Visual Editing Helper is only needed for <strong>authoring</strong> — it is not required for production delivery of personalization.</p>
+<hr>
+<h3>STEP 4: Configure Web Channel Surface</h3>
+<h4>What is a Web Channel Surface?</h4>
+<p>A <strong>Web Channel Surface</strong> (Channel Configuration) defines:</p>
+<ul>
+<li><strong>Which pages</strong> the web personalization applies to (URL matching rules)</li>
+<li><strong>What marketing action</strong> the surface uses (for governance)</li>
+<li><strong>Web property settings</strong> for the configuration</li>
+</ul>
+<h4>How to Create a Web Channel Surface</h4>
+<p><strong>Prerequisites:</strong></p>
+<ul>
+<li>Web SDK implemented on website ✅</li>
+<li>Datastream configured with AJO enabled ✅</li>
+<li><strong>Manage Messages Presets</strong> permission ✅</li>
+</ul>
+<p><strong>Steps:</strong></p>
+<p>1. Go to <strong>Administration</strong> → <strong>Channels</strong> → <strong>Channel Configurations</strong></p>
+<p>2. Click <strong>Create channel configuration</strong></p>
+<p>3. Enter a <strong>Name</strong> (e.g., &quot;Luma Website - All Pages&quot;)</p>
+<p>4. Select <strong>Web</strong> as the channel type</p>
+<p>5. Configure <strong>Web Settings</strong>:</p>
+<h4>URL Matching Rules</h4>
+<p>URL matching rules define <strong>which pages</strong> the web experience is delivered on:</p>
+<p>```</p>
+<p>URL Matching Rule Types:</p>
+<p>1. EQUALS (Exact Match)</p>
+<p>├── Rule: URL equals &quot;https://www.yourbrand.com/home&quot;</p>
+<p>└── Matches: Only exactly that URL</p>
+<p>2. STARTS WITH</p>
+<p>├── Rule: URL starts with &quot;https://www.yourbrand.com/products&quot;</p>
+<p>└── Matches: All product pages</p>
+<p>3. ENDS WITH</p>
+<p>├── Rule: URL ends with &quot;/checkout&quot;</p>
+<p>└── Matches: All checkout pages regardless of path</p>
+<p>4. CONTAINS</p>
+<p>├── Rule: URL contains &quot;category=shoes&quot;</p>
+<p>└── Matches: All pages with shoes category parameter</p>
+<p>5. DOES NOT EQUAL</p>
+<p>├── Rule: URL does not equal &quot;https://www.yourbrand.com/admin&quot;</p>
+<p>└── Excludes: Admin pages from personalization</p>
+<p>6. DOES NOT CONTAIN</p>
+<p>├── Rule: URL does not contain &quot;?preview=true&quot;</p>
+<p>└── Excludes: Preview pages from personalization</p>
+<p>7. REGULAR EXPRESSION</p>
+<p>├── Rule: URL matches regex &quot;^https://www\.yourbrand\.com/products/[0-9]+&quot;</p>
+<p>└── Matches: All product detail pages with numeric IDs</p>
+<p>```</p>
+<p><strong>Example URL Matching Configurations:</strong></p>
+<p>```</p>
+<p>Configuration 1: Homepage Only</p>
+<p>└── Rule: URL equals &quot;https://www.yourbrand.com/&quot;</p>
+<p>Configuration 2: All Product Pages</p>
+<p>└── Rule: URL starts with &quot;https://www.yourbrand.com/products&quot;</p>
+<p>Configuration 3: Entire Website (except admin)</p>
+<p>├── Rule: URL starts with &quot;https://www.yourbrand.com&quot;</p>
+<p>└── Rule: URL does not contain &quot;/admin&quot;</p>
+<p>Configuration 4: Campaign Landing Pages</p>
+<p>└── Rule: URL contains &quot;campaign=summer2024&quot;</p>
+<p>```</p>
+<h4>Web Property Settings</h4>
+<p>```</p>
+<p>Web Property Settings:</p>
+<p>├── Page Match: [URL Matching Rules above]</p>
+<p>├── Enable Single Page Application (SPA) mode:</p>
+<p>│   ├── YES → For React, Angular, Vue.js apps</p>
+<p>│   └── NO → For traditional multi-page websites</p>
+<p>└── Marketing Action: [Select for data governance]</p>
+<p>└── Options: &quot;Web Personalization&quot;, &quot;On-Site Personalization&quot;</p>
+<p>```</p>
+<p>6. Assign <strong>Marketing Action</strong> for data governance</p>
+<p>7. Click <strong>Submit</strong></p>
+<p>8. Status shows ✅ <strong>Active</strong></p>
+<hr>
+<h3>STEP 5: Create Journey or Campaign</h3>
+<h4>Option A: Campaign (Most Common for Web)</h4>
+<p><strong>Web personalization is most commonly delivered via Campaigns</strong> since website visitors don&#x27;t always have a known profile to trigger journey events.</p>
+<p>```</p>
+<p>Example: Homepage Hero Personalization Campaign</p>
+<p>Target: &quot;Summer Sale Interested</p>
+</article>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "can you expain the workflow for web personalization channel?", "acceptedAnswer": {"@type": "Answer", "text": "Web Personalization Channel Workflow in Adobe Journey Optimizer Overview The Web Personalization channel in AJO allows you to deliver real-time, personalized experiences directly on your website \u2014 modifying content, layouts, images, and text for different audience segments without requiring constant developer involvement. \u25b6 Watch: Web Personalization Overview(https://video.tv.adobe.com/v/3432678/?learn=on) !Web Authoring(https://raw.githubusercontent.com/AdobeDocs/journey-optimizer.en/main/help/using/../rn/assets/do-not-localize/web-authoring.gif) --- Complete Web Personalization Channel Workflow STEP 1: IMPLEMENT WEB SDK ON YOUR WEBSITE \u2193 STEP 2: CONFIGURE DATASTREAM \u2193 STEP 3: INSTALL VISUAL EDITING HELPER EXTENSION \u2193 STEP 4: CONFIGURE WEB CHANNEL SURFACE \u2193 STEP 5: CREATE JOURNEY OR CAMPAIGN \u2193 STEP 6: BUILD WEB EXPERIENCE (Visual or Code Editor) \u2193 STEP 7: PERSONALIZATION & DYNAMIC CONTENT \u2193 STEP 8: SET UP EXPERIMENTS (A/B Testing) \u2193 STEP 9: TEST & PREVIEW \u2193 STEP 10: PUBLISH & ACTIVATE \u2193 STEP 11: MONITOR & REPORT --- Understanding Web Personalization Architecture Before configuring, it is important to understand how web personalization flows from AJO to your website visitor. WEB PERSONALIZATION FLOW: Visitor lands on your website \u2193 Web SDK (alloy.js) fires sendEvent \u2193 Adobe Edge Network receives request \u2193 AJO evaluates: \u251c\u2500\u2500 Is visitor in a personalized audience? \u251c\u2500\u2500 Is there an active web campaign/journey? \u251c\u2500\u2500 What content modifications apply? \u2514\u2500\u2500 What offers are eligible? \u2193 AJO returns personalization decisions \u2193 Web SDK applies DOM modifications \u2193 Visitor sees personalized experience --- Supported Implementation Types AJO supports two implementation modes for web personalization: | Mode | Description | Best For | |---|---|---| | Client-Side Only | Web SDK on page requests and renders personalization | Most websites | | Hybrid Mode | Server-side API fetches decisions, Web SDK renders | Performance-critical sites | \u26a0\ufe0f Server-side only implementation is NOT\u2026"}}]}</script></div>
+  </body>
+</html>

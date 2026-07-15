@@ -1,0 +1,222 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/png" href="/tools/rovr/rovrlogo.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="build-date" content="2026-06-10" />
+    
+    
+    <script src="https://assets.adobedtm.com/204118644db8/290ae1adb65a/launch-e5ec7bf1a1ef-development.min.js" async></script>
+    <script type="module" crossorigin src="/tools/rovr/assets/index-Cnf1TPK2.js"></script>
+    <link rel="stylesheet" crossorigin href="/tools/rovr/assets/index-D1POE5XP.css">
+  <title>94. How do you verify event ingestion from Web/Mobile SDK? | Rovr</title>
+<meta name="description" content="How Do You Verify Event Ingestion from Web/Mobile SDK? Overview Verifying that events are being correctly ingested from your Web SDK or Mobile SDK into Adobe…" />
+<link rel="canonical" href="https://thelearningproject.in/tools/rovr/q/94-how-do-you-verify-event-ingestion-from-web-mobile-sdk-bfe16a" />
+<meta property="og:title" content="94. How do you verify event ingestion from Web/Mobile SDK?" />
+<meta property="og:description" content="How Do You Verify Event Ingestion from Web/Mobile SDK? Overview Verifying that events are being correctly ingested from your Web SDK or Mobile SDK into Adobe…" />
+<meta property="og:url" content="https://thelearningproject.in/tools/rovr/q/94-how-do-you-verify-event-ingestion-from-web-mobile-sdk-bfe16a" />
+<meta property="og:type" content="article" />
+<meta property="og:image" content="https://thelearningproject.in/tools/rovr/rovrlogo.png" />
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="94. How do you verify event ingestion from Web/Mobile SDK?" />
+<meta name="twitter:description" content="How Do You Verify Event Ingestion from Web/Mobile SDK? Overview Verifying that events are being correctly ingested from your Web SDK or Mobile SDK into Adobe…" />
+</head>
+  <body>
+    <div id="root"><article><h1>94. How do you verify event ingestion from Web/Mobile SDK?</h1>
+<h2>How Do You Verify Event Ingestion from Web/Mobile SDK?</h2>
+<h3>Overview</h3>
+<p>Verifying that events are being correctly ingested from your Web SDK or Mobile SDK into Adobe Experience Platform is critical for ensuring data quality and journey execution. AJO provides multiple tools and methods to validate event ingestion.</p>
+<hr>
+<h3>1. Using Adobe Experience Platform Assurance</h3>
+<p><strong>Adobe Experience Platform Assurance</strong> is the primary tool for validating SDK event ingestion in real-time.</p>
+<h4>How to Access Assurance:</h4>
+<p>1. Navigate to <strong>Adobe Experience Platform</strong></p>
+<p>2. Go to <strong>Data Collection</strong> → <strong>Assurance</strong></p>
+<p>3. Click <strong>Create Session</strong></p>
+<p>4. Select your <strong>property</strong> (web or mobile)</p>
+<p>5. Generate a <strong>session URL or QR code</strong></p>
+<p>6. Open the URL or scan the QR code on your device/app</p>
+<h4>What You Can Monitor:</h4>
+<ul>
+<li><strong>Event validation</strong> – See every event fired by your SDK in real-time</li>
+<li><strong>Event payload structure</strong> – View complete JSON payload for each event</li>
+<li><strong>XDM schema compliance</strong> – Verify events match your XDM schema</li>
+<li><strong>Network requests</strong> – Monitor HTTP calls to Edge Network</li>
+<li><strong>Response data</strong> – See what Edge Network returns to your app</li>
+<li><strong>SDK configuration</strong> – Verify SDK settings and initialization</li>
+</ul>
+<h4>Real-Time Event Monitoring:</h4>
+<p>Once connected to an Assurance session:</p>
+<p>1. Interact with your web/mobile app (click buttons, navigate pages, etc.)</p>
+<p>2. <strong>Events appear in real-time</strong> in the Assurance interface</p>
+<p>3. <strong>Click on each event</strong> to expand and view full payload details</p>
+<p>4. <strong>Verify field mapping</strong> – Confirm data is captured as expected</p>
+<hr>
+<h3>2. Datastream Debugging</h3>
+<p><strong>Datastream Debugging</strong> allows you to capture and inspect Edge Network traffic for events sent from your SDK.</p>
+<h4>How to Enable:</h4>
+<p>1. Navigate to <strong>Data Collection</strong> → <strong>Datastreams</strong></p>
+<p>2. Select your <strong>datastream</strong></p>
+<p>3. Click <strong>Edit</strong></p>
+<p>4. Enable <strong>Debugging</strong></p>
+<p>5. Save your changes</p>
+<h4>View Datastream Logs:</h4>
+<p>1. Go to <strong>Data Collection</strong> → <strong>Edge Network Debugger</strong></p>
+<p>2. Filter by your datastream</p>
+<p>3. View all events sent to Edge Network within the last 24 hours</p>
+<p>4. Inspect request/response payloads</p>
+<hr>
+<h3>3. Adobe Experience Platform Datasets</h3>
+<p><strong>Real-time validation</strong> of event ingestion by checking if data arrives in your AEP datasets.</p>
+<h4>How to Check:</h4>
+<p>1. Navigate to <strong>Adobe Experience Platform</strong></p>
+<p>2. Go to <strong>Data Management</strong> → <strong>Datasets</strong></p>
+<p>3. Select your <strong>event dataset</strong> (created for SDK events)</p>
+<p>4. Click the <strong>Dataset Activity</strong> tab</p>
+<p>5. View <strong>Ingestion metrics</strong>:</p>
+<ul>
+<li><strong>Batches ingested</strong> – Number of data batches received</li>
+<li><strong>Records ingested</strong> – Total event records</li>
+<li><strong>Last batch timestamp</strong> – When the latest data arrived</li>
+<li><strong>Failed records</strong> – Any ingestion errors</li>
+</ul>
+<h4>Real-Time Monitoring:</h4>
+<ul>
+<li><strong>Refresh the page</strong> to see updated ingestion metrics</li>
+<li>Monitor ingestion <strong>in near real-time</strong> (typically 15-30 second latency)</li>
+<li>Check for <strong>failed batches</strong> or <strong>validation errors</strong></li>
+</ul>
+<hr>
+<h3>4. Query Service for Event Verification</h3>
+<p><strong>Query Service</strong> allows you to run SQL queries against ingested events to verify data quality.</p>
+<h4>How to Access:</h4>
+<p>1. Navigate to <strong>Adobe Experience Platform</strong></p>
+<p>2. Go to <strong>Data Management</strong> → <strong>Query Service</strong></p>
+<p>3. Click <strong>Create Query</strong></p>
+<p>4. Write a SQL query to inspect your event data</p>
+<h4>Example Queries:</h4>
+<p><strong>Check latest events ingested:</strong></p>
+<p>```sql</p>
+<p>SELECT</p>
+<p>timestamp,</p>
+<p>eventType,</p>
+<p>identityMap,</p>
+<p>_id</p>
+<p>FROM</p>
+<p>your_event_dataset</p>
+<p>ORDER BY</p>
+<p>timestamp DESC</p>
+<p>LIMIT 10</p>
+<p>```</p>
+<p><strong>Verify event count by type:</strong></p>
+<p>```sql</p>
+<p>SELECT</p>
+<p>eventType,</p>
+<p>COUNT(*) as event_count</p>
+<p>FROM</p>
+<p>your_event_dataset</p>
+<p>WHERE</p>
+<p>timestamp &gt; NOW() - INTERVAL &#x27;1 hour&#x27;</p>
+<p>GROUP BY</p>
+<p>eventType</p>
+<p>ORDER BY</p>
+<p>event_count DESC</p>
+<p>```</p>
+<p><strong>Check for missing required fields:</strong></p>
+<p>```sql</p>
+<p>SELECT</p>
+<p>COUNT(*) as records_missing_email,</p>
+<p>COUNT(CASE WHEN identityMap.email IS NOT NULL THEN 1 END) as records_with_email</p>
+<p>FROM</p>
+<p>your_event_dataset</p>
+<p>WHERE</p>
+<p>timestamp &gt; NOW() - INTERVAL &#x27;24 hours&#x27;</p>
+<p>```</p>
+<hr>
+<h3>5. Profile Data Verification</h3>
+<p><strong>Verify that ingested events are creating/updating customer profiles</strong> in Real-time Customer Profile.</p>
+<h4>How to Check:</h4>
+<p>1. Navigate to <strong>Adobe Experience Platform</strong></p>
+<p>2. Go to <strong>Customer</strong> → <strong>Profiles</strong></p>
+<p>3. Use <strong>Identity namespace</strong> to search for a test profile</p>
+<p>4. Click on the profile to view:</p>
+<ul>
+<li><strong>Profile attributes</strong> – Data from ingested events</li>
+<li><strong>Experience events</strong> – Timeline of events associated with this profile</li>
+<li><strong>Segment membership</strong> – Audiences the profile qualifies for</li>
+</ul>
+<h4>Real-Time Profile Updates:</h4>
+<ul>
+<li>Profile data is typically <strong>available within 15-30 seconds</strong> after event ingestion</li>
+<li>Click <strong>Refresh</strong> to see updated profile data</li>
+<li>View <strong>Experience events tab</strong> to see ingested event data</li>
+</ul>
+<hr>
+<h3>6. Journey Validation</h3>
+<p><strong>Verify events are triggering journeys correctly</strong> by checking journey execution logs.</p>
+<h4>How to Check:</h4>
+<p>1. Navigate to <strong>Journeys</strong></p>
+<p>2. Open a journey that uses your events as entry triggers</p>
+<p>3. Click the <strong>Reports</strong> tab</p>
+<p>4. Check <strong>Live Reports</strong> (last 24 hours):</p>
+<ul>
+<li>Profiles entered the journey</li>
+<li>Actions executed</li>
+<li>Events triggered the journey step</li>
+</ul>
+<h4>Debug Entry Issues:</h4>
+<p>If profiles aren&#x27;t entering a journey:</p>
+<p>1. Check <strong>event ingestion</strong> using Assurance or Datastream Debugging</p>
+<p>2. Verify <strong>journey entry criteria</strong> match your event structure</p>
+<p>3. Check <strong>audience eligibility</strong> if journey uses a segment as entry condition</p>
+<p>4. Review <strong>journey publication status</strong> — ensure journey is live, not paused</p>
+<hr>
+<h3>7. Test Event Triggering</h3>
+<p><strong>Send test events</strong> directly from the UI to validate your SDK integration.</p>
+<h4>How to Test:</h4>
+<p>1. In <strong>Adobe Experience Platform</strong>, go to <strong>Data Collection</strong></p>
+<p>2. Select your <strong>Event Dataset</strong></p>
+<p>3. Click <strong>Send Test Data</strong></p>
+<p>4. Define your <strong>test event payload</strong> (JSON format)</p>
+<p>5. Click <strong>Send</strong></p>
+<p>6. Verify the event appears in:</p>
+<ul>
+<li>Dataset activity metrics</li>
+<li>Customer profiles</li>
+<li>Journey execution logs</li>
+</ul>
+<hr>
+<h3>Quick Verification Checklist</h3>
+<p>| Step | Tool | What to Verify |</p>
+<p>|---|---|---|</p>
+<p>| <strong>1. SDK events firing</strong> | Assurance | Events appear in real-time session |</p>
+<p>| <strong>2. Event payload structure</strong> | Assurance | Full JSON payload matches XDM schema |</p>
+<p>| <strong>3. Edge Network delivery</strong> | Datastream Debugging | Events reach Edge Network successfully |</p>
+<p>| <strong>4. Dataset ingestion</strong> | Dataset Activity | Batch ingestion metrics increasing |</p>
+<p>| <strong>5. Data quality</strong> | Query Service | Required fields are populated |</p>
+<p>| <strong>6. Profile updates</strong> | Profile UI | Profile attributes reflect ingested data |</p>
+<p>| <strong>7. Journey triggering</strong> | Journey Reports | Profiles entering journey as expected |</p>
+<hr>
+<h3>Common Issues &amp; Solutions</h3>
+<p>| Issue | Solution |</p>
+<p>|---|---|</p>
+<p>| <strong>No events in Assurance</strong> | Verify Assurance session is active; check SDK initialization |</p>
+<p>| <strong>Events not in dataset</strong> | Check datastream configuration; verify event mapping to schema |</p>
+<p>| <strong>Profile not updating</strong> | Verify identity namespace used; check data ingestion lag (15-30 sec) |</p>
+<p>| <strong>Journey not triggering</strong> | Verify event entry condition matches ingested event structure |</p>
+<p>| <strong>Failed ingestion batches</strong> | Check XDM schema compliance; review error logs in dataset |</p>
+<p>| <strong>High event latency</strong> | Normal delay is 15-30 seconds; check system performance |</p>
+<hr>
+<h3>Best Practices</h3>
+<p>✓ <strong>Use Assurance first</strong> – Start with real-time validation in Assurance</p>
+<p>✓ <strong>Enable Datastream Debugging</strong> – Monitor all Edge Network traffic during testing</p>
+<p>✓ <strong>Check multiple profiles</strong> – Test with different customer segments</p>
+<p>✓ <strong>Query datasets regularly</strong> – Use Query Service for data quality audits</p>
+<p>✓ <strong>Monitor ingestion metrics</strong> – Set up alerts for failed batches</p>
+<p>✓ <strong>Test end-to-end</strong> – Verify events flow all the way to journeys</p>
+<p>✓ <strong>Document test results</strong> – Keep records of validation tests for compliance</p>
+</article>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "94. How do you verify event ingestion from Web/Mobile SDK?", "acceptedAnswer": {"@type": "Answer", "text": "How Do You Verify Event Ingestion from Web/Mobile SDK? Overview Verifying that events are being correctly ingested from your Web SDK or Mobile SDK into Adobe Experience Platform is critical for ensuring data quality and journey execution. AJO provides multiple tools and methods to validate event ingestion. --- 1. Using Adobe Experience Platform Assurance Adobe Experience Platform Assurance is the primary tool for validating SDK event ingestion in real-time. How to Access Assurance: 1. Navigate to Adobe Experience Platform 2. Go to Data Collection \u2192 Assurance 3. Click Create Session 4. Select your property (web or mobile) 5. Generate a session URL or QR code 6. Open the URL or scan the QR code on your device/app What You Can Monitor: - Event validation \u2013 See every event fired by your SDK in real-time - Event payload structure \u2013 View complete JSON payload for each event - XDM schema compliance \u2013 Verify events match your XDM schema - Network requests \u2013 Monitor HTTP calls to Edge Network - Response data \u2013 See what Edge Network returns to your app - SDK configuration \u2013 Verify SDK settings and initialization Real-Time Event Monitoring: Once connected to an Assurance session: 1. Interact with your web/mobile app (click buttons, navigate pages, etc.) 2. Events appear in real-time in the Assurance interface 3. Click on each event to expand and view full payload details 4. Verify field mapping \u2013 Confirm data is captured as expected --- 2. Datastream Debugging Datastream Debugging allows you to capture and inspect Edge Network traffic for events sent from your SDK. How to Enable: 1. Navigate to Data Collection \u2192 Datastreams 2. Select your datastream 3. Click Edit 4. Enable Debugging 5. Save your changes View Datastream Logs: 1. Go to Data Collection \u2192 Edge Network Debugger 2. Filter by your datastream 3. View all events sent to Edge Network within the last 24 hours 4. Inspect request/response payloads --- 3. Adobe Experience Platform Datasets Real-time validation of event\u2026"}}]}</script></div>
+  </body>
+</html>

@@ -1,0 +1,125 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/png" href="/tools/rovr/rovrlogo.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="build-date" content="2026-06-10" />
+    
+    
+    <script src="https://assets.adobedtm.com/204118644db8/290ae1adb65a/launch-e5ec7bf1a1ef-development.min.js" async></script>
+    <script type="module" crossorigin src="/tools/rovr/assets/index-Cnf1TPK2.js"></script>
+    <link rel="stylesheet" crossorigin href="/tools/rovr/assets/index-D1POE5XP.css">
+  <title>What are the steps to create a segment in CJA and export it to Target? | Rovr</title>
+<meta name="description" content="Creating a Segment in CJA and Exporting It to Adobe Target Based on the available documentation, here is what I can directly confirm about segments in…" />
+<link rel="canonical" href="https://thelearningproject.in/tools/rovr/q/what-are-the-steps-to-create-a-segment-in-cja-and-export-it-81c547" />
+<meta property="og:title" content="What are the steps to create a segment in CJA and export it to Target?" />
+<meta property="og:description" content="Creating a Segment in CJA and Exporting It to Adobe Target Based on the available documentation, here is what I can directly confirm about segments in…" />
+<meta property="og:url" content="https://thelearningproject.in/tools/rovr/q/what-are-the-steps-to-create-a-segment-in-cja-and-export-it-81c547" />
+<meta property="og:type" content="article" />
+<meta property="og:image" content="https://thelearningproject.in/tools/rovr/rovrlogo.png" />
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="What are the steps to create a segment in CJA and export it to Target?" />
+<meta name="twitter:description" content="Creating a Segment in CJA and Exporting It to Adobe Target Based on the available documentation, here is what I can directly confirm about segments in…" />
+</head>
+  <body>
+    <div id="root"><article><h1>What are the steps to create a segment in CJA and export it to Target?</h1>
+<h2>Creating a Segment in CJA and Exporting It to Adobe Target</h2>
+<p>Based on the available documentation, here is what I can directly confirm about segments in Customer Journey Analytics (CJA).</p>
+<hr>
+<h3>Creating a Segment in CJA</h3>
+<h4>Option 1: Quick Segment (Simple Criteria)</h4>
+<p>Quick segments allow you to create segments directly within a CJA project without opening the full Segment Builder.</p>
+<p><strong>Prerequisites:</strong></p>
+<ul>
+<li>Access to a Customer Journey Analytics project</li>
+<li>Appropriate component permissions</li>
+</ul>
+<p><strong>Steps:</strong></p>
+<p>1. Open your <strong>Customer Journey Analytics</strong> project in the UI.</p>
+<p>2. Click the <strong>+ Add</strong> button in the segment drop zone at the top of your project, or right-click a dimension/metric value directly in a visualization.</p>
+<p>3. Define your segment criteria using the simplified interface — you can add up to <strong>3 rules</strong> using simple include/exclude conditions.</p>
+<p>4. Click <strong>Apply</strong> to apply the segment immediately to your project and see results in real time.</p>
+<p><a href="https://video.tv.adobe.com/v/343743/?quality=12&amp;learn=on">▶ Watch: Create a Quick Segment</a></p>
+<p>&gt; <strong>Note:</strong> &quot;Filters&quot; have been renamed <strong>&quot;Segments&quot;</strong> in the Customer Journey Analytics interface.</p>
+<hr>
+<h4>Option 2: Full Segment Builder (Complex Criteria)</h4>
+<p>For more advanced segmentation logic, use the full <strong>Segment Builder</strong>:</p>
+<p>1. Navigate to <strong>Components</strong> &gt; <strong>Segments</strong> in CJA.</p>
+<p>2. Click <strong>+ Create</strong> to open the Segment Builder.</p>
+<p>3. Define your segment logic using dimensions, metrics, and events across multiple containers (Event, Session, Person).</p>
+<p>4. Click <strong>Save</strong> to save the segment for reuse across projects.</p>
+<hr>
+<h3>Exporting CJA Audiences to Adobe Target</h3>
+<p>Exporting CJA-built segments directly to Adobe Target involves a workflow through <strong>Adobe Experience Platform (AEP)</strong>. Here is the general approach based on available documentation:</p>
+<h4>Step 1: Identify Your Audiences in AEP</h4>
+<p>Before ingesting or exporting, identify the audiences you want to work with:</p>
+<p>1. In the <strong>Experience Platform UI</strong>, select <strong>Customer</strong> &gt; <strong>Audiences</strong>.</p>
+<p>2. Select <strong>Browse</strong> and search for the audiences you want to use.</p>
+<p>3. Note the <strong>Audience ID</strong> for each audience for later use.</p>
+<p><img src="https://raw.githubusercontent.com/AdobeDocs/analytics-platform.en/main/help/use-cases/data-ingestion/assets/audiences.png" alt="Audiences in AEP"></p>
+<hr>
+<h4>Step 2: Create a Profile-Enabled Dataset</h4>
+<p>You need a dataset based on the <strong>XDM Individual Profile</strong> schema to hold exported audience members.</p>
+<p>Use the <strong>Catalog Service API</strong> to create the dataset (this cannot be done via the UI for this schema type):</p>
+<p>```shell</p>
+<p>curl -X POST \</p>
+<p>&#x27;https://platform.adobe.io/data/foundation/catalog/dataSets?requestDataSource=true&#x27; \</p>
+<p>-H &#x27;Authorization: Bearer {ACCESS_TOKEN}&#x27; \</p>
+<p>-H &#x27;Content-Type: application/json&#x27; \</p>
+<p>-H &#x27;x-api-key: {API_KEY}&#x27; \</p>
+<p>-H &#x27;x-gw-ims-org-id: {ORG_ID}&#x27; \</p>
+<p>-H &#x27;x-sandbox-name: {SANDBOX_NAME}&#x27; \</p>
+<p>-d &#x27;{</p>
+<p>&quot;name&quot;: &quot;Segment Export Job Dataset for CJA&quot;,</p>
+<p>&quot;schemaRef&quot;: {</p>
+<p>&quot;id&quot;: &quot;_xdm.context.profile__union&quot;,</p>
+<p>&quot;contentType&quot;: &quot;application/vnd.adobe.xed+json;version=1&quot;</p>
+<p>},</p>
+<p>&quot;fileDescription&quot;: {</p>
+<p>&quot;persistet&quot;: true,</p>
+<p>&quot;containerFormat&quot;: &quot;parquet&quot;,</p>
+<p>&quot;format&quot;: &quot;parquet&quot;</p>
+<p>}</p>
+<p>}&#x27;</p>
+<p>```</p>
+<p>The response will return a `DATASET_ID` you will need in the next step.</p>
+<hr>
+<h4>Step 3: Export the Audience Using the Segmentation API</h4>
+<p>Use the `/export/jobs` endpoint of the <strong>AEP Segmentation Service API</strong> to persist audience members to the dataset created above:</p>
+<ul>
+<li>Export jobs are <strong>asynchronous processes</strong></li>
+<li>You can programmatically <strong>retrieve, create, and cancel</strong> export jobs via the API</li>
+</ul>
+<p>&gt; <strong>Prerequisite:</strong> Review the Segmentation API getting started guide for required headers and authentication details before making API calls.</p>
+<p><img src="https://raw.githubusercontent.com/AdobeDocs/analytics-platform.en/main/help/use-cases/data-ingestion/assets/segment-for-export.png" alt="Segment for Export"></p>
+<hr>
+<h4>Step 4: Connect the Dataset to CJA</h4>
+<p>Once the audience data is exported to the dataset:</p>
+<p>1. In <strong>CJA</strong>, navigate to <strong>Connections</strong>.</p>
+<p>2. Add the newly created dataset to your connection.</p>
+<p><img src="https://raw.githubusercontent.com/AdobeDocs/analytics-platform.en/main/help/use-cases/data-ingestion/assets/connection-add-dataset.png" alt="Add Dataset to Connection"></p>
+<hr>
+<h4>Step 5: Activate the Audience to Adobe Target</h4>
+<p>To deliver the audience to <strong>Adobe Target</strong>:</p>
+<p>1. In <strong>AEP</strong>, navigate to <strong>Destinations</strong>.</p>
+<p>2. Select the <strong>Adobe Target</strong> destination (available natively — no Audience Manager license required).</p>
+<p>3. Activate your exported audience to the Target destination.</p>
+<p>4. In <strong>Adobe Target</strong>, the audience will be available for use in <strong>A/B tests, Experience Targeting (XT), Automated Personalization</strong>, and other activity types.</p>
+<hr>
+<h3>Key Considerations</h3>
+<p>| Topic | Detail |</p>
+<p>|---|---|</p>
+<p>| <strong>Adobe Target destination</strong> | No Audience Manager license required |</p>
+<p>| <strong>Export jobs</strong> | Asynchronous — allow time for completion before activating |</p>
+<p>| <strong>Schema requirement</strong> | Must use `_xdm.context.profile__union` for profile-enabled datasets |</p>
+<p>| <strong>Quick vs. Full segments</strong> | Quick segments are project-scoped; Full Segment Builder segments are reusable across CJA |</p>
+<hr>
+<p>If you need more detail on a specific step — such as the Target destination configuration or the Segmentation API authentication — feel free to ask!</p>
+<h2>Sources</h2>
+<ul>
+<li><a href="https://experienceleague.adobe.com/en/docs/analytics-platform/using/cja-usecases/data-ingestion/ingest-aep-segments">Ingest and use Experience Platform audiences</a></li>
+</ul></article>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "What are the steps to create a segment in CJA and export it to Target?", "acceptedAnswer": {"@type": "Answer", "text": "Creating a Segment in CJA and Exporting It to Adobe Target Based on the available documentation, here is what I can directly confirm about segments in Customer Journey Analytics (CJA). --- Creating a Segment in CJA Option 1: Quick Segment (Simple Criteria) Quick segments allow you to create segments directly within a CJA project without opening the full Segment Builder. Prerequisites: - Access to a Customer Journey Analytics project - Appropriate component permissions Steps: 1. Open your Customer Journey Analytics project in the UI. 2. Click the + Add button in the segment drop zone at the top of your project, or right-click a dimension/metric value directly in a visualization. 3. Define your segment criteria using the simplified interface \u2014 you can add up to 3 rules using simple include/exclude conditions. 4. Click Apply to apply the segment immediately to your project and see results in real time. \u25b6 Watch: Create a Quick Segment(https://video.tv.adobe.com/v/343743/?quality=12&learn=on) Note: \"Filters\" have been renamed \"Segments\" in the Customer Journey Analytics interface. --- Option 2: Full Segment Builder (Complex Criteria) For more advanced segmentation logic, use the full Segment Builder: 1. Navigate to Components Segments in CJA. 2. Click + Create to open the Segment Builder. 3. Define your segment logic using dimensions, metrics, and events across multiple containers (Event, Session, Person). 4. Click Save to save the segment for reuse across projects. --- Exporting CJA Audiences to Adobe Target Exporting CJA-built segments directly to Adobe Target involves a workflow through Adobe Experience Platform (AEP). Here is the general approach based on available documentation: Step 1: Identify Your Audiences in AEP Before ingesting or exporting, identify the audiences you want to work with: 1. In the Experience Platform UI, select Customer Audiences. 2. Select Browse and search for the audiences you want to use. 3. Note the Audience ID for each audience for\u2026"}}]}</script></div>
+  </body>
+</html>

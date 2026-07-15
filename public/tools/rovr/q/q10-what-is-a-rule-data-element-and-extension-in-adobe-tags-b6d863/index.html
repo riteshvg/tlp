@@ -1,0 +1,204 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/png" href="/tools/rovr/rovrlogo.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="build-date" content="2026-06-10" />
+    
+    
+    <script src="https://assets.adobedtm.com/204118644db8/290ae1adb65a/launch-e5ec7bf1a1ef-development.min.js" async></script>
+    <script type="module" crossorigin src="/tools/rovr/assets/index-Cnf1TPK2.js"></script>
+    <link rel="stylesheet" crossorigin href="/tools/rovr/assets/index-D1POE5XP.css">
+  <title>Q10. What is a Rule, Data Element, and Extension in Adobe Tags? | Rovr</title>
+<meta name="description" content="What is a Rule, Data Element, and Extension in Adobe Tags? Video Walkthroughs ▶ Watch: Adobe Tags…" />
+<link rel="canonical" href="https://thelearningproject.in/tools/rovr/q/q10-what-is-a-rule-data-element-and-extension-in-adobe-tags-b6d863" />
+<meta property="og:title" content="Q10. What is a Rule, Data Element, and Extension in Adobe Tags?" />
+<meta property="og:description" content="What is a Rule, Data Element, and Extension in Adobe Tags? Video Walkthroughs ▶ Watch: Adobe Tags…" />
+<meta property="og:url" content="https://thelearningproject.in/tools/rovr/q/q10-what-is-a-rule-data-element-and-extension-in-adobe-tags-b6d863" />
+<meta property="og:type" content="article" />
+<meta property="og:image" content="https://thelearningproject.in/tools/rovr/rovrlogo.png" />
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="Q10. What is a Rule, Data Element, and Extension in Adobe Tags?" />
+<meta name="twitter:description" content="What is a Rule, Data Element, and Extension in Adobe Tags? Video Walkthroughs ▶ Watch: Adobe Tags…" />
+</head>
+  <body>
+    <div id="root"><article><h1>Q10. What is a Rule, Data Element, and Extension in Adobe Tags?</h1>
+<h2>What is a Rule, Data Element, and Extension in Adobe Tags?</h2>
+<h3>Video Walkthroughs</h3>
+<p><a href="https://video.tv.adobe.com/v/3418165?quality=12&amp;learn=on">▶ Watch: Adobe Tags Fundamentals</a></p>
+<p>This video provides an overview of the core concepts in Adobe Tags including rules, data elements, and extensions.</p>
+<p><a href="https://video.tv.adobe.com/v/3529529?quality=12&amp;learn=on">▶ Watch: Create Data Elements in Adobe Tags</a></p>
+<p>This video demonstrates how to create and use data elements in Adobe Tags.</p>
+<p><a href="https://video.tv.adobe.com/v/3518741?quality=12&amp;learn=on">▶ Watch: Create Rules in Adobe Tags</a></p>
+<p>This video walks through creating rules with events, conditions, and actions.</p>
+<p><a href="https://video.tv.adobe.com/v/3427149?quality=12&amp;learn=on">▶ Watch: Understanding Extensions in Adobe Tags</a></p>
+<p>This video explains how extensions work and how to install them in your tag property.</p>
+<hr>
+<h3>Overview</h3>
+<p>Adobe Tags is built around <strong>three core building blocks</strong>:</p>
+<p>1. <strong>Extensions</strong> – Pre-built functionality packages (like &quot;apps&quot; for your tag manager)</p>
+<p>2. <strong>Data Elements</strong> – Variables that capture and store values from your website</p>
+<p>3. <strong>Rules</strong> – Logic that defines WHEN something happens, IF certain conditions are met, and THEN what actions to execute</p>
+<p>Think of it like a simple programming model:</p>
+<p>```</p>
+<p>Extension = Library/Toolkit providing functionality</p>
+<p>Data Element = Variable holding a value</p>
+<p>Rule = IF/THEN logic that uses data elements to trigger actions</p>
+<p>```</p>
+<hr>
+<h3>Understanding the Concepts</h3>
+<h4>Simple Real-World Analogy</h4>
+<p>Imagine a <strong>Retail Store with an Automated Discount System</strong>:</p>
+<p>```</p>
+<p>Extension = Cash Register System</p>
+<p>(Pre-built system that knows how to apply discounts)</p>
+<p>Data Element = &quot;Customer Loyalty Tier&quot;</p>
+<p>(Variable: captures whether customer is Bronze, Silver, Gold, Platinum)</p>
+<p>Rule = &quot;Apply 20% Discount IF Customer is Gold Member THEN Show Discount&quot;</p>
+<p>(Logic: If loyalty tier = Gold, trigger discount action)</p>
+<p>```</p>
+<hr>
+<h3>Layer 1: Extensions</h3>
+<h4>What is an Extension?</h4>
+<p>An <strong>Extension</strong> is a <strong>pre-built package of functionality</strong> that adds capabilities to your Tags property. Extensions are like &quot;apps&quot; for Adobe Tags — they provide pre-built features without requiring custom code.</p>
+<p>Each extension provides:</p>
+<ul>
+<li><strong>Pre-built actions</strong> you can use in rules</li>
+<li><strong>Pre-built conditions</strong> you can use to evaluate data</li>
+<li><strong>Data element types</strong> you can create</li>
+<li><strong>Settings and configuration</strong> for that functionality</li>
+</ul>
+<h4>Core Adobe Extensions</h4>
+<p>| Extension | Purpose | Provides |</p>
+<p>|---|---|---|</p>
+<p>| <strong>Core</strong> | Fundamental tag management | Events (page load, clicks), Conditions, Custom code, Data storage |</p>
+<p>| <strong>Web SDK</strong> | Adobe Experience Platform data collection | sendEvent, setConsent, getIdentity actions; XDM data element types |</p>
+<p>| <strong>Adobe Analytics</strong> | Send data to Adobe Analytics | Set variables, Send beacons, Analytics-specific events |</p>
+<p>| <strong>Adobe Target</strong> | Trigger Target A/B tests | Send mbox requests, Adobe Target-specific logic |</p>
+<p>| <strong>Adobe Audience Manager</strong> | Send data to AAM | Signal actions, segment data |</p>
+<p>| <strong>Adobe Journey Optimizer</strong> | Trigger AJO decisioning | Send events to AJO journeys |</p>
+<p>| <strong>Adobe Client Data Layer</strong> | Manage website data layer | Push events, Listen to data layer changes |</p>
+<p>| <strong>Experience Cloud ID Service</strong> | Legacy identity management | Set/get visitor ID (being phased out by Web SDK) |</p>
+<p>| <strong>Google Analytics</strong> | Send data to Google Analytics | Google Analytics events, page tracking |</p>
+<p>| <strong>Facebook Pixel</strong> | Trigger Facebook conversions | Facebook conversion events, audience tracking |</p>
+<h4>Installing an Extension</h4>
+<p>1. Log in to <strong>experience.adobe.com</strong></p>
+<p>2. Navigate to <strong>Data Collection</strong> → <strong>Tags</strong></p>
+<p>3. Open your <strong>Tag Property</strong></p>
+<p>4. Go to <strong>Extensions</strong> → <strong>Catalog</strong></p>
+<p>5. Search for the extension (e.g., &quot;Adobe Experience Platform Web SDK&quot;)</p>
+<p>6. Click <strong>Install</strong></p>
+<p>7. Configure the extension settings</p>
+<p>8. Click <strong>Save</strong></p>
+<h4>Example: Installing Web SDK Extension</h4>
+<p>```</p>
+<p>1. Click Catalog button</p>
+<p>2. Search &quot;Adobe Experience Platform Web SDK&quot;</p>
+<p>3. Click on the extension in results</p>
+<p>4. Click Install button</p>
+<p>Extension details appear:</p>
+<p>Extension Name: Adobe Experience Platform Web SDK</p>
+<p>Version: 2.19.2</p>
+<p>Last Updated: January 15, 2024</p>
+<p>Developer: Adobe</p>
+<p>Description: &quot;The Adobe Experience Platform Web SDK allows clients</p>
+<p>to interact with the various services in the Adobe</p>
+<p>Experience Cloud through the Adobe Experience Platform</p>
+<p>Edge Network&quot;</p>
+<p>Configuration Fields:</p>
+<p>├── IMS Org ID: [your org ID]</p>
+<p>├── Datastream ID: [your datastream ID]</p>
+<p>├── Edge Domain: [optional custom domain]</p>
+<p>└── [other settings...]</p>
+<p>Click Save to install</p>
+<p>```</p>
+<h4>Creating Custom Extensions</h4>
+<p>For proprietary functionality not available in the extension catalog, you can <strong>build custom extensions</strong>:</p>
+<p>```javascript</p>
+<p>// Example custom extension for a proprietary analytics platform</p>
+<p>module.exports = {</p>
+<p>name: &quot;Custom Analytics Platform&quot;,</p>
+<p>version: &quot;1.0.0&quot;,</p>
+<p>// Extension configuration UI fields</p>
+<p>getSettings: function() {</p>
+<p>return [{</p>
+<p>name: &quot;accountId&quot;,</p>
+<p>label: &quot;Account ID&quot;,</p>
+<p>required: true</p>
+<p>}];</p>
+<p>},</p>
+<p>// Actions provided by this extension</p>
+<p>getActions: function(settings) {</p>
+<p>return [{</p>
+<p>name: &quot;track-event&quot;,</p>
+<p>label: &quot;Track Custom Event&quot;,</p>
+<p>perform: function(xdmData) {</p>
+<p>// Send data to custom platform</p>
+<p>fetch(&quot;https://analytics.customplatform.com/track&quot;, {</p>
+<p>method: &quot;POST&quot;,</p>
+<p>body: JSON.stringify({</p>
+<p>accountId: settings.accountId,</p>
+<p>event: xdmData</p>
+<p>})</p>
+<p>});</p>
+<p>}</p>
+<p>}];</p>
+<p>}</p>
+<p>};</p>
+<p>```</p>
+<hr>
+<h3>Layer 2: Data Elements</h3>
+<h4>What is a Data Element?</h4>
+<p>A <strong>Data Element</strong> is a <strong>named variable that captures and stores a value</strong> from your website. Instead of hard-coding values in rules, you create data elements that dynamically retrieve values from your data layer, cookies, JavaScript, or other sources.</p>
+<h4>Why Data Elements Matter</h4>
+<p>```</p>
+<p>Without Data Elements (Hard-Coded):</p>
+<p>─────────────────────────────────</p>
+<p>Rule Action: &quot;Send event with product name: shoes&quot;</p>
+<p>Problem: If product name changes, need to edit rule code</p>
+<p>With Data Elements (Dynamic):</p>
+<p>──────────────────────────────</p>
+<p>Data Element: &quot;Product Name&quot; → reads from: digitalData.product.name</p>
+<p>Rule Action: &quot;Send event with product name: %Product Name%&quot;</p>
+<p>Benefit: If page changes, data element automatically captures new value</p>
+<p>No rule editing needed</p>
+<p>```</p>
+<h4>Data Element Types Available</h4>
+<p>| Data Element Type | Source | Example Use Case |</p>
+<p>|---|---|---|</p>
+<p>| <strong>JavaScript Variable</strong> | Any JavaScript object/variable | Custom data layer values |</p>
+<p>| <strong>Data Layer Variable</strong> | Adobe Client Data Layer | Structured event data |</p>
+<p>| <strong>Cookie</strong> | Browser cookies | User preferences, authentication tokens |</p>
+<p>| <strong>Query String Parameter</strong> | URL query string | Campaign IDs, search keywords |</p>
+<p>| <strong>DOM Attribute</strong> | HTML element attributes/content | Button labels, product IDs from DOM |</p>
+<p>| <strong>Local Storage</strong> | Browser local storage | Saved user preferences |</p>
+<p>| <strong>Session Storage</strong> | Browser session storage | Current session state |</p>
+<p>| <strong>Constants</strong> | Hard-coded static value | Fixed strings, IDs |</p>
+<p>| <strong>Regular Expression</strong> | Pattern matching on other data | Extract portions of strings |</p>
+<p>| <strong>Custom Code</strong> | JavaScript code you write | Any custom logic |</p>
+<p>| <strong>XDM Object</strong> (Web SDK) | XDM schema structure | Complex nested objects for AEP |</p>
+<p>| <strong>Computed Attribute</strong> (Web SDK) | Pre-calculated profile value | Customer lifetime value, segments |</p>
+<h4>Creating a Data Element: Step-by-Step</h4>
+<h5>Example 1: JavaScript Variable Data Element</h5>
+<p>```</p>
+<p>1. Navigate to Data Elements tab</p>
+<p>2. Click &quot;Add Data Element&quot;</p>
+<p>Configuration:</p>
+<p>├─ Name: &quot;Page Name&quot;</p>
+<p>├─ Extension: Core</p>
+<p>├─ Data Element Type: JavaScript Variable</p>
+<p>├─ JavaScript Variable Path: digitalData.page.pageInfo.pageName</p>
+<p>├─ Storage Duration: Visitor</p>
+<p>└─ Click Save</p>
+<p>```</p>
+<p><strong>Result:</strong> When you reference `%Page Name%` in a rule, it retrieves:</p>
+<p>```javascript</p>
+<p>digitalData.page.pageInfo.pageName</p>
+<p>// Returns: &quot;Product Detail Page&quot;, &quot;Homepage&quot;, etc.</p>
+<p>```</p>
+<h5>Example</h5>
+</article>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Q10. What is a Rule, Data Element, and Extension in Adobe Tags?", "acceptedAnswer": {"@type": "Answer", "text": "What is a Rule, Data Element, and Extension in Adobe Tags? Video Walkthroughs \u25b6 Watch: Adobe Tags Fundamentals(https://video.tv.adobe.com/v/3418165?quality=12&learn=on) This video provides an overview of the core concepts in Adobe Tags including rules, data elements, and extensions. \u25b6 Watch: Create Data Elements in Adobe Tags(https://video.tv.adobe.com/v/3529529?quality=12&learn=on) This video demonstrates how to create and use data elements in Adobe Tags. \u25b6 Watch: Create Rules in Adobe Tags(https://video.tv.adobe.com/v/3518741?quality=12&learn=on) This video walks through creating rules with events, conditions, and actions. \u25b6 Watch: Understanding Extensions in Adobe Tags(https://video.tv.adobe.com/v/3427149?quality=12&learn=on) This video explains how extensions work and how to install them in your tag property. --- Overview Adobe Tags is built around three core building blocks: 1. Extensions \u2013 Pre-built functionality packages (like \"apps\" for your tag manager) 2. Data Elements \u2013 Variables that capture and store values from your website 3. Rules \u2013 Logic that defines WHEN something happens, IF certain conditions are met, and THEN what actions to execute Think of it like a simple programming model: Extension = Library/Toolkit providing functionality Data Element = Variable holding a value Rule = IF/THEN logic that uses data elements to trigger actions --- Understanding the Concepts Simple Real-World Analogy Imagine a Retail Store with an Automated Discount System: Extension = Cash Register System (Pre-built system that knows how to apply discounts) Data Element = \"Customer Loyalty Tier\" (Variable: captures whether customer is Bronze, Silver, Gold, Platinum) Rule = \"Apply 20% Discount IF Customer is Gold Member THEN Show Discount\" (Logic: If loyalty tier = Gold, trigger discount action) --- Layer 1: Extensions What is an Extension? An Extension is a pre-built package of functionality that adds capabilities to your Tags property. Extensions are like \"apps\" for Adobe\u2026"}}]}</script></div>
+  </body>
+</html>

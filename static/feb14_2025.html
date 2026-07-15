@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <link rel="shortcut icon" href="assets/favicon/favicon.ico" />
+
+    <title>Sort Table Functionality</title>
+
+    <!-- Font Awesome Icons -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css"
+    />
+
+    <!-- CSS Global -->
+    <link href="assets/css/styles_blue.css" rel="stylesheet" />
+
+    <!-- Google Fonts -->
+    <link
+      href="https://fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600italic,600,700,700italic,800,800italic"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <style>
+      /* use class names to hide content for jQuery v3.0 - see https://github.com/jquery/jquery/issues/2308 */
+      .hidden {
+        display: none;
+      }
+
+      /* override child row hovering defined in the theme file */
+      #table2 tbody > tr.even.hover > td,
+      #table2 tbody > tr.even:hover > td,
+      #table2 tbody > tr.even:hover + tr.tablesorter-childRow > td,
+      #table2
+        tbody
+        > tr.even:hover
+        + tr.tablesorter-childRow
+        + tr.tablesorter-childRow
+        > td {
+        background-color: #fff;
+      }
+      #table2 tbody > tr.odd.hover > td,
+      #table2 tbody > tr.odd:hover > td,
+      #table2 tbody > tr.odd:hover + tr.tablesorter-childRow > td,
+      #table2
+        tbody
+        > tr.odd:hover
+        + tr.tablesorter-childRow
+        + tr.tablesorter-childRow
+        > td {
+        background-color: #ebf2fa;
+      }
+      #table2 tbody > tr.even:hover > td,
+      #table2 tbody > tr.odd:hover > td {
+        background-color: #d9d9d9;
+      }
+      /* rows hidden by filtering (needed for child rows) */
+      .tablesorter .filtered {
+        display: none;
+      }
+
+      /* ajax error row */
+      .tablesorter .tablesorter-errorRow td {
+        text-align: center;
+        cursor: pointer;
+        background-color: #e6bf99;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- NAVIGATION
+    ================================================== -->
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-default">
+      <div class="container">
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="navbar_main">
+          <ul class="nav navbar-nav navbar-left">
+            <li>
+              <a href="index.html"><i class="fas fa-home fa-lg"></i></a>
+            </li>
+            <li>
+              <a href="/about"><i class="fas fa-solid fa-code fa-lg"></i></a>
+            </li>
+            <li>
+              <a href="/tools"><i class="fas fa-solid fa-anchor fa-lg"></i></a>
+            </li>
+            <li>
+              <a href="todayilearned.html"
+                ><i class="fas fa-solid fa-book fa-lg active"></i
+              ></a>
+            </li>
+            <li>
+              <a href=" "><i class="fas fa-grip-lines-vertical fa-lg"></i></a>
+            </li>
+            <li>
+              <a href="https://github.com/riteshvg" target="_blank"
+                ><i class="fab fa-github fa-lg"></i
+              ></a>
+            </li>
+            <li>
+              <a href="https://x.com/riteshvg" target="_blank"
+                ><i class="fab fa-twitter fa-lg"></i
+              ></a>
+            </li>
+            <li>
+              <a
+                href="https://www.linkedin.com/in/riteshvgupta/"
+                target="_blank"
+                ><i class="fab fa-linkedin fa-lg"></i
+              ></a>
+            </li>
+          </ul>
+        </div>
+        <!-- /.navbar-collapse -->
+      </div>
+      <!-- /.container -->
+    </nav>
+
+    <!-- CONTENT
+    ================================================== -->
+    <div class="container">
+      <div class="col-sm-9">
+        <h1 class="block-header alt">
+          <span>Function Challenges</span>
+        </h1>
+        <p>
+          Today, I learned about the how to print a function output in a
+          template literal, how to use the spread(...) operator to spread the
+          values of an array into separate arguments, how to use an IIFE that
+          takes in a length and width of a rectangle as a parameter and outputs
+          the area.
+        </p>
+        <pre>
+            <code>
+            //Challenge 1
+            /**
+            * Create a function called getCelsius() that takes a temperature in Fahrenheit as an argument
+            * and returns the temperature in celsius. For bonus points,
+            * write it as a one line arrow function}
+            */
+
+            //Regular function
+            function getCelsiusRegular(f) {
+            const celsius = ((f - 32) * 5) / 9;
+            return celsius;
+            }
+
+            console.log(getCelsiusRegular(40)); //Output: 4.444444
+
+            //Arrow function
+            const getCelsiusArrow = (f) => ((f - 32) * 5) / 9;
+
+            console.log(getCelsiusArrow(50)); //Output: 10
+
+            //With template string
+            console.log(`The temp for ${new Date()} is ${getCelsiusArrow(32)} \xB0C`);
+            //Output: The temp for Fri Feb 14 2025 10:15:32 GMT+0530 (India Standard Time) is 0 °C
+
+            //Challenge 2
+            /**
+            * Create an arrow function called minMax() that takes in an array of numbers and returns an
+            * object with the minimum and maximum numbers in the array.
+            * Use the Spread(...)operator to spread the values of an array into separate arguments
+            */
+
+            function minMax(arr) {
+            const min = Math.min(...arr);
+            const max = Math.max(...arr);
+            return {
+                min,
+                max,
+            };
+            }
+
+            console.log(minMax([1, 2, 3, 4, 5]));
+
+            //Challenge 3
+            /***
+            * Create an IIFE (Immediately Invoked Function Expression) that takes in the length and width
+            * of a rectangle outputs it to the console in a message as soon as the page loads.
+            * Area of rectangle = length * width
+            */
+
+            ((length, width) => {
+            const area = length * width;
+            const output = `The area of rectangle with ${length} and ${width} is ${area}`;
+
+            console.log(output);
+            })(10, 5); //Output: The area of rectangle with 10 and 5 is 50
+
+            </code>
+        </pre>
+      </div>
+
+      <div class="col-sm-3">
+        <h1 class="block-header alt">
+          <span>File Info</span>
+        </h1>
+
+        <table class="table table-bordered">
+          <tbody>
+            <tr>
+              <td>Category</td>
+              <td>HTML / JS / CSS</td>
+            </tr>
+            <tr>
+              <td>Credits</td>
+              <td>
+                <a href="#" target="_blank">NA</a>
+              </td>
+            </tr>
+            <tr>
+              <td>Date</td>
+              <td>February 14th, 2025</td>
+            </tr>
+            <tr>
+              <td>Codepen</td>
+              <td><a href="#">NA</a></td>
+            </tr>
+          </tbody>
+        </table>
+        <button><a href="todayilearned.html">Go Back</a></button>
+      </div>
+      <!-- / .row -->
+    </div>
+    <!-- / .container -->
+    <!-- Sorting Table -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="assets/js/jquery.tablesorter.js"></script>
+    <script src="assets/js/widget-filter.min.js"></script>
+
+    <script>
+      $(function () {
+        var $table2 = $('#table2').tablesorter({
+          theme: 'blue',
+          // this is the default setting
+          cssChildRow: 'tablesorter-childRow',
+          // initialize zebra and filter widgets
+          widgets: ['zebra', 'filter'],
+          widgetOptions: {
+            // include child row content while filtering, if true
+            filter_childRows: true,
+            // filter child row content by column; filter_childRows must also be true
+            filter_childByColumn: true,
+            // class name applied to filter row and each input
+            filter_cssFilter: 'tablesorter-filter',
+            // Set this option to false to make the searches case sensitive
+            filter_ignoreCase: true,
+            filter_reset: '.reset',
+          },
+        });
+
+        // hide child rows - don't use .hide() because filtered rows get a "filtered" class
+        // added to them, and style="display: table-row;" will override this class
+        // See http://jsfiddle.net/Mottie/u507846y/ & https://github.com/jquery/jquery/issues/1767
+        // and https://github.com/jquery/jquery/issues/2308
+        // This won't be a problem in jQuery v3.0+
+        $table2.find('.tablesorter-childRow').addClass('hidden');
+
+        // Toggle child row content (td), not hiding the row since we are using rowspan
+        // Using delegate because the pager plugin rebuilds the table after each page change
+        // "delegate" works in jQuery 1.4.2+; use "live" back to v1.3; for older jQuery - SOL
+        $table2.delegate('.toggle', 'click', function () {
+          // use "nextUntil" to toggle multiple child rows
+          // toggle table cells instead of the row
+          $(this)
+            .closest('tr')
+            .nextUntil('tr.tablesorter-hasChildRow')
+            .toggleClass('hidden');
+          return false;
+        });
+
+        // Toggle filter_childByColumn option
+        $('button.toggle-byColumn').click(function () {
+          var wo = $table2[0].config.widgetOptions,
+            o = !wo.filter_childByColumn;
+          wo.filter_childByColumn = o;
+          $('.state2').html(o.toString());
+          // update filter; include false parameter to force a new search
+          $table2.trigger('search', false);
+          return false;
+        });
+
+        // make demo search buttons work
+        $('button[data-column]').on('click', function () {
+          var $this = $(this),
+            totalColumns = $table2[0].config.columns,
+            col = $this.data('column'), // zero-based index or "all"
+            filter = [];
+
+          // text to add to filter
+          filter[col === 'all' ? totalColumns : col] = $this.text();
+          $table2.trigger('search', [filter]);
+          return false;
+        });
+      });
+    </script>
+  </body>
+</html>

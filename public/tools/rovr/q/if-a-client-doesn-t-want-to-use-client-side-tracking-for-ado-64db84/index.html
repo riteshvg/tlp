@@ -1,0 +1,134 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/png" href="/tools/rovr/rovrlogo.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="build-date" content="2026-06-10" />
+    
+    
+    <script src="https://assets.adobedtm.com/204118644db8/290ae1adb65a/launch-e5ec7bf1a1ef-development.min.js" async></script>
+    <script type="module" crossorigin src="/tools/rovr/assets/index-Cnf1TPK2.js"></script>
+    <link rel="stylesheet" crossorigin href="/tools/rovr/assets/index-D1POE5XP.css">
+  <title>If a client doesn&#x27;t want to use client side tracking for Adobe Analytics, what is the alternative method? | Rovr</title>
+<meta name="description" content="Based on the retrieved documentation context available to me, I have some relevant information about alternative data collection methods, but let me share…" />
+<link rel="canonical" href="https://thelearningproject.in/tools/rovr/q/if-a-client-doesn-t-want-to-use-client-side-tracking-for-ado-64db84" />
+<meta property="og:title" content="If a client doesn&#x27;t want to use client side tracking for Adobe Analytics, what is the alternative method?" />
+<meta property="og:description" content="Based on the retrieved documentation context available to me, I have some relevant information about alternative data collection methods, but let me share…" />
+<meta property="og:url" content="https://thelearningproject.in/tools/rovr/q/if-a-client-doesn-t-want-to-use-client-side-tracking-for-ado-64db84" />
+<meta property="og:type" content="article" />
+<meta property="og:image" content="https://thelearningproject.in/tools/rovr/rovrlogo.png" />
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="If a client doesn&#x27;t want to use client side tracking for Adobe Analytics, what is the alternative method?" />
+<meta name="twitter:description" content="Based on the retrieved documentation context available to me, I have some relevant information about alternative data collection methods, but let me share…" />
+</head>
+  <body>
+    <div id="root"><article><h1>If a client doesn&#x27;t want to use client side tracking for Adobe Analytics, what is the alternative method?</h1>
+<p>Based on the retrieved documentation context available to me, I have some relevant information about alternative data collection methods, but let me share what I can confirm and where my context has gaps.</p>
+<h3>Alternatives to Client-Side Tracking for Adobe Analytics</h3>
+<p>If a client wants to avoid client-side tracking (i.e., no JavaScript tags or SDKs deployed in the browser), there are several server-side alternatives:</p>
+<hr>
+<h3>Option 1: Edge Network Server API</h3>
+<p>As discussed earlier, the <strong>Edge Network Server API</strong> is the most modern approach for server-side data collection:</p>
+<ul>
+<li>Data is sent directly from your <strong>backend servers</strong> to the Adobe Edge Network</li>
+<li>No client-side code required in the browser</li>
+<li>Uses <strong>XDM-formatted payloads</strong> routed via a configured <strong>Datastream</strong> to Analytics</li>
+<li>Ideal for:</li>
+<li>IoT devices</li>
+<li>Desktop applications</li>
+<li>Server-to-server integrations</li>
+<li>Sensitive data environments</li>
+</ul>
+<hr>
+<h3>Option 2: Adobe Analytics Data Insertion API</h3>
+<p>The <strong>Data Insertion API</strong> is a legacy server-side method specifically for Adobe Analytics:</p>
+<ul>
+<li>Allows you to send data directly to Adobe Analytics <strong>collection servers</strong> via HTTP requests</li>
+<li>No JavaScript/AppMeasurement required on the page</li>
+<li>Uses <strong>XML or query string parameters</strong> formatted to Analytics collection standards</li>
+<li>Ideal for:</li>
+<li>Environments where JavaScript cannot run</li>
+<li>Server-generated pages</li>
+<li>Non-browser environments</li>
+</ul>
+<hr>
+<h3>Option 3: Bulk Data Insertion API (BDIA)</h3>
+<p>The <strong>Bulk Data Insertion API</strong> is the modern, recommended replacement for the legacy Data Insertion API:</p>
+<ul>
+<li>Allows you to upload <strong>large batches of Analytics hits</strong> via CSV files</li>
+<li>Processes data in bulk rather than real-time hit-by-hit</li>
+<li>Supports <strong>client hints</strong> data (as confirmed in the retrieved context)</li>
+<li>Ideal for:</li>
+<li>Migrating historical data</li>
+<li>High-volume server-side environments</li>
+<li>Offline data processing scenarios</li>
+</ul>
+<hr>
+<h3>Option 4: Data Sources</h3>
+<p><strong>Data Sources</strong> is another method for importing offline or server-side data into Adobe Analytics:</p>
+<ul>
+<li>Upload data via <strong>CSV files</strong> through the Analytics UI or FTP</li>
+<li>Useful for importing <strong>offline transaction data</strong>, call center data, or CRM data</li>
+<li>Not a real-time method — data is processed in batches</li>
+</ul>
+<hr>
+<h3>Comparison of Server-Side Methods</h3>
+<p>| Method | Real-Time | Format | Best For |</p>
+<p>|---|---|---|---|</p>
+<p>| <strong>Edge Network Server API</strong> | ✓ Yes | XDM/JSON | Modern server-side, IoT, backend systems |</p>
+<p>| <strong>Data Insertion API</strong> | ✓ Yes | XML/Query String | Legacy server-side, non-browser environments |</p>
+<p>| <strong>Bulk Data Insertion API</strong> | ✗ Batch | CSV | High-volume batch processing |</p>
+<p>| <strong>Data Sources</strong> | ✗ Batch | CSV | Offline data imports |</p>
+<hr>
+<h3>Important Considerations</h3>
+<h4>Identity &amp; Visitor Tracking</h4>
+<p>When moving away from client-side tracking, one of the <strong>biggest challenges</strong> is <strong>visitor identity</strong>:</p>
+<ul>
+<li>Client-side tracking uses <strong>cookies</strong> (e.g., AMCV cookie, s_vi cookie) to persist visitor IDs</li>
+<li>Server-side implementations must <strong>manually manage and pass visitor/device identifiers</strong> in each API call</li>
+<li>You will need to determine how to generate, store, and pass a consistent <strong>Experience Cloud ID (ECID)</strong> or custom visitor ID</li>
+</ul>
+<h4>Data Completeness</h4>
+<ul>
+<li>Client-side tracking automatically captures many dimensions (browser type, screen resolution, referrer, etc.)</li>
+<li>Server-side implementations require you to <strong>explicitly pass all desired data points</strong> in your API calls</li>
+<li>Some dimensions may be unavailable or require additional effort to capture</li>
+</ul>
+<h4>Privacy &amp; Compliance</h4>
+<ul>
+<li>Server-side tracking can be <strong>more privacy-friendly</strong> as it doesn&#x27;t rely on browser cookies</li>
+<li>However, you still need to ensure compliance with <strong>GDPR, CCPA</strong>, and other regulations</li>
+<li>Consent management must still be implemented at the application level</li>
+</ul>
+<hr>
+<h3>Recommended Modern Approach</h3>
+<p>For clients wanting a <strong>fully server-side, modern implementation</strong>, the recommended path is:</p>
+<p>```</p>
+<p>Your Backend System / Server</p>
+<p>↓</p>
+<p>Edge Network Server API (XDM-formatted data)</p>
+<p>↓</p>
+<p>Adobe Experience Platform Edge Network</p>
+<p>↓</p>
+<p>Datastream Routes to:</p>
+<p>→ Adobe Analytics</p>
+<p>→ Adobe Experience Platform</p>
+<p>→ Audience Manager</p>
+<p>→ Event Forwarding Destinations</p>
+<p>```</p>
+<p>This gives the most flexibility, scalability, and future-proofing while avoiding any client-side code.</p>
+<hr>
+<p>Would you like more details on any of these methods, such as:</p>
+<ul>
+<li>How to structure API calls for the <strong>Data Insertion API</strong>?</li>
+<li>How to configure a <strong>Datastream</strong> for server-side Analytics data collection?</li>
+<li>How to handle <strong>visitor identity</strong> in server-side implementations?</li>
+</ul>
+<h2>Sources</h2>
+<ul>
+<li><a href="https://experienceleague.adobe.com/en/docs/analytics/technotes/client-hints">Client hints</a></li>
+</ul></article>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "If a client doesn't want to use client side tracking for Adobe Analytics, what is the alternative method?", "acceptedAnswer": {"@type": "Answer", "text": "Based on the retrieved documentation context available to me, I have some relevant information about alternative data collection methods, but let me share what I can confirm and where my context has gaps. Alternatives to Client-Side Tracking for Adobe Analytics If a client wants to avoid client-side tracking (i.e., no JavaScript tags or SDKs deployed in the browser), there are several server-side alternatives: --- Option 1: Edge Network Server API As discussed earlier, the Edge Network Server API is the most modern approach for server-side data collection: - Data is sent directly from your backend servers to the Adobe Edge Network - No client-side code required in the browser - Uses XDM-formatted payloads routed via a configured Datastream to Analytics - Ideal for: - IoT devices - Desktop applications - Server-to-server integrations - Sensitive data environments --- Option 2: Adobe Analytics Data Insertion API The Data Insertion API is a legacy server-side method specifically for Adobe Analytics: - Allows you to send data directly to Adobe Analytics collection servers via HTTP requests - No JavaScript/AppMeasurement required on the page - Uses XML or query string parameters formatted to Analytics collection standards - Ideal for: - Environments where JavaScript cannot run - Server-generated pages - Non-browser environments --- Option 3: Bulk Data Insertion API (BDIA) The Bulk Data Insertion API is the modern, recommended replacement for the legacy Data Insertion API: - Allows you to upload large batches of Analytics hits via CSV files - Processes data in bulk rather than real-time hit-by-hit - Supports client hints data (as confirmed in the retrieved context) - Ideal for: - Migrating historical data - High-volume server-side environments - Offline data processing scenarios --- Option 4: Data Sources Data Sources is another method for importing offline or server-side data into Adobe Analytics: - Upload data via CSV files through the Analytics UI or FTP - Useful for\u2026"}}]}</script></div>
+  </body>
+</html>

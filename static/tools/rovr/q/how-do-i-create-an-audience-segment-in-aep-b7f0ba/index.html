@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/png" href="/tools/rovr/rovrlogo.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="build-date" content="2026-06-10" />
+    
+    
+    <script src="https://assets.adobedtm.com/204118644db8/290ae1adb65a/launch-e5ec7bf1a1ef-development.min.js" async></script>
+    <script type="module" crossorigin src="/tools/rovr/assets/index-Cnf1TPK2.js"></script>
+    <link rel="stylesheet" crossorigin href="/tools/rovr/assets/index-D1POE5XP.css">
+  <title>How do I create an audience segment in AEP? | Rovr</title>
+<meta name="description" content="Creating an Audience Segment in Adobe Experience Platform There are two primary methods to create an audience segment in AEP: using the Segment Builder UI or…" />
+<link rel="canonical" href="https://thelearningproject.in/tools/rovr/q/how-do-i-create-an-audience-segment-in-aep-b7f0ba" />
+<meta property="og:title" content="How do I create an audience segment in AEP?" />
+<meta property="og:description" content="Creating an Audience Segment in Adobe Experience Platform There are two primary methods to create an audience segment in AEP: using the Segment Builder UI or…" />
+<meta property="og:url" content="https://thelearningproject.in/tools/rovr/q/how-do-i-create-an-audience-segment-in-aep-b7f0ba" />
+<meta property="og:type" content="article" />
+<meta property="og:image" content="https://thelearningproject.in/tools/rovr/rovrlogo.png" />
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="How do I create an audience segment in AEP?" />
+<meta name="twitter:description" content="Creating an Audience Segment in Adobe Experience Platform There are two primary methods to create an audience segment in AEP: using the Segment Builder UI or…" />
+</head>
+  <body>
+    <div id="root"><article><h1>How do I create an audience segment in AEP?</h1>
+<h2>Creating an Audience Segment in Adobe Experience Platform</h2>
+<p>There are two primary methods to create an audience segment in AEP: using the <strong>Segment Builder</strong> UI or the <strong>Segmentation Service API</strong>.</p>
+<hr>
+<h3>Prerequisites</h3>
+<ul>
+<li>Access to Adobe Experience Platform with appropriate permissions</li>
+<li>Profile data ingested and available in your sandbox</li>
+<li>Familiarity with your XDM schema structure</li>
+</ul>
+<hr>
+<h3>Option 1: Using the Segment Builder UI</h3>
+<p>The Segment Builder provides a rich, intuitive workspace with drag-and-drop controls for building segment definitions against your Profile data.</p>
+<p><img src="https://raw.githubusercontent.com/AdobeDocs/experience-platform.en/main/help/segmentation/ui/../images/ui/segment-builder/segment-builder.png" alt="Segment Builder UI"></p>
+<p>1. Navigate to <strong>Audiences</strong> in the left navigation of the AEP UI.</p>
+<p>2. Click <strong>Create Audience</strong>.</p>
+<p>3. Select <strong>Build rule</strong> to open the <strong>Segment Builder</strong> workspace.</p>
+<p>4. In the left panel, browse or search for <strong>attributes</strong>, <strong>events</strong>, or <strong>audiences</strong> to use as building blocks.</p>
+<p>5. Drag and drop the desired data properties into the <strong>rule builder canvas</strong>.</p>
+<p>6. Configure conditions, operators, and values for each rule.</p>
+<p>7. Use <strong>AND/OR</strong> logic to combine multiple rules as needed.</p>
+<p>8. Give your segment a <strong>Name</strong> and optionally a <strong>Description</strong>.</p>
+<p>9. Review the estimated audience size in the <strong>Audience Properties</strong> panel on the right.</p>
+<p>10. Click <strong>Save</strong> to finalize and publish your segment definition.</p>
+<hr>
+<h3>Option 2: Using the Segmentation Service API</h3>
+<p>You can develop, test, preview, and save segment definitions programmatically using the Segmentation Service API.</p>
+<h4>Step 1: Develop the Segment Definition</h4>
+<p>1. Set up your API authentication via the <strong>Adobe Developer Console</strong>.</p>
+<p>2. Make a <strong>POST</strong> request to the segment definitions endpoint:</p>
+<p>`POST /segment/definitions`</p>
+<p>3. Include your segment definition in <strong>PQL (Profile Query Language)</strong> format in the request body. For example:</p>
+<p>```json</p>
+<p>{</p>
+<p>&quot;name&quot;: &quot;My Segment&quot;,</p>
+<p>&quot;description&quot;: &quot;Customers who viewed a product in the last 30 days&quot;,</p>
+<p>&quot;expression&quot;: {</p>
+<p>&quot;type&quot;: &quot;PQL&quot;,</p>
+<p>&quot;format&quot;: &quot;pql/text&quot;,</p>
+<p>&quot;value&quot;: &quot;chain(xEvent, timestamp, [A: WHAT(eventType = &#x27;productView&#x27;) WHEN(&lt; 30 days before now)])&quot;</p>
+<p>},</p>
+<p>&quot;schema&quot;: {</p>
+<p>&quot;name&quot;: &quot;_xdm.context.profile&quot;</p>
+<p>}</p>
+<p>}</p>
+<p>```</p>
+<h4>Step 2: Preview and Test the Segment</h4>
+<p>1. Make a <strong>POST</strong> request to create a preview job:</p>
+<p>`POST /segment/previews`</p>
+<p>2. Pass the `segmentDefinitionId` returned from Step 1.</p>
+<p>3. Poll the preview job status with a <strong>GET</strong> request:</p>
+<p>`GET /segment/previews/{previewId}`</p>
+<p>4. Review the estimated profile count and sample profiles returned.</p>
+<h4>Step 3: Save and Activate</h4>
+<p>1. Once satisfied with the preview, confirm the segment definition is saved by making a <strong>GET</strong> request:</p>
+<p>`GET /segment/definitions/{segmentDefinitionId}`</p>
+<p>2. Activate the segment to destinations as needed via the <strong>Destinations</strong> workflow.</p>
+<hr>
+<h3>Additional Audience Creation Methods</h3>
+<p>Beyond Segment Builder and the API, AEP also supports:</p>
+<ul>
+<li><strong>Audience Composition</strong> — a drag-and-drop workflow for combining, enriching, and splitting existing audiences. Access via <strong>Compose audiences</strong> in the Audiences portal.</li>
+<li><strong>Federated Audience Composition</strong> — build new audiences from enterprise data warehouse datasets without copying underlying data, then store them in AEP Audience Portal.</li>
+<li><strong>Data Distiller</strong> — use SQL extensions to build audiences directly from the data lake, including dimension entities like customer attributes or product information.</li>
+</ul>
+<hr>
+<h3>Key Tips</h3>
+<ul>
+<li>Use <strong>dynamic segments</strong> when you want audience membership to update automatically as new profile data arrives.</li>
+<li>The <strong>Segment Builder</strong> left panel shows available <strong>attributes</strong> and <strong>events</strong> based on your XDM schemas — familiarity with your schema structure helps greatly.</li>
+<li>Segment definitions use the <strong>XDM Segment Definition</strong> class to capture details like the segment ID, name, and other attributes.</li>
+</ul>
+</article>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "How do I create an audience segment in AEP?", "acceptedAnswer": {"@type": "Answer", "text": "Creating an Audience Segment in Adobe Experience Platform There are two primary methods to create an audience segment in AEP: using the Segment Builder UI or the Segmentation Service API. --- Prerequisites - Access to Adobe Experience Platform with appropriate permissions - Profile data ingested and available in your sandbox - Familiarity with your XDM schema structure --- Option 1: Using the Segment Builder UI The Segment Builder provides a rich, intuitive workspace with drag-and-drop controls for building segment definitions against your Profile data. !Segment Builder UI(https://raw.githubusercontent.com/AdobeDocs/experience-platform.en/main/help/segmentation/ui/../images/ui/segment-builder/segment-builder.png) 1. Navigate to Audiences in the left navigation of the AEP UI. 2. Click Create Audience. 3. Select Build rule to open the Segment Builder workspace. 4. In the left panel, browse or search for attributes, events, or audiences to use as building blocks. 5. Drag and drop the desired data properties into the rule builder canvas. 6. Configure conditions, operators, and values for each rule. 7. Use AND/OR logic to combine multiple rules as needed. 8. Give your segment a Name and optionally a Description. 9. Review the estimated audience size in the Audience Properties panel on the right. 10. Click Save to finalize and publish your segment definition. --- Option 2: Using the Segmentation Service API You can develop, test, preview, and save segment definitions programmatically using the Segmentation Service API. Step 1: Develop the Segment Definition 1. Set up your API authentication via the Adobe Developer Console. 2. Make a POST request to the segment definitions endpoint: POST /segment/definitions 3. Include your segment definition in PQL (Profile Query Language) format in the request body. For example: json { \"name\": \"My Segment\", \"description\": \"Customers who viewed a product in the last 30 days\", \"expression\": { \"type\": \"PQL\", \"format\": \"pql/text\", \"value\":\u2026"}}]}</script></div>
+  </body>
+</html>

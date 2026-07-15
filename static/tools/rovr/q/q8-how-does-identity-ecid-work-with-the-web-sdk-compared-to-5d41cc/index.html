@@ -1,0 +1,395 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/png" href="/tools/rovr/rovrlogo.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="build-date" content="2026-06-10" />
+    
+    
+    <script src="https://assets.adobedtm.com/204118644db8/290ae1adb65a/launch-e5ec7bf1a1ef-development.min.js" async></script>
+    <script type="module" crossorigin src="/tools/rovr/assets/index-Cnf1TPK2.js"></script>
+    <link rel="stylesheet" crossorigin href="/tools/rovr/assets/index-D1POE5XP.css">
+  <title>Q8. How does identity (ECID) work with the Web SDK compared to the old
+AppMeasurement/Visitor API? | Rovr</title>
+<meta name="description" content="How Does Identity (ECID) Work with Web SDK vs. AppMeasurement/Visitor API? Video Walkthroughs ▶ Watch: Experience Cloud Identity…" />
+<link rel="canonical" href="https://thelearningproject.in/tools/rovr/q/q8-how-does-identity-ecid-work-with-the-web-sdk-compared-to-5d41cc" />
+<meta property="og:title" content="Q8. How does identity (ECID) work with the Web SDK compared to the old
+AppMeasurement/Visitor API?" />
+<meta property="og:description" content="How Does Identity (ECID) Work with Web SDK vs. AppMeasurement/Visitor API? Video Walkthroughs ▶ Watch: Experience Cloud Identity…" />
+<meta property="og:url" content="https://thelearningproject.in/tools/rovr/q/q8-how-does-identity-ecid-work-with-the-web-sdk-compared-to-5d41cc" />
+<meta property="og:type" content="article" />
+<meta property="og:image" content="https://thelearningproject.in/tools/rovr/rovrlogo.png" />
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="Q8. How does identity (ECID) work with the Web SDK compared to the old
+AppMeasurement/Visitor API?" />
+<meta name="twitter:description" content="How Does Identity (ECID) Work with Web SDK vs. AppMeasurement/Visitor API? Video Walkthroughs ▶ Watch: Experience Cloud Identity…" />
+</head>
+  <body>
+    <div id="root"><article><h1>Q8. How does identity (ECID) work with the Web SDK compared to the old
+AppMeasurement/Visitor API?</h1>
+<h2>How Does Identity (ECID) Work with Web SDK vs. AppMeasurement/Visitor API?</h2>
+<h3>Video Walkthroughs</h3>
+<p><a href="https://video.tv.adobe.com/v/27203?quality=12&amp;learn=on">▶ Watch: Experience Cloud Identity Overview</a></p>
+<p>This video explains how ECID works across Adobe Experience Cloud solutions.</p>
+<p><a href="https://video.tv.adobe.com/v/3424753?quality=12&amp;learn=on">▶ Watch: Migrate from AppMeasurement to Web SDK</a></p>
+<p>This video demonstrates how identity management changes when migrating from AppMeasurement to Web SDK.</p>
+<p><a href="https://video.tv.adobe.com/v/3418165?quality=12&amp;learn=on">▶ Watch: Web SDK Identity Management</a></p>
+<p>This video walks through how Web SDK handles identity including ECID generation and management.</p>
+<hr>
+<h3>Overview</h3>
+<p>The <strong>Experience Cloud ID (ECID)</strong> is the persistent visitor identifier used across all Adobe Experience Cloud solutions. However, the <strong>mechanism for generating, storing, and managing the ECID</strong> changed significantly with the introduction of Web SDK.</p>
+<p>&gt; <strong>Key Difference:</strong></p>
+<p>&gt; - <strong>Legacy (AppMeasurement + Visitor API):</strong> ECID generated and managed <strong>client-side</strong> by JavaScript library</p>
+<p>&gt; - <strong>Modern (Web SDK):</strong> ECID generated and managed <strong>server-side</strong> by Edge Network</p>
+<hr>
+<h3>Complete Comparison: Legacy vs. Modern Identity</h3>
+<p>| Aspect | AppMeasurement + Visitor API | Web SDK (alloy.js) |</p>
+<p>|---|---|---|</p>
+<p>| <strong>ECID Generation</strong> | Client-side JavaScript | Server-side Edge Network |</p>
+<p>| <strong>ECID Visibility</strong> | Visible in browser network requests | Not in request payload (server-side) |</p>
+<p>| <strong>Cookie Type</strong> | Third-party demdex.net cookie + First-party | First-party only |</p>
+<p>| <strong>Cookie Name</strong> | `AMCV_[orgID]@AdobeOrg` | `kndctr_[orgID]_AdobeOrg_identity` |</p>
+<p>| <strong>Cookie Management</strong> | Visitor API library manages | Edge Network manages |</p>
+<p>| <strong>Libraries Required</strong> | AppMeasurement.js + VisitorAPI.js + AT.js | alloy.js (single library) |</p>
+<p>| <strong>ID Service Required</strong> | ✅ Required (separate library) | ❌ Built into Web SDK |</p>
+<p>| <strong>Network Requests</strong> | Multiple (one per solution) | Single consolidated request |</p>
+<p>| <strong>FPID Support</strong> | ❌ Not supported | ✅ Natively supported |</p>
+<p>| <strong>Cross-Domain</strong> | `s_ecid` cookie + URL parameter | `appendIdentityToUrl` command |</p>
+<p>| <strong>Server-Side</strong> | Limited | ✅ Full server-side API |</p>
+<hr>
+<h3>Legacy Architecture: AppMeasurement + Visitor API</h3>
+<h4>How ECID Was Generated (Legacy)</h4>
+<p>```</p>
+<p>Customer Visits Website (First Visit):</p>
+<p>───────────────────────────────────────</p>
+<p>1. Page loads AppMeasurement.js + VisitorAPI.js</p>
+<p>↓</p>
+<p>2. VisitorAPI.js initializes</p>
+<p>↓</p>
+<p>3. JavaScript checks for existing AMCV cookie</p>
+<p>↓</p>
+<p>4. No cookie found (first visit)</p>
+<p>↓</p>
+<p>5. VisitorAPI.js makes SEPARATE HTTP request:</p>
+<p>GET https://dpm.demdex.net/id?</p>
+<p>d_visid_ver=5.5.0</p>
+<p>&amp;d_fieldgroup=MC</p>
+<p>&amp;d_rtbd=json</p>
+<p>&amp;d_ver=2</p>
+<p>&amp;d_orgid=ORGID@AdobeOrg</p>
+<p>↓</p>
+<p>6. Demdex.net server responds with new ECID:</p>
+<p>{</p>
+<p>&quot;d_mid&quot;: &quot;98765432109876543210&quot;,</p>
+<p>&quot;id_sync_ttl&quot;: 604800,</p>
+<p>&quot;d_blob&quot;: &quot;7295526635ECbartGbttIUw==&quot;</p>
+<p>}</p>
+<p>↓</p>
+<p>7. VisitorAPI.js sets AMCV cookie:</p>
+<p>AMCV_[orgID]@AdobeOrg =</p>
+<p>MCMID|98765432109876543210|MCAID|...|MCORGID|...</p>
+<p>↓</p>
+<p>8. AppMeasurement.js reads ECID from VisitorAPI</p>
+<p>↓</p>
+<p>9. Analytics beacon sent with ECID:</p>
+<p>GET https://metrics.retailstore.com/b/ss/</p>
+<p>retail-prod/1/JS-2.22.0?</p>
+<p>mid=98765432109876543210</p>
+<p>&amp;pageName=Homepage</p>
+<p>&amp;...</p>
+<p>```</p>
+<h4>Legacy Cookie Structure</h4>
+<p>```</p>
+<p>Cookies Set by Legacy Implementation:</p>
+<p>───────────────────────────────────────</p>
+<p>Cookie 1: AMCV_[orgID]@AdobeOrg</p>
+<p>Domain: .retailstore.com (first-party)</p>
+<p>Path: /</p>
+<p>Expiry: 2 years</p>
+<p>Value: MCMID|98765432109876543210|MCAID|...|MCORGID|ORGID@AdobeOrg</p>
+<p>Purpose: Primary ECID storage</p>
+<p>Cookie 2: s_ecid (set by Analytics server)</p>
+<p>Domain: .retailstore.com (first-party)</p>
+<p>Path: /</p>
+<p>Expiry: 2 years</p>
+<p>Value: MCMID|98765432109876543210</p>
+<p>Purpose: Server-side ECID backup</p>
+<p>(helps when ITP/browser restrictions clear AMCV)</p>
+<p>Cookie 3: demdex (THIRD-PARTY)</p>
+<p>Domain: .demdex.net (THIRD-PARTY)</p>
+<p>Path: /</p>
+<p>Expiry: 6 months</p>
+<p>Value: demdexID</p>
+<p>Purpose: Cross-domain identity (BEING DEPRECATED)</p>
+<p>Problem: Blocked by Safari ITP, Firefox ETP, etc.</p>
+<p>```</p>
+<h4>Legacy Library Architecture</h4>
+<p>```</p>
+<p>Legacy Implementation Files:</p>
+<p>─────────────────────────────</p>
+<p>1. VisitorAPI.js (Identity Service)</p>
+<p>Size: ~200KB</p>
+<p>Purpose: Generate and manage ECID</p>
+<p>Dependency: Must load BEFORE AppMeasurement and AT.js</p>
+<p>2. AppMeasurement.js (Analytics)</p>
+<p>Size: ~150KB</p>
+<p>Purpose: Send data to Adobe Analytics</p>
+<p>Dependency: Requires VisitorAPI.js</p>
+<p>3. AT.js (Target)</p>
+<p>Size: ~100KB</p>
+<p>Purpose: Deliver Target personalization</p>
+<p>Dependency: Requires VisitorAPI.js</p>
+<p>4. DIL.js (Audience Manager - optional)</p>
+<p>Size: ~150KB</p>
+<p>Purpose: Send data to Audience Manager</p>
+<p>Dependency: Requires VisitorAPI.js</p>
+<p>Total Libraries: 4 separate JavaScript files</p>
+<p>Total Size: ~600KB</p>
+<p>Network Requests: 4+ separate HTTP calls</p>
+<p>Loading Order: Critical (VisitorAPI must be first)</p>
+<p>```</p>
+<h4>Problems with Legacy Identity Management</h4>
+<p>```</p>
+<p>Problem 1: Third-Party Cookie Dependency</p>
+<p>demdex.net cookie BLOCKED by:</p>
+<p>✅ Safari ITP (Intelligent Tracking Prevention)</p>
+<p>✅ Firefox Enhanced Tracking Protection</p>
+<p>✅ Chrome (deprecating third-party cookies)</p>
+<p>✅ Brave Browser (aggressive blocking)</p>
+<p>Impact: Cross-domain identity fails</p>
+<p>Visitor appears as new user on each domain</p>
+<p>Problem 2: AMCV Cookie Expiration</p>
+<p>Safari ITP shortens JavaScript-set cookies to:</p>
+<p>→ 7 days (ITP 2.1)</p>
+<p>→ 1 day in some cases (ITP 2.2+)</p>
+<p>Impact: Returning visitors appear as new visitors</p>
+<p>Inflated unique visitor counts</p>
+<p>Broken attribution for multi-session journeys</p>
+<p>Problem 3: Multiple Network Requests</p>
+<p>Each solution makes its own ID service call:</p>
+<p>→ VisitorAPI → demdex.net (1 call)</p>
+<p>→ AppMeasurement → Analytics servers (1 call)</p>
+<p>→ AT.js → Target servers (1+ calls)</p>
+<p>→ DIL.js → Audience Manager (1 call)</p>
+<p>Impact: Page load performance degraded</p>
+<p>Race conditions between libraries</p>
+<p>Complex dependency chain</p>
+<p>Problem 4: Client-Side ECID Generation</p>
+<p>ECID generated by JavaScript in browser:</p>
+<p>→ Bot traffic can spoof ECID</p>
+<p>→ Ad blockers can intercept</p>
+<p>→ Browser extensions can modify</p>
+<p>→ Less reliable than server-side generation</p>
+<p>Problem 5: Library Update Complexity</p>
+<p>Each library updated independently:</p>
+<p>→ Breaking changes possible between versions</p>
+<p>→ Testing matrix grows exponentially</p>
+<p>→ Developer resources needed for updates</p>
+<p>```</p>
+<hr>
+<h3>Modern Architecture: Web SDK (alloy.js)</h3>
+<h4>How ECID Is Generated (Web SDK)</h4>
+<p>```</p>
+<p>Customer Visits Website (First Visit):</p>
+<p>───────────────────────────────────────</p>
+<p>1. Page loads alloy.js (SINGLE library)</p>
+<p>↓</p>
+<p>2. Web SDK configure() initializes</p>
+<p>↓</p>
+<p>3. Web SDK sendEvent() called</p>
+<p>↓</p>
+<p>4. Web SDK checks for existing ECID cookie:</p>
+<p>kndctr_[orgID]_AdobeOrg_identity</p>
+<p>↓</p>
+<p>5. No cookie found (first visit)</p>
+<p>↓</p>
+<p>6. Web SDK sends event to Edge Network:</p>
+<p>POST https://data.retailstore.com/ee/v2/interact</p>
+<p>(No ECID in request — Edge Network will generate it)</p>
+<p>↓</p>
+<p>7. Edge Network generates ECID SERVER-SIDE:</p>
+<p>• No separate round-trip needed</p>
+<p>• Generated as part of SAME request processing</p>
+<p>• More reliable than client-side generation</p>
+<p>↓</p>
+<p>8. Edge Network returns ECID in response:</p>
+<p>{</p>
+<p>&quot;type&quot;: &quot;identity:result&quot;,</p>
+<p>&quot;payload&quot;: [{</p>
+<p>&quot;id&quot;: &quot;98765432109876543210&quot;,</p>
+<p>&quot;namespace&quot;: {&quot;code&quot;: &quot;ECID&quot;},</p>
+<p>&quot;primary&quot;: true</p>
+<p>}]</p>
+<p>}</p>
+<p>↓</p>
+<p>9. Edge Network sets first-party identity cookie:</p>
+<p>kndctr_[orgID]_AdobeOrg_identity</p>
+<p>Domain: .retailstore.com</p>
+<p>Set by: SERVER (not JavaScript) — bypasses ITP!</p>
+<p>↓</p>
+<p>10. Subsequent Web SDK events include ECID:</p>
+<p>Web SDK reads cookie automatically</p>
+<p>No separate ID service call needed</p>
+<p>```</p>
+<h4>Modern Cookie Structure</h4>
+<p>```</p>
+<p>Cookies Set by Web SDK Implementation:</p>
+<p>───────────────────────────────────────</p>
+<p>Cookie 1: kndctr_[orgID]_AdobeOrg_identity</p>
+<p>Domain: .retailstore.com (FIRST-PARTY)</p>
+<p>Path: /</p>
+<p>Expiry: 2 years (set by server = full lifespan)</p>
+<p>Value: Encrypted ECID value</p>
+<p>Purpose: Primary ECID storage</p>
+<p>Key Advantage: Set SERVER-SIDE (bypasses Safari ITP!)</p>
+<p>Cookie 2: kndctr_[orgID]_AdobeOrg_cluster</p>
+<p>Domain: .retailstore.com (FIRST-PARTY)</p>
+<p>Path: /</p>
+<p>Expiry: 30 minutes</p>
+<p>Value: or2 (Edge Network cluster identifier)</p>
+<p>Purpose: Routes subsequent requests to same cluster</p>
+<p>Ensures session consistency</p>
+<p>Cookie 3: kndctr_[orgID]_AdobeOrg_consent</p>
+<p>Domain: .retailstore.com (FIRST-PARTY)</p>
+<p>Path: /</p>
+<p>Expiry: 2 years</p>
+<p>Value: Encoded consent preferences</p>
+<p>Purpose: Persists customer consent across sessions</p>
+<p>NO THIRD-PARTY COOKIES:</p>
+<p>❌ demdex.net cookie no longer needed</p>
+<p>✅ All cookies are first-party</p>
+<p>✅ Not affected by Safari ITP</p>
+<p>✅ Not affected by Firefox ETP</p>
+<p>✅ Ready for Chrome cookie deprecation</p>
+<p>```</p>
+<h4>Modern Library Architecture</h4>
+<p>```</p>
+<p>Modern Implementation:</p>
+<p>───────────────────────</p>
+<p>1. alloy.js (Web SDK) — SINGLE LIBRARY</p>
+<p>Size: ~120KB (smaller than legacy combined)</p>
+<p>Purpose: EVERYTHING:</p>
+<p>→ Identity management (replaces VisitorAPI.js)</p>
+<p>→ Analytics data collection (replaces AppMeasurement.js)</p>
+<p>→ Target personalization (replaces AT.js)</p>
+<p>→ Audience Manager integration (replaces DIL.js)</p>
+<p>→ AEP data collection</p>
+<p>→ AJO journey triggering</p>
+<p>Total Libraries: 1 JavaScript file</p>
+<p>Total Size: ~120KB (vs ~600KB legacy)</p>
+<p>Network Requests: 1 consolidated HTTP call</p>
+<p>Loading Order: No complex dependency chain</p>
+<p>```</p>
+<hr>
+<h3>ECID Access in Web SDK</h3>
+<h4>Accessing ECID Client-Side</h4>
+<p>```javascript</p>
+<p>// Method 1: getIdentity command</p>
+<p>alloy(&quot;getIdentity&quot;).then(function(result) {</p>
+<p>var ecid = result.identity.ECID;</p>
+<p>console.log(&quot;ECID:&quot;, ecid);</p>
+<p>// Output: ECID: 98765432109876543210</p>
+<p>});</p>
+<p>// Method 2: getIdentity with specific namespace</p>
+<p>alloy(&quot;getIdentity&quot;, {</p>
+<p>namespaces: [&quot;ECID&quot;, &quot;CORE&quot;]</p>
+<p>}).then(function(result) {</p>
+<p>var ecid = result.identity.ECID;</p>
+<p>var coreId = result.identity.CORE;</p>
+<p>console.log(&quot;ECID:&quot;, ecid);</p>
+<p>console.log(&quot;CORE ID:&quot;, coreId);</p>
+<p>});</p>
+<p>// Method 3: Access from sendEvent response</p>
+<p>alloy(&quot;sendEvent&quot;, {</p>
+<p>xdm: {</p>
+<p>eventType: &quot;web.webpagedetails.pageViews&quot;</p>
+<p>}</p>
+<p>}).then(function(result) {</p>
+<p>// ECID available in result if needed</p>
+<p>console.log(&quot;Event sent successfully&quot;);</p>
+<p>});</p>
+<p>```</p>
+<h4>How getIdentity Works</h4>
+<p>```</p>
+<p>getIdentity() Flow:</p>
+<p>────────────────────</p>
+<p>1. alloy(&quot;getIdentity&quot;) called</p>
+<p>↓</p>
+<p>2. Web SDK checks consent status</p>
+<p>↓</p>
+<p>3. Web SDK reads kndctr cookie</p>
+<p>↓</p>
+<p>4. IF cookie exists:</p>
+<p>Return ECID from cookie immediately</p>
+<p>(No network request needed for basic ECID)</p>
+<p>↓</p>
+<p>5. IF cookie NOT found OR CORE namespace requested:</p>
+<p>Make request to Edge Network</p>
+<p>Edge Network generates/retrieves ECID</p>
+<p>Returns ECID in response</p>
+<p>↓</p>
+<p>6. Promise resolves with identity object:</p>
+<p>{</p>
+<p>identity: {</p>
+<p>ECID: &quot;98765432109876543210&quot;</p>
+<p>}</p>
+<p>}</p>
+<p>```</p>
+<hr>
+<h3>First-Party Device IDs (FPID): Web SDK Enhancement</h3>
+<p>Web SDK introduces <strong>FPID</strong> — a powerful identity enhancement not available in legacy:</p>
+<h4>What is FPID?</h4>
+<p>```</p>
+<p>FPID = First-Party Device ID</p>
+<p>─────────────────────────────</p>
+<p>Problem FPID Solves:</p>
+<p>Even with server-set cookies, ITP can still limit</p>
+<p>cookie lifespan based on click-through rate to domain</p>
+<p>FPID Solution:</p>
+<p>You generate and manage the device ID yourself</p>
+<p>On your own server infrastructure</p>
+<p>No Adobe dependency for the ID itself</p>
+<p>FPID &quot;seeds&quot; the ECID — Edge Network derives ECID from FPID</p>
+<p>```</p>
+<h4>FPID Implementation</h4>
+<p>```javascript</p>
+<p>// Step 1: Generate FPID on your server</p>
+<p>// (Example: Node.js server)</p>
+<p>const { v4: uuidv4 } = require(&#x27;uuid&#x27;);</p>
+<p>const fpid = uuidv4(); // &quot;550e8400-e29b-41d4-a716-446655440000&quot;</p>
+<p>// Store in HttpOnly cookie (server-set, long-lived)</p>
+<p>res.cookie(&#x27;fpid&#x27;, fpid, {</p>
+<p>httpOnly: true,</p>
+<p>secure: true,</p>
+<p>maxAge: 365 <em> 24 </em> 60 <em> 60 </em> 1000, // 1 year</p>
+<p>sameSite: &#x27;Strict&#x27;</p>
+<p>});</p>
+<p>// Step 2: Pass FPID to Web SDK via identityMap</p>
+<p>alloy(&quot;sendEvent&quot;, {</p>
+<p>xdm: {</p>
+<p>eventType: &quot;web.webpagedetails.pageViews&quot;,</p>
+<p>identityMap: {</p>
+<p>FPID: [{</p>
+<p>id: getCookie(&#x27;fpid&#x27;), // Read from cookie</p>
+<p>authenticatedState: &quot;ambiguous&quot;,</p>
+<p>primary: true</p>
+<p>}]</p>
+<p>}</p>
+<p>}</p>
+<p>});</p>
+<p>// Step 3: Edge Network derives ECID from FPID</p>
+<p>// Same FPID always produces same ECID</p>
+<p>// Stronger persistence than AMCV cookie</p>
+<p>```</p>
+<h4>FPID vs. AMCV Cookie Persistence</h4>
+<p>```</p>
+<p>Without FPID (AMCV Cookie Only):</p>
+<p>Safari ITP: Caps JavaScript cookies at 7 days</p>
+<p>Impact: Returning visitor after 7 days = NEW visitor</p>
+<p>Result: ~40% of Safari visitors appear as new each week</p>
+<p>With FPID (Server-Set HttpOnly Cookie):</p>
+</article>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Q8. How does identity (ECID) work with the Web SDK compared to the old\nAppMeasurement/Visitor API?", "acceptedAnswer": {"@type": "Answer", "text": "How Does Identity (ECID) Work with Web SDK vs. AppMeasurement/Visitor API? Video Walkthroughs \u25b6 Watch: Experience Cloud Identity Overview(https://video.tv.adobe.com/v/27203?quality=12&learn=on) This video explains how ECID works across Adobe Experience Cloud solutions. \u25b6 Watch: Migrate from AppMeasurement to Web SDK(https://video.tv.adobe.com/v/3424753?quality=12&learn=on) This video demonstrates how identity management changes when migrating from AppMeasurement to Web SDK. \u25b6 Watch: Web SDK Identity Management(https://video.tv.adobe.com/v/3418165?quality=12&learn=on) This video walks through how Web SDK handles identity including ECID generation and management. --- Overview The Experience Cloud ID (ECID) is the persistent visitor identifier used across all Adobe Experience Cloud solutions. However, the mechanism for generating, storing, and managing the ECID changed significantly with the introduction of Web SDK. Key Difference: - Legacy (AppMeasurement + Visitor API): ECID generated and managed client-side by JavaScript library - Modern (Web SDK): ECID generated and managed server-side by Edge Network --- Complete Comparison: Legacy vs. Modern Identity | Aspect | AppMeasurement + Visitor API | Web SDK (alloy.js) | |---|---|---| | ECID Generation | Client-side JavaScript | Server-side Edge Network | | ECID Visibility | Visible in browser network requests | Not in request payload (server-side) | | Cookie Type | Third-party demdex.net cookie + First-party | First-party only | | Cookie Name | AMCVorgID@AdobeOrg | kndctrorgIDAdobeOrgidentity | | Cookie Management | Visitor API library manages | Edge Network manages | | Libraries Required | AppMeasurement.js + VisitorAPI.js + AT.js | alloy.js (single library) | | ID Service Required | \u2705 Required (separate library) | \u274c Built into Web SDK | | Network Requests | Multiple (one per solution) | Single consolidated request | | FPID Support | \u274c Not supported | \u2705 Natively supported | | Cross-Domain | secid cookie + URL\u2026"}}]}</script></div>
+  </body>
+</html>

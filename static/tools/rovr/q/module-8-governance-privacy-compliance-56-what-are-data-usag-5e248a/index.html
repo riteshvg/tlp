@@ -1,0 +1,287 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/png" href="/tools/rovr/rovrlogo.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="build-date" content="2026-06-10" />
+    
+    
+    <script src="https://assets.adobedtm.com/204118644db8/290ae1adb65a/launch-e5ec7bf1a1ef-development.min.js" async></script>
+    <script type="module" crossorigin src="/tools/rovr/assets/index-Cnf1TPK2.js"></script>
+    <link rel="stylesheet" crossorigin href="/tools/rovr/assets/index-D1POE5XP.css">
+  <title>Module 8: Governance, Privacy &amp; Compliance
+56. What are Data Usage Labels? Why are they important? | Rovr</title>
+<meta name="description" content="Data Usage Labels in Adobe Experience Platform What are Data Usage Labels? Data Usage Labels are metadata tags applied to datasets and schema fields in Adobe…" />
+<link rel="canonical" href="https://thelearningproject.in/tools/rovr/q/module-8-governance-privacy-compliance-56-what-are-data-usag-5e248a" />
+<meta property="og:title" content="Module 8: Governance, Privacy &amp; Compliance
+56. What are Data Usage Labels? Why are they important?" />
+<meta property="og:description" content="Data Usage Labels in Adobe Experience Platform What are Data Usage Labels? Data Usage Labels are metadata tags applied to datasets and schema fields in Adobe…" />
+<meta property="og:url" content="https://thelearningproject.in/tools/rovr/q/module-8-governance-privacy-compliance-56-what-are-data-usag-5e248a" />
+<meta property="og:type" content="article" />
+<meta property="og:image" content="https://thelearningproject.in/tools/rovr/rovrlogo.png" />
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="Module 8: Governance, Privacy &amp; Compliance
+56. What are Data Usage Labels? Why are they important?" />
+<meta name="twitter:description" content="Data Usage Labels in Adobe Experience Platform What are Data Usage Labels? Data Usage Labels are metadata tags applied to datasets and schema fields in Adobe…" />
+</head>
+  <body>
+    <div id="root"><article><h1>Module 8: Governance, Privacy &amp; Compliance
+56. What are Data Usage Labels? Why are they important?</h1>
+<h2>Data Usage Labels in Adobe Experience Platform</h2>
+<h3>What are Data Usage Labels?</h3>
+<p><strong>Data Usage Labels</strong> are metadata tags applied to datasets and schema fields in Adobe Experience Platform that <strong>categorize data according to the type of governance policies, privacy regulations, and compliance restrictions</strong> that apply to that data.</p>
+<p>They are the <strong>foundation of the AEP Data Governance framework</strong> — without labels, the system has no way of knowing what type of data it is handling or what restrictions should apply.</p>
+<p>&gt; <strong>In simple terms:</strong> Data Usage Labels are like <strong>warning tags on data</strong> that tell the system — and the people using it — exactly what that data is, how sensitive it is, and what it can or cannot be used for.</p>
+<hr>
+<h3>The Three Label Categories</h3>
+<p><img src="https://raw.githubusercontent.com/AdobeDocs/experience-platform.en/main/help/data-governance/images/overview/label-categories.png" alt="Data Governance Label Categories"></p>
+<p>AEP provides three main categories of out-of-the-box labels:</p>
+<hr>
+<h4>1. 📄 Contract (C) Labels — Legal &amp; Business Restrictions</h4>
+<p>Contract labels categorize data that has <strong>contractual obligations</strong> or is related to <strong>customer data governance policies</strong>. They define what you are legally or contractually allowed to do with the data.</p>
+<p>| Label | Name | Meaning |</p>
+<p>|---|---|---|</p>
+<p>| <strong>C1</strong> | No third-party export | Data cannot be shared with third parties |</p>
+<p>| <strong>C2</strong> | No export outside AEP | Data cannot leave the platform |</p>
+<p>| <strong>C3</strong> | No combining with on-site data | Cannot merge with website behavioral data |</p>
+<p>| <strong>C4</strong> | No on-site ad targeting | Cannot use for ads shown on your website |</p>
+<p>| <strong>C5</strong> | No cross-site targeting | Cannot use for retargeting across websites |</p>
+<p>| <strong>C6</strong> | No on-site personalization | Cannot personalize website experiences |</p>
+<p>| <strong>C7</strong> | No content personalization | Cannot personalize email/SMS/other content |</p>
+<p>| <strong>C8</strong> | <strong>No measurement</strong> | Cannot be used for analytics on websites or apps |</p>
+<p>| <strong>C9</strong> | No ML/AI usage | Cannot be used in machine learning models |</p>
+<p>| <strong>C10</strong> | No geofencing | Cannot be used for location-based targeting |</p>
+<p>| <strong>C11</strong> | No interest-based marketing | Cannot use for behavioral advertising |</p>
+<p>| <strong>C12</strong> | <strong>No general data export</strong> | Cannot be exported or downloaded from CJA/AEP |</p>
+<hr>
+<h4>2. 🪪 Identity (I) Labels — Personally Identifiable Information</h4>
+<p>Identity labels categorize data that can <strong>identify or contact a specific person</strong>. These are your PII flags.</p>
+<p>| Label | Name | Meaning |</p>
+<p>|---|---|---|</p>
+<p>| <strong>I1</strong> | Directly identifiable | Directly identifies a person (name, email, SSN, phone) |</p>
+<p>| <strong>I2</strong> | Indirectly identifiable | Can identify a person when combined with other data (device ID + location) |</p>
+<hr>
+<h4>3. ⚠️ Sensitive (S) Labels — Sensitive Data Categories</h4>
+<p>Sensitive labels categorize data that is considered <strong>highly sensitive</strong> — often regulated by privacy laws such as HIPAA, PCI-DSS, and GDPR.</p>
+<p>| Label | Name | Meaning |</p>
+<p>|---|---|---|</p>
+<p>| <strong>S1</strong> | Sensitive financial data | Bank accounts, credit cards, financial records |</p>
+<p>| <strong>S2</strong> | Sensitive health data | Medical records, health conditions, prescriptions |</p>
+<p>| <strong>S3</strong> | Sensitive location data | Precise geographic/location data |</p>
+<hr>
+<h3>Special Labels of Note in Customer Journey Analytics</h3>
+<p>Two labels have <strong>specific significance</strong> in Customer Journey Analytics:</p>
+<p>| Label | Name | Impact in CJA |</p>
+<p>|---|---|---|</p>
+<p>| <strong>C8</strong> | No measurement | Data <strong>cannot be used for analytics</strong> on websites or apps — blocks CJA reporting |</p>
+<p>| <strong>C12</strong> | No general data export | Data <strong>cannot be exported or downloaded</strong> from CJA via reporting, CSV, API, etc. |</p>
+<p>&gt; ⚠️ Data usage labels are <strong>not automatically propagated</strong> to stitched datasets in CJA — they must be added manually.</p>
+<hr>
+<h3>Where Labels Are Applied</h3>
+<p>Labels can be applied at <strong>two levels</strong> in AEP:</p>
+<h4>Level 1: Dataset-Level Labels</h4>
+<p>When you apply a label to an <strong>entire dataset</strong>, it is automatically <strong>propagated to ALL fields</strong> within that dataset.</p>
+<p>```</p>
+<p>Dataset: Customer_Master [Labels: C2, I1, S1]</p>
+<p>├── Field: email → Inherits [C2, I1, S1]</p>
+<p>├── Field: phone → Inherits [C2, I1, S1]</p>
+<p>├── Field: name → Inherits [C2, I1, S1]</p>
+<p>└── Field: purchase_history → Inherits [C2, I1, S1]</p>
+<p>```</p>
+<h4>Level 2: Field-Level Labels</h4>
+<p>Labels can also be applied to <strong>individual fields</strong> without affecting other fields in the same dataset:</p>
+<p>```</p>
+<p>Dataset: Customer_Master [No dataset-level label]</p>
+<p>├── Field: email → [I1, C2] ← PII label only on email</p>
+<p>├── Field: phone → [I1] ← Identity label only on phone</p>
+<p>├── Field: preferences → [C11] ← Interest-based restriction</p>
+<p>└── Field: transaction_id → [No labels] ← Not sensitive</p>
+<p>```</p>
+<p>This gives you <strong>granular, field-level governance control</strong>.</p>
+<hr>
+<h3>How Labels Are Applied in the UI</h3>
+<h4>Applying Labels to a Dataset:</h4>
+<p><strong>Prerequisites:</strong></p>
+<ul>
+<li>You must have <strong>Manage Data Labels</strong> permission in Adobe Admin Console</li>
+<li>Labels can be applied at any time — during ingestion or after</li>
+</ul>
+<p><strong>Steps:</strong></p>
+<p>1. In the AEP left navigation, select <strong>Datasets</strong></p>
+<p>2. Open the dataset you want to label (e.g., `Luma Loyalty Dataset`)</p>
+<p>3. Click the <strong>Data Governance</strong> tab</p>
+<p>4. Click the <strong>pencil (edit) icon</strong> next to the dataset name or field</p>
+<p>5. In the modal, expand the label category:</p>
+<ul>
+<li><strong>Contract Labels</strong> → Check relevant C labels (e.g., C2)</li>
+<li><strong>Identity Labels</strong> → Check I1 or I2</li>
+<li><strong>Sensitive Labels</strong> → Check S1, S2, or S3</li>
+</ul>
+<p>6. Click <strong>Save changes</strong></p>
+<p>7. Toggle <strong>Show inherited labels</strong> to confirm propagation across all fields</p>
+<h4>Applying Labels via the Policy Service API:</h4>
+<p>```http</p>
+<p>PUT https://platform.adobe.io/data/foundation/dataset/datasets/{DATASET_ID}/labels</p>
+<p>```</p>
+<p><strong>Request Body:</strong></p>
+<p>```json</p>
+<p>{</p>
+<p>&quot;labels&quot;: [&quot;C1&quot;, &quot;C2&quot;, &quot;I1&quot;],</p>
+<p>&quot;optionalLabels&quot;: [</p>
+<p>{</p>
+<p>&quot;option&quot;: {</p>
+<p>&quot;id&quot;: &quot;https://ns.adobe.com/{TENANT_ID}/schemas/field-path&quot;,</p>
+<p>&quot;contentType&quot;: &quot;application/vnd.adobe.xed-full+json;version=1&quot;,</p>
+<p>&quot;schemaPath&quot;: &quot;/properties/personalEmail&quot;</p>
+<p>},</p>
+<p>&quot;labels&quot;: [&quot;I1&quot;, &quot;S1&quot;]</p>
+<p>}</p>
+<p>]</p>
+<p>}</p>
+<p>```</p>
+<h4>Looking Up Labels via API:</h4>
+<p>```http</p>
+<p>GET https://platform.adobe.io/data/foundation/dataset/datasets/{DATASET_ID}/labels</p>
+<p>```</p>
+<p><strong>Response:</strong></p>
+<p>```json</p>
+<p>{</p>
+<p>&quot;AEP:dataset:5abd49645591445e1ba04f87&quot;: {</p>
+<p>&quot;imsOrg&quot;: &quot;{ORG_ID}&quot;,</p>
+<p>&quot;labels&quot;: [&quot;C1&quot;, &quot;C2&quot;, &quot;C3&quot;, &quot;I1&quot;, &quot;I2&quot;],</p>
+<p>&quot;optionalLabels&quot;: [</p>
+<p>{</p>
+<p>&quot;option&quot;: {</p>
+<p>&quot;schemaPath&quot;: &quot;/properties/repositoryCreatedBy&quot;</p>
+<p>},</p>
+<p>&quot;labels&quot;: [&quot;S1&quot;, &quot;S2&quot;]</p>
+<p>}</p>
+<p>]</p>
+<p>}</p>
+<p>}</p>
+<p>```</p>
+<hr>
+<h3>Viewing Available Labels</h3>
+<p>To see all available labels in your organization:</p>
+<p>1. In the AEP UI, select <strong>Policies</strong> in the left navigation</p>
+<p>2. Click the <strong>Labels</strong> tab</p>
+<p>3. You will see:</p>
+<ul>
+<li>All <strong>out-of-the-box</strong> Adobe-provided labels</li>
+<li>Any <strong>custom labels</strong> your organization has created</li>
+<li>The <strong>Friendly Name</strong> and short <strong>abbreviation</strong> for each label</li>
+</ul>
+<p>4. To create a custom label, click <strong>Create label</strong></p>
+<hr>
+<h3>Custom Labels</h3>
+<p>In addition to Adobe&#x27;s out-of-the-box labels, you can define <strong>your own custom labels</strong> for your organization&#x27;s specific needs.</p>
+<h4>When to Use Custom Labels:</h4>
+<ul>
+<li>Your organization has <strong>internal data classification standards</strong> not covered by Adobe defaults</li>
+<li>You need to enforce <strong>industry-specific</strong> restrictions (e.g., financial services, healthcare)</li>
+<li>You want to create labels aligned with <strong>internal data ownership</strong> or <strong>regional regulations</strong></li>
+</ul>
+<h4>Creating a Custom Label:</h4>
+<p>1. Navigate to <strong>Policies</strong> → <strong>Labels</strong></p>
+<p>2. Click <strong>Create label</strong></p>
+<p>3. Provide:</p>
+<ul>
+<li><strong>Name</strong> — short identifier (e.g., `EMEA_ONLY`)</li>
+<li><strong>Friendly Name</strong> — descriptive name (e.g., &quot;EMEA Region Data Only&quot;)</li>
+<li><strong>Description</strong> — what this label means</li>
+</ul>
+<p>4. Click <strong>Save</strong></p>
+<hr>
+<h3>Label Inheritance for Audience Segments</h3>
+<p>When you build an audience using data from labeled datasets, the audience <strong>automatically inherits</strong> those labels:</p>
+<p>```</p>
+<p>Audience: &quot;High Value Customers in Europe&quot;</p>
+<p>Built from:</p>
+<p>├── Dataset A → Labels: [C2, I1]</p>
+<p>├── Dataset B → Labels: [C11, S1]</p>
+<p>└── Dataset C → Labels: [No labels]</p>
+<p>Resulting Audience Inherited Labels: [C2, I1, C11, S1]</p>
+<p>When activated to destination:</p>
+<p>├── System checks if [C2, I1, C11, S1] violates any policies</p>
+<p>├── C11 restriction + Behavioral Advertising → ❌ BLOCKED</p>
+<p>└── Resolution: Change destination type or remove C11-labeled data</p>
+<p>```</p>
+<hr>
+<h3>Why Data Usage Labels Are Important</h3>
+<h4>1. 🛡️ Regulatory Compliance</h4>
+<p>Labels help you comply with global privacy regulations:</p>
+<p>| Regulation | Applicable Labels | Protection |</p>
+<p>|---|---|---|</p>
+<p>| <strong>GDPR</strong> | I1, I2 | PII protection for EU citizens |</p>
+<p>| <strong>HIPAA</strong> | S2 | Health data protection |</p>
+<p>| <strong>PCI-DSS</strong> | S1 | Payment card data protection |</p>
+<p>| <strong>CCPA/CPRA</strong> | I1, I2, C11 | California consumer rights |</p>
+<p>| <strong>LGPD</strong> | I1, I2 | Brazilian data privacy law |</p>
+<h4>2. ⚙️ Automatic Enforcement</h4>
+<p>Labels trigger <strong>automatic policy enforcement</strong> at activation time — no manual checking required:</p>
+<p>```</p>
+<p>Without Labels:</p>
+<p>❌ No controls → Wrong data activated → Data breach → Regulatory fines</p>
+<p>With Labels:</p>
+<p>✅ Label detected → Policy checked → Violation? → Blocked automatically</p>
+<p>```</p>
+<h4>3. 📊 Operational Clarity</h4>
+<p>Labels create <strong>organization-wide clarity</strong> about what data is and how it can be used:</p>
+<ul>
+<li>New team members instantly know data restrictions</li>
+<li>Data stewards can audit usage across the organization</li>
+<li>Legal and compliance teams have confidence in data controls</li>
+</ul>
+<h4>4. 🔍 Auditability</h4>
+<p>Labels create an <strong>audit trail</strong> demonstrating:</p>
+<ul>
+<li>Which data was used for which purposes</li>
+<li>Which activations were blocked and why</li>
+<li>Compliance evidence for regulators</li>
+</ul>
+<h4>5. 🚀 Flexibility Without Risk</h4>
+<p>Labels allow teams to <strong>move fast</strong> while staying compliant:</p>
+<ul>
+<li>Marketers can self-serve audience activation</li>
+<li>System automatically prevents policy violations</li>
+<li>No need for legal review on every activation</li>
+</ul>
+<hr>
+<h3>The Complete Governance Framework</h3>
+<p>Data usage labels don&#x27;t work alone — they are part of a complete framework:</p>
+<p>```</p>
+<p>Step 1: LABEL</p>
+<p>Apply data usage labels to datasets and fields</p>
+<p>(C labels, I labels, S labels, custom labels)</p>
+<p>↓</p>
+<p>Step 2: DEFINE POLICIES</p>
+<p>Create marketing action policies that reference labels</p>
+<p>(&quot;If data has C11 label, block behavioral advertising&quot;)</p>
+<p>↓</p>
+<p>Step 3: ENFORCE</p>
+<p>AEP automatically evaluates labels + policies at activation time</p>
+<p>↓</p>
+<p>Step 4: AUDIT</p>
+<p>Review policy violations, blocked activations, and data usage history</p>
+<p>↓</p>
+<p>Step 5: ITERATE</p>
+<p>Update labels and policies as regulations and business needs change</p>
+<p>```</p>
+<hr>
+<h3>Summary</h3>
+<p>| Aspect | Detail |</p>
+<p>|---|---|</p>
+<p>| <strong>What they are</strong> | Metadata tags categorizing data by type and restriction |</p>
+<p>| <strong>Three categories</strong> | Contract (C), Identity (I), Sensitive (S) |</p>
+<p>| <strong>Where applied</strong> | Dataset level (propagates to all fields) or Field level (granular) |</p>
+<p>| <strong>Custom labels</strong> | Yes — organizations can create their own |</p>
+<p>| <strong>Inheritance</strong> | Audiences inherit labels from underlying datasets |</p>
+<p>| <strong>Enforcement</strong> | Automatic at activation time via policies |</p>
+<p>| <strong>Key CJA labels</strong> | C8 (no measurement), C12 (no export) |</p>
+<p>| <strong>Availability</strong> | All AEP organizations — no special license required |</p>
+<p>Data Usage Labels are the <strong>cornerstone of AEP&#x27;s data governance strategy</strong> — they are the first line of defense in ensuring that your organization handles customer data responsibly, compliantly, and with full accountability across every team and use case.</p>
+</article>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Module 8: Governance, Privacy & Compliance\n56. What are Data Usage Labels? Why are they important?", "acceptedAnswer": {"@type": "Answer", "text": "Data Usage Labels in Adobe Experience Platform What are Data Usage Labels? Data Usage Labels are metadata tags applied to datasets and schema fields in Adobe Experience Platform that categorize data according to the type of governance policies, privacy regulations, and compliance restrictions that apply to that data. They are the foundation of the AEP Data Governance framework \u2014 without labels, the system has no way of knowing what type of data it is handling or what restrictions should apply. In simple terms: Data Usage Labels are like warning tags on data that tell the system \u2014 and the people using it \u2014 exactly what that data is, how sensitive it is, and what it can or cannot be used for. --- The Three Label Categories !Data Governance Label Categories(https://raw.githubusercontent.com/AdobeDocs/experience-platform.en/main/help/data-governance/images/overview/label-categories.png) AEP provides three main categories of out-of-the-box labels: --- 1. \ud83d\udcc4 Contract (C) Labels \u2014 Legal & Business Restrictions Contract labels categorize data that has contractual obligations or is related to customer data governance policies. They define what you are legally or contractually allowed to do with the data. | Label | Name | Meaning | |---|---|---| | C1 | No third-party export | Data cannot be shared with third parties | | C2 | No export outside AEP | Data cannot leave the platform | | C3 | No combining with on-site data | Cannot merge with website behavioral data | | C4 | No on-site ad targeting | Cannot use for ads shown on your website | | C5 | No cross-site targeting | Cannot use for retargeting across websites | | C6 | No on-site personalization | Cannot personalize website experiences | | C7 | No content personalization | Cannot personalize email/SMS/other content | | C8 | No measurement | Cannot be used for analytics on websites or apps | | C9 | No ML/AI usage | Cannot be used in machine learning models | | C10 | No geofencing | Cannot be used for location-based\u2026"}}]}</script></div>
+  </body>
+</html>

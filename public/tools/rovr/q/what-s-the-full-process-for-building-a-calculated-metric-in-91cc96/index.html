@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/png" href="/tools/rovr/rovrlogo.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="build-date" content="2026-06-10" />
+    
+    
+    <script src="https://assets.adobedtm.com/204118644db8/290ae1adb65a/launch-e5ec7bf1a1ef-development.min.js" async></script>
+    <script type="module" crossorigin src="/tools/rovr/assets/index-Cnf1TPK2.js"></script>
+    <link rel="stylesheet" crossorigin href="/tools/rovr/assets/index-D1POE5XP.css">
+  <title>What&#x27;s the full process for building a calculated metric in Analytics and then using it in a CJA connection? | Rovr</title>
+<meta name="description" content="Building Calculated Metrics in Adobe Analytics and Using Them in Customer Journey Analytics There are two distinct paths here worth clarifying: creating…" />
+<link rel="canonical" href="https://thelearningproject.in/tools/rovr/q/what-s-the-full-process-for-building-a-calculated-metric-in-91cc96" />
+<meta property="og:title" content="What&#x27;s the full process for building a calculated metric in Analytics and then using it in a CJA connection?" />
+<meta property="og:description" content="Building Calculated Metrics in Adobe Analytics and Using Them in Customer Journey Analytics There are two distinct paths here worth clarifying: creating…" />
+<meta property="og:url" content="https://thelearningproject.in/tools/rovr/q/what-s-the-full-process-for-building-a-calculated-metric-in-91cc96" />
+<meta property="og:type" content="article" />
+<meta property="og:image" content="https://thelearningproject.in/tools/rovr/rovrlogo.png" />
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="What&#x27;s the full process for building a calculated metric in Analytics and then using it in a CJA connection?" />
+<meta name="twitter:description" content="Building Calculated Metrics in Adobe Analytics and Using Them in Customer Journey Analytics There are two distinct paths here worth clarifying: creating…" />
+</head>
+  <body>
+    <div id="root"><article><h1>What&#x27;s the full process for building a calculated metric in Analytics and then using it in a CJA connection?</h1>
+<h2>Building Calculated Metrics in Adobe Analytics and Using Them in Customer Journey Analytics</h2>
+<p>There are two distinct paths here worth clarifying: <strong>creating calculated metrics natively in CJA</strong> and <strong>migrating existing Adobe Analytics calculated metrics into CJA</strong>. Here is the full picture:</p>
+<hr>
+<h3>Understanding Calculated Metrics in CJA</h3>
+<p>Calculated metrics in Customer Journey Analytics are <strong>custom metrics built from existing metrics</strong>. They offer a flexible way to build, manage, and curate custom metrics <strong>without changing your data collection implementation</strong>.</p>
+<p><a href="https://video.tv.adobe.com/v/31787/?quality=12&amp;learn=on">▶ Watch: Introduction to Calculated Metrics in Customer Journey Analytics</a></p>
+<hr>
+<h3>Phase 1: Plan Your Calculated Metric</h3>
+<p>Before building, especially for metrics intended to be <strong>officially approved and shared widely</strong>, carefully plan:</p>
+<ul>
+<li>What existing metrics will be combined or transformed?</li>
+<li>What formula or logic is needed?</li>
+<li>Who needs access to it?</li>
+<li>Should it be an approved, official metric for your organization?</li>
+</ul>
+<hr>
+<h3>Phase 2: Build the Calculated Metric</h3>
+<p>Use the <strong>Calculated Metric Builder</strong> in CJA:</p>
+<p>1. Navigate to <strong>Components &gt; Calculated Metrics</strong> in Customer Journey Analytics.</p>
+<p>2. Click <strong>+ Add</strong> (or the <strong>Create</strong> button) to open the Calculated Metric Builder.</p>
+<p>3. Give the metric a <strong>Name</strong> and optional <strong>Description</strong>.</p>
+<p>4. Drag existing metrics and/or dimensions into the <strong>Definition</strong> canvas.</p>
+<p>5. Apply operators, functions, or filters as needed to define your formula.</p>
+<p>6. Set the <strong>Format</strong> (number, percent, currency, etc.) and decimal places.</p>
+<p>7. Click <strong>Save</strong> to store the metric.</p>
+<p>&gt; If you are migrating from Adobe Analytics, note that some calculated metric functions or segment-based logic may need to be <strong>re-created</strong> in CJA terms, since CJA uses its own component model (e.g., <strong>Filters</strong> instead of Segments).</p>
+<hr>
+<h3>Phase 3: Apply the Calculated Metric in a Workspace Project</h3>
+<p>Once built, calculated metrics can be used directly in Analysis Workspace:</p>
+<p>1. Open or create a <strong>Workspace project</strong> connected to a CJA <strong>Data View</strong>.</p>
+<p>2. In the left rail, go to <strong>Components &gt; Metrics</strong>.</p>
+<p>3. Locate your calculated metric (use the search bar or browse).</p>
+<p>4. <strong>Drag and drop</strong> it onto a panel, freeform table, or visualization.</p>
+<hr>
+<h3>Phase 4: Manage Your Calculated Metrics</h3>
+<p>From the <strong>Calculated Metrics Manager</strong> (<strong>Components &gt; Calculated Metrics</strong>), you can perform the following actions on one or more metrics:</p>
+<p>| Action | Description |</p>
+<p>|---|---|</p>
+<p>| <strong>Tag</strong> | Organize metrics with labels for easier filtering |</p>
+<p>| <strong>Approve / Unapprove</strong> | Mark metrics as officially endorsed for your org |</p>
+<p>| <strong>Filter</strong> | Filter the list by tag, owner, approval status, etc. |</p>
+<p>| <strong>Favorite / Unfavorite</strong> | Pin frequently used metrics for quick access |</p>
+<p>| <strong>Share</strong> | Share with other CJA users or groups |</p>
+<p>| <strong>Copy</strong> | Duplicate a metric to use as a starting point |</p>
+<hr>
+<h3>Migrating Adobe Analytics Calculated Metrics to CJA</h3>
+<p>If you have existing calculated metrics in Adobe Analytics that you want to re-create in CJA, the process involves manual reconstruction:</p>
+<p><a href="https://video.tv.adobe.com/v/31788/?quality=12&amp;learn=on">▶ Watch: Moving Calculated Metrics from Adobe Analytics to CJA</a></p>
+<p>Key tips for migration:</p>
+<ul>
+<li><strong>Segments → Filters</strong>: Adobe Analytics segments used inside calculated metrics must be rebuilt as <strong>CJA Filters</strong>.</li>
+<li><strong>eVar/prop references → Dimensions</strong>: Replace legacy variable references with the appropriate <strong>dimension components</strong> mapped in your CJA Data View.</li>
+<li><strong>Metric names may differ</strong>: Verify that the underlying metrics referenced in your AA calculated metric exist and are named correctly in your CJA Data View.</li>
+<li><strong>Adobe Template metrics</strong>: CJA provides pre-built calculated metric templates (identifiable by the small Adobe logo). Filter for them using <strong>![Label] Adobe Template</strong> in the Components filter to avoid re-creating common metrics unnecessarily.</li>
+</ul>
+<hr>
+<h3>Quick Reference: Full Workflow Summary</h3>
+<p>| Phase | Task |</p>
+<p>|---|---|</p>
+<p>| <strong>Plan</strong> | Define logic, identify source metrics, determine sharing/approval needs |</p>
+<p>| <strong>Build</strong> | Use the Calculated Metric Builder in CJA Components |</p>
+<p>| <strong>Apply</strong> | Drag into Workspace projects tied to a Data View |</p>
+<p>| <strong>Manage</strong> | Tag, approve, share, and copy via the Calculated Metrics Manager |</p>
+</article>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "What's the full process for building a calculated metric in Analytics and then using it in a CJA connection?", "acceptedAnswer": {"@type": "Answer", "text": "Building Calculated Metrics in Adobe Analytics and Using Them in Customer Journey Analytics There are two distinct paths here worth clarifying: creating calculated metrics natively in CJA and migrating existing Adobe Analytics calculated metrics into CJA. Here is the full picture: --- Understanding Calculated Metrics in CJA Calculated metrics in Customer Journey Analytics are custom metrics built from existing metrics. They offer a flexible way to build, manage, and curate custom metrics without changing your data collection implementation. \u25b6 Watch: Introduction to Calculated Metrics in Customer Journey Analytics(https://video.tv.adobe.com/v/31787/?quality=12&learn=on) --- Phase 1: Plan Your Calculated Metric Before building, especially for metrics intended to be officially approved and shared widely, carefully plan: - What existing metrics will be combined or transformed? - What formula or logic is needed? - Who needs access to it? - Should it be an approved, official metric for your organization? --- Phase 2: Build the Calculated Metric Use the Calculated Metric Builder in CJA: 1. Navigate to Components Calculated Metrics in Customer Journey Analytics. 2. Click + Add (or the Create button) to open the Calculated Metric Builder. 3. Give the metric a Name and optional Description. 4. Drag existing metrics and/or dimensions into the Definition canvas. 5. Apply operators, functions, or filters as needed to define your formula. 6. Set the Format (number, percent, currency, etc.) and decimal places. 7. Click Save to store the metric. If you are migrating from Adobe Analytics, note that some calculated metric functions or segment-based logic may need to be re-created in CJA terms, since CJA uses its own component model (e.g., Filters instead of Segments). --- Phase 3: Apply the Calculated Metric in a Workspace Project Once built, calculated metrics can be used directly in Analysis Workspace: 1. Open or create a Workspace project connected to a CJA Data View. 2. In the\u2026"}}]}</script></div>
+  </body>
+</html>

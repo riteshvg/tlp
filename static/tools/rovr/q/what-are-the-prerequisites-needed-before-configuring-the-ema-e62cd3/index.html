@@ -1,0 +1,228 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/png" href="/tools/rovr/rovrlogo.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="build-date" content="2026-06-10" />
+    
+    
+    <script src="https://assets.adobedtm.com/204118644db8/290ae1adb65a/launch-e5ec7bf1a1ef-development.min.js" async></script>
+    <script type="module" crossorigin src="/tools/rovr/assets/index-Cnf1TPK2.js"></script>
+    <link rel="stylesheet" crossorigin href="/tools/rovr/assets/index-D1POE5XP.css">
+  <title>What are the prerequisites needed before configuring the email channel? | Rovr</title>
+<meta name="description" content="Prerequisites for Configuring the Email Channel in Adobe Journey Optimizer Overview Before you can send any emails through AJO, several prerequisites must be…" />
+<link rel="canonical" href="https://thelearningproject.in/tools/rovr/q/what-are-the-prerequisites-needed-before-configuring-the-ema-e62cd3" />
+<meta property="og:title" content="What are the prerequisites needed before configuring the email channel?" />
+<meta property="og:description" content="Prerequisites for Configuring the Email Channel in Adobe Journey Optimizer Overview Before you can send any emails through AJO, several prerequisites must be…" />
+<meta property="og:url" content="https://thelearningproject.in/tools/rovr/q/what-are-the-prerequisites-needed-before-configuring-the-ema-e62cd3" />
+<meta property="og:type" content="article" />
+<meta property="og:image" content="https://thelearningproject.in/tools/rovr/rovrlogo.png" />
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="What are the prerequisites needed before configuring the email channel?" />
+<meta name="twitter:description" content="Prerequisites for Configuring the Email Channel in Adobe Journey Optimizer Overview Before you can send any emails through AJO, several prerequisites must be…" />
+</head>
+  <body>
+    <div id="root"><article><h1>What are the prerequisites needed before configuring the email channel?</h1>
+<h2>Prerequisites for Configuring the Email Channel in Adobe Journey Optimizer</h2>
+<h3>Overview</h3>
+<p>Before you can send any emails through AJO, several <strong>prerequisites must be met</strong> at the organizational, technical, and administrative levels. These prerequisites ensure deliverability, security, compliance, and proper sender reputation.</p>
+<p><img src="https://raw.githubusercontent.com/AdobeDocs/journey-optimizer.en/main/help/using/configuration/assets/email-prerequisites.png" alt="Email Configuration Prerequisites"></p>
+<hr>
+<h3>1. 🏢 Organizational &amp; Licensing Prerequisites</h3>
+<h4>Adobe Journey Optimizer License</h4>
+<ul>
+<li>✅ Your organization must have <strong>Adobe Journey Optimizer</strong> (AJO) purchased and activated</li>
+<li>✅ Alternatively, <strong>Adobe Real-Time CDP with Journey Optimizer</strong> add-on</li>
+<li>❌ Email channels are <strong>NOT available</strong> in standalone Adobe Analytics or Adobe Target</li>
+</ul>
+<h4>Adobe Experience Platform (AEP)</h4>
+<ul>
+<li>✅ AJO is <strong>built on AEP</strong>, so AEP must be active in your organization</li>
+<li>✅ You need access to <strong>AEP Admin Console</strong> for user provisioning</li>
+<li>✅ Real-Time Customer Profiles must be enabled (enabled by default in most orgs)</li>
+</ul>
+<h4>Required Feature Flags</h4>
+<ul>
+<li>✅ Email channel must be <strong>enabled</strong> for your organization</li>
+<li>✅ Contact Adobe Support if email channel is not visible in the UI</li>
+<li>✅ This is typically enabled by default but can be disabled for regulatory reasons</li>
+</ul>
+<hr>
+<h3>2. 👤 User Roles &amp; Permissions</h3>
+<h4>Required Adobe Admin Console Roles</h4>
+<p>Before anyone can configure email, they need the <strong>correct roles</strong> in Adobe Admin Console.</p>
+<h5>For Email Channel Configuration:</h5>
+<p>| Role | Permissions | Required For |</p>
+<p>|---|---|---|</p>
+<p>| <strong>System Administrator</strong> | Full AJO access, can assign roles | Managing all configurations |</p>
+<p>| <strong>Journey Administrator</strong> | Can create/manage channels, email configs | Subdomain delegation, IP pools |</p>
+<p>| <strong>Journey Approver</strong> | Can approve journeys/campaigns | Reviewing email before publish |</p>
+<p>| <strong>Journey Manager</strong> | Can create journeys/campaigns | Building email journeys |</p>
+<p>| <strong>Journey Viewer</strong> | Read-only access to journeys/campaigns | Viewing reports only |</p>
+<h5>Specific Permissions Needed:</h5>
+<p><strong>For Subdomain Delegation:</strong></p>
+<p>```</p>
+<p>Required Permissions:</p>
+<p>├── Manage Email Channel ✅</p>
+<p>├── Manage Message Presets (Channel Configurations) ✅</p>
+<p>├── Administer Delivery ✅</p>
+<p>└── System Administrator (recommended) ✅</p>
+<p>```</p>
+<p><strong>For IP Pool Creation:</strong></p>
+<p>```</p>
+<p>Required Permissions:</p>
+<p>├── Manage IP Pools ✅</p>
+<p>├── Administer Delivery ✅</p>
+<p>└── System Administrator (recommended) ✅</p>
+<p>```</p>
+<p><strong>For Email Content Creation:</strong></p>
+<p>```</p>
+<p>Required Permissions:</p>
+<p>├── Manage Email Messages ✅</p>
+<p>├── Publish Messages ✅</p>
+<p>└── Edit Messages ✅</p>
+<p>```</p>
+<p><strong>How to Assign Roles in Adobe Admin Console:</strong></p>
+<p>1. Go to <strong>Adobe Admin Console</strong> (adminconsole.adobe.com)</p>
+<p>2. Select your <strong>Organization</strong></p>
+<p>3. Click <strong>Products</strong> → <strong>Adobe Journey Optimizer</strong></p>
+<p>4. Click <strong>Product Profiles</strong></p>
+<p>5. Select or create a profile (e.g., &quot;Email Marketers&quot;)</p>
+<p>6. Click <strong>Edit Permissions</strong></p>
+<p>7. Enable required permissions for email:</p>
+<p>```</p>
+<p>✅ Channel - Email</p>
+<p>✅ Message Presets</p>
+<p>✅ Email Content</p>
+<p>✅ Journeys</p>
+<p>✅ Campaigns</p>
+<p>```</p>
+<p>8. Click <strong>Save</strong></p>
+<p>9. Add users to the product profile</p>
+<hr>
+<h3>3. 🌐 Domain &amp; DNS Prerequisites</h3>
+<h4>Own a Sending Domain</h4>
+<p><strong>You must own or have authorization to use a domain</strong> for sending emails.</p>
+<p>```</p>
+<p>Examples of valid domains:</p>
+<p>├── yourbrand.com ✅</p>
+<p>├── marketing.yourbrand.com ✅</p>
+<p>├── email.yourbrand.com ✅</p>
+<p>└── notifications.yourbrand.com ✅</p>
+<p>Invalid:</p>
+<p>├── gmail.com ❌ (not your domain)</p>
+<p>├── someoneelses.com ❌ (unauthorized)</p>
+<p>└── no-domain-just-email ❌ (not a domain)</p>
+<p>```</p>
+<h4>DNS Access &amp; Control</h4>
+<p><strong>You must have access to your domain&#x27;s DNS records</strong> to set up email authentication.</p>
+<p>```</p>
+<p>Who Needs DNS Access:</p>
+<p>├── IT/Network team</p>
+<p>├── Domain registrar admin</p>
+<p>└── DNS provider administrator</p>
+<p>```</p>
+<h4>DNS Provider</h4>
+<p>Your domain must be registered with a <strong>DNS provider</strong> that allows you to manage:</p>
+<ul>
+<li>SPF records</li>
+<li>DKIM records</li>
+<li>DMARC records</li>
+<li>CNAME records (for subdomain delegation)</li>
+</ul>
+<p><strong>Common DNS Providers:</strong></p>
+<p>```</p>
+<p>├── GoDaddy</p>
+<p>├── Cloudflare</p>
+<p>├── AWS Route 53</p>
+<p>├── Azure DNS</p>
+<p>├── Google Domains</p>
+<p>├── Namecheap</p>
+<p>├── Bluehost</p>
+<p>└── Any registrar with DNS management</p>
+<p>```</p>
+<h4>Email Authentication Standards</h4>
+<p>You must understand these <strong>email authentication protocols</strong>:</p>
+<p>| Protocol | Purpose | Who Sets It Up |</p>
+<p>|---|---|---|</p>
+<p>| <strong>SPF</strong> (Sender Policy Framework) | Specifies which servers can send from your domain | Adobe (via delegation) |</p>
+<p>| <strong>DKIM</strong> (DomainKeys Identified Mail) | Cryptographically signs emails from your domain | Adobe (via delegation) |</p>
+<p>| <strong>DMARC</strong> (Domain-based Message Authentication) | Provides authentication policy and reporting | Adobe (via delegation) |</p>
+<p>&gt; ℹ️ <strong>Good news:</strong> When you delegate a subdomain to AJO, Adobe <strong>automatically sets up SPF, DKIM, and DMARC</strong>. You just add the DNS records provided by AJO to your DNS provider.</p>
+<hr>
+<h3>4. 📊 Data &amp; Profile Prerequisites</h3>
+<h4>Real-Time Customer Profiles</h4>
+<p><strong>Real-Time Customer Profiles must be enabled</strong> in your AEP organization.</p>
+<p>```</p>
+<p>Check if Enabled:</p>
+<p>1. Go to AEP → Data Management → Profiles</p>
+<p>2. You should see &quot;Real-time profiles are enabled&quot;</p>
+<p>3. If not enabled, contact Adobe Support</p>
+<p>```</p>
+<p><strong>What this means:</strong></p>
+<ul>
+<li>✅ Customer data is unified across datasets</li>
+<li>✅ Profiles can be personalized in real-time</li>
+<li>✅ Segment membership is evaluated in real-time</li>
+</ul>
+<h4>Identity Graph (Identity Service)</h4>
+<p><strong>Identity Service must be configured</strong> to resolve customer identities.</p>
+<p>```</p>
+<p>Required Identity Namespaces:</p>
+<p>├── Email (required for email sends) ✅</p>
+<p>├── Phone (if using SMS) ✅</p>
+<p>├── ECID (Experience Cloud ID) ✅</p>
+<p>└── Any custom identifiers ✅</p>
+<p>```</p>
+<p><strong>Ensure Email Identity Namespace is Configured:</strong></p>
+<p>```</p>
+<p>1. Go to AEP → Data Management → Identities</p>
+<p>2. Verify &quot;Email&quot; namespace exists</p>
+<p>3. If not, create it:</p>
+<p>├── Name: Email</p>
+<p>├── Type: Email</p>
+<p>└── Primary: YES (for email channel)</p>
+<p>```</p>
+<h4>AEP Datasets &amp; Schemas</h4>
+<p><strong>At least one dataset with the following must exist:</strong></p>
+<p>```</p>
+<p>Required XDM Schema Fields:</p>
+<p>├── identityMap (for identifying profiles) ✅</p>
+<p>├── personalEmail.address (for email sending) ✅</p>
+<p>├── person.name (for personalization) ✅</p>
+<p>├── consentPreferences (for consent checking) ✅</p>
+<p>└── Any custom fields for personalization ✅</p>
+<p>```</p>
+<h4>Audience Segments</h4>
+<p><strong>You should have at least one audience/segment created</strong> before building journeys.</p>
+<p>```</p>
+<p>Audiences can be created via:</p>
+<p>├── Segment Builder (rule-based)</p>
+<p>├── Audience Composition (multi-step)</p>
+<p>└── Audience Portal (custom uploads)</p>
+<p>```</p>
+<hr>
+<h3>5. 🔐 Security &amp; Compliance Prerequisites</h3>
+<h4>Data Governance</h4>
+<p><strong>Data Governance policies must be configured:</strong></p>
+<p>```</p>
+<p>Required Governance Setup:</p>
+<p>├── Data Usage Labels applied to datasets ✅</p>
+<p>│   (C labels, I labels, S labels)</p>
+<p>├── Marketing Action Policies defined ✅</p>
+<p>│   (&quot;Email Marketing&quot; action exists)</p>
+<p>└── Policy enforcement enabled ✅</p>
+<p>```</p>
+<p><strong>Why it matters:</strong></p>
+<ul>
+<li>✅ Ensures sensitive data isn&#x27;t accidentally used for unauthorized purposes</li>
+<li>✅ Required for GDPR, CCPA, HIPAA compliance</li>
+<li>✅ Prevents sending emails with restricted data fields</li>
+</ul>
+<h4>Consent Management</h4>
+<p><strong>Consent preferences must be captured</strong> in customer profiles</p>
+</article>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "What are the prerequisites needed before configuring the email channel?", "acceptedAnswer": {"@type": "Answer", "text": "Prerequisites for Configuring the Email Channel in Adobe Journey Optimizer Overview Before you can send any emails through AJO, several prerequisites must be met at the organizational, technical, and administrative levels. These prerequisites ensure deliverability, security, compliance, and proper sender reputation. !Email Configuration Prerequisites(https://raw.githubusercontent.com/AdobeDocs/journey-optimizer.en/main/help/using/configuration/assets/email-prerequisites.png) --- 1. \ud83c\udfe2 Organizational & Licensing Prerequisites Adobe Journey Optimizer License - \u2705 Your organization must have Adobe Journey Optimizer (AJO) purchased and activated - \u2705 Alternatively, Adobe Real-Time CDP with Journey Optimizer add-on - \u274c Email channels are NOT available in standalone Adobe Analytics or Adobe Target Adobe Experience Platform (AEP) - \u2705 AJO is built on AEP, so AEP must be active in your organization - \u2705 You need access to AEP Admin Console for user provisioning - \u2705 Real-Time Customer Profiles must be enabled (enabled by default in most orgs) Required Feature Flags - \u2705 Email channel must be enabled for your organization - \u2705 Contact Adobe Support if email channel is not visible in the UI - \u2705 This is typically enabled by default but can be disabled for regulatory reasons --- 2. \ud83d\udc64 User Roles & Permissions Required Adobe Admin Console Roles Before anyone can configure email, they need the correct roles in Adobe Admin Console. For Email Channel Configuration: | Role | Permissions | Required For | |---|---|---| | System Administrator | Full AJO access, can assign roles | Managing all configurations | | Journey Administrator | Can create/manage channels, email configs | Subdomain delegation, IP pools | | Journey Approver | Can approve journeys/campaigns | Reviewing email before publish | | Journey Manager | Can create journeys/campaigns | Building email journeys | | Journey Viewer | Read-only access to journeys/campaigns | Viewing reports only | Specific Permissions Needed: For\u2026"}}]}</script></div>
+  </body>
+</html>

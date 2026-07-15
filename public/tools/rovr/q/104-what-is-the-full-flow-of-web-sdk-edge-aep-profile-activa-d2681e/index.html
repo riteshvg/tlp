@@ -1,0 +1,463 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/png" href="/tools/rovr/rovrlogo.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="build-date" content="2026-06-10" />
+    
+    
+    <script src="https://assets.adobedtm.com/204118644db8/290ae1adb65a/launch-e5ec7bf1a1ef-development.min.js" async></script>
+    <script type="module" crossorigin src="/tools/rovr/assets/index-Cnf1TPK2.js"></script>
+    <link rel="stylesheet" crossorigin href="/tools/rovr/assets/index-D1POE5XP.css">
+  <title>104. What is the full flow of Web SDK → Edge → AEP → Profile →
+Activation? | Rovr</title>
+<meta name="description" content="Full Flow: Web SDK → Edge → AEP → Profile → Activation Video Walkthroughs ▶ Watch: Adobe Experience Platform Web SDK…" />
+<link rel="canonical" href="https://thelearningproject.in/tools/rovr/q/104-what-is-the-full-flow-of-web-sdk-edge-aep-profile-activa-d2681e" />
+<meta property="og:title" content="104. What is the full flow of Web SDK → Edge → AEP → Profile →
+Activation?" />
+<meta property="og:description" content="Full Flow: Web SDK → Edge → AEP → Profile → Activation Video Walkthroughs ▶ Watch: Adobe Experience Platform Web SDK…" />
+<meta property="og:url" content="https://thelearningproject.in/tools/rovr/q/104-what-is-the-full-flow-of-web-sdk-edge-aep-profile-activa-d2681e" />
+<meta property="og:type" content="article" />
+<meta property="og:image" content="https://thelearningproject.in/tools/rovr/rovrlogo.png" />
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="104. What is the full flow of Web SDK → Edge → AEP → Profile →
+Activation?" />
+<meta name="twitter:description" content="Full Flow: Web SDK → Edge → AEP → Profile → Activation Video Walkthroughs ▶ Watch: Adobe Experience Platform Web SDK…" />
+</head>
+  <body>
+    <div id="root"><article><h1>104. What is the full flow of Web SDK → Edge → AEP → Profile →
+Activation?</h1>
+<h2>Full Flow: Web SDK → Edge → AEP → Profile → Activation</h2>
+<h3>Video Walkthroughs</h3>
+<p><a href="https://video.tv.adobe.com/v/34141?quality=12&amp;learn=on">▶ Watch: Adobe Experience Platform Web SDK Overview</a></p>
+<p>This video provides a comprehensive overview of the Web SDK and how it communicates with the Edge Network.</p>
+<p><a href="https://video.tv.adobe.com/v/3418168?quality=12&amp;learn=on">▶ Watch: Web SDK Implementation Fundamentals</a></p>
+<p>This video walks through the complete Web SDK implementation and data flow to Adobe Experience Platform.</p>
+<p><a href="https://video.tv.adobe.com/v/27251?learn=on&amp;enablevpops">▶ Watch: Real-Time Customer Profile Overview</a></p>
+<p>This video explains how Real-Time Customer Profile receives, processes, and activates customer data.</p>
+<hr>
+<h3>Overview</h3>
+<p>The complete data flow from Web SDK to Activation represents the <strong>end-to-end journey of customer data</strong> through the Adobe Experience Platform ecosystem. Understanding this flow is critical for architects, developers, and solution consultants implementing AEP-based solutions.</p>
+<p>```</p>
+<p>┌──────────────┐    ┌──────────────┐    ┌──────────────┐    ┌──────────────┐    ┌──────────────┐</p>
+<p>│   WEB SDK    │───▶│ EDGE NETWORK │───▶│     AEP      │───▶│   PROFILE    │───▶│  ACTIVATION  │</p>
+<p>│  (Browser)   │    │  (Global)    │    │  (Platform)  │    │   (Store)    │    │  (Channels)  │</p>
+<p>└──────────────┘    └──────────────┘    └──────────────┘    └──────────────┘    └──────────────┘</p>
+<p>```</p>
+<hr>
+<h3>Stage 1: Web SDK (Browser/Client Side)</h3>
+<h4>What Happens at This Stage</h4>
+<p>The Web SDK (`alloy.js`) is the <strong>client-side JavaScript library</strong> that captures customer interactions and sends them to the Edge Network.</p>
+<h4>How Web SDK Works</h4>
+<h5>Installation &amp; Initialization</h5>
+<p>The Web SDK can be deployed via:</p>
+<ul>
+<li><strong>Adobe Tags (Launch)</strong> – Web SDK tag extension (recommended)</li>
+<li><strong>NPM package</strong> – `npm install @adobe/alloy`</li>
+<li><strong>CDN script tag</strong> – Direct script include</li>
+</ul>
+<p><strong>Initialization example:</strong></p>
+<p>```javascript</p>
+<p>// Configure Web SDK</p>
+<p>alloy(&quot;configure&quot;, {</p>
+<p>datastreamId: &quot;YOUR_DATASTREAM_ID&quot;,</p>
+<p>orgId: &quot;YOUR_ORG_ID@AdobeOrg&quot;,</p>
+<p>onBeforeEventSend: function(options) {</p>
+<p>// Modify event data before sending</p>
+<p>return options;</p>
+<p>}</p>
+<p>});</p>
+<p>```</p>
+<h5>Data Capture</h5>
+<p>Web SDK captures data through:</p>
+<p>1. <strong>Page View Events:</strong></p>
+<p>```javascript</p>
+<p>alloy(&quot;sendEvent&quot;, {</p>
+<p>xdm: {</p>
+<p>eventType: &quot;web.webpagedetails.pageViews&quot;,</p>
+<p>web: {</p>
+<p>webPageDetails: {</p>
+<p>name: &quot;Home Page&quot;,</p>
+<p>URL: &quot;https://www.example.com&quot;</p>
+<p>}</p>
+<p>}</p>
+<p>}</p>
+<p>});</p>
+<p>```</p>
+<p>2. <strong>Interaction Events:</strong></p>
+<p>```javascript</p>
+<p>alloy(&quot;sendEvent&quot;, {</p>
+<p>xdm: {</p>
+<p>eventType: &quot;commerce.productViews&quot;,</p>
+<p>commerce: {</p>
+<p>productViews: {</p>
+<p>value: 1</p>
+<p>}</p>
+<p>},</p>
+<p>productListItems: [{</p>
+<p>SKU: &quot;SKU-123&quot;,</p>
+<p>name: &quot;Running Shoes&quot;,</p>
+<p>priceTotal: 89.99</p>
+<p>}]</p>
+<p>}</p>
+<p>});</p>
+<p>```</p>
+<p>3. <strong>Identity Events (Login):</strong></p>
+<p>```javascript</p>
+<p>// Get current ECID first</p>
+<p>alloy(&quot;getIdentity&quot;).then(function(result) {</p>
+<p>alloy(&quot;sendEvent&quot;, {</p>
+<p>xdm: {</p>
+<p>eventType: &quot;userAccount.login&quot;,</p>
+<p>identityMap: {</p>
+<p>Email: [{</p>
+<p>id: &quot;customer@example.com&quot;,</p>
+<p>authenticatedState: &quot;authenticated&quot;,</p>
+<p>primary: true</p>
+<p>}],</p>
+<p>ECID: [{</p>
+<p>id: result.identity.ECID,</p>
+<p>authenticatedState: &quot;ambiguous&quot;,</p>
+<p>primary: false</p>
+<p>}]</p>
+<p>}</p>
+<p>}</p>
+<p>});</p>
+<p>});</p>
+<p>```</p>
+<h4>What Web SDK Sends to Edge Network</h4>
+<p>Every Web SDK event includes:</p>
+<p>| Component | Description |</p>
+<p>|---|---|</p>
+<p>| <strong>XDM payload</strong> | Structured event data in XDM format |</p>
+<p>| <strong>Identity map</strong> | Customer identities (ECID, email, etc.) |</p>
+<p>| <strong>Datastream ID</strong> | Routing configuration identifier |</p>
+<p>| <strong>Request context</strong> | Device, browser, location metadata |</p>
+<p>| <strong>Consent data</strong> | Customer consent preferences |</p>
+<h4>Web SDK Key Features</h4>
+<ul>
+<li><strong>Single consolidated library</strong> – Replaces AppMeasurement, AT.js, and Visitor API</li>
+<li><strong>XDM-native</strong> – All data structured in Experience Data Model format</li>
+<li><strong>Low latency</strong> – Sends data directly to nearest Edge Network node</li>
+<li><strong>Personalization support</strong> – Receives real-time decisions from Target/AJO</li>
+<li><strong>Automatic ECID management</strong> – Handles identity cookie creation and management</li>
+</ul>
+<hr>
+<h3>Stage 2: Edge Network (Global Processing Layer)</h3>
+<h4>What Happens at This Stage</h4>
+<p>The Edge Network is a <strong>globally distributed network of servers</strong> that receives Web SDK data, processes it in real-time, and routes it to appropriate Adobe services.</p>
+<h4>Edge Network Architecture</h4>
+<p>```</p>
+<p>Customer Browser</p>
+<p>↓ (HTTPS POST to adobedc.net)</p>
+<p>┌─────────────────────────────────────────┐</p>
+<p>│           EDGE NETWORK NODE             │</p>
+<p>│  (Geographically closest to customer)   │</p>
+<p>│                                         │</p>
+<p>│  1. Receive &amp; validate request          │</p>
+<p>│  2. Apply Datastream configuration      │</p>
+<p>│  3. Run Data Prep transformations       │</p>
+<p>│  4. Identity resolution                 │</p>
+<p>│  5. Edge segmentation                   │</p>
+<p>│  6. Personalization decisioning         │</p>
+<p>│  7. Route data to hub services          │</p>
+<p>│  8. Return personalization response     │</p>
+<p>└─────────────────────────────────────────┘</p>
+<p>↓ (Route to AEP Hub)</p>
+<p>```</p>
+<h4>Key Edge Network Processing Steps</h4>
+<h5>Step 1: Request Reception &amp; Validation</h5>
+<ul>
+<li>Receives <strong>HTTPS POST</strong> request from Web SDK at `adobedc.net`</li>
+<li>Validates <strong>datastream ID</strong> and <strong>organization credentials</strong></li>
+<li>Checks <strong>request format</strong> and <strong>XDM schema compliance</strong></li>
+<li>Applies <strong>bot detection</strong> filtering</li>
+</ul>
+<h5>Step 2: Datastream Configuration Applied</h5>
+<p>The datastream configuration determines:</p>
+<ul>
+<li>Which <strong>Adobe services</strong> receive the data</li>
+<li>Which <strong>event forwarding rules</strong> apply</li>
+<li>What <strong>data transformations</strong> to perform</li>
+<li>Which <strong>sandboxes</strong> to route data to</li>
+</ul>
+<p><strong>Datastream routing example:</strong></p>
+<p>| Service | Enabled | Configuration |</p>
+<p>|---|---|---|</p>
+<p>| <strong>Adobe Experience Platform</strong> | ✅ | Dataset, sandbox, profile opt-in |</p>
+<p>| <strong>Adobe Analytics</strong> | ✅ | Report suite mapping |</p>
+<p>| <strong>Adobe Target</strong> | ✅ | Property token, decisioning method |</p>
+<p>| <strong>Adobe Audience Manager</strong> | ✅ | Cookie destinations, URL destinations |</p>
+<h5>Step 3: Data Preparation (Field Mapping)</h5>
+<ul>
+<li><strong>Data Prep</strong> transforms and maps fields from XDM to solution-specific formats</li>
+<li>Maps <strong>XDM fields</strong> to <strong>Analytics props/eVars</strong></li>
+<li>Applies <strong>calculated fields</strong> and <strong>conditional transformations</strong></li>
+<li>Handles <strong>data type conversions</strong></li>
+</ul>
+<p>```</p>
+<p>XDM Field                          → Target Field</p>
+<p>─────────────────────────────────────────────────</p>
+<p>commerce.productViews.value        → Analytics event1</p>
+<p>productListItems[0].SKU           → Analytics eVar5</p>
+<p>web.webPageDetails.name           → Analytics pageName</p>
+<p>```</p>
+<h5>Step 4: Identity Resolution at Edge</h5>
+<ul>
+<li><strong>ECID generation</strong> – Creates/reads ECID cookie for anonymous visitors</li>
+<li><strong>Identity linking</strong> – Links authenticated identities with anonymous ECID</li>
+<li><strong>Profile lookup</strong> – Retrieves edge profile for real-time decisioning</li>
+</ul>
+<h5>Step 5: Edge Segmentation</h5>
+<ul>
+<li>Evaluates <strong>edge-enabled segments</strong> against the current event</li>
+<li>Updates <strong>audience membership</strong> in milliseconds</li>
+<li>Makes segment membership available for <strong>real-time personalization</strong></li>
+</ul>
+<h5>Step 6: Personalization Decisioning</h5>
+<ul>
+<li>Queries <strong>Adobe Target</strong> for A/B test assignments</li>
+<li>Retrieves <strong>AJO decisions</strong> for offer management</li>
+<li>Returns <strong>personalization payload</strong> to Web SDK for rendering</li>
+</ul>
+<h5>Step 7: Data Routing to Hub</h5>
+<p>Routes processed data to:</p>
+<ul>
+<li><strong>AEP Data Lake</strong> – For storage and analytics</li>
+<li><strong>Identity Service</strong> – For identity graph updates</li>
+<li><strong>Real-Time Profile</strong> – For profile updates</li>
+<li><strong>Adobe Analytics</strong> – For reporting</li>
+<li><strong>Event Forwarding</strong> – For server-side tag forwarding</li>
+</ul>
+<h4>Edge Network Response</h4>
+<p>The Edge Network returns a <strong>single consolidated response</strong> to Web SDK containing:</p>
+<p>```json</p>
+<p>{</p>
+<p>&quot;requestId&quot;: &quot;abc123&quot;,</p>
+<p>&quot;handle&quot;: [</p>
+<p>{</p>
+<p>&quot;type&quot;: &quot;identity:result&quot;,</p>
+<p>&quot;payload&quot;: [{</p>
+<p>&quot;id&quot;: &quot;12345678901234567890&quot;,</p>
+<p>&quot;namespace&quot;: { &quot;code&quot;: &quot;ECID&quot; }</p>
+<p>}]</p>
+<p>},</p>
+<p>{</p>
+<p>&quot;type&quot;: &quot;personalization:decisions&quot;,</p>
+<p>&quot;payload&quot;: [{</p>
+<p>&quot;id&quot;: &quot;offer-abc123&quot;,</p>
+<p>&quot;scope&quot;: &quot;homepage-hero&quot;,</p>
+<p>&quot;items&quot;: [{</p>
+<p>&quot;id&quot;: &quot;item-xyz&quot;,</p>
+<p>&quot;data&quot;: {</p>
+<p>&quot;content&quot;: &quot;&lt;h1&gt;Welcome back!&lt;/h1&gt;&quot;</p>
+<p>}</p>
+<p>}]</p>
+<p>}]</p>
+<p>},</p>
+<p>{</p>
+<p>&quot;type&quot;: &quot;activation:push&quot;,</p>
+<p>&quot;payload&quot;: []</p>
+<p>}</p>
+<p>]</p>
+<p>}</p>
+<p>```</p>
+<hr>
+<h3>Stage 3: Adobe Experience Platform (Data Processing)</h3>
+<h4>What Happens at This Stage</h4>
+<p>Data routed from Edge Network to AEP Hub undergoes <strong>comprehensive processing and storage</strong>.</p>
+<h4>3a. Streaming Ingestion</h4>
+<p>Data arrives in AEP via <strong>Streaming Ingestion</strong>:</p>
+<ul>
+<li><strong>Latency:</strong> Sub-second to seconds</li>
+<li><strong>Protocol:</strong> HTTP POST to AEP Streaming Ingestion API</li>
+<li><strong>Format:</strong> XDM-formatted JSON</li>
+<li><strong>Validation:</strong> Schema compliance checking</li>
+</ul>
+<p>```</p>
+<p>Edge Network</p>
+<p>↓ (Streaming)</p>
+<p>AEP Streaming Ingestion API</p>
+<p>↓</p>
+<p>XDM Validation &amp; Processing</p>
+<p>↓</p>
+<p>Data Lake Storage</p>
+<p>```</p>
+<h4>3b. Data Lake Storage</h4>
+<p>All ingested data is stored in the <strong>AEP Data Lake</strong>:</p>
+<ul>
+<li><strong>Raw event storage</strong> – Complete XDM event records</li>
+<li><strong>Dataset organization</strong> – Events organized by dataset</li>
+<li><strong>Queryable</strong> – Accessible via Query Service</li>
+<li><strong>Retention policies</strong> – Configurable data retention periods</li>
+</ul>
+<h4>3c. Identity Service Processing</h4>
+<p><strong>Identity Service</strong> processes every ingested event:</p>
+<p>1. <strong>Extracts identity map</strong> from the event payload</p>
+<p>2. <strong>Looks up existing identities</strong> in the identity graph</p>
+<p>3. <strong>Links new identities</strong> to existing graph nodes</p>
+<p>4. <strong>Updates identity graph</strong> with new connections</p>
+<p>5. <strong>Publishes identity events</strong> for downstream processing</p>
+<p>```</p>
+<p>Event arrives with:</p>
+<p>Email: customer@example.com</p>
+<p>ECID: 12345678901234567890</p>
+<p>Identity Service:</p>
+<p>1. Finds existing ECID node in graph</p>
+<p>2. Finds existing Email node in graph</p>
+<p>3. Links Email ↔ ECID in identity graph</p>
+<p>4. Single unified identity graph created</p>
+<p>```</p>
+<h4>3d. Real-Time Profile Processing</h4>
+<p><strong>Real-Time Customer Profile</strong> service:</p>
+<p>1. <strong>Receives identity-resolved event</strong></p>
+<p>2. <strong>Looks up unified profile</strong> using resolved identity</p>
+<p>3. <strong>Merges new data</strong> according to merge policy</p>
+<p>4. <strong>Updates profile attributes</strong> with latest values</p>
+<p>5. <strong>Appends experience event</strong> to profile timeline</p>
+<p>6. <strong>Triggers streaming segmentation</strong> evaluation</p>
+<p>```</p>
+<p>Profile Update Flow:</p>
+<p>New Event → Identity Resolution → Profile Lookup</p>
+<p>↓</p>
+<p>Merge Policy Applied → Profile Updated</p>
+<p>↓</p>
+<p>Streaming Segmentation → Audience Membership Updated</p>
+<p>↓</p>
+<p>Computed Attributes → Recalculated if triggered</p>
+<p>```</p>
+<h4>3e. Segmentation Processing</h4>
+<p><strong>Segmentation Service</strong> evaluates the updated profile:</p>
+<p>| Type | When | Latency |</p>
+<p>|---|---|---|</p>
+<p>| <strong>Streaming</strong> | As each event arrives | Seconds |</p>
+<p>| <strong>Edge</strong> | At Edge Network | Milliseconds |</p>
+<p>| <strong>Batch</strong> | Scheduled (daily) | Hours |</p>
+<p><strong>Streaming segmentation example:</strong></p>
+<p>```</p>
+<p>Profile receives &quot;commerce.purchases&quot; event</p>
+<p>↓</p>
+<p>Segmentation evaluates: &quot;Customers who made a purchase in last 7 days&quot;</p>
+<p>↓</p>
+<p>Profile qualifies for segment → Audience membership updated</p>
+<p>↓</p>
+<p>AJO journey trigger fires → Customer enters post-purchase journey</p>
+<p>```</p>
+<hr>
+<h3>Stage 4: Real-Time Customer Profile</h3>
+<h4>What Happens at This Stage</h4>
+<p>The <strong>Real-Time Customer Profile</strong> store maintains a unified, always-current view of each customer.</p>
+<h4>Profile Structure</h4>
+<p>```json</p>
+<p>{</p>
+<p>&quot;identityMap&quot;: {</p>
+<p>&quot;Email&quot;: [{&quot;id&quot;: &quot;customer@example.com&quot;}],</p>
+<p>&quot;ECID&quot;: [{&quot;id&quot;: &quot;12345678901234567890&quot;}],</p>
+<p>&quot;CRM_ID&quot;: [{&quot;id&quot;: &quot;CRM-12345&quot;}]</p>
+<p>},</p>
+<p>&quot;attributes&quot;: {</p>
+<p>&quot;person&quot;: {</p>
+<p>&quot;name&quot;: {</p>
+<p>&quot;firstName&quot;: &quot;Jane&quot;,</p>
+<p>&quot;lastName&quot;: &quot;Smith&quot;</p>
+<p>}</p>
+<p>},</p>
+<p>&quot;personalEmail&quot;: {</p>
+<p>&quot;address&quot;: &quot;customer@example.com&quot;</p>
+<p>},</p>
+<p>&quot;loyaltyTier&quot;: &quot;Gold&quot;,</p>
+<p>&quot;lifetimeValue&quot;: 1250.00</p>
+<p>},</p>
+<p>&quot;experienceEvents&quot;: [</p>
+<p>{</p>
+<p>&quot;eventType&quot;: &quot;commerce.purchases&quot;,</p>
+<p>&quot;timestamp&quot;: &quot;2024-01-15T10:30:00Z&quot;,</p>
+<p>&quot;commerce&quot;: {</p>
+<p>&quot;order&quot;: {</p>
+<p>&quot;priceTotal&quot;: 89.99</p>
+<p>}</p>
+<p>}</p>
+<p>}</p>
+<p>],</p>
+<p>&quot;segmentMembership&quot;: {</p>
+<p>&quot;High Value Customers&quot;: {</p>
+<p>&quot;status&quot;: &quot;realized&quot;,</p>
+<p>&quot;lastQualificationTime&quot;: &quot;2024-01-15T10:30:05Z&quot;</p>
+<p>},</p>
+<p>&quot;Recent Purchasers&quot;: {</p>
+<p>&quot;status&quot;: &quot;realized&quot;,</p>
+<p>&quot;lastQualificationTime&quot;: &quot;2024-01-15T10:30:05Z&quot;</p>
+<p>}</p>
+<p>}</p>
+<p>}</p>
+<p>```</p>
+<h4>Profile Merge Policies</h4>
+<p>Merge policies define <strong>how conflicting data is resolved</strong>:</p>
+<p>| Policy Type | Description |</p>
+<p>|---|---|</p>
+<p>| <strong>Dataset precedence</strong> | Specific datasets take priority |</p>
+<p>| <strong>Timestamp ordered</strong> | Most recent data wins |</p>
+<p>| <strong>Custom</strong> | Business-defined rules |</p>
+<h4>Computed Attributes</h4>
+<p><strong>Pre-calculated values</strong> derived from event history:</p>
+<p>```</p>
+<p>totalPurchaseValue = SUM(commerce.order.priceTotal) last 90 days</p>
+<p>purchaseCount = COUNT(commerce.purchases) last 30 days</p>
+<p>daysSinceLastPurchase = DAYS_SINCE(last commerce.purchases event)</p>
+<p>```</p>
+<hr>
+<h3>Stage 5: Activation</h3>
+<h4>What Happens at This Stage</h4>
+<p>Activated audiences and profile data are <strong>delivered to downstream channels</strong> for personalization, messaging, and advertising.</p>
+<h4>5a. Adobe Journey Optimizer (AJO)</h4>
+<p><strong>Event-triggered journeys:</strong></p>
+<p>```</p>
+<p>Profile qualifies for &quot;Recent Purchasers&quot; segment</p>
+<p>↓</p>
+<p>AJO Journey triggered by segment qualification event</p>
+<p>↓</p>
+<p>Journey evaluates conditions (loyalty tier, purchase value, etc.)</p>
+<p>↓</p>
+<p>Email action: Send personalized thank you email</p>
+<p>↓</p>
+<p>Wait 3 days</p>
+<p>↓</p>
+<p>Check: Did customer view recommended products?</p>
+<p>↓</p>
+<p>YES → Send product recommendation email</p>
+<p>NO  → Send discount offer SMS</p>
+<p>```</p>
+<h4>5b. Adobe Target (Real-Time Personalization)</h4>
+<p><strong>Synchronous personalization</strong> during the same Web SDK call:</p>
+<p>```</p>
+<p>Web SDK sendEvent()</p>
+<p>↓</p>
+<p>Edge Network processes request</p>
+<p>↓</p>
+<p>Target retrieves audience membership from edge profile</p>
+<p>↓</p>
+<p>Selects winning experience for A/B test</p>
+<p>↓</p>
+<p>Returns personalization decision in Edge Network response</p>
+<p>↓</p>
+<p>Web SDK renders personalized content (&lt; 100ms)</p>
+<p>```</p>
+<h4>5c. Real-Time CDP Destinations</h4>
+<p><strong>Audience activation</strong> to external platforms:</p>
+<p>```</p>
+<p>Profile qualifies for &quot;High Value Customers&quot; segment</p>
+<p>↓</p>
+<p>RTCDP streaming destination activated</p>
+<p>↓</p>
+<p>Profile data exported to:</p>
+<ul>
+<li>Google Ads (suppression/targeting)</li>
+<li>Facebook Custom Audiences</li>
+<li>LinkedIn Matched Audiences</li>
+<li>Salesforce C</li>
+</ul>
+</article>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "104. What is the full flow of Web SDK \u2192 Edge \u2192 AEP \u2192 Profile \u2192\nActivation?", "acceptedAnswer": {"@type": "Answer", "text": "Full Flow: Web SDK \u2192 Edge \u2192 AEP \u2192 Profile \u2192 Activation Video Walkthroughs \u25b6 Watch: Adobe Experience Platform Web SDK Overview(https://video.tv.adobe.com/v/34141?quality=12&learn=on) This video provides a comprehensive overview of the Web SDK and how it communicates with the Edge Network. \u25b6 Watch: Web SDK Implementation Fundamentals(https://video.tv.adobe.com/v/3418168?quality=12&learn=on) This video walks through the complete Web SDK implementation and data flow to Adobe Experience Platform. \u25b6 Watch: Real-Time Customer Profile Overview(https://video.tv.adobe.com/v/27251?learn=on&enablevpops) This video explains how Real-Time Customer Profile receives, processes, and activates customer data. --- Overview The complete data flow from Web SDK to Activation represents the end-to-end journey of customer data through the Adobe Experience Platform ecosystem. Understanding this flow is critical for architects, developers, and solution consultants implementing AEP-based solutions. \u250c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2510 \u250c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2510 \u250c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2510 \u250c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2510 \u250c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2510 \u2502 WEB SDK \u2502\u2500\u2500\u2500\u25b6\u2502 EDGE NETWORK \u2502\u2500\u2500\u2500\u25b6\u2502 AEP \u2502\u2500\u2500\u2500\u25b6\u2502 PROFILE \u2502\u2500\u2500\u2500\u25b6\u2502 ACTIVATION \u2502 \u2502 (Browser) \u2502 \u2502 (Global) \u2502 \u2502 (Platform) \u2502 \u2502 (Store) \u2502 \u2502 (Channels) \u2502 \u2514\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2518 \u2514\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2518 \u2514\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2518 \u2514\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2518 \u2514\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2518 --- Stage 1: Web SDK (Browser/Client Side) What Happens at This Stage The Web SDK (alloy.js) is the client-side JavaScript library that captures customer interactions and sends them to the Edge Network. How Web SDK Works Installation & Initialization The Web SDK can be deployed via: - Adobe Tags (Launch) \u2013 Web SDK tag extension (recommended) - NPM package \u2013 npm install @adobe/alloy - CDN script tag \u2013 Direct script include Initialization example: javascript // Configure Web SDK alloy(\"configure\", { datastreamId: \"YOURDATASTREAMID\", orgId: \"YOURORGID@AdobeOrg\", onBeforeEventSend: function(options) { // Modify event data before sending return options; } }); Data Capture Web SDK captures data\u2026"}}]}</script></div>
+  </body>
+</html>

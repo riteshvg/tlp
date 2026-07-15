@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/png" href="/tools/rovr/rovrlogo.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="build-date" content="2026-06-10" />
+    
+    
+    <script src="https://assets.adobedtm.com/204118644db8/290ae1adb65a/launch-e5ec7bf1a1ef-development.min.js" async></script>
+    <script type="module" crossorigin src="/tools/rovr/assets/index-Cnf1TPK2.js"></script>
+    <link rel="stylesheet" crossorigin href="/tools/rovr/assets/index-D1POE5XP.css">
+  <title>How do I create an A/B test activity in Adobe Target? | Rovr</title>
+<meta name="description" content="Creating an A/B Test Activity in Adobe Target Adobe Target provides three types of A/B Test activities: Manual (Default), Auto-Allocate, and Auto-Target. The…" />
+<link rel="canonical" href="https://thelearningproject.in/tools/rovr/q/how-do-i-create-an-a-b-test-activity-in-adobe-target-6b1d01" />
+<meta property="og:title" content="How do I create an A/B test activity in Adobe Target?" />
+<meta property="og:description" content="Creating an A/B Test Activity in Adobe Target Adobe Target provides three types of A/B Test activities: Manual (Default), Auto-Allocate, and Auto-Target. The…" />
+<meta property="og:url" content="https://thelearningproject.in/tools/rovr/q/how-do-i-create-an-a-b-test-activity-in-adobe-target-6b1d01" />
+<meta property="og:type" content="article" />
+<meta property="og:image" content="https://thelearningproject.in/tools/rovr/rovrlogo.png" />
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="How do I create an A/B test activity in Adobe Target?" />
+<meta name="twitter:description" content="Creating an A/B Test Activity in Adobe Target Adobe Target provides three types of A/B Test activities: Manual (Default), Auto-Allocate, and Auto-Target. The…" />
+</head>
+  <body>
+    <div id="root"><article><h1>How do I create an A/B test activity in Adobe Target?</h1>
+<h2>Creating an A/B Test Activity in Adobe Target</h2>
+<p>Adobe Target provides three types of A/B Test activities: <strong>Manual (Default)</strong>, <strong>Auto-Allocate</strong>, and <strong>Auto-Target</strong>. The steps below cover creating a <strong>Manual A/B Test</strong> using the Visual Experience Composer (VEC).</p>
+<h3>Prerequisites</h3>
+<ul>
+<li>Access to an active Adobe Target account</li>
+<li>A Target-enabled page with the Target library implemented</li>
+<li>(For Auto-Target) A <strong>Target Premium</strong> license — Auto-Target is not available in Target Standard</li>
+</ul>
+<hr>
+<h3>Step-by-Step: Create a Manual A/B Test</h3>
+<h4>Step 1 — Start the Activity</h4>
+<p>1. From the <strong>Activities</strong> list, click <strong>Create Activity</strong> &gt; <strong>A/B Test</strong></p>
+<p><img src="https://raw.githubusercontent.com/AdobeDocs/target.en/main/help/main/c-activities/t-test-ab/t-test-create-ab/assets/ab_select-new.png" alt="Create Activity drop-down list"></p>
+<p>&gt; <strong>Note:</strong> Available activity types depend on your Target account. Some types may not appear in your list. For example, Recommendations is a Target Premium feature.</p>
+<hr>
+<h4>Step 2 — Choose Your Composer</h4>
+<p>From the <strong>Create A/B Test Activity</strong> dialog, select your preferred composer:</p>
+<ul>
+<li><strong>Visual (Default)</strong> — Use the Visual Experience Composer (VEC) to make changes directly on your page</li>
+<li><strong>Form</strong> — Use the Form-Based Experience Composer for non-visual implementations (email, IoT, etc.)</li>
+</ul>
+<p>&gt; In addition to the VEC and Form-Based Experience Composer, Target also offers a <strong>Single Page Application (SPA) VEC</strong> for SPA frameworks.</p>
+<hr>
+<h4>Step 3 — Select a Workspace (Target Premium Only)</h4>
+<p>If you are a Target Premium customer, use the <strong>Choose Workspace</strong> drop-down to select the appropriate workspace for this activity.</p>
+<hr>
+<h4>Step 4 — Enter Your Activity URL</h4>
+<p>1. Specify your <strong>activity URL</strong> — the page where the test will run</p>
+<p>2. Click <strong>Next</strong> (or <strong>Create</strong> depending on your UI version)</p>
+<p>Your account&#x27;s default URL will pre-populate if configured. You can change it to any other URL.</p>
+<p>The <strong>Visual Experience Composer</strong> opens displaying the page at that URL.</p>
+<p><img src="https://raw.githubusercontent.com/AdobeDocs/target.en/main/help/main/c-activities/t-test-ab/t-test-create-ab/assets/vec-new.png" alt="VEC"></p>
+<hr>
+<h4>Step 5 — Name Your Activity</h4>
+<p>Type a descriptive name for the activity in the name field provided.</p>
+<p><img src="https://raw.githubusercontent.com/AdobeDocs/target.en/main/help/main/c-activities/t-test-ab/t-test-create-ab/assets/ab_newname-new.png" alt="Name field"></p>
+<p>&gt; <strong>Important:</strong> The activity name cannot begin with any of these characters:</p>
+<p>| Character | Description |</p>
+<p>|-----------|-------------|</p>
+<p>| `=` | Equals to |</p>
+<p>| `+` | Plus |</p>
+<p>| `-` | Minus |</p>
+<p>| `@` | At sign |</p>
+<hr>
+<h4>Step 6 — Create Your Experiences</h4>
+<p>The VEC displays two tabs by default:</p>
+<ul>
+<li><strong>Experience A</strong> — The control (default) experience</li>
+<li><strong>Experience B</strong> — The alternate experience you modify</li>
+</ul>
+<p>Key actions at this step:</p>
+<ul>
+<li>Modify <strong>Experience B</strong> by clicking and changing elements directly on the page</li>
+<li>Click <strong>Add</strong> to add additional experiences beyond A and B</li>
+<li>Optionally <strong>delete Experience A</strong> if you don&#x27;t want the default site experience as a test option</li>
+</ul>
+<hr>
+<h4>Step 7 — Configure Targeting</h4>
+<p>Click <strong>Targeting</strong> at the top of the VEC to move to the next step in the <strong>three-step guided workflow</strong>.</p>
+<p><img src="https://raw.githubusercontent.com/AdobeDocs/target.en/main/help/main/c-activities/t-test-ab/t-test-create-ab/assets/ab_flow-new.png" alt="A/B Test Targeting step"></p>
+<p>At this step you will:</p>
+<ul>
+<li><strong>Choose your audience</strong> — Who will see this test</li>
+<li><strong>Set traffic allocation</strong> — Choose between:</li>
+<li><strong>Manual split</strong> — You define the percentage per experience</li>
+<li><strong>Auto-Allocate</strong> — Target automatically sends more traffic to the winning experience</li>
+<li><strong>Auto-Target</strong> — Target uses machine learning to serve the most tailored experience to each visitor (requires Target Premium)</li>
+</ul>
+<p>When satisfied with your audience and traffic allocation, click <strong>Next</strong>.</p>
+<hr>
+<h4>Step 8 — Set Goals and Settings</h4>
+<p>Specify the <strong>goals and settings</strong> for the activity, including:</p>
+<ul>
+<li><strong>Primary goal metric</strong> — What defines success (e.g., conversion, revenue)</li>
+<li><strong>Additional metrics</strong> — Optional secondary metrics to track</li>
+<li><strong>Reporting settings</strong> — Including whether to use <strong>Analytics for Target (A4T)</strong></li>
+</ul>
+<p>&gt; <strong>Note:</strong> If using Analytics for Target (A4T) with Auto-Allocate or Auto-Target, review the specific A4T support considerations for those activity types before proceeding.</p>
+<hr>
+<h4>Step 9 — Save the Activity</h4>
+<p>Click either:</p>
+<ul>
+<li><strong>Save &amp; Close</strong> — Saves and returns you to the Activities list</li>
+<li><strong>Save</strong> — Saves and keeps you in the activity editor</li>
+</ul>
+<p>After saving, the <strong>Overview</strong> tab displays a summary and diagram of your activity.</p>
+<hr>
+<h3>Training Video</h3>
+<p><a href="https://video.tv.adobe.com/v/17391">▶ Watch: Creating A/B Tests (8:36)</a></p>
+<p>This video walks through creating an A/B Test using the three-step guided workflow, including manual splits and automatic traffic allocation.</p>
+</article>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "How do I create an A/B test activity in Adobe Target?", "acceptedAnswer": {"@type": "Answer", "text": "Creating an A/B Test Activity in Adobe Target Adobe Target provides three types of A/B Test activities: Manual (Default), Auto-Allocate, and Auto-Target. The steps below cover creating a Manual A/B Test using the Visual Experience Composer (VEC). Prerequisites - Access to an active Adobe Target account - A Target-enabled page with the Target library implemented - (For Auto-Target) A Target Premium license \u2014 Auto-Target is not available in Target Standard --- Step-by-Step: Create a Manual A/B Test Step 1 \u2014 Start the Activity 1. From the Activities list, click Create Activity A/B Test !Create Activity drop-down list(https://raw.githubusercontent.com/AdobeDocs/target.en/main/help/main/c-activities/t-test-ab/t-test-create-ab/assets/abselect-new.png) Note: Available activity types depend on your Target account. Some types may not appear in your list. For example, Recommendations is a Target Premium feature. --- Step 2 \u2014 Choose Your Composer From the Create A/B Test Activity dialog, select your preferred composer: - Visual (Default) \u2014 Use the Visual Experience Composer (VEC) to make changes directly on your page - Form \u2014 Use the Form-Based Experience Composer for non-visual implementations (email, IoT, etc.) In addition to the VEC and Form-Based Experience Composer, Target also offers a Single Page Application (SPA) VEC for SPA frameworks. --- Step 3 \u2014 Select a Workspace (Target Premium Only) If you are a Target Premium customer, use the Choose Workspace drop-down to select the appropriate workspace for this activity. --- Step 4 \u2014 Enter Your Activity URL 1. Specify your activity URL \u2014 the page where the test will run 2. Click Next (or Create depending on your UI version) Your account's default URL will pre-populate if configured. You can change it to any other URL. The Visual Experience Composer opens displaying the page at that URL. !VEC(https://raw.githubusercontent.com/AdobeDocs/target.en/main/help/main/c-activities/t-test-ab/t-test-create-ab/assets/vec-new.png) ---\u2026"}}]}</script></div>
+  </body>
+</html>

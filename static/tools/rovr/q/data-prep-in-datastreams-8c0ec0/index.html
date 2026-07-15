@@ -1,0 +1,232 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/png" href="/tools/rovr/rovrlogo.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="build-date" content="2026-06-10" />
+    
+    
+    <script src="https://assets.adobedtm.com/204118644db8/290ae1adb65a/launch-e5ec7bf1a1ef-development.min.js" async></script>
+    <script type="module" crossorigin src="/tools/rovr/assets/index-Cnf1TPK2.js"></script>
+    <link rel="stylesheet" crossorigin href="/tools/rovr/assets/index-D1POE5XP.css">
+  <title>Data Prep in Datastreams | Rovr</title>
+<meta name="description" content="Data Prep in Datastreams Video Walkthroughs ▶ Watch: Data Prep Overview(https://video.tv.adobe.com/v/3418272?quality=12&amp;learn=on) This video explains how Data…" />
+<link rel="canonical" href="https://thelearningproject.in/tools/rovr/q/data-prep-in-datastreams-8c0ec0" />
+<meta property="og:title" content="Data Prep in Datastreams" />
+<meta property="og:description" content="Data Prep in Datastreams Video Walkthroughs ▶ Watch: Data Prep Overview(https://video.tv.adobe.com/v/3418272?quality=12&amp;learn=on) This video explains how Data…" />
+<meta property="og:url" content="https://thelearningproject.in/tools/rovr/q/data-prep-in-datastreams-8c0ec0" />
+<meta property="og:type" content="article" />
+<meta property="og:image" content="https://thelearningproject.in/tools/rovr/rovrlogo.png" />
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="Data Prep in Datastreams" />
+<meta name="twitter:description" content="Data Prep in Datastreams Video Walkthroughs ▶ Watch: Data Prep Overview(https://video.tv.adobe.com/v/3418272?quality=12&amp;learn=on) This video explains how Data…" />
+</head>
+  <body>
+    <div id="root"><article><h1>Data Prep in Datastreams</h1>
+<h2>Data Prep in Datastreams</h2>
+<h3>Video Walkthroughs</h3>
+<p><a href="https://video.tv.adobe.com/v/3418272?quality=12&amp;learn=on">▶ Watch: Data Prep Overview</a></p>
+<p>This video explains how Data Prep works and how it transforms data during ingestion.</p>
+<p><a href="https://video.tv.adobe.com/v/3419881?quality=12&amp;learn=on">▶ Watch: Mapping Data with Data Prep</a></p>
+<p>This video demonstrates how to use Data Prep to map and transform fields in a datastream.</p>
+<hr>
+<h3>What is Data Prep in Datastreams?</h3>
+<p><strong>Data Prep</strong> is a feature within datastreams that allows you to <strong>transform, map, and validate data</strong> as it flows from Web SDK to Adobe services — <strong>without requiring code changes</strong>.</p>
+<p>Data Prep sits between the Edge Network and your downstream services, allowing you to:</p>
+<p>```</p>
+<p>Web SDK XDM Data</p>
+<p>↓</p>
+<p>┌──────────────────────────────┐</p>
+<p>│      DATA PREP               │</p>
+<p>│                              │</p>
+<p>│  • Map XDM fields            │</p>
+<p>│  • Transform values          │</p>
+<p>│  • Create calculated fields  │</p>
+<p>│  • Validate data             │</p>
+<p>│  • Enrich data               │</p>
+<p>└──────────────────────────────┘</p>
+<p>↓</p>
+<p>AEP / Analytics / Target / etc.</p>
+<p>```</p>
+<hr>
+<h3>Data Prep Capabilities</h3>
+<h4>1. Field Mapping</h4>
+<p><strong>Map XDM fields to solution-specific field names:</strong></p>
+<p>```</p>
+<p>XDM Field                      → Target Field</p>
+<p>──────────────────────────────────────────────</p>
+<p>commerce.productViews.value    → Analytics event1</p>
+<p>productListItems[0].SKU        → Analytics eVar10</p>
+<p>web.webPageDetails.name        → Analytics pageName</p>
+<p>personalEmail.address          → Analytics visitorID</p>
+<p>```</p>
+<h4>2. Data Transformation</h4>
+<p><strong>Transform field values on the fly:</strong></p>
+<p>```</p>
+<p>Original Value:        2024-01-15T10:30:00Z</p>
+<p>Function Applied:      Extract date only</p>
+<p>Transformed Value:     2024-01-15</p>
+<p>Original Value:        jane.smith@email.com</p>
+<p>Function Applied:      Lowercase</p>
+<p>Transformed Value:     jane.smith@email.com (already lowercase)</p>
+<p>Original Value:        &quot;running shoes&quot;</p>
+<p>Function Applied:      Capitalize</p>
+<p>Transformed Value:     &quot;Running Shoes&quot;</p>
+<p>Original Value:        129.99</p>
+<p>Function Applied:      Round to nearest integer</p>
+<p>Transformed Value:     130</p>
+<p>```</p>
+<h4>3. Calculated Fields</h4>
+<p><strong>Create new fields based on existing data:</strong></p>
+<p>```</p>
+<p>New Field: &quot;Total Order Value&quot;</p>
+<p>Formula: commerce.order.priceTotal * (1 + commerce.order.taxAmount)</p>
+<p>Result: Complete order value including tax</p>
+<p>New Field: &quot;Product Category Path&quot;</p>
+<p>Formula: CONCATENATE(productListItems[0].category, &quot; &gt; &quot;,</p>
+<p>productListItems[0].subcategory)</p>
+<p>Result: &quot;Running &gt; Shoes&quot;</p>
+<p>New Field: &quot;Days Since Last Purchase&quot;</p>
+<p>Formula: NOW() - DATEDIFF(lastPurchaseDate)</p>
+<p>Result: 15 (days)</p>
+<p>```</p>
+<h4>4. Conditional Logic</h4>
+<p><strong>Apply different transformations based on conditions:</strong></p>
+<p>```</p>
+<p>IF eventType == &quot;commerce.purchases&quot;</p>
+<p>THEN create field &quot;order_value&quot; = commerce.order.priceTotal</p>
+<p>ELSE IF eventType == &quot;commerce.productViews&quot;</p>
+<p>THEN create field &quot;product_viewed&quot; = productListItems[0].SKU</p>
+<p>ELSE</p>
+<p>set field &quot;other_event&quot; = true</p>
+<p>```</p>
+<h4>5. Data Validation</h4>
+<p><strong>Validate data before sending to downstream services:</strong></p>
+<p>```</p>
+<p>Field: email</p>
+<p>Rule: Must match email regex pattern</p>
+<p>Invalid Example: &quot;not-an-email&quot;</p>
+<p>Action: Log error, set field to null</p>
+<p>Field: price</p>
+<p>Rule: Must be numeric and &gt; 0</p>
+<p>Invalid Example: &quot;free&quot;</p>
+<p>Action: Flag for review, use default value</p>
+<p>Field: age</p>
+<p>Rule: Must be between 18 and 120</p>
+<p>Invalid Example: 250</p>
+<p>Action: Reject record, log error</p>
+<p>```</p>
+<hr>
+<h3>Accessing Data Prep in a Datastream</h3>
+<h4>Method 1: Via Adobe Experience Platform Service</h4>
+<p>When configuring AEP in a datastream:</p>
+<p>1. Navigate to <strong>Data Collection</strong> → <strong>Datastreams</strong></p>
+<p>2. Select your datastream</p>
+<p>3. Click <strong>Edit</strong> on the Adobe Experience Platform service</p>
+<p>4. Scroll down to <strong>Data Prep for Data Collection</strong></p>
+<p>5. Click <strong>Configure</strong></p>
+<p>6. Click <strong>Add Mapping</strong> to create field mappings</p>
+<h4>Method 2: Via Data Prep UI</h4>
+<p>1. Navigate to <strong>Data Collection</strong> → <strong>Data Prep</strong></p>
+<p>2. Select <strong>Mapping Sets</strong></p>
+<p>3. Click <strong>Create New Mapping Set</strong></p>
+<p>4. Configure field mappings</p>
+<p>5. Reference the mapping set in your datastream</p>
+<hr>
+<h3>Data Prep in Datastream Example</h3>
+<h4>Scenario: Map E-Commerce Events to Analytics</h4>
+<p><strong>Requirement:</strong></p>
+<ul>
+<li>Web SDK sends XDM commerce events</li>
+<li>Need to map to Adobe Analytics eVars and events for real-time reporting</li>
+</ul>
+<p><strong>Data Prep Configuration:</strong></p>
+<p>```</p>
+<p>Mapping 1:</p>
+<p>Source XDM Field: commerce.productViews.value</p>
+<p>Target Field: c.a.x.event1</p>
+<p>Transform: None (direct pass-through)</p>
+<p>Purpose: Track product views as Analytics event</p>
+<p>Mapping 2:</p>
+<p>Source XDM Field: productListItems[0].SKU</p>
+<p>Target Field: c.a.x.eVar10</p>
+<p>Transform: Uppercase</p>
+<p>Purpose: Track product SKU in uppercase format</p>
+<p>Mapping 3:</p>
+<p>Source XDM Field: productListItems[0].priceTotal</p>
+<p>Target Field: c.a.x.event23</p>
+<p>Transform: Round to nearest integer</p>
+<p>Purpose: Track product price as numeric event</p>
+<p>Mapping 4:</p>
+<p>Source XDM Field: web.webPageDetails.name</p>
+<p>Target Field: c.a.x.pageName</p>
+<p>Transform: None (direct pass-through)</p>
+<p>Purpose: Track page name for site analysis</p>
+<p>Mapping 5:</p>
+<p>Source XDM Field: commerce.order.priceTotal</p>
+<p>Target Field: c.a.x.currencyCode</p>
+<p>Transform: Extract currency code from commerce.order object</p>
+<p>Purpose: Track currency for international reporting</p>
+<p>```</p>
+<hr>
+<h3>Data Prep vs. Web SDK Configuration</h3>
+<p>| Aspect | Data Prep (Datastream) | Web SDK Config |</p>
+<p>|---|---|---|</p>
+<p>| <strong>Location</strong> | Server-side (Edge Network) | Client-side (Browser) |</p>
+<p>| <strong>Purpose</strong> | Transform &amp; map data | Initialize SDK settings |</p>
+<p>| <strong>Who manages</strong> | AEP Administrator | Developer |</p>
+<p>| <strong>Examples</strong> | Field mapping, calculations | edgeDomain, orgId |</p>
+<p>| <strong>Changes require</strong> | No website code update | Code deployment |</p>
+<p>| <strong>Real-time updates</strong> | ✅ Yes (immediate) | ❌ No (requires deploy) |</p>
+<p>| <strong>Visibility</strong> | All traffic sees transforms | Only affects new sessions |</p>
+<hr>
+<h3>Common Data Prep Use Cases in Datastreams</h3>
+<h4>Use Case 1: Analytics Field Mapping</h4>
+<p><strong>Problem:</strong> Web SDK sends XDM format, but Analytics needs its own field structure</p>
+<p><strong>Solution:</strong></p>
+<p>```</p>
+<p>XDM: commerce.productViews.value = 1</p>
+<p>Data Prep Maps To: c.a.x.event1 = 1</p>
+<p>Result: Analytics receives event1 populated correctly</p>
+<p>```</p>
+<h4>Use Case 2: Multi-Currency Support</h4>
+<p><strong>Problem:</strong> Different countries use different currency codes</p>
+<p><strong>Solution:</strong></p>
+<p>```</p>
+<p>Calculated Field: normalized_currency</p>
+<p>IF geolocation.country == &quot;US&quot;</p>
+<p>THEN USD</p>
+<p>ELSE IF geolocation.country == &quot;FR&quot;</p>
+<p>THEN EUR</p>
+<p>ELSE IF geolocation.country == &quot;JP&quot;</p>
+<p>THEN JPY</p>
+<p>```</p>
+<h4>Use Case 3: PII Hashing (Compliance)</h4>
+<p><strong>Problem:</strong> Need to hash email addresses for privacy compliance</p>
+<p><strong>Solution:</strong></p>
+<p>```</p>
+<p>Source Field: personalEmail.address</p>
+<p>Transform Function: SHA256(LOWERCASE(email))</p>
+<p>Result: jane.smith@email.com →</p>
+<p>8d969eef6ecad3c29a3a873fba5d2b1d</p>
+<p>Target Field: hashed_email</p>
+<p>```</p>
+<h4>Use Case 4: Default Values</h4>
+<p><strong>Problem:</strong> Some fields are optional and may be missing</p>
+<p><strong>Solution:</strong></p>
+<p>```</p>
+<p>Source Field: device.model</p>
+<p>Default Value: &quot;Unknown&quot;</p>
+<p>Result: If device.model is null, &quot;Unknown&quot; is used instead</p>
+<p>```</p>
+<h4>Use Case 5: Field Enrichment</h4>
+<p><strong>Problem:</strong> Want to enrich incoming data with contextual information</p>
+<p><strong>Solution:</strong></p>
+<p>```</p>
+<p>New Calculated Field: environment_type</p>
+<p>IF timestamp &gt; 08:00 AND timestamp &lt; 17</p>
+</article>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Data Prep in Datastreams", "acceptedAnswer": {"@type": "Answer", "text": "Data Prep in Datastreams Video Walkthroughs \u25b6 Watch: Data Prep Overview(https://video.tv.adobe.com/v/3418272?quality=12&learn=on) This video explains how Data Prep works and how it transforms data during ingestion. \u25b6 Watch: Mapping Data with Data Prep(https://video.tv.adobe.com/v/3419881?quality=12&learn=on) This video demonstrates how to use Data Prep to map and transform fields in a datastream. --- What is Data Prep in Datastreams? Data Prep is a feature within datastreams that allows you to transform, map, and validate data as it flows from Web SDK to Adobe services \u2014 without requiring code changes. Data Prep sits between the Edge Network and your downstream services, allowing you to: Web SDK XDM Data \u2193 \u250c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2510 \u2502 DATA PREP \u2502 \u2502 \u2502 \u2502 \u2022 Map XDM fields \u2502 \u2502 \u2022 Transform values \u2502 \u2502 \u2022 Create calculated fields \u2502 \u2502 \u2022 Validate data \u2502 \u2502 \u2022 Enrich data \u2502 \u2514\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2518 \u2193 AEP / Analytics / Target / etc. --- Data Prep Capabilities 1. Field Mapping Map XDM fields to solution-specific field names: XDM Field \u2192 Target Field \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500 commerce.productViews.value \u2192 Analytics event1 productListItems0.SKU \u2192 Analytics eVar10 web.webPageDetails.name \u2192 Analytics pageName personalEmail.address \u2192 Analytics visitorID 2. Data Transformation Transform field values on the fly: Original Value: 2024-01-15T10:30:00Z Function Applied: Extract date only Transformed Value: 2024-01-15 Original Value: jane.smith@email.com Function Applied: Lowercase Transformed Value: jane.smith@email.com (already lowercase) Original Value: \"running shoes\" Function Applied: Capitalize Transformed Value: \"Running Shoes\" Original Value: 129.99 Function Applied: Round to nearest integer Transformed Value: 130 3. Calculated Fields Create new fields based on existing data: New Field: \"Total Order Value\" Formula: commerce.order.priceTotal (1 + commerce.order.taxAmount) Result: Complete order value including tax New Field: \"Product Category Path\"\u2026"}}]}</script></div>
+  </body>
+</html>

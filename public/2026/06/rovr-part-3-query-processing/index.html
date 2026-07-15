@@ -1,0 +1,672 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+     <script type="application/ld+json">
+
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Rovr: Part 3 - Query Processing",
+  
+  "image": "https://d2coej5ollyd8p.cloudfront.net/tools/exl-annoucement.png",
+  
+  "datePublished": "2026-06-24T00:00:00Z",
+  "dateModified": "2026-06-24T00:00:00Z",
+  "author": {
+    "@type": "Person",
+    "name":  null ,
+    
+  },
+  "mainEntityOfPage": { 
+    "@type": "WebPage",
+    "@id": "https:\/\/thelearningproject.in\/2026\/06\/rovr-part-3-query-processing\/" 
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "The Learning Project",
+    
+  },
+  "description": "This is Part 3 of the deep dive series on Rovr . The intro covered the idea, the tech stack and a high level overview of the application. The data ingestion post covered how documentation gets ingested all the way from GitHub to ChromaDB. This blog post covers what happens after that. The knowledge base is ready. Now a user types a question. What happens next?\n",
+  "keywords": [, "adobe experience cloud, adobe launch, adobe analytics, adobe experience platform, multi solution architect, business analytics"]
+}
+
+</script> <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="generator" content="Hugo 0.147.8 with theme Tranquilpeak 0.5.3-BETA">
+<meta name="author" content="">
+<meta name="keywords" content=", adobe experience cloud, adobe launch, adobe analytics, adobe experience platform, multi solution architect, business analytics">
+<meta name="description" content="This is Part 3 of the deep dive series on 
+  Rovr
+
+. The 
+  intro
+
+ covered the idea, the tech stack and a high level overview of the application. The 
+  data ingestion
+
+ post covered how documentation gets ingested all the way from GitHub to ChromaDB. This blog post covers what happens after that. The knowledge base is ready. Now a user types a question. What happens next?">
+
+
+<meta property="og:description" content="This is Part 3 of the deep dive series on 
+  Rovr
+
+. The 
+  intro
+
+ covered the idea, the tech stack and a high level overview of the application. The 
+  data ingestion
+
+ post covered how documentation gets ingested all the way from GitHub to ChromaDB. This blog post covers what happens after that. The knowledge base is ready. Now a user types a question. What happens next?">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Rovr: Part 3 - Query Processing">
+<meta name="twitter:title" content="Rovr: Part 3 - Query Processing">
+<meta property="og:url" content="https://thelearningproject.in/2026/06/rovr-part-3-query-processing/">
+<meta property="twitter:url" content="https://thelearningproject.in/2026/06/rovr-part-3-query-processing/">
+<meta property="og:site_name" content="The Learning Project">
+<meta property="og:description" content="This is Part 3 of the deep dive series on 
+  Rovr
+
+. The 
+  intro
+
+ covered the idea, the tech stack and a high level overview of the application. The 
+  data ingestion
+
+ post covered how documentation gets ingested all the way from GitHub to ChromaDB. This blog post covers what happens after that. The knowledge base is ready. Now a user types a question. What happens next?">
+<meta name="twitter:description" content="This is Part 3 of the deep dive series on 
+  Rovr
+
+. The 
+  intro
+
+ covered the idea, the tech stack and a high level overview of the application. The 
+  data ingestion
+
+ post covered how documentation gets ingested all the way from GitHub to ChromaDB. This blog post covers what happens after that. The knowledge base is ready. Now a user types a question. What happens next?">
+<meta property="og:locale" content="en-us">
+
+  
+    <meta property="article:published_time" content="2026-06-24T00:00:00">
+  
+  
+    <meta property="article:modified_time" content="2026-06-24T00:00:00">
+  
+  
+  
+  
+    
+      <meta property="article:tag" content="post">
+    
+      <meta property="article:tag" content="Adobe Tags">
+    
+      <meta property="article:tag" content="Adobe Experience League">
+    
+  
+
+
+<meta name="twitter:card" content="summary">
+
+
+
+
+
+
+
+
+
+
+
+  <meta property="og:image" content="https://d2coej5ollyd8p.cloudfront.net/tools/exl-annoucement.png">
+  <meta property="twitter:image" content="https://d2coej5ollyd8p.cloudfront.net/tools/exl-annoucement.png">
+
+
+    <title>Rovr: Part 3 - Query Processing</title>
+
+    <link
+      rel="icon"
+      href="https://thelearningproject.in/favicon.png"
+    />
+     
+
+    <link rel="canonical" href="https://thelearningproject.in/2026/06/rovr-part-3-query-processing/" />
+
+    
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+      integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css"
+      integrity="sha512-H9jrZiiopUdsLpg94A333EfumgUBpO9MdbxStdeITo+KEIMaNfHNvwyjjDJb+ERPaRS6DpyRlKbvPUasNItRyw=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    
+    
+    
+    <link rel="stylesheet" href="https://thelearningproject.in/css/style-h6ccsoet3mzkbb0wngshlfbaweimexgqcxj0h5hu4h82olsdzz6wmqdkajm.min.css" />
+    
+    
+    
+  </head>
+
+  <body>
+    <div id="blog">
+      <header id="header" data-behavior="3">
+  <i id="btn-open-sidebar" class="fa fa-lg fa-bars"></i>
+  <div class="header-title">
+    <a class="header-title-link" href="../../../" aria-label="Go to homepage">The Learning Project</a>
+  </div>
+  
+    
+      <a class="header-right-picture "
+         href="../../../about" aria-label="Open the link: /about">
+    
+    
+    
+      
+    
+    </a>
+  
+</header>
+
+      <nav id="sidebar" data-behavior="3">
+  <div class="sidebar-container">
+    
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="../../../" title="Home">
+    
+      <i class="sidebar-button-icon fas fa-lg fa-home" aria-hidden="true"></i>
+      
+      <span class="sidebar-button-desc">Home</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="../../../about" title="About">
+    
+      <i class="sidebar-button-icon fas fa-lg fa-code" aria-hidden="true"></i>
+      
+      <span class="sidebar-button-desc">About</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="../../../tools" title="Tools">
+    
+      <i class="sidebar-button-icon fas fa-lg fa-anchor" aria-hidden="true"></i>
+      
+      <span class="sidebar-button-desc">Tools</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="../../../todayilearned.html" title="Today I Learned">
+    
+      <i class="sidebar-button-icon fas fa-lg fa-book" aria-hidden="true"></i>
+      
+      <span class="sidebar-button-desc">Today I Learned</span>
+    </a>
+  </li>
+
+
+    </ul>
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://github.com/riteshvg" target="_blank" rel="noopener" title="GitHub">
+    
+      <i class="sidebar-button-icon fab fa-lg fa-github" aria-hidden="true"></i>
+      
+      <span class="sidebar-button-desc">GitHub</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://www.linkedin.com/in/riteshvgupta/" target="_blank" rel="noopener" title="LinkedIn">
+    
+      <i class="sidebar-button-icon fab fa-lg fa-linkedin" aria-hidden="true"></i>
+      
+      <span class="sidebar-button-desc">LinkedIn</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://twitter.com/riteshvg" target="_blank" rel="noopener" title="Twitter">
+    
+      <i class="sidebar-button-icon fab fa-lg fa-twitter" aria-hidden="true"></i>
+      
+      <span class="sidebar-button-desc">Twitter</span>
+    </a>
+  </li>
+
+
+    </ul>
+    <ul class="sidebar-buttons">
+      
+
+    </ul>
+  </div>
+</nav>
+
+      
+
+      <div id="main" data-behavior="3"
+        class="
+               hasCoverMetaIn
+               ">
+        <article class="post" id="top">
+          
+          
+            <div class="post-header main-content-wrap text-left">
+  
+    <h1 class="post-title">
+      Rovr: Part 3 - Query Processing
+    </h1>
+  
+  
+  <div class="postShorten-meta post-meta">
+    
+      <time datetime="2026-06-24T00:00:00Z">
+        
+  June 24, 2026
+
+      </time>
+    
+    
+  </div>
+
+</div>
+          
+          <div class="post-content markdown">
+            <div class="main-content-wrap">
+              <p>This is Part 3 of the deep dive series on <a href="https://thelearningproject.in/tools/rovr/" target="_blank" rel="noopener">
+  Rovr
+</a>
+. The <a href="https://thelearningproject.in/2026/06/rovr-a-conversational-engine-for-adobe-experience-league/" target="_blank" rel="noopener">
+  intro
+</a>
+ covered the idea, the tech stack and a high level overview of the application. The <a href="http://localhost:1313/2026/06/rovr-part-2-data-ingestion/" target="_blank" rel="noopener">
+  data ingestion
+</a>
+ post covered how documentation gets ingested all the way from GitHub to ChromaDB. This blog post covers what happens after that. <strong>The knowledge base is ready. Now a user types a question. What happens next?</strong></p>
+<p>When a user enters a query in natural language in <a href="https://thelearningproject.in/tools/rovr/" target="_blank" rel="noopener">
+  Rovr
+</a>
+ there are precisely six steps that the query has to travel through before it retrieves the answer on user&rsquo;s screen. Here&rsquo;s the end-to-end workflow from the moment the query lands at the FastAPI backend to the moment a streamed response begins flowing back.</p>
+<p><img src="https://d2coej5ollyd8p.cloudfront.net/tools/queryprocessing.png" alt="queryProcessing.png"></p>
+<p>Now, let&rsquo;s deep dive into each of those six steps one by one:</p>
+<h3 id="step-1-the-smart-router-first-decision-point">Step 1: The Smart Router: First Decision Point</h3>
+<p>A query lands at the FastAPI backend. Before anything else touches it, the Smart Router reads it and makes a classification call: is this simple or complex?
+This decision matters for two reasons — cost and quality. A simple question like &ldquo;what is an eVar?&rdquo; does not need a reasoning loop. Running it through a multi-pass Sonnet agent wastes money and adds latency. A complex question like &ldquo;compare how CJA and Adobe Analytics handle cross-device attribution&rdquo; is exactly the wrong thing to give a single-pass Haiku. It will produce a shallow answer because it doesn&rsquo;t have the horsepower to synthesise across multiple documentation sources.</p>
+<p>The signals the router uses for classification:</p>
+<ul>
+<li><em>Length and structure of the query — longer, multi-clause questions are likely complex</em></li>
+<li><em>Presence of comparative intent — &ldquo;compare&rdquo;, &ldquo;difference between&rdquo;, &ldquo;vs&rdquo; reliably signal multi-source synthesis</em></li>
+<li><em>Procedural framing — &ldquo;walk me through&rdquo;, &ldquo;how do I&rdquo; questions often span multiple documentation pages</em></li>
+<li><em>Single-concept lookups — definitions, default values, product limits are fast-path by default</em></li>
+</ul>
+<p><em>A quick diagrammatic view of the Smart Router at work</em></p>
+<p><img src="https://d2coej5ollyd8p.cloudfront.net/tools/step1-qp.png" alt="step1-qp"></p>
+<p>Getting this classification wrong in either direction is costly. An over-classified simple question adds ~2 seconds of latency unnecessarily. An under-classified complex question produces a confident but shallow answer — arguably the worse failure.</p>
+<hr>
+<h3 id="step-2-the-query-preprocessor-making-the-query-retrieval-ready">Step 2: The Query Preprocessor: making the query retrieval-ready</h3>
+<p>Here is something that caught me off guard when building Rovr. <strong>Vector retrieval is based entirely on cosine similarity between the query vector and stored chunk vectors</strong> — and for a RAG system, there is a meaningful difference between &ldquo;AEP&rdquo; and &ldquo;Adobe Experience Platform&rdquo;.</p>
+<p>Modern embedding models understand they&rsquo;re related, but the similarity score for the abbreviated form is reliably lower than for the expanded form. Across 41000 chunks competing for the top-k slots, that score gap is enough to push the right documentation below the retrieval threshold entirely. And once the wrong chunks make it into the context block, the language model has no way to recover — it generates a response from what it was given. The retrieval miss becomes a response miss leading to incorrect answers, citations and a poor user experience.</p>
+<p>The Query Preprocessor step solves this with explicit abbreviation expansion before the query hits the embedding model. The expansion dictionary covers the most common abbreviations in the Adobe Experience Cloud ecosystem:</p>
+<p>CJA → Customer Journey Analytics
+AEP → Adobe Experience Platform
+AA → Adobe Analytics
+RT-CDP → Real-Time Customer Data Platform
+AJO → Adobe Journey Optimizer</p>
+<p>This might look trivial. It is not. Adobe&rsquo;s documentation is inconsistent about which form it uses. Some pages use the abbreviated form throughout. Some switch between them. Without expansion, a query using abbreviations retrieves worse than it should, and that retrieval degradation propagates all the way to the final answer.</p>
+<p>The preprocessor also injects the last turn of conversation history into the query. This is what makes follow-up questions work. Without this, the question, &ldquo;what about segment sharing?&rdquo; has no reference — the embedding model treats it as a standalone question about segment sharing in general, not as a follow-up to whatever was discussed in the previous turn. With context injection, the query becomes something like &ldquo;in the context of Customer Journey Analytics filters: what about segment sharing?&rdquo; — now retrieval finds the right pages. I will be covering in detail the query response and other associated steps in another blog post.</p>
+<hr>
+<h3 id="step-3-embedding-the-query-becomes-a-vector">Step 3: Embedding: The query becomes a vector</h3>
+<p>The preprocessed query is passed to AWS Bedrock&rsquo;s Titan Embed v2, which returns a 1,024-dimension vector. This is the same model used during ingestion to embed every documentation chunk. That symmetry is not optional — it is a hard requirement. The vector similarity search in Step 4 only works correctly if the query vector and the chunk vectors live in the same embedding space. Using a different model for query-time embedding than for ingestion-time embedding produces wrong results silently. No errors, just degraded retrieval quality.</p>
+<p>The query vectors are normalised before comparison. ChromaDB is configured with hnsw:space: cosine and Titan is called with normalize: True — these two settings need to agree or the similarity scores are meaningless.</p>
+<hr>
+<h3 id="step-4-retrieval-finding-the-right-chunks">Step 4: Retrieval: finding the right chunks</h3>
+<p>ChromaDB receives the query vector and searches across 41000 stored documentation chunks using cosine similarity. The top-k most similar chunks come back — each with its content and its metadata: product, URL, title, doc_type, s3_key, chunk_index, and any embedded media references.</p>
+<p>Two things matter a lot here that aren&rsquo;t obvious from the description.</p>
+<p>The similarity threshold. There is a minimum score below which a chunk is excluded from the results even if it is in the top-k. Setting this threshold is empirical, not intuitive. For general web content, a cosine similarity of 0.7 might be considered a strong match. For niche technical documentation in a specific product domain, 0.7 is conservative — many genuinely relevant chunks score in the 0.55–0.65 range because the queries are highly specific and the documentation uses precise technical vocabulary. Too high a threshold and the retrieval silently returns fewer chunks than expected. Too low and noise gets into the context block. I set this empirically by testing a set of known queries against known documentation pages and finding the threshold that balanced recall and precision.</p>
+<p>How many chunks come back matters. Too few and the context block is thin — the model may not have enough to answer well. Too many and you&rsquo;re sending a lot of tokens to the LLM unnecessarily, increasing cost and sometimes diluting the most relevant content with loosely related material. The right number depends on the average chunk size (which is roughly 500 tokens in this pipeline) and the context window of the model being used.</p>
+<p><img src="https://d2coej5ollyd8p.cloudfront.net/tools/retrieval-step3.png" alt="step4-chromadb"></p>
+<p>The metadata attached to each chunk is what makes citations work later. Without the URL and title stored at chunk level, there is no way to tell the user where the answer came from.</p>
+<hr>
+<h3 id="step-5-divergence-two-paths-diverge">Step 5: Divergence: Two paths diverge</h3>
+<p>The retrieved chunks are handed off differently depending on what the Smart Router decided in Step 1.</p>
+<p>The Haiku path is direct. The chunks are assembled into a context block. A prompt is built: system instructions, the context block, conversation history, and the preprocessed query. One call goes to Claude Haiku via the Anthropic API. The response streams back. Fast, cheap, appropriate for well-scoped questions.</p>
+<p>The Claude Sonnet path is more deliberate. A LangGraph ReAct agent receives the retrieved chunks and evaluates whether it has enough to answer the question well. If it does, it proceeds to generation. If it doesn&rsquo;t — if the chunks are thin, or the question spans multiple product areas that weren&rsquo;t all captured in the first retrieval — it refines its search and retrieves again. This loop runs up to three passes.</p>
+<p>What does &ldquo;refining the search&rdquo; look like in practice? The agent rewrites the query, often decomposing a compound question into sub-queries. &ldquo;Compare CJA filters and Adobe Analytics segments for cross-device use cases&rdquo; might decompose into two targeted retrievals — one for CJA filter documentation and one for Analytics segment documentation — before the agent synthesises both into a single answer.</p>
+<p>This is what makes Sonnet effective for the hard questions. It is also why it costs more and takes longer. At current pricing the estimated cost is around $0.009 per query on the Sonnet path — still less than a cup of tea, but meaningfully more than the Haiku path.</p>
+<hr>
+<h3 id="step-6--convergence-generation-and-streaming">Step 6 — Convergence: generation and streaming</h3>
+<p>Both the Haiku path and the Sonnet path arrive at the same place: the Prompt Builder. This is where the two paths converge, and everything from here is shared.</p>
+<p>The Prompt Builder assembles four things in a specific order: the system prompt, the retrieved context block, conversation history from the Session Store, and the preprocessed query. That ordering is deliberate. The system prompt sets the grounding rules. The context block comes next so the model has the documentation evidence before it reads anything else. History is injected after that, and the query comes last.</p>
+<p>Why ordering matters: LLMs weight information that appears early in a long context more heavily. Putting the highest-scoring chunk at the top of the context block — and the context block before the conversation history — increases the likelihood that the most relevant documentation actually influences the answer.</p>
+<p>The Session Store feeds into the Prompt Builder here via a separate channel — it is not just a pass-through from the preprocessor in Step 2. The preprocessor gets the last turn (to make the query retrieval-ready). The Prompt Builder gets the full conversation history (to make the response contextually coherent). Same store, two different reads, two different purposes.</p>
+<p>Grounding the response: The system prompt tells the model explicitly: answer only from the context provided, do not invent information, and when the context does not contain a sufficient answer, say so. Without this instruction, the model&rsquo;s tendency to be helpful overrides its tendency to be accurate — it fills gaps with plausible-sounding information that may be outdated or wrong. For AJO, where Journey Canvas behaviour and suppression rules change across releases, that gap-filling is genuinely dangerous.</p>
+<p>The prompt goes to the Anthropic API. The response streams back token by token. Three event types flow to the React frontend:</p>
+<ul>
+<li>Token events — individual words rendered with a typewriter effect as they arrive</li>
+<li>Citations payload — source URLs assembled from the metadata of the chunks the model drew on. When the response says &ldquo;according to the AJO Journey Canvas documentation&rdquo;, there is a real URL behind that claim</li>
+<li>Done signal — triggers generation of contextual follow-up question suggestions</li>
+</ul>
+<p>Streaming responses feel conversational in a way that a response appearing all at once does not — even when the final content is identical. This is a small UX detail that matters disproportionately to how the tool feels.</p>
+<p><img src="https://d2coej5ollyd8p.cloudfront.net/tools/step4-qp.png" alt="step4-chromadb"></p>
+<hr>
+<h3 id="key-takeaways">Key Takeaways</h3>
+<ul>
+<li>The Smart Router saves money and protects answer quality at the same time — classify before you embed, not after</li>
+<li>Abbreviation expansion before embedding is non-negotiable for domain-specific RAG. The model can&rsquo;t fix retrieval misses it can&rsquo;t see — and Adobe&rsquo;s ecosystem is full of abbreviations the documentation itself uses inconsistently</li>
+<li>Similarity thresholds need to be calibrated empirically against your specific domain. Overloaded terms like &ldquo;activity&rdquo; score differently in a multi-product documentation corpus than they would in a single-product one</li>
+<li>Chunk ordering in the context block matters. Put the highest-scoring chunk first — the model reads it most carefully</li>
+<li>The Session Store is read twice — once by the Preprocessor (last turn only, for retrieval) and once by the Prompt Builder (full history, for generation). Same store, different reads, different purposes</li>
+<li>Both paths converge at the Prompt Builder. The Haiku and Sonnet paths differ only in how they retrieve and refine context — everything after that is identical</li>
+<li>The grounding instruction in the system prompt is not optional. For products like AJO and AEP where behaviour changes across releases, the gap between &ldquo;what the LLM knows&rdquo; and &ldquo;what the documentation says&rdquo; is real and consequential</li>
+</ul>
+<h3 id="my-learnings">My Learnings</h3>
+<p>Building the query processing layer was less about individual clever decisions and more about understanding how each component&rsquo;s failure mode propagates downstream. A bad router classification means a wrong-sized model. A missing abbreviation expansion means a retrieval miss. A retrieval miss means a thin context block. A thin context block means a weak or hallucinated answer.</p>
+<p>The pipeline is only as strong as its weakest step. Which also means you can test and improve each step independently — once you have observability. LangSmith traces were essential here. Being able to see the exact query that hit ChromaDB, the chunks that came back, the scores they carried, and the prompt that went to the LLM made debugging tractable in a way it simply wouldn&rsquo;t have been otherwise.</p>
+<p>My one key learning from the data processing layer is:
+Build your observability before you optimise. You can&rsquo;t improve what you can&rsquo;t see.</p>
+<hr>
+<p>I appreciate you taking out time and taking <a href="https://thelearningproject.in/tools/rovr/" target="_blank" rel="noopener">
+  Rovr
+</a>
+ for a spin. If you have any difficulty in using <a href="https://thelearningproject.in/tools/rovr/" target="_blank" rel="noopener">
+  Rovr
+</a>
+, or have any feature request, please drop me a line at <a href="mailto:ritesh@thelearningproject.in">
+  ritesh@thelearningproject.in
+</a>
+.</p>
+              
+
+
+            </div>
+          </div>
+          <div id="post-footer" class="post-footer main-content-wrap">
+            
+              
+                
+                
+                  <div class="post-footer-tags">
+                    <span class="text-color-light text-small">TAGGED IN</span><br/>
+                    
+  <a class="tag tag--primary tag--small" href="../../../tags/post/">post</a>
+
+  <a class="tag tag--primary tag--small" href="../../../tags/adobe-tags/">Adobe Tags</a>
+
+  <a class="tag tag--primary tag--small" href="../../../tags/adobe-experience-league/">Adobe Experience League</a>
+
+                  </div>
+                
+              
+            
+            
+<div class="post-actions-wrap">
+  <nav >
+    <ul class="post-actions post-action-nav">
+      
+        <li class="post-action">
+          
+            <a class="post-action-btn btn btn--default tooltip--top" href="../../../2026/06/rovr-part-2-data-ingestion/" data-tooltip="Rovr: Part 2 - Data Ingestion" aria-label="PREVIOUS: Rovr: Part 2 - Data Ingestion">
+          
+              <i class="fa fa-angle-left"></i>
+              <span class="hide-xs hide-sm text-small icon-ml">PREVIOUS</span>
+            </a>
+        </li>
+        <li class="post-action">
+          
+            <a class="post-action-btn btn btn--disabled">
+          
+              <span class="hide-xs hide-sm text-small icon-mr">NEXT</span>
+              <i class="fa fa-angle-right"></i>
+            </a>
+        </li>
+      
+    </ul>
+  </nav>
+<ul class="post-actions post-action-share" >
+  
+    <li class="post-action hide-lg hide-md hide-sm">
+      <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions" aria-label="Share this post">
+        <i class="fa fa-share-alt" aria-hidden="true"></i>
+      </a>
+    </li>
+    
+      <li class="post-action hide-xs">
+        <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://thelearningproject.in/2026/06/rovr-part-3-query-processing/" title="Share on Twitter" aria-label="Share on Twitter">
+          <i class="fab fa-twitter" aria-hidden="true"></i>
+        </a>
+      </li>
+    
+      <li class="post-action hide-xs">
+        <a class="post-action-btn btn btn--default" target="new" href="https://www.linkedin.com/sharing/share-offsite/?url=https://thelearningproject.in/2026/06/rovr-part-3-query-processing/" title="Share on Linkedin" aria-label="Share on Linkedin">
+          <i class="fab fa-linkedin" aria-hidden="true"></i>
+        </a>
+      </li>
+    
+  
+  
+  <li class="post-action">
+    
+      <a class="post-action-btn btn btn--default" href="#top" aria-label="Back to top">
+      <i class="fa fa-arrow-up" aria-hidden="true"></i>
+    
+    </a>
+  </li>
+</ul>
+</div>
+
+
+            
+  
+
+
+          </div>
+        </article>
+        <footer id="footer" class="main-content-wrap">
+  <span class="copyrights">
+    &copy; 2026 The Learning Project. All Rights Reserved
+  </span>
+</footer>
+
+      </div>
+      <div id="bottom-bar" class="post-bottom-bar" data-behavior="3">
+        
+<div class="post-actions-wrap">
+  <nav >
+    <ul class="post-actions post-action-nav">
+      
+        <li class="post-action">
+          
+            <a class="post-action-btn btn btn--default tooltip--top" href="../../../2026/06/rovr-part-2-data-ingestion/" data-tooltip="Rovr: Part 2 - Data Ingestion" aria-label="PREVIOUS: Rovr: Part 2 - Data Ingestion">
+          
+              <i class="fa fa-angle-left"></i>
+              <span class="hide-xs hide-sm text-small icon-ml">PREVIOUS</span>
+            </a>
+        </li>
+        <li class="post-action">
+          
+            <a class="post-action-btn btn btn--disabled">
+          
+              <span class="hide-xs hide-sm text-small icon-mr">NEXT</span>
+              <i class="fa fa-angle-right"></i>
+            </a>
+        </li>
+      
+    </ul>
+  </nav>
+<ul class="post-actions post-action-share" >
+  
+    <li class="post-action hide-lg hide-md hide-sm">
+      <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions" aria-label="Share this post">
+        <i class="fa fa-share-alt" aria-hidden="true"></i>
+      </a>
+    </li>
+    
+      <li class="post-action hide-xs">
+        <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://thelearningproject.in/2026/06/rovr-part-3-query-processing/" title="Share on Twitter" aria-label="Share on Twitter">
+          <i class="fab fa-twitter" aria-hidden="true"></i>
+        </a>
+      </li>
+    
+      <li class="post-action hide-xs">
+        <a class="post-action-btn btn btn--default" target="new" href="https://www.linkedin.com/sharing/share-offsite/?url=https://thelearningproject.in/2026/06/rovr-part-3-query-processing/" title="Share on Linkedin" aria-label="Share on Linkedin">
+          <i class="fab fa-linkedin" aria-hidden="true"></i>
+        </a>
+      </li>
+    
+  
+  
+  <li class="post-action">
+    
+      <a class="post-action-btn btn btn--default" href="#top" aria-label="Back to top">
+      <i class="fa fa-arrow-up" aria-hidden="true"></i>
+    
+    </a>
+  </li>
+</ul>
+</div>
+
+
+      </div>
+      
+<div id="share-options-bar" class="share-options-bar" data-behavior="3">
+  <i id="btn-close-shareoptions" class="fa fa-times"></i>
+  <ul class="share-options">
+    
+      <li class="share-option">
+        <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=https%3A%2F%2Fthelearningproject.in%2F2026%2F06%2Frovr-part-3-query-processing%2F" aria-label="Share on Twitter">
+          <i class="fab fa-twitter" aria-hidden="true"></i><span>Share on Twitter</span>
+        </a>
+      </li>
+    
+      <li class="share-option">
+        <a class="share-option-btn" target="new" href="https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Fthelearningproject.in%2F2026%2F06%2Frovr-part-3-query-processing%2F" aria-label="Share on Linkedin">
+          <i class="fab fa-linkedin" aria-hidden="true"></i><span>Share on Linkedin</span>
+        </a>
+      </li>
+    
+  </ul>
+</div>
+<div id="share-options-mask" class="share-options-mask"></div>
+
+
+    </div>
+    
+    <div id="about">
+  <div id="about-card">
+    <div id="about-btn-close">
+      <i class="fa fa-times"></i>
+    </div>
+    
+    <h4 id="about-card-name"></h4>
+    
+    
+    
+  </div>
+</div>
+
+    
+
+    
+  
+    
+      <div id="cover" style="background-image:url('https://thelearningproject.in/images/cover-v1.2.0.jpg');"></div>
+    
+  
+
+
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/highlight.min.js" integrity="sha512-z+/WWfyD5tccCukM4VvONpEtLmbAm5LDu7eKiyMQJ9m7OfPEDL7gENyDRL3Yfe8XAuGsS2fS4xSMnl6d30kqGQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js" integrity="sha512-uURl+ZXMBrF4AwGaWmEetzrd+J5/8NRkWAvJx5sbPSSuOb0bZLqf+tOzniObO00BjHa/dD7gub9oCGMLPQHtQA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+
+<script src="https://thelearningproject.in/js/script-yqzy9wdlzix4lbbwdnzvwx3egsne77earqmn73v9uno8aupuph8wfguccut.min.js"></script>
+
+
+  
+    <script async crossorigin="anonymous" defer integrity="sha512-gE8KAQyFIzV1C9+GZ8TKJHZS2s+n7EjNtC+IMRn1l5+WYJTHOODUM6JSjZhFhqXmc7bG8Av6XXpckA4tYhflnw==" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/languages/apache.min.js"></script>
+  
+
+  
+    <script async crossorigin="anonymous" defer integrity="sha512-EWROca+bote+7Oaaar1F6y74iZj1r1F9rm/ly7o+/FwJopbBaWtsFDmaKoZDd3QiGU2pGacBirHJNivmGLYrow==" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/languages/go.min.js"></script>
+  
+
+  
+    <script async crossorigin="anonymous" defer integrity="sha512-GDVzAn0wpx1yVtQsRWmFc6PhJiLBPdUic+h4GWgljBh904O3JU10fk9EKNpVyIoPqkFn54rgL2QBG4BmUTMpiQ==" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/languages/http.min.js"></script>
+  
+
+  
+    <script async crossorigin="anonymous" defer integrity="sha512-UgZlma8NzkrDb/NWgmLIcTrH7i/CSnLLDRFqCSNF5NGPpjKmzyM25qcoXGOup8+cDakKyaiTDd7N4dyH4YT+IA==" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/languages/less.min.js"></script>
+  
+
+  
+    <script async crossorigin="anonymous" defer integrity="sha512-lot9koe73sfXIrUvIPM/UEhuMciN56RPyBdOyZgfO53P2lkWyyXN7J+njcxIIBRV+nVDQeiWtiXg+bLAJZDTfg==" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/languages/nginx.min.js"></script>
+  
+
+  
+    <script async crossorigin="anonymous" defer integrity="sha512-Zd3e7XxHP00TD0Imr0PIfeM0fl0v95kMWuhyAS3Wn1UTSXTkz0OhtRgBAr4JlmADRgiXr4x7lpeUdqaGN8xIog==" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/languages/puppet.min.js"></script>
+  
+
+  
+    <script async crossorigin="anonymous" defer integrity="sha512-qtqDO052iXMSP+5d/aE/jMtL9vIIGvONgTJziC2K/ZIB1yEGa55WVxGE9/08rSQ62EoDifS9SWVGZ7ihSLhzMA==" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/languages/scss.min.js"></script>
+  
+
+  
+    <script async crossorigin="anonymous" defer integrity="sha512-1NmkjnEDnwwwcu28KoQF8vs3oaPFokQHbmbtwGhFfeDsQZtVFI8zW2aE9O8yMYdpdyKV/5blE4pSWw4Z/Sv97w==" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/languages/stylus.min.js"></script>
+  
+
+  
+    <script async crossorigin="anonymous" defer integrity="sha512-B2wSfruPjr8EJL6IIzQr1eAuDwrsfIfccNf/LCEdxELCgC/S/ZMt/Uvk80aD79m7IqOqW+Sw8nbkvha20yZpzg==" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/languages/swift.min.js"></script>
+  
+
+  
+    <script async crossorigin="anonymous" defer integrity="sha512-28oDiQZGKUVN6wQ7PSLPNipOcmkCALXKwOi7bnkyFf8QiMZQxG9EQoy/iiNx6Zxj2cG2SbVa4dXKigQhu7GiFw==" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/languages/yaml.min.js"></script>
+  
+
+  
+    <script async crossorigin="anonymous" src="https://assets.adobedtm.com/204118644db8/437cd1c7d72a/launch-a040553a1374.min.js"></script>
+  
+
+
+<script>
+$(document).ready(function() {
+  hljs.configure({ classPrefix: '', useBR: false });
+  $('pre.code-highlight > code, pre > code').each(function(i, block) {
+    if (!$(this).hasClass('codeblock')) {
+      $(this).addClass('codeblock');
+    }
+    hljs.highlightBlock(block);
+  });
+});
+</script>
+
+
+
+
+    
+  </body>
+</html>
+

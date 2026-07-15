@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/png" href="/tools/rovr/rovrlogo.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="build-date" content="2026-06-10" />
+    
+    
+    <script src="https://assets.adobedtm.com/204118644db8/290ae1adb65a/launch-e5ec7bf1a1ef-development.min.js" async></script>
+    <script type="module" crossorigin src="/tools/rovr/assets/index-Cnf1TPK2.js"></script>
+    <link rel="stylesheet" crossorigin href="/tools/rovr/assets/index-D1POE5XP.css">
+  <title>What permissions or roles are required to use Sandbox Tooling for moving packages? | Rovr</title>
+<meta name="description" content="Permissions &amp; Roles Required for Sandbox Tooling Based on the available documentation context, here is what is confirmed regarding access requirements for…" />
+<link rel="canonical" href="https://thelearningproject.in/tools/rovr/q/what-permissions-or-roles-are-required-to-use-sandbox-toolin-f03dcd" />
+<meta property="og:title" content="What permissions or roles are required to use Sandbox Tooling for moving packages?" />
+<meta property="og:description" content="Permissions &amp; Roles Required for Sandbox Tooling Based on the available documentation context, here is what is confirmed regarding access requirements for…" />
+<meta property="og:url" content="https://thelearningproject.in/tools/rovr/q/what-permissions-or-roles-are-required-to-use-sandbox-toolin-f03dcd" />
+<meta property="og:type" content="article" />
+<meta property="og:image" content="https://thelearningproject.in/tools/rovr/rovrlogo.png" />
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="What permissions or roles are required to use Sandbox Tooling for moving packages?" />
+<meta name="twitter:description" content="Permissions &amp; Roles Required for Sandbox Tooling Based on the available documentation context, here is what is confirmed regarding access requirements for…" />
+</head>
+  <body>
+    <div id="root"><article><h1>What permissions or roles are required to use Sandbox Tooling for moving packages?</h1>
+<h2>Permissions &amp; Roles Required for Sandbox Tooling</h2>
+<p>Based on the available documentation context, here is what is confirmed regarding access requirements for Sandbox Tooling:</p>
+<hr>
+<h3>General Access Requirements</h3>
+<ul>
+<li>You must have access to <strong>Sandbox Tooling</strong> in your organization with the <strong>correct permissions</strong> enabled.</li>
+<li>Only <strong>Product Administrators</strong> or <strong>System Administrators</strong> can assign sandboxes to roles.</li>
+<li>Sandboxes are made available to users through <strong>roles</strong> assigned in the <strong>Permissions</strong> product.</li>
+</ul>
+<hr>
+<h3>Key Terminology to Understand</h3>
+<p>| Action | Who Can Do It | Where |</p>
+<p>|---|---|---|</p>
+<p>| <strong>Use a sandbox</strong> (switch to it) | Any user with sandbox access | Sandbox switcher in the UI |</p>
+<p>| <strong>Assign sandboxes to roles</strong> | Product/System Admins only | Permissions product |</p>
+<p>| <strong>Create/Reset/Delete sandboxes</strong> | Admins only | Adobe Experience Platform |</p>
+<hr>
+<h3>What the Documentation Confirms</h3>
+<ul>
+<li>Ensure you have access to <strong>Sandbox Tooling</strong> in your organization with the <strong>correct permissions</strong> before creating or importing packages.</li>
+<li>Sandboxes must be <strong>assigned through roles</strong> in the Permissions product before users can access them.</li>
+</ul>
+<hr>
+<h3>⚠️ Limitation of This Answer</h3>
+<p>The retrieved documentation does not explicitly list the <strong>specific permission names</strong> (e.g., &quot;Manage Sandboxes,&quot; &quot;Export Sandbox,&quot; etc.) required for Sandbox Tooling operations. For the exact granular permissions needed (such as `Sandbox Administration` or `Package Management`), I would recommend:</p>
+<p>1. Navigating to <strong>Admin Console</strong> → <strong>Adobe Experience Platform</strong> → <strong>Permissions</strong></p>
+<p>2. Reviewing the <strong>Sandboxes</strong> permission category for your role</p>
+<p>3. Checking with your <strong>System Administrator</strong> to confirm the correct role has sandbox tooling permissions enabled</p>
+<hr>
+<h3>General Best Practice for Admins</h3>
+<p>When setting up roles for Sandbox Tooling access, ensure the role includes:</p>
+<ul>
+<li>Access to the <strong>relevant sandboxes</strong> (both source and target)</li>
+<li>Appropriate <strong>Data Collection</strong> permissions if packages include Tags properties</li>
+<li>Permissions to <strong>view, create, and manage packages</strong> within the Sandboxes section of AEP</li>
+</ul>
+</article>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "What permissions or roles are required to use Sandbox Tooling for moving packages?", "acceptedAnswer": {"@type": "Answer", "text": "Permissions & Roles Required for Sandbox Tooling Based on the available documentation context, here is what is confirmed regarding access requirements for Sandbox Tooling: --- General Access Requirements - You must have access to Sandbox Tooling in your organization with the correct permissions enabled. - Only Product Administrators or System Administrators can assign sandboxes to roles. - Sandboxes are made available to users through roles assigned in the Permissions product. --- Key Terminology to Understand | Action | Who Can Do It | Where | |---|---|---| | Use a sandbox (switch to it) | Any user with sandbox access | Sandbox switcher in the UI | | Assign sandboxes to roles | Product/System Admins only | Permissions product | | Create/Reset/Delete sandboxes | Admins only | Adobe Experience Platform | --- What the Documentation Confirms - Ensure you have access to Sandbox Tooling in your organization with the correct permissions before creating or importing packages. - Sandboxes must be assigned through roles in the Permissions product before users can access them. --- \u26a0\ufe0f Limitation of This Answer The retrieved documentation does not explicitly list the specific permission names (e.g., \"Manage Sandboxes,\" \"Export Sandbox,\" etc.) required for Sandbox Tooling operations. For the exact granular permissions needed (such as Sandbox Administration or Package Management), I would recommend: 1. Navigating to Admin Console \u2192 Adobe Experience Platform \u2192 Permissions 2. Reviewing the Sandboxes permission category for your role 3. Checking with your System Administrator to confirm the correct role has sandbox tooling permissions enabled --- General Best Practice for Admins When setting up roles for Sandbox Tooling access, ensure the role includes: - Access to the relevant sandboxes (both source and target) - Appropriate Data Collection permissions if packages include Tags properties - Permissions to view, create, and manage packages within the Sandboxes section of AEP"}}]}</script></div>
+  </body>
+</html>

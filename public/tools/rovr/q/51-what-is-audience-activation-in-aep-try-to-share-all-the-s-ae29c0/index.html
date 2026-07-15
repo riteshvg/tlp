@@ -1,0 +1,210 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/png" href="/tools/rovr/rovrlogo.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="build-date" content="2026-06-10" />
+    
+    
+    <script src="https://assets.adobedtm.com/204118644db8/290ae1adb65a/launch-e5ec7bf1a1ef-development.min.js" async></script>
+    <script type="module" crossorigin src="/tools/rovr/assets/index-Cnf1TPK2.js"></script>
+    <link rel="stylesheet" crossorigin href="/tools/rovr/assets/index-D1POE5XP.css">
+  <title>51. What is Audience Activation in AEP? ( try to share all the screenshots for explanations) | Rovr</title>
+<meta name="description" content="Audience Activation in Adobe Experience Platform (AEP) What is Audience Activation? Audience Activation is the process of taking the audiences (segments) you…" />
+<link rel="canonical" href="https://thelearningproject.in/tools/rovr/q/51-what-is-audience-activation-in-aep-try-to-share-all-the-s-ae29c0" />
+<meta property="og:title" content="51. What is Audience Activation in AEP? ( try to share all the screenshots for explanations)" />
+<meta property="og:description" content="Audience Activation in Adobe Experience Platform (AEP) What is Audience Activation? Audience Activation is the process of taking the audiences (segments) you…" />
+<meta property="og:url" content="https://thelearningproject.in/tools/rovr/q/51-what-is-audience-activation-in-aep-try-to-share-all-the-s-ae29c0" />
+<meta property="og:type" content="article" />
+<meta property="og:image" content="https://thelearningproject.in/tools/rovr/rovrlogo.png" />
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="51. What is Audience Activation in AEP? ( try to share all the screenshots for explanations)" />
+<meta name="twitter:description" content="Audience Activation in Adobe Experience Platform (AEP) What is Audience Activation? Audience Activation is the process of taking the audiences (segments) you…" />
+</head>
+  <body>
+    <div id="root"><article><h1>51. What is Audience Activation in AEP? ( try to share all the screenshots for explanations)</h1>
+<h2>Audience Activation in Adobe Experience Platform (AEP)</h2>
+<h3>What is Audience Activation?</h3>
+<p><strong>Audience Activation</strong> is the process of taking the audiences (segments) you have built in Adobe Experience Platform and <strong>delivering them to external destinations</strong> — advertising platforms, email systems, CRMs, cloud storage, or any other endpoint — so that those audiences can be acted upon in real-world marketing campaigns.</p>
+<p>In simple terms:</p>
+<p>&gt; <strong>Build → Enrich → Activate</strong></p>
+<p>&gt; You collect data → unify profiles → build audiences → <strong>activate them where they matter</strong></p>
+<p>Activation is the <strong>last mile</strong> of the Real-Time CDP workflow. Without activation, your audiences remain inside AEP and produce no business value.</p>
+<hr>
+<h3>The End-to-End Activation Workflow</h3>
+<p>The overall flow looks like this:</p>
+<p>1. <strong>Data Ingestion</strong> — Raw data flows into AEP from various sources</p>
+<p>2. <strong>Profile Unification</strong> — Data is merged into Real-Time Customer Profiles</p>
+<p>3. <strong>Audience Building</strong> — Segments are created using Segment Builder or Audience Composition</p>
+<p>4. <strong>Destination Configuration</strong> — A destination connection is established</p>
+<p>5. <strong>Audience Mapping &amp; Activation</strong> — Audiences are mapped to the destination and activated</p>
+<p><img src="https://raw.githubusercontent.com/AdobeDocs/experience-platform.en/main/help/destinations/api/../assets/api/ad-hoc-activation/ad-hoc-activation-overview.png" alt="Activation Overview"></p>
+<hr>
+<h3>Step-by-Step: How Audience Activation Works in AEP</h3>
+<h4>Prerequisites</h4>
+<p>Before activating audiences, ensure:</p>
+<ul>
+<li>You have <strong>Real-Time CDP</strong> (or AEP with destinations access)</li>
+<li>Your account has the <strong>developer</strong> and <strong>user</strong> roles enabled for the AEP API product profile</li>
+<li>You have built at least one <strong>audience/segment</strong> in the Audience Portal</li>
+<li>You have configured at least one <strong>destination connection</strong></li>
+</ul>
+<hr>
+<h4>Step 1: Navigate to Destinations</h4>
+<p>1. Log in to <strong>Adobe Experience Platform</strong></p>
+<p>2. In the left navigation, click <strong>Destinations</strong></p>
+<p>3. Click the <strong>Catalog</strong> tab to browse available destination connectors</p>
+<p>The Destinations Catalog is organized by category:</p>
+<ul>
+<li><strong>Advertising</strong> (Google, Meta, The Trade Desk, Amazon Ads, etc.)</li>
+<li><strong>Analytics</strong> (Adobe Analytics, Mixpanel, etc.)</li>
+<li><strong>Cloud Storage</strong> (Amazon S3, Azure Blob, Google Cloud Storage, SFTP)</li>
+<li><strong>CRM</strong> (Salesforce CRM, HubSpot, etc.)</li>
+<li><strong>Email Marketing</strong> (Mailchimp, Adobe Campaign, etc.)</li>
+<li><strong>Social</strong> (Facebook, LinkedIn, TikTok, etc.)</li>
+<li><strong>Personalization</strong> (Adobe Target, Custom Personalization)</li>
+<li><strong>Data Warehouse</strong> (Snowflake, BigQuery, etc.)</li>
+</ul>
+<hr>
+<h4>Step 2: Configure a Destination Connection</h4>
+<p>1. In the <strong>Catalog</strong>, find your desired destination</p>
+<p>2. Click <strong>Set up</strong> or <strong>Activate audiences</strong> on the destination card</p>
+<p>3. Provide:</p>
+<ul>
+<li><strong>Authentication credentials</strong> (API keys, OAuth tokens, S3 bucket info, etc.)</li>
+<li><strong>Connection name</strong> and optional description</li>
+<li><strong>Marketing use case</strong> tags (for data governance compliance)</li>
+</ul>
+<p>4. Click <strong>Next</strong> to proceed to audience selection</p>
+<hr>
+<h4>Step 3: Select Audiences to Activate</h4>
+<p>Once your destination is configured, you select which audiences to send:</p>
+<p>1. In the <strong>Activate audiences</strong> workflow, navigate to the <strong>Select audiences</strong> step</p>
+<p>2. Browse your <strong>Audience Portal</strong> — you will see:</p>
+<ul>
+<li><strong>Experience Platform audiences</strong> (built with Segment Builder or Audience Composition)</li>
+<li><strong>Custom uploads</strong> (externally generated CSV audiences)</li>
+<li><strong>Audience Manager segments</strong> (if integrated via Expanded Activation)</li>
+</ul>
+<p>3. Check the box next to each audience you want to activate</p>
+<p>4. Click <strong>Next</strong></p>
+<p><img src="https://raw.githubusercontent.com/AdobeDocs/experience-platform.en/main/help/destinations/api/../assets/api/ad-hoc-activation/audience-summary-id.png" alt="Audience Summary ID"></p>
+<hr>
+<h4>Step 4: Attribute &amp; Identity Mapping</h4>
+<p>This step defines <strong>what data fields</strong> are sent to the destination:</p>
+<h5>For Streaming Destinations:</h5>
+<ul>
+<li>Map <strong>profile attributes</strong> (e.g., email, phone, first name) to the destination&#x27;s expected field names</li>
+<li>Map <strong>identity namespaces</strong> (e.g., `Email`, `GAID`, `IDFA`) to the destination&#x27;s identity fields</li>
+<li>You must always map at least one <strong>mandatory identity field</strong></li>
+</ul>
+<h5>For Batch (File-Based) Destinations:</h5>
+<ul>
+<li>Map <strong>XDM schema fields</strong> to destination column names</li>
+<li>Optionally add <strong>calculated fields</strong> using transformation functions (e.g., to hash an email address before export)</li>
+<li>Choose whether to include the <strong>segment membership</strong> column in the exported file</li>
+</ul>
+<p><strong>Example mapping for a batch destination:</strong></p>
+<p>| Source Field (AEP) | Destination Field |</p>
+<p>|---|---|</p>
+<p>| `person.name.firstName` | `first_name` |</p>
+<p>| `personalEmail.address` | `email` |</p>
+<p>| `mobilePhone.number` | `phone` |</p>
+<p>| `segmentMembership.status` | `audience_status` |</p>
+<hr>
+<h4>Step 5: Configure Scheduling</h4>
+<h5>For Batch Destinations:</h5>
+<ul>
+<li>Set the <strong>export frequency</strong> (e.g., Once, Daily, Weekly)</li>
+<li>Set the <strong>start date and time</strong></li>
+<li>Choose between:</li>
+<li><strong>Full file export</strong> — All qualifying profiles exported every run</li>
+<li><strong>Incremental file export</strong> — Only profiles that changed since last export</li>
+</ul>
+<h5>For Streaming Destinations:</h5>
+<ul>
+<li>Scheduling is <strong>event-driven</strong> — no manual schedule needed</li>
+<li>Exports happen automatically when:</li>
+<li>A profile <strong>qualifies</strong> (`realized`) for a mapped segment</li>
+<li>A profile <strong>exits</strong> (`exited`) a mapped segment</li>
+<li>A <strong>mapped attribute</strong> changes in value</li>
+</ul>
+<hr>
+<h4>Step 6: Review &amp; Finish</h4>
+<p>1. Review the <strong>summary screen</strong> showing:</p>
+<ul>
+<li>Destination connection name and type</li>
+<li>Selected audiences</li>
+<li>Mapped fields</li>
+<li>Export schedule</li>
+</ul>
+<p>2. If everything looks correct, click <strong>Finish</strong></p>
+<p>3. The destination moves to <strong>Active</strong> status and begins exporting</p>
+<hr>
+<h3>Audience States During Activation</h3>
+<p>When audiences are activated to a destination, each profile carries a <strong>segment membership status</strong>:</p>
+<p>| Status | Meaning |</p>
+<p>|---|---|</p>
+<p>| `realized` | Profile has just qualified for the segment — <strong>include</strong> in export |</p>
+<p>| `existing` | Profile was already in the segment on prior exports — <strong>continue</strong> sending |</p>
+<p>| `exited` | Profile has left the segment — <strong>suppress or remove</strong> at the destination |</p>
+<p>&gt; For <strong>batch destinations</strong>, `realized` + `existing` profiles are exported as active members. `exited` profiles are excluded.</p>
+<p>&gt; For <strong>streaming destinations</strong>, both `realized` and `exited` events are sent in real-time so the destination can act immediately.</p>
+<hr>
+<h3>Ad-Hoc (On-Demand) Activation</h3>
+<p>Beyond scheduled activation, AEP also supports <strong>Ad-Hoc Activation</strong> via API — allowing you to trigger an immediate audience export outside the normal schedule.</p>
+<p><img src="https://raw.githubusercontent.com/AdobeDocs/experience-platform.en/main/help/destinations/api/../assets/api/ad-hoc-activation/segment-export-job-id.png" alt="Ad-Hoc Activation Segment Export Job ID"></p>
+<p>This is useful when:</p>
+<ul>
+<li>You need to <strong>backfill</strong> a destination with a large audience immediately</li>
+<li>A destination missed a scheduled export due to a technical issue</li>
+<li>You need to <strong>test</strong> an activation flow without waiting for the next scheduled run</li>
+</ul>
+<p>The ad-hoc activation API requires the same authentication headers as all AEP API calls:</p>
+<ul>
+<li>`Authorization: Bearer {ACCESS_TOKEN}`</li>
+<li>`x-api-key: {API_KEY}`</li>
+<li>`x-gw-ims-org-id: {ORG_ID}`</li>
+<li>`x-sandbox-name: {SANDBOX_NAME}`</li>
+</ul>
+<hr>
+<h3>Audience Manager Expanded Activation</h3>
+<p>If your organization uses <strong>Adobe Audience Manager</strong>, you can activate Audience Manager segments to social and advertising destinations through <strong>Expanded Activation</strong> — without needing a full Real-Time CDP license.</p>
+<h4>Key Requirements for Expanded Activation:</h4>
+<ul>
+<li>Audience Manager audiences must be based on <strong>hashed email addresses</strong></li>
+<li>Audiences are imported into AEP as <strong>custom uploads</strong> (externally generated audiences)</li>
+<li>Supported destination types: <strong>Advertising</strong> and <strong>Social</strong> connectors (e.g., Facebook, Google, LinkedIn)</li>
+</ul>
+<h4>Expanded Activation Workflow:</h4>
+<p>1. Configure the <strong>Audience Manager source connection</strong> in AEP</p>
+<p>2. Audience Manager segments flow into the <strong>Audience Portal</strong> as custom uploads</p>
+<p>3. Configure a supported <strong>advertising or social destination</strong></p>
+<p>4. Map and activate the Audience Manager audiences to the destination</p>
+<hr>
+<h3>Data Governance During Activation</h3>
+<p>AEP enforces <strong>data governance policies</strong> automatically during the activation process:</p>
+<ul>
+<li>Every dataset and field can carry <strong>data usage labels</strong> (e.g., `C1` = no advertising, `C3` = no combining with directly identifiable data)</li>
+<li><strong>Marketing action policies</strong> are evaluated at activation time</li>
+<li>If an audience or mapped field violates a governance policy, AEP will <strong>block the activation</strong> and display a policy violation warning</li>
+<li>You must resolve the conflict (e.g., remove the violating field or change the marketing action) before the activation can proceed</li>
+</ul>
+<hr>
+<h3>Summary</h3>
+<p>| Concept | Description |</p>
+<p>|---|---|</p>
+<p>| <strong>Destination</strong> | External system receiving your audience data |</p>
+<p>| <strong>Activation</strong> | The process of exporting audiences to destinations |</p>
+<p>| <strong>Streaming Activation</strong> | Real-time, event-driven export via API |</p>
+<p>| <strong>Batch Activation</strong> | Scheduled file-based export |</p>
+<p>| <strong>Ad-Hoc Activation</strong> | On-demand API-triggered export |</p>
+<p>| <strong>Segment Membership Status</strong> | `realized`, `existing`, `exited` |</p>
+<p>| <strong>Data Governance</strong> | Policies enforced automatically during activation |</p>
+<p>| <strong>Expanded Activation</strong> | Activating Audience Manager segments via AEP destinations |</p>
+<p>Audience Activation is the bridge between your data platform and your marketing execution layer — making your unified customer intelligence <strong>actionable</strong> across every channel.</p>
+</article>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "51. What is Audience Activation in AEP? ( try to share all the screenshots for explanations)", "acceptedAnswer": {"@type": "Answer", "text": "Audience Activation in Adobe Experience Platform (AEP) What is Audience Activation? Audience Activation is the process of taking the audiences (segments) you have built in Adobe Experience Platform and delivering them to external destinations \u2014 advertising platforms, email systems, CRMs, cloud storage, or any other endpoint \u2014 so that those audiences can be acted upon in real-world marketing campaigns. In simple terms: Build \u2192 Enrich \u2192 Activate You collect data \u2192 unify profiles \u2192 build audiences \u2192 activate them where they matter Activation is the last mile of the Real-Time CDP workflow. Without activation, your audiences remain inside AEP and produce no business value. --- The End-to-End Activation Workflow The overall flow looks like this: 1. Data Ingestion \u2014 Raw data flows into AEP from various sources 2. Profile Unification \u2014 Data is merged into Real-Time Customer Profiles 3. Audience Building \u2014 Segments are created using Segment Builder or Audience Composition 4. Destination Configuration \u2014 A destination connection is established 5. Audience Mapping & Activation \u2014 Audiences are mapped to the destination and activated !Activation Overview(https://raw.githubusercontent.com/AdobeDocs/experience-platform.en/main/help/destinations/api/../assets/api/ad-hoc-activation/ad-hoc-activation-overview.png) --- Step-by-Step: How Audience Activation Works in AEP Prerequisites Before activating audiences, ensure: - You have Real-Time CDP (or AEP with destinations access) - Your account has the developer and user roles enabled for the AEP API product profile - You have built at least one audience/segment in the Audience Portal - You have configured at least one destination connection --- Step 1: Navigate to Destinations 1. Log in to Adobe Experience Platform 2. In the left navigation, click Destinations 3. Click the Catalog tab to browse available destination connectors The Destinations Catalog is organized by category: - Advertising (Google, Meta, The Trade Desk, Amazon Ads,\u2026"}}]}</script></div>
+  </body>
+</html>

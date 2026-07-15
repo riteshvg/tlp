@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <link rel="shortcut icon" href="assets/favicon/favicon.ico" />
+
+    <title>Table with Tooltips</title>
+
+    <!-- Font Awesome Icons -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css"
+    />
+
+    <!-- Add only these in the head section - no Bootstrap CSS needed -->
+    <script src="https://unpkg.com/@popperjs/core@2"></script>
+    <script src="https://unpkg.com/tippy.js@6"></script>
+    <link rel="stylesheet" href="https://unpkg.com/tippy.js@6/dist/tippy.css" />
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/tippy.js@6/themes/light.css"
+    />
+    <!-- Floating UI CDN 
+    <script
+      src="https://unpkg.com/@floating-ui/dom@1.5.3/dist/floating-ui.dom.umd.min.js"
+      onload="console.log('Floating UI Script loaded');"
+      onerror="console.error('Failed to load FloatingUI script')"
+    ></script> -->
+
+    <!-- CSS Global -->
+    <link href="assets/css/styles_blue.css" rel="stylesheet" />
+
+    <!-- Google Fonts -->
+    <link
+      href="https://fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600italic,600,700,700italic,800,800italic"
+      rel="stylesheet"
+      type="text/css"
+    />
+
+    <style>
+      /*Tool tip styles */
+      .tooltip {
+        display: none;
+        position: absolute;
+        background: #333;
+        color: white;
+        padding: 5px 10px;
+        border-radius: 4px;
+        font-size: 14px;
+        z-index: 9999;
+      }
+
+      /* Optional: Style for the buttons/elements */
+      button,
+      th {
+        margin: 10px;
+        padding: 8px 16px;
+        cursor: pointer;
+      }
+
+      table {
+        border-collapse: collapse;
+        margin: 20px;
+      }
+
+      th,
+      td {
+        border: 1px solid #ddd;
+        padding: 8px;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- NAVIGATION
+    ================================================== -->
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-default">
+      <div class="container">
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="navbar_main">
+          <ul class="nav navbar-nav navbar-left">
+            <li>
+              <a href="index.html"><i class="fas fa-home fa-lg"></i></a>
+            </li>
+            <li>
+              <a href="/about"><i class="fas fa-solid fa-code fa-lg"></i></a>
+            </li>
+            <li>
+              <a href="/tools"><i class="fas fa-solid fa-anchor fa-lg"></i></a>
+            </li>
+            <li>
+              <a href="todayilearned.html"
+                ><i class="fas fa-solid fa-book fa-lg active"></i
+              ></a>
+            </li>
+            <li>
+              <a href=" "><i class="fas fa-grip-lines-vertical fa-lg"></i></a>
+            </li>
+            <li>
+              <a href="https://github.com/riteshvg" target="_blank"
+                ><i class="fab fa-github fa-lg"></i
+              ></a>
+            </li>
+            <li>
+              <a href="https://x.com/riteshvg" target="_blank"
+                ><i class="fab fa-twitter fa-lg"></i
+              ></a>
+            </li>
+            <li>
+              <a
+                href="https://www.linkedin.com/in/riteshvgupta/"
+                target="_blank"
+                ><i class="fab fa-linkedin fa-lg"></i
+              ></a>
+            </li>
+          </ul>
+        </div>
+        <!-- /.navbar-collapse -->
+      </div>
+      <!-- /.container -->
+    </nav>
+
+    <!-- CONTENT
+    ================================================== -->
+    <div class="container">
+      <div class="col-sm-9">
+        <h1 class="block-header alt">
+          <span>Function Challenges</span>
+        </h1>
+        <p>
+          Today, I learned about the how to print a function output in a
+          template literal, how to use the spread(...) operator to spread the
+          values of an array into separate arguments, how to use an IIFE that
+          takes in a length and width of a rectangle as a parameter and outputs
+          the area.
+        </p>
+
+        <!-- Button examples -->
+        <button data-tooltip="This is button 1">Button 1</button>
+        <button data-tooltip="This is button 2">Button 2</button>
+
+        <!-- Table example -->
+        <table>
+          <thead>
+            <tr>
+              <th data-tooltip="First Name Column">First Name</th>
+              <th data-tooltip="Last Name Column">Last Name</th>
+              <th data-tooltip="Age Column">Age</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>John</td>
+              <td>Doe</td>
+              <td>30</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="col-sm-3">
+        <h1 class="block-header alt">
+          <span>File Info</span>
+        </h1>
+
+        <table class="table table-bordered">
+          <tbody>
+            <tr>
+              <td>Category</td>
+              <td>HTML / JS / CSS</td>
+            </tr>
+            <tr>
+              <td>Credits</td>
+              <td>
+                <a href="#" target="_blank">NA</a>
+              </td>
+            </tr>
+            <tr>
+              <td>Date</td>
+              <td>February 14th, 2025</td>
+            </tr>
+            <tr>
+              <td>Codepen</td>
+              <td><a href="#">NA</a></td>
+            </tr>
+          </tbody>
+        </table>
+        <button><a href="todayilearned.html">Go Back</a></button>
+      </div>
+      <!-- / .row -->
+    </div>
+
+    <script>
+      document.addEventListener('DOMContentLoaded', () => {
+        try {
+          console.log('Initializing Tippy...');
+
+          // Basic Tippy initialization
+          const elements = document.querySelectorAll('[data-tooltip]');
+          console.log('Found elements:', elements.length);
+
+          elements.forEach((element, index) => {
+            console.log(`Creating tippy for element ${index}`);
+
+            tippy(element, {
+              content: element.dataset.tooltip,
+              placement: 'top',
+              theme: 'light',
+              arrow: true,
+            });
+
+            console.log(`Tippy created for element ${index}`);
+          });
+        } catch (error) {
+          console.error('Error initializing Tippy:', error);
+        }
+      });
+    </script>
+
+    <!-- <script>
+      document.addEventListener('DOMContentLoaded', () => {
+        try {
+          // First verify Popper exists
+          console.log('Popper available:', typeof Popper !== 'undefined');
+
+          const elements = document.querySelectorAll('[data-tooltip]');
+          console.log('Found elements:', elements.length);
+
+          elements.forEach((element, index) => {
+            // Log element details
+            console.log(`Processing element ${index}:`, {
+              element: element,
+              tooltipText: element.dataset.tooltip,
+            });
+
+            // Create and verify tooltip element
+            const tooltip = document.createElement('div');
+            tooltip.className = 'tooltip tooltip-' + index;
+            tooltip.textContent = element.dataset.tooltip;
+            tooltip.style.cssText = `
+                      display: none;
+                      position: absolute;
+                      background: #333;
+                      color: white;
+                      padding: 4px 8px;
+                      border-radius: 4px;
+                      font-size: 13px;
+                      z-index: 9999;
+                  `;
+
+            // Add tooltip to DOM and verify
+            document.body.appendChild(tooltip);
+            console.log(`Tooltip ${index} created:`, {
+              tooltip: tooltip,
+              isInDOM: document.body.contains(tooltip),
+            });
+
+            // Log before creating Popper instance
+            console.log(`Creating Popper instance for element ${index}`);
+
+            try {
+              const popperInstance = Popper.createPopper(element, tooltip, {
+                placement: 'top',
+              });
+              console.log(`Popper instance created for element ${index}`);
+
+              // Show tooltip with verification
+              element.addEventListener('mouseenter', () => {
+                console.log(`Mouse enter on element ${index}`);
+                tooltip.style.display = 'block';
+                console.log(
+                  `Tooltip ${index} display set to:`,
+                  tooltip.style.display
+                );
+                popperInstance.update();
+              });
+
+              // Hide tooltip with verification
+              element.addEventListener('mouseleave', () => {
+                console.log(`Mouse leave on element ${index}`);
+                tooltip.style.display = 'none';
+                console.log(
+                  `Tooltip ${index} display set to:`,
+                  tooltip.style.display
+                );
+              });
+            } catch (popperError) {
+              console.error(
+                `Error creating Popper instance for element ${index}:`,
+                popperError
+              );
+            }
+          });
+        } catch (error) {
+          console.error('Main initialization error:', error);
+        }
+      });
+    </script> -->
+
+    <!-- / .container -->
+    <!-- <script>
+      document.addEventListener('DOMContentLoaded', () => {
+        try {
+          // Log available global objects
+          console.log('Available globals:', {
+            FloatingUIDOM: window.FloatingUIDOM,
+            computePosition: window?.FloatingUIDOM?.computePosition,
+          });
+
+          // Get computePosition function
+          const computePosition = window?.FloatingUIDOM?.computePosition;
+
+          if (!computePosition) {
+            throw new Error('computePosition function not found');
+          }
+
+          // Select all elements with data-tooltip
+          const elements = document.querySelectorAll('[data-tooltip]');
+          console.log('Found tooltip elements:', elements.length);
+
+          elements.forEach((element) => {
+            try {
+              console.log('Creating tooltip for element:', element);
+
+              // Create tooltip element
+              const tooltip = document.createElement('div');
+              tooltip.className = 'tooltip';
+              tooltip.textContent = element.dataset.tooltip;
+              tooltip.style.display = 'none';
+              document.body.appendChild(tooltip);
+
+              // Basic position update function
+              function update() {
+                try {
+                  console.log(
+                    'Updating position for:',
+                    element.dataset.tooltip
+                  );
+
+                  computePosition(element, tooltip, {
+                    placement: 'top',
+                  })
+                    .then(({ x, y }) => {
+                      console.log('New position:', { x, y });
+                      tooltip.style.left = `${x}px`;
+                      tooltip.style.top = `${y}px`;
+                    })
+                    .catch((error) => {
+                      console.error('Position computation error:', error);
+                    });
+                } catch (error) {
+                  console.error('Error in update function:', error);
+                }
+              }
+
+              // Show tooltip
+              element.addEventListener('mouseenter', () => {
+                console.log('Mouse entered:', element.dataset.tooltip);
+                tooltip.style.display = 'block';
+                update();
+              });
+
+              // Hide tooltip
+              element.addEventListener('mouseleave', () => {
+                console.log('Mouse left:', element.dataset.tooltip);
+                tooltip.style.display = 'none';
+              });
+            } catch (error) {
+              console.error('Error setting up individual tooltip:', error);
+            }
+          });
+        } catch (error) {
+          console.error('Main initialization error:', error);
+        }
+      });
+    </script> -->
+  </body>
+</html>

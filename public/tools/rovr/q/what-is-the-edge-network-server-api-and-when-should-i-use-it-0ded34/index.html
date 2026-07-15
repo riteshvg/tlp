@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/png" href="/tools/rovr/rovrlogo.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="build-date" content="2026-06-10" />
+    
+    
+    <script src="https://assets.adobedtm.com/204118644db8/290ae1adb65a/launch-e5ec7bf1a1ef-development.min.js" async></script>
+    <script type="module" crossorigin src="/tools/rovr/assets/index-Cnf1TPK2.js"></script>
+    <link rel="stylesheet" crossorigin href="/tools/rovr/assets/index-D1POE5XP.css">
+  <title>What is the Edge Network Server API and when should I use it instead of the Web SDK? | Rovr</title>
+<meta name="description" content="Edge Network Server API vs. Web SDK What is the Edge Network Server API? The Adobe Experience Platform Edge Network Server API is a server-side API that…" />
+<link rel="canonical" href="https://thelearningproject.in/tools/rovr/q/what-is-the-edge-network-server-api-and-when-should-i-use-it-0ded34" />
+<meta property="og:title" content="What is the Edge Network Server API and when should I use it instead of the Web SDK?" />
+<meta property="og:description" content="Edge Network Server API vs. Web SDK What is the Edge Network Server API? The Adobe Experience Platform Edge Network Server API is a server-side API that…" />
+<meta property="og:url" content="https://thelearningproject.in/tools/rovr/q/what-is-the-edge-network-server-api-and-when-should-i-use-it-0ded34" />
+<meta property="og:type" content="article" />
+<meta property="og:image" content="https://thelearningproject.in/tools/rovr/rovrlogo.png" />
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="What is the Edge Network Server API and when should I use it instead of the Web SDK?" />
+<meta name="twitter:description" content="Edge Network Server API vs. Web SDK What is the Edge Network Server API? The Adobe Experience Platform Edge Network Server API is a server-side API that…" />
+</head>
+  <body>
+    <div id="root"><article><h1>What is the Edge Network Server API and when should I use it instead of the Web SDK?</h1>
+<h2>Edge Network Server API vs. Web SDK</h2>
+<h3>What is the Edge Network Server API?</h3>
+<p>The <strong>Adobe Experience Platform Edge Network Server API</strong> is a server-side API that allows you to send data directly to the Adobe Experience Platform Edge Network from your backend systems. Unlike the Web SDK (which runs in the browser), the Server API enables secure, authenticated server-to-server communication with the Edge Network.</p>
+<p><a href="https://video.tv.adobe.com/v/341448?learn=on&amp;enablevpops">▶ Watch: Adobe Experience Platform Edge Network Server API overview</a></p>
+<hr>
+<h3>When to Use the Server API Instead of Web SDK</h3>
+<p>Use the <strong>Edge Network Server API</strong> in these scenarios:</p>
+<h4>1. <strong>Server-Side Data Collection</strong></h4>
+<ul>
+<li>Collecting data from backend systems rather than client-side</li>
+<li>Capturing events that originate on your servers rather than user browsers</li>
+</ul>
+<h4>2. <strong>IoT and Non-Browser Devices</strong></h4>
+<ul>
+<li>Set-top boxes</li>
+<li>Desktop applications</li>
+<li>IoT devices</li>
+<li>Any non-web environment where the JavaScript Web SDK cannot run</li>
+</ul>
+<h4>3. <strong>Sensitive Data &amp; Authentication</strong></h4>
+<ul>
+<li>You need to collect <strong>sensitive data securely</strong> across the network</li>
+<li>Authentication is required to validate data sources</li>
+<li>The Server API supports built-in authentication mechanisms that protect data in transit</li>
+</ul>
+<h4>4. <strong>First-Party Data Control</strong></h4>
+<ul>
+<li>You want to keep sensitive customer data on your servers</li>
+<li>You prefer to validate and authenticate data before sending it to Adobe</li>
+</ul>
+<hr>
+<h3>Key Architectural Differences</h3>
+<p>| Aspect | Web SDK | Server API |</p>
+<p>|--------|---------|-----------|</p>
+<p>| <strong>Runtime</strong> | Client-side (browser) | Server-side (backend) |</p>
+<p>| <strong>Language</strong> | JavaScript | Language-agnostic (HTTP) |</p>
+<p>| <strong>Use Cases</strong> | Web/mobile tracking | Backend systems, IoT, authenticated flows |</p>
+<p>| <strong>Authentication</strong> | Implicit (via datastream) | Explicit server API authentication |</p>
+<p>| <strong>Data Sensitivity</strong> | Lower (browser context) | Higher (secure backend) |</p>
+<hr>
+<h3>Implementation Overview</h3>
+<p>A high-level workflow using the Server API includes:</p>
+<p>1. <strong>Define a report suite</strong> — Set up your Analytics configuration (if using Analytics)</p>
+<p>2. <strong>Setup schemas</strong> — Create XDM (Experience Data Model) schemas to standardize your data structure</p>
+<p>3. <strong>Configure a datastream</strong> — A datastream represents your server-side configuration when using the Edge Network Server API; it defines how data flows to your destinations</p>
+<hr>
+<h3>Web SDK and Server API: Complementary, Not Competing</h3>
+<p>Both the <strong>Web SDK</strong> and <strong>Server API</strong> send data to the same Adobe Experience Platform Edge Network. They can work together:</p>
+<ul>
+<li>Use <strong>Web SDK</strong> for client-side, browser-based data collection</li>
+<li>Use <strong>Server API</strong> for server-side, authenticated, or non-browser data collection</li>
+<li>Both feed into the same unified Edge Network for centralized processing and activation</li>
+</ul>
+<p>The choice depends on your data source and security requirements, not on which solution is &quot;better&quot; — they&#x27;re designed for different use cases within the same ecosystem.</p>
+</article>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "What is the Edge Network Server API and when should I use it instead of the Web SDK?", "acceptedAnswer": {"@type": "Answer", "text": "Edge Network Server API vs. Web SDK What is the Edge Network Server API? The Adobe Experience Platform Edge Network Server API is a server-side API that allows you to send data directly to the Adobe Experience Platform Edge Network from your backend systems. Unlike the Web SDK (which runs in the browser), the Server API enables secure, authenticated server-to-server communication with the Edge Network. \u25b6 Watch: Adobe Experience Platform Edge Network Server API overview(https://video.tv.adobe.com/v/341448?learn=on&enablevpops) --- When to Use the Server API Instead of Web SDK Use the Edge Network Server API in these scenarios: 1. Server-Side Data Collection - Collecting data from backend systems rather than client-side - Capturing events that originate on your servers rather than user browsers 2. IoT and Non-Browser Devices - Set-top boxes - Desktop applications - IoT devices - Any non-web environment where the JavaScript Web SDK cannot run 3. Sensitive Data & Authentication - You need to collect sensitive data securely across the network - Authentication is required to validate data sources - The Server API supports built-in authentication mechanisms that protect data in transit 4. First-Party Data Control - You want to keep sensitive customer data on your servers - You prefer to validate and authenticate data before sending it to Adobe --- Key Architectural Differences | Aspect | Web SDK | Server API | |--------|---------|-----------| | Runtime | Client-side (browser) | Server-side (backend) | | Language | JavaScript | Language-agnostic (HTTP) | | Use Cases | Web/mobile tracking | Backend systems, IoT, authenticated flows | | Authentication | Implicit (via datastream) | Explicit server API authentication | | Data Sensitivity | Lower (browser context) | Higher (secure backend) | --- Implementation Overview A high-level workflow using the Server API includes: 1. Define a report suite \u2014 Set up your Analytics configuration (if using Analytics) 2. Setup schemas \u2014\u2026"}}]}</script></div>
+  </body>
+</html>

@@ -1,0 +1,129 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/png" href="/tools/rovr/rovrlogo.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="build-date" content="2026-06-10" />
+    
+    
+    <script src="https://assets.adobedtm.com/204118644db8/290ae1adb65a/launch-e5ec7bf1a1ef-development.min.js" async></script>
+    <script type="module" crossorigin src="/tools/rovr/assets/index-Cnf1TPK2.js"></script>
+    <link rel="stylesheet" crossorigin href="/tools/rovr/assets/index-D1POE5XP.css">
+  <title>How do I trigger a journey when a form is submitted in AJO? | Rovr</title>
+<meta name="description" content="Triggering an AJO Journey on Form Submission This use case demonstrates how a customer form submission triggers an Adobe Journey Optimizer journey in real…" />
+<link rel="canonical" href="https://thelearningproject.in/tools/rovr/q/how-do-i-trigger-a-journey-when-a-form-is-submitted-in-ajo-1c8241" />
+<meta property="og:title" content="How do I trigger a journey when a form is submitted in AJO?" />
+<meta property="og:description" content="Triggering an AJO Journey on Form Submission This use case demonstrates how a customer form submission triggers an Adobe Journey Optimizer journey in real…" />
+<meta property="og:url" content="https://thelearningproject.in/tools/rovr/q/how-do-i-trigger-a-journey-when-a-form-is-submitted-in-ajo-1c8241" />
+<meta property="og:type" content="article" />
+<meta property="og:image" content="https://thelearningproject.in/tools/rovr/rovrlogo.png" />
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="How do I trigger a journey when a form is submitted in AJO?" />
+<meta name="twitter:description" content="Triggering an AJO Journey on Form Submission This use case demonstrates how a customer form submission triggers an Adobe Journey Optimizer journey in real…" />
+</head>
+  <body>
+    <div id="root"><article><h1>How do I trigger a journey when a form is submitted in AJO?</h1>
+<h2>Triggering an AJO Journey on Form Submission</h2>
+<p>This use case demonstrates how a customer form submission triggers an Adobe Journey Optimizer journey in real time, enabling immediate, personalized follow-up communications based on the information provided by the user.</p>
+<hr>
+<h3>Prerequisites</h3>
+<ul>
+<li>Access to Adobe Experience Platform</li>
+<li>Basic understanding of AEP concepts (Profiles, Audiences, Datasets)</li>
+<li>Familiarity with Journey Optimizer</li>
+<li>Email channel configured in Journey Optimizer</li>
+</ul>
+<hr>
+<h3>High-Level Implementation Steps</h3>
+<p>1. Define an event schema in Adobe Experience Platform</p>
+<p>2. Configure a custom event in Adobe Journey Optimizer</p>
+<p>3. Configure the email channel</p>
+<p>4. Build a journey triggered by the custom event</p>
+<p>5. Send form submission data to Adobe Experience Platform</p>
+<p>6. Configure dataset lookup to include reference data in the email</p>
+<hr>
+<h3>Step 1: Define an Event Schema in Adobe Experience Platform</h3>
+<p>Before configuring anything in Journey Optimizer, you need a schema that represents the form submission event.</p>
+<ul>
+<li>Log in to <strong>Adobe Experience Platform</strong></li>
+<li>Navigate to <strong>Data Management → Schemas</strong></li>
+<li>Create an <strong>XDM Experience Event</strong> schema that captures the fields from your form (e.g., name, email, asset class selected, etc.)</li>
+<li>Enable the schema for <strong>Profile</strong> and <strong>Experience Event</strong> ingestion</li>
+</ul>
+<p><a href="https://video.tv.adobe.com/v/3478471">▶ Watch: Use Case Introduction and Event Schema Creation</a></p>
+<hr>
+<h3>Step 2: Configure a Custom Event in Adobe Journey Optimizer</h3>
+<p>1. Log in to <strong>Journey Optimizer</strong></p>
+<p>2. Navigate to <strong>Administration → Configurations</strong></p>
+<p>3. Click <strong>Manage</strong> on the <strong>Events</strong> card, then click <strong>Create Event</strong></p>
+<p>4. Specify the event details:</p>
+<ul>
+<li><strong>Name</strong>: Give it a meaningful name (e.g., `AssetClassSelected`)</li>
+<li><strong>Type</strong>: Select <strong>Unitary</strong> (for single profile-triggered events)</li>
+<li><strong>Event ID Type</strong>: Select <strong>Rule-based</strong> or <strong>System-generated</strong> based on your needs</li>
+<li><strong>Schema</strong>: Select the XDM schema you created in Step 1</li>
+</ul>
+<p>5. Define the <strong>condition</strong> that identifies this event (e.g., check whether the event type equals your custom event name)</p>
+<p>6. <strong>Save</strong> the event</p>
+<hr>
+<h3>Step 3: Configure the Email Channel</h3>
+<p><a href="https://video.tv.adobe.com/v/3478510">▶ Watch: Creating Email Channel Configuration</a></p>
+<p>1. In <strong>Journey Optimizer</strong>, navigate to <strong>Administration → Channels → Create channel configuration</strong></p>
+<p>2. Select <strong>Email</strong> from the channel list</p>
+<p>3. Provide a meaningful <strong>name</strong> and <strong>description</strong></p>
+<p>4. Fill out the <strong>email settings</strong> (from address, reply-to, etc.)</p>
+<p>5. Specify <strong>execution details</strong> — define which profile field holds the recipient&#x27;s email address</p>
+<p>6. <strong>Activate</strong> the email channel configuration</p>
+<hr>
+<h3>Step 4: Build the Journey</h3>
+<p><a href="https://video.tv.adobe.com/v/3478510">▶ Watch: Create a Journey</a></p>
+<p>1. In <strong>Journey Optimizer</strong>, navigate to <strong>Journeys → Create Journey</strong></p>
+<p>2. Add an <strong>Event</strong> as the entry trigger:</p>
+<ul>
+<li>Select the custom event you created in Step 2 (e.g., `AssetClassSelected`)</li>
+<li>The journey will start whenever this event is received for a profile</li>
+</ul>
+<p>3. Add an <strong>Email</strong> action node:</p>
+<ul>
+<li>Select your email channel configuration from Step 3</li>
+<li>Design your email content using the <strong>Email Designer</strong>, personalizing it with attributes from the event payload (e.g., the form fields submitted)</li>
+</ul>
+<p>4. Optionally add:</p>
+<ul>
+<li><strong>Wait</strong> nodes for delayed follow-ups</li>
+<li><strong>Condition</strong> nodes to branch logic based on form values</li>
+<li><strong>Lookup dataset</strong> references to enrich the email with additional reference data</li>
+</ul>
+<p>5. <strong>Publish</strong> the journey</p>
+<hr>
+<h3>Step 5: Send Form Submission Data to Adobe Experience Platform</h3>
+<p>When a user submits the form on your website or application, you need to stream that data into AEP to trigger the journey.</p>
+<ul>
+<li><strong>Option A – HTTP Streaming API</strong>: Configure an <strong>HTTP Streaming inlet</strong> in AEP and POST the form data as an XDM Experience Event directly to the streaming endpoint</li>
+<li><strong>Option B – Adobe Web SDK</strong>: Use the AEP Web SDK (configured via Adobe Experience Platform Tags) to send the form submission event from the browser</li>
+</ul>
+<p>The event payload must match the XDM schema defined in Step 1 and include the correct event type so Journey Optimizer identifies it as the custom event configured in Step 2.</p>
+<hr>
+<h3>Step 6: Configure Dataset Lookup (Optional)</h3>
+<p>If your email needs to reference additional data not captured in the form (e.g., product details, pricing tiers), you can configure a <strong>lookup dataset</strong>:</p>
+<ul>
+<li>Create a dataset in AEP containing the reference data</li>
+<li>Configure the dataset lookup in your journey to join on a key from the event payload (e.g., asset class ID)</li>
+<li>Use the looked-up fields as personalization tokens in your email content</li>
+</ul>
+<hr>
+<h3>Full Tutorial Structure</h3>
+<p>| Section | Description |</p>
+<p>|---|---|</p>
+<p>| <strong>Introduction &amp; Schema Creation</strong> | Define the XDM event schema in AEP |</p>
+<p>| <strong>Create Custom Event</strong> | Configure the journey trigger event in AJO |</p>
+<p>| <strong>Create HTTP Streaming</strong> | Set up the AEP streaming inlet for form data |</p>
+<p>| <strong>Create Journey</strong> | Build and publish the journey with email action |</p>
+<p>| <strong>Test the Solution</strong> | End-to-end validation of form → journey → email |</p>
+<p>| <strong>Create Lookup Dataset</strong> | Enrich email content with reference data |</p>
+<p>This complete flow ensures that the moment a customer submits a form, their data is streamed into AEP, the custom event fires, and Journey Optimizer immediately triggers a personalized email journey in real time.</p>
+</article>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "How do I trigger a journey when a form is submitted in AJO?", "acceptedAnswer": {"@type": "Answer", "text": "Triggering an AJO Journey on Form Submission This use case demonstrates how a customer form submission triggers an Adobe Journey Optimizer journey in real time, enabling immediate, personalized follow-up communications based on the information provided by the user. --- Prerequisites - Access to Adobe Experience Platform - Basic understanding of AEP concepts (Profiles, Audiences, Datasets) - Familiarity with Journey Optimizer - Email channel configured in Journey Optimizer --- High-Level Implementation Steps 1. Define an event schema in Adobe Experience Platform 2. Configure a custom event in Adobe Journey Optimizer 3. Configure the email channel 4. Build a journey triggered by the custom event 5. Send form submission data to Adobe Experience Platform 6. Configure dataset lookup to include reference data in the email --- Step 1: Define an Event Schema in Adobe Experience Platform Before configuring anything in Journey Optimizer, you need a schema that represents the form submission event. - Log in to Adobe Experience Platform - Navigate to Data Management \u2192 Schemas - Create an XDM Experience Event schema that captures the fields from your form (e.g., name, email, asset class selected, etc.) - Enable the schema for Profile and Experience Event ingestion \u25b6 Watch: Use Case Introduction and Event Schema Creation(https://video.tv.adobe.com/v/3478471) --- Step 2: Configure a Custom Event in Adobe Journey Optimizer 1. Log in to Journey Optimizer 2. Navigate to Administration \u2192 Configurations 3. Click Manage on the Events card, then click Create Event 4. Specify the event details: - Name: Give it a meaningful name (e.g., AssetClassSelected) - Type: Select Unitary (for single profile-triggered events) - Event ID Type: Select Rule-based or System-generated based on your needs - Schema: Select the XDM schema you created in Step 1 5. Define the condition that identifies this event (e.g., check whether the event type equals your custom event name) 6. Save the event --- Step 3:\u2026"}}]}</script></div>
+  </body>
+</html>

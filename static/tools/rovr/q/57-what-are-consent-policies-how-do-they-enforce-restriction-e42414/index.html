@@ -1,0 +1,234 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/png" href="/tools/rovr/rovrlogo.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="build-date" content="2026-06-10" />
+    
+    
+    <script src="https://assets.adobedtm.com/204118644db8/290ae1adb65a/launch-e5ec7bf1a1ef-development.min.js" async></script>
+    <script type="module" crossorigin src="/tools/rovr/assets/index-Cnf1TPK2.js"></script>
+    <link rel="stylesheet" crossorigin href="/tools/rovr/assets/index-D1POE5XP.css">
+  <title>57. What are Consent Policies? How do they enforce restrictions? | Rovr</title>
+<meta name="description" content="Consent Policies in Adobe Experience Platform What are Consent Policies? Consent Policies are rules that control profile-level activation to destinations…" />
+<link rel="canonical" href="https://thelearningproject.in/tools/rovr/q/57-what-are-consent-policies-how-do-they-enforce-restriction-e42414" />
+<meta property="og:title" content="57. What are Consent Policies? How do they enforce restrictions?" />
+<meta property="og:description" content="Consent Policies in Adobe Experience Platform What are Consent Policies? Consent Policies are rules that control profile-level activation to destinations…" />
+<meta property="og:url" content="https://thelearningproject.in/tools/rovr/q/57-what-are-consent-policies-how-do-they-enforce-restriction-e42414" />
+<meta property="og:type" content="article" />
+<meta property="og:image" content="https://thelearningproject.in/tools/rovr/rovrlogo.png" />
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="57. What are Consent Policies? How do they enforce restrictions?" />
+<meta name="twitter:description" content="Consent Policies in Adobe Experience Platform What are Consent Policies? Consent Policies are rules that control profile-level activation to destinations…" />
+</head>
+  <body>
+    <div id="root"><article><h1>57. What are Consent Policies? How do they enforce restrictions?</h1>
+<h2>Consent Policies in Adobe Experience Platform</h2>
+<h3>What are Consent Policies?</h3>
+<p><strong>Consent Policies</strong> are rules that control <strong>profile-level activation</strong> to destinations based on individual customer <strong>consent and preference choices</strong>. They ensure that marketing communications respect what each customer has opted into or opted out of.</p>
+<p>&gt; <strong>In simple terms:</strong> A consent policy says — <strong>&quot;Only activate this profile to this destination IF the customer has given consent for this specific purpose.&quot;</strong></p>
+<p>Consent policies are part of AEP&#x27;s <strong>Data Governance framework</strong> and work alongside <strong>Data Usage Labels</strong> and <strong>Marketing Action Policies</strong> to create multi-layer compliance enforcement.</p>
+<hr>
+<h3>Important: Consent Policy Availability</h3>
+<p>⚠️ <strong>Consent policies and automatic enforcement are ONLY available for organizations that have purchased:</strong></p>
+<ul>
+<li><strong>Adobe Healthcare Shield</strong>, OR</li>
+<li><strong>Adobe Privacy &amp; Security Shield</strong></li>
+</ul>
+<p>Organizations <strong>without these add-ons</strong> can still use <strong>data governance policies</strong> (labels + marketing actions), but <strong>NOT consent policies</strong>.</p>
+<hr>
+<h3>Consent Policies vs. Data Governance Policies</h3>
+<p>These are <strong>two distinct policy types</strong> that both enforce governance:</p>
+<p>| Aspect | Data Governance Policy | Consent Policy |</p>
+<p>|---|---|---|</p>
+<p>| <strong>What it checks</strong> | Data labels + marketing action | Customer consent attributes |</p>
+<p>| <strong>Question asked</strong> | &quot;Is this data allowed for this use?&quot; | &quot;Did the customer consent to this use?&quot; |</p>
+<p>| <strong>Example</strong> | &quot;Cannot use PII (I1) for behavioral ads (C11)&quot; | &quot;Only email if customer consented to email marketing&quot; |</p>
+<p>| <strong>Enforcement</strong> | Blocks activation if violation found | Filters profiles based on consent |</p>
+<p>| <strong>Required add-on</strong> | Included in all AEP/RTCDP | Healthcare/Privacy &amp; Security Shield only |</p>
+<h4>Both Must Pass:</h4>
+<p>```</p>
+<p>Attempt to Activate Audience to Destination</p>
+<p>↓</p>
+<p>╔════════════════════════════════════════╗</p>
+<p>║  CHECK 1: DATA GOVERNANCE POLICIES     ║</p>
+<p>║  (Do labels allow this marketing use?) ║</p>
+<p>╚════════════════════════════════════════╝</p>
+<p>↓</p>
+<p>✅ Pass → Continue</p>
+<p>❌ Fail → BLOCK ACTIVATION</p>
+<p>↓</p>
+<p>╔════════════════════════════════════════╗</p>
+<p>║  CHECK 2: CONSENT POLICIES             ║</p>
+<p>║  (Did customers consent?)              ║</p>
+<p>╚════════════════════════════════════════╝</p>
+<p>↓</p>
+<p>✅ Pass → ACTIVATION PROCEEDS</p>
+<p>❌ Fail → EXCLUDE non-consenting profiles</p>
+<p>```</p>
+<hr>
+<h3>How Consent Policies Work</h3>
+<p>Every consent policy has <strong>two logical components</strong>:</p>
+<h4>Part 1: The &quot;IF&quot; Condition</h4>
+<p>This defines <strong>WHEN the policy is evaluated</strong> — what triggers the policy check.</p>
+<p>```</p>
+<p>IF [condition is met]</p>
+<p>```</p>
+<p>The &quot;IF&quot; condition can be based on:</p>
+<ul>
+<li>A <strong>specific marketing action</strong> being performed</li>
+<li>Specific <strong>data usage labels</strong> present on the data</li>
+<li>A <strong>combination</strong> of both using AND/OR logic</li>
+</ul>
+<p><strong>Example Conditions:</strong></p>
+<ul>
+<li>&quot;IF marketing action = `Email Marketing`&quot;</li>
+<li>&quot;IF marketing action = `SMS Marketing`&quot;</li>
+<li>&quot;IF data has label `I1` AND action = `Behavioral Advertising`&quot;</li>
+<li>&quot;IF action = `Direct Mail` OR action = `Push Notifications`&quot;</li>
+</ul>
+<hr>
+<h4>Part 2: The &quot;THEN&quot; Consequence</h4>
+<p>This defines <strong>WHAT CONSENT ATTRIBUTES MUST BE PRESENT</strong> for a profile to be included in the activation.</p>
+<p>```</p>
+<p>THEN [require these consent attributes to be true]</p>
+<p>```</p>
+<p>The &quot;THEN&quot; clause checks for <strong>XDM Consent Data Fields</strong> in the customer&#x27;s profile. These are standardized fields in the XDM schema:</p>
+<p><strong>Common Consent Attributes:</strong></p>
+<ul>
+<li>`consents.marketing.email.val = true`</li>
+<li>`consents.marketing.push.val = true`</li>
+<li>`consents.marketing.sms.val = true`</li>
+<li>`consents.marketing.phone_calls.val = true`</li>
+<li>`consents.marketing.direct_mail.val = true`</li>
+<li>`personalization.content.val = true`</li>
+<li>`personalization.marketing.preferred_channel.val`</li>
+</ul>
+<hr>
+<h3>Real-World Examples</h3>
+<h4>Example 1: Email Marketing Consent Policy</h4>
+<p><strong>Scenario:</strong> Marketer wants to activate an audience to an email marketing platform (Adobe Campaign).</p>
+<p><strong>Policy Configuration:</strong></p>
+<p>```</p>
+<p>Policy Name: &quot;Email Marketing - Consent Required&quot;</p>
+<p>IF: Marketing action = &quot;Email Marketing&quot;</p>
+<p>THEN: Profile must have consents.marketing.email.val = true</p>
+<p>```</p>
+<p><strong>How It Works:</strong></p>
+<p>1. Audience of 10,000 profiles is selected for activation</p>
+<p>2. System checks each profile&#x27;s consent status:</p>
+<p>```</p>
+<p>Profile A: email consent = true → ✅ INCLUDE in email campaign</p>
+<p>Profile B: email consent = false → ❌ EXCLUDE from campaign</p>
+<p>Profile C: email consent = unknown/missing → ❌ EXCLUDE (conservative)</p>
+<p>Profile D: email consent = true → ✅ INCLUDE</p>
+<p>... (10,000 profiles evaluated)</p>
+<p>```</p>
+<p>3. Only <strong>7,500 consenting profiles</strong> are activated to Campaign</p>
+<p>4. <strong>2,500 non-consenting profiles</strong> are filtered out</p>
+<p><strong>Result:</strong></p>
+<p>```</p>
+<p>Original Audience: 10,000 profiles</p>
+<p>Profiles with email consent: 7,500</p>
+<p>Profiles without email consent: 2,500 ← EXCLUDED</p>
+<p>Final Activation: 7,500 profiles sent to email platform</p>
+<p>```</p>
+<p><strong>What the Customer Sees:</strong></p>
+<ul>
+<li>Profile A receives emails (consented) ✅</li>
+<li>Profile B does NOT receive emails (opted out) ✅</li>
+<li>Profile C does NOT receive emails (never consented) ✅</li>
+</ul>
+<hr>
+<h4>Example 2: Multi-Channel Consent Policy</h4>
+<p><strong>Scenario:</strong> Marketing team wants to activate a broad audience to a <strong>multi-channel orchestration platform</strong> (Adobe Journey Optimizer).</p>
+<p><strong>Policy Configuration:</strong></p>
+<p>```</p>
+<p>Policy Name: &quot;Multi-Channel Marketing - OR Logic&quot;</p>
+<p>IF: Marketing action = &quot;Direct Marketing&quot;</p>
+<p>THEN: Profile must have AT LEAST ONE of:</p>
+<ul>
+<li>consents.marketing.email.val = true</li>
+</ul>
+<p>OR</p>
+<ul>
+<li>consents.marketing.sms.val = true</li>
+</ul>
+<p>OR</p>
+<ul>
+<li>consents.marketing.push.val = true</li>
+</ul>
+<p>```</p>
+<p><strong>How It Works:</strong></p>
+<p>Profiles are included if they consented to <strong>ANY</strong> of the channels:</p>
+<p>```</p>
+<p>Profile A:</p>
+<ul>
+<li>email consent: true</li>
+<li>sms consent: false</li>
+<li>push consent: false</li>
+</ul>
+<p>→ Result: ✅ INCLUDE (has email consent)</p>
+<p>Profile B:</p>
+<ul>
+<li>email consent: false</li>
+<li>sms consent: true</li>
+<li>push consent: false</li>
+</ul>
+<p>→ Result: ✅ INCLUDE (has SMS consent)</p>
+<p>Profile C:</p>
+<ul>
+<li>email consent: false</li>
+<li>sms consent: false</li>
+<li>push consent: true</li>
+</ul>
+<p>→ Result: ✅ INCLUDE (has push consent)</p>
+<p>Profile D:</p>
+<ul>
+<li>email consent: false</li>
+<li>sms consent: false</li>
+<li>push consent: false</li>
+</ul>
+<p>→ Result: ❌ EXCLUDE (no channel consent)</p>
+<p>Profile E:</p>
+<ul>
+<li>email consent: unknown</li>
+<li>sms consent: false</li>
+<li>push consent: false</li>
+</ul>
+<p>→ Result: ❌ EXCLUDE (conservative approach)</p>
+<p>```</p>
+<p><strong>Real-World Application:</strong></p>
+<ul>
+<li>Journey Optimizer receives only profiles with <strong>at least one channel consent</strong></li>
+<li>JO respects individual channel preferences (email-only, SMS-only, etc.)</li>
+<li>Complies with customer preferences while maximizing reach</li>
+</ul>
+<hr>
+<h4>Example 3: SMS Marketing Consent Policy</h4>
+<p><strong>Scenario:</strong> Team wants to activate audience for <strong>SMS campaigns</strong>.</p>
+<p><strong>Policy Configuration:</strong></p>
+<p>```</p>
+<p>Policy Name: &quot;SMS Marketing - Strict Consent&quot;</p>
+<p>IF: Marketing action = &quot;SMS Marketing&quot;</p>
+<p>THEN: Profile must have consents.marketing.sms.val = true</p>
+<p>```</p>
+<p><strong>Audience Breakdown:</strong> 50,000 profiles</p>
+<ul>
+<li>35,000 with SMS consent = true</li>
+<li>10,000 with SMS consent = false</li>
+<li>5,000 with SMS consent = unknown/missing</li>
+</ul>
+<p><strong>Enforcement:</strong></p>
+<p>```</p>
+<p>SMS Campaign Activation</p>
+<p>├── Original audience: 50,000 profiles</p>
+<p>├── Consent Policy applied: &quot;SMS Marketing&quot;</p>
+<p>├── Profiles with SMS consent (true): 35,000 → ✅ ACTIVATED</p>
+<p>├── Profiles without SMS consent (false): 10,000 → ❌ FILTERED</p>
+<p>├── Profiles with unknown consent: 5,000 → ❌ FILTERED</p>
+</article>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "57. What are Consent Policies? How do they enforce restrictions?", "acceptedAnswer": {"@type": "Answer", "text": "Consent Policies in Adobe Experience Platform What are Consent Policies? Consent Policies are rules that control profile-level activation to destinations based on individual customer consent and preference choices. They ensure that marketing communications respect what each customer has opted into or opted out of. In simple terms: A consent policy says \u2014 \"Only activate this profile to this destination IF the customer has given consent for this specific purpose.\" Consent policies are part of AEP's Data Governance framework and work alongside Data Usage Labels and Marketing Action Policies to create multi-layer compliance enforcement. --- Important: Consent Policy Availability \u26a0\ufe0f Consent policies and automatic enforcement are ONLY available for organizations that have purchased: - Adobe Healthcare Shield, OR - Adobe Privacy & Security Shield Organizations without these add-ons can still use data governance policies (labels + marketing actions), but NOT consent policies. --- Consent Policies vs. Data Governance Policies These are two distinct policy types that both enforce governance: | Aspect | Data Governance Policy | Consent Policy | |---|---|---| | What it checks | Data labels + marketing action | Customer consent attributes | | Question asked | \"Is this data allowed for this use?\" | \"Did the customer consent to this use?\" | | Example | \"Cannot use PII (I1) for behavioral ads (C11)\" | \"Only email if customer consented to email marketing\" | | Enforcement | Blocks activation if violation found | Filters profiles based on consent | | Required add-on | Included in all AEP/RTCDP | Healthcare/Privacy & Security Shield only | Both Must Pass: Attempt to Activate Audience to Destination \u2193 \u2554\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2557 \u2551 CHECK 1: DATA GOVERNANCE POLICIES \u2551 \u2551 (Do labels allow this marketing use?) \u2551 \u255a\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u255d \u2193 \u2705 Pass \u2192 Continue \u274c Fail \u2192 BLOCK ACTIVATION \u2193 \u2554\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2557 \u2551 CHECK 2: CONSENT POLICIES \u2551 \u2551\u2026"}}]}</script></div>
+  </body>
+</html>
