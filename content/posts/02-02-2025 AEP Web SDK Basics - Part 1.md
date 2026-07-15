@@ -7,7 +7,7 @@ tags:
   topic2: basics
 
 thumbnailImagePosition: left
-thumbnailImage: https://ik.imagekit.io/hyegquogx/The_Learning_Project/Back%20to%20basics%20%20Part%207.png
+thumbnailImage: https://ik.imagekit.io/hyegquogx/The_Learning_Project/Back%20to%20basics%20%20-%20Web%20SDK%20Part%201.png
 author:
   display_name: Ritesh Gupta
 ---
@@ -52,7 +52,7 @@ Watch the [Summit 2020](https://experienceleague.adobe.com/en/docs/experience-pl
 - AEP Mobile SDK - A framework built for mobile applications
 - AEP Web SDK Extension - An extension built around AEP Web SDK available for Adobe Tags for desktop data collection
 
-##### How does AEP Web SDK work
+#### How does AEP Web SDK work
 
 With the introduction to AEP Web SDK out of the way, let's move forward with the different components that you need to setup for a successful implementation:
 
@@ -60,13 +60,22 @@ With the introduction to AEP Web SDK out of the way, let's move forward with the
 Please note: We will be only covering Web SDK implementation in this blog series
 {{< /alert >}}
 
-###### Characters in a Web SDK implementation
+##### Characters in a Web SDK implementation
 
 In a AEP Web SDK implementation, we have to take care of multiple components. They all need to work in parallel to deliver the desired output. Let's first look at the different components of an implementation
 
-- AEP Web SDK extension
+- Edge network
 - Datastream
 - Schema
 - XDM vs Data Object
+- AEP Web SDK extension
 
-That is all for this blog post. Leave me a line on ritesh@thelearningproject.in to share some JavaScript basics that you might be interested in sharing.
+###### Edge network
+
+{{<figure src = "https://ik.imagekit.io/hyegquogx/The_Learning_Project/edgeNetworkImage.png">}}
+
+Edge Network is a high-performance, real-time data collection and delivery system to have faster, more efficient and privacy compliant data between websites, mobile apps and propreitary solutions of Adobe - Analytics, Target, Audience Manager, Campaign. Edge Network or AEP Edge Network is a mesh of services, servers, network devices, databases etc. The key features of AEP Edge Network enable websites and mobile apps to exchange interactions and provide a more personalized experience to the end customer through simpler, faster and more scalable implementations. You can read more about Edge Network [here](https://experienceleaguecommunities.adobe.com/t5/adobe-experience-platform-blogs/introduction-to-the-aep-edge-network/ba-p/658579)
+
+{{< youtube KmrB7ocTiEI >}}
+
+That is all for this blog post. In the next blog post, we will be covering other characters of a AEP Web SDK implementation. As always, if you have any doubts or just want to collaborate, leave me a line on ritesh@thelearningproject.in
