@@ -1,0 +1,11 @@
+public/*
+# The publish-landing-pages workflow (in the chatbot repo) intentionally
+# commits generated SEO landing pages here — keep this one path trackable.
+# (git can't re-include a path under an excluded parent directory, so each
+# level has to be un-ignored individually rather than negated in one line.)
+!public/tools
+public/tools/*
+!public/tools/rovr
+resources/
+.hugo_build.lock
+.DS_Store
