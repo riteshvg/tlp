@@ -13,6 +13,11 @@ public/*
 !public/tools
 public/tools/*
 !public/tools/rovr
+# deploy.sh (chatbot repo) also stages the generated Cloudflare Pages
+# redirects file — without this, `git add public/_redirects` fails (ignored
+# file, non-fatal warning but nonzero exit) and aborts the deploy under
+# set -e before the commit/push/wrangler steps ever run.
+!public/_redirects
 
 resources/
 .hugo_build.lock

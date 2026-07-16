@@ -8,38 +8,92 @@
     
     
     <script src="https://assets.adobedtm.com/204118644db8/290ae1adb65a/launch-e5ec7bf1a1ef-development.min.js" async></script>
-    <script type="module" crossorigin src="/tools/rovr/assets/index-Dei2hK2h.js"></script>
-    <link rel="stylesheet" crossorigin href="/tools/rovr/assets/index--8rF9pj7.css">
+    <script type="module" crossorigin src="/tools/rovr/assets/index-BZDwcb6J.js"></script>
+    <link rel="stylesheet" crossorigin href="/tools/rovr/assets/index-BT2stRIa.css">
   <title>How do I integrate AEP with Salesforce Marketing Cloud? | Rovr</title>
-<meta name="description" content="What the documentation confirms The CONTEXT confirms that Adobe Experience Platform (AEP) offers multiple distinct integrations with Salesforce Marketing…" />
+<meta name="description" content="Integrating Adobe Experience Platform (AEP) with Salesforce Marketing Cloud There are multiple integration patterns available depending on your direction of…" />
 <link rel="canonical" href="https://thelearningproject.in/tools/rovr/q/how-do-i-integrate-aep-with-salesforce-marketing-cloud-cac877" />
 <meta property="og:title" content="How do I integrate AEP with Salesforce Marketing Cloud?" />
-<meta property="og:description" content="What the documentation confirms The CONTEXT confirms that Adobe Experience Platform (AEP) offers multiple distinct integrations with Salesforce Marketing…" />
+<meta property="og:description" content="Integrating Adobe Experience Platform (AEP) with Salesforce Marketing Cloud There are multiple integration patterns available depending on your direction of…" />
 <meta property="og:url" content="https://thelearningproject.in/tools/rovr/q/how-do-i-integrate-aep-with-salesforce-marketing-cloud-cac877" />
 <meta property="og:type" content="article" />
 <meta property="og:image" content="https://thelearningproject.in/tools/rovr/rovrlogo.png" />
 <meta name="twitter:card" content="summary" />
 <meta name="twitter:title" content="How do I integrate AEP with Salesforce Marketing Cloud?" />
-<meta name="twitter:description" content="What the documentation confirms The CONTEXT confirms that Adobe Experience Platform (AEP) offers multiple distinct integrations with Salesforce Marketing…" />
+<meta name="twitter:description" content="Integrating Adobe Experience Platform (AEP) with Salesforce Marketing Cloud There are multiple integration patterns available depending on your direction of…" />
 </head>
   <body>
     <div id="root"><article><h1>How do I integrate AEP with Salesforce Marketing Cloud?</h1>
-<h3>What the documentation confirms</h3>
-<p>The CONTEXT confirms that Adobe Experience Platform (AEP) offers <strong>multiple distinct integrations</strong> with Salesforce Marketing Cloud products:</p>
-<p>1. <strong>Salesforce Marketing Cloud Account Engagement (V2) destination</strong> — exports AEP profile data to Salesforce&#x27;s B2B marketing automation platform using batch processing and the Salesforce Import API v5.</p>
-<p>2. <strong>(API) Salesforce Marketing Cloud destination</strong> — a streaming API-based connection ideal for B2C use cases, using the update contacts API to add and update contact data.</p>
-<p>3. <strong>Salesforce Marketing Cloud sources</strong> — connectors to bring Salesforce Marketing Cloud data into AEP (including a newer V2 source).</p>
-<h3>What it does NOT cover</h3>
-<p>The documentation does not contain step-by-step integration procedures, configuration details, authentication workflows, or field mapping instructions for any of these connections.</p>
-<h3>Documentation to consult</h3>
-<p>For specific integration guidance, refer to:</p>
+<h2>Integrating Adobe Experience Platform (AEP) with Salesforce Marketing Cloud</h2>
+<p>There are multiple integration patterns available depending on your direction of data flow and use case. Here&#x27;s a comprehensive overview:</p>
+<hr>
+<h3>Integration Options Overview</h3>
+<p>| Direction | Method | Best For |</p>
+<p>|---|---|---|</p>
+<p>| AEP → SFMC | Destination (Files) | Batch audience export via file |</p>
+<p>| AEP → SFMC | Destination (API) | Streaming/B2C contact updates |</p>
+<p>| AEP → SFMC Account Engagement | Destination (V2) | B2B lead management (Pardot) |</p>
+<p>| SFMC → AEP | Source Connector | Ingesting SFMC data into AEP |</p>
+<hr>
+<h3>Option 1: Export AEP Audiences TO Salesforce Marketing Cloud</h3>
+<h4>A. File-Based Destination (Batch)</h4>
+<p>The <strong>[!DNL (Files) Salesforce Marketing Cloud]</strong> connection exports audience data as files to a storage location, which SFMC then imports.</p>
+<p><strong>Steps:</strong></p>
+<p>1. In AEP, navigate to <strong>Destinations</strong> → <strong>Catalog</strong> → <strong>Email Marketing</strong></p>
+<p>2. Select <strong>Salesforce Marketing Cloud</strong> (Files)</p>
+<p>3. Connect to the destination by providing your storage location credentials</p>
+<p>4. Activate your audiences to the destination</p>
+<p>5. Once files land in your storage location, <strong>set up a data import job in Salesforce Marketing Cloud</strong> to pull the files in</p>
+<hr>
+<h4>B. API-Based Streaming Destination (B2C Use Cases)</h4>
+<p>The <strong>[!DNL (API) Salesforce Marketing Cloud]</strong> destination is ideal for <strong>B2C</strong> use cases with shorter transactional decision-making cycles. It uses the SFMC <strong>Update Contacts</strong> API to add contacts and update contact data in real time.</p>
+<p><strong>Key characteristics:</strong></p>
 <ul>
-<li>https://experienceleague.adobe.com/en/docs/experience-platform/destinations/catalog/email-marketing/salesforce-marketing-cloud-account-engagement</li>
-<li>https://experienceleague.adobe.com/en/docs/experience-platform/destinations/catalog/email-marketing/salesforce-marketing-cloud-exact-target</li>
-<li>https://experienceleague.adobe.com/en/docs/experience-platform/destinations/catalog/email-marketing/salesforce-marketing-cloud</li>
-<li>https://experienceleague.adobe.com/en/docs/experience-platform/sources/connectors/marketing-automation/sfmc</li>
+<li>Streaming/API-based (not file-based)</li>
+<li>Adds and updates contacts within SFMC segments</li>
+<li>Best for large datasets representing audience behavior</li>
 </ul>
-</article>
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "How do I integrate AEP with Salesforce Marketing Cloud?", "acceptedAnswer": {"@type": "Answer", "text": "What the documentation confirms The CONTEXT confirms that Adobe Experience Platform (AEP) offers multiple distinct integrations with Salesforce Marketing Cloud products: 1. Salesforce Marketing Cloud Account Engagement (V2) destination \u2014 exports AEP profile data to Salesforce's B2B marketing automation platform using batch processing and the Salesforce Import API v5. 2. (API) Salesforce Marketing Cloud destination \u2014 a streaming API-based connection ideal for B2C use cases, using the update contacts API to add and update contact data. 3. Salesforce Marketing Cloud sources \u2014 connectors to bring Salesforce Marketing Cloud data into AEP (including a newer V2 source). What it does NOT cover The documentation does not contain step-by-step integration procedures, configuration details, authentication workflows, or field mapping instructions for any of these connections. Documentation to consult For specific integration guidance, refer to: - https://experienceleague.adobe.com/en/docs/experience-platform/destinations/catalog/email-marketing/salesforce-marketing-cloud-account-engagement - https://experienceleague.adobe.com/en/docs/experience-platform/destinations/catalog/email-marketing/salesforce-marketing-cloud-exact-target - https://experienceleague.adobe.com/en/docs/experience-platform/destinations/catalog/email-marketing/salesforce-marketing-cloud - https://experienceleague.adobe.com/en/docs/experience-platform/sources/connectors/marketing-automation/sfmc"}}]}</script></div>
+<hr>
+<h4>C. Salesforce Marketing Cloud Account Engagement / Pardot (B2B Use Cases)</h4>
+<p>The <strong>[!DNL Salesforce Marketing Cloud Account Engagement]</strong> destination (formerly Pardot) is ideal for <strong>B2B</strong> use cases — multiple departments, longer sales cycles, and CRM-integrated workflows.</p>
+<ul>
+<li>Uses the <strong>Prospect Upsert by Email</strong> API endpoint</li>
+<li>Adds or updates leads after audience activation</li>
+<li>Supports lead scoring, nurturing, grading, and campaign segmentation</li>
+<li>Authenticates via <strong>OAuth 2 with Authorization Code</strong></li>
+</ul>
+<p>&gt; <strong>Important:</strong> A V2 version of this destination is currently in Alpha. If you are using the previous version, you must migrate to V2 before <strong>January 2026</strong>, after which the previous version will be decommissioned.</p>
+<hr>
+<h3>Option 2: Ingest Salesforce Marketing Cloud Data INTO AEP (Source Connector)</h3>
+<p>You can bring SFMC data into AEP using the <strong>Salesforce Marketing Cloud source connector</strong>.</p>
+<h4>Via the UI</h4>
+<p><strong>Prerequisites:</strong></p>
+<ul>
+<li>Working knowledge of XDM (Experience Data Model)</li>
+<li>Understanding of Real-Time Customer Profile in AEP</li>
+</ul>
+<p><strong>Steps:</strong></p>
+<p>1. In AEP, navigate to <strong>Sources</strong> → <strong>Catalog</strong> → <strong>Marketing Automation</strong></p>
+<p>2. Select <strong>Salesforce Marketing Cloud (V2)</strong></p>
+<p>3. Enter your authentication credentials (see the SFMC source overview for prerequisite details)</p>
+<p>4. Configure a dataflow to map SFMC fields to XDM schema fields</p>
+<p>5. Set your ingestion schedule and activate the dataflow</p>
+<h4>Via the Flow Service API</h4>
+<p>You can also connect programmatically using the <strong>Flow Service API</strong> to create base connections, source connections, target connections, and dataflows.</p>
+<p>&gt; <strong>Important:</strong> The original (V1) Salesforce Marketing Cloud source is <strong>deprecated</strong>. You must use the <strong>V2 source connector</strong>. If you have existing dataflows using the V1 connector, migrate to V2 before <strong>January 2026</strong>.</p>
+<hr>
+<h3>Choosing the Right Integration</h3>
+<p>| Use Case | Recommended Integration |</p>
+<p>|---|---|</p>
+<p>| Send B2C audiences to SFMC contacts in real time | (API) Salesforce Marketing Cloud Destination |</p>
+<p>| Send audiences via file batch export | (Files) Salesforce Marketing Cloud Destination |</p>
+<p>| B2B lead management with Pardot/Account Engagement | Salesforce Marketing Cloud Account Engagement Destination (V2) |</p>
+<p>| Bring SFMC engagement data into AEP for analysis/profile building | Salesforce Marketing Cloud Source (V2) |</p>
+<h2>Sources</h2>
+<ul>
+<li><a href="https://experienceleague.adobe.com/en/docs/experience-platform/sources/connectors/marketing-automation/salesforce-marketing-cloud">Salesforce Marketing Cloud Source Overview</a></li>
+<li><a href="https://experienceleague.adobe.com/en/docs/experience-platform/destinations/catalog/email-marketing/salesforce-marketing-cloud">Salesforce Marketing Cloud connection</a></li>
+</ul></article>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "How do I integrate AEP with Salesforce Marketing Cloud?", "acceptedAnswer": {"@type": "Answer", "text": "Integrating Adobe Experience Platform (AEP) with Salesforce Marketing Cloud There are multiple integration patterns available depending on your direction of data flow and use case. Here's a comprehensive overview: --- Integration Options Overview | Direction | Method | Best For | |---|---|---| | AEP \u2192 SFMC | Destination (Files) | Batch audience export via file | | AEP \u2192 SFMC | Destination (API) | Streaming/B2C contact updates | | AEP \u2192 SFMC Account Engagement | Destination (V2) | B2B lead management (Pardot) | | SFMC \u2192 AEP | Source Connector | Ingesting SFMC data into AEP | --- Option 1: Export AEP Audiences TO Salesforce Marketing Cloud A. File-Based Destination (Batch) The !DNL (Files) Salesforce Marketing Cloud connection exports audience data as files to a storage location, which SFMC then imports. Steps: 1. In AEP, navigate to Destinations \u2192 Catalog \u2192 Email Marketing 2. Select Salesforce Marketing Cloud (Files) 3. Connect to the destination by providing your storage location credentials 4. Activate your audiences to the destination 5. Once files land in your storage location, set up a data import job in Salesforce Marketing Cloud to pull the files in --- B. API-Based Streaming Destination (B2C Use Cases) The !DNL (API) Salesforce Marketing Cloud destination is ideal for B2C use cases with shorter transactional decision-making cycles. It uses the SFMC Update Contacts API to add contacts and update contact data in real time. Key characteristics: - Streaming/API-based (not file-based) - Adds and updates contacts within SFMC segments - Best for large datasets representing audience behavior --- C. Salesforce Marketing Cloud Account Engagement / Pardot (B2B Use Cases) The !DNL Salesforce Marketing Cloud Account Engagement destination (formerly Pardot) is ideal for B2B use cases \u2014 multiple departments, longer sales cycles, and CRM-integrated workflows. - Uses the Prospect Upsert by Email API endpoint - Adds or updates leads after audience activation - Supports lead\u2026"}}]}</script></div>
   </body>
 </html>

@@ -8,59 +8,124 @@
     
     
     <script src="https://assets.adobedtm.com/204118644db8/290ae1adb65a/launch-e5ec7bf1a1ef-development.min.js" async></script>
-    <script type="module" crossorigin src="/tools/rovr/assets/index-Dei2hK2h.js"></script>
-    <link rel="stylesheet" crossorigin href="/tools/rovr/assets/index--8rF9pj7.css">
+    <script type="module" crossorigin src="/tools/rovr/assets/index-BZDwcb6J.js"></script>
+    <link rel="stylesheet" crossorigin href="/tools/rovr/assets/index-BT2stRIa.css">
   <title>What is a journey in AJO? | Rovr</title>
-<meta name="description" content="What Is a Journey in Adobe Journey Optimizer? A journey is a multi-step orchestration that allows you to design and execute real-time, personalized customer…" />
+<meta name="description" content="What is a Journey in Adobe Journey Optimizer? A journey is an automated, multistep customer experience that orchestrates personalized interactions across…" />
 <link rel="canonical" href="https://thelearningproject.in/tools/rovr/q/what-is-a-journey-in-ajo-0af3db" />
 <meta property="og:title" content="What is a journey in AJO?" />
-<meta property="og:description" content="What Is a Journey in Adobe Journey Optimizer? A journey is a multi-step orchestration that allows you to design and execute real-time, personalized customer…" />
+<meta property="og:description" content="What is a Journey in Adobe Journey Optimizer? A journey is an automated, multistep customer experience that orchestrates personalized interactions across…" />
 <meta property="og:url" content="https://thelearningproject.in/tools/rovr/q/what-is-a-journey-in-ajo-0af3db" />
 <meta property="og:type" content="article" />
 <meta property="og:image" content="https://thelearningproject.in/tools/rovr/rovrlogo.png" />
 <meta name="twitter:card" content="summary" />
 <meta name="twitter:title" content="What is a journey in AJO?" />
-<meta name="twitter:description" content="What Is a Journey in Adobe Journey Optimizer? A journey is a multi-step orchestration that allows you to design and execute real-time, personalized customer…" />
+<meta name="twitter:description" content="What is a Journey in Adobe Journey Optimizer? A journey is an automated, multistep customer experience that orchestrates personalized interactions across…" />
 </head>
   <body>
     <div id="root"><article><h1>What is a journey in AJO?</h1>
-<h2>What Is a Journey in Adobe Journey Optimizer?</h2>
-<p>A <strong>journey</strong> is a multi-step orchestration that allows you to design and execute real-time, personalized customer experiences across multiple channels. Journeys combine events, orchestration activities, actions, and messages to create contextual experiences based on customer behavior and business events.</p>
-<p><img src="https://raw.githubusercontent.com/AdobeDocs/journey-optimizer.en/main/help/using/building-journeys/assets/journey38.png" alt="Journey designer interface with palette, canvas, and properties pane"></p>
+<h2>What is a Journey in Adobe Journey Optimizer?</h2>
+<p>A <strong>journey</strong> is an automated, multistep customer experience that orchestrates personalized interactions across channels in response to customer behavior, business events, or scheduled campaigns.</p>
+<h3>Core Definition</h3>
+<p>Journeys in Adobe Journey Optimizer empower you to create <strong>personalized, multistep customer journeys that adapt in real-time</strong> to your audience&#x27;s behavior and needs. Using an intuitive drag-and-drop canvas, you can orchestrate messages and actions across multiple channels, leveraging contextual data and audience targeting for maximum impact.</p>
 <hr>
-<h3>Key Characteristics</h3>
-<p><strong>Real-time &amp; Event-driven</strong> — Journeys react immediately to customer actions or business events rather than following a fixed schedule.</p>
-<p><strong>1:1 Personalization</strong> — Each profile travels their own path at their own pace. AJO tracks where each person is and reacts to their specific behavior and profile data.</p>
-<p><strong>Multi-channel orchestration</strong> — Send messages across email, SMS, push, in-app, web, code-based experiences, content cards, and more—all within a single workflow.</p>
-<p><strong>Contextual logic</strong> — Use conditions, wait times, and branching to create sophisticated flows that adapt based on customer data, events, and business rules.</p>
-<p><strong>Persistent &amp; intelligent</strong> — Journeys maintain state across touchpoints and can include frequency capping, re-entrance rules, and audience qualification triggers.</p>
-<hr>
-<h3>How Journeys Work in Practice</h3>
-<p>Here&#x27;s a simplified example of a cart abandonment journey:</p>
+<h3>How Journeys Work</h3>
+<h4>1:1 Real-Time Orchestration</h4>
+<p>A journey is a canvas where <strong>each profile travels their own path at their own pace</strong>. AJO tracks where each person is in the flow and reacts in real time to their behavior — whether that&#x27;s an action they take, a period of inactivity, or a change in their profile.</p>
+<p><strong>Example — Cart Abandonment Journey:</strong></p>
 <p>```</p>
 <p>Customer A: Abandoned cart → Wait 2 hours → No purchase? → Send reminder → Purchased? → End</p>
 <p>Customer B: Abandoned cart → Wait 2 hours → Already purchased → End immediately</p>
 <p>```</p>
-<p>Each customer experiences a different timeline based on what they actually do. Customer A receives a reminder because they haven&#x27;t purchased; Customer B skips it because they already bought.</p>
+<p>Each customer experiences a different timeline based on what they actually do.</p>
+<hr>
+<h3>Key Journey Capabilities</h3>
+<ul>
+<li><strong>Wait activities</strong> that create personalized timing between steps</li>
+<li><strong>Conditional branching</strong> that routes profiles to different paths</li>
+<li><strong>Frequency capping</strong> to control how often a customer receives messages</li>
+<li><strong>Test mode</strong> to validate logic before going live</li>
+<li><strong>A/B experiments</strong> that split profiles into percentage-based groups for testing</li>
+<li><strong>Multi-channel actions</strong> — email, SMS, push, in-app, web, code-based experiences, and more</li>
+</ul>
 <hr>
 <h3>Four Types of Journeys</h3>
-<p>AJO supports four journey types, each triggered differently:</p>
-<p>1. <strong>Unitary Event Journeys</strong> — Triggered individually when a customer performs a specific action (e.g., abandons cart, signs up, makes a purchase). Profiles enter one at a time as the event occurs.</p>
-<p>2. <strong>Read Audience Journeys</strong> — Start with an audience from Adobe Experience Platform and send messages in batch to all profiles in that audience at a scheduled time.</p>
-<p>3. <strong>Audience Qualification Journeys</strong> — Triggered when profiles qualify for (or exit from) a specific audience segment. Profiles enter as they meet the audience criteria in real time.</p>
-<p>4. <strong>Business Event Journeys</strong> — Triggered by business events (e.g., stock updates, weather alerts, price changes) that affect multiple profiles simultaneously.</p>
+<p>The type of journey depends on what triggers it:</p>
+<h4>1. <strong>Unitary Event Journeys</strong></h4>
+<ul>
+<li>Triggered by a specific profile behavior (e.g., a purchase, app sign-in)</li>
+<li>Profiles enter <strong>one at a time</strong> when the event occurs</li>
+<li>Best for: Behavior-triggered experiences</li>
+</ul>
+<h4>2. <strong>Read Audience Journeys</strong></h4>
+<ul>
+<li>Start with an audience from Adobe Experience Platform</li>
+<li>Send messages in <strong>batch</strong> to all profiles in that audience</li>
+<li>Best for: Scheduled campaigns, newsletters, seasonal outreach</li>
+</ul>
+<h4>3. <strong>Audience Qualification Journeys</strong></h4>
+<ul>
+<li>Triggered when profiles <strong>qualify for (or exit from)</strong> a specific audience segment</li>
+<li>Profiles enter as they meet the audience criteria</li>
+<li>Best for: Milestone-based experiences like loyalty tier changes</li>
+</ul>
+<h4>4. <strong>Business Event Journeys</strong></h4>
+<ul>
+<li>Triggered by business events (e.g., stock updates, weather alerts) that <strong>affect multiple profiles simultaneously</strong></li>
+<li>Best for: System-wide events that impact many customers</li>
+</ul>
 <hr>
 <h3>Journey vs. Campaign</h3>
-<p><strong>Journeys</strong> are best for multi-step, real-time experiences with conditional logic where each profile moves through at their own pace (1:1 orchestration).</p>
-<p><strong>Campaigns</strong> are better for scheduled or recurring activations to audiences processed together in batch, or event-driven/transactional messages triggered via API.</p>
+<p>| Aspect | Journeys | Campaigns |</p>
+<p>|--------|----------|-----------|</p>
+<p>| <strong>Execution</strong> | 1:1 orchestration — each profile at their own pace | Batch execution — audience processed together |</p>
+<p>| <strong>Logic</strong> | Complex, multi-step with conditions and waits | Simpler, more direct messaging |</p>
+<p>| <strong>Timing</strong> | Real-time, event-driven | Scheduled or triggered by API |</p>
+<p>| <strong>Use Case</strong> | Multi-touch customer lifecycle experiences | Scheduled activations or one-time sends |</p>
 <hr>
-<h3>Next Steps</h3>
+<h3>Journey Designer Interface</h3>
+<p><img src="https://raw.githubusercontent.com/AdobeDocs/journey-optimizer.en/main/help/using/building-journeys/assets/journey38.png" alt="Journey designer interface with palette, canvas, and properties pane"></p>
+<p>The interface includes:</p>
 <ul>
-<li><strong><a href="journey-gs.md">Create your first journey</a></strong> — Step-by-step guide from entry to publish</li>
-<li><strong><a href="using-the-journey-designer.md">Learn about the journey designer</a></strong> — Design your journey canvas</li>
-<li><strong><a href="journey-action.md">Supported channels</a></strong> — See all available message and action types</li>
+<li><strong>Palette</strong> — Activities and actions to add to your journey</li>
+<li><strong>Canvas</strong> — Visual representation of your journey flow</li>
+<li><strong>Properties pane</strong> — Configuration details for each element</li>
 </ul>
-</article>
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "What is a journey in AJO?", "acceptedAnswer": {"@type": "Answer", "text": "What Is a Journey in Adobe Journey Optimizer? A journey is a multi-step orchestration that allows you to design and execute real-time, personalized customer experiences across multiple channels. Journeys combine events, orchestration activities, actions, and messages to create contextual experiences based on customer behavior and business events. !Journey designer interface with palette, canvas, and properties pane(https://raw.githubusercontent.com/AdobeDocs/journey-optimizer.en/main/help/using/building-journeys/assets/journey38.png) --- Key Characteristics Real-time & Event-driven \u2014 Journeys react immediately to customer actions or business events rather than following a fixed schedule. 1:1 Personalization \u2014 Each profile travels their own path at their own pace. AJO tracks where each person is and reacts to their specific behavior and profile data. Multi-channel orchestration \u2014 Send messages across email, SMS, push, in-app, web, code-based experiences, content cards, and more\u2014all within a single workflow. Contextual logic \u2014 Use conditions, wait times, and branching to create sophisticated flows that adapt based on customer data, events, and business rules. Persistent & intelligent \u2014 Journeys maintain state across touchpoints and can include frequency capping, re-entrance rules, and audience qualification triggers. --- How Journeys Work in Practice Here's a simplified example of a cart abandonment journey: Customer A: Abandoned cart \u2192 Wait 2 hours \u2192 No purchase? \u2192 Send reminder \u2192 Purchased? \u2192 End Customer B: Abandoned cart \u2192 Wait 2 hours \u2192 Already purchased \u2192 End immediately Each customer experiences a different timeline based on what they actually do. Customer A receives a reminder because they haven't purchased; Customer B skips it because they already bought. --- Four Types of Journeys AJO supports four journey types, each triggered differently: 1. Unitary Event Journeys \u2014 Triggered individually when a customer performs a specific action (e.g., abandons cart,\u2026"}}]}</script></div>
+<hr>
+<h3>Basic Journey Creation Steps</h3>
+<p><img src="https://raw.githubusercontent.com/AdobeDocs/journey-optimizer.en/main/help/using/building-journeys/assets/journey-creation-process.png" alt="Journey creation steps: create, design, test, and publish"></p>
+<p>1. <strong>Define a journey entry point</strong> — An audience segment or a real-time event</p>
+<p>2. <strong>Add message actions</strong> across channels — Email, push, SMS, in-app, web, and more</p>
+<p>3. <strong>Test your journey</strong> with test profiles before activation</p>
+<p>4. <strong>Publish your journey</strong> and monitor its performance</p>
+<hr>
+<h3>Key Features</h3>
+<h4>Real-Time Personalization</h4>
+<p>Journeys combine <strong>events, orchestration activities, actions, and messages</strong> to create personalized, contextual experiences based on customer behavior and business events.</p>
+<h4>Multi-Channel Orchestration</h4>
+<p>Design multistep advanced scenarios that respond to customer behavior and business events in real-time across:</p>
+<ul>
+<li>Email</li>
+<li>SMS</li>
+<li>Push notifications</li>
+<li>In-app messaging</li>
+<li>Web experiences</li>
+<li>Code-based experiences</li>
+<li>Content cards</li>
+<li>And more</li>
+</ul>
+<h4>Data-Driven Decisions</h4>
+<p>Leverage contextual data and audience targeting for maximum impact, with the ability to use custom actions and expressions for advanced logic.</p>
+<hr>
+<h3>Getting Started</h3>
+<p><strong>Ready to build?</strong> Learn how to <a href="../building-journeys/journey-gs.md">create and design your first journey</a>.</p>
+<p>For more detailed information, see the comprehensive <a href="../building-journeys/journey.md">journey orchestration guide</a>.</p>
+<h2>Sources</h2>
+<ul>
+<li><a href="https://experienceleague.adobe.com/en/docs/journey-optimizer/using/orchestrate-journeys/journey">Get started with journeys</a></li>
+<li><a href="https://experienceleague.adobe.com/en/docs/journey-optimizer/using/orchestrate-journeys/journey-faq">Journey Orchestration - Frequently Asked Questions</a></li>
+<li><a href="https://experienceleague.adobe.com/en/docs/journey-optimizer/using/orchestrate-journeys/journey-get-started">Journey Orchestration - Complete guide</a></li>
+</ul></article>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "What is a journey in AJO?", "acceptedAnswer": {"@type": "Answer", "text": "What is a Journey in Adobe Journey Optimizer? A journey is an automated, multistep customer experience that orchestrates personalized interactions across channels in response to customer behavior, business events, or scheduled campaigns. Core Definition Journeys in Adobe Journey Optimizer empower you to create personalized, multistep customer journeys that adapt in real-time to your audience's behavior and needs. Using an intuitive drag-and-drop canvas, you can orchestrate messages and actions across multiple channels, leveraging contextual data and audience targeting for maximum impact. --- How Journeys Work 1:1 Real-Time Orchestration A journey is a canvas where each profile travels their own path at their own pace. AJO tracks where each person is in the flow and reacts in real time to their behavior \u2014 whether that's an action they take, a period of inactivity, or a change in their profile. Example \u2014 Cart Abandonment Journey: Customer A: Abandoned cart \u2192 Wait 2 hours \u2192 No purchase? \u2192 Send reminder \u2192 Purchased? \u2192 End Customer B: Abandoned cart \u2192 Wait 2 hours \u2192 Already purchased \u2192 End immediately Each customer experiences a different timeline based on what they actually do. --- Key Journey Capabilities - Wait activities that create personalized timing between steps - Conditional branching that routes profiles to different paths - Frequency capping to control how often a customer receives messages - Test mode to validate logic before going live - A/B experiments that split profiles into percentage-based groups for testing - Multi-channel actions \u2014 email, SMS, push, in-app, web, code-based experiences, and more --- Four Types of Journeys The type of journey depends on what triggers it: 1. Unitary Event Journeys - Triggered by a specific profile behavior (e.g., a purchase, app sign-in) - Profiles enter one at a time when the event occurs - Best for: Behavior-triggered experiences 2. Read Audience Journeys - Start with an audience from Adobe Experience Platform - Send\u2026"}}]}</script></div>
   </body>
 </html>

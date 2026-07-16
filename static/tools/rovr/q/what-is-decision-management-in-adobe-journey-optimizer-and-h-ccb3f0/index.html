@@ -8,205 +8,176 @@
     
     
     <script src="https://assets.adobedtm.com/204118644db8/290ae1adb65a/launch-e5ec7bf1a1ef-development.min.js" async></script>
-    <script type="module" crossorigin src="/tools/rovr/assets/index-Dei2hK2h.js"></script>
-    <link rel="stylesheet" crossorigin href="/tools/rovr/assets/index--8rF9pj7.css">
+    <script type="module" crossorigin src="/tools/rovr/assets/index-BZDwcb6J.js"></script>
+    <link rel="stylesheet" crossorigin href="/tools/rovr/assets/index-BT2stRIa.css">
   <title>What is decision management in Adobe Journey Optimizer and how do I set up an offer library? | Rovr</title>
-<meta name="description" content="Decision Management in Adobe Journey Optimizer What is Decision Management? Decision Management in Adobe Journey Optimizer empowers marketers to deliver the…" />
+<meta name="description" content="Decision Management in Adobe Journey Optimizer --- What Is Decision Management? Decision Management is an established feature in Adobe Journey Optimizer that…" />
 <link rel="canonical" href="https://thelearningproject.in/tools/rovr/q/what-is-decision-management-in-adobe-journey-optimizer-and-h-ccb3f0" />
 <meta property="og:title" content="What is decision management in Adobe Journey Optimizer and how do I set up an offer library?" />
-<meta property="og:description" content="Decision Management in Adobe Journey Optimizer What is Decision Management? Decision Management in Adobe Journey Optimizer empowers marketers to deliver the…" />
+<meta property="og:description" content="Decision Management in Adobe Journey Optimizer --- What Is Decision Management? Decision Management is an established feature in Adobe Journey Optimizer that…" />
 <meta property="og:url" content="https://thelearningproject.in/tools/rovr/q/what-is-decision-management-in-adobe-journey-optimizer-and-h-ccb3f0" />
 <meta property="og:type" content="article" />
 <meta property="og:image" content="https://thelearningproject.in/tools/rovr/rovrlogo.png" />
 <meta name="twitter:card" content="summary" />
 <meta name="twitter:title" content="What is decision management in Adobe Journey Optimizer and how do I set up an offer library?" />
-<meta name="twitter:description" content="Decision Management in Adobe Journey Optimizer What is Decision Management? Decision Management in Adobe Journey Optimizer empowers marketers to deliver the…" />
+<meta name="twitter:description" content="Decision Management in Adobe Journey Optimizer --- What Is Decision Management? Decision Management is an established feature in Adobe Journey Optimizer that…" />
 </head>
   <body>
     <div id="root"><article><h1>What is decision management in Adobe Journey Optimizer and how do I set up an offer library?</h1>
 <h2>Decision Management in Adobe Journey Optimizer</h2>
-<h3>What is Decision Management?</h3>
-<p><strong>Decision Management</strong> in Adobe Journey Optimizer empowers marketers to deliver the right personalized offers to customers at the perfect moment, across multiple channels. It combines a <strong>centralized offer library</strong> with a <strong>powerful decision engine</strong> to tailor messages based on unique customer profiles and business rules.</p>
-<p>&gt; 💡 <strong>Note:</strong> Adobe Journey Optimizer now also offers <strong>Decisioning</strong> — a newer decisioning capability available via the <strong>code-based experience</strong> and <strong>email</strong> channels. Decision Management (covered here) is the legacy capability, still fully supported.</p>
-<p><a href="https://video.tv.adobe.com/v/326961?quality=12&amp;learn=on">▶ Watch: Get started with Decision Management</a></p>
 <hr>
-<h3>Core Components of Decision Management</h3>
-<p>Before setting up your offer library, understand the key building blocks:</p>
+<h3>What Is Decision Management?</h3>
+<p><strong>Decision Management</strong> is an established feature in Adobe Journey Optimizer that empowers marketers to deliver the right personalized offers to customers at the perfect moment, across multiple channels. It combines two core components:</p>
+<ul>
+<li><strong>A centralized offer library</strong> — a single repository for managing all your offers, collections, and fallback options</li>
+<li><strong>A decision engine</strong> — applies rules and constraints to real-time customer profiles, leveraging Adobe Experience Platform data to select and deliver the right offer</li>
+</ul>
+<h4>Supported Channels</h4>
+<p>Decision Management supports the following channels:</p>
+<p>| Channel | Supported |</p>
+<p>|---|---|</p>
+<p>| <strong>Email</strong> | ✓ |</p>
+<p>| <strong>In-App Messaging</strong> | ✓ |</p>
+<p>| <strong>Push Notifications</strong> | ✓ |</p>
+<p>| <strong>SMS</strong> | ✓ |</p>
+<p>| <strong>Direct Mail</strong> | ✓ |</p>
+<p>&gt; <strong>Note:</strong> Decision Management is labeled as <strong>Legacy</strong> in the AJO interface. Adobe&#x27;s next-generation decisioning framework is called <strong>Decisioning</strong>, available via code-based experience and email channels. If you are starting fresh, consider evaluating Decisioning as the forward-looking capability.</p>
+<hr>
+<h3>Key Components of Decision Management</h3>
+<p>Before setting up your offer library, it helps to understand the building blocks:</p>
 <p>| Component | Description |</p>
 <p>|---|---|</p>
-<p>| <strong>Placements</strong> | Locations or channels where offers are displayed (e.g., email hero image, web banner) |</p>
-<p>| <strong>Decision Rules</strong> | Eligibility criteria that determine who qualifies for an offer |</p>
-<p>| <strong>Tags/Collections Qualifiers</strong> | Labels used to organize and filter offers |</p>
-<p>| <strong>Personalized Offers</strong> | Tailored offers shown to eligible customers |</p>
+<p>| <strong>Placements</strong> | Locations where offers will appear (e.g., email banner, web hero image) |</p>
+<p>| <strong>Decision Rules</strong> | Eligibility criteria that determine which customers qualify for which offers |</p>
+<p>| <strong>Personalized Offers</strong> | Tailored offers targeted to specific customer segments |</p>
 <p>| <strong>Fallback Offers</strong> | Default offers shown when no personalized offer qualifies |</p>
 <p>| <strong>Collections</strong> | Organized groups of offers (static or dynamic) |</p>
-<p>| <strong>Decisions</strong> | The logic container that selects the best offer for a given placement |</p>
-<p>| <strong>Rankings</strong> | Priority rules or AI models that determine offer order |</p>
+<p>| <strong>Decisions</strong> | The logic container that brings placements, offers, and rules together |</p>
 <hr>
-<h3>Navigating Decision Management</h3>
-<p>Access Decision Management from the left navigation rail in Journey Optimizer:</p>
-<h4><strong>Offers Menu</strong></h4>
-<ul>
-<li><strong>[!UICONTROL Overview]</strong> — On-screen guided setup for new users; dashboard view for experienced users</li>
-<li><strong>[!UICONTROL Offers]</strong> — Create and manage personalized and fallback offers</li>
-<li><strong>[!UICONTROL Collections]</strong> — Organize offers into static and dynamic collections</li>
-<li><strong>[!UICONTROL Decisions]</strong> — Create and manage decisions to deliver offers</li>
-<li><strong>[!UICONTROL Batch Decisioning]</strong> — Deliver offer decisions to all profiles in a given AEP audience</li>
-<li><strong>[!UICONTROL Simulation]</strong> — Validate decisioning logic by simulating offer delivery to test profiles</li>
-</ul>
-<h4><strong>Components Menu</strong></h4>
-<ul>
-<li><strong>[!UICONTROL Placements]</strong> — Define where offers appear</li>
-<li><strong>[!UICONTROL Decision Rules]</strong> — Define eligibility logic</li>
-<li><strong>[!UICONTROL Tags]</strong> — Organize offers with labels</li>
-<li><strong>[!UICONTROL Rankings]</strong> — Configure AI or custom ranking models</li>
-</ul>
-<p><img src="https://raw.githubusercontent.com/AdobeDocs/journey-optimizer.en/main/help/using/offers/assets/offers_menu.png" alt="Decision Management menu showing Offers and Components sections"></p>
+<h3>Navigating the Decision Management Interface</h3>
+<p>The <strong>Decision Management</strong> section in the AJO left navigation rail contains two menus:</p>
+<h4>Offers Menu</h4>
+<p><img src="assets/offers_menu.png" alt="Offers Menu"></p>
+<p>| Menu Item | Purpose |</p>
+<p>|---|---|</p>
+<p>| <strong>Overview</strong> | Onboarding steps for new users; summary of recent offers and decisions for existing users |</p>
+<p>| <strong>Offers</strong> | Create and manage personalized offers and fallback offers |</p>
+<p>| <strong>Collections</strong> | Organize offers into static and dynamic collections |</p>
+<p>| <strong>Decisions</strong> | Create and manage decisions to deliver offers |</p>
+<p>| <strong>Batch Decisioning</strong> | Deliver offer decisions to all profiles in a given AEP audience |</p>
+<p>| <strong>Simulation</strong> | Validate decisioning logic by simulating which offers are delivered to a test profile |</p>
+<h4>Components Menu</h4>
+<p><img src="assets/offer_activities.png" alt="Components Menu"></p>
+<p>Used to create and manage the foundational components required to build offers and decisions, such as placements and decision rules.</p>
 <hr>
-<h3>Setting Up Your Offer Library: Step-by-Step</h3>
+<h3>Setting Up Your Offer Library</h3>
 <h4>Prerequisites</h4>
+<p>Before creating offers, ensure you have:</p>
 <ul>
-<li>Access to <strong>Adobe Journey Optimizer</strong> with Decision Management permissions</li>
-<li>At least one <strong>audience segment</strong> defined in AEP</li>
-<li>XDM schemas configured for profile attributes you want to use in eligibility rules</li>
+<li>Access to <strong>Adobe Journey Optimizer</strong> with appropriate permissions</li>
+<li>At least one <strong>placement</strong> configured (defines where the offer will appear)</li>
+<li><strong>Decision rules</strong> defined if you need eligibility criteria</li>
+<li>AEP audience or profile data available for targeting</li>
 </ul>
 <hr>
 <h4>Step 1: Create Placements</h4>
-<p><strong>Placements</strong> define where and how offers are rendered. Create at least one before building offers.</p>
-<p>1. In the left rail, navigate to <strong>[!UICONTROL Components]</strong> → <strong>[!UICONTROL Placements]</strong></p>
-<p>2. Click <strong>[!UICONTROL Create Placement]</strong></p>
-<p>3. Configure the placement:</p>
+<p>Placements define <strong>where</strong> and <strong>how</strong> your offers will be displayed.</p>
+<p>1. In the AJO left navigation, go to <strong>Decision Management</strong> &gt; <strong>Components</strong></p>
+<p>2. Select <strong>Placements</strong></p>
+<p>3. Click <strong>Create Placement</strong></p>
+<p>4. Define:</p>
 <ul>
-<li><strong>Name</strong> — e.g., &quot;Email Hero Banner&quot;</li>
-<li><strong>Channel type</strong> — Email, Web, Mobile, etc.</li>
-<li><strong>Content type</strong> — JSON, HTML, Image URL, Text</li>
+<li><strong>Name</strong> — a recognizable label</li>
+<li><strong>Channel type</strong> — e.g., Email, Web, Mobile</li>
+<li><strong>Content type</strong> — e.g., JSON, HTML, Image</li>
 </ul>
-<p>4. Click <strong>[!UICONTROL Save]</strong></p>
-<p>&gt; ✅ Create separate placements for each channel and content format combination you intend to use.</p>
+<p>5. Click <strong>Save</strong></p>
 <hr>
-<h4>Step 2: Create Decision Rules</h4>
-<p><strong>Decision Rules</strong> define the eligibility criteria a customer must meet to receive an offer.</p>
-<p>1. Navigate to <strong>[!UICONTROL Components]</strong> → <strong>[!UICONTROL Decision Rules]</strong></p>
-<p>2. Click <strong>[!UICONTROL Create Rule]</strong></p>
-<p>3. Enter a <strong>Name</strong> and optional <strong>Description</strong></p>
-<p>4. Use the <strong>expression editor</strong> to build your rule logic:</p>
-<ul>
-<li>Profile attributes (e.g., `loyalty tier = Gold`)</li>
-<li>Audience membership</li>
-<li>Contextual data (e.g., device type, location)</li>
-<li>Event-based conditions</li>
-</ul>
-<p>5. Click <strong>[!UICONTROL Save]</strong></p>
-<p>&gt; 💡 <strong>Tip:</strong> You can also pass <strong>context data</strong> directly in Decisioning API requests to create dynamic eligibility rules based on real-time conditions like device type, location, or user preferences.</p>
+<h4>Step 2: Create Decision Rules (Eligibility Criteria)</h4>
+<p>Decision rules determine which customer profiles qualify for an offer.</p>
+<p>1. Navigate to <strong>Decision Management</strong> &gt; <strong>Components</strong> &gt; <strong>Rules</strong></p>
+<p>2. Click <strong>Create Rule</strong></p>
+<p>3. Define your eligibility logic using profile attributes, events, or audience membership</p>
+<p>4. Click <strong>Save</strong></p>
 <hr>
 <h4>Step 3: Create Personalized Offers</h4>
-<p><strong>Personalized Offers</strong> are the tailored marketing messages delivered to eligible customers.</p>
-<p>1. Navigate to <strong>[!UICONTROL Offers]</strong> → <strong>[!UICONTROL Offers]</strong></p>
-<p>2. Click <strong>[!UICONTROL Create Offer]</strong> → select <strong>[!UICONTROL Personalized Offer]</strong></p>
+<p>1. Navigate to <strong>Decision Management</strong> &gt; <strong>Offers</strong></p>
+<p>2. Click <strong>Create Offer</strong> and select <strong>Personalized Offer</strong></p>
 <p>3. Configure the offer:</p>
-<p><strong>General settings:</strong></p>
 <ul>
-<li><strong>Name</strong> — Descriptive internal name</li>
-<li><strong>Start and end dates</strong> — Offer validity window</li>
-<li><strong>Tags</strong> — Add collection qualifiers for organization</li>
+<li><strong>Name</strong> — descriptive label</li>
+<li><strong>Start and end dates</strong> — offer validity window</li>
+<li><strong>Representations</strong> — define the offer content for each placement (e.g., image URL, text, HTML)</li>
+<li><strong>Eligibility</strong> — assign decision rules or audience criteria</li>
+<li><strong>Priority</strong> — numeric score used when multiple offers qualify (higher = more likely to be selected)</li>
+<li><strong>Capping</strong> — optionally limit how many times an offer can be shown overall or per profile</li>
 </ul>
-<p><strong>Representations:</strong></p>
-<ul>
-<li>Add one or more representations (one per placement)</li>
-<li>For each representation, select the <strong>Placement</strong> and provide the <strong>content</strong> (HTML, JSON, image URL, or text)</li>
-</ul>
-<p><strong>Eligibility:</strong></p>
-<ul>
-<li>Select <strong>[!UICONTROL All visitors]</strong> for no restrictions, or</li>
-<li>Choose a specific <strong>Audience</strong> segment, or</li>
-<li>Apply a <strong>Decision Rule</strong> for attribute-based eligibility</li>
-</ul>
-<p><strong>Priority:</strong></p>
-<ul>
-<li>Set a numeric <strong>priority score</strong> (higher = more likely to be selected when multiple offers qualify)</li>
-<li>Optionally apply an <strong>AI ranking model</strong> (requires Adobe Sensei configuration)</li>
-</ul>
-<p><strong>Capping:</strong></p>
-<ul>
-<li>Set <strong>frequency capping</strong> to limit how many times an offer is shown per customer</li>
-<li>Configure <strong>total cap</strong> across all customers</li>
-</ul>
-<p>4. Click <strong>[!UICONTROL Save and Approve]</strong> to make the offer available</p>
+<p>4. Click <strong>Save and Approve</strong> to make the offer available for use in decisions</p>
 <hr>
 <h4>Step 4: Create a Fallback Offer</h4>
-<p><strong>Fallback Offers</strong> are shown when no personalized offer qualifies for a customer. Every decision requires one.</p>
-<p>1. Navigate to <strong>[!UICONTROL Offers]</strong> → <strong>[!UICONTROL Offers]</strong></p>
-<p>2. Click <strong>[!UICONTROL Create Offer]</strong> → select <strong>[!UICONTROL Fallback Offer]</strong></p>
-<p>3. Configure:</p>
+<p>A fallback offer is shown when <strong>no personalized offer qualifies</strong> for a given profile.</p>
+<p>1. In <strong>Decision Management</strong> &gt; <strong>Offers</strong>, click <strong>Create Offer</strong></p>
+<p>2. Select <strong>Fallback Offer</strong></p>
+<p>3. Provide:</p>
 <ul>
 <li><strong>Name</strong></li>
-<li><strong>Representations</strong> — Add content for each relevant placement</li>
-<li><strong>Tags</strong> — Optional organizational labels</li>
+<li><strong>Representations</strong> for each relevant placement</li>
 </ul>
-<p>4. Click <strong>[!UICONTROL Save and Approve]</strong></p>
+<p>4. Click <strong>Save and Approve</strong></p>
 <hr>
 <h4>Step 5: Create Collections</h4>
-<p><strong>Collections</strong> organize your offers into logical groups for use in decisions.</p>
-<p>1. Navigate to <strong>[!UICONTROL Offers]</strong> → <strong>[!UICONTROL Collections]</strong></p>
-<p>2. Click <strong>[!UICONTROL Create Collection]</strong></p>
+<p>Collections group offers together for easier management and use in decisions.</p>
+<p>1. Navigate to <strong>Decision Management</strong> &gt; <strong>Collections</strong></p>
+<p>2. Click <strong>Create Collection</strong></p>
 <p>3. Choose collection type:</p>
 <ul>
-<li><strong>Static Collection</strong> — Manually select specific offers</li>
-<li><strong>Dynamic Collection</strong> — Automatically includes offers matching selected tags/qualifiers</li>
+<li><strong>Static</strong> — manually select specific offers</li>
+<li><strong>Dynamic</strong> — automatically includes offers matching a defined tag or filter</li>
 </ul>
-<p>4. Name the collection and configure its contents</p>
-<p>5. Click <strong>[!UICONTROL Save]</strong></p>
+<p>4. Name the collection and add your offers</p>
+<p>5. Click <strong>Save</strong></p>
 <hr>
 <h4>Step 6: Create a Decision</h4>
-<p>A <strong>Decision</strong> ties everything together — it evaluates eligible offers from a collection against a placement and returns the best offer for each customer.</p>
-<p>1. Navigate to <strong>[!UICONTROL Offers]</strong> → <strong>[!UICONTROL Decisions]</strong></p>
-<p>2. Click <strong>[!UICONTROL Create Decision]</strong></p>
+<p>A decision contains the <strong>logic</strong> that selects the right offer for each customer.</p>
+<p>1. Navigate to <strong>Decision Management</strong> &gt; <strong>Decisions</strong></p>
+<p>2. Click <strong>Create Decision</strong></p>
 <p>3. Configure:</p>
 <ul>
-<li><strong>Name</strong> and <strong>Description</strong></li>
+<li><strong>Name</strong> and <strong>description</strong></li>
 <li><strong>Start and end dates</strong></li>
+<li><strong>Decision scopes</strong> — combine a placement with a collection of offers</li>
+<li><strong>Ranking</strong> — define how offers are ranked (by priority score, AI ranking model, or custom formula)</li>
+<li><strong>Fallback offer</strong> — assign the fallback for when no offers qualify</li>
 </ul>
-<p>4. Add <strong>Decision Scopes</strong>:</p>
-<ul>
-<li>Select a <strong>Placement</strong></li>
-<li>Select a <strong>Collection</strong> of offers to evaluate</li>
-<li>Configure <strong>Ranking</strong> — how offers are ranked (priority score, formula, or AI model)</li>
-</ul>
-<p>5. Select a <strong>Fallback Offer</strong> for when no personalized offer qualifies</p>
-<p>6. Click <strong>[!UICONTROL Finish]</strong> then <strong>[!UICONTROL Save and Approve]</strong></p>
+<p>4. Click <strong>Finish</strong> then <strong>Activate</strong> to make the decision live</p>
 <hr>
 <h4>Step 7: Validate with Simulation</h4>
-<p>Before going live, test your decisioning logic:</p>
-<p>1. Navigate to <strong>[!UICONTROL Offers]</strong> → <strong>[!UICONTROL Simulation]</strong></p>
+<p>Before going live, use the <strong>Simulation</strong> tool to test your logic:</p>
+<p>1. Navigate to <strong>Decision Management</strong> &gt; <strong>Simulation</strong></p>
 <p>2. Select a <strong>test profile</strong></p>
-<p>3. Choose a <strong>Decision</strong> to simulate</p>
-<p>4. Review which offers would be delivered to that profile and why</p>
-<p>5. Adjust eligibility rules, priorities, or collections based on results</p>
+<p>3. Select the <strong>decision</strong> to simulate</p>
+<p>4. Review which offer would be delivered and why — confirming your eligibility rules and ranking are working as expected</p>
 <hr>
-<h3>Delivering Offers via API</h3>
-<p>For advanced workflows, you can deliver offers programmatically:</p>
-<p>1. Make a <strong>POST request</strong> to the <strong>Decisioning API</strong> with:</p>
+<h3>Using Decisions in Campaigns and Journeys</h3>
+<p>Once your decision is active, you can reference it in:</p>
 <ul>
-<li>A unique <strong>placement ID</strong></li>
-<li>A unique <strong>decision ID</strong></li>
-<li>Optional <strong>context data</strong> for dynamic eligibility rules</li>
+<li><strong>AJO Email campaigns</strong> — insert offer content dynamically using the offer decision component in the email designer</li>
+<li><strong>AJO Journeys</strong> — add an offer decision action within a journey step</li>
+<li><strong>Batch Decisioning</strong> — run decisions against an entire AEP audience and export results</li>
 </ul>
-<p>2. The API returns the best offer for the given profile and placement</p>
 <hr>
-<h3>Delivering Offers via Batch Decisioning</h3>
-<p>For campaigns targeting large audiences:</p>
-<p>1. Navigate to <strong>[!UICONTROL Offers]</strong> → <strong>[!UICONTROL Batch Decisioning]</strong></p>
-<p>2. Select the <strong>Decision</strong> and <strong>AEP Audience</strong> to target</p>
-<p>3. Run the batch job — offer decisions are delivered to all profiles in the selected audience</p>
+<h3>Decision Management vs. Decisioning (Next Generation)</h3>
+<p>| Capability | Decision Management (Legacy) | Decisioning (New) |</p>
+<p>|---|---|---|</p>
+<p>| <strong>Channels</strong> | Email, In-App, Push, SMS, Direct Mail | Code-based Experience, Email, Push, SMS |</p>
+<p>| <strong>Item Catalog</strong> | Offer Library | Schema-based item catalog with custom metadata |</p>
+<p>| <strong>Reusability</strong> | Limited | Updated decision policy and selection strategy configuration |</p>
+<p>| <strong>Experimentation</strong> | Not native | Built-in experimentation capabilities |</p>
+<p>| <strong>Status</strong> | Legacy (fully supported) | Strategic direction |</p>
+<p>&gt; If you are migrating from Decision Management to Decisioning, Adobe provides dedicated <strong>migration documentation</strong> and a <strong>Migration API guide</strong> to assist with the transition.</p>
 <hr>
-<h3>Key Tips for a Successful Offer Library</h3>
-<p>✅ <strong>Plan your placements first</strong> — Every offer needs at least one representation tied to a placement</p>
-<p>✅ <strong>Always create a fallback offer</strong> — Decisions cannot be activated without one</p>
-<p>✅ <strong>Use tags consistently</strong> — They power dynamic collections and make offer management scalable</p>
-<p>✅ <strong>Simulate before activating</strong> — Use the Simulation tool to validate logic before impacting real customers</p>
-<p>✅ <strong>Set frequency caps</strong> — Prevent offer fatigue by limiting how often customers see the same offer</p>
-<p>✅ <strong>Use context data</strong> — Pass real-time signals in API requests for more precise, dynamic personalization</p>
+<p>Would you like more detail on any specific step, such as configuring AI ranking for offers, setting up capping rules, or integrating decisions into an AJO email campaign?</p>
 </article>
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "What is decision management in Adobe Journey Optimizer and how do I set up an offer library?", "acceptedAnswer": {"@type": "Answer", "text": "Decision Management in Adobe Journey Optimizer What is Decision Management? Decision Management in Adobe Journey Optimizer empowers marketers to deliver the right personalized offers to customers at the perfect moment, across multiple channels. It combines a centralized offer library with a powerful decision engine to tailor messages based on unique customer profiles and business rules. \ud83d\udca1 Note: Adobe Journey Optimizer now also offers Decisioning \u2014 a newer decisioning capability available via the code-based experience and email channels. Decision Management (covered here) is the legacy capability, still fully supported. \u25b6 Watch: Get started with Decision Management(https://video.tv.adobe.com/v/326961?quality=12&learn=on) --- Core Components of Decision Management Before setting up your offer library, understand the key building blocks: | Component | Description | |---|---| | Placements | Locations or channels where offers are displayed (e.g., email hero image, web banner) | | Decision Rules | Eligibility criteria that determine who qualifies for an offer | | Tags/Collections Qualifiers | Labels used to organize and filter offers | | Personalized Offers | Tailored offers shown to eligible customers | | Fallback Offers | Default offers shown when no personalized offer qualifies | | Collections | Organized groups of offers (static or dynamic) | | Decisions | The logic container that selects the best offer for a given placement | | Rankings | Priority rules or AI models that determine offer order | --- Navigating Decision Management Access Decision Management from the left navigation rail in Journey Optimizer: Offers Menu - !UICONTROL Overview \u2014 On-screen guided setup for new users; dashboard view for experienced users - !UICONTROL Offers \u2014 Create and manage personalized and fallback offers - !UICONTROL Collections \u2014 Organize offers into static and dynamic collections - !UICONTROL Decisions \u2014 Create and manage decisions to deliver offers - !UICONTROL Batch Decisioning\u2026"}}]}</script></div>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "What is decision management in Adobe Journey Optimizer and how do I set up an offer library?", "acceptedAnswer": {"@type": "Answer", "text": "Decision Management in Adobe Journey Optimizer --- What Is Decision Management? Decision Management is an established feature in Adobe Journey Optimizer that empowers marketers to deliver the right personalized offers to customers at the perfect moment, across multiple channels. It combines two core components: - A centralized offer library \u2014 a single repository for managing all your offers, collections, and fallback options - A decision engine \u2014 applies rules and constraints to real-time customer profiles, leveraging Adobe Experience Platform data to select and deliver the right offer Supported Channels Decision Management supports the following channels: | Channel | Supported | |---|---| | Email | \u2713 | | In-App Messaging | \u2713 | | Push Notifications | \u2713 | | SMS | \u2713 | | Direct Mail | \u2713 | Note: Decision Management is labeled as Legacy in the AJO interface. Adobe's next-generation decisioning framework is called Decisioning, available via code-based experience and email channels. If you are starting fresh, consider evaluating Decisioning as the forward-looking capability. --- Key Components of Decision Management Before setting up your offer library, it helps to understand the building blocks: | Component | Description | |---|---| | Placements | Locations where offers will appear (e.g., email banner, web hero image) | | Decision Rules | Eligibility criteria that determine which customers qualify for which offers | | Personalized Offers | Tailored offers targeted to specific customer segments | | Fallback Offers | Default offers shown when no personalized offer qualifies | | Collections | Organized groups of offers (static or dynamic) | | Decisions | The logic container that brings placements, offers, and rules together | --- Navigating the Decision Management Interface The Decision Management section in the AJO left navigation rail contains two menus: Offers Menu !Offers Menu(assets/offersmenu.png) | Menu Item | Purpose | |---|---| | Overview | Onboarding steps for\u2026"}}]}</script></div>
   </body>
 </html>
