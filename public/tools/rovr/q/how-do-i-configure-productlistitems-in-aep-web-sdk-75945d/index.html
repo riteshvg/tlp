@@ -1,0 +1,153 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/png" href="/tools/rovr/rovrlogo.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="build-date" content="2026-06-10" />
+    
+    
+    <script src="https://assets.adobedtm.com/204118644db8/290ae1adb65a/launch-e5ec7bf1a1ef-development.min.js" async></script>
+    <script type="module" crossorigin src="/tools/rovr/assets/index-BDlEezU1.js"></script>
+    <link rel="stylesheet" crossorigin href="/tools/rovr/assets/index-BtV6C9MI.css">
+  <title>How do i configure productListItems in AEP Web SDK? | Rovr</title>
+<meta name="description" content="Configuring productListItems in AEP Web SDK The productListItems object is used within the xdm payload of a sendEvent call to capture product-related commerce…" />
+<link rel="canonical" href="https://thelearningproject.in/tools/rovr/q/how-do-i-configure-productlistitems-in-aep-web-sdk-75945d" />
+<meta property="og:title" content="How do i configure productListItems in AEP Web SDK?" />
+<meta property="og:description" content="Configuring productListItems in AEP Web SDK The productListItems object is used within the xdm payload of a sendEvent call to capture product-related commerce…" />
+<meta property="og:url" content="https://thelearningproject.in/tools/rovr/q/how-do-i-configure-productlistitems-in-aep-web-sdk-75945d" />
+<meta property="og:type" content="article" />
+<meta property="og:image" content="https://thelearningproject.in/tools/rovr/rovrlogo.png" />
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="How do i configure productListItems in AEP Web SDK?" />
+<meta name="twitter:description" content="Configuring productListItems in AEP Web SDK The productListItems object is used within the xdm payload of a sendEvent call to capture product-related commerce…" />
+</head>
+  <body>
+    <div id="root"><article><h1>How do i configure productListItems in AEP Web SDK?</h1>
+<h2>Configuring `productListItems` in AEP Web SDK</h2>
+<p>The `productListItems` object is used within the `xdm` payload of a `sendEvent` call to capture product-related commerce data. It is structured as an <strong>array</strong>, allowing you to include multiple products in a single event.</p>
+<hr>
+<h3>Basic Structure</h3>
+<p>`productListItems` is passed inside the `xdm` object alongside a `commerce` event type. The general pattern is:</p>
+<p>```javascript</p>
+<p>alloy(&quot;sendEvent&quot;, {</p>
+<p>&quot;xdm&quot;: {</p>
+<p>&quot;commerce&quot;: {</p>
+<p>&quot;&lt;commerceEventType&gt;&quot;: {</p>
+<p>&quot;value&quot;: 1</p>
+<p>}</p>
+<p>},</p>
+<p>&quot;productListItems&quot;: [</p>
+<p>{</p>
+<p>&quot;SKU&quot;: &quot;PRODUCT_SKU&quot;,</p>
+<p>&quot;name&quot;: &quot;Product Name&quot;,</p>
+<p>&quot;quantity&quot;: 1,</p>
+<p>&quot;priceTotal&quot;: 29.99</p>
+<p>}</p>
+<p>]</p>
+<p>}</p>
+<p>});</p>
+<p>```</p>
+<hr>
+<h3>Common Commerce Event Examples</h3>
+<h4>1. Product Views</h4>
+<p>Use `productViews` in the `commerce` object when a product detail page is viewed:</p>
+<p>```javascript</p>
+<p>alloy(&quot;sendEvent&quot;, {</p>
+<p>&quot;xdm&quot;: {</p>
+<p>&quot;commerce&quot;: {</p>
+<p>&quot;productViews&quot;: {</p>
+<p>&quot;value&quot;: 1</p>
+<p>}</p>
+<p>},</p>
+<p>&quot;productListItems&quot;: [</p>
+<p>{</p>
+<p>&quot;SKU&quot;: &quot;HT105&quot;,</p>
+<p>&quot;name&quot;: &quot;The Big Floppy Hat&quot;</p>
+<p>},</p>
+<p>{</p>
+<p>&quot;SKU&quot;: &quot;HT104&quot;,</p>
+<p>&quot;name&quot;: &quot;The Small Floppy Hat&quot;</p>
+<p>}</p>
+<p>]</p>
+<p>}</p>
+<p>});</p>
+<p>```</p>
+<hr>
+<h4>2. Add to Cart (`productListAdds`)</h4>
+<p>Use `productListAdds` when a product is added to the cart. You can also include additional fields like `productAddMethod`:</p>
+<p>```javascript</p>
+<p>alloy(&quot;sendEvent&quot;, {</p>
+<p>&quot;xdm&quot;: {</p>
+<p>&quot;commerce&quot;: {</p>
+<p>&quot;productListAdds&quot;: {</p>
+<p>&quot;value&quot;: 1</p>
+<p>}</p>
+<p>},</p>
+<p>&quot;productListItems&quot;: [</p>
+<p>{</p>
+<p>&quot;SKU&quot;: &quot;HT105&quot;,</p>
+<p>&quot;name&quot;: &quot;The Big Floppy Hat&quot;,</p>
+<p>&quot;quantity&quot;: 1,</p>
+<p>&quot;priceTotal&quot;: 29.99,</p>
+<p>&quot;productAddMethod&quot;: &quot;Add to Cart Button&quot;</p>
+<p>},</p>
+<p>{</p>
+<p>&quot;SKU&quot;: &quot;HT104&quot;,</p>
+<p>&quot;name&quot;: &quot;The Small Floppy Hat&quot;,</p>
+<p>&quot;quantity&quot;: 1,</p>
+<p>&quot;priceTotal&quot;: 9.99,</p>
+<p>&quot;productAddMethod&quot;: &quot;Add-on&quot;</p>
+<p>}</p>
+<p>]</p>
+<p>}</p>
+<p>});</p>
+<p>```</p>
+<hr>
+<h4>3. Checkout (`checkouts`)</h4>
+<p>Use `checkouts` when a user initiates or progresses through checkout:</p>
+<p>```javascript</p>
+<p>alloy(&quot;sendEvent&quot;, {</p>
+<p>&quot;xdm&quot;: {</p>
+<p>&quot;commerce&quot;: {</p>
+<p>&quot;checkouts&quot;: {</p>
+<p>&quot;value&quot;: 1</p>
+<p>}</p>
+<p>},</p>
+<p>&quot;productListItems&quot;: [</p>
+<p>{</p>
+<p>&quot;SKU&quot;: &quot;HT105&quot;,</p>
+<p>&quot;name&quot;: &quot;The Big Floppy Hat&quot;,</p>
+<p>&quot;quantity&quot;: 1,</p>
+<p>&quot;priceTotal&quot;: 29.99</p>
+<p>},</p>
+<p>{</p>
+<p>&quot;SKU&quot;: &quot;HT104&quot;,</p>
+<p>&quot;name&quot;: &quot;The Small Floppy Hat&quot;,</p>
+<p>&quot;quantity&quot;: 1,</p>
+<p>&quot;priceTotal&quot;: 9.99</p>
+<p>}</p>
+<p>]</p>
+<p>}</p>
+<p>});</p>
+<p>```</p>
+<hr>
+<h3>Key Fields in `productListItems`</h3>
+<p>| Field | Description |</p>
+<p>|---|---|</p>
+<p>| `SKU` | Stock Keeping Unit — unique product identifier |</p>
+<p>| `name` | Human-readable product name |</p>
+<p>| `quantity` | Number of units |</p>
+<p>| `priceTotal` | Total price for this line item |</p>
+<p>| `productAddMethod` | Method used to add product (e.g., &quot;Add to Cart Button&quot;) |</p>
+<hr>
+<h3>Key Points</h3>
+<ul>
+<li>`productListItems` is always an <strong>array</strong>, even for a single product.</li>
+<li>It is always paired with a `commerce` event type (e.g., `productViews`, `productListAdds`, `checkouts`, `purchases`, etc.).</li>
+<li>The data is sent in <strong>XDM format</strong>, which the Edge Network then maps to downstream Adobe solutions like Adobe Analytics and Adobe Target.</li>
+</ul>
+</article>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "How do i configure productListItems in AEP Web SDK?", "acceptedAnswer": {"@type": "Answer", "text": "Configuring productListItems in AEP Web SDK The productListItems object is used within the xdm payload of a sendEvent call to capture product-related commerce data. It is structured as an array, allowing you to include multiple products in a single event. --- Basic Structure productListItems is passed inside the xdm object alongside a commerce event type. The general pattern is: javascript alloy(\"sendEvent\", { \"xdm\": { \"commerce\": { \"<commerceEventType\": { \"value\": 1 } }, \"productListItems\": { \"SKU\": \"PRODUCTSKU\", \"name\": \"Product Name\", \"quantity\": 1, \"priceTotal\": 29.99 } } }); --- Common Commerce Event Examples 1. Product Views Use productViews in the commerce object when a product detail page is viewed: javascript alloy(\"sendEvent\", { \"xdm\": { \"commerce\": { \"productViews\": { \"value\": 1 } }, \"productListItems\": { \"SKU\": \"HT105\", \"name\": \"The Big Floppy Hat\" }, { \"SKU\": \"HT104\", \"name\": \"The Small Floppy Hat\" } } }); --- 2. Add to Cart (productListAdds) Use productListAdds when a product is added to the cart. You can also include additional fields like productAddMethod: javascript alloy(\"sendEvent\", { \"xdm\": { \"commerce\": { \"productListAdds\": { \"value\": 1 } }, \"productListItems\": { \"SKU\": \"HT105\", \"name\": \"The Big Floppy Hat\", \"quantity\": 1, \"priceTotal\": 29.99, \"productAddMethod\": \"Add to Cart Button\" }, { \"SKU\": \"HT104\", \"name\": \"The Small Floppy Hat\", \"quantity\": 1, \"priceTotal\": 9.99, \"productAddMethod\": \"Add-on\" } } }); --- 3. Checkout (checkouts) Use checkouts when a user initiates or progresses through checkout: javascript alloy(\"sendEvent\", { \"xdm\": { \"commerce\": { \"checkouts\": { \"value\": 1 } }, \"productListItems\": { \"SKU\": \"HT105\", \"name\": \"The Big Floppy Hat\", \"quantity\": 1, \"priceTotal\": 29.99 }, { \"SKU\": \"HT104\", \"name\": \"The Small Floppy Hat\", \"quantity\": 1, \"priceTotal\": 9.99 } } }); --- Key Fields in productListItems | Field | Description | |---|---| | SKU | Stock Keeping Unit \u2014 unique product identifier | | name | Human-readable product name | |\u2026"}}]}</script></div>
+  </body>
+</html>

@@ -1,0 +1,213 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/png" href="/tools/rovr/rovrlogo.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="build-date" content="2026-06-10" />
+    
+    
+    <script src="https://assets.adobedtm.com/204118644db8/290ae1adb65a/launch-e5ec7bf1a1ef-development.min.js" async></script>
+    <script type="module" crossorigin src="/tools/rovr/assets/index-BDlEezU1.js"></script>
+    <link rel="stylesheet" crossorigin href="/tools/rovr/assets/index-BtV6C9MI.css">
+  <title>How do I track specific commerce events like purchases or cart additions using productListItems? | Rovr</title>
+<meta name="description" content="Tracking Specific Commerce Events with productListItems --- Overview Commerce events are tracked by setting the appropriate action in the commerce object…" />
+<link rel="canonical" href="https://thelearningproject.in/tools/rovr/q/how-do-i-track-specific-commerce-events-like-purchases-or-ca-6fa4b2" />
+<meta property="og:title" content="How do I track specific commerce events like purchases or cart additions using productListItems?" />
+<meta property="og:description" content="Tracking Specific Commerce Events with productListItems --- Overview Commerce events are tracked by setting the appropriate action in the commerce object…" />
+<meta property="og:url" content="https://thelearningproject.in/tools/rovr/q/how-do-i-track-specific-commerce-events-like-purchases-or-ca-6fa4b2" />
+<meta property="og:type" content="article" />
+<meta property="og:image" content="https://thelearningproject.in/tools/rovr/rovrlogo.png" />
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="How do I track specific commerce events like purchases or cart additions using productListItems?" />
+<meta name="twitter:description" content="Tracking Specific Commerce Events with productListItems --- Overview Commerce events are tracked by setting the appropriate action in the commerce object…" />
+</head>
+  <body>
+    <div id="root"><article><h1>How do I track specific commerce events like purchases or cart additions using productListItems?</h1>
+<h2>Tracking Specific Commerce Events with `productListItems`</h2>
+<hr>
+<h3>Overview</h3>
+<p>Commerce events are tracked by setting the appropriate action in the `commerce` object alongside the `productListItems` array. Each event type signals a specific user action in the shopping journey.</p>
+<hr>
+<h3>Commerce Event Types Reference</h3>
+<p>| UI Label | XDM Field | Description |</p>
+<p>|---|---|---|</p>
+<p>| Product Views | `productViews` | A view of an individual product occurred |</p>
+<p>| Product List Opens | `productListOpens` | A new product list/cart was created |</p>
+<p>| Product List Adds | `productListAdds` | A product was added to the cart |</p>
+<p>| Product List Removals | `productListRemovals` | A product was removed from the cart |</p>
+<p>| Product List Views | `productListViews` | The cart/product list was viewed |</p>
+<p>| Product List Reopens | `productListReopens` | A previously abandoned cart was re-activated |</p>
+<p>| Save For Laters | `saveForLaters` | A product was saved to a wish list |</p>
+<p>| Checkouts | `checkouts` | Checkout was initiated |</p>
+<p>| Purchases | `purchases` | An order was accepted/completed |</p>
+<p>| In Store Purchase | `inStorePurchase` | An in-store purchase was made |</p>
+<hr>
+<h3>Detailed Event Implementations</h3>
+<h4>1. Product View</h4>
+<p>Track when a user views a product detail page:</p>
+<p>```javascript</p>
+<p>alloy(&quot;sendEvent&quot;, {</p>
+<p>&quot;xdm&quot;: {</p>
+<p>&quot;commerce&quot;: {</p>
+<p>&quot;productViews&quot;: {</p>
+<p>&quot;value&quot;: 1</p>
+<p>}</p>
+<p>},</p>
+<p>&quot;productListItems&quot;: [</p>
+<p>{</p>
+<p>&quot;SKU&quot;: &quot;HT105&quot;,</p>
+<p>&quot;name&quot;: &quot;The Big Floppy Hat&quot;,</p>
+<p>&quot;priceTotal&quot;: 29.99</p>
+<p>}</p>
+<p>]</p>
+<p>}</p>
+<p>});</p>
+<p>```</p>
+<hr>
+<h4>2. Cart Addition (`productListAdds`)</h4>
+<p>Track when a product is added to the cart:</p>
+<p>```javascript</p>
+<p>alloy(&quot;sendEvent&quot;, {</p>
+<p>&quot;xdm&quot;: {</p>
+<p>&quot;commerce&quot;: {</p>
+<p>&quot;productListAdds&quot;: {</p>
+<p>&quot;value&quot;: 1</p>
+<p>}</p>
+<p>},</p>
+<p>&quot;productListItems&quot;: [</p>
+<p>{</p>
+<p>&quot;SKU&quot;: &quot;HT105&quot;,</p>
+<p>&quot;name&quot;: &quot;The Big Floppy Hat&quot;,</p>
+<p>&quot;quantity&quot;: 1,</p>
+<p>&quot;priceTotal&quot;: 29.99,</p>
+<p>&quot;productAddMethod&quot;: &quot;Add to Cart Button&quot;</p>
+<p>}</p>
+<p>]</p>
+<p>}</p>
+<p>});</p>
+<p>```</p>
+<hr>
+<h4>3. Cart View (`productListViews`)</h4>
+<p>Track when a user views their shopping cart:</p>
+<p>```javascript</p>
+<p>alloy(&quot;sendEvent&quot;, {</p>
+<p>&quot;xdm&quot;: {</p>
+<p>&quot;commerce&quot;: {</p>
+<p>&quot;productListViews&quot;: {</p>
+<p>&quot;value&quot;: 1</p>
+<p>}</p>
+<p>},</p>
+<p>&quot;productListItems&quot;: [</p>
+<p>{</p>
+<p>&quot;SKU&quot;: &quot;HT105&quot;,</p>
+<p>&quot;name&quot;: &quot;The Big Floppy Hat&quot;,</p>
+<p>&quot;quantity&quot;: 1,</p>
+<p>&quot;priceTotal&quot;: 29.99</p>
+<p>},</p>
+<p>{</p>
+<p>&quot;SKU&quot;: &quot;HT104&quot;,</p>
+<p>&quot;name&quot;: &quot;The Small Floppy Hat&quot;,</p>
+<p>&quot;quantity&quot;: 2,</p>
+<p>&quot;priceTotal&quot;: 19.98</p>
+<p>}</p>
+<p>]</p>
+<p>}</p>
+<p>});</p>
+<p>```</p>
+<hr>
+<h4>4. Cart Removal (`productListRemovals`)</h4>
+<p>Track when a product is removed from the cart:</p>
+<p>```javascript</p>
+<p>alloy(&quot;sendEvent&quot;, {</p>
+<p>&quot;xdm&quot;: {</p>
+<p>&quot;commerce&quot;: {</p>
+<p>&quot;productListRemovals&quot;: {</p>
+<p>&quot;value&quot;: 1</p>
+<p>}</p>
+<p>},</p>
+<p>&quot;productListItems&quot;: [</p>
+<p>{</p>
+<p>&quot;SKU&quot;: &quot;HT105&quot;,</p>
+<p>&quot;name&quot;: &quot;The Big Floppy Hat&quot;,</p>
+<p>&quot;quantity&quot;: 1,</p>
+<p>&quot;priceTotal&quot;: 29.99</p>
+<p>}</p>
+<p>]</p>
+<p>}</p>
+<p>});</p>
+<p>```</p>
+<hr>
+<h4>5. Save for Later (`saveForLaters`)</h4>
+<p>Track when a user saves a product to a wish list:</p>
+<p>```javascript</p>
+<p>alloy(&quot;sendEvent&quot;, {</p>
+<p>&quot;xdm&quot;: {</p>
+<p>&quot;commerce&quot;: {</p>
+<p>&quot;saveForLaters&quot;: {</p>
+<p>&quot;value&quot;: 1</p>
+<p>}</p>
+<p>},</p>
+<p>&quot;productListItems&quot;: [</p>
+<p>{</p>
+<p>&quot;SKU&quot;: &quot;HT105&quot;,</p>
+<p>&quot;name&quot;: &quot;The Big Floppy Hat&quot;,</p>
+<p>&quot;quantity&quot;: 1,</p>
+<p>&quot;priceTotal&quot;: 29.99</p>
+<p>}</p>
+<p>]</p>
+<p>}</p>
+<p>});</p>
+<p>```</p>
+<hr>
+<h4>6. Purchase (`purchases`)</h4>
+<p>The purchase event is the <strong>most critical</strong> commerce event. Key rules:</p>
+<p>&gt; ⚠️ <strong>The purchase event is the only required action in a commerce conversion, and it must have a product list referenced.</strong></p>
+<p>The purchase event also typically includes an `order` object with order-level details:</p>
+<p>```javascript</p>
+<p>alloy(&quot;sendEvent&quot;, {</p>
+<p>&quot;xdm&quot;: {</p>
+<p>&quot;commerce&quot;: {</p>
+<p>&quot;purchases&quot;: {</p>
+<p>&quot;value&quot;: 1</p>
+<p>},</p>
+<p>&quot;order&quot;: {</p>
+<p>&quot;purchaseID&quot;: &quot;a8g784hjq1mnp3&quot;,</p>
+<p>&quot;purchaseOrderNumber&quot;: &quot;VAU3123&quot;,</p>
+<p>&quot;currencyCode&quot;: &quot;USD&quot;,</p>
+<p>&quot;priceTotal&quot;: 39.98</p>
+<p>}</p>
+<p>},</p>
+<p>&quot;productListItems&quot;: [</p>
+<p>{</p>
+<p>&quot;SKU&quot;: &quot;HT105&quot;,</p>
+<p>&quot;name&quot;: &quot;The Big Floppy Hat&quot;,</p>
+<p>&quot;quantity&quot;: 1,</p>
+<p>&quot;priceTotal&quot;: 29.99</p>
+<p>},</p>
+<p>{</p>
+<p>&quot;SKU&quot;: &quot;HT104&quot;,</p>
+<p>&quot;name&quot;: &quot;The Small Floppy Hat&quot;,</p>
+<p>&quot;quantity&quot;: 1,</p>
+<p>&quot;priceTotal&quot;: 9.99</p>
+<p>}</p>
+<p>]</p>
+<p>}</p>
+<p>});</p>
+<p>```</p>
+<hr>
+<h3>Important Rules &amp; Best Practices</h3>
+<ul>
+<li><strong>One commerce action per event call</strong> — pair each `sendEvent` with the specific commerce action that occurred.</li>
+<li><strong>`purchases` requires a product list</strong> — always include at least one item in `productListItems` for purchase events.</li>
+<li><strong>`order` object belongs inside `commerce`</strong> — order-level metadata like `purchaseID`, `currencyCode`, and `priceTotal` go in `commerce.order`, not in `productListItems`.</li>
+<li><strong>`value: 1`</strong> — the `value` property on each commerce action should always be set to `1` to count the event occurrence.</li>
+<li><strong>`productListItems` is always an array</strong> — even for single-product events.</li>
+</ul>
+<h2>Sources</h2>
+<ul>
+<li><a href="https://experienceleague.adobe.com/en/docs/experience-platform/collection/use-cases/collect-commerce-data">Collect commerce, product, and order information using the Adobe Experience Platform Web SDK</a></li>
+</ul></article>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "How do I track specific commerce events like purchases or cart additions using productListItems?", "acceptedAnswer": {"@type": "Answer", "text": "Tracking Specific Commerce Events with productListItems --- Overview Commerce events are tracked by setting the appropriate action in the commerce object alongside the productListItems array. Each event type signals a specific user action in the shopping journey. --- Commerce Event Types Reference | UI Label | XDM Field | Description | |---|---|---| | Product Views | productViews | A view of an individual product occurred | | Product List Opens | productListOpens | A new product list/cart was created | | Product List Adds | productListAdds | A product was added to the cart | | Product List Removals | productListRemovals | A product was removed from the cart | | Product List Views | productListViews | The cart/product list was viewed | | Product List Reopens | productListReopens | A previously abandoned cart was re-activated | | Save For Laters | saveForLaters | A product was saved to a wish list | | Checkouts | checkouts | Checkout was initiated | | Purchases | purchases | An order was accepted/completed | | In Store Purchase | inStorePurchase | An in-store purchase was made | --- Detailed Event Implementations 1. Product View Track when a user views a product detail page: javascript alloy(\"sendEvent\", { \"xdm\": { \"commerce\": { \"productViews\": { \"value\": 1 } }, \"productListItems\": { \"SKU\": \"HT105\", \"name\": \"The Big Floppy Hat\", \"priceTotal\": 29.99 } } }); --- 2. Cart Addition (productListAdds) Track when a product is added to the cart: javascript alloy(\"sendEvent\", { \"xdm\": { \"commerce\": { \"productListAdds\": { \"value\": 1 } }, \"productListItems\": { \"SKU\": \"HT105\", \"name\": \"The Big Floppy Hat\", \"quantity\": 1, \"priceTotal\": 29.99, \"productAddMethod\": \"Add to Cart Button\" } } }); --- 3. Cart View (productListViews) Track when a user views their shopping cart: javascript alloy(\"sendEvent\", { \"xdm\": { \"commerce\": { \"productListViews\": { \"value\": 1 } }, \"productListItems\": { \"SKU\": \"HT105\", \"name\": \"The Big Floppy Hat\", \"quantity\": 1, \"priceTotal\": 29.99 }, { \"SKU\":\u2026"}}]}</script></div>
+  </body>
+</html>

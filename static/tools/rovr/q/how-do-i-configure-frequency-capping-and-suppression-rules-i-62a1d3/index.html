@@ -1,0 +1,130 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/png" href="/tools/rovr/rovrlogo.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="build-date" content="2026-06-10" />
+    
+    
+    <script src="https://assets.adobedtm.com/204118644db8/290ae1adb65a/launch-e5ec7bf1a1ef-development.min.js" async></script>
+    <script type="module" crossorigin src="/tools/rovr/assets/index-BDlEezU1.js"></script>
+    <link rel="stylesheet" crossorigin href="/tools/rovr/assets/index-BtV6C9MI.css">
+  <title>How do I configure frequency capping and suppression rules in Adobe Journey Optimizer? | Rovr</title>
+<meta name="description" content="Configuring Frequency Capping and Suppression Rules in Adobe Journey Optimizer --- Frequency Capping with Business Rules (Rule Sets) Frequency capping…" />
+<link rel="canonical" href="https://thelearningproject.in/tools/rovr/q/how-do-i-configure-frequency-capping-and-suppression-rules-i-62a1d3" />
+<meta property="og:title" content="How do I configure frequency capping and suppression rules in Adobe Journey Optimizer?" />
+<meta property="og:description" content="Configuring Frequency Capping and Suppression Rules in Adobe Journey Optimizer --- Frequency Capping with Business Rules (Rule Sets) Frequency capping…" />
+<meta property="og:url" content="https://thelearningproject.in/tools/rovr/q/how-do-i-configure-frequency-capping-and-suppression-rules-i-62a1d3" />
+<meta property="og:type" content="article" />
+<meta property="og:image" content="https://thelearningproject.in/tools/rovr/rovrlogo.png" />
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="How do I configure frequency capping and suppression rules in Adobe Journey Optimizer?" />
+<meta name="twitter:description" content="Configuring Frequency Capping and Suppression Rules in Adobe Journey Optimizer --- Frequency Capping with Business Rules (Rule Sets) Frequency capping…" />
+</head>
+  <body>
+    <div id="root"><article><h1>How do I configure frequency capping and suppression rules in Adobe Journey Optimizer?</h1>
+<h2>Configuring Frequency Capping and Suppression Rules in Adobe Journey Optimizer</h2>
+<hr>
+<h3>Frequency Capping with Business Rules (Rule Sets)</h3>
+<p>Frequency capping controls how often customers receive communications, preventing over-solicitation and managing customer fatigue. Rules are grouped into <strong>rule sets</strong> and applied to campaigns or journeys.</p>
+<p><a href="https://video.tv.adobe.com/v/3433395/?learn=on">▶ Watch: Configure Business Rules – Frequency Capping</a></p>
+<p><a href="https://video.tv.adobe.com/v/3435531/?learn=on&amp;enablevpops">▶ Watch: Work with Rule Sets</a></p>
+<hr>
+<h4>Step 1: Create a Rule Set</h4>
+<p>1. Navigate to <strong>Conflict Management &amp; Prioritization</strong> in the left rail.</p>
+<p>2. Select <strong>Rule Sets</strong> and click <strong>Create Rule Set</strong>.</p>
+<p>3. Give the rule set a descriptive name (e.g., <em>Promotional Email Cap</em> or <em>Overall Marketing Capping</em>).</p>
+<hr>
+<h4>Step 2: Add Capping Rules to the Rule Set</h4>
+<p>1. Within the rule set, click <strong>Add Rule</strong>.</p>
+<p>2. Configure the rule parameters:</p>
+<ul>
+<li><strong>Channel scope</strong> – Select which channels the rule applies to (e.g., Email, Push, SMS, or all channels).</li>
+<li><strong>Communication type</strong> – Optionally restrict to marketing vs. transactional messages.</li>
+<li><strong>Capping limit</strong> – Set the maximum number of messages allowed within a time window (e.g., 1 per day, 4 per month).</li>
+<li><strong>Time window</strong> – Define the rolling period (daily, weekly, monthly).</li>
+</ul>
+<p>3. Repeat to add as many rules as needed within the rule set.</p>
+<p>&gt; <strong>Example combinations you can build:</strong></p>
+<p>&gt; - A global rule: <em>All channels – max 12 messages per month</em></p>
+<p>&gt; - A channel-specific rule: <em>Push notifications – max 4 per month</em></p>
+<p>&gt; When combined, a profile is excluded from push notifications after 4, even if the global cap of 12 hasn&#x27;t been reached yet.</p>
+<hr>
+<h4>Step 3: Activate the Rule Set</h4>
+<p>1. Once all rules are configured, <strong>activate the rule</strong> and the rule set it belongs to.</p>
+<p>2. A rule set must be in an active state before it can be applied to journeys or campaigns.</p>
+<hr>
+<h4>Step 4: Apply Capping Rules to Campaigns</h4>
+<p>1. Open the campaign you want to apply the rule to.</p>
+<p>2. In the campaign configuration, locate the <strong>Capping Rules</strong> or <strong>Business Rules</strong> section.</p>
+<p>3. Select the relevant rule set from the dropdown.</p>
+<p>4. The rules will take effect once the campaign is activated.</p>
+<hr>
+<h4>Step 5: Apply Capping Rules to Journeys</h4>
+<p>1. Open the journey and access its <strong>Properties</strong>.</p>
+<p>2. In the <strong>Capping Rules</strong> dropdown, select the relevant rule set.</p>
+<p><img src="https://raw.githubusercontent.com/AdobeDocs/journey-optimizer.en/main/help/using/conflict-prioritization/assets/journey-capping-rule-set.png" alt="Journey Capping Rule Set"></p>
+<p>3. Activate the journey — the capping rules will take effect immediately.</p>
+<p>&gt; <strong>Important:</strong> If a journey is activated immediately (without a scheduled future start time), it can take <strong>up to 10 minutes</strong> for the system to begin suppressing customers. A warning message will display if the start time is less than 10 minutes away.</p>
+<hr>
+<h4>Step 6: Monitor Rule Set Exclusions</h4>
+<p>Once a journey is live, you can track exclusions in the journey report:</p>
+<p>1. Open the <strong>Journey Report</strong>.</p>
+<p>2. Locate the <strong>Journey Exclusions</strong> table — this provides detailed breakdowns of exclusions by <strong>rule set name</strong> and <strong>rule name</strong>.</p>
+<p>3. The discard sub-reason field will show either:</p>
+<ul>
+<li>`CAP_REACHED` – profile was excluded due to hitting the frequency cap</li>
+<li>`LOWER_PRIORITY` – profile was excluded due to priority scoring</li>
+</ul>
+<p><img src="https://raw.githubusercontent.com/AdobeDocs/journey-optimizer.en/main/help/using/conflict-prioritization/assets/journey-capping-list.png" alt="Journey Capping List"></p>
+<p>You can also use the <strong>Adobe Experience Platform Query Service</strong> to build custom queries identifying which rule caused a profile to not enter a given journey.</p>
+<hr>
+<h3>Suppression Rules (Suppression List)</h3>
+<p>The suppression list controls which <strong>email addresses and domains</strong> are automatically excluded from all sending within your organization&#x27;s sandbox environment.</p>
+<h4>How the Suppression List Works</h4>
+<p>Journey Optimizer automatically collects and maintains a <strong>suppression list</strong> of email addresses excluded from journeys and campaigns, including:</p>
+<ul>
+<li><strong>Hard bounces</strong> – permanent delivery failures</li>
+<li><strong>Soft bounces</strong> – temporary delivery failures</li>
+<li><strong>Spam complaints</strong> – recipients who marked messages as spam</li>
+</ul>
+<p>These addresses are suppressed across <strong>all mailings in a single client environment</strong> (specific to an organization ID associated with a sandbox ID).</p>
+<p>&gt; <strong>Note:</strong> Adobe also maintains a <strong>global suppression list</strong> of known bad addresses that is shared across all Adobe customers. Addresses on the global list are hidden — only the count of excluded recipients appears in delivery reports.</p>
+<hr>
+<h4>Accessing and Managing the Suppression List</h4>
+<p>1. Navigate to <strong>Administration</strong> in Journey Optimizer.</p>
+<p>2. Open the <strong>Suppression List</strong> section.</p>
+<p>3. From here you can:</p>
+<ul>
+<li><strong>Filter</strong> entries by address, domain, or suppression reason</li>
+<li><strong>Add</strong> specific addresses or domains manually</li>
+<li><strong>Remove</strong> entries when appropriate (e.g., after a re-permission campaign)</li>
+<li><strong>Download</strong> the suppression list for offline review</li>
+</ul>
+<hr>
+<h4>Using the Suppression REST API</h4>
+<p>For programmatic control, Journey Optimizer provides a <strong>Suppression REST API</strong> that allows you to:</p>
+<ul>
+<li>Query suppressed addresses</li>
+<li>Add addresses or domains to the suppression list</li>
+<li>Remove addresses from the suppression list</li>
+<li>Manage allow lists</li>
+</ul>
+<p>This is especially useful for external systems that need to sync suppression logic with Journey Optimizer without manual UI intervention.</p>
+<hr>
+<h3>Frequency Capping for Offers (AJO Decisioning)</h3>
+<p>If you are delivering offers via <strong>AJO Decisioning</strong>, frequency capping works slightly differently:</p>
+<p>1. <strong>Enable capping</strong> on the offer itself within the offer library.</p>
+<p>2. <strong>Capture impression and interaction events</strong> via the Adobe Web SDK:</p>
+<ul>
+<li>`decisioning.propositionDisplay` – tracks when an offer is shown</li>
+<li>`decisioning.propositionInteract` – tracks when a user interacts with an offer</li>
+</ul>
+<p>3. These events are <strong>mapped to XDM schemas in Adobe Experience Platform</strong>, allowing Journey Optimizer to accurately track how many times a user has seen or interacted with a given offer.</p>
+<p>4. Once the cap is reached, the offer is automatically suppressed for that profile.</p>
+<p>&gt; <strong>Prerequisite:</strong> You must have a valid AJO campaign using Decisioning that is actively serving offers before configuring offer-level frequency capping.</p>
+</article>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "How do I configure frequency capping and suppression rules in Adobe Journey Optimizer?", "acceptedAnswer": {"@type": "Answer", "text": "Configuring Frequency Capping and Suppression Rules in Adobe Journey Optimizer --- Frequency Capping with Business Rules (Rule Sets) Frequency capping controls how often customers receive communications, preventing over-solicitation and managing customer fatigue. Rules are grouped into rule sets and applied to campaigns or journeys. \u25b6 Watch: Configure Business Rules \u2013 Frequency Capping(https://video.tv.adobe.com/v/3433395/?learn=on) \u25b6 Watch: Work with Rule Sets(https://video.tv.adobe.com/v/3435531/?learn=on&enablevpops) --- Step 1: Create a Rule Set 1. Navigate to Conflict Management & Prioritization in the left rail. 2. Select Rule Sets and click Create Rule Set. 3. Give the rule set a descriptive name (e.g., Promotional Email Cap or Overall Marketing Capping). --- Step 2: Add Capping Rules to the Rule Set 1. Within the rule set, click Add Rule. 2. Configure the rule parameters: - Channel scope \u2013 Select which channels the rule applies to (e.g., Email, Push, SMS, or all channels). - Communication type \u2013 Optionally restrict to marketing vs. transactional messages. - Capping limit \u2013 Set the maximum number of messages allowed within a time window (e.g., 1 per day, 4 per month). - Time window \u2013 Define the rolling period (daily, weekly, monthly). 3. Repeat to add as many rules as needed within the rule set. Example combinations you can build: - A global rule: All channels \u2013 max 12 messages per month - A channel-specific rule: Push notifications \u2013 max 4 per month When combined, a profile is excluded from push notifications after 4, even if the global cap of 12 hasn't been reached yet. --- Step 3: Activate the Rule Set 1. Once all rules are configured, activate the rule and the rule set it belongs to. 2. A rule set must be in an active state before it can be applied to journeys or campaigns. --- Step 4: Apply Capping Rules to Campaigns 1. Open the campaign you want to apply the rule to. 2. In the campaign configuration, locate the Capping Rules or Business Rules section.\u2026"}}]}</script></div>
+  </body>
+</html>

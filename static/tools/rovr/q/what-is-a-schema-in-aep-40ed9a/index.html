@@ -8,113 +8,52 @@
     
     
     <script src="https://assets.adobedtm.com/204118644db8/290ae1adb65a/launch-e5ec7bf1a1ef-development.min.js" async></script>
-    <script type="module" crossorigin src="/tools/rovr/assets/index-BZDwcb6J.js"></script>
-    <link rel="stylesheet" crossorigin href="/tools/rovr/assets/index-BT2stRIa.css">
+    <script type="module" crossorigin src="/tools/rovr/assets/index-BDlEezU1.js"></script>
+    <link rel="stylesheet" crossorigin href="/tools/rovr/assets/index-BtV6C9MI.css">
   <title>What is a schema in AEP? | Rovr</title>
-<meta name="description" content="Schema in Adobe Experience Platform (AEP) A schema is a set of rules that represents and validates the structure and format of data in Adobe Experience…" />
+<meta name="description" content="What is a Schema in Adobe Experience Platform? A schema is a set of rules that represent and validate the structure and format of data in Adobe Experience…" />
 <link rel="canonical" href="https://thelearningproject.in/tools/rovr/q/what-is-a-schema-in-aep-40ed9a" />
 <meta property="og:title" content="What is a schema in AEP?" />
-<meta property="og:description" content="Schema in Adobe Experience Platform (AEP) A schema is a set of rules that represents and validates the structure and format of data in Adobe Experience…" />
+<meta property="og:description" content="What is a Schema in Adobe Experience Platform? A schema is a set of rules that represent and validate the structure and format of data in Adobe Experience…" />
 <meta property="og:url" content="https://thelearningproject.in/tools/rovr/q/what-is-a-schema-in-aep-40ed9a" />
 <meta property="og:type" content="article" />
 <meta property="og:image" content="https://thelearningproject.in/tools/rovr/rovrlogo.png" />
 <meta name="twitter:card" content="summary" />
 <meta name="twitter:title" content="What is a schema in AEP?" />
-<meta name="twitter:description" content="Schema in Adobe Experience Platform (AEP) A schema is a set of rules that represents and validates the structure and format of data in Adobe Experience…" />
+<meta name="twitter:description" content="What is a Schema in Adobe Experience Platform? A schema is a set of rules that represent and validate the structure and format of data in Adobe Experience…" />
 </head>
   <body>
     <div id="root"><article><h1>What is a schema in AEP?</h1>
-<h2>Schema in Adobe Experience Platform (AEP)</h2>
-<p>A <strong>schema</strong> is a set of rules that represents and validates the structure and format of data in Adobe Experience Platform.</p>
-<h3>Core Definition</h3>
-<p>At a high level, schemas provide an <strong>abstract definition of a real-world object</strong> (such as a person) and outline <strong>what data should be included in each instance</strong> of that object (such as first name, last name, birthday, and so on).</p>
-<p>In addition to describing data structure, schemas:</p>
+<h2>What is a Schema in Adobe Experience Platform?</h2>
+<p>A <strong>schema</strong> is a set of rules that represent and validate the structure and format of data in Adobe Experience Platform (AEP). It provides an abstract definition of a real-world object (such as a person) and outlines what data should be included in each instance of that object.</p>
+<h3>Key Characteristics</h3>
+<p><strong>Structure and Validation</strong></p>
 <ul>
-<li>Apply <strong>constraints and expectations</strong> to data so it can be validated as it moves between systems</li>
-<li>Enable <strong>semantic normalization</strong> — allowing data to be interpreted consistently regardless of origin</li>
-<li>Remove the <strong>need for translation</strong> across applications</li>
-<li>Support <strong>data reusability</strong> across your organization without conflicts</li>
+<li>Schemas define the structure and format of data</li>
+<li>They apply constraints and expectations to data for validation as it moves between systems</li>
+<li>They enable data to be interpreted consistently, regardless of origin</li>
 </ul>
-<hr>
-<h3>Why Schemas Matter</h3>
-<h4>Standardization</h4>
-<p>Experience Platform uses schemas to describe the structure of data in a <strong>consistent and reusable way</strong>. By defining data consistently across systems, it becomes easier to retain meaning and gain value from data.</p>
-<h4>Before Data Ingestion</h4>
-<p>Before data can be ingested into Experience Platform, <strong>a schema must be composed</strong> to:</p>
+<p><strong>Composition</strong></p>
+<p>Schemas are comprised of:</p>
 <ul>
-<li>Describe the data&#x27;s structure</li>
-<li>Provide constraints on the type of data that can be contained within each field</li>
+<li>A <strong>base class</strong> (required)</li>
+<li>Zero or more <strong>schema field groups</strong> (optional)</li>
+<li>Individual <strong>fields</strong> with defined data types</li>
+<li>Behavioral attributes, timestamps, identities, attribute definitions, and relationships</li>
 </ul>
-<h4>Cross-Organizational Sharing</h4>
-<p>Schemas are the <strong>standard way of describing data in Experience Platform</strong>, allowing all data that conforms to schemas to be:</p>
+<h3>Why Schemas Matter in Experience Platform</h3>
+<p><strong>Data Normalization</strong>: Schemas maintain semantic normalization by using standardized definitions, allowing data to be reused across your organization without conflicts</p>
+<p><strong>Reusability</strong>: All data conforming to schemas can be reused across an organization and even shared between multiple organizations</p>
+<p><strong>Foundation for Workflows</strong>: Before data can be ingested into Experience Platform, a schema must be composed to describe the data&#x27;s structure and define what types of data each field can contain</p>
+<h3>Schema Resources</h3>
+<p>You can access schemas through the <strong>[!UICONTROL Schemas]</strong> workspace in the Experience Platform UI. This workspace allows you to:</p>
 <ul>
-<li>Reused across an organization without conflicts</li>
-<li>Shared between multiple organizations</li>
+<li>View and manage schemas, classes, field groups, data types, and relationships</li>
+<li>Access Adobe-provided standard resources</li>
+<li>Create and manage custom resources for your organization</li>
 </ul>
-<hr>
-<h3>Schema Building Blocks</h3>
-<p>A schema is composed of:</p>
-<p>1. <strong>A Base Class</strong> (required)</p>
-<ul>
-<li>Examples: XDM Individual Profile, XDM ExperienceEvent</li>
-</ul>
-<p>2. <strong>Zero or More Schema Field Groups</strong> (optional)</p>
-<ul>
-<li>Reusable sets of fields that extend the schema</li>
-</ul>
-<p>3. <strong>Custom Fields</strong> (optional)</p>
-<ul>
-<li>Organization-specific additions</li>
-</ul>
-<p><img src="https://raw.githubusercontent.com/AdobeDocs/experience-platform.en/main/help/xdm/schema/../images/schema-composition/composition.png" alt="Schema Composition"></p>
-<hr>
-<h3>Schema Content</h3>
-<p>Schemas may include:</p>
-<ul>
-<li>Behavioral attributes</li>
-<li>Timestamps</li>
-<li>Identities</li>
-<li>Attribute definitions</li>
-<li>Relationships</li>
-<li>Data type constraints</li>
-</ul>
-<hr>
-<h3>Real-World Example</h3>
-<p>A customer loyalty program schema might include:</p>
-<ul>
-<li><strong>Class:</strong> XDM Individual Profile</li>
-<li><strong>Field Groups:</strong> XDM Business Person Details, IdentityMap</li>
-<li><strong>Custom Fields:</strong> Loyalty points, membership tier, preferred language</li>
-</ul>
-<p>This defines what data about loyalty members can be stored and how it&#x27;s structured.</p>
-<hr>
-<h3>Key Capabilities</h3>
-<h4>Schema Library</h4>
-<p>The <strong>Schema Library</strong> contains:</p>
-<ul>
-<li><strong>Industry-standard XDM resources</strong> made available by Adobe</li>
-<li><strong>Custom resources</strong> defined by your organization</li>
-</ul>
-<h4>Schema Registry</h4>
-<p>The <strong>Schema Registry</strong> provides:</p>
-<ul>
-<li>A user interface for viewing and managing schemas</li>
-<li>A RESTful API for programmatic schema management</li>
-</ul>
-<hr>
-<h3>Important Note</h3>
-<p>XDM schemas are <strong>extremely customizable</strong>, allowing you to tailor them to your specific business needs while maintaining consistency with AEP&#x27;s standardized framework.</p>
-<p>For more detailed guidance, refer to the <a href="https://experienceleague.adobe.com/en/docs/experience-platform/xdm/schema/composition">basics of schema composition</a> documentation.</p>
-<h2>Sources</h2>
-<ul>
-<li><a href="https://experienceleague.adobe.com/en/docs/experience-platform/xdm/troubleshooting-guide">XDM System Troubleshooting Guide</a></li>
-<li><a href="https://experienceleague.adobe.com/en/docs/experience-platform/data-governance/labels/dataset-api">Manage Data Usage Labels for Datasets Using APIs</a></li>
-<li><a href="https://experienceleague.adobe.com/en/docs/experience-platform/xdm/schema/composition">Basics of Schema Composition</a></li>
-<li><a href="https://experienceleague.adobe.com/en/docs/experience-platform/sources/connectors/adobe-applications/marketo/marketo-namespaces">B2B namespaces and schemas</a></li>
-<li><a href="https://experienceleague.adobe.com/en/docs/experience-platform/landing/glossary">Adobe Experience Platform Glossary</a></li>
-<li><a href="https://experienceleague.adobe.com/en/docs/experience-platform/xdm/ui/overview">Schemas UI Overview</a></li>
-<li><a href="https://experienceleague.adobe.com/en/docs/experience-platform/xdm/ui/resources/schemas">Create and Edit Schemas in the UI</a></li>
-</ul></article>
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "What is a schema in AEP?", "acceptedAnswer": {"@type": "Answer", "text": "Schema in Adobe Experience Platform (AEP) A schema is a set of rules that represents and validates the structure and format of data in Adobe Experience Platform. Core Definition At a high level, schemas provide an abstract definition of a real-world object (such as a person) and outline what data should be included in each instance of that object (such as first name, last name, birthday, and so on). In addition to describing data structure, schemas: - Apply constraints and expectations to data so it can be validated as it moves between systems - Enable semantic normalization \u2014 allowing data to be interpreted consistently regardless of origin - Remove the need for translation across applications - Support data reusability across your organization without conflicts --- Why Schemas Matter Standardization Experience Platform uses schemas to describe the structure of data in a consistent and reusable way. By defining data consistently across systems, it becomes easier to retain meaning and gain value from data. Before Data Ingestion Before data can be ingested into Experience Platform, a schema must be composed to: - Describe the data's structure - Provide constraints on the type of data that can be contained within each field Cross-Organizational Sharing Schemas are the standard way of describing data in Experience Platform, allowing all data that conforms to schemas to be: - Reused across an organization without conflicts - Shared between multiple organizations --- Schema Building Blocks A schema is composed of: 1. A Base Class (required) - Examples: XDM Individual Profile, XDM ExperienceEvent 2. Zero or More Schema Field Groups (optional) - Reusable sets of fields that extend the schema 3. Custom Fields (optional) - Organization-specific additions !Schema Composition(https://raw.githubusercontent.com/AdobeDocs/experience-platform.en/main/help/xdm/schema/../images/schema-composition/composition.png) --- Schema Content Schemas may include: - Behavioral attributes -\u2026"}}]}</script></div>
+<p>Schemas are stored in the <strong>Schema Library</strong>, which contains both Adobe&#x27;s industry-standard XDM resources and custom resources defined by your organization.</p>
+</article>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "What is a schema in AEP?", "acceptedAnswer": {"@type": "Answer", "text": "What is a Schema in Adobe Experience Platform? A schema is a set of rules that represent and validate the structure and format of data in Adobe Experience Platform (AEP). It provides an abstract definition of a real-world object (such as a person) and outlines what data should be included in each instance of that object. Key Characteristics Structure and Validation - Schemas define the structure and format of data - They apply constraints and expectations to data for validation as it moves between systems - They enable data to be interpreted consistently, regardless of origin Composition Schemas are comprised of: - A base class (required) - Zero or more schema field groups (optional) - Individual fields with defined data types - Behavioral attributes, timestamps, identities, attribute definitions, and relationships Why Schemas Matter in Experience Platform Data Normalization: Schemas maintain semantic normalization by using standardized definitions, allowing data to be reused across your organization without conflicts Reusability: All data conforming to schemas can be reused across an organization and even shared between multiple organizations Foundation for Workflows: Before data can be ingested into Experience Platform, a schema must be composed to describe the data's structure and define what types of data each field can contain Schema Resources You can access schemas through the !UICONTROL Schemas workspace in the Experience Platform UI. This workspace allows you to: - View and manage schemas, classes, field groups, data types, and relationships - Access Adobe-provided standard resources - Create and manage custom resources for your organization Schemas are stored in the Schema Library, which contains both Adobe's industry-standard XDM resources and custom resources defined by your organization."}}]}</script></div>
   </body>
 </html>
