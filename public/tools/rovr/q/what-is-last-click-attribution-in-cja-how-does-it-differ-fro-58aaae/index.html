@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/png" href="/tools/rovr/rovrlogo.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="build-date" content="2026-06-10" />
+    
+    
+    <script src="https://assets.adobedtm.com/204118644db8/290ae1adb65a/launch-e5ec7bf1a1ef-development.min.js" async></script>
+    <script type="module" crossorigin src="/tools/rovr/assets/index-BDlEezU1.js"></script>
+    <link rel="stylesheet" crossorigin href="/tools/rovr/assets/index-BtV6C9MI.css">
+  <title>what is last click attribution in CJA? How does it differ from first touch and how can i configure it? | Rovr</title>
+<meta name="description" content="Last Touch Attribution in Customer Journey Analytics What is Last Touch Attribution? Last Touch attribution gives 100% credit to the touch point occurring…" />
+<link rel="canonical" href="https://thelearningproject.in/tools/rovr/q/what-is-last-click-attribution-in-cja-how-does-it-differ-fro-58aaae" />
+<meta property="og:title" content="what is last click attribution in CJA? How does it differ from first touch and how can i configure it?" />
+<meta property="og:description" content="Last Touch Attribution in Customer Journey Analytics What is Last Touch Attribution? Last Touch attribution gives 100% credit to the touch point occurring…" />
+<meta property="og:url" content="https://thelearningproject.in/tools/rovr/q/what-is-last-click-attribution-in-cja-how-does-it-differ-fro-58aaae" />
+<meta property="og:type" content="article" />
+<meta property="og:image" content="https://thelearningproject.in/tools/rovr/rovrlogo.png" />
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="what is last click attribution in CJA? How does it differ from first touch and how can i configure it?" />
+<meta name="twitter:description" content="Last Touch Attribution in Customer Journey Analytics What is Last Touch Attribution? Last Touch attribution gives 100% credit to the touch point occurring…" />
+</head>
+  <body>
+    <div id="root"><article><h1>what is last click attribution in CJA? How does it differ from first touch and how can i configure it?</h1>
+<h2>Last Touch Attribution in Customer Journey Analytics</h2>
+<h3>What is Last Touch Attribution?</h3>
+<p><strong>Last Touch</strong> attribution gives <strong>100% credit to the touch point occurring most recently before a conversion</strong>. It is the most basic and common attribution model, frequently used for:</p>
+<ul>
+<li>Conversions with a <strong>short consideration cycle</strong></li>
+<li>Teams managing <strong>search marketing</strong></li>
+<li>Analyzing <strong>internal search keywords</strong></li>
+</ul>
+<hr>
+<h3>How Last Touch Differs from First Touch</h3>
+<p>| | <strong>Last Touch</strong> | <strong>First Touch</strong> |</p>
+<p>|---|---|---|</p>
+<p>| <strong>Credit assignment</strong> | 100% to the <em>most recent</em> touchpoint before conversion | 100% to the <em>first</em> touchpoint seen in the lookback window |</p>
+<p>| <strong>Best for</strong> | Short consideration cycles, search marketing, keyword analysis | Brand awareness campaigns, customer acquisition analysis |</p>
+<p>| <strong>Common users</strong> | Search marketing teams | Display, social marketing teams |</p>
+<p>In short:</p>
+<ul>
+<li><strong>Last Touch</strong> answers: <em>&quot;What was the final thing the customer interacted with before converting?&quot;</em></li>
+<li><strong>First Touch</strong> answers: <em>&quot;What first brought the customer to us?&quot;</em></li>
+</ul>
+<p>&gt; <strong>Important note on Adobe Analytics vs. CJA</strong>: Unlike Adobe Analytics, which collects Last Touch attribution in the report suite at hit time, <strong>CJA calculates attribution at report run time</strong>. This means attribution models in CJA apply retroactively to all historical data without reprocessing.</p>
+<hr>
+<h3>How to Configure Last Touch Attribution in CJA</h3>
+<p>There are <strong>two places</strong> to configure attribution in Customer Journey Analytics:</p>
+<h4>Option 1: Data View Settings (Default for all reports)</h4>
+<p>Set Last Touch as the default attribution model for a metric component so it applies across all reports using that data view:</p>
+<p>1. Navigate to <strong>Data Views</strong> in CJA</p>
+<p>2. Open your data view and go to the <strong>Components</strong> tab</p>
+<p>3. Select the metric you want to configure</p>
+<p>4. Under <strong>Attribution model</strong>, choose <strong>Last Touch</strong></p>
+<p>5. Set the desired <strong>lookback window</strong></p>
+<p>6. Save the data view</p>
+<p>&gt; You can also add <strong>multiple copies of the same metric</strong>, each with a different attribution model, for side-by-side comparisons directly in the data view.</p>
+<hr>
+<h4>Option 2: Component-Level Override in Analysis Workspace (Ad hoc)</h4>
+<p>Override attribution for a single instance within a Freeform table without changing the data view default:</p>
+<p>1. Open a project in <strong>Analysis Workspace</strong></p>
+<p>2. Drag a metric (e.g., <strong>Revenue</strong>) into a <strong>Freeform table</strong></p>
+<p>3. <strong>Right-click</strong> the metric column header</p>
+<p>4. Select <strong>Use non-default attribution model</strong></p>
+<p>5. Choose <strong>Last Touch</strong> and set your <strong>lookback window</strong></p>
+<p>6. Click <strong>Apply</strong></p>
+<p>You can also drag the <strong>same metric into the table multiple times</strong>, assigning a different attribution model to each instance for a direct comparison.</p>
+<hr>
+<h4>Option 3: Use the Attribution Panel</h4>
+<p>For a structured, visual comparison of Last Touch vs. other models side by side:</p>
+<p><a href="https://video.tv.adobe.com/v/3464718/?learn=on">▶ Watch: Build the Attribution Panel</a></p>
+<p>The Attribution panel lets you define success metrics, select and compare multiple attribution models (including Last Touch and First Touch), and visualize results with bar charts, Venn diagrams, and channel flow views.</p>
+<hr>
+<h3>Quick Tip: Aligning with GA4</h3>
+<p>If you&#x27;re comparing CJA to GA4 (which defaults to data-driven attribution), setting <strong>GA4 to last-click</strong> and configuring a <strong>matching Last Touch model in CJA</strong> is the most reliable way to establish a like-for-like baseline for your metrics.</p>
+<h2>Sources</h2>
+<ul>
+<li><a href="https://experienceleague.adobe.com/en/docs/analytics-platform/using/cja-usecases/aa-data/marketing-channels">Use Marketing Channel Dimensions</a></li>
+</ul></article>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "what is last click attribution in CJA? How does it differ from first touch and how can i configure it?", "acceptedAnswer": {"@type": "Answer", "text": "Last Touch Attribution in Customer Journey Analytics What is Last Touch Attribution? Last Touch attribution gives 100% credit to the touch point occurring most recently before a conversion. It is the most basic and common attribution model, frequently used for: - Conversions with a short consideration cycle - Teams managing search marketing - Analyzing internal search keywords --- How Last Touch Differs from First Touch | | Last Touch | First Touch | |---|---|---| | Credit assignment | 100% to the most recent touchpoint before conversion | 100% to the first touchpoint seen in the lookback window | | Best for | Short consideration cycles, search marketing, keyword analysis | Brand awareness campaigns, customer acquisition analysis | | Common users | Search marketing teams | Display, social marketing teams | In short: - Last Touch answers: \"What was the final thing the customer interacted with before converting?\" - First Touch answers: \"What first brought the customer to us?\" Important note on Adobe Analytics vs. CJA: Unlike Adobe Analytics, which collects Last Touch attribution in the report suite at hit time, CJA calculates attribution at report run time. This means attribution models in CJA apply retroactively to all historical data without reprocessing. --- How to Configure Last Touch Attribution in CJA There are two places to configure attribution in Customer Journey Analytics: Option 1: Data View Settings (Default for all reports) Set Last Touch as the default attribution model for a metric component so it applies across all reports using that data view: 1. Navigate to Data Views in CJA 2. Open your data view and go to the Components tab 3. Select the metric you want to configure 4. Under Attribution model, choose Last Touch 5. Set the desired lookback window 6. Save the data view You can also add multiple copies of the same metric, each with a different attribution model, for side-by-side comparisons directly in the data view. --- Option 2: Component-Level\u2026"}}]}</script></div>
+  </body>
+</html>

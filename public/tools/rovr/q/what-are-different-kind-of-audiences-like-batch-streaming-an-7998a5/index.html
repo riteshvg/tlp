@@ -1,0 +1,143 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/png" href="/tools/rovr/rovrlogo.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="build-date" content="2026-06-10" />
+    
+    
+    <script src="https://assets.adobedtm.com/204118644db8/290ae1adb65a/launch-e5ec7bf1a1ef-development.min.js" async></script>
+    <script type="module" crossorigin src="/tools/rovr/assets/index-BDlEezU1.js"></script>
+    <link rel="stylesheet" crossorigin href="/tools/rovr/assets/index-BtV6C9MI.css">
+  <title>What are different kind of audiences like Batch, Streaming and Edge ? explain in detail | Rovr</title>
+<meta name="description" content="Audience Evaluation Methods in Adobe Experience Platform Adobe Experience Platform supports three distinct audience evaluation methods, each designed for…" />
+<link rel="canonical" href="https://thelearningproject.in/tools/rovr/q/what-are-different-kind-of-audiences-like-batch-streaming-an-7998a5" />
+<meta property="og:title" content="What are different kind of audiences like Batch, Streaming and Edge ? explain in detail" />
+<meta property="og:description" content="Audience Evaluation Methods in Adobe Experience Platform Adobe Experience Platform supports three distinct audience evaluation methods, each designed for…" />
+<meta property="og:url" content="https://thelearningproject.in/tools/rovr/q/what-are-different-kind-of-audiences-like-batch-streaming-an-7998a5" />
+<meta property="og:type" content="article" />
+<meta property="og:image" content="https://thelearningproject.in/tools/rovr/rovrlogo.png" />
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="What are different kind of audiences like Batch, Streaming and Edge ? explain in detail" />
+<meta name="twitter:description" content="Audience Evaluation Methods in Adobe Experience Platform Adobe Experience Platform supports three distinct audience evaluation methods, each designed for…" />
+</head>
+  <body>
+    <div id="root"><article><h1>What are different kind of audiences like Batch, Streaming and Edge ? explain in detail</h1>
+<h2>Audience Evaluation Methods in Adobe Experience Platform</h2>
+<p>Adobe Experience Platform supports three distinct audience evaluation methods, each designed for different use cases and real-time requirements:</p>
+<h3>1. <strong>Batch Segmentation</strong></h3>
+<p><strong>What it is:</strong></p>
+<p>Batch segmentation processes profile data all at once to create corresponding audiences. It&#x27;s the traditional, scheduled approach to audience creation.</p>
+<p><strong>Key characteristics:</strong></p>
+<ul>
+<li>Runs on a <strong>daily schedule</strong> (can be toggled off if needed)</li>
+<li>Evaluates audiences periodically rather than in real-time</li>
+<li>Best for audiences where immediate evaluation isn&#x27;t critical</li>
+<li>Can handle complex logic and large-scale data processing</li>
+</ul>
+<p><strong>Use cases:</strong></p>
+<ul>
+<li>General audience segmentation</li>
+<li>Historical analysis and reporting</li>
+<li>Audiences with complex criteria that don&#x27;t require real-time updates</li>
+</ul>
+<p><strong>Important note:</strong></p>
+<p>If an audience definition combines both batch and streaming data sources, it will automatically be evaluated using batch segmentation. If you need streaming or edge evaluation with mixed data sources, you must explicitly create separate batch and streaming rulesets and combine them using segment of segments (inSegment).</p>
+<hr>
+<h3>2. <strong>Streaming Segmentation</strong></h3>
+<p><strong>What it is:</strong></p>
+<p>Streaming segmentation evaluates audiences in <strong>near real-time</strong> to segment streaming data as soon as it arrives in Experience Platform. This allows profiles to qualify for audiences immediately when they meet the criteria.</p>
+<p><strong>Key characteristics:</strong></p>
+<ul>
+<li>Near real-time evaluation (up to 350 milliseconds processing time after an event enters the Edge Network)</li>
+<li>Customers qualify as soon as they meet criteria</li>
+<li>Supports continuous, event-based evaluation</li>
+<li>Maximum <strong>500 active streaming audiences per sandbox</strong></li>
+</ul>
+<p><strong>Throughput:</strong></p>
+<ul>
+<li>Combined peak throughput of <strong>1500 events per second</strong> across production and development sandboxes</li>
+<li>Additional streaming segmentation support up to 13,500 records per second can be purchased</li>
+</ul>
+<p><strong>Limitations:</strong></p>
+<ul>
+<li>Platform defaults to streaming segmentation whenever possible, but automatically converts to batch if criteria are too complex</li>
+<li>Look-back windows greater than 7 days may cause automatic conversion to batch segmentation</li>
+<li>Cannot directly combine batch and streaming data sources in a single audience definition</li>
+</ul>
+<p><strong>Use cases:</strong></p>
+<ul>
+<li>Real-time personalization</li>
+<li>Immediate customer responses to behavioral triggers</li>
+<li>Time-sensitive marketing campaigns</li>
+</ul>
+<hr>
+<h3>3. <strong>Edge Segmentation</strong></h3>
+<p><strong>What it is:</strong></p>
+<p>Edge segmentation evaluates audiences in near real-time at the <strong>Adobe Experience Platform Edge Network</strong> for same-page personalization and real-time use cases.</p>
+<p><strong>Key characteristics:</strong></p>
+<ul>
+<li>Processes events directly on the edge network with minimal latency</li>
+<li>Ideal for same-page and cross-site personalization</li>
+<li>Up to <strong>350 milliseconds</strong> to process an inbound event after it enters the Edge Network</li>
+<li>Maximum <strong>150 active edge audiences per sandbox</strong></li>
+<li>Can have more than 150 edge audiences across the organization, as long as each sandbox has less than 150</li>
+</ul>
+<p><strong>Throughput:</strong></p>
+<ul>
+<li>Combined peak throughput of <strong>1500 requests per second (RPS)</strong> across all sandboxes for edge segmentation</li>
+</ul>
+<p><strong>Use cases:</strong></p>
+<ul>
+<li>Real-time website personalization</li>
+<li>Same-page targeting</li>
+<li>Next-best-action recommendations</li>
+<li>Dynamic content delivery</li>
+</ul>
+<hr>
+<h3>Comparison: Performance Guardrails</h3>
+<p>| Guardrail | Batch | Streaming | Edge |</p>
+<p>|-----------|-------|-----------|------|</p>
+<p>| <strong>Active audiences per sandbox</strong> | 4,000 | 500 (inclusive of edge) | 150 |</p>
+<p>| <strong>Evaluation latency</strong> | Daily schedule | ~350ms (near real-time) | ~350ms (near real-time) |</p>
+<p>| <strong>Throughput</strong> | N/A | 1,500 RPS<em> | 1,500 RPS</em> |</p>
+<p>| <strong>Best for</strong> | Complex logic, scheduled updates | Real-time personalization | Same-page personalization |</p>
+<p>*Can be extended up to 13,500 RPS with additional entitlements</p>
+<hr>
+<h3>How Platform Chooses Evaluation Method</h3>
+<p><strong>Platform defaults to streaming segmentation whenever possible.</strong> Here&#x27;s the decision flow:</p>
+<p>1. ✅ Simple criteria → Streaming segmentation</p>
+<p>2. ⚠️ Complex criteria or look-back window &gt; 7 days → Automatically converts to batch</p>
+<p>3. 🚀 Same-page/cross-site personalization use cases → Edge segmentation</p>
+<hr>
+<h3>Important Considerations for Mixed Data Sources</h3>
+<p>When combining batch and streaming data sources, follow this pattern:</p>
+<p><strong>Example scenario:</strong></p>
+<ul>
+<li><strong>Audience A</strong> (Batch): California residents using profile schema</li>
+<li><strong>Audience B</strong> (Streaming): Recent checkouts using experience event schema</li>
+</ul>
+<p><strong>To combine them for streaming evaluation:</strong></p>
+<p>```</p>
+<p>inSegment(&quot;e3be6d7f-1727-401f-a41e-c296b45f607a&quot;) and</p>
+<p>CHAIN(xEvent, timestamp, [C0: WHAT(eventType.equals(&quot;commerce.checkouts&quot;, false))</p>
+<p>WHEN(&lt;= 24 hours before now)])</p>
+<p>```</p>
+<p><strong>Key rule:</strong> Keep batch data <em>only</em> within batch audiences and reference it in streaming audiences using `inSegment`. This ensures streaming segmentation accuracy.</p>
+<hr>
+<h3>Summary</h3>
+<p>Choose your audience evaluation method based on:</p>
+<ul>
+<li><strong>Batch</strong>: When daily updates are acceptable and logic is complex</li>
+<li><strong>Streaming</strong>: When near real-time qualification is needed and rules are simpler</li>
+<li><strong>Edge</strong>: When same-page personalization and minimal latency are critical</li>
+</ul>
+<p>All three methods work together within Adobe Experience Platform to support diverse marketing and personalization needs.</p>
+<h2>Sources</h2>
+<ul>
+<li><a href="https://experienceleague.adobe.com/en/docs/experience-platform/profile/guardrails">Default Guardrails for Real-Time Customer Profile Data and segmentation</a></li>
+</ul></article>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "What are different kind of audiences like Batch, Streaming and Edge ? explain in detail", "acceptedAnswer": {"@type": "Answer", "text": "Audience Evaluation Methods in Adobe Experience Platform Adobe Experience Platform supports three distinct audience evaluation methods, each designed for different use cases and real-time requirements: 1. Batch Segmentation What it is: Batch segmentation processes profile data all at once to create corresponding audiences. It's the traditional, scheduled approach to audience creation. Key characteristics: - Runs on a daily schedule (can be toggled off if needed) - Evaluates audiences periodically rather than in real-time - Best for audiences where immediate evaluation isn't critical - Can handle complex logic and large-scale data processing Use cases: - General audience segmentation - Historical analysis and reporting - Audiences with complex criteria that don't require real-time updates Important note: If an audience definition combines both batch and streaming data sources, it will automatically be evaluated using batch segmentation. If you need streaming or edge evaluation with mixed data sources, you must explicitly create separate batch and streaming rulesets and combine them using segment of segments (inSegment). --- 2. Streaming Segmentation What it is: Streaming segmentation evaluates audiences in near real-time to segment streaming data as soon as it arrives in Experience Platform. This allows profiles to qualify for audiences immediately when they meet the criteria. Key characteristics: - Near real-time evaluation (up to 350 milliseconds processing time after an event enters the Edge Network) - Customers qualify as soon as they meet criteria - Supports continuous, event-based evaluation - Maximum 500 active streaming audiences per sandbox Throughput: - Combined peak throughput of 1500 events per second across production and development sandboxes - Additional streaming segmentation support up to 13,500 records per second can be purchased Limitations: - Platform defaults to streaming segmentation whenever possible, but automatically converts to batch if\u2026"}}]}</script></div>
+  </body>
+</html>

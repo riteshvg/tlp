@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/png" href="/tools/rovr/rovrlogo.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="build-date" content="2026-06-10" />
+    
+    
+    <script src="https://assets.adobedtm.com/204118644db8/290ae1adb65a/launch-e5ec7bf1a1ef-development.min.js" async></script>
+    <script type="module" crossorigin src="/tools/rovr/assets/index-BDlEezU1.js"></script>
+    <link rel="stylesheet" crossorigin href="/tools/rovr/assets/index-BtV6C9MI.css">
+  <title>If I want to capture last click attribution for a metric in CJA, what are the settings required | Rovr</title>
+<meta name="description" content="Configuring Last Touch (Last Click) Attribution for a Metric in CJA There are two ways to apply last touch attribution to a metric in Customer Journey…" />
+<link rel="canonical" href="https://thelearningproject.in/tools/rovr/q/if-i-want-to-capture-last-click-attribution-for-a-metric-in-58bddd" />
+<meta property="og:title" content="If I want to capture last click attribution for a metric in CJA, what are the settings required" />
+<meta property="og:description" content="Configuring Last Touch (Last Click) Attribution for a Metric in CJA There are two ways to apply last touch attribution to a metric in Customer Journey…" />
+<meta property="og:url" content="https://thelearningproject.in/tools/rovr/q/if-i-want-to-capture-last-click-attribution-for-a-metric-in-58bddd" />
+<meta property="og:type" content="article" />
+<meta property="og:image" content="https://thelearningproject.in/tools/rovr/rovrlogo.png" />
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="If I want to capture last click attribution for a metric in CJA, what are the settings required" />
+<meta name="twitter:description" content="Configuring Last Touch (Last Click) Attribution for a Metric in CJA There are two ways to apply last touch attribution to a metric in Customer Journey…" />
+</head>
+  <body>
+    <div id="root"><article><h1>If I want to capture last click attribution for a metric in CJA, what are the settings required</h1>
+<h2>Configuring Last Touch (Last Click) Attribution for a Metric in CJA</h2>
+<p>There are two ways to apply last touch attribution to a metric in Customer Journey Analytics:</p>
+<hr>
+<h3>Option 1: Set It in the Data View (Default for All Reports)</h3>
+<p>This is the recommended approach if you want last touch attribution to be the default for a metric across <strong>all reports</strong>.</p>
+<p><strong>Prerequisites:</strong> You must be a CJA Admin with access to edit Data Views.</p>
+<p>1. Navigate to <strong>[!UICONTROL Data Management]</strong> &gt; <strong>[!UICONTROL Data Views]</strong> in CJA.</p>
+<p>2. Open the Data View you want to edit.</p>
+<p>3. Locate the metric component you want to configure in the <strong>[!UICONTROL Components]</strong> tab.</p>
+<p>4. Click on the metric to open its component settings.</p>
+<p>5. Scroll to the <strong>[!UICONTROL Attribution]</strong> section.</p>
+<p>6. Set the <strong>[!UICONTROL Attribution Model]</strong> to <strong>[!UICONTROL Last Touch]</strong>.</p>
+<p>7. Set the <strong>[!UICONTROL Lookback Window]</strong> as appropriate (e.g., Person, Session, or a custom time window).</p>
+<p>8. <strong>[!UICONTROL Save]</strong> the Data View.</p>
+<p>&gt; This setting becomes the default for that metric in every report using this Data View. You can also duplicate the metric and assign different attribution models to each copy for side-by-side comparison.</p>
+<hr>
+<h3>Option 2: Override Attribution in a Freeform Table (Per-Report Basis)</h3>
+<p>This is useful when you want to apply last touch attribution <strong>only for a specific analysis</strong> without changing the Data View default.</p>
+<p>1. Open your project in <strong>[!UICONTROL Analysis Workspace]</strong>.</p>
+<p>2. Drag the metric into a <strong>[!UICONTROL Freeform Table]</strong>.</p>
+<p>3. <strong>Right-click</strong> the metric&#x27;s column header.</p>
+<p>4. Select <strong>[!UICONTROL Use non-default attribution model]</strong>.</p>
+<p>5. In the attribution dialog, choose <strong>[!UICONTROL Last Touch]</strong> as the model.</p>
+<p>6. Set the desired <strong>[!UICONTROL Lookback Window]</strong>.</p>
+<p>7. Click <strong>[!UICONTROL Apply]</strong>.</p>
+<hr>
+<h3>Key Considerations</h3>
+<ul>
+<li><strong>No default model is applied</strong> in CJA unless you explicitly configure one. This is different from GA4, which defaults to data-driven attribution.</li>
+<li>Attribution in CJA is applied <strong>at report time</strong>, meaning any model change applies <strong>retroactively to all historical data</strong> without reprocessing.</li>
+<li>If you need to compare Last Touch against other models (e.g., First Touch, Algorithmic), use the <strong>[!UICONTROL Duplicate]</strong> feature in the Data View to create multiple copies of the same metric, each with a different attribution setting — for example, naming them `Total Revenue (Last Touch)` and `Total Revenue (First Touch)`.</li>
+</ul>
+<h2>Sources</h2>
+<ul>
+<li><a href="https://experienceleague.adobe.com/en/docs/analytics-platform/using/cja-usecases/data-views/data-views-usecases">Data Views Use Cases</a></li>
+</ul></article>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "If I want to capture last click attribution for a metric in CJA, what are the settings required", "acceptedAnswer": {"@type": "Answer", "text": "Configuring Last Touch (Last Click) Attribution for a Metric in CJA There are two ways to apply last touch attribution to a metric in Customer Journey Analytics: --- Option 1: Set It in the Data View (Default for All Reports) This is the recommended approach if you want last touch attribution to be the default for a metric across all reports. Prerequisites: You must be a CJA Admin with access to edit Data Views. 1. Navigate to !UICONTROL Data Management !UICONTROL Data Views in CJA. 2. Open the Data View you want to edit. 3. Locate the metric component you want to configure in the !UICONTROL Components tab. 4. Click on the metric to open its component settings. 5. Scroll to the !UICONTROL Attribution section. 6. Set the !UICONTROL Attribution Model to !UICONTROL Last Touch. 7. Set the !UICONTROL Lookback Window as appropriate (e.g., Person, Session, or a custom time window). 8. !UICONTROL Save the Data View. This setting becomes the default for that metric in every report using this Data View. You can also duplicate the metric and assign different attribution models to each copy for side-by-side comparison. --- Option 2: Override Attribution in a Freeform Table (Per-Report Basis) This is useful when you want to apply last touch attribution only for a specific analysis without changing the Data View default. 1. Open your project in !UICONTROL Analysis Workspace. 2. Drag the metric into a !UICONTROL Freeform Table. 3. Right-click the metric's column header. 4. Select !UICONTROL Use non-default attribution model. 5. In the attribution dialog, choose !UICONTROL Last Touch as the model. 6. Set the desired !UICONTROL Lookback Window. 7. Click !UICONTROL Apply. --- Key Considerations - No default model is applied in CJA unless you explicitly configure one. This is different from GA4, which defaults to data-driven attribution. - Attribution in CJA is applied at report time, meaning any model change applies retroactively to all historical data without reprocessing. - If\u2026"}}]}</script></div>
+  </body>
+</html>
