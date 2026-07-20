@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/png" href="/tools/rovr/rovrlogo.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="build-date" content="2026-06-10" />
+    
+    
+    <script src="https://assets.adobedtm.com/204118644db8/290ae1adb65a/launch-e5ec7bf1a1ef-development.min.js" async></script>
+    <script type="module" crossorigin src="/tools/rovr/assets/index-BDlEezU1.js"></script>
+    <link rel="stylesheet" crossorigin href="/tools/rovr/assets/index-BtV6C9MI.css">
+  <title>Explain about Schemas in AEP , how profile schemas are different | Rovr</title>
+<meta name="description" content="Schemas in Adobe Experience Platform Schemas are fundamental to AEP&#x27;s data management. Let me explain what they are and how profile schemas differ. What is a…" />
+<link rel="canonical" href="https://thelearningproject.in/tools/rovr/q/explain-about-schemas-in-aep-how-profile-schemas-are-differe-39e4a4" />
+<meta property="og:title" content="Explain about Schemas in AEP , how profile schemas are different" />
+<meta property="og:description" content="Schemas in Adobe Experience Platform Schemas are fundamental to AEP&#x27;s data management. Let me explain what they are and how profile schemas differ. What is a…" />
+<meta property="og:url" content="https://thelearningproject.in/tools/rovr/q/explain-about-schemas-in-aep-how-profile-schemas-are-differe-39e4a4" />
+<meta property="og:type" content="article" />
+<meta property="og:image" content="https://thelearningproject.in/tools/rovr/rovrlogo.png" />
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="Explain about Schemas in AEP , how profile schemas are different" />
+<meta name="twitter:description" content="Schemas in Adobe Experience Platform Schemas are fundamental to AEP&#x27;s data management. Let me explain what they are and how profile schemas differ. What is a…" />
+</head>
+  <body>
+    <div id="root"><article><h1>Explain about Schemas in AEP , how profile schemas are different</h1>
+<h2>Schemas in Adobe Experience Platform</h2>
+<p>Schemas are fundamental to AEP&#x27;s data management. Let me explain what they are and how profile schemas differ.</p>
+<h3>What is a Schema?</h3>
+<p>In Adobe Experience Platform, schemas are standardized frameworks based on the <strong>Experience Data Model (XDM)</strong> that define the structure of data being ingested. All XDM schema resources are stored in the <strong>Schema Library</strong>, which includes:</p>
+<ul>
+<li>Standard resources provided by Adobe</li>
+<li>Custom resources defined by your organization</li>
+</ul>
+<p>Schemas provide:</p>
+<ul>
+<li>A consistent structure for data across the platform</li>
+<li>Information on expected data types for each field</li>
+<li>Documentation of field use cases</li>
+<li>Guidance for data preparation and ingestion planning</li>
+</ul>
+<h3>Exploring Schemas in the UI</h3>
+<p>In the Experience Platform UI, you can view and explore:</p>
+<ul>
+<li><strong>Existing schemas</strong> – their structure and fields</li>
+<li><strong>Classes</strong> – foundational building blocks of schemas</li>
+<li><strong>Field groups</strong> – reusable collections of fields</li>
+<li><strong>Data types</strong> – field-level data structures</li>
+<li><strong>Relationships</strong> – connections between schemas</li>
+</ul>
+<p><img src="https://raw.githubusercontent.com/AdobeDocs/experience-platform.en/main/help/xdm/ui/../images/ui/explore/tabs.png" alt="Schema exploration tabs"></p>
+<p>You can also use search functionality to look up specific schema resources:</p>
+<p><img src="https://raw.githubusercontent.com/AdobeDocs/experience-platform.en/main/help/xdm/ui/../images/ui/explore/search.png" alt="Schema search"></p>
+<h3>Profile Schemas vs. Other Schemas</h3>
+<p><strong>How Profile Schemas Differ:</strong></p>
+<p>Profile schemas are specifically designed for <strong>Real-Time Customer Profile</strong> in AEP. Key differences include:</p>
+<ul>
+<li><strong>Purpose</strong>: Profile schemas enable individual customer profiles by unifying data from multiple sources</li>
+<li><strong>Profile Enablement</strong>: Profile schemas must be explicitly enabled to contribute data to the Real-Time Customer Profile</li>
+<li><strong>Identity Configuration</strong>: Profile schemas require identity fields to be configured so records can be merged and linked to create unified customer profiles</li>
+<li><strong>Use Case</strong>: Used for creating comprehensive customer 360 views combining behavioral, transactional, and demographic data</li>
+</ul>
+<p><strong>Other Schema Types:</strong></p>
+<ul>
+<li><strong>Event schemas</strong> – capture time-series data and customer interactions (events that happened)</li>
+<li><strong>Standard schemas</strong> – general-purpose schemas for various data types</li>
+<li><strong>Lookup schemas</strong> – reference data that provides context</li>
+</ul>
+<h3>Schema Components</h3>
+<p>Every schema is built from:</p>
+<p>1. <strong>Class</strong> – defines the basic structure (e.g., XDM Individual Profile, XDM ExperienceEvent)</p>
+<p>2. <strong>Field Groups</strong> – add specific fields relevant to your use case</p>
+<p>3. <strong>Data Types</strong> – define individual field structures</p>
+<p>4. <strong>Fields</strong> – the actual attributes storing data</p>
+<h3>Benefits for Data Preparation</h3>
+<p>Understanding schemas helps you:</p>
+<ul>
+<li>Plan data mapping before ingestion</li>
+<li>Validate that incoming data matches expected structure</li>
+<li>Identify required vs. optional fields</li>
+<li>Understand field data types and constraints</li>
+<li>Prepare datasets that align with organizational standards</li>
+</ul>
+<p>The Schema Library in AEP ensures consistency, reduces errors, and accelerates your ability to activate data across the platform for analytics, personalization, and customer engagement.</p>
+</article>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Explain about Schemas in AEP , how profile schemas are different", "acceptedAnswer": {"@type": "Answer", "text": "Schemas in Adobe Experience Platform Schemas are fundamental to AEP's data management. Let me explain what they are and how profile schemas differ. What is a Schema? In Adobe Experience Platform, schemas are standardized frameworks based on the Experience Data Model (XDM) that define the structure of data being ingested. All XDM schema resources are stored in the Schema Library, which includes: - Standard resources provided by Adobe - Custom resources defined by your organization Schemas provide: - A consistent structure for data across the platform - Information on expected data types for each field - Documentation of field use cases - Guidance for data preparation and ingestion planning Exploring Schemas in the UI In the Experience Platform UI, you can view and explore: - Existing schemas \u2013 their structure and fields - Classes \u2013 foundational building blocks of schemas - Field groups \u2013 reusable collections of fields - Data types \u2013 field-level data structures - Relationships \u2013 connections between schemas !Schema exploration tabs(https://raw.githubusercontent.com/AdobeDocs/experience-platform.en/main/help/xdm/ui/../images/ui/explore/tabs.png) You can also use search functionality to look up specific schema resources: !Schema search(https://raw.githubusercontent.com/AdobeDocs/experience-platform.en/main/help/xdm/ui/../images/ui/explore/search.png) Profile Schemas vs. Other Schemas How Profile Schemas Differ: Profile schemas are specifically designed for Real-Time Customer Profile in AEP. Key differences include: - Purpose: Profile schemas enable individual customer profiles by unifying data from multiple sources - Profile Enablement: Profile schemas must be explicitly enabled to contribute data to the Real-Time Customer Profile - Identity Configuration: Profile schemas require identity fields to be configured so records can be merged and linked to create unified customer profiles - Use Case: Used for creating comprehensive customer 360 views combining behavioral,\u2026"}}]}</script></div>
+  </body>
+</html>
