@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/png" href="/tools/rovr/rovrlogo.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="build-date" content="2026-06-10" />
+    
+    
+    <script src="https://assets.adobedtm.com/204118644db8/290ae1adb65a/launch-e5ec7bf1a1ef-development.min.js" async></script>
+    <script type="module" crossorigin src="/tools/rovr/assets/index-BDlEezU1.js"></script>
+    <link rel="stylesheet" crossorigin href="/tools/rovr/assets/index-BtV6C9MI.css">
+  <title>Can I apply different attribution models to different marketing channels simultaneously in CJA? | Rovr</title>
+<meta name="description" content="Based on the retrieved documentation context, I can provide a partial answer to this question. Applying Attribution Models in Customer Journey Analytics What…" />
+<link rel="canonical" href="https://thelearningproject.in/tools/rovr/q/can-i-apply-different-attribution-models-to-different-market-9688a2" />
+<meta property="og:title" content="Can I apply different attribution models to different marketing channels simultaneously in CJA?" />
+<meta property="og:description" content="Based on the retrieved documentation context, I can provide a partial answer to this question. Applying Attribution Models in Customer Journey Analytics What…" />
+<meta property="og:url" content="https://thelearningproject.in/tools/rovr/q/can-i-apply-different-attribution-models-to-different-market-9688a2" />
+<meta property="og:type" content="article" />
+<meta property="og:image" content="https://thelearningproject.in/tools/rovr/rovrlogo.png" />
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="Can I apply different attribution models to different marketing channels simultaneously in CJA?" />
+<meta name="twitter:description" content="Based on the retrieved documentation context, I can provide a partial answer to this question. Applying Attribution Models in Customer Journey Analytics What…" />
+</head>
+  <body>
+    <div id="root"><article><h1>Can I apply different attribution models to different marketing channels simultaneously in CJA?</h1>
+<p>Based on the retrieved documentation context, I can provide a partial answer to this question.</p>
+<h3>Applying Attribution Models in Customer Journey Analytics</h3>
+<h4>What the Documentation Confirms</h4>
+<p>CJA&#x27;s attribution capabilities are highly flexible, and here is what is explicitly supported:</p>
+<h5>1. <strong>Unlimited Attribution Model Comparison</strong></h5>
+<p>You can <strong>dynamically compare as many attribution models as you want</strong> simultaneously. This means you can:</p>
+<ul>
+<li>Place multiple versions of the same metric (each with a different attribution model) side by side in a Freeform table</li>
+<li>Use the <strong>Attribution panel</strong> to visualize how different models distribute credit across all your channels at once</li>
+</ul>
+<h5>2. <strong>Attribution via Calculated Metrics</strong></h5>
+<p>You can build calculated metrics using <strong>any number of attribution allocation methods</strong>, including:</p>
+<ul>
+<li><strong>First Touch</strong> — 100% credit to first touchpoint</li>
+<li><strong>Last Touch</strong> — 100% credit to last touchpoint</li>
+<li><strong>Linear</strong> — equal credit across all touchpoints</li>
+<li><strong>Time Decay</strong> — dimension values closest in time to conversion get the most credit</li>
+<li><strong>U-Shaped</strong> — weighted credit to first and last touchpoints</li>
+<li><strong>Inverse J</strong> — 60% credit to the first dimension value, 20% to the last, 20% shared by the middle</li>
+<li><strong>Custom/Position-Based</strong> — define your own position-based attribution weighting</li>
+<li><strong>Algorithmic</strong> — credit is dynamically determined by a statistical algorithm</li>
+</ul>
+<p><a href="https://video.tv.adobe.com/v/3458301/?learn=on&amp;enablevpops=true">▶ Watch: Algorithmic Attribution - A Game-Changer for Marketers</a></p>
+<h5>3. <strong>Attribution Applied Across Cross-Channel Data</strong></h5>
+<p>CJA supports sophisticated attribution across:</p>
+<ul>
+<li>Web revenue</li>
+<li>Mobile app revenue</li>
+<li>Product returns (removable from calculations)</li>
+<li>Any custom dimension or metric — not just marketing campaigns</li>
+</ul>
+<p><a href="https://video.tv.adobe.com/v/31772/?quality=12&amp;learn=on">▶ Watch: Cross-Channel Attribution in Customer Journey Analytics</a></p>
+<h4>What the Documentation Does Not Explicitly Confirm</h4>
+<p>The retrieved context does <strong>not explicitly document</strong> a native UI workflow for assigning <strong>a different attribution model to each individual marketing channel row simultaneously</strong> within a single table column. Specifically, it is unclear whether you can configure:</p>
+<ul>
+<li>Channel A → First Touch</li>
+<li>Channel B → Last Touch</li>
+<li>Channel C → Algorithmic</li>
+</ul>
+<p>...all within a single metric column in one report view.</p>
+<h4>Recommended Workaround</h4>
+<p>Based on what is documented, the practical approach would be to:</p>
+<p>1. <strong>Create separate calculated metrics</strong> — one per attribution model you want to apply</p>
+<p>2. <strong>Add multiple metric columns</strong> to a single Freeform table — each column using a different attribution model</p>
+<p>3. <strong>Use segments/filters</strong> to isolate specific channel subsets per metric column if needed</p>
+<p>This gives you a highly flexible, side-by-side comparison across channels and models, even if it is not a single-column per-channel configuration.</p>
+<hr>
+<p>If you need confirmation of the per-channel-per-model configuration specifically, I&#x27;d recommend validating this directly in your CJA environment or with your Adobe account team, as the documentation context available here does not explicitly cover that specific scenario.</p>
+<h2>Sources</h2>
+<ul>
+<li><a href="https://experienceleague.adobe.com/en/docs/analytics-platform/using/cja-usecases/data-ingestion/marketo">Report on Marketo Engage data</a></li>
+<li><a href="https://experienceleague.adobe.com/en/docs/analytics-platform/using/cja-workspace/templates/use-templates">Use Templates</a></li>
+</ul></article>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Can I apply different attribution models to different marketing channels simultaneously in CJA?", "acceptedAnswer": {"@type": "Answer", "text": "Based on the retrieved documentation context, I can provide a partial answer to this question. Applying Attribution Models in Customer Journey Analytics What the Documentation Confirms CJA's attribution capabilities are highly flexible, and here is what is explicitly supported: 1. Unlimited Attribution Model Comparison You can dynamically compare as many attribution models as you want simultaneously. This means you can: - Place multiple versions of the same metric (each with a different attribution model) side by side in a Freeform table - Use the Attribution panel to visualize how different models distribute credit across all your channels at once 2. Attribution via Calculated Metrics You can build calculated metrics using any number of attribution allocation methods, including: - First Touch \u2014 100% credit to first touchpoint - Last Touch \u2014 100% credit to last touchpoint - Linear \u2014 equal credit across all touchpoints - Time Decay \u2014 dimension values closest in time to conversion get the most credit - U-Shaped \u2014 weighted credit to first and last touchpoints - Inverse J \u2014 60% credit to the first dimension value, 20% to the last, 20% shared by the middle - Custom/Position-Based \u2014 define your own position-based attribution weighting - Algorithmic \u2014 credit is dynamically determined by a statistical algorithm \u25b6 Watch: Algorithmic Attribution - A Game-Changer for Marketers(https://video.tv.adobe.com/v/3458301/?learn=on&enablevpops=true) 3. Attribution Applied Across Cross-Channel Data CJA supports sophisticated attribution across: - Web revenue - Mobile app revenue - Product returns (removable from calculations) - Any custom dimension or metric \u2014 not just marketing campaigns \u25b6 Watch: Cross-Channel Attribution in Customer Journey Analytics(https://video.tv.adobe.com/v/31772/?quality=12&learn=on) What the Documentation Does Not Explicitly Confirm The retrieved context does not explicitly document a native UI workflow for assigning a different attribution model to each\u2026"}}]}</script></div>
+  </body>
+</html>

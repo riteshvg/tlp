@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/png" href="/tools/rovr/rovrlogo.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="build-date" content="2026-06-10" />
+    
+    
+    <script src="https://assets.adobedtm.com/204118644db8/290ae1adb65a/launch-e5ec7bf1a1ef-development.min.js" async></script>
+    <script type="module" crossorigin src="/tools/rovr/assets/index-BDlEezU1.js"></script>
+    <link rel="stylesheet" crossorigin href="/tools/rovr/assets/index-BtV6C9MI.css">
+  <title>What are the best practices of setting up marketing channel in CJA? | Rovr</title>
+<meta name="description" content="Best Practices for Setting Up Marketing Channels in Customer Journey Analytics Key Differences to Understand First Marketing channels in Customer Journey…" />
+<link rel="canonical" href="https://thelearningproject.in/tools/rovr/q/what-are-the-best-practices-of-setting-up-marketing-channel-4c490a" />
+<meta property="og:title" content="What are the best practices of setting up marketing channel in CJA?" />
+<meta property="og:description" content="Best Practices for Setting Up Marketing Channels in Customer Journey Analytics Key Differences to Understand First Marketing channels in Customer Journey…" />
+<meta property="og:url" content="https://thelearningproject.in/tools/rovr/q/what-are-the-best-practices-of-setting-up-marketing-channel-4c490a" />
+<meta property="og:type" content="article" />
+<meta property="og:image" content="https://thelearningproject.in/tools/rovr/rovrlogo.png" />
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="What are the best practices of setting up marketing channel in CJA?" />
+<meta name="twitter:description" content="Best Practices for Setting Up Marketing Channels in Customer Journey Analytics Key Differences to Understand First Marketing channels in Customer Journey…" />
+</head>
+  <body>
+    <div id="root"><article><h1>What are the best practices of setting up marketing channel in CJA?</h1>
+<h2>Best Practices for Setting Up Marketing Channels in Customer Journey Analytics</h2>
+<h3>Key Differences to Understand First</h3>
+<p>Marketing channels in Customer Journey Analytics operate differently than in traditional Adobe Analytics. Here are the critical differences:</p>
+<h4>Report-Time Processing</h4>
+<p>Customer Journey Analytics processes marketing channels at report time (not at data collection time), which means:</p>
+<ul>
+<li>Sessions are determined at query time rather than collection time</li>
+<li>This enables non-destructive, retroactive channel configuration</li>
+</ul>
+<h4>&quot;Is First Page of Visit&quot; Limitation</h4>
+<p><img src="https://raw.githubusercontent.com/AdobeDocs/analytics-platform.en/main/help/use-cases/aa-data/../assets/first-page-of-visit.png" alt="First page of visit"></p>
+<p>Any marketing channel rule using the <strong>&quot;Is First Page of Visit&quot;</strong> criteria will be ignored in Platform data. If you&#x27;re migrating from Adobe Analytics, you should re-evaluate these rules and use alternative approaches to achieve your goals. Other criteria in the same rule will still apply.</p>
+<h3>Recommended Setup Approaches</h3>
+<h4>1. <strong>Use Derived Fields (Recommended)</strong></h4>
+<p>CJA provides a non-destructive, retroactive way to define marketing channels using <strong>Derived Fields</strong> with the Marketing Channel function template within your Data Views. This approach allows you to:</p>
+<ul>
+<li>Modify channel definitions without losing original data</li>
+<li>Retroactively apply changes to historical data</li>
+<li>Test and refine your logic over time</li>
+</ul>
+<h4>2. <strong>Carry Over Rules from Adobe Analytics</strong></h4>
+<p>If you&#x27;re using the Analytics source connector, you can carry over marketing channel processing rules from your Adobe Analytics report suite. However, be aware of the &quot;Is First Page of Visit&quot; limitation mentioned above.</p>
+<h4>3. <strong>Define Custom Channel Groupings</strong></h4>
+<p>Unlike Google Analytics, CJA has no built-in channel groupings. You must explicitly define them based on your business needs using:</p>
+<ul>
+<li>Derived fields with custom logic</li>
+<li>Referrer domain and type dimensions</li>
+<li>UTM parameters (manually mapped to XDM fields)</li>
+<li>Tracking codes and other custom dimensions</li>
+</ul>
+<h3>Key Capabilities to Leverage</h3>
+<p>Once set up, marketing channels in CJA enable you to:</p>
+<ul>
+<li><strong>Understand channel effectiveness</strong>: Use the Channel Overview Report template to see which marketing channels are most effective at driving visitors to your site</li>
+<li><strong>Analyze first-touch attribution</strong>: Identify which channels drive initial traffic and optimize marketing investments accordingly</li>
+<li><strong>Review channel details</strong>: Examine specific details about how visitors matched with channels (e.g., which search engine or keyword for paid search)</li>
+<li><strong>Implement advanced attribution</strong>: Support complex, multi-touch attribution models across all connected data sources</li>
+</ul>
+<h3>Additional Resources</h3>
+<p>Adobe has published updated best practices specifically designed to help you succeed with marketing channels in CJA and prepare for your transition from traditional Analytics. These recommendations emphasize leveraging CJA&#x27;s advanced attribution features and report-time processing capabilities.</p>
+<h2>Sources</h2>
+<ul>
+<li><a href="https://experienceleague.adobe.com/en/docs/analytics-platform/using/cja-usecases/aa-data/marketing-channels">Use Marketing Channel Dimensions</a></li>
+<li><a href="https://experienceleague.adobe.com/en/docs/analytics-platform/using/cja-usecases/data-ingestion/marketo">Report on Marketo Engage data</a></li>
+<li><a href="https://experienceleague.adobe.com/en/docs/analytics-platform/using/cja-workspace/templates/use-templates">Use Templates</a></li>
+</ul></article>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "What are the best practices of setting up marketing channel in CJA?", "acceptedAnswer": {"@type": "Answer", "text": "Best Practices for Setting Up Marketing Channels in Customer Journey Analytics Key Differences to Understand First Marketing channels in Customer Journey Analytics operate differently than in traditional Adobe Analytics. Here are the critical differences: Report-Time Processing Customer Journey Analytics processes marketing channels at report time (not at data collection time), which means: - Sessions are determined at query time rather than collection time - This enables non-destructive, retroactive channel configuration \"Is First Page of Visit\" Limitation !First page of visit(https://raw.githubusercontent.com/AdobeDocs/analytics-platform.en/main/help/use-cases/aa-data/../assets/first-page-of-visit.png) Any marketing channel rule using the \"Is First Page of Visit\" criteria will be ignored in Platform data. If you're migrating from Adobe Analytics, you should re-evaluate these rules and use alternative approaches to achieve your goals. Other criteria in the same rule will still apply. Recommended Setup Approaches 1. Use Derived Fields (Recommended) CJA provides a non-destructive, retroactive way to define marketing channels using Derived Fields with the Marketing Channel function template within your Data Views. This approach allows you to: - Modify channel definitions without losing original data - Retroactively apply changes to historical data - Test and refine your logic over time 2. Carry Over Rules from Adobe Analytics If you're using the Analytics source connector, you can carry over marketing channel processing rules from your Adobe Analytics report suite. However, be aware of the \"Is First Page of Visit\" limitation mentioned above. 3. Define Custom Channel Groupings Unlike Google Analytics, CJA has no built-in channel groupings. You must explicitly define them based on your business needs using: - Derived fields with custom logic - Referrer domain and type dimensions - UTM parameters (manually mapped to XDM fields) - Tracking codes and other custom\u2026"}}]}</script></div>
+  </body>
+</html>
