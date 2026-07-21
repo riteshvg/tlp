@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/png" href="/tools/rovr/rovrlogo.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="build-date" content="2026-06-10" />
+    
+    
+    <script src="https://assets.adobedtm.com/204118644db8/290ae1adb65a/launch-e5ec7bf1a1ef-development.min.js" async></script>
+    <script type="module" crossorigin src="/tools/rovr/assets/index-BDlEezU1.js"></script>
+    <link rel="stylesheet" crossorigin href="/tools/rovr/assets/index-BtV6C9MI.css">
+  <title>How do I implement datastream overrides in my Web SDK configuration? | Rovr</title>
+<meta name="description" content="Implementing Datastream Overrides in Web SDK Prerequisites Before you begin, ensure: - You have access to Adobe Experience Platform or Data Collection UI -…" />
+<link rel="canonical" href="https://thelearningproject.in/tools/rovr/q/how-do-i-implement-datastream-overrides-in-my-web-sdk-config-88065f" />
+<meta property="og:title" content="How do I implement datastream overrides in my Web SDK configuration?" />
+<meta property="og:description" content="Implementing Datastream Overrides in Web SDK Prerequisites Before you begin, ensure: - You have access to Adobe Experience Platform or Data Collection UI -…" />
+<meta property="og:url" content="https://thelearningproject.in/tools/rovr/q/how-do-i-implement-datastream-overrides-in-my-web-sdk-config-88065f" />
+<meta property="og:type" content="article" />
+<meta property="og:image" content="https://thelearningproject.in/tools/rovr/rovrlogo.png" />
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="How do I implement datastream overrides in my Web SDK configuration?" />
+<meta name="twitter:description" content="Implementing Datastream Overrides in Web SDK Prerequisites Before you begin, ensure: - You have access to Adobe Experience Platform or Data Collection UI -…" />
+</head>
+  <body>
+    <div id="root"><article><h1>How do I implement datastream overrides in my Web SDK configuration?</h1>
+<h2>Implementing Datastream Overrides in Web SDK</h2>
+<h3>Prerequisites</h3>
+<p>Before you begin, ensure:</p>
+<ul>
+<li>You have access to Adobe Experience Platform or Data Collection UI</li>
+<li>You have an existing datastream configured</li>
+<li>Your Web SDK tag extension is installed on your tag property</li>
+<li>Your implementation does <strong>not</strong> conflict with Dynamic Datastream Configuration rules (overrides take precedence and will silently bypass those rules)</li>
+</ul>
+<hr>
+<h3>Step 1: Define Overrides in the Datastreams UI</h3>
+<p>You must first configure the override options at the datastream level before they can be used in the SDK.</p>
+<p>1. Log in to <a href="https://experience.adobe.com">experience.adobe.com</a></p>
+<p>2. Navigate to <strong>Data Collection</strong> &gt; <strong>Datastreams</strong> in the left navigation</p>
+<p>3. Select the datastream you want to configure overrides for</p>
+<p>4. Define your override values (e.g., alternate Analytics report suites, Target workspaces, Platform datasets)</p>
+<p>5. Save your datastream configuration</p>
+<hr>
+<h3>Step 2: Send Overrides to the Edge Network</h3>
+<p>Once overrides are defined in the Datastreams UI, you can send them to the Edge Network using <strong>one of the following methods</strong>:</p>
+<h4>Option A: Via the Web SDK Tag Extension (Recommended for Tags users)</h4>
+<p>1. Navigate to <strong>Data Collection</strong> &gt; <strong>Tags</strong></p>
+<p>2. Select your desired tag property</p>
+<p>3. Navigate to <strong>Extensions</strong>, then select <strong>Configure</strong> on the <strong>Adobe Experience Platform Web SDK</strong> card</p>
+<p>4. Scroll down to the <strong>Datastream configuration overrides</strong> section</p>
+<p>5. Configure overrides for each environment (development, staging, production) separately</p>
+<p><img src="https://raw.githubusercontent.com/AdobeDocs/experience-platform.en/main/help/tags/extensions/client/web-sdk/configure/../assets/datastream-overrides.png" alt="Datastream configuration overrides in Web SDK tag extension"></p>
+<p>&gt; You can copy override settings between environments to save time.</p>
+<hr>
+<h4>Option B: Via the `sendEvent` Web SDK Command</h4>
+<p>You can pass overrides directly in a `sendEvent` call using the `edgeConfigOverrides` parameter:</p>
+<p>```javascript</p>
+<p>alloy(&quot;sendEvent&quot;, {</p>
+<p>xdm: { /<em> your XDM data </em>/ },</p>
+<p>edgeConfigOverrides: {</p>
+<p>com_adobe_analytics: {</p>
+<p>reportSuites: [&quot;alternate-report-suite&quot;]</p>
+<p>},</p>
+<p>com_adobe_target: {</p>
+<p>propertyToken: &quot;your-alternate-property-token&quot;</p>
+<p>}</p>
+<p>}</p>
+<p>});</p>
+<p>```</p>
+<hr>
+<h4>Option C: Via the `configure` Web SDK Command</h4>
+<p>To apply overrides globally across all events, include `edgeConfigOverrides` in the `configure` command:</p>
+<p>```javascript</p>
+<p>alloy(&quot;configure&quot;, {</p>
+<p>datastreamId: &quot;your-datastream-id&quot;,</p>
+<p>orgId: &quot;your-org-id&quot;,</p>
+<p>edgeConfigOverrides: {</p>
+<p>com_adobe_analytics: {</p>
+<p>reportSuites: [&quot;alternate-report-suite&quot;]</p>
+<p>}</p>
+<p>}</p>
+<p>});</p>
+<p>```</p>
+<hr>
+<h3>Important Considerations</h3>
+<p>| Consideration | Detail |</p>
+<p>|---|---|</p>
+<p>| <strong>Override priority</strong> | Client-side datastream overrides take precedence over server-side Dynamic Datastream Configuration rules |</p>
+<p>| <strong>Silent bypass</strong> | Events with overrides bypass Dynamic Datastream Configuration rules with no error or warning |</p>
+<p>| <strong>Edge Network API</strong> | Edge Network API integrations do <strong>not</strong> currently support datastream overrides |</p>
+<p>| <strong>Avoid for consent/personalization</strong> | Do not use datastream overrides for personalization use cases or consent data |</p>
+<p>| <strong>Environment-specific</strong> | Overrides must be configured separately for development, staging, and production environments |</p>
+<hr>
+<h3>Conflict Check Before Going Live</h3>
+<p>Before enabling overrides, verify that:</p>
+<ul>
+<li>Your SDK implementation does not send `edgeConfigOverrides` in `sendEvent` or `configure` calls for events that Dynamic Datastream Configuration rules should handle</li>
+<li>For each event type moved to Dynamic Datastream Configuration rules, remove the corresponding `edgeConfigOverrides` from your SDK code first</li>
+</ul>
+</article>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "How do I implement datastream overrides in my Web SDK configuration?", "acceptedAnswer": {"@type": "Answer", "text": "Implementing Datastream Overrides in Web SDK Prerequisites Before you begin, ensure: - You have access to Adobe Experience Platform or Data Collection UI - You have an existing datastream configured - Your Web SDK tag extension is installed on your tag property - Your implementation does not conflict with Dynamic Datastream Configuration rules (overrides take precedence and will silently bypass those rules) --- Step 1: Define Overrides in the Datastreams UI You must first configure the override options at the datastream level before they can be used in the SDK. 1. Log in to experience.adobe.com(https://experience.adobe.com) 2. Navigate to Data Collection Datastreams in the left navigation 3. Select the datastream you want to configure overrides for 4. Define your override values (e.g., alternate Analytics report suites, Target workspaces, Platform datasets) 5. Save your datastream configuration --- Step 2: Send Overrides to the Edge Network Once overrides are defined in the Datastreams UI, you can send them to the Edge Network using one of the following methods: Option A: Via the Web SDK Tag Extension (Recommended for Tags users) 1. Navigate to Data Collection Tags 2. Select your desired tag property 3. Navigate to Extensions, then select Configure on the Adobe Experience Platform Web SDK card 4. Scroll down to the Datastream configuration overrides section 5. Configure overrides for each environment (development, staging, production) separately !Datastream configuration overrides in Web SDK tag extension(https://raw.githubusercontent.com/AdobeDocs/experience-platform.en/main/help/tags/extensions/client/web-sdk/configure/../assets/datastream-overrides.png) You can copy override settings between environments to save time. --- Option B: Via the sendEvent Web SDK Command You can pass overrides directly in a sendEvent call using the edgeConfigOverrides parameter: javascript alloy(\"sendEvent\", { xdm: { / your XDM data / }, edgeConfigOverrides: { comadobeanalytics: {\u2026"}}]}</script></div>
+  </body>
+</html>

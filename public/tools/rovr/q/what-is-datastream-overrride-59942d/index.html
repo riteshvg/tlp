@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/png" href="/tools/rovr/rovrlogo.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="build-date" content="2026-06-10" />
+    
+    
+    <script src="https://assets.adobedtm.com/204118644db8/290ae1adb65a/launch-e5ec7bf1a1ef-development.min.js" async></script>
+    <script type="module" crossorigin src="/tools/rovr/assets/index-BDlEezU1.js"></script>
+    <link rel="stylesheet" crossorigin href="/tools/rovr/assets/index-BtV6C9MI.css">
+  <title>What is datastream overrride? | Rovr</title>
+<meta name="description" content="Datastream Overrides Datastream overrides allow you to define additional configurations for your datastreams that get passed to the Edge Network via the Web…" />
+<link rel="canonical" href="https://thelearningproject.in/tools/rovr/q/what-is-datastream-overrride-59942d" />
+<meta property="og:title" content="What is datastream overrride?" />
+<meta property="og:description" content="Datastream Overrides Datastream overrides allow you to define additional configurations for your datastreams that get passed to the Edge Network via the Web…" />
+<meta property="og:url" content="https://thelearningproject.in/tools/rovr/q/what-is-datastream-overrride-59942d" />
+<meta property="og:type" content="article" />
+<meta property="og:image" content="https://thelearningproject.in/tools/rovr/rovrlogo.png" />
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="What is datastream overrride?" />
+<meta name="twitter:description" content="Datastream Overrides Datastream overrides allow you to define additional configurations for your datastreams that get passed to the Edge Network via the Web…" />
+</head>
+  <body>
+    <div id="root"><article><h1>What is datastream overrride?</h1>
+<h2>Datastream Overrides</h2>
+<p>Datastream overrides allow you to define additional configurations for your datastreams that get passed to the Edge Network via the Web SDK. This feature helps you <strong>conditionally trigger different datastream behaviors without creating a new datastream or modifying your existing settings</strong>.</p>
+<h3>Key Differences from Dynamic Datastream Configurations</h3>
+<p>It&#x27;s important to note that <strong>datastream overrides and dynamic datastream configurations are mutually exclusive</strong> — you must choose one or the other:</p>
+<ul>
+<li>If you enable both, <strong>configuration overrides take precedence</strong> and the system ignores the dynamic datastream configuration rules.</li>
+</ul>
+<h3>What You Can Override</h3>
+<p>Datastream configuration overrides let you modify the following datastream configurations:</p>
+<ul>
+<li>Experience Platform event datasets</li>
+<li>Adobe Target property tokens</li>
+<li>Audience Manager ID sync containers</li>
+<li>Adobe Analytics report suites</li>
+</ul>
+<h3>How to Configure Datastream Overrides</h3>
+<p>Datastream overrides require a <strong>two-step process</strong>:</p>
+<h4>Step 1: Define overrides in the Datastreams UI</h4>
+<p>First, you must define your datastream configuration override when configuring a datastream in the Datastreams UI.</p>
+<h4>Step 2: Configure in the Web SDK tag extension</h4>
+<p>1. Log in to CX Enterprise using your Adobe ID credentials</p>
+<p>2. Navigate to <strong>Data Collection</strong> &gt; <strong>Tags</strong></p>
+<p>3. Select your desired tag property</p>
+<p>4. Navigate to <strong>Extensions</strong>, then select <strong>Configure</strong> on the Adobe Experience Platform Web SDK card</p>
+<p>5. Scroll down to the <strong>Datastream configuration overrides</strong> section</p>
+<h3>Environment-Specific Configuration</h3>
+<p>Datastream overrides must be configured on a <strong>per-environment basis</strong>. The development, staging, and production environments all have separate overrides. You can copy the override settings between any desired environments.</p>
+<h3>Common Use Cases</h3>
+<ul>
+<li><strong>Multi-country operations</strong>: Dynamically switch data flow to country-specific datastreams based on user location</li>
+<li><strong>Multiple business units</strong>: Route data to different Experience Platform sandboxes for each business unit</li>
+<li><strong>Conditional routing</strong>: Send data to different datastreams based on user actions (like order placement or profile updates)</li>
+</ul>
+<h2>Sources</h2>
+<ul>
+<li><a href="https://experienceleague.adobe.com/en/docs/experience-platform/datastreams/configure-dynamic-datastream">Create [!DNL Dynamic Datastream Configurations]</a></li>
+</ul></article>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "What is datastream overrride?", "acceptedAnswer": {"@type": "Answer", "text": "Datastream Overrides Datastream overrides allow you to define additional configurations for your datastreams that get passed to the Edge Network via the Web SDK. This feature helps you conditionally trigger different datastream behaviors without creating a new datastream or modifying your existing settings. Key Differences from Dynamic Datastream Configurations It's important to note that datastream overrides and dynamic datastream configurations are mutually exclusive \u2014 you must choose one or the other: - If you enable both, configuration overrides take precedence and the system ignores the dynamic datastream configuration rules. What You Can Override Datastream configuration overrides let you modify the following datastream configurations: - Experience Platform event datasets - Adobe Target property tokens - Audience Manager ID sync containers - Adobe Analytics report suites How to Configure Datastream Overrides Datastream overrides require a two-step process: Step 1: Define overrides in the Datastreams UI First, you must define your datastream configuration override when configuring a datastream in the Datastreams UI. Step 2: Configure in the Web SDK tag extension 1. Log in to CX Enterprise using your Adobe ID credentials 2. Navigate to Data Collection Tags 3. Select your desired tag property 4. Navigate to Extensions, then select Configure on the Adobe Experience Platform Web SDK card 5. Scroll down to the Datastream configuration overrides section Environment-Specific Configuration Datastream overrides must be configured on a per-environment basis. The development, staging, and production environments all have separate overrides. You can copy the override settings between any desired environments. Common Use Cases - Multi-country operations: Dynamically switch data flow to country-specific datastreams based on user location - Multiple business units: Route data to different Experience Platform sandboxes for each business unit - Conditional routing: Send data\u2026"}}]}</script></div>
+  </body>
+</html>
