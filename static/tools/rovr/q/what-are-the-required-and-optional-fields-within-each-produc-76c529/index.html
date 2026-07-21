@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/png" href="/tools/rovr/rovrlogo.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="build-date" content="2026-06-10" />
+    
+    
+    <script src="https://assets.adobedtm.com/204118644db8/290ae1adb65a/launch-e5ec7bf1a1ef-development.min.js" async></script>
+    <script type="module" crossorigin src="/tools/rovr/assets/index-BDlEezU1.js"></script>
+    <link rel="stylesheet" crossorigin href="/tools/rovr/assets/index-BtV6C9MI.css">
+  <title>What are the required and optional fields within each productListItems object? | Rovr</title>
+<meta name="description" content="Required and Optional Fields in productListItems Based on the retrieved documentation, here is what I can confirm about the productListItems fields:…" />
+<link rel="canonical" href="https://thelearningproject.in/tools/rovr/q/what-are-the-required-and-optional-fields-within-each-produc-76c529" />
+<meta property="og:title" content="What are the required and optional fields within each productListItems object?" />
+<meta property="og:description" content="Required and Optional Fields in productListItems Based on the retrieved documentation, here is what I can confirm about the productListItems fields:…" />
+<meta property="og:url" content="https://thelearningproject.in/tools/rovr/q/what-are-the-required-and-optional-fields-within-each-produc-76c529" />
+<meta property="og:type" content="article" />
+<meta property="og:image" content="https://thelearningproject.in/tools/rovr/rovrlogo.png" />
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="What are the required and optional fields within each productListItems object?" />
+<meta name="twitter:description" content="Required and Optional Fields in productListItems Based on the retrieved documentation, here is what I can confirm about the productListItems fields:…" />
+</head>
+  <body>
+    <div id="root"><article><h1>What are the required and optional fields within each productListItems object?</h1>
+<h2>Required and Optional Fields in productListItems</h2>
+<p>Based on the retrieved documentation, here is what I can confirm about the `productListItems` fields:</p>
+<h3>Documented Fields</h3>
+<p>The documentation provides examples of the following fields used within each `productListItems` object:</p>
+<h4>Fields Shown in Examples</h4>
+<p>```json</p>
+<p>&quot;productListItems&quot;: [</p>
+<p>{</p>
+<p>&quot;name&quot;: &quot;Yoga Mat&quot;,</p>
+<p>&quot;SKU&quot;: &quot;5829&quot;,</p>
+<p>&quot;priceTotal&quot;: &quot;49.99&quot;,</p>
+<p>&quot;quantity&quot;: 1</p>
+<p>},</p>
+<p>{</p>
+<p>&quot;name&quot;: &quot;Water Bottle&quot;,</p>
+<p>&quot;SKU&quot;: &quot;9841&quot;,</p>
+<p>&quot;priceTotal&quot;: &quot;30.00&quot;,</p>
+<p>&quot;quantity&quot;: 3</p>
+<p>}</p>
+<p>]</p>
+<p>```</p>
+<p>Additional examples reference:</p>
+<ul>
+<li>`SKU` — Product identifier</li>
+<li>`name` — Product name</li>
+<li>`quantity` — Number of units</li>
+<li>`priceTotal` — Total price for the product line item</li>
+<li>`currencyCode` — Currency (e.g., &quot;USD&quot;)</li>
+<li>`productAddMethod` — How the product was added (e.g., &quot;Add to Cart Button&quot;)</li>
+</ul>
+<h3>Important Note About SKU vs. Name</h3>
+<p>&gt;[!NOTE]</p>
+<p>&gt;</p>
+<p>&gt;If both `productListItems[].SKU` and `productListItems[].name` contain data, the value in `productListItems[].SKU` is used in Analytics variable mapping.</p>
+<h3>What&#x27;s Not Documented Here</h3>
+<p>The retrieved documentation <strong>does not explicitly specify</strong> which fields are:</p>
+<ul>
+<li><strong>Required</strong> vs. optional for all use cases</li>
+<li>Required for specific commerce events (product views vs. purchases)</li>
+<li>Conditionally required based on event type</li>
+</ul>
+<h3>Recommended Next Steps</h3>
+<p>For a complete and authoritative list of required and optional fields within `productListItems`, refer to the <strong>Commerce Details schema</strong> in the XDM documentation, as the context references this for &quot;more information on the [!UICONTROL Commerce Details] field group.&quot; That schema specification will define the full field requirements and data types for each sub-field.</p>
+<h2>Sources</h2>
+<ul>
+<li><a href="https://experienceleague.adobe.com/en/docs/experience-platform/xdm/api/csv-to-schema">CSV Template to Schema Conversion API Endpoint</a></li>
+<li><a href="https://experienceleague.adobe.com/en/docs/experience-platform/segmentation/api/external-audiences">External Audiences API Endpoint</a></li>
+<li><a href="https://experienceleague.adobe.com/en/docs/experience-platform/xdm/ui/fields/required">Define Required Fields in the UI</a></li>
+<li><a href="https://experienceleague.adobe.com/en/docs/experience-platform/query/key-concepts/flatten-nested-data">Flatten Nested Data Structures For Use With BI Tools</a></li>
+<li><a href="https://experienceleague.adobe.com/en/docs/experience-platform/intelligent-services/data-preparation">Prepare Data for Use in Intelligent Services</a></li>
+<li><a href="https://experienceleague.adobe.com/en/docs/analytics/implementation/vars/page-vars/events/events-overview">events</a></li>
+<li><a href="https://developer.adobe.com/analytics-apis/docs/2.0/guides/endpoints/reports/real-time">Real-time reports API</a></li>
+</ul></article>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "What are the required and optional fields within each productListItems object?", "acceptedAnswer": {"@type": "Answer", "text": "Required and Optional Fields in productListItems Based on the retrieved documentation, here is what I can confirm about the productListItems fields: Documented Fields The documentation provides examples of the following fields used within each productListItems object: Fields Shown in Examples json \"productListItems\": { \"name\": \"Yoga Mat\", \"SKU\": \"5829\", \"priceTotal\": \"49.99\", \"quantity\": 1 }, { \"name\": \"Water Bottle\", \"SKU\": \"9841\", \"priceTotal\": \"30.00\", \"quantity\": 3 } Additional examples reference: - SKU \u2014 Product identifier - name \u2014 Product name - quantity \u2014 Number of units - priceTotal \u2014 Total price for the product line item - currencyCode \u2014 Currency (e.g., \"USD\") - productAddMethod \u2014 How the product was added (e.g., \"Add to Cart Button\") Important Note About SKU vs. Name !NOTE If both productListItems.SKU and productListItems.name contain data, the value in productListItems.SKU is used in Analytics variable mapping. What's Not Documented Here The retrieved documentation does not explicitly specify which fields are: - Required vs. optional for all use cases - Required for specific commerce events (product views vs. purchases) - Conditionally required based on event type Recommended Next Steps For a complete and authoritative list of required and optional fields within productListItems, refer to the Commerce Details schema in the XDM documentation, as the context references this for \"more information on the !UICONTROL Commerce Details field group.\" That schema specification will define the full field requirements and data types for each sub-field."}}]}</script></div>
+  </body>
+</html>

@@ -1,0 +1,140 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/png" href="/tools/rovr/rovrlogo.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="build-date" content="2026-06-10" />
+    
+    
+    <script src="https://assets.adobedtm.com/204118644db8/290ae1adb65a/launch-e5ec7bf1a1ef-development.min.js" async></script>
+    <script type="module" crossorigin src="/tools/rovr/assets/index-BDlEezU1.js"></script>
+    <link rel="stylesheet" crossorigin href="/tools/rovr/assets/index-BtV6C9MI.css">
+  <title>We are using Delivery API &amp; criteria design in Adobe Target, now I want to use profile attributes coming from delivery API call in this code and update my custom design to exclude the recommendation that is part of delivery API profile attributes, can you suggest code snippet for the same. | Rovr</title>
+<meta name="description" content="Using Profile Attributes from Delivery API to Exclude Recommendations in Custom Design You can leverage profile attributes passed via the Delivery API…" />
+<link rel="canonical" href="https://thelearningproject.in/tools/rovr/q/we-are-using-delivery-api-criteria-design-in-adobe-target-no-c40b64" />
+<meta property="og:title" content="We are using Delivery API &amp; criteria design in Adobe Target, now I want to use profile attributes coming from delivery API call in this code and update my custom design to exclude the recommendation that is part of delivery API profile attributes, can you suggest code snippet for the same." />
+<meta property="og:description" content="Using Profile Attributes from Delivery API to Exclude Recommendations in Custom Design You can leverage profile attributes passed via the Delivery API…" />
+<meta property="og:url" content="https://thelearningproject.in/tools/rovr/q/we-are-using-delivery-api-criteria-design-in-adobe-target-no-c40b64" />
+<meta property="og:type" content="article" />
+<meta property="og:image" content="https://thelearningproject.in/tools/rovr/rovrlogo.png" />
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="We are using Delivery API &amp; criteria design in Adobe Target, now I want to use profile attributes coming from delivery API call in this code and update my custom design to exclude the recommendation that is part of delivery API profile attributes, can you suggest code snippet for the same." />
+<meta name="twitter:description" content="Using Profile Attributes from Delivery API to Exclude Recommendations in Custom Design You can leverage profile attributes passed via the Delivery API…" />
+</head>
+  <body>
+    <div id="root"><article><h1>We are using Delivery API &amp; criteria design in Adobe Target, now I want to use profile attributes coming from delivery API call in this code and update my custom design to exclude the recommendation that is part of delivery API profile attributes, can you suggest code snippet for the same.</h1>
+<h2>Using Profile Attributes from Delivery API to Exclude Recommendations in Custom Design</h2>
+<p>You can leverage profile attributes passed via the Delivery API directly inside your Recommendations <strong>custom design template</strong> (Velocity-based) to filter out/exclude items that match those profile attribute values.</p>
+<hr>
+<h3>Overview of the Approach</h3>
+<p>When you make a Delivery API call, you can pass profile attributes in the request payload. Those profile attributes are then accessible inside your Velocity design template using the `$profile` object. You can use conditional logic in Velocity to <strong>skip rendering</strong> any recommended entity that matches the value(s) stored in the profile attribute.</p>
+<hr>
+<h3>Step 1: Pass Profile Attributes via Delivery API</h3>
+<p>In your Delivery API request payload, include the profile attributes you want to use for exclusion:</p>
+<p>```json</p>
+<p>{</p>
+<p>&quot;context&quot;: {</p>
+<p>&quot;channel&quot;: &quot;web&quot;</p>
+<p>},</p>
+<p>&quot;execute&quot;: {</p>
+<p>&quot;mboxes&quot;: [</p>
+<p>{</p>
+<p>&quot;name&quot;: &quot;your-recs-mbox&quot;,</p>
+<p>&quot;index&quot;: 0,</p>
+<p>&quot;profileParameters&quot;: {</p>
+<p>&quot;excludedProductIds&quot;: &quot;SKU-001,SKU-002,SKU-003&quot;,</p>
+<p>&quot;lastPurchasedId&quot;: &quot;SKU-001&quot;</p>
+<p>}</p>
+<p>}</p>
+<p>]</p>
+<p>}</p>
+<p>}</p>
+<p>```</p>
+<p>&gt; <strong>Note:</strong> `excludedProductIds` here is a comma-separated string of product IDs you want to exclude. You can also pass a single value like `lastPurchasedId` depending on your use case.</p>
+<hr>
+<h3>Step 2: Update the Custom Velocity Design Template</h3>
+<p>In your Recommendations custom design, use Velocity scripting to read the profile attribute and conditionally skip the matching entity.</p>
+<h4>Example 1: Exclude a Single Product ID (e.g., last purchased item)</h4>
+<p>```velocity</p>
+<p>#set($excludedId = $profile.get(&#x27;lastPurchasedId&#x27;))</p>
+<p>&lt;ul class=&quot;recommendations-list&quot;&gt;</p>
+<p>#foreach($entity in $entities)</p>
+<p>#if($entity.id != $excludedId)</p>
+<p>&lt;li&gt;</p>
+<p>&lt;a href=&quot;$entity.pageUrl&quot;&gt;</p>
+<p>&lt;img src=&quot;$entity.thumbnailUrl&quot; alt=&quot;$entity.name&quot;/&gt;</p>
+<p>&lt;span&gt;$entity.name&lt;/span&gt;</p>
+<p>&lt;span&gt;$entity.value&lt;/span&gt;</p>
+<p>&lt;/a&gt;</p>
+<p>&lt;/li&gt;</p>
+<p>#end</p>
+<p>#end</p>
+<p>&lt;/ul&gt;</p>
+<p>```</p>
+<hr>
+<h4>Example 2: Exclude Multiple Product IDs (comma-separated string)</h4>
+<p>```velocity</p>
+<h3>Get the comma-separated excluded IDs from profile attribute</h3>
+<p>#set($excludedIdsRaw = $profile.get(&#x27;excludedProductIds&#x27;))</p>
+<h3>Split the string into a list</h3>
+<p>#set($excludedList = $excludedIdsRaw.split(&#x27;,&#x27;))</p>
+<p>&lt;ul class=&quot;recommendations-list&quot;&gt;</p>
+<p>#foreach($entity in $entities)</p>
+<h3>Flag to track if this entity should be excluded</h3>
+<p>#set($isExcluded = false)</p>
+<h3>Loop through excluded IDs and check for a match</h3>
+<p>#foreach($exId in $excludedList)</p>
+<p>#set($exId = $exId.trim())</p>
+<p>#if($entity.id == $exId)</p>
+<p>#set($isExcluded = true)</p>
+<p>#end</p>
+<p>#end</p>
+<h3>Only render if not excluded</h3>
+<p>#if($isExcluded == false)</p>
+<p>&lt;li&gt;</p>
+<p>&lt;a href=&quot;$entity.pageUrl&quot;&gt;</p>
+<p>&lt;img src=&quot;$entity.thumbnailUrl&quot; alt=&quot;$entity.name&quot;/&gt;</p>
+<p>&lt;span&gt;$entity.name&lt;/span&gt;</p>
+<p>&lt;span&gt;$$entity.value&lt;/span&gt;</p>
+<p>&lt;/a&gt;</p>
+<p>&lt;/li&gt;</p>
+<p>#end</p>
+<p>#end</p>
+<p>&lt;/ul&gt;</p>
+<p>```</p>
+<hr>
+<h4>Example 3: Exclude by a Custom Attribute (e.g., category already viewed)</h4>
+<p>```velocity</p>
+<p>#set($excludedCategory = $profile.get(&#x27;lastViewedCategory&#x27;))</p>
+<p>&lt;ul class=&quot;recommendations-list&quot;&gt;</p>
+<p>#foreach($entity in $entities)</p>
+<p>#if($entity.categoryId != $excludedCategory)</p>
+<p>&lt;li&gt;</p>
+<p>&lt;a href=&quot;$entity.pageUrl&quot;&gt;</p>
+<p>&lt;img src=&quot;$entity.thumbnailUrl&quot; alt=&quot;$entity.name&quot;/&gt;</p>
+<p>&lt;span&gt;$entity.name&lt;/span&gt;</p>
+<p>&lt;/a&gt;</p>
+<p>&lt;/li&gt;</p>
+<p>#end</p>
+<p>#end</p>
+<p>&lt;/ul&gt;</p>
+<p>```</p>
+<hr>
+<h3>Key Points to Remember</h3>
+<p>| Aspect | Detail |</p>
+<p>|---|---|</p>
+<p>| <strong>Profile attribute access in Velocity</strong> | Use `$profile.get(&#x27;attributeName&#x27;)` to read profile attributes inside the design |</p>
+<p>| <strong>Delivery API parameter key</strong> | Pass attributes under `profileParameters` in the mbox object |</p>
+<p>| <strong>Data type</strong> | Profile attributes are strings; use `.split(&#x27;,&#x27;)` for multi-value exclusion lists |</p>
+<p>| <strong>`.trim()`</strong> | Always trim whitespace when splitting comma-separated values to avoid mismatches |</p>
+<p>| <strong>Limit</strong> | Up to 100 concurrent Target content delivery requests per user session apply (HTTP 420 if exceeded) |</p>
+<p>| <strong>Batch mbox limit</strong> | Maximum 50 mboxes per batch mbox request |</p>
+<hr>
+<h3>Important Caveat</h3>
+<p>The `profileParameters` passed in a Delivery API call are <strong>session-scoped</strong> by default. If you need these exclusions to persist across sessions, you should also store them as <strong>persistent profile attributes</strong> using the `profile.` prefix in script profile rules, or ensure they are passed on every Delivery API call.</p>
+<p>This approach gives you full runtime control inside your Velocity design to dynamically exclude any recommended items based on what was passed through the Delivery API call.</p>
+</article>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "We are using Delivery API & criteria design in Adobe Target, now I want to use profile attributes coming from delivery API call in this code and update my custom design to exclude the recommendation that is part of delivery API profile attributes, can you suggest code snippet for the same.", "acceptedAnswer": {"@type": "Answer", "text": "Using Profile Attributes from Delivery API to Exclude Recommendations in Custom Design You can leverage profile attributes passed via the Delivery API directly inside your Recommendations custom design template (Velocity-based) to filter out/exclude items that match those profile attribute values. --- Overview of the Approach When you make a Delivery API call, you can pass profile attributes in the request payload. Those profile attributes are then accessible inside your Velocity design template using the $profile object. You can use conditional logic in Velocity to skip rendering any recommended entity that matches the value(s) stored in the profile attribute. --- Step 1: Pass Profile Attributes via Delivery API In your Delivery API request payload, include the profile attributes you want to use for exclusion: json { \"context\": { \"channel\": \"web\" }, \"execute\": { \"mboxes\": { \"name\": \"your-recs-mbox\", \"index\": 0, \"profileParameters\": { \"excludedProductIds\": \"SKU-001,SKU-002,SKU-003\", \"lastPurchasedId\": \"SKU-001\" } } } } Note: excludedProductIds here is a comma-separated string of product IDs you want to exclude. You can also pass a single value like lastPurchasedId depending on your use case. --- Step 2: Update the Custom Velocity Design Template In your Recommendations custom design, use Velocity scripting to read the profile attribute and conditionally skip the matching entity. Example 1: Exclude a Single Product ID (e.g., last purchased item) velocity set($excludedId = $profile.get('lastPurchasedId')) <ul class=\"recommendations-list\" foreach($entity in $entities) if($entity.id != $excludedId) <li <a href=\"$entity.pageUrl\" <img src=\"$entity.thumbnailUrl\" alt=\"$entity.name\"/ <span$entity.name</span <span$entity.value</span </a </li end end </ul --- Example 2: Exclude Multiple Product IDs (comma-separated string) velocity Get the comma-separated excluded IDs from profile attribute set($excludedIdsRaw = $profile.get('excludedProductIds')) Split the string into a\u2026"}}]}</script></div>
+  </body>
+</html>

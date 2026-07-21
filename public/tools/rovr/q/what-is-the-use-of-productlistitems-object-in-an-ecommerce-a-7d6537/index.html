@@ -1,0 +1,134 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/png" href="/tools/rovr/rovrlogo.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="build-date" content="2026-06-10" />
+    
+    
+    <script src="https://assets.adobedtm.com/204118644db8/290ae1adb65a/launch-e5ec7bf1a1ef-development.min.js" async></script>
+    <script type="module" crossorigin src="/tools/rovr/assets/index-BDlEezU1.js"></script>
+    <link rel="stylesheet" crossorigin href="/tools/rovr/assets/index-BtV6C9MI.css">
+  <title>What is the use of productListItems object in an ecommerce AEP Web SDK implementation? | Rovr</title>
+<meta name="description" content="The productListItems Object in Adobe Experience Platform Web SDK Purpose The productListItems object is used in Adobe Experience Platform Web SDK to track…" />
+<link rel="canonical" href="https://thelearningproject.in/tools/rovr/q/what-is-the-use-of-productlistitems-object-in-an-ecommerce-a-7d6537" />
+<meta property="og:title" content="What is the use of productListItems object in an ecommerce AEP Web SDK implementation?" />
+<meta property="og:description" content="The productListItems Object in Adobe Experience Platform Web SDK Purpose The productListItems object is used in Adobe Experience Platform Web SDK to track…" />
+<meta property="og:url" content="https://thelearningproject.in/tools/rovr/q/what-is-the-use-of-productlistitems-object-in-an-ecommerce-a-7d6537" />
+<meta property="og:type" content="article" />
+<meta property="og:image" content="https://thelearningproject.in/tools/rovr/rovrlogo.png" />
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="What is the use of productListItems object in an ecommerce AEP Web SDK implementation?" />
+<meta name="twitter:description" content="The productListItems Object in Adobe Experience Platform Web SDK Purpose The productListItems object is used in Adobe Experience Platform Web SDK to track…" />
+</head>
+  <body>
+    <div id="root"><article><h1>What is the use of productListItems object in an ecommerce AEP Web SDK implementation?</h1>
+<h2>The productListItems Object in Adobe Experience Platform Web SDK</h2>
+<h3>Purpose</h3>
+<p>The `productListItems` object is used in Adobe Experience Platform Web SDK to <strong>track product information during ecommerce events</strong>. It contains an array of products associated with commerce interactions, allowing you to send detailed product-level data alongside commerce events.</p>
+<h3>Common Use Cases</h3>
+<p>The `productListItems` object is used for tracking:</p>
+<p>1. <strong>Product Views</strong> — When customers view product details</p>
+<p>2. <strong>Product List Adds</strong> — When items are added to cart</p>
+<p>3. <strong>Checkouts</strong> — When items proceed through the checkout process</p>
+<p>4. <strong>Purchases</strong> — When transactions are completed</p>
+<p>5. <strong>Other commerce events</strong> — Returns, removals, or any product-related commerce action</p>
+<h3>Object Structure</h3>
+<p>Each product in the `productListItems` array can include fields such as:</p>
+<ul>
+<li>`SKU` — Stock Keeping Unit (product identifier)</li>
+<li>`name` — Product name</li>
+<li>`quantity` — Number of units</li>
+<li>`priceTotal` — Total price for that product line item</li>
+<li>`productAddMethod` — How the product was added (e.g., &quot;Add to Cart Button&quot;, &quot;Add-on&quot;)</li>
+</ul>
+<h3>Practical Examples</h3>
+<h4>Product Views Example</h4>
+<p>```javascript</p>
+<p>alloy(&quot;sendEvent&quot;,{</p>
+<p>&quot;xdm&quot;:{</p>
+<p>&quot;commerce&quot;:{</p>
+<p>&quot;productViews&quot;:{</p>
+<p>&quot;value&quot;:1</p>
+<p>}</p>
+<p>},</p>
+<p>&quot;productListItems&quot;:[</p>
+<p>{</p>
+<p>&quot;SKU&quot;:&quot;HT105&quot;,</p>
+<p>&quot;name&quot;:&quot;The Big Floppy Hat&quot;</p>
+<p>},</p>
+<p>{</p>
+<p>&quot;SKU&quot;:&quot;HT104&quot;,</p>
+<p>&quot;name&quot;:&quot;The Small Floppy Hat&quot;</p>
+<p>}</p>
+<p>]</p>
+<p>}</p>
+<p>});</p>
+<p>```</p>
+<h4>Product List Adds Example</h4>
+<p>```javascript</p>
+<p>alloy(&quot;sendEvent&quot;,{</p>
+<p>&quot;xdm&quot;:{</p>
+<p>&quot;commerce&quot;:{</p>
+<p>&quot;productListAdds&quot;:{</p>
+<p>&quot;value&quot;:1</p>
+<p>}</p>
+<p>},</p>
+<p>&quot;productListItems&quot;:[</p>
+<p>{</p>
+<p>&quot;SKU&quot;:&quot;HT105&quot;,</p>
+<p>&quot;name&quot;:&quot;The Big Floppy Hat&quot;,</p>
+<p>&quot;quantity&quot;:1,</p>
+<p>&quot;priceTotal&quot;:29.99,</p>
+<p>&quot;productAddMethod&quot;:&quot;Add to Cart Button&quot;</p>
+<p>},</p>
+<p>{</p>
+<p>&quot;SKU&quot;:&quot;HT104&quot;,</p>
+<p>&quot;name&quot;:&quot;The Small Floppy Hat&quot;,</p>
+<p>&quot;quantity&quot;:1,</p>
+<p>&quot;priceTotal&quot;:9.99,</p>
+<p>&quot;productAddMethod&quot;:&quot;Add-on&quot;</p>
+<p>}</p>
+<p>]</p>
+<p>}</p>
+<p>});</p>
+<p>```</p>
+<h4>Checkout Example</h4>
+<p>```javascript</p>
+<p>alloy(&quot;sendEvent&quot;,{</p>
+<p>&quot;xdm&quot;:{</p>
+<p>&quot;commerce&quot;:{</p>
+<p>&quot;checkouts&quot;:{</p>
+<p>&quot;value&quot;:1</p>
+<p>}</p>
+<p>},</p>
+<p>&quot;productListItems&quot;:[</p>
+<p>{</p>
+<p>&quot;SKU&quot;:&quot;HT105&quot;,</p>
+<p>&quot;name&quot;:&quot;The Big Floppy Hat&quot;,</p>
+<p>&quot;quantity&quot;:1,</p>
+<p>&quot;priceTotal&quot;:29.99</p>
+<p>},</p>
+<p>{</p>
+<p>&quot;SKU&quot;:&quot;HT104&quot;,</p>
+<p>&quot;name&quot;:&quot;The Small Floppy Hat&quot;,</p>
+<p>&quot;quantity&quot;:1,</p>
+<p>&quot;priceTotal&quot;:9.99</p>
+<p>}</p>
+<p>]</p>
+<p>}</p>
+<p>});</p>
+<p>```</p>
+<h3>Key Benefits</h3>
+<ul>
+<li><strong>Multi-product tracking</strong> — Send data for multiple products in a single event</li>
+<li><strong>Granular analysis</strong> — Analyze product-level performance, pricing, and quantities</li>
+<li><strong>Commerce funnel visibility</strong> — Track products through the entire purchase journey</li>
+<li><strong>Cross-solution compatibility</strong> — Data flows to Experience Platform and connected solutions for analysis and personalization</li>
+</ul>
+<p>The `productListItems` object is essential for comprehensive ecommerce analytics and enables you to understand product performance across all stages of the customer purchase journey.</p>
+</article>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "What is the use of productListItems object in an ecommerce AEP Web SDK implementation?", "acceptedAnswer": {"@type": "Answer", "text": "The productListItems Object in Adobe Experience Platform Web SDK Purpose The productListItems object is used in Adobe Experience Platform Web SDK to track product information during ecommerce events. It contains an array of products associated with commerce interactions, allowing you to send detailed product-level data alongside commerce events. Common Use Cases The productListItems object is used for tracking: 1. Product Views \u2014 When customers view product details 2. Product List Adds \u2014 When items are added to cart 3. Checkouts \u2014 When items proceed through the checkout process 4. Purchases \u2014 When transactions are completed 5. Other commerce events \u2014 Returns, removals, or any product-related commerce action Object Structure Each product in the productListItems array can include fields such as: - SKU \u2014 Stock Keeping Unit (product identifier) - name \u2014 Product name - quantity \u2014 Number of units - priceTotal \u2014 Total price for that product line item - productAddMethod \u2014 How the product was added (e.g., \"Add to Cart Button\", \"Add-on\") Practical Examples Product Views Example javascript alloy(\"sendEvent\",{ \"xdm\":{ \"commerce\":{ \"productViews\":{ \"value\":1 } }, \"productListItems\": { \"SKU\":\"HT105\", \"name\":\"The Big Floppy Hat\" }, { \"SKU\":\"HT104\", \"name\":\"The Small Floppy Hat\" } } }); Product List Adds Example javascript alloy(\"sendEvent\",{ \"xdm\":{ \"commerce\":{ \"productListAdds\":{ \"value\":1 } }, \"productListItems\": { \"SKU\":\"HT105\", \"name\":\"The Big Floppy Hat\", \"quantity\":1, \"priceTotal\":29.99, \"productAddMethod\":\"Add to Cart Button\" }, { \"SKU\":\"HT104\", \"name\":\"The Small Floppy Hat\", \"quantity\":1, \"priceTotal\":9.99, \"productAddMethod\":\"Add-on\" } } }); Checkout Example javascript alloy(\"sendEvent\",{ \"xdm\":{ \"commerce\":{ \"checkouts\":{ \"value\":1 } }, \"productListItems\": { \"SKU\":\"HT105\", \"name\":\"The Big Floppy Hat\", \"quantity\":1, \"priceTotal\":29.99 }, { \"SKU\":\"HT104\", \"name\":\"The Small Floppy Hat\", \"quantity\":1, \"priceTotal\":9.99 } } }); Key Benefits - Multi-product tracking \u2014 Send\u2026"}}]}</script></div>
+  </body>
+</html>
