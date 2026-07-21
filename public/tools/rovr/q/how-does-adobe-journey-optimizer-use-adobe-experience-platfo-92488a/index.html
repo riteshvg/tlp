@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/png" href="/tools/rovr/rovrlogo.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="build-date" content="2026-06-10" />
+    
+    
+    <script src="https://assets.adobedtm.com/204118644db8/290ae1adb65a/launch-e5ec7bf1a1ef-development.min.js" async></script>
+    <script type="module" crossorigin src="/tools/rovr/assets/index-BDlEezU1.js"></script>
+    <link rel="stylesheet" crossorigin href="/tools/rovr/assets/index-BtV6C9MI.css">
+  <title>How does Adobe Journey Optimizer use Adobe Experience Platform profiles and audiences to personalise journeys? | Rovr</title>
+<meta name="description" content="How Adobe Journey Optimizer Uses AEP Profiles and Audiences to Personalise Journeys The Foundation: AEP as the Central Data Layer Adobe Journey Optimizer is…" />
+<link rel="canonical" href="https://thelearningproject.in/tools/rovr/q/how-does-adobe-journey-optimizer-use-adobe-experience-platfo-92488a" />
+<meta property="og:title" content="How does Adobe Journey Optimizer use Adobe Experience Platform profiles and audiences to personalise journeys?" />
+<meta property="og:description" content="How Adobe Journey Optimizer Uses AEP Profiles and Audiences to Personalise Journeys The Foundation: AEP as the Central Data Layer Adobe Journey Optimizer is…" />
+<meta property="og:url" content="https://thelearningproject.in/tools/rovr/q/how-does-adobe-journey-optimizer-use-adobe-experience-platfo-92488a" />
+<meta property="og:type" content="article" />
+<meta property="og:image" content="https://thelearningproject.in/tools/rovr/rovrlogo.png" />
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="How does Adobe Journey Optimizer use Adobe Experience Platform profiles and audiences to personalise journeys?" />
+<meta name="twitter:description" content="How Adobe Journey Optimizer Uses AEP Profiles and Audiences to Personalise Journeys The Foundation: AEP as the Central Data Layer Adobe Journey Optimizer is…" />
+</head>
+  <body>
+    <div id="root"><article><h1>How does Adobe Journey Optimizer use Adobe Experience Platform profiles and audiences to personalise journeys?</h1>
+<h2>How Adobe Journey Optimizer Uses AEP Profiles and Audiences to Personalise Journeys</h2>
+<h3>The Foundation: AEP as the Central Data Layer</h3>
+<p>Adobe Journey Optimizer is built directly on top of Adobe Experience Platform — it does <strong>not</strong> maintain a separate, isolated data store. Instead, it uses the same shared data foundation as other Adobe CX Enterprise applications.</p>
+<p>&gt; Think of Adobe Experience Platform as your central data layer, and Journey Optimizer as an application that orchestrates journeys and messages using that shared data foundation.</p>
+<p>Here&#x27;s how the architecture works:</p>
+<ul>
+<li><strong>Schemas and datasets</strong> live in Adobe Experience Platform</li>
+<li><strong>Identities and the Real-Time Customer Profile</strong> are managed by AEP&#x27;s Identity Service and Profile Service</li>
+<li>Journey Optimizer <strong>reads</strong> profile and event data from AEP to evaluate journey conditions, personalise messages, and select offers</li>
+<li>Journey Optimizer <strong>writes</strong> interaction data back into AEP datasets (send, open, click, bounce events, and journey step events)</li>
+<li>It can also <strong>look up additional datasets</strong> at runtime without copying that data into the profile</li>
+</ul>
+<p><img src="https://raw.githubusercontent.com/AdobeDocs/journey-optimizer.en/main/help/using/audience/assets/audiences-overview.png" alt="AEP and Journey Optimizer Architecture"></p>
+<hr>
+<h3>Real-Time Customer Profiles</h3>
+<p>Journey Optimizer enables brands to create a <strong>unified, 360-degree view</strong> of each customer through real-time customer profiles. Key capabilities include:</p>
+<ul>
+<li><strong>Real-time data ingestion</strong> — as data streams in or batch uploads occur, datasets update dynamically</li>
+<li><strong>Identity graph creation</strong> — resolving identities across channels and devices</li>
+<li><strong>Customer engagement tools</strong> — profiles engaged through journeys, campaigns, or decisioning count toward the <strong>Engageable Profiles</strong> licence metric</li>
+</ul>
+<hr>
+<h3>Audiences</h3>
+<p>Audiences are <strong>collections of people who share similar behaviours and/or characteristics</strong>. They are:</p>
+<ul>
+<li>Centrally configured and maintained in AEP using the <strong>Adobe Experience Platform Segmentation Service</strong></li>
+<li>Readily accessible within Journey Optimizer to be activated in journeys and campaigns</li>
+</ul>
+<h4>Dynamic Audience Membership</h4>
+<p>As real-time data streams or batch uploads occur, Journey Optimizer <strong>dynamically moves individuals in and out of audiences and journeys in real time</strong> — ensuring that targeting always reflects the most current customer state.</p>
+<h4>Advanced Segmentation with Real-Time CDP</h4>
+<p>When combined with <strong>Adobe Real-Time Customer Data Platform</strong>, Journey Optimizer lets you:</p>
+<ul>
+<li>Layer in audiences for more complex segmentation</li>
+<li>Bidirectionally share audiences with other Adobe CX Enterprise solutions</li>
+</ul>
+<hr>
+<h3>How Personalisation Works in Practice</h3>
+<p>Journey Optimizer uses profile and audience data across three core activation areas:</p>
+<p>| Area | How Profile/Audience Data Is Used |</p>
+<p>|---|---|</p>
+<p>| <strong>Journeys</strong> | Journey conditions are evaluated against real-time profile data; individuals enter, progress, or exit based on live behavioural triggers and audience membership |</p>
+<p>| <strong>Campaigns</strong> | One-time messages are sent to all individuals belonging to a selected audience, with content personalised using profile attributes |</p>
+<p>| <strong>Decisioning</strong> | Offers are selected based on profile data and eligibility rules defined against audience segments |</p>
+<hr>
+<h3>The Continuous Data-to-Experience Cycle</h3>
+<p>The overall flow is continuous:</p>
+<p>1. <strong>Data is collected</strong> — client-side experience data is sent to the AEP Edge Network</p>
+<p>2. <strong>Profiles are built and updated</strong> — Identity Service and Profile Service maintain a real-time unified profile</p>
+<p>3. <strong>Audiences are evaluated</strong> — Segmentation Service determines audience membership dynamically</p>
+<p>4. <strong>Journey Optimizer acts</strong> — reads profile/audience data to orchestrate personalised journeys and messages</p>
+<p>5. <strong>Interaction data is written back</strong> — engagement events (opens, clicks, etc.) flow back into AEP datasets, enriching the profile further for future personalisation</p>
+<p>This closed loop ensures that each customer interaction informs the next, enabling <strong>data-driven personalisation at scale</strong>.</p>
+<h2>Sources</h2>
+<ul>
+<li><a href="https://experienceleague.adobe.com/en/docs/experience-platform/landing/glossary">Adobe Experience Platform Glossary</a></li>
+<li><a href="https://experienceleague.adobe.com/en/docs/analytics-platform/using/technotes/glossary">Customer Journey Analytics glossary</a></li>
+<li><a href="https://experienceleague.adobe.com/en/docs/experience-platform/release-notes/2022/september-2022">Adobe Experience Platform Release Notes September 2022</a></li>
+<li><a href="https://experienceleague.adobe.com/en/docs/experience-platform/release-notes/2023/april-2023">Adobe Experience Platform Release Notes April 2023</a></li>
+<li><a href="https://experienceleague.adobe.com/en/docs/journey-optimizer/using/campaigns/get-started-with-campaigns">Get started with campaigns</a></li>
+</ul></article>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "How does Adobe Journey Optimizer use Adobe Experience Platform profiles and audiences to personalise journeys?", "acceptedAnswer": {"@type": "Answer", "text": "How Adobe Journey Optimizer Uses AEP Profiles and Audiences to Personalise Journeys The Foundation: AEP as the Central Data Layer Adobe Journey Optimizer is built directly on top of Adobe Experience Platform \u2014 it does not maintain a separate, isolated data store. Instead, it uses the same shared data foundation as other Adobe CX Enterprise applications. Think of Adobe Experience Platform as your central data layer, and Journey Optimizer as an application that orchestrates journeys and messages using that shared data foundation. Here's how the architecture works: - Schemas and datasets live in Adobe Experience Platform - Identities and the Real-Time Customer Profile are managed by AEP's Identity Service and Profile Service - Journey Optimizer reads profile and event data from AEP to evaluate journey conditions, personalise messages, and select offers - Journey Optimizer writes interaction data back into AEP datasets (send, open, click, bounce events, and journey step events) - It can also look up additional datasets at runtime without copying that data into the profile !AEP and Journey Optimizer Architecture(https://raw.githubusercontent.com/AdobeDocs/journey-optimizer.en/main/help/using/audience/assets/audiences-overview.png) --- Real-Time Customer Profiles Journey Optimizer enables brands to create a unified, 360-degree view of each customer through real-time customer profiles. Key capabilities include: - Real-time data ingestion \u2014 as data streams in or batch uploads occur, datasets update dynamically - Identity graph creation \u2014 resolving identities across channels and devices - Customer engagement tools \u2014 profiles engaged through journeys, campaigns, or decisioning count toward the Engageable Profiles licence metric --- Audiences Audiences are collections of people who share similar behaviours and/or characteristics. They are: - Centrally configured and maintained in AEP using the Adobe Experience Platform Segmentation Service - Readily accessible within Journey\u2026"}}]}</script></div>
+  </body>
+</html>

@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/png" href="/tools/rovr/rovrlogo.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="build-date" content="2026-06-10" />
+    
+    
+    <script src="https://assets.adobedtm.com/204118644db8/290ae1adb65a/launch-e5ec7bf1a1ef-development.min.js" async></script>
+    <script type="module" crossorigin src="/tools/rovr/assets/index-BDlEezU1.js"></script>
+    <link rel="stylesheet" crossorigin href="/tools/rovr/assets/index-BtV6C9MI.css">
+  <title>How does marketing channel setup work in CJA? | Rovr</title>
+<meta name="description" content="Marketing Channel Setup in Customer Journey Analytics Overview Unlike traditional Adobe Analytics, CJA has no built-in marketing channel groupings. You must…" />
+<link rel="canonical" href="https://thelearningproject.in/tools/rovr/q/how-does-marketing-channel-setup-work-in-cja-520849" />
+<meta property="og:title" content="How does marketing channel setup work in CJA?" />
+<meta property="og:description" content="Marketing Channel Setup in Customer Journey Analytics Overview Unlike traditional Adobe Analytics, CJA has no built-in marketing channel groupings. You must…" />
+<meta property="og:url" content="https://thelearningproject.in/tools/rovr/q/how-does-marketing-channel-setup-work-in-cja-520849" />
+<meta property="og:type" content="article" />
+<meta property="og:image" content="https://thelearningproject.in/tools/rovr/rovrlogo.png" />
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="How does marketing channel setup work in CJA?" />
+<meta name="twitter:description" content="Marketing Channel Setup in Customer Journey Analytics Overview Unlike traditional Adobe Analytics, CJA has no built-in marketing channel groupings. You must…" />
+</head>
+  <body>
+    <div id="root"><article><h1>How does marketing channel setup work in CJA?</h1>
+<h2>Marketing Channel Setup in Customer Journey Analytics</h2>
+<h3>Overview</h3>
+<p>Unlike traditional Adobe Analytics, CJA has <strong>no built-in marketing channel groupings</strong>. You must define and configure marketing channels explicitly using one of the available approaches. Channels are configured at the <strong>Data View level</strong>, not at the data collection level, which gives you powerful retroactive flexibility.</p>
+<h3>Two Primary Setup Approaches</h3>
+<h4>1. Derived Fields (Recommended for Web SDK Implementations)</h4>
+<p>Derived fields are the recommended approach for setting up marketing channels in CJA, especially when using the Experience Platform Web SDK.</p>
+<h5>Step-by-Step Setup</h5>
+<p><strong>Prerequisites:</strong> You must have an existing Data View configured in CJA.</p>
+<p>1. In Customer Journey Analytics, select the <strong>Data View</strong> where you want to add marketing channels</p>
+<p>2. In the data view, select the <strong>[!UICONTROL Components]</strong> tab</p>
+<p>3. Select <strong>[!UICONTROL Create derived field]</strong> in the left rail</p>
+<p>4. In the <strong>[!UICONTROL Create derived field]</strong> dialog box, select <strong>[!UICONTROL Function templates]</strong> from the drop-down menu</p>
+<p><img src="https://raw.githubusercontent.com/AdobeDocs/analytics-platform.en/main/help/analysis-workspace/templates/assets/view-prebuilt-templates-full.png" alt="Create derived field function templates"></p>
+<p>5. Drag the <strong>[!UICONTROL Marketing channels]</strong> template onto the blank canvas</p>
+<p>6. Customize the logic for each marketing channel to match the logic you use in your Adobe Analytics environment</p>
+<p>7. Modify output channel names or add logic for additional channels specific to your organization</p>
+<p>8. In the right column, specify a <strong>name</strong> and <strong>description</strong> for the marketing channel</p>
+<p>9. Select <strong>[!UICONTROL Save]</strong></p>
+<h5>Key Benefits of Derived Fields</h5>
+<ul>
+<li><strong>Non-destructive</strong> — original data is never modified</li>
+<li><strong>Retroactive</strong> — changes apply to historical data automatically</li>
+<li><strong>Flexible</strong> — customize logic to match your exact business needs</li>
+<li><strong>Report-time processing</strong> — channels are evaluated at query time, not collection time</li>
+</ul>
+<h4>2. Analytics Source Connector (Migration Path)</h4>
+<p>If you are ingesting data via the <strong>Analytics source connector</strong>, marketing channel data flows into CJA through that connector, carrying over rules from your traditional Adobe Analytics implementation.</p>
+<p>However, be aware of these important limitations:</p>
+<ul>
+<li><strong>&quot;Is First Page of Visit&quot; rules are not supported</strong> — any rules using this criteria will be ignored</li>
+<li><strong>Override Last-Touch Channel setting is ignored</strong> — this can cause channels like &quot;Direct&quot; or &quot;Internal&quot; to attribute toward metrics in undesired ways</li>
+<li><strong>Some processing rules may behave differently</strong> due to the report-time processing nature of CJA</li>
+</ul>
+<h5>Recommended Fixes for Analytics Source Connector</h5>
+<p>To address the Override Last-Touch Channel issue, Adobe recommends one of these approaches:</p>
+<p>1. <strong>Remove channels</strong> where <strong>Override Last-Touch Channel</strong> is unchecked in the Marketing Channel Manager</p>
+<p>2. <strong>Delete the &#x27;Direct&#x27; marketing channel</strong> in the Marketing Channel Manager, then rely on CJA&#x27;s <strong>&#x27;No value&#x27;</strong> dimension item, which can be renamed to &#x27;Direct&#x27; or excluded entirely in the data view configuration</p>
+<p>3. <strong>Create a marketing channel classification</strong>, classifying each value to itself except for channels you want to exclude, then use this classification dimension when creating a data view instead of `channel.typeAtSource`</p>
+<h3>Available Marketing Channel Templates in CJA</h3>
+<p>Once configured, CJA provides the following built-in templates for marketing channel analysis:</p>
+<p>| Template | Purpose |</p>
+<p>| --- | --- |</p>
+<p>| <strong>Channel Overview Report</strong> | Shows how visitors arrive on your site using custom attribution |</p>
+<p>| <strong>First Touch Channel</strong> | Views the first marketing channel a visitor matches during their engagement period (30 days default) |</p>
+<p>| <strong>First Touch Channel Detail</strong> | Provides detail about the first marketing channel match (e.g., which search engine or keyword) |</p>
+<p>| <strong>Last Touch Channel</strong> | Views the most recent channel a visitor matched before converting |</p>
+<h3>Key Dimension Mappings</h3>
+<p>When setting up marketing channels, the following dimensions are commonly used:</p>
+<ul>
+<li><strong>Marketing Channel</strong> → Define as a derived field using the Marketing Channels function template</li>
+<li><strong>Referring Domain</strong> and <strong>Referrer Type</strong> → Use for source/medium analysis</li>
+<li><strong>Tracking Code</strong> → Use for campaign values when UTM parameters are mapped to XDM fields</li>
+<li><strong>UTM Parameters</strong> → Must be manually mapped to XDM fields during implementation before they appear as dimensions</li>
+</ul>
+<h3>Important Behavioral Differences from Adobe Analytics</h3>
+<p>| Behavior | Adobe Analytics | Customer Journey Analytics |</p>
+<p>| --- | --- | --- |</p>
+<p>| <strong>Processing time</strong> | At data collection | At report time |</p>
+<p>| <strong>Channel modification</strong> | Requires reprocessing | Retroactive, no reprocessing needed |</p>
+<p>| <strong>&quot;Is First Page of Visit&quot; rule</strong> | Supported | Not supported |</p>
+<p>| <strong>Built-in channel groupings</strong> | Yes | No — must define via derived fields |</p>
+<p>| <strong>Override Last-Touch Channel</strong> | Honored | Ignored |</p>
+<p>| <strong>Session determination</strong> | At collection time | At query time |</p>
+<h3>Best Practices Summary</h3>
+<p>1. <strong>Use derived fields</strong> for all new Web SDK implementations</p>
+<p>2. <strong>Re-evaluate &quot;Is First Page of Visit&quot; rules</strong> before migrating from Adobe Analytics</p>
+<p>3. <strong>Address Override Last-Touch Channel issues</strong> when using the Analytics source connector</p>
+<p>4. <strong>Leverage report-time processing</strong> to test and refine channel definitions without data loss</p>
+<p>5. <strong>Follow Adobe&#x27;s updated Marketing Channel implementation best practices</strong> to maximize advanced attribution capabilities in CJA</p>
+<h2>Sources</h2>
+<ul>
+<li><a href="https://experienceleague.adobe.com/en/docs/analytics-platform/using/cja-workspace/templates/use-templates">Use Templates</a></li>
+<li><a href="https://experienceleague.adobe.com/en/docs/analytics-platform/using/cja-usecases/aa-data/marketing-channels">Use Marketing Channel Dimensions</a></li>
+<li><a href="https://experienceleague.adobe.com/en/docs/analytics-platform/using/cja-usecases/data-ingestion/marketo">Report on Marketo Engage data</a></li>
+</ul></article>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "How does marketing channel setup work in CJA?", "acceptedAnswer": {"@type": "Answer", "text": "Marketing Channel Setup in Customer Journey Analytics Overview Unlike traditional Adobe Analytics, CJA has no built-in marketing channel groupings. You must define and configure marketing channels explicitly using one of the available approaches. Channels are configured at the Data View level, not at the data collection level, which gives you powerful retroactive flexibility. Two Primary Setup Approaches 1. Derived Fields (Recommended for Web SDK Implementations) Derived fields are the recommended approach for setting up marketing channels in CJA, especially when using the Experience Platform Web SDK. Step-by-Step Setup Prerequisites: You must have an existing Data View configured in CJA. 1. In Customer Journey Analytics, select the Data View where you want to add marketing channels 2. In the data view, select the !UICONTROL Components tab 3. Select !UICONTROL Create derived field in the left rail 4. In the !UICONTROL Create derived field dialog box, select !UICONTROL Function templates from the drop-down menu !Create derived field function templates(https://raw.githubusercontent.com/AdobeDocs/analytics-platform.en/main/help/analysis-workspace/templates/assets/view-prebuilt-templates-full.png) 5. Drag the !UICONTROL Marketing channels template onto the blank canvas 6. Customize the logic for each marketing channel to match the logic you use in your Adobe Analytics environment 7. Modify output channel names or add logic for additional channels specific to your organization 8. In the right column, specify a name and description for the marketing channel 9. Select !UICONTROL Save Key Benefits of Derived Fields - Non-destructive \u2014 original data is never modified - Retroactive \u2014 changes apply to historical data automatically - Flexible \u2014 customize logic to match your exact business needs - Report-time processing \u2014 channels are evaluated at query time, not collection time 2. Analytics Source Connector (Migration Path) If you are ingesting data via the Analytics source\u2026"}}]}</script></div>
+  </body>
+</html>
