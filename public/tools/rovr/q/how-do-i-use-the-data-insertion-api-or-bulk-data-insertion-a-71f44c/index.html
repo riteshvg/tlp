@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/png" href="/tools/rovr/rovrlogo.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="build-date" content="2026-06-10" />
+    
+    
+    <script src="https://assets.adobedtm.com/204118644db8/290ae1adb65a/launch-e5ec7bf1a1ef-development.min.js" async></script>
+    <script type="module" crossorigin src="/tools/rovr/assets/index-BDlEezU1.js"></script>
+    <link rel="stylesheet" crossorigin href="/tools/rovr/assets/index-BtV6C9MI.css">
+  <title>How do I use the Data Insertion API or Bulk Data Insertion API to send data to Adobe Analytics? | Rovr</title>
+<meta name="description" content="Using Data Insertion API and Bulk Data Insertion API for Adobe Analytics Overview Both APIs are methods to submit server-side collection data to Adobe…" />
+<link rel="canonical" href="https://thelearningproject.in/tools/rovr/q/how-do-i-use-the-data-insertion-api-or-bulk-data-insertion-a-71f44c" />
+<meta property="og:title" content="How do I use the Data Insertion API or Bulk Data Insertion API to send data to Adobe Analytics?" />
+<meta property="og:description" content="Using Data Insertion API and Bulk Data Insertion API for Adobe Analytics Overview Both APIs are methods to submit server-side collection data to Adobe…" />
+<meta property="og:url" content="https://thelearningproject.in/tools/rovr/q/how-do-i-use-the-data-insertion-api-or-bulk-data-insertion-a-71f44c" />
+<meta property="og:type" content="article" />
+<meta property="og:image" content="https://thelearningproject.in/tools/rovr/rovrlogo.png" />
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="How do I use the Data Insertion API or Bulk Data Insertion API to send data to Adobe Analytics?" />
+<meta name="twitter:description" content="Using Data Insertion API and Bulk Data Insertion API for Adobe Analytics Overview Both APIs are methods to submit server-side collection data to Adobe…" />
+</head>
+  <body>
+    <div id="root"><article><h1>How do I use the Data Insertion API or Bulk Data Insertion API to send data to Adobe Analytics?</h1>
+<h2>Using Data Insertion API and Bulk Data Insertion API for Adobe Analytics</h2>
+<h3>Overview</h3>
+<p>Both APIs are methods to submit <strong>server-side collection data</strong> to Adobe Analytics. Here&#x27;s how they differ and when to use each:</p>
+<p>| Feature | Data Insertion API | Bulk Data Insertion API (BDIA) |</p>
+<p>|---|---|---|</p>
+<p>| Data format | One event at a time | CSV files, one event per row |</p>
+<p>| Best for | High-frequency, real-time events | Larger batches sent less frequently |</p>
+<p>| Throughput | No upper bound on throughput rate | Optimized for larger, less frequent files |</p>
+<p>| Recommendation | Use if sending more than 1 file per second | Recommended for new server-side implementations |</p>
+<hr>
+<h3>When to Use Each API</h3>
+<h4>Use Bulk Data Insertion API (BDIA) when:</h4>
+<ul>
+<li><strong>Ingesting historical data</strong> from a previous analytics system</li>
+<li>You have an <strong>internal analytics collection system</strong> that makes it unfeasible to use AppMeasurement — you can use Extract-Transform-Load (ETL) processes to put data into batch files and upload them via BDIA</li>
+<li>Collecting data from <strong>devices with intermittent internet connectivity</strong> — devices store up interactions and upload all at once when connected</li>
+<li>You are working on <strong>any new implementation</strong> of server-side collection (Adobe strongly recommends BDIA for new implementations)</li>
+</ul>
+<h4>Use Data Insertion API (Legacy) when:</h4>
+<ul>
+<li>You need to bring data into Adobe Analytics and <strong>cannot use</strong> AppMeasurement, Web SDK, or the Bulk Data Insertion API</li>
+<li>Your use case requires sending <strong>more than 1 file per second</strong></li>
+</ul>
+<hr>
+<h3>Data Latency</h3>
+<p>Once data is submitted via either API:</p>
+<ul>
+<li>Data with timestamps <strong>less than 24 hours old</strong> typically appears within <strong>20–50 minutes</strong> (some data like page views can appear within minutes)</li>
+<li>Data with timestamps <strong>older than 24 hours</strong> can take <strong>2 hours or longer</strong> depending on the age of the data</li>
+</ul>
+<hr>
+<h3>Supported Variables in BDIA</h3>
+<p>BDIA supports a wide range of variables, including:</p>
+<ul>
+<li>`aamlh` — Adobe Audience Manager location hint</li>
+<li>`contextData.key` — Context data variables</li>
+<li>`customerID` — Visitor ID Service variables (`id`, `authState`, `isMCSeed`)</li>
+<li>`hints` — Client hint variables (`bitness`, `brands`, `mobile`, `model`, `platform`, `platformversion`, `wow64`)</li>
+<li>`ipaddress` — IP address dimension</li>
+<li>`language` — Language dimension</li>
+<li>`list1` – `list3` — List variables</li>
+<li>`marketingCloudVisitorID` — Experience Cloud ID</li>
+<li>`tnta` — Target data payload for Analytics for Target (A4T) integrations</li>
+<li>`trackingServer` — Tracking server variable</li>
+<li>`transactionID` — Transaction ID variable</li>
+<li>`userAgent` — Device user agent string</li>
+</ul>
+<h4>Variables NOT Supported in BDIA:</h4>
+<ul>
+<li>`charSet` — BDIA only supports <strong>UTF-8</strong></li>
+<li>`timezone` — Visitor&#x27;s time zone offset from GMT</li>
+<li>`clickAction`, `clickActionType`, `clickContext`, `clickContextType`, `clickSourceID`, `clickTag` — Activity Map data collection variables</li>
+</ul>
+<hr>
+<h3>Prerequisites</h3>
+<p>The retrieved documentation notes that prerequisites exist for BDIA but does not detail them fully in the context available. For complete prerequisites and full API reference documentation, the <strong>Adobe Analytics 2.0 APIs</strong> reference covers the BDIA endpoint specifications, including authentication requirements and file formatting rules for CSV uploads.</p>
+<hr>
+<h3>Summary Recommendation</h3>
+<p>For any <strong>new server-side implementation</strong>, Adobe strongly recommends using the <strong>Bulk Data Insertion API</strong> over the legacy Data Insertion API, as it is a more scalable successor designed for modern server-side collection needs.</p>
+</article>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "How do I use the Data Insertion API or Bulk Data Insertion API to send data to Adobe Analytics?", "acceptedAnswer": {"@type": "Answer", "text": "Using Data Insertion API and Bulk Data Insertion API for Adobe Analytics Overview Both APIs are methods to submit server-side collection data to Adobe Analytics. Here's how they differ and when to use each: | Feature | Data Insertion API | Bulk Data Insertion API (BDIA) | |---|---|---| | Data format | One event at a time | CSV files, one event per row | | Best for | High-frequency, real-time events | Larger batches sent less frequently | | Throughput | No upper bound on throughput rate | Optimized for larger, less frequent files | | Recommendation | Use if sending more than 1 file per second | Recommended for new server-side implementations | --- When to Use Each API Use Bulk Data Insertion API (BDIA) when: - Ingesting historical data from a previous analytics system - You have an internal analytics collection system that makes it unfeasible to use AppMeasurement \u2014 you can use Extract-Transform-Load (ETL) processes to put data into batch files and upload them via BDIA - Collecting data from devices with intermittent internet connectivity \u2014 devices store up interactions and upload all at once when connected - You are working on any new implementation of server-side collection (Adobe strongly recommends BDIA for new implementations) Use Data Insertion API (Legacy) when: - You need to bring data into Adobe Analytics and cannot use AppMeasurement, Web SDK, or the Bulk Data Insertion API - Your use case requires sending more than 1 file per second --- Data Latency Once data is submitted via either API: - Data with timestamps less than 24 hours old typically appears within 20\u201350 minutes (some data like page views can appear within minutes) - Data with timestamps older than 24 hours can take 2 hours or longer depending on the age of the data --- Supported Variables in BDIA BDIA supports a wide range of variables, including: - aamlh \u2014 Adobe Audience Manager location hint - contextData.key \u2014 Context data variables - customerID \u2014 Visitor ID Service variables (id, authState,\u2026"}}]}</script></div>
+  </body>
+</html>

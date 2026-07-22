@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/png" href="/tools/rovr/rovrlogo.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="build-date" content="2026-06-10" />
+    
+    
+    <script src="https://assets.adobedtm.com/204118644db8/290ae1adb65a/launch-e5ec7bf1a1ef-development.min.js" async></script>
+    <script type="module" crossorigin src="/tools/rovr/assets/index-BDlEezU1.js"></script>
+    <link rel="stylesheet" crossorigin href="/tools/rovr/assets/index-BtV6C9MI.css">
+  <title>What are the different methods of sending data to Adobe Analytics? | Rovr</title>
+<meta name="description" content="Methods of Sending Data to Adobe Analytics Adobe Analytics provides several methods to send data from your website or application to Adobe&#x27;s servers. Here are…" />
+<link rel="canonical" href="https://thelearningproject.in/tools/rovr/q/what-are-the-different-methods-of-sending-data-to-adobe-anal-b933eb" />
+<meta property="og:title" content="What are the different methods of sending data to Adobe Analytics?" />
+<meta property="og:description" content="Methods of Sending Data to Adobe Analytics Adobe Analytics provides several methods to send data from your website or application to Adobe&#x27;s servers. Here are…" />
+<meta property="og:url" content="https://thelearningproject.in/tools/rovr/q/what-are-the-different-methods-of-sending-data-to-adobe-anal-b933eb" />
+<meta property="og:type" content="article" />
+<meta property="og:image" content="https://thelearningproject.in/tools/rovr/rovrlogo.png" />
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="What are the different methods of sending data to Adobe Analytics?" />
+<meta name="twitter:description" content="Methods of Sending Data to Adobe Analytics Adobe Analytics provides several methods to send data from your website or application to Adobe&#x27;s servers. Here are…" />
+</head>
+  <body>
+    <div id="root"><article><h1>What are the different methods of sending data to Adobe Analytics?</h1>
+<h2>Methods of Sending Data to Adobe Analytics</h2>
+<p>Adobe Analytics provides several methods to send data from your website or application to Adobe&#x27;s servers. Here are the main approaches:</p>
+<h3>Client-Side Implementation Methods</h3>
+<h4>1. <strong>AppMeasurement</strong></h4>
+<p>A JavaScript file hosted on your site and referenced on each page. Data is sent directly to Adobe Analytics. This is a traditional implementation method.</p>
+<h4>2. <strong>Adobe Experience Platform Web SDK</strong></h4>
+<p>A JavaScript file hosted on your site and referenced on each page. Data is sent to the Adobe Experience Platform Edge Network, which can then forward data to Adobe Analytics along with other Adobe solutions.</p>
+<h4>3. <strong>Tags in Adobe Experience Platform Data Collection</strong></h4>
+<p>A JavaScript file referenced on each page containing rules created within the Data Collection UI. This offers:</p>
+<ul>
+<li>An <strong>Analytics extension</strong> as an easier way to implement AppMeasurement</li>
+<li>A <strong>Web SDK extension</strong> as an easier way to implement the Web SDK</li>
+</ul>
+<h4>4. <strong>APIs</strong></h4>
+<p>Programmatic methods to send data to Adobe:</p>
+<ul>
+<li><strong>AppMeasurement APIs</strong>:</li>
+<li>Data Insertion API</li>
+<li>Bulk Data Insertion API</li>
+<li><strong>Edge Network API</strong>:</li>
+<li>Data Collection API</li>
+</ul>
+<h3>Data Flow</h3>
+<p>Before data reaches Adobe Analytics processing servers, it is typically compiled client-side using one of these methods. If you send data to the Edge Network, you can configure it to forward data to Adobe Analytics (as well as many other Adobe CX Enterprise solutions).</p>
+<h3>Key Consideration</h3>
+<p>If you&#x27;re implementing Web SDK and plan to use Customer Journey Analytics in the future, Adobe recommends a clean Web SDK implementation using your own schema, rather than migrating from AppMeasurement.</p>
+<h2>Sources</h2>
+<ul>
+<li><a href="https://experienceleague.adobe.com/en/docs/analytics/implementation/vars/functions/overview">Functions and methods</a></li>
+<li><a href="https://experienceleague.adobe.com/en/docs/analytics/technotes/home">Analytics Tech Notes</a></li>
+</ul></article>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "What are the different methods of sending data to Adobe Analytics?", "acceptedAnswer": {"@type": "Answer", "text": "Methods of Sending Data to Adobe Analytics Adobe Analytics provides several methods to send data from your website or application to Adobe's servers. Here are the main approaches: Client-Side Implementation Methods 1. AppMeasurement A JavaScript file hosted on your site and referenced on each page. Data is sent directly to Adobe Analytics. This is a traditional implementation method. 2. Adobe Experience Platform Web SDK A JavaScript file hosted on your site and referenced on each page. Data is sent to the Adobe Experience Platform Edge Network, which can then forward data to Adobe Analytics along with other Adobe solutions. 3. Tags in Adobe Experience Platform Data Collection A JavaScript file referenced on each page containing rules created within the Data Collection UI. This offers: - An Analytics extension as an easier way to implement AppMeasurement - A Web SDK extension as an easier way to implement the Web SDK 4. APIs Programmatic methods to send data to Adobe: - AppMeasurement APIs: - Data Insertion API - Bulk Data Insertion API - Edge Network API: - Data Collection API Data Flow Before data reaches Adobe Analytics processing servers, it is typically compiled client-side using one of these methods. If you send data to the Edge Network, you can configure it to forward data to Adobe Analytics (as well as many other Adobe CX Enterprise solutions). Key Consideration If you're implementing Web SDK and plan to use Customer Journey Analytics in the future, Adobe recommends a clean Web SDK implementation using your own schema, rather than migrating from AppMeasurement."}}]}</script></div>
+  </body>
+</html>

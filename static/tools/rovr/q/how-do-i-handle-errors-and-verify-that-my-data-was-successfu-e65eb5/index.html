@@ -1,0 +1,139 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/png" href="/tools/rovr/rovrlogo.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="build-date" content="2026-06-10" />
+    
+    
+    <script src="https://assets.adobedtm.com/204118644db8/290ae1adb65a/launch-e5ec7bf1a1ef-development.min.js" async></script>
+    <script type="module" crossorigin src="/tools/rovr/assets/index-BDlEezU1.js"></script>
+    <link rel="stylesheet" crossorigin href="/tools/rovr/assets/index-BtV6C9MI.css">
+  <title>How do I handle errors and verify that my data was successfully ingested into Adobe Analytics? | Rovr</title>
+<meta name="description" content="Based on the retrieved documentation context available to me, I can provide a partial answer covering what&#x27;s documented — specifically around BDIA error…" />
+<link rel="canonical" href="https://thelearningproject.in/tools/rovr/q/how-do-i-handle-errors-and-verify-that-my-data-was-successfu-e65eb5" />
+<meta property="og:title" content="How do I handle errors and verify that my data was successfully ingested into Adobe Analytics?" />
+<meta property="og:description" content="Based on the retrieved documentation context available to me, I can provide a partial answer covering what&#x27;s documented — specifically around BDIA error…" />
+<meta property="og:url" content="https://thelearningproject.in/tools/rovr/q/how-do-i-handle-errors-and-verify-that-my-data-was-successfu-e65eb5" />
+<meta property="og:type" content="article" />
+<meta property="og:image" content="https://thelearningproject.in/tools/rovr/rovrlogo.png" />
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="How do I handle errors and verify that my data was successfully ingested into Adobe Analytics?" />
+<meta name="twitter:description" content="Based on the retrieved documentation context available to me, I can provide a partial answer covering what&#x27;s documented — specifically around BDIA error…" />
+</head>
+  <body>
+    <div id="root"><article><h1>How do I handle errors and verify that my data was successfully ingested into Adobe Analytics?</h1>
+<p>Based on the retrieved documentation context available to me, I can provide a <strong>partial answer</strong> covering what&#x27;s documented — specifically around BDIA error handling and validation. I&#x27;ll clearly note where information is limited.</p>
+<hr>
+<h2>Handling Errors and Verifying Data Ingestion in Adobe Analytics</h2>
+<hr>
+<h3>BDIA: Validation Before Upload (Strongly Recommended)</h3>
+<p>Adobe <strong>highly encourages</strong> using the <strong>Validate endpoint</strong> before establishing any BDIA workflow.</p>
+<p>&gt; If you do not first validate a file, you could end up with a combination of invalid and valid hits. The valid hits are processed while the invalid hits are silently discarded — causing major data quality issues including corrupted visit/visitor counts and broken attribution.</p>
+<h4>Why This Matters</h4>
+<ul>
+<li>Invalid rows are <strong>discarded without warning</strong> during live processing</li>
+<li>Valid rows in the same file <strong>are still processed</strong>, so you won&#x27;t get a clean failure — you&#x27;ll get partial, corrupted data</li>
+<li>Always validate first to catch issues before they affect your report suite</li>
+</ul>
+<hr>
+<h3>BDIA: Common Upload Errors and Fixes</h3>
+<h4>File-Level Errors</h4>
+<p>These cause the <strong>entire upload to fail</strong> — no rows are processed. Fix the file and re-upload.</p>
+<h5>1. File Not in GZIP Format</h5>
+<ul>
+<li><strong>Cause:</strong> The file was not properly compressed</li>
+<li><strong>Error response:</strong></li>
+</ul>
+<p>```json</p>
+<p>{</p>
+<p>&quot;file_id&quot;: &quot;3ae262c5-cdea-4bdb-a41c-fbd2c2004c4d&quot;,</p>
+<p>&quot;status_code&quot;: &quot;REJECTED&quot;,</p>
+<p>&quot;processing_log&quot;: &quot;An error occurred: Not in GZIP format&quot;,</p>
+<p>&quot;error&quot;: &quot;No hits were found in the file.&quot;</p>
+<p>}</p>
+<p>```</p>
+<ul>
+<li><strong>Fix:</strong> Review your file creation process to ensure it properly compresses files using GZIP before upload</li>
+</ul>
+<h5>2. Missing Required Header Columns</h5>
+<ul>
+<li><strong>Cause:</strong> The CSV file does not contain a required column such as a <strong>visitor ID header column</strong></li>
+<li><strong>Fix:</strong> Ensure your CSV includes all required columns:</li>
+<li>Visitor ID (e.g., `marketingCloudVisitorID`, `visitorID`, or `IPAddress`)</li>
+<li>`pageName` (or a link equivalent)</li>
+<li>`reportSuiteID`</li>
+<li>`timestamp`</li>
+<li>`userAgent`</li>
+</ul>
+<hr>
+<h4>Row-Level Errors</h4>
+<p>These affect <strong>individual rows</strong> only. Valid rows in the same file are still processed, which is why pre-validation is critical.</p>
+<ul>
+<li>Individual invalid rows are <strong>silently discarded</strong></li>
+<li>The rest of the file continues processing</li>
+<li>Without prior validation, you may not know which rows were dropped</li>
+</ul>
+<hr>
+<h3>Throttling and Volume Considerations</h3>
+<p>If you upload enough files in a short period to exceed your <strong>provisioned throttle limit</strong>:</p>
+<ul>
+<li>Adobe does <strong>not reject</strong> the files outright</li>
+<li>Instead, Adobe ingests uploaded files <strong>more slowly</strong></li>
+<li>This protects system stability but delays data availability</li>
+</ul>
+<p><strong>Best practices to avoid throttling:</strong></p>
+<ul>
+<li>Communicate your expected <strong>daily ingestion volume</strong> to Adobe in advance so appropriate hardware can be provisioned</li>
+<li>Do not upload more than <strong>1 file per second</strong> (use DIA if you require higher frequency)</li>
+<li>Follow established <strong>Visitor Group guidelines</strong> to manage file send frequency limits</li>
+</ul>
+<hr>
+<h3>Expected Data Latency After Ingestion</h3>
+<p>Once files are successfully ingested, data does not appear in reports instantly:</p>
+<p>| Data Age | Expected Reporting Latency |</p>
+<p>|---|---|</p>
+<p>| Timestamps <strong>&lt; 24 hours old</strong> | Typically <strong>20–50 minutes</strong>; some data available within minutes |</p>
+<p>| Timestamps <strong>&gt; 24 hours old</strong> | <strong>2+ hours</strong>, depending on how old the data is |</p>
+<p>Use these latency windows to determine when to check reports after a successful upload.</p>
+<hr>
+<h3>Verifying Successful Ingestion</h3>
+<h4>1. Check the API Response</h4>
+<ul>
+<li>A successful upload returns a `file_id` and a `status_code` indicating acceptance</li>
+<li>A rejected file returns `&quot;status_code&quot;: &quot;REJECTED&quot;` with a `processing_log` explaining the failure</li>
+</ul>
+<h4>2. Use the Adobe Analytics Debugger (for AppMeasurement/Tag-based implementations)</h4>
+<ul>
+<li>Open <strong>Adobe&#x27;s debugger</strong> or another packet monitor to validate that image requests are firing correctly with the right variables</li>
+<li>This applies to client-side implementations rather than pure API-based ingestion</li>
+</ul>
+<h4>3. Check Reports in Adobe Analytics</h4>
+<ul>
+<li>After the appropriate latency window has passed, verify data appears in your report suite</li>
+<li>Check key dimensions and metrics (page views, visits, eVars) to confirm expected values are present</li>
+</ul>
+<h4>4. Use Data Feeds for Raw Data Validation</h4>
+<ul>
+<li>Adobe offers <strong>Data Feeds</strong> containing all raw data for each day</li>
+<li>Your organization can download and inspect the raw hit-level data to confirm specific records were ingested correctly</li>
+<li>This is particularly useful for reconciling discrepancies between expected and reported data</li>
+</ul>
+<hr>
+<h3>What&#x27;s Not Fully Covered in My Current Context</h3>
+<p>The retrieved documentation does not include:</p>
+<ul>
+<li>Full details on the <strong>Validate endpoint</strong> request/response format for BDIA</li>
+<li>The complete list of all possible row-level error codes and their fixes</li>
+<li>Specific error handling procedures for the <strong>Data Insertion API (DIA)</strong></li>
+<li>Retry logic recommendations for failed uploads</li>
+</ul>
+<p>For these details, I&#x27;d recommend consulting the <strong>Bulk Data Insertion API reference</strong> and <strong>Troubleshoot bulk data insertion uploads</strong> guides in Adobe Experience League directly.</p>
+<h2>Sources</h2>
+<ul>
+<li><a href="https://experienceleague.adobe.com/en/docs/analytics/technotes/home">Analytics Tech Notes</a></li>
+</ul></article>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "How do I handle errors and verify that my data was successfully ingested into Adobe Analytics?", "acceptedAnswer": {"@type": "Answer", "text": "Based on the retrieved documentation context available to me, I can provide a partial answer covering what's documented \u2014 specifically around BDIA error handling and validation. I'll clearly note where information is limited. --- Handling Errors and Verifying Data Ingestion in Adobe Analytics --- BDIA: Validation Before Upload (Strongly Recommended) Adobe highly encourages using the Validate endpoint before establishing any BDIA workflow. If you do not first validate a file, you could end up with a combination of invalid and valid hits. The valid hits are processed while the invalid hits are silently discarded \u2014 causing major data quality issues including corrupted visit/visitor counts and broken attribution. Why This Matters - Invalid rows are discarded without warning during live processing - Valid rows in the same file are still processed, so you won't get a clean failure \u2014 you'll get partial, corrupted data - Always validate first to catch issues before they affect your report suite --- BDIA: Common Upload Errors and Fixes File-Level Errors These cause the entire upload to fail \u2014 no rows are processed. Fix the file and re-upload. 1. File Not in GZIP Format - Cause: The file was not properly compressed - Error response: json { \"fileid\": \"3ae262c5-cdea-4bdb-a41c-fbd2c2004c4d\", \"statuscode\": \"REJECTED\", \"processinglog\": \"An error occurred: Not in GZIP format\", \"error\": \"No hits were found in the file.\" } - Fix: Review your file creation process to ensure it properly compresses files using GZIP before upload 2. Missing Required Header Columns - Cause: The CSV file does not contain a required column such as a visitor ID header column - Fix: Ensure your CSV includes all required columns: - Visitor ID (e.g., marketingCloudVisitorID, visitorID, or IPAddress) - pageName (or a link equivalent) - reportSuiteID - timestamp - userAgent --- Row-Level Errors These affect individual rows only. Valid rows in the same file are still processed, which is why pre-validation is\u2026"}}]}</script></div>
+  </body>
+</html>
