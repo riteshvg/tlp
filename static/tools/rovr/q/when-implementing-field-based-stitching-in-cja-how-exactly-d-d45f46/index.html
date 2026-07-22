@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/png" href="/tools/rovr/rovrlogo.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="build-date" content="2026-06-10" />
+    
+    
+    <script src="https://assets.adobedtm.com/204118644db8/290ae1adb65a/launch-e5ec7bf1a1ef-development.min.js" async></script>
+    <script type="module" crossorigin src="/tools/rovr/assets/index-BDlEezU1.js"></script>
+    <link rel="stylesheet" crossorigin href="/tools/rovr/assets/index-BtV6C9MI.css">
+  <title>When implementing Field Based Stitching in CJA, how exactly does the 7 day or 14 day lookback window handle timestamp collisions between the anonymous and authenticated profiles? If a user&#x27;s anonymous dataset is stitched to their authenticated ID, what happens to the historical session counts and unique visitor metrics in my existing reporting? | Rovr</title>
+<meta name="description" content="Field-Based Stitching in CJA: Lookback Windows &amp; Metric Impact How the Lookback Window Works The retrieved documentation confirms that field-based stitching…" />
+<link rel="canonical" href="https://thelearningproject.in/tools/rovr/q/when-implementing-field-based-stitching-in-cja-how-exactly-d-d45f46" />
+<meta property="og:title" content="When implementing Field Based Stitching in CJA, how exactly does the 7 day or 14 day lookback window handle timestamp collisions between the anonymous and authenticated profiles? If a user&#x27;s anonymous dataset is stitched to their authenticated ID, what happens to the historical session counts and unique visitor metrics in my existing reporting?" />
+<meta property="og:description" content="Field-Based Stitching in CJA: Lookback Windows &amp; Metric Impact How the Lookback Window Works The retrieved documentation confirms that field-based stitching…" />
+<meta property="og:url" content="https://thelearningproject.in/tools/rovr/q/when-implementing-field-based-stitching-in-cja-how-exactly-d-d45f46" />
+<meta property="og:type" content="article" />
+<meta property="og:image" content="https://thelearningproject.in/tools/rovr/rovrlogo.png" />
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="When implementing Field Based Stitching in CJA, how exactly does the 7 day or 14 day lookback window handle timestamp collisions between the anonymous and authenticated profiles? If a user&#x27;s anonymous dataset is stitched to their authenticated ID, what happens to the historical session counts and unique visitor metrics in my existing reporting?" />
+<meta name="twitter:description" content="Field-Based Stitching in CJA: Lookback Windows &amp; Metric Impact How the Lookback Window Works The retrieved documentation confirms that field-based stitching…" />
+</head>
+  <body>
+    <div id="root"><article><h1>When implementing Field Based Stitching in CJA, how exactly does the 7 day or 14 day lookback window handle timestamp collisions between the anonymous and authenticated profiles? If a user&#x27;s anonymous dataset is stitched to their authenticated ID, what happens to the historical session counts and unique visitor metrics in my existing reporting?</h1>
+<h2>Field-Based Stitching in CJA: Lookback Windows &amp; Metric Impact</h2>
+<h3>How the Lookback Window Works</h3>
+<p>The retrieved documentation confirms that field-based stitching exists and operates in CJA, but <strong>does not contain the specific technical detail about how timestamp collisions are resolved between anonymous and authenticated profiles within a 7-day or 14-day lookback window</strong>. I can tell you what the documentation does support:</p>
+<p><img src="https://raw.githubusercontent.com/AdobeDocs/analytics-platform.en/main/help/stitching/assets/fbs.png" alt="Field-Based Stitching Diagram"></p>
+<p>Field-based stitching creates a <strong>separate stitched dataset</strong> in addition to the source dataset. The stitching process merges authenticated and unauthenticated user data — and the documentation explicitly calls out compliance obligations around this merge:</p>
+<p>&gt; &quot;Stitching includes merging authenticated and unauthenticated user data. Ensure that you comply with applicable laws and regulations, including obtaining necessary end-user permissions, before activating stitching on an event dataset.&quot;</p>
+<h3>What Happens to Historical Metrics After Stitching</h3>
+<p>The documentation does confirm the following downstream effects:</p>
+<ul>
+<li><strong>Stitched datasets are separate</strong> from the original — your original unstitched dataset is preserved, so you can compare pre- and post-stitching behavior</li>
+<li><strong>Session definitions, attribution logic, and unique visitor-equivalent metrics</strong> in CJA are controlled at the <strong>Data View</strong> level, not in the raw dataset — meaning stitching affects the person IDs in the dataset, and those revised IDs flow into however your connection and data view define sessions and people counts</li>
+<li><strong>Unique visitor counts will change</strong> — anonymous events that are backfilled with an authenticated person ID will collapse what were previously counted as separate &quot;people&quot; into a single identified person, reducing unique person counts and potentially altering session counts depending on your session definition settings</li>
+</ul>
+<h3>Validating the Impact</h3>
+<p>The documentation references a dedicated <strong>&quot;Validate Stitching&quot;</strong> topic specifically for measuring authentication rates and identification before and after stitching — this is the recommended approach to quantify the metric delta in your reporting before committing to stitched datasets in production connections.</p>
+<h3>What I Cannot Confirm From Available Documentation</h3>
+<p>The following specifics are <strong>not covered in the retrieved context</strong>:</p>
+<ul>
+<li>The exact algorithm used to resolve timestamp collisions when the same event timestamp appears in both anonymous and authenticated records</li>
+<li>Whether last-write-wins, first-write-wins, or another conflict resolution strategy is applied during the lookback replay</li>
+<li>The precise behavior when overlapping sessions span the lookback window boundary</li>
+</ul>
+<p>For these specifics, I&#x27;d recommend raising them directly with <strong>Adobe Consulting or Adobe Customer Care</strong>, particularly when evaluating edge cases in your implementation — as the documentation itself notes: <em>&quot;Please ask Adobe Consulting for additional support&quot;</em> when disruption to existing reports is a concern.</p>
+</article>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "When implementing Field Based Stitching in CJA, how exactly does the 7 day or 14 day lookback window handle timestamp collisions between the anonymous and authenticated profiles? If a user's anonymous dataset is stitched to their authenticated ID, what happens to the historical session counts and unique visitor metrics in my existing reporting?", "acceptedAnswer": {"@type": "Answer", "text": "Field-Based Stitching in CJA: Lookback Windows & Metric Impact How the Lookback Window Works The retrieved documentation confirms that field-based stitching exists and operates in CJA, but does not contain the specific technical detail about how timestamp collisions are resolved between anonymous and authenticated profiles within a 7-day or 14-day lookback window. I can tell you what the documentation does support: !Field-Based Stitching Diagram(https://raw.githubusercontent.com/AdobeDocs/analytics-platform.en/main/help/stitching/assets/fbs.png) Field-based stitching creates a separate stitched dataset in addition to the source dataset. The stitching process merges authenticated and unauthenticated user data \u2014 and the documentation explicitly calls out compliance obligations around this merge: \"Stitching includes merging authenticated and unauthenticated user data. Ensure that you comply with applicable laws and regulations, including obtaining necessary end-user permissions, before activating stitching on an event dataset.\" What Happens to Historical Metrics After Stitching The documentation does confirm the following downstream effects: - Stitched datasets are separate from the original \u2014 your original unstitched dataset is preserved, so you can compare pre- and post-stitching behavior - Session definitions, attribution logic, and unique visitor-equivalent metrics in CJA are controlled at the Data View level, not in the raw dataset \u2014 meaning stitching affects the person IDs in the dataset, and those revised IDs flow into however your connection and data view define sessions and people counts - Unique visitor counts will change \u2014 anonymous events that are backfilled with an authenticated person ID will collapse what were previously counted as separate \"people\" into a single identified person, reducing unique person counts and potentially altering session counts depending on your session definition settings Validating the Impact The documentation references a\u2026"}}]}</script></div>
+  </body>
+</html>

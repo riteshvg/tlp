@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/png" href="/tools/rovr/rovrlogo.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="build-date" content="2026-06-10" />
+    
+    
+    <script src="https://assets.adobedtm.com/204118644db8/290ae1adb65a/launch-e5ec7bf1a1ef-development.min.js" async></script>
+    <script type="module" crossorigin src="/tools/rovr/assets/index-BDlEezU1.js"></script>
+    <link rel="stylesheet" crossorigin href="/tools/rovr/assets/index-BtV6C9MI.css">
+  <title>How to setup Adobe analytics activitymap equivalent in CJA | Rovr</title>
+<meta name="description" content="Setting Up an Activity Map Equivalent in Customer Journey Analytics (CJA) Overview Customer Journey Analytics does not have a native Activity Map overlay like…" />
+<link rel="canonical" href="https://thelearningproject.in/tools/rovr/q/how-to-setup-adobe-analytics-activitymap-equivalent-in-cja-c5a3fb" />
+<meta property="og:title" content="How to setup Adobe analytics activitymap equivalent in CJA" />
+<meta property="og:description" content="Setting Up an Activity Map Equivalent in Customer Journey Analytics (CJA) Overview Customer Journey Analytics does not have a native Activity Map overlay like…" />
+<meta property="og:url" content="https://thelearningproject.in/tools/rovr/q/how-to-setup-adobe-analytics-activitymap-equivalent-in-cja-c5a3fb" />
+<meta property="og:type" content="article" />
+<meta property="og:image" content="https://thelearningproject.in/tools/rovr/rovrlogo.png" />
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="How to setup Adobe analytics activitymap equivalent in CJA" />
+<meta name="twitter:description" content="Setting Up an Activity Map Equivalent in Customer Journey Analytics (CJA) Overview Customer Journey Analytics does not have a native Activity Map overlay like…" />
+</head>
+  <body>
+    <div id="root"><article><h1>How to setup Adobe analytics activitymap equivalent in CJA</h1>
+<h2>Setting Up an Activity Map Equivalent in Customer Journey Analytics (CJA)</h2>
+<h3>Overview</h3>
+<p>Customer Journey Analytics does not have a native Activity Map overlay like Adobe Analytics does. However, you can replicate Activity Map-style link click analysis in CJA by leveraging the <strong>Activity Map</strong> context data variables that are already collected through your Adobe Analytics or Web SDK implementation, and then building visualizations in CJA Workspace.</p>
+<hr>
+<h3>How Activity Map Data Works</h3>
+<p>Activity Map data is captured via context data variables during your implementation:</p>
+<ul>
+<li><strong>`c.a.activitymap.page`</strong> — The page name when a link was clicked (the <strong>Activity Map Page</strong> dimension)</li>
+<li>The data is typically sent on the <strong>next hit after a link was clicked</strong></li>
+</ul>
+<p>The <strong>Activity Map Page</strong> dimension collects the value from the <strong>Page</strong> dimension at the time of the click. If no Page dimension value exists, it falls back to the <strong>Page URL</strong> dimension.</p>
+<hr>
+<h3>Prerequisites</h3>
+<ul>
+<li>An existing Adobe Analytics or Web SDK implementation with <strong>Activity Map enabled</strong></li>
+<li>Activity Map data flowing into <strong>Adobe Experience Platform</strong> (AEP) via a configured datastream</li>
+<li>A <strong>CJA Connection</strong> mapped to the relevant AEP dataset</li>
+<li>A <strong>CJA Data View</strong> exposing the Activity Map-related dimensions and metrics</li>
+</ul>
+<hr>
+<h3>Steps to Enable and Analyze Activity Map Data in CJA</h3>
+<h4>Step 1: Enable Activity Map in Your Implementation</h4>
+<p>If not already enabled, Activity Map must be turned on in your Adobe Analytics Tags extension:</p>
+<p><a href="https://video.tv.adobe.com/v/25878?quality=12&amp;learn=on">▶ Watch: Enable, debug, and customize the Adobe Analytics Activity Map</a></p>
+<p>1. In <strong>Adobe Experience Platform Tags</strong>, open your property.</p>
+<p>2. Navigate to the <strong>Adobe Analytics extension</strong>.</p>
+<p>3. Enable the <strong>Activity Map</strong> module within the extension settings.</p>
+<p>4. Publish your library changes.</p>
+<h4>Step 2: Verify Context Data Variables Are Collected</h4>
+<p>Confirm that the following context data variables are being captured in your dataset:</p>
+<ul>
+<li>`c.a.activitymap.page` → maps to the <strong>Activity Map Page</strong> dimension</li>
+<li>Additional Activity Map variables (link name, region, etc.) if applicable</li>
+</ul>
+<h4>Step 3: Configure Your CJA Data View</h4>
+<p>1. Open <strong>Customer Journey Analytics</strong> and navigate to <strong>Data Views</strong>.</p>
+<p>2. Edit the Data View associated with your Analytics dataset.</p>
+<p>3. Add the <strong>Activity Map Page</strong> dimension (sourced from `c.a.activitymap.page`) as a component.</p>
+<p>4. Add any other Activity Map dimensions (e.g., link name, link region) as needed.</p>
+<p>5. Save the Data View.</p>
+<h4>Step 4: Build Link Click Analysis in CJA Workspace</h4>
+<p>1. Open a new or existing <strong>Workspace project</strong> in CJA.</p>
+<p>2. Use a <strong>Freeform Table</strong> to analyze:</p>
+<ul>
+<li><strong>Activity Map Page</strong> — to see which pages had the most link clicks</li>
+<li><strong>Link Name / Link ID</strong> — to identify the most clicked links</li>
+<li><strong>Occurrences or Events</strong> — as your metric</li>
+</ul>
+<p>3. Use <strong>Filters</strong> to isolate specific pages or link regions.</p>
+<p>4. Use a <strong>Bar chart</strong> or <strong>Freeform table</strong> visualization to replicate the ranked link reporting that Activity Map provides.</p>
+<hr>
+<h3>Key Difference vs. Adobe Analytics Activity Map</h3>
+<p>| Capability | Adobe Analytics Activity Map | CJA Equivalent |</p>
+<p>|---|---|---|</p>
+<p>| Visual overlay on page | ✅ Yes | ❌ Not available |</p>
+<p>| Link click dimension analysis | ✅ Yes | ✅ Via Activity Map Page dimension |</p>
+<p>| Page-level link ranking | ✅ Yes | ✅ Via Freeform Table |</p>
+<p>| Custom link region analysis | ✅ Yes | ✅ If region variable is collected |</p>
+<p>&gt; <strong>Note:</strong> The visual <strong>bubble overlay</strong> on your webpage is a feature exclusive to Adobe Analytics and is not replicated in CJA. CJA provides the underlying <strong>data analysis</strong> for link clicks but not the graphical page overlay experience.</p>
+<hr>
+<h3>Summary</h3>
+<p>To get an Activity Map equivalent in CJA:</p>
+<p>1. Ensure Activity Map is <strong>enabled in your Tags implementation</strong></p>
+<p>2. Confirm <strong>context data variables</strong> are flowing into AEP</p>
+<p>3. <strong>Expose the dimensions</strong> in your CJA Data View</p>
+<p>4. Build <strong>Freeform Table analyses</strong> in CJA Workspace to rank pages and links by click activity</p>
+<h2>Sources</h2>
+<ul>
+<li><a href="https://experienceleague.adobe.com/en/docs/analytics-platform/using/cja-usecases/data-views/bi-extension/visualizations">Visualizations</a></li>
+</ul></article>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "How to setup Adobe analytics activitymap equivalent in CJA", "acceptedAnswer": {"@type": "Answer", "text": "Setting Up an Activity Map Equivalent in Customer Journey Analytics (CJA) Overview Customer Journey Analytics does not have a native Activity Map overlay like Adobe Analytics does. However, you can replicate Activity Map-style link click analysis in CJA by leveraging the Activity Map context data variables that are already collected through your Adobe Analytics or Web SDK implementation, and then building visualizations in CJA Workspace. --- How Activity Map Data Works Activity Map data is captured via context data variables during your implementation: - c.a.activitymap.page \u2014 The page name when a link was clicked (the Activity Map Page dimension) - The data is typically sent on the next hit after a link was clicked The Activity Map Page dimension collects the value from the Page dimension at the time of the click. If no Page dimension value exists, it falls back to the Page URL dimension. --- Prerequisites - An existing Adobe Analytics or Web SDK implementation with Activity Map enabled - Activity Map data flowing into Adobe Experience Platform (AEP) via a configured datastream - A CJA Connection mapped to the relevant AEP dataset - A CJA Data View exposing the Activity Map-related dimensions and metrics --- Steps to Enable and Analyze Activity Map Data in CJA Step 1: Enable Activity Map in Your Implementation If not already enabled, Activity Map must be turned on in your Adobe Analytics Tags extension: \u25b6 Watch: Enable, debug, and customize the Adobe Analytics Activity Map(https://video.tv.adobe.com/v/25878?quality=12&learn=on) 1. In Adobe Experience Platform Tags, open your property. 2. Navigate to the Adobe Analytics extension. 3. Enable the Activity Map module within the extension settings. 4. Publish your library changes. Step 2: Verify Context Data Variables Are Collected Confirm that the following context data variables are being captured in your dataset: - c.a.activitymap.page \u2192 maps to the Activity Map Page dimension - Additional Activity Map variables\u2026"}}]}</script></div>
+  </body>
+</html>
