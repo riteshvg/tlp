@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/png" href="/tools/rovr/rovrlogo.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="build-date" content="2026-06-10" />
+    
+    
+    <script src="https://assets.adobedtm.com/204118644db8/290ae1adb65a/launch-e5ec7bf1a1ef-development.min.js" async></script>
+    <script type="module" crossorigin src="/tools/rovr/assets/index-BDlEezU1.js"></script>
+    <link rel="stylesheet" crossorigin href="/tools/rovr/assets/index-BtV6C9MI.css">
+  <title>72. How to prevent multiple re-entry in journeys? | Rovr</title>
+<meta name="description" content="Preventing Multiple Re-Entry in Journeys Adobe Journey Optimizer provides several mechanisms to control and prevent profiles from re-entering a journey…" />
+<link rel="canonical" href="https://thelearningproject.in/tools/rovr/q/72-how-to-prevent-multiple-re-entry-in-journeys-f6a3e1" />
+<meta property="og:title" content="72. How to prevent multiple re-entry in journeys?" />
+<meta property="og:description" content="Preventing Multiple Re-Entry in Journeys Adobe Journey Optimizer provides several mechanisms to control and prevent profiles from re-entering a journey…" />
+<meta property="og:url" content="https://thelearningproject.in/tools/rovr/q/72-how-to-prevent-multiple-re-entry-in-journeys-f6a3e1" />
+<meta property="og:type" content="article" />
+<meta property="og:image" content="https://thelearningproject.in/tools/rovr/rovrlogo.png" />
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="72. How to prevent multiple re-entry in journeys?" />
+<meta name="twitter:description" content="Preventing Multiple Re-Entry in Journeys Adobe Journey Optimizer provides several mechanisms to control and prevent profiles from re-entering a journey…" />
+</head>
+  <body>
+    <div id="root"><article><h1>72. How to prevent multiple re-entry in journeys?</h1>
+<h2>Preventing Multiple Re-Entry in Journeys</h2>
+<p>Adobe Journey Optimizer provides several mechanisms to control and prevent profiles from re-entering a journey multiple times.</p>
+<hr>
+<h3>Option 1: Disable Re-entrance Entirely</h3>
+<p>For &quot;one-shot&quot; journeys (e.g., a one-time welcome gift or single promotional offer), you can fully disable re-entry:</p>
+<p>1. Open your journey and navigate to the <strong>Journey Properties</strong> panel.</p>
+<p>2. Locate the <strong>Allow reentrance</strong> toggle.</p>
+<p>3. <strong>Uncheck</strong> the <strong>Allow reentrance</strong> option.</p>
+<p>Once disabled, a profile cannot enter the journey again within the global journey timeout period (up to 90 days).</p>
+<p>&gt; <strong>Example use case:</strong> Offering a one-time gift when a person enters a shop — you would disable re-entrance so the gift is only triggered once per profile.</p>
+<hr>
+<h3>Option 2: Configure a Reentrance Wait Period</h3>
+<p>If you want to allow re-entry but only after a certain amount of time has passed:</p>
+<p>1. Open <strong>Journey Properties</strong>.</p>
+<p>2. Ensure <strong>Allow reentrance</strong> is <strong>enabled</strong>.</p>
+<p>3. Set a duration in the <strong>Reentrance wait period</strong> field that appears.</p>
+<p><img src="https://raw.githubusercontent.com/AdobeDocs/journey-optimizer.en/main/help/using/building-journeys/assets/journey-re-entrance.png" alt="Re-entrance settings toggle in journey properties"></p>
+<p><strong>Key details:</strong></p>
+<ul>
+<li>Default wait period: <strong>5 minutes</strong></li>
+<li>Maximum duration: <strong>90 days</strong></li>
+<li>This prevents journeys from being erroneously triggered multiple times for the same event</li>
+<li>Once the wait period elapses, the profile is eligible to re-enter</li>
+</ul>
+<hr>
+<h3>Option 3: Add a Condition Using Profile or Audience Data</h3>
+<p>Even after the reentrance wait period expires, you can add an extra layer of protection by using a <strong>Condition</strong> activity inside the journey:</p>
+<ul>
+<li>Add a <strong>Condition</strong> node at the beginning of the journey canvas.</li>
+<li>Configure it to check whether the profile has already entered the journey (using profile attributes or audience membership data).</li>
+<li>Route profiles that have already entered down a separate path (e.g., end the journey for them).</li>
+</ul>
+<p>&gt; This is especially useful when you want to <strong>permanently</strong> block re-entry beyond what the 90-day global timeout enforces.</p>
+<hr>
+<h3>Option 4: Use Frequency Capping Rules</h3>
+<p>To prevent over-communication across <strong>multiple journeys</strong>, configure <strong>frequency capping rules</strong> and <strong>journey capping and arbitration</strong>. These enforce cross-journey message limits at the profile level.</p>
+<hr>
+<h3>Summary Table</h3>
+<p>| Method | Best For | Max Duration |</p>
+<p>|--------|----------|--------------|</p>
+<p>| Disable re-entrance | One-time journeys | Global timeout (90 days) |</p>
+<p>| Reentrance wait period | Temporary blocks with eventual re-entry | Up to 90 days |</p>
+<p>| Condition node (profile/audience check) | Permanent or custom logic-based blocking | No limit |</p>
+<p>| Frequency capping rules | Cross-journey over-messaging prevention | Configurable |</p>
+<p>&gt; <strong>Note:</strong> These re-entry controls apply to <strong>Unitary event</strong> and <strong>Audience qualification</strong> journeys. For <strong>Read Audience</strong> journeys, entry behavior is governed differently.</p>
+</article>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "72. How to prevent multiple re-entry in journeys?", "acceptedAnswer": {"@type": "Answer", "text": "Preventing Multiple Re-Entry in Journeys Adobe Journey Optimizer provides several mechanisms to control and prevent profiles from re-entering a journey multiple times. --- Option 1: Disable Re-entrance Entirely For \"one-shot\" journeys (e.g., a one-time welcome gift or single promotional offer), you can fully disable re-entry: 1. Open your journey and navigate to the Journey Properties panel. 2. Locate the Allow reentrance toggle. 3. Uncheck the Allow reentrance option. Once disabled, a profile cannot enter the journey again within the global journey timeout period (up to 90 days). Example use case: Offering a one-time gift when a person enters a shop \u2014 you would disable re-entrance so the gift is only triggered once per profile. --- Option 2: Configure a Reentrance Wait Period If you want to allow re-entry but only after a certain amount of time has passed: 1. Open Journey Properties. 2. Ensure Allow reentrance is enabled. 3. Set a duration in the Reentrance wait period field that appears. !Re-entrance settings toggle in journey properties(https://raw.githubusercontent.com/AdobeDocs/journey-optimizer.en/main/help/using/building-journeys/assets/journey-re-entrance.png) Key details: - Default wait period: 5 minutes - Maximum duration: 90 days - This prevents journeys from being erroneously triggered multiple times for the same event - Once the wait period elapses, the profile is eligible to re-enter --- Option 3: Add a Condition Using Profile or Audience Data Even after the reentrance wait period expires, you can add an extra layer of protection by using a Condition activity inside the journey: - Add a Condition node at the beginning of the journey canvas. - Configure it to check whether the profile has already entered the journey (using profile attributes or audience membership data). - Route profiles that have already entered down a separate path (e.g., end the journey for them). This is especially useful when you want to permanently block re-entry beyond what the\u2026"}}]}</script></div>
+  </body>
+</html>

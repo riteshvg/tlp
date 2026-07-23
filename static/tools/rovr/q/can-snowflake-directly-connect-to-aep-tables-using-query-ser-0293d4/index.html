@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/png" href="/tools/rovr/rovrlogo.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="build-date" content="2026-06-10" />
+    
+    
+    <script src="https://assets.adobedtm.com/204118644db8/290ae1adb65a/launch-e5ec7bf1a1ef-development.min.js" async></script>
+    <script type="module" crossorigin src="/tools/rovr/assets/index-BDlEezU1.js"></script>
+    <link rel="stylesheet" crossorigin href="/tools/rovr/assets/index-BtV6C9MI.css">
+  <title>can snowflake directly connect to AEP tables using query service DB credential? Is there a limitation or is that doable ? Does it require data distiller or any other license ? We want to explore possibility of snowflake pulling the daily data from AEP dataset | Rovr</title>
+<meta name="description" content="Snowflake Connecting to AEP via Query Service DB Credentials This is a nuanced topic — let me break down exactly what&#x27;s possible, what&#x27;s not, and what the…" />
+<link rel="canonical" href="https://thelearningproject.in/tools/rovr/q/can-snowflake-directly-connect-to-aep-tables-using-query-ser-0293d4" />
+<meta property="og:title" content="can snowflake directly connect to AEP tables using query service DB credential? Is there a limitation or is that doable ? Does it require data distiller or any other license ? We want to explore possibility of snowflake pulling the daily data from AEP dataset" />
+<meta property="og:description" content="Snowflake Connecting to AEP via Query Service DB Credentials This is a nuanced topic — let me break down exactly what&#x27;s possible, what&#x27;s not, and what the…" />
+<meta property="og:url" content="https://thelearningproject.in/tools/rovr/q/can-snowflake-directly-connect-to-aep-tables-using-query-ser-0293d4" />
+<meta property="og:type" content="article" />
+<meta property="og:image" content="https://thelearningproject.in/tools/rovr/rovrlogo.png" />
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="can snowflake directly connect to AEP tables using query service DB credential? Is there a limitation or is that doable ? Does it require data distiller or any other license ? We want to explore possibility of snowflake pulling the daily data from AEP dataset" />
+<meta name="twitter:description" content="Snowflake Connecting to AEP via Query Service DB Credentials This is a nuanced topic — let me break down exactly what&#x27;s possible, what&#x27;s not, and what the…" />
+</head>
+  <body>
+    <div id="root"><article><h1>can snowflake directly connect to AEP tables using query service DB credential? Is there a limitation or is that doable ? Does it require data distiller or any other license ? We want to explore possibility of snowflake pulling the daily data from AEP dataset</h1>
+<h2>Snowflake Connecting to AEP via Query Service DB Credentials</h2>
+<p>This is a nuanced topic — let me break down exactly what&#x27;s possible, what&#x27;s not, and what the architecture actually looks like based on the available documentation.</p>
+<hr>
+<h3>What the Documentation Covers</h3>
+<p>The retrieved context describes <strong>two different integration patterns</strong> between Snowflake and AEP — and it&#x27;s important to understand the direction of data flow:</p>
+<hr>
+<h3>Option 1: AEP → Snowflake (Destination / Data Share)</h3>
+<p><em>(AEP pushes data TO Snowflake)</em></p>
+<p>This is a <strong>Snowflake destination</strong> in AEP that uses <strong>Snowflake Data Sharing</strong> (not Query Service). Key characteristics:</p>
+<ul>
+<li>No data is physically exported — Adobe grants <strong>read-only access to a live dynamic table</strong> hosted in Adobe&#x27;s own Snowflake environment</li>
+<li>You <strong>query the shared table from your Snowflake account</strong> directly</li>
+<li>Data has a fixed <strong>7-day TTL (Time-to-Live)</strong> — the dynamic table expires 7 days after last export</li>
+<li>If you need to retain data longer than 7 days, you must <strong>copy it into a table you own</strong> in your Snowflake instance before expiry</li>
+<li>Deleting the dataflow in AEP causes the dynamic table to <strong>disappear from your Snowflake account</strong></li>
+<li>You must <strong>accept a private listing from Adobe</strong> the first time the dataflow is set up</li>
+</ul>
+<p>&gt; This pattern is likely closest to your use case of &quot;Snowflake pulling daily data from AEP datasets.&quot;</p>
+<hr>
+<h3>Option 2: Snowflake → AEP (Source Connector)</h3>
+<p><em>(Snowflake pushes data TO AEP)</em></p>
+<p>This is the <strong>Snowflake source connector</strong> — the reverse direction from what you need. Not relevant to your question.</p>
+<hr>
+<h3>Regarding Query Service DB Credentials + Snowflake</h3>
+<p>Based on the documentation, <strong>Query Service DB credentials are designed for third-party SQL clients</strong> (e.g., Power BI, Tableau, DbVisualizer, Postico) connecting <strong>into</strong> AEP&#x27;s Query Service endpoint — not for Snowflake to natively pull from AEP datasets as if they were Snowflake-native tables.</p>
+<p>Key points:</p>
+<ul>
+<li>Query Service supports <strong>SSL modes</strong> for third-party client connections (e.g., `verify-full`)</li>
+<li>It supports <strong>attribute-based access control</strong> to restrict column/dataset-level access</li>
+<li>However, the documentation does <strong>not</strong> describe Snowflake itself as a supported Query Service client in the same way as BI tools</li>
+<li>The `INSERT OVERWRITE INTO` command is <strong>not supported</strong> in Query Service, which would limit certain write-back patterns</li>
+</ul>
+<hr>
+<h3>License Requirements</h3>
+<p>| Capability | License Required |</p>
+<p>|---|---|</p>
+<p>| <strong>Snowflake Destination</strong> (AEP → Snowflake Data Share) | Part of AEP destinations catalog — check your destination entitlements |</p>
+<p>| <strong>Snowflake Streaming Source</strong> | <strong>Real-Time CDP Ultimate</strong> |</p>
+<p>| <strong>Snowflake Batch Source</strong> | <strong>Real-Time CDP Ultimate</strong> |</p>
+<p>| <strong>Data Distiller / Query Service</strong> | <strong>Data Distiller</strong> add-on for compute-heavy/export workflows |</p>
+<p>&gt; The documentation explicitly notes: <em>&quot;The Snowflake source is available to users who have purchased Real-Time Customer Data Platform Ultimate.&quot;</em></p>
+<hr>
+<h3>Recommended Architecture for Your Use Case</h3>
+<p>If your goal is <strong>Snowflake pulling daily AEP dataset data</strong>, the most supported path based on the documentation is:</p>
+<p>1. Set up a <strong>Snowflake Destination dataflow</strong> in AEP (<strong>AEP UI → Destinations → Snowflake</strong>)</p>
+<p>2. AEP shares audience/dataset data as a <strong>dynamic table</strong> in Adobe&#x27;s Snowflake environment</p>
+<p>3. Your Snowflake account <strong>queries or copies</strong> that shared table into your own Snowflake tables (critical — do this before the 7-day TTL expires)</p>
+<p>4. Accept the <strong>private listing</strong> from Adobe in your Snowflake account on first setup</p>
+<hr>
+<h3>What I&#x27;d Recommend Clarifying with Adobe</h3>
+<p>The documentation does not explicitly confirm or deny whether a <strong>Snowflake instance can authenticate against Query Service using a DB credential</strong> the same way a BI tool would. I&#x27;d recommend:</p>
+<ul>
+<li>Confirming with your <strong>Adobe account team</strong> whether Snowflake&#x27;s external table or data sharing features can leverage Query Service credentials</li>
+<li>Discussing whether <strong>Data Distiller&#x27;s export capabilities</strong> (CTAS + cloud export) might be a better fit if you need more control over scheduling and retention than the 7-day TTL allows</li>
+</ul>
+</article>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "can snowflake directly connect to AEP tables using query service DB credential? Is there a limitation or is that doable ? Does it require data distiller or any other license ? We want to explore possibility of snowflake pulling the daily data from AEP dataset", "acceptedAnswer": {"@type": "Answer", "text": "Snowflake Connecting to AEP via Query Service DB Credentials This is a nuanced topic \u2014 let me break down exactly what's possible, what's not, and what the architecture actually looks like based on the available documentation. --- What the Documentation Covers The retrieved context describes two different integration patterns between Snowflake and AEP \u2014 and it's important to understand the direction of data flow: --- Option 1: AEP \u2192 Snowflake (Destination / Data Share) (AEP pushes data TO Snowflake) This is a Snowflake destination in AEP that uses Snowflake Data Sharing (not Query Service). Key characteristics: - No data is physically exported \u2014 Adobe grants read-only access to a live dynamic table hosted in Adobe's own Snowflake environment - You query the shared table from your Snowflake account directly - Data has a fixed 7-day TTL (Time-to-Live) \u2014 the dynamic table expires 7 days after last export - If you need to retain data longer than 7 days, you must copy it into a table you own in your Snowflake instance before expiry - Deleting the dataflow in AEP causes the dynamic table to disappear from your Snowflake account - You must accept a private listing from Adobe the first time the dataflow is set up This pattern is likely closest to your use case of \"Snowflake pulling daily data from AEP datasets.\" --- Option 2: Snowflake \u2192 AEP (Source Connector) (Snowflake pushes data TO AEP) This is the Snowflake source connector \u2014 the reverse direction from what you need. Not relevant to your question. --- Regarding Query Service DB Credentials + Snowflake Based on the documentation, Query Service DB credentials are designed for third-party SQL clients (e.g., Power BI, Tableau, DbVisualizer, Postico) connecting into AEP's Query Service endpoint \u2014 not for Snowflake to natively pull from AEP datasets as if they were Snowflake-native tables. Key points: - Query Service supports SSL modes for third-party client connections (e.g., verify-full) - It supports attribute-based\u2026"}}]}</script></div>
+  </body>
+</html>
