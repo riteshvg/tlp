@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/png" href="/tools/rovr/rovrlogo.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="build-date" content="2026-06-10" />
+    
+    
+    <script src="https://assets.adobedtm.com/204118644db8/290ae1adb65a/launch-e5ec7bf1a1ef-development.min.js" async></script>
+    <script type="module" crossorigin src="/tools/rovr/assets/index-BDlEezU1.js"></script>
+    <link rel="stylesheet" crossorigin href="/tools/rovr/assets/index-BtV6C9MI.css">
+  <title>how does bot detection work in a datastream? | Rovr</title>
+<meta name="description" content="Bot Detection in Datastreams Bot detection in Adobe Experience Platform datastreams helps you identify and filter out automated, non-human traffic — such as…" />
+<link rel="canonical" href="https://thelearningproject.in/tools/rovr/q/how-does-bot-detection-work-in-a-datastream-86603f" />
+<meta property="og:title" content="how does bot detection work in a datastream?" />
+<meta property="og:description" content="Bot Detection in Datastreams Bot detection in Adobe Experience Platform datastreams helps you identify and filter out automated, non-human traffic — such as…" />
+<meta property="og:url" content="https://thelearningproject.in/tools/rovr/q/how-does-bot-detection-work-in-a-datastream-86603f" />
+<meta property="og:type" content="article" />
+<meta property="og:image" content="https://thelearningproject.in/tools/rovr/rovrlogo.png" />
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="how does bot detection work in a datastream?" />
+<meta name="twitter:description" content="Bot Detection in Datastreams Bot detection in Adobe Experience Platform datastreams helps you identify and filter out automated, non-human traffic — such as…" />
+</head>
+  <body>
+    <div id="root"><article><h1>how does bot detection work in a datastream?</h1>
+<h2>Bot Detection in Datastreams</h2>
+<p>Bot detection in Adobe Experience Platform datastreams helps you identify and filter out automated, non-human traffic — such as search engine crawlers, monitoring tools, and other bots — so they don&#x27;t skew your analytics data.</p>
+<hr>
+<h3>How to Enable Bot Detection</h3>
+<p>Bot detection is configured at the datastream level. You must have an existing datastream before enabling it.</p>
+<p><strong>Prerequisites:</strong> A datastream must already be created and configured.</p>
+<p><strong>Steps:</strong></p>
+<p>1. Navigate to <strong>[!UICONTROL Datastreams]</strong> in the left navigation of the Adobe Experience Platform UI or Data Collection UI.</p>
+<p>2. Select the datastream to which you want to add bot detection.</p>
+<p><img src="https://raw.githubusercontent.com/AdobeDocs/experience-platform.en/main/help/datastreams/assets/bot-detection/datastream-list.png" alt="Datastreams list showing available datastreams"></p>
+<p>3. In the datastream details page, select <strong>[!UICONTROL Bot Detection]</strong> from the right rail.</p>
+<p><img src="https://raw.githubusercontent.com/AdobeDocs/experience-platform.en/main/help/datastreams/assets/bot-detection/bot-detection.png" alt="Bot Detection option highlighted in the datastream UI"></p>
+<p>4. The <strong>[!UICONTROL Bot Detection Rules]</strong> page is displayed.</p>
+<p><img src="https://raw.githubusercontent.com/AdobeDocs/experience-platform.en/main/help/datastreams/assets/bot-detection/bot-detection-page.png" alt="Bot detection settings page"></p>
+<hr>
+<h3>Two Methods of Bot Detection</h3>
+<h4>1. IAB/ABC International Spiders and Bots List</h4>
+<p>This is a third-party, industry-standard list of known internet spiders and bots maintained by the IAB/ABC. It covers automated traffic such as:</p>
+<ul>
+<li>Search engine crawlers</li>
+<li>Monitoring tools</li>
+<li>Other non-human traffic</li>
+</ul>
+<p><strong>To enable it:</strong></p>
+<p>1. Toggle on <strong>[!UICONTROL Use IAB/ABC International Spiders and Bots List for bot detection on this datastream]</strong>.</p>
+<p>2. Select <strong>[!UICONTROL Save]</strong>.</p>
+<p><img src="https://raw.githubusercontent.com/AdobeDocs/experience-platform.en/main/help/datastreams/assets/bot-detection/bot-detection-list.png" alt="IAB/ABC bot list enabled"></p>
+<h4>2. Custom Bot Detection Rules</h4>
+<p>You can also create your own bot detection rules tailored to your specific traffic patterns and use cases.</p>
+<hr>
+<h3>How Bot Detection Interacts with Other Datastream Features</h3>
+<p>Bot detection runs <strong>before</strong> Dynamic Datastream Configuration rule evaluation. When bot detection identifies a potential bot, it tags the event with a `botDetection.score` field. Dynamic Datastream Configurations can then reference this field as a condition in routing rules.</p>
+<p>This makes the two features <strong>complementary</strong>:</p>
+<ul>
+<li><strong>Bot detection</strong> identifies bot traffic and scores it.</li>
+<li><strong>Dynamic Datastream Configurations</strong> act on that identification — routing or discarding the flagged events based on the score.</li>
+</ul>
+<p>&gt; <strong>Note:</strong> Allow up to <strong>15 minutes</strong> for bot detection rules to propagate before testing your configuration. Also, if you&#x27;re integrating with Dynamic Datastream Configurations, you&#x27;ll need to add the <strong>Bot Detection Information</strong> field group to your XDM schema.</p>
+</article>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "how does bot detection work in a datastream?", "acceptedAnswer": {"@type": "Answer", "text": "Bot Detection in Datastreams Bot detection in Adobe Experience Platform datastreams helps you identify and filter out automated, non-human traffic \u2014 such as search engine crawlers, monitoring tools, and other bots \u2014 so they don't skew your analytics data. --- How to Enable Bot Detection Bot detection is configured at the datastream level. You must have an existing datastream before enabling it. Prerequisites: A datastream must already be created and configured. Steps: 1. Navigate to !UICONTROL Datastreams in the left navigation of the Adobe Experience Platform UI or Data Collection UI. 2. Select the datastream to which you want to add bot detection. !Datastreams list showing available datastreams(https://raw.githubusercontent.com/AdobeDocs/experience-platform.en/main/help/datastreams/assets/bot-detection/datastream-list.png) 3. In the datastream details page, select !UICONTROL Bot Detection from the right rail. !Bot Detection option highlighted in the datastream UI(https://raw.githubusercontent.com/AdobeDocs/experience-platform.en/main/help/datastreams/assets/bot-detection/bot-detection.png) 4. The !UICONTROL Bot Detection Rules page is displayed. !Bot detection settings page(https://raw.githubusercontent.com/AdobeDocs/experience-platform.en/main/help/datastreams/assets/bot-detection/bot-detection-page.png) --- Two Methods of Bot Detection 1. IAB/ABC International Spiders and Bots List This is a third-party, industry-standard list of known internet spiders and bots maintained by the IAB/ABC. It covers automated traffic such as: - Search engine crawlers - Monitoring tools - Other non-human traffic To enable it: 1. Toggle on !UICONTROL Use IAB/ABC International Spiders and Bots List for bot detection on this datastream. 2. Select !UICONTROL Save. !IAB/ABC bot list enabled(https://raw.githubusercontent.com/AdobeDocs/experience-platform.en/main/help/datastreams/assets/bot-detection/bot-detection-list.png) 2. Custom Bot Detection Rules You can also create your own bot\u2026"}}]}</script></div>
+  </body>
+</html>

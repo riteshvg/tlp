@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/png" href="/tools/rovr/rovrlogo.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="build-date" content="2026-06-10" />
+    
+    
+    <script src="https://assets.adobedtm.com/204118644db8/290ae1adb65a/launch-e5ec7bf1a1ef-development.min.js" async></script>
+    <script type="module" crossorigin src="/tools/rovr/assets/index-BDlEezU1.js"></script>
+    <link rel="stylesheet" crossorigin href="/tools/rovr/assets/index-BtV6C9MI.css">
+  <title>What types of bots does Adobe Experience Platform&#x27;s bot detection identify and filter? | Rovr</title>
+<meta name="description" content="Types of Bots Identified by AEP Bot Detection Based on the retrieved documentation, here is what is covered regarding the types of bots that AEP&#x27;s bot…" />
+<link rel="canonical" href="https://thelearningproject.in/tools/rovr/q/what-types-of-bots-does-adobe-experience-platform-s-bot-dete-0009ed" />
+<meta property="og:title" content="What types of bots does Adobe Experience Platform&#x27;s bot detection identify and filter?" />
+<meta property="og:description" content="Types of Bots Identified by AEP Bot Detection Based on the retrieved documentation, here is what is covered regarding the types of bots that AEP&#x27;s bot…" />
+<meta property="og:url" content="https://thelearningproject.in/tools/rovr/q/what-types-of-bots-does-adobe-experience-platform-s-bot-dete-0009ed" />
+<meta property="og:type" content="article" />
+<meta property="og:image" content="https://thelearningproject.in/tools/rovr/rovrlogo.png" />
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="What types of bots does Adobe Experience Platform&#x27;s bot detection identify and filter?" />
+<meta name="twitter:description" content="Types of Bots Identified by AEP Bot Detection Based on the retrieved documentation, here is what is covered regarding the types of bots that AEP&#x27;s bot…" />
+</head>
+  <body>
+    <div id="root"><article><h1>What types of bots does Adobe Experience Platform&#x27;s bot detection identify and filter?</h1>
+<h2>Types of Bots Identified by AEP Bot Detection</h2>
+<p>Based on the retrieved documentation, here is what is covered regarding the types of bots that AEP&#x27;s bot detection identifies and filters:</p>
+<hr>
+<h3>Sources of Bot Identification</h3>
+<p>AEP&#x27;s bot detection draws from <strong>two sources</strong> to identify non-human traffic:</p>
+<h4>1. IAB/ABC International Spiders and Bots List</h4>
+<p>This is an industry-standard, third-party list that identifies known automated traffic, including:</p>
+<ul>
+<li><strong>Search engine crawlers</strong> (e.g., Googlebot, Bingbot)</li>
+<li><strong>Web scrapers</strong></li>
+<li><strong>Spiders</strong></li>
+<li><strong>Scripted scanners</strong></li>
+<li><strong>Monitoring tools</strong></li>
+</ul>
+<h4>2. Custom Bot Detection Rules</h4>
+<p>You can define your own rules to identify bots based on:</p>
+<ul>
+<li><strong>Specific IP addresses</strong></li>
+<li><strong>IP address ranges</strong></li>
+<li><strong>Request headers</strong></li>
+</ul>
+<hr>
+<h3>Entry Points Covered</h3>
+<p>Bot detection applies to traffic arriving via any of these collection methods:</p>
+<ul>
+<li><strong>Web SDK</strong></li>
+<li><strong>Mobile SDK</strong></li>
+<li><strong>Edge Network API</strong></li>
+</ul>
+<hr>
+<h3>How Detected Bots Are Flagged</h3>
+<p>When a request matches a bot detection rule, the XDM schema is updated with a bot score:</p>
+<p>```json</p>
+<p>{</p>
+<p>&quot;botDetection&quot;: {</p>
+<p>&quot;score&quot;: 1</p>
+<p>}</p>
+<p>}</p>
+<p>```</p>
+<p>The `score` field in the <strong>Bot Detection XDM field group</strong> ranges from <strong>0 to 1</strong>:</p>
+<ul>
+<li><strong>0</strong> = traffic is not a bot</li>
+<li><strong>1</strong> = traffic is identified as a bot</li>
+</ul>
+<p>This score is then available for downstream routing logic (e.g., via Dynamic Datastream Configurations) to disable or quarantine the traffic for services like <strong>Adobe Analytics</strong> and <strong>Adobe Target</strong>.</p>
+<hr>
+<h3>What the Documentation Does Not Specify</h3>
+<p>The retrieved documentation does <strong>not</strong> provide an exhaustive list of every specific bot or crawler included in the IAB/ABC list. That list is maintained externally by the IAB/ABC organization and is updated independently of Adobe&#x27;s documentation.</p>
+<h2>Sources</h2>
+<ul>
+<li><a href="https://experienceleague.adobe.com/en/docs/experience-platform/landing/glossary">Adobe Experience Platform Glossary</a></li>
+<li><a href="https://experienceleague.adobe.com/en/docs/experience-platform/release-notes/2022/september-2022">Adobe Experience Platform Release Notes September 2022</a></li>
+<li><a href="https://experienceleague.adobe.com/en/docs/experience-platform/release-notes/2023/april-2023">Adobe Experience Platform Release Notes April 2023</a></li>
+<li><a href="https://experienceleague.adobe.com/en/docs/experience-platform/release-notes/2023/july-2023">Adobe Experience Platform Release Notes July 2023</a></li>
+<li><a href="https://experienceleague.adobe.com/en/docs/experience-platform/release-notes/2023/march-2023">Adobe Experience Platform Release Notes March 2023</a></li>
+<li><a href="https://experienceleague.adobe.com/en/docs/experience-platform/release-notes/2023/october-2023">Adobe Experience Platform Release Notes October 2023</a></li>
+<li><a href="https://experienceleague.adobe.com/en/docs/experience-platform/release-notes/2024/april-2024">Adobe Experience Platform Release Notes April 2024</a></li>
+</ul></article>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "What types of bots does Adobe Experience Platform's bot detection identify and filter?", "acceptedAnswer": {"@type": "Answer", "text": "Types of Bots Identified by AEP Bot Detection Based on the retrieved documentation, here is what is covered regarding the types of bots that AEP's bot detection identifies and filters: --- Sources of Bot Identification AEP's bot detection draws from two sources to identify non-human traffic: 1. IAB/ABC International Spiders and Bots List This is an industry-standard, third-party list that identifies known automated traffic, including: - Search engine crawlers (e.g., Googlebot, Bingbot) - Web scrapers - Spiders - Scripted scanners - Monitoring tools 2. Custom Bot Detection Rules You can define your own rules to identify bots based on: - Specific IP addresses - IP address ranges - Request headers --- Entry Points Covered Bot detection applies to traffic arriving via any of these collection methods: - Web SDK - Mobile SDK - Edge Network API --- How Detected Bots Are Flagged When a request matches a bot detection rule, the XDM schema is updated with a bot score: json { \"botDetection\": { \"score\": 1 } } The score field in the Bot Detection XDM field group ranges from 0 to 1: - 0 = traffic is not a bot - 1 = traffic is identified as a bot This score is then available for downstream routing logic (e.g., via Dynamic Datastream Configurations) to disable or quarantine the traffic for services like Adobe Analytics and Adobe Target. --- What the Documentation Does Not Specify The retrieved documentation does not provide an exhaustive list of every specific bot or crawler included in the IAB/ABC list. That list is maintained externally by the IAB/ABC organization and is updated independently of Adobe's documentation."}}]}</script></div>
+  </body>
+</html>
