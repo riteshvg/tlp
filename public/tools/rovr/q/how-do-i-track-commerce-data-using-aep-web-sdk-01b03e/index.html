@@ -1,0 +1,147 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/png" href="/tools/rovr/rovrlogo.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="build-date" content="2026-06-10" />
+    
+    
+    <script src="https://assets.adobedtm.com/204118644db8/290ae1adb65a/launch-e5ec7bf1a1ef-development.min.js" async></script>
+    <script type="module" crossorigin src="/tools/rovr/assets/index-D5c-fCgB.js"></script>
+    <link rel="stylesheet" crossorigin href="/tools/rovr/assets/index-Bt-UJ01-.css">
+  <title>how do i track commerce data using AEP Web SDK? | Rovr</title>
+<meta name="description" content="Tracking Commerce Data Using AEP Web SDK Based on the retrieved documentation, here is how to track commerce, product, and order information using the Adobe…" />
+<link rel="canonical" href="https://thelearningproject.in/tools/rovr/q/how-do-i-track-commerce-data-using-aep-web-sdk-01b03e" />
+<meta property="og:title" content="how do i track commerce data using AEP Web SDK?" />
+<meta property="og:description" content="Tracking Commerce Data Using AEP Web SDK Based on the retrieved documentation, here is how to track commerce, product, and order information using the Adobe…" />
+<meta property="og:url" content="https://thelearningproject.in/tools/rovr/q/how-do-i-track-commerce-data-using-aep-web-sdk-01b03e" />
+<meta property="og:type" content="article" />
+<meta property="og:image" content="https://thelearningproject.in/tools/rovr/rovrlogo.png" />
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="how do i track commerce data using AEP Web SDK?" />
+<meta name="twitter:description" content="Tracking Commerce Data Using AEP Web SDK Based on the retrieved documentation, here is how to track commerce, product, and order information using the Adobe…" />
+</head>
+  <body>
+    <div id="root"><article><h1>how do i track commerce data using AEP Web SDK?</h1>
+<h2>Tracking Commerce Data Using AEP Web SDK</h2>
+<p>Based on the retrieved documentation, here is how to track commerce, product, and order information using the Adobe Experience Platform Web SDK.</p>
+<hr>
+<h3>Overview</h3>
+<p>Commerce tracking in Web SDK uses the <strong>XDM Commerce Schema</strong> field group, which consists of two main parts:</p>
+<p>1. <strong>The `commerce` object</strong> — indicates which commerce actions are happening (e.g., purchase, add to cart, product view)</p>
+<p>2. <strong>The `productListItems` array</strong> — contains the product details associated with those actions</p>
+<p>&gt; <strong>Tip:</strong> If you are familiar with Adobe Analytics:</p>
+<p>&gt; - The `commerce` object maps to <strong>commerce events</strong> (the `events` variable)</p>
+<p>&gt; - The `productListItems` array maps to the <strong>`products` variable</strong></p>
+<hr>
+<h3>Prerequisites</h3>
+<ul>
+<li>AEP Web SDK (`alloy.js`) installed and configured on your site</li>
+<li>A datastream configured and connected to your desired Adobe solutions</li>
+<li>An XDM schema with the <strong>Commerce</strong> field group enabled</li>
+</ul>
+<hr>
+<h3>The Two Core Objects</h3>
+<h4>1. The `commerce` Object</h4>
+<p>Use this object to indicate what commerce action is occurring. Common actions include:</p>
+<p>| Action | XDM Field | Description |</p>
+<p>|---|---|---|</p>
+<p>| Product view | `commerce.productViews` | User viewed a product detail page |</p>
+<p>| Add to cart | `commerce.productListAdds` | User added item to cart |</p>
+<p>| Cart view | `commerce.productListViews` | User viewed the cart |</p>
+<p>| Checkout | `commerce.checkouts` | User initiated checkout |</p>
+<p>| Purchase | `commerce.purchases` | User completed a purchase |</p>
+<p>| Order details | `commerce.order` | Contains price totals, currency, order ID |</p>
+<h4>2. The `productListItems` Array</h4>
+<p>Use this array to pass individual product details:</p>
+<p>| Field | Description |</p>
+<p>|---|---|</p>
+<p>| `productListItems.SKU` | Product SKU / unique identifier |</p>
+<p>| `productListItems.name` | Product name |</p>
+<p>| `productListItems.quantity` | Quantity of product |</p>
+<p>| `productListItems.priceTotal` | Total price for the line item |</p>
+<hr>
+<h3>Implementation Examples</h3>
+<h4>Track a Product View</h4>
+<p>```javascript</p>
+<p>alloy(&quot;sendEvent&quot;, {</p>
+<p>xdm: {</p>
+<p>eventType: &quot;commerce.productViews&quot;,</p>
+<p>commerce: {</p>
+<p>productViews: {</p>
+<p>value: 1</p>
+<p>}</p>
+<p>},</p>
+<p>productListItems: [</p>
+<p>{</p>
+<p>SKU: &quot;ABC123&quot;,</p>
+<p>name: &quot;Running Shoes&quot;,</p>
+<p>quantity: 1,</p>
+<p>priceTotal: 89.99</p>
+<p>}</p>
+<p>]</p>
+<p>}</p>
+<p>});</p>
+<p>```</p>
+<hr>
+<h4>Track an Add to Cart</h4>
+<p>```javascript</p>
+<p>alloy(&quot;sendEvent&quot;, {</p>
+<p>xdm: {</p>
+<p>eventType: &quot;commerce.productListAdds&quot;,</p>
+<p>commerce: {</p>
+<p>productListAdds: {</p>
+<p>value: 1</p>
+<p>}</p>
+<p>},</p>
+<p>productListItems: [</p>
+<p>{</p>
+<p>SKU: &quot;ABC123&quot;,</p>
+<p>name: &quot;Running Shoes&quot;,</p>
+<p>quantity: 2,</p>
+<p>priceTotal: 179.98</p>
+<p>}</p>
+<p>]</p>
+<p>}</p>
+<p>});</p>
+<p>```</p>
+<hr>
+<h4>Track a Purchase / Order</h4>
+<p>```javascript</p>
+<p>alloy(&quot;sendEvent&quot;, {</p>
+<p>xdm: {</p>
+<p>eventType: &quot;commerce.purchases&quot;,</p>
+<p>commerce: {</p>
+<p>purchases: {</p>
+<p>value: 1</p>
+<p>},</p>
+<p>order: {</p>
+<p>purchaseID: &quot;ORD-98765&quot;,</p>
+<p>currencyCode: &quot;USD&quot;,</p>
+<p>priceTotal: 179.98</p>
+<p>}</p>
+<p>},</p>
+<p>productListItems: [</p>
+<p>{</p>
+<p>SKU: &quot;ABC123&quot;,</p>
+<p>name: &quot;Running Shoes&quot;,</p>
+<p>quantity: 2,</p>
+<p>priceTotal: 179.98</p>
+<p>}</p>
+<p>]</p>
+<p>}</p>
+<p>});</p>
+<p>```</p>
+<hr>
+<h3>Key Notes</h3>
+<ul>
+<li>The `commerce` object fields (e.g., `purchases`, `productListAdds`) use a <strong>`value: 1`</strong> pattern to indicate the event fired — similar to how binary commerce events work in Adobe Analytics</li>
+<li>The `commerce.order` object holds <strong>order-level details</strong> like `purchaseID`, `currencyCode`, and `priceTotal`</li>
+<li><strong>Multiple products</strong> can be passed in the `productListItems` array simultaneously</li>
+<li>This data is sent to the <strong>Experience Platform Edge Network</strong> and routed to downstream solutions (Adobe Analytics, AEP datasets, etc.) based on your datastream configuration</li>
+</ul>
+</article>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "how do i track commerce data using AEP Web SDK?", "acceptedAnswer": {"@type": "Answer", "text": "Tracking Commerce Data Using AEP Web SDK Based on the retrieved documentation, here is how to track commerce, product, and order information using the Adobe Experience Platform Web SDK. --- Overview Commerce tracking in Web SDK uses the XDM Commerce Schema field group, which consists of two main parts: 1. The commerce object \u2014 indicates which commerce actions are happening (e.g., purchase, add to cart, product view) 2. The productListItems array \u2014 contains the product details associated with those actions Tip: If you are familiar with Adobe Analytics: - The commerce object maps to commerce events (the events variable) - The productListItems array maps to the products variable --- Prerequisites - AEP Web SDK (alloy.js) installed and configured on your site - A datastream configured and connected to your desired Adobe solutions - An XDM schema with the Commerce field group enabled --- The Two Core Objects 1. The commerce Object Use this object to indicate what commerce action is occurring. Common actions include: | Action | XDM Field | Description | |---|---|---| | Product view | commerce.productViews | User viewed a product detail page | | Add to cart | commerce.productListAdds | User added item to cart | | Cart view | commerce.productListViews | User viewed the cart | | Checkout | commerce.checkouts | User initiated checkout | | Purchase | commerce.purchases | User completed a purchase | | Order details | commerce.order | Contains price totals, currency, order ID | 2. The productListItems Array Use this array to pass individual product details: | Field | Description | |---|---| | productListItems.SKU | Product SKU / unique identifier | | productListItems.name | Product name | | productListItems.quantity | Quantity of product | | productListItems.priceTotal | Total price for the line item | --- Implementation Examples Track a Product View javascript alloy(\"sendEvent\", { xdm: { eventType: \"commerce.productViews\", commerce: { productViews: { value: 1 } },\u2026"}}]}</script></div>
+  </body>
+</html>

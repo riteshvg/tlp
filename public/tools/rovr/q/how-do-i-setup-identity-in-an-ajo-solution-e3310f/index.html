@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/png" href="/tools/rovr/rovrlogo.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="build-date" content="2026-06-10" />
+    
+    
+    <script src="https://assets.adobedtm.com/204118644db8/290ae1adb65a/launch-e5ec7bf1a1ef-development.min.js" async></script>
+    <script type="module" crossorigin src="/tools/rovr/assets/index-D5c-fCgB.js"></script>
+    <link rel="stylesheet" crossorigin href="/tools/rovr/assets/index-Bt-UJ01-.css">
+  <title>how do i setup identity in an AJO solution | Rovr</title>
+<meta name="description" content="Setting Up Identities in Adobe Journey Optimizer Overview Adobe Journey Optimizer does not maintain a separate identity store. Instead, it leverages Adobe…" />
+<link rel="canonical" href="https://thelearningproject.in/tools/rovr/q/how-do-i-setup-identity-in-an-ajo-solution-e3310f" />
+<meta property="og:title" content="how do i setup identity in an AJO solution" />
+<meta property="og:description" content="Setting Up Identities in Adobe Journey Optimizer Overview Adobe Journey Optimizer does not maintain a separate identity store. Instead, it leverages Adobe…" />
+<meta property="og:url" content="https://thelearningproject.in/tools/rovr/q/how-do-i-setup-identity-in-an-ajo-solution-e3310f" />
+<meta property="og:type" content="article" />
+<meta property="og:image" content="https://thelearningproject.in/tools/rovr/rovrlogo.png" />
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="how do i setup identity in an AJO solution" />
+<meta name="twitter:description" content="Setting Up Identities in Adobe Journey Optimizer Overview Adobe Journey Optimizer does not maintain a separate identity store. Instead, it leverages Adobe…" />
+</head>
+  <body>
+    <div id="root"><article><h1>how do i setup identity in an AJO solution</h1>
+<h2>Setting Up Identities in Adobe Journey Optimizer</h2>
+<h3>Overview</h3>
+<p>Adobe Journey Optimizer <strong>does not maintain a separate identity store</strong>. Instead, it leverages <strong>Adobe Experience Platform&#x27;s Identity Service</strong> and <strong>Real-Time Customer Profile</strong> as its shared data foundation. Setting up identities in AJO means configuring them within AEP, which AJO then reads at runtime.</p>
+<p>Here is how identities work and how to set them up:</p>
+<hr>
+<h3>How Identities Work in AJO</h3>
+<p>AJO uses the <strong>Identity Graph</strong> (managed by AEP Identity Service) to stitch together a 360-degree view of a person across devices and channels. For example:</p>
+<ul>
+<li>A <strong>CRMID</strong> represents a known person (e.g., logged-in user)</li>
+<li>An <strong>ECID</strong> represents a web browser or mobile app session</li>
+<li>The Identity Service links these together so that all prior behavioral data from a session can be associated to a logged-in user</li>
+</ul>
+<p><img src="https://raw.githubusercontent.com/AdobeDocs/journey-optimizer.en/main/help/using/audience/assets/identities-home.png" alt="Identity Home"></p>
+<hr>
+<h3>Key Steps to Set Up Identities</h3>
+<h4>1. Define Your Identity Namespaces in AEP</h4>
+<ul>
+<li>Navigate to <strong>Adobe Experience Platform → Identities</strong></li>
+<li>Use standard namespaces (e.g., `Email`, `Phone`, `ECID`) or create <strong>custom namespaces</strong> (e.g., `CRMID`, `LoyaltyID`) that match your business identifiers</li>
+</ul>
+<h4>2. Configure Your XDM Schemas</h4>
+<ul>
+<li>In <strong>AEP → Schemas</strong>, open or create the schema used by your AJO datasets</li>
+<li>Mark the appropriate field as a <strong>Primary Identity</strong> (e.g., `CRMID` for profile records, `ECID` for event records)</li>
+<li>Mark secondary identities as needed (e.g., `Email`)</li>
+<li>Enable the schema for <strong>Real-Time Customer Profile</strong></li>
+</ul>
+<h4>3. Enable Datasets for Profile</h4>
+<ul>
+<li>In <strong>AEP → Datasets</strong>, ensure datasets ingesting identity data are toggled <strong>on</strong> for Profile</li>
+<li>This allows identity stitching to occur and merged profiles to be created</li>
+</ul>
+<h4>4. Ingest Identity Data</h4>
+<ul>
+<li>Send identity data via your data collection method:</li>
+<li><strong>Web SDK / Mobile SDK</strong> (recommended) — automatically collects ECID and can be configured to pass authenticated identifiers (CRMID, email) at login</li>
+<li><strong>Server-side API / Batch ingestion</strong> — for CRM or offline data</li>
+</ul>
+<h4>5. Verify Identity Stitching</h4>
+<p>Be aware of the following <strong>timing considerations</strong>:</p>
+<ul>
+<li><strong>Initial stitching</strong> (e.g., linking CRMID to ECID at login) can take <strong>30 minutes to 4 hours</strong> to complete</li>
+<li>After initial stitching, <strong>subsequent behavioral data</strong> sent with either identity is associated to the merged profile and available for personalization in AJO in <strong>near real-time (~1 minute)</strong></li>
+</ul>
+<hr>
+<h3>How AJO Uses Identities at Runtime</h3>
+<p>Once identities are stitched in AEP:</p>
+<p>| AJO Capability | How Identity Is Used |</p>
+<p>|---|---|</p>
+<p>| <strong>Journey conditions</strong> | AJO reads the merged profile to evaluate segment membership and attributes |</p>
+<p>| <strong>Message personalization</strong> | Profile data linked via identity graph is used to personalize emails, push, SMS |</p>
+<p>| <strong>Audience Qualification</strong> | Profiles are matched to audiences based on their unified identity |</p>
+<p>| <strong>Offer decisioning</strong> | The merged profile is passed to the decisioning engine |</p>
+<hr>
+<h3>Important Considerations for Use Cases</h3>
+<ul>
+<li><strong>Abandoned cart / re-engagement (30 min after abandonment):</strong> Be mindful that if a user has not previously logged in, initial identity stitching may not yet be complete, meaning the CRMID and ECID may not yet be linked in the identity graph</li>
+<li><strong>Post-login personalization:</strong> Once stitching is complete, all prior session data becomes available on the merged profile for real-time personalization</li>
+</ul>
+<hr>
+<h3>Summary</h3>
+<p>Setting up identities for AJO is fundamentally an <strong>AEP Identity Service configuration task</strong>:</p>
+<p>1. Define identity namespaces</p>
+<p>2. Configure XDM schemas with primary/secondary identities</p>
+<p>3. Enable datasets for Real-Time Customer Profile</p>
+<p>4. Ingest identity data via Web SDK or API</p>
+<p>5. Allow time for initial stitching before relying on merged profiles in journeys</p>
+</article>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "how do i setup identity in an AJO solution", "acceptedAnswer": {"@type": "Answer", "text": "Setting Up Identities in Adobe Journey Optimizer Overview Adobe Journey Optimizer does not maintain a separate identity store. Instead, it leverages Adobe Experience Platform's Identity Service and Real-Time Customer Profile as its shared data foundation. Setting up identities in AJO means configuring them within AEP, which AJO then reads at runtime. Here is how identities work and how to set them up: --- How Identities Work in AJO AJO uses the Identity Graph (managed by AEP Identity Service) to stitch together a 360-degree view of a person across devices and channels. For example: - A CRMID represents a known person (e.g., logged-in user) - An ECID represents a web browser or mobile app session - The Identity Service links these together so that all prior behavioral data from a session can be associated to a logged-in user !Identity Home(https://raw.githubusercontent.com/AdobeDocs/journey-optimizer.en/main/help/using/audience/assets/identities-home.png) --- Key Steps to Set Up Identities 1. Define Your Identity Namespaces in AEP - Navigate to Adobe Experience Platform \u2192 Identities - Use standard namespaces (e.g., Email, Phone, ECID) or create custom namespaces (e.g., CRMID, LoyaltyID) that match your business identifiers 2. Configure Your XDM Schemas - In AEP \u2192 Schemas, open or create the schema used by your AJO datasets - Mark the appropriate field as a Primary Identity (e.g., CRMID for profile records, ECID for event records) - Mark secondary identities as needed (e.g., Email) - Enable the schema for Real-Time Customer Profile 3. Enable Datasets for Profile - In AEP \u2192 Datasets, ensure datasets ingesting identity data are toggled on for Profile - This allows identity stitching to occur and merged profiles to be created 4. Ingest Identity Data - Send identity data via your data collection method: - Web SDK / Mobile SDK (recommended) \u2014 automatically collects ECID and can be configured to pass authenticated identifiers (CRMID, email) at login - Server-side API /\u2026"}}]}</script></div>
+  </body>
+</html>

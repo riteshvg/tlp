@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/png" href="/tools/rovr/rovrlogo.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="build-date" content="2026-06-10" />
+    
+    
+    <script src="https://assets.adobedtm.com/204118644db8/290ae1adb65a/launch-e5ec7bf1a1ef-development.min.js" async></script>
+    <script type="module" crossorigin src="/tools/rovr/assets/index-D5c-fCgB.js"></script>
+    <link rel="stylesheet" crossorigin href="/tools/rovr/assets/index-Bt-UJ01-.css">
+  <title>How do I track purchase orders using Adobe Experience Platform Web SDK? | Rovr</title>
+<meta name="description" content="I don&#x27;t have specific documentation in my retrieved context about tracking purchase orders with the AEP Web SDK. However, based on what the retrieved context…" />
+<link rel="canonical" href="https://thelearningproject.in/tools/rovr/q/how-do-i-track-purchase-orders-using-adobe-experience-platfo-8af88e" />
+<meta property="og:title" content="How do I track purchase orders using Adobe Experience Platform Web SDK?" />
+<meta property="og:description" content="I don&#x27;t have specific documentation in my retrieved context about tracking purchase orders with the AEP Web SDK. However, based on what the retrieved context…" />
+<meta property="og:url" content="https://thelearningproject.in/tools/rovr/q/how-do-i-track-purchase-orders-using-adobe-experience-platfo-8af88e" />
+<meta property="og:type" content="article" />
+<meta property="og:image" content="https://thelearningproject.in/tools/rovr/rovrlogo.png" />
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="How do I track purchase orders using Adobe Experience Platform Web SDK?" />
+<meta name="twitter:description" content="I don&#x27;t have specific documentation in my retrieved context about tracking purchase orders with the AEP Web SDK. However, based on what the retrieved context…" />
+</head>
+  <body>
+    <div id="root"><article><h1>How do I track purchase orders using Adobe Experience Platform Web SDK?</h1>
+<p>I don&#x27;t have specific documentation in my retrieved context about tracking purchase orders with the AEP Web SDK.</p>
+<p>However, based on what the retrieved context <strong>does</strong> confirm about Web SDK, I can tell you the following:</p>
+<h3>What the Retrieved Context Confirms</h3>
+<ul>
+<li>Web SDK sends data in <strong>XDM format</strong> to the Experience Platform Edge Network</li>
+<li>Web SDK supports <strong>Adobe Analytics</strong> as a downstream destination, which historically handles order/purchase tracking</li>
+<li>Web SDK uses the <strong>`sendEvent`</strong> command to send data to the Edge Network</li>
+<li>Web SDK replaces legacy libraries like `AppMeasurement.js` (used for Analytics purchase tracking)</li>
+</ul>
+<hr>
+<h3>What I&#x27;d Need to Confirm for You</h3>
+<p>The specific details I&#x27;d want to verify from documentation before advising you include:</p>
+<ul>
+<li>The exact <strong>XDM commerce schema fields</strong> to populate (e.g., `commerce.purchases`, `commerce.order`, `productListItems`)</li>
+<li>Whether a <strong>`purchase` event type</strong> needs to be specified</li>
+<li>How <strong>product list items</strong> (SKU, quantity, price) are structured in XDM</li>
+<li>How this maps downstream to <strong>Adobe Analytics purchase variables</strong> (revenue, units, orders)</li>
+</ul>
+<hr>
+<h3>My Recommendation</h3>
+<p>I&#x27;d suggest looking at the following documentation areas on <strong>Adobe Experience League</strong>:</p>
+<ul>
+<li><strong>&quot;Track commerce data using Web SDK&quot;</strong> guides</li>
+<li><strong>XDM ExperienceEvent Commerce Schema</strong> field group reference</li>
+<li><strong>Adobe Analytics variable mapping</strong> for Web SDK</li>
+</ul>
+<p>Would you like me to answer a related question where I do have retrieved context, such as general Web SDK configuration or datastream setup?</p>
+</article>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "How do I track purchase orders using Adobe Experience Platform Web SDK?", "acceptedAnswer": {"@type": "Answer", "text": "I don't have specific documentation in my retrieved context about tracking purchase orders with the AEP Web SDK. However, based on what the retrieved context does confirm about Web SDK, I can tell you the following: What the Retrieved Context Confirms - Web SDK sends data in XDM format to the Experience Platform Edge Network - Web SDK supports Adobe Analytics as a downstream destination, which historically handles order/purchase tracking - Web SDK uses the sendEvent command to send data to the Edge Network - Web SDK replaces legacy libraries like AppMeasurement.js (used for Analytics purchase tracking) --- What I'd Need to Confirm for You The specific details I'd want to verify from documentation before advising you include: - The exact XDM commerce schema fields to populate (e.g., commerce.purchases, commerce.order, productListItems) - Whether a purchase event type needs to be specified - How product list items (SKU, quantity, price) are structured in XDM - How this maps downstream to Adobe Analytics purchase variables (revenue, units, orders) --- My Recommendation I'd suggest looking at the following documentation areas on Adobe Experience League: - \"Track commerce data using Web SDK\" guides - XDM ExperienceEvent Commerce Schema field group reference - Adobe Analytics variable mapping for Web SDK Would you like me to answer a related question where I do have retrieved context, such as general Web SDK configuration or datastream setup?"}}]}</script></div>
+  </body>
+</html>
