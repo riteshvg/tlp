@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/png" href="/tools/rovr/rovrlogo.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="build-date" content="2026-06-10" />
+    
+    
+    <script src="https://assets.adobedtm.com/204118644db8/290ae1adb65a/launch-e5ec7bf1a1ef-development.min.js" async></script>
+    <script type="module" crossorigin src="/tools/rovr/assets/index-D5c-fCgB.js"></script>
+    <link rel="stylesheet" crossorigin href="/tools/rovr/assets/index-Bt-UJ01-.css">
+  <title>For global websites that support multiple languages, what are the recommended best practices for collecting multilingual data through the Web SDK and Mobile SDK, particularly when the primary focus is CDP ?
+Should user-entered or interaction data be captured in the language selected by the user, preserving the original language?
+Or is it recommended to translate or transcribe the data into English before collecting it?
+What are the implications of each approach for CDP use cases such as audience segmentation, personalization etc | Rovr</title>
+<meta name="description" content="Multilingual Data Collection Best Practices for CDP via Web SDK &amp; Mobile SDK The retrieved documentation context does not contain specific Adobe documentation…" />
+<link rel="canonical" href="https://thelearningproject.in/tools/rovr/q/for-global-websites-that-support-multiple-languages-what-are-201cc9" />
+<meta property="og:title" content="For global websites that support multiple languages, what are the recommended best practices for collecting multilingual data through the Web SDK and Mobile SDK, particularly when the primary focus is CDP ?
+Should user-entered or interaction data be captured in the language selected by the user, preserving the original language?
+Or is it recommended to translate or transcribe the data into English before collecting it?
+What are the implications of each approach for CDP use cases such as audience segmentation, personalization etc" />
+<meta property="og:description" content="Multilingual Data Collection Best Practices for CDP via Web SDK &amp; Mobile SDK The retrieved documentation context does not contain specific Adobe documentation…" />
+<meta property="og:url" content="https://thelearningproject.in/tools/rovr/q/for-global-websites-that-support-multiple-languages-what-are-201cc9" />
+<meta property="og:type" content="article" />
+<meta property="og:image" content="https://thelearningproject.in/tools/rovr/rovrlogo.png" />
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="For global websites that support multiple languages, what are the recommended best practices for collecting multilingual data through the Web SDK and Mobile SDK, particularly when the primary focus is CDP ?
+Should user-entered or interaction data be captured in the language selected by the user, preserving the original language?
+Or is it recommended to translate or transcribe the data into English before collecting it?
+What are the implications of each approach for CDP use cases such as audience segmentation, personalization etc" />
+<meta name="twitter:description" content="Multilingual Data Collection Best Practices for CDP via Web SDK &amp; Mobile SDK The retrieved documentation context does not contain specific Adobe documentation…" />
+</head>
+  <body>
+    <div id="root"><article><h1>For global websites that support multiple languages, what are the recommended best practices for collecting multilingual data through the Web SDK and Mobile SDK, particularly when the primary focus is CDP ?
+Should user-entered or interaction data be captured in the language selected by the user, preserving the original language?
+Or is it recommended to translate or transcribe the data into English before collecting it?
+What are the implications of each approach for CDP use cases such as audience segmentation, personalization etc</h1>
+<h3>Multilingual Data Collection Best Practices for CDP via Web SDK &amp; Mobile SDK</h3>
+<p>The retrieved documentation context does not contain specific Adobe documentation addressing multilingual data collection strategies for Web SDK / Mobile SDK in the context of AEP CDP. I can share what the retrieved context <strong>does</strong> confirm, and then clearly flag where I&#x27;m working beyond it.</p>
+<hr>
+<h4>What the Retrieved Context Confirms</h4>
+<p>1. <strong>Web SDK, Mobile SDK, and Edge Network API</strong> are the supported data collection methods for AEP-based destinations including CDP and personalization destinations.</p>
+<p>2. <strong>XDM is the core standardization framework</strong> — all customer experience data should conform to XDM schemas for downstream use in segmentation, personalization, and activation.</p>
+<p>3. For <strong>attribute-based personalization</strong> (beyond audience membership), the <strong>Edge Network API</strong> with authenticated server-side integration is required — Web SDK and Mobile SDK alone only support audience-membership-based personalization.</p>
+<p>4. XDM best practices recommend using <strong>pre-defined field groups</strong> (e.g., `AEP Web SDK ExperienceEvent`, `Consumer Experience Event`) and a <strong>product-agnostic naming model</strong>, with custom field groups only for org-specific data that doesn&#x27;t fit existing structures.</p>
+<hr>
+<h4>Where I Cannot Confirm from the Retrieved Context</h4>
+<p>The specific question of <strong>whether to preserve original user language vs. translate to English</strong> before ingestion, and the <strong>CDP-specific implications</strong> of each approach, is <strong>not addressed in the retrieved documentation context</strong>.</p>
+<p>I would recommend searching Adobe Experience League directly for:</p>
+<ul>
+<li><em>&quot;XDM schema multilingual&quot;</em></li>
+<li><em>&quot;AEP profile attribute locale&quot;</em></li>
+<li><em>&quot;CDP segmentation language&quot;</em></li>
+</ul>
+<hr>
+<h4>General Guidance Based on XDM Design Principles (flagged as advisory, not doc-sourced)</h4>
+<p>Since XDM underpins everything, the architectural implications are worth noting:</p>
+<p>| Approach | Pros | Cons |</p>
+<p>|---|---|---|</p>
+<p>| <strong>Preserve original language in XDM fields</strong> | Authentic data; supports locale-based segmentation; respects user intent | Requires locale-aware segment rules; analytics/reporting complexity |</p>
+<p>| <strong>Translate to English before ingestion</strong> | Simplified downstream processing; unified audience logic | Loss of original signal; translation errors affect data quality; compliance risk |</p>
+<p><strong>For CDP use cases specifically</strong>, preserving the original language alongside a `locale` or `language` field (e.g., `xdm.environment.language` or a custom field group attribute) is generally the more robust approach because:</p>
+<ul>
+<li><strong>Audience segmentation</strong> can be built around `locale` as a profile attribute</li>
+<li><strong>Personalization</strong> via AJO or Adobe Target can key off `preferredLanguage` profile attributes</li>
+<li><strong>Translation at ingestion</strong> is a destructive, irreversible operation on the raw data</li>
+</ul>
+<p>However, <strong>I strongly recommend validating this against official AEP/CDP schema documentation</strong> on Experience League, as Adobe may have specific field group recommendations for locale and language handling that were not included in the retrieved context for this query.</p>
+<h2>Sources</h2>
+<ul>
+<li><a href="https://experienceleague.adobe.com/en/docs/experience-platform/destinations/catalog/personalization/custom-personalization">Custom Personalization Connection</a></li>
+</ul></article>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "For global websites that support multiple languages, what are the recommended best practices for collecting multilingual data through the Web SDK and Mobile SDK, particularly when the primary focus is CDP ?\nShould user-entered or interaction data be captured in the language selected by the user, preserving the original language?\nOr is it recommended to translate or transcribe the data into English before collecting it?\nWhat are the implications of each approach for CDP use cases such as audience segmentation, personalization etc", "acceptedAnswer": {"@type": "Answer", "text": "Multilingual Data Collection Best Practices for CDP via Web SDK & Mobile SDK The retrieved documentation context does not contain specific Adobe documentation addressing multilingual data collection strategies for Web SDK / Mobile SDK in the context of AEP CDP. I can share what the retrieved context does confirm, and then clearly flag where I'm working beyond it. --- What the Retrieved Context Confirms 1. Web SDK, Mobile SDK, and Edge Network API are the supported data collection methods for AEP-based destinations including CDP and personalization destinations. 2. XDM is the core standardization framework \u2014 all customer experience data should conform to XDM schemas for downstream use in segmentation, personalization, and activation. 3. For attribute-based personalization (beyond audience membership), the Edge Network API with authenticated server-side integration is required \u2014 Web SDK and Mobile SDK alone only support audience-membership-based personalization. 4. XDM best practices recommend using pre-defined field groups (e.g., AEP Web SDK ExperienceEvent, Consumer Experience Event) and a product-agnostic naming model, with custom field groups only for org-specific data that doesn't fit existing structures. --- Where I Cannot Confirm from the Retrieved Context The specific question of whether to preserve original user language vs. translate to English before ingestion, and the CDP-specific implications of each approach, is not addressed in the retrieved documentation context. I would recommend searching Adobe Experience League directly for: - \"XDM schema multilingual\" - \"AEP profile attribute locale\" - \"CDP segmentation language\" --- General Guidance Based on XDM Design Principles (flagged as advisory, not doc-sourced) Since XDM underpins everything, the architectural implications are worth noting: | Approach | Pros | Cons | |---|---|---| | Preserve original language in XDM fields | Authentic data; supports locale-based segmentation; respects user intent |\u2026"}}]}</script></div>
+  </body>
+</html>
