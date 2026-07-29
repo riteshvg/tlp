@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/png" href="/tools/rovr/rovrlogo.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="build-date" content="2026-06-10" />
+    
+    
+    <script src="https://assets.adobedtm.com/204118644db8/290ae1adb65a/launch-e5ec7bf1a1ef-development.min.js" async></script>
+    <script type="module" crossorigin src="/tools/rovr/assets/index-D5c-fCgB.js"></script>
+    <link rel="stylesheet" crossorigin href="/tools/rovr/assets/index-Bt-UJ01-.css">
+  <title>i am talking about identity stitching replay setting | Rovr</title>
+<meta name="description" content="Identity Stitching Replay Setting in CJA What is Replay Stitching? Replay stitching is the second pass that stitching makes on your data (after live…" />
+<link rel="canonical" href="https://thelearningproject.in/tools/rovr/q/i-am-talking-about-identity-stitching-replay-setting-102304" />
+<meta property="og:title" content="i am talking about identity stitching replay setting" />
+<meta property="og:description" content="Identity Stitching Replay Setting in CJA What is Replay Stitching? Replay stitching is the second pass that stitching makes on your data (after live…" />
+<meta property="og:url" content="https://thelearningproject.in/tools/rovr/q/i-am-talking-about-identity-stitching-replay-setting-102304" />
+<meta property="og:type" content="article" />
+<meta property="og:image" content="https://thelearningproject.in/tools/rovr/rovrlogo.png" />
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="i am talking about identity stitching replay setting" />
+<meta name="twitter:description" content="Identity Stitching Replay Setting in CJA What is Replay Stitching? Replay stitching is the second pass that stitching makes on your data (after live…" />
+</head>
+  <body>
+    <div id="root"><article><h1>i am talking about identity stitching replay setting</h1>
+<h2>Identity Stitching Replay Setting in CJA</h2>
+<h3>What is Replay Stitching?</h3>
+<p><strong>Replay stitching</strong> is the second pass that stitching makes on your data (after live stitching). It <strong>replays historical data</strong> based on updated identities — either from unique person IDs (field-based stitching) or from the identity graph (graph-based stitching).</p>
+<p>This is where hits from <strong>previously unknown devices</strong> (persistent IDs) become stitched, as the identity resolution process has had time to resolve the identity for a namespace.</p>
+<h3>Why Replay is Needed</h3>
+<p>During <strong>live stitching</strong>, hits from devices that are <em>new</em> to the dataset (have never authenticated) are typically <strong>not stitched</strong> at that moment. Replay stitching goes back and re-processes those previously unstitched events once more identity information becomes available.</p>
+<h3>Two Key Parameters</h3>
+<p>Replay stitching is controlled by two parameters:</p>
+<p>| Parameter | Description |</p>
+<p>|---|---|</p>
+<p>| <strong>Frequency</strong> | How often the replay process runs |</p>
+<p>| <strong>Lookback Window</strong> | How far back in time the replay re-processes data |</p>
+<h3>Available Replay Options</h3>
+<p>Adobe offers the following combinations of frequency and lookback window:</p>
+<h4>1. Daily Lookback on a Daily Frequency</h4>
+<ul>
+<li><strong>Replays:</strong> Every day</li>
+<li><strong>Lookback window:</strong> 24 hours</li>
+<li>✅ <strong>Advantage:</strong> Replays are much more frequent, so stitching is more up-to-date</li>
+<li>⚠️ <strong>Limitation:</strong> Unauthenticated profiles <strong>must authenticate the same day</strong> they visit your site to be stitched</li>
+</ul>
+<h4>2. Weekly Lookback on a Weekly Frequency</h4>
+<ul>
+<li><strong>Replays:</strong> Once a week</li>
+<li><strong>Lookback window:</strong> 7 days (one week)</li>
+<li>✅ <strong>Advantage:</strong> Unauthenticated sessions have a <strong>more lenient time window</strong> to authenticate</li>
+<li>⚠️ <strong>Limitation:</strong> Unstitched data less than a week old is <strong>not reprocessed</strong> until the next weekly replay</li>
+</ul>
+<h4>3. Biweekly Lookback on a Weekly Frequency</h4>
+<ul>
+<li><strong>Replays:</strong> Once a week</li>
+<li><strong>Lookback window:</strong> 14 days (two weeks)</li>
+<li>✅ <strong>Advantage:</strong> Unauthenticated sessions have an <strong>even more lenient time window</strong> to authenticate</li>
+<li>⚠️ <strong>Limitation:</strong> Unstitched data less than two weeks old is <strong>not reprocessed</strong> until the next weekly replay</li>
+</ul>
+<h4>4. Monthly Lookback on a Weekly Frequency</h4>
+<ul>
+<li><strong>Replays:</strong> Every week</li>
+<li><strong>Lookback window:</strong> ~1 month</li>
+<li>✅ <strong>Advantage:</strong> Provides the <strong>most lenient time window</strong> for unauthenticated sessions to authenticate</li>
+<li>⚠️ <strong>Limitation:</strong> Unstitched data less than a month old is <strong>not reprocessed</strong> until the next weekly replay</li>
+</ul>
+<h3>When Does Replay Run?</h3>
+<p>| Replay Type | When It Runs |</p>
+<p>|---|---|</p>
+<p>| <strong>Weekly replay</strong> | Starts every <strong>Saturday night</strong> (customer time zone); data updated in CJA reporting by <strong>Monday morning</strong> |</p>
+<p>| <strong>Daily replay</strong> | Runs around <strong>3 A.M.</strong> (customer time zone); data updated in CJA reporting by <strong>morning</strong> |</p>
+<p>&gt; ⚠️ <strong>Important:</strong> The day of the weekly replay and the hour of the daily replay <strong>cannot be changed</strong> through a custom request.</p>
+<h3>Live Stitching vs. Replay Stitching</h3>
+<p>| | Live Stitching | Replay Stitching |</p>
+<p>|---|---|---|</p>
+<p>| <strong>When it runs</strong> | As each event comes in | On a scheduled frequency |</p>
+<p>| <strong>What it stitches</strong> | Known/recognized devices immediately | Previously unknown devices retroactively |</p>
+<p>| <strong>Lookback</strong> | Real-time only | Based on configured lookback window |</p>
+<p>| <strong>Data freshness</strong> | Immediate | Delayed until next replay window |</p>
+<p>&gt; ⚠️ <strong>Note:</strong> Timestamped hits older than <strong>12 hours</strong> are not stitched in the live flow. However, these hits <strong>are included in Replay stitching</strong>, as long as they fall within the configured replay lookback window.</p>
+<h3>Practical Example</h3>
+<p>Consider this scenario with <strong>weekly lookback on weekly frequency</strong>:</p>
+<p>```</p>
+<p>Monday: User browses anonymously (persistent ID = ABC123)</p>
+<p>Wednesday: User authenticates (person ID = john@example.com)</p>
+<p>Saturday night: Weekly replay runs</p>
+<p>→ Monday&#x27;s anonymous event is now retroactively stitched</p>
+<p>to john@example.com because it falls within the 7-day lookback</p>
+<p>Monday morning: Updated stitched data available in CJA reporting</p>
+<p>```</p>
+<h3>Choosing the Right Replay Setting</h3>
+<p>| Your Scenario | Recommended Setting |</p>
+<p>|---|---|</p>
+<p>| Users typically authenticate on the same visit | <strong>Daily lookback, daily frequency</strong> |</p>
+<p>| Users often return and authenticate within a week | <strong>Weekly lookback, weekly frequency</strong> |</p>
+<p>| Users may take up to two weeks to authenticate | <strong>Biweekly lookback, weekly frequency</strong> |</p>
+<p>| Users may take up to a month to authenticate | <strong>Monthly lookback, weekly frequency</strong> |</p>
+<p>The key trade-off is always between <strong>data freshness</strong> (more frequent replays) and <strong>stitching coverage</strong> (longer lookback windows).</p>
+<h2>Sources</h2>
+<ul>
+<li><a href="https://experienceleague.adobe.com/en/docs/analytics-platform/using/cja-connections/create-connection">Create Or Edit A Connection</a></li>
+<li><a href="https://experienceleague.adobe.com/en/docs/analytics-platform/using/stitching/b2b-account-stitching">B2B Account Stitching</a></li>
+<li><a href="https://experienceleague.adobe.com/en/docs/analytics/components/cda/setup">Set up Cross-Device Analytics</a></li>
+</ul></article>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "i am talking about identity stitching replay setting", "acceptedAnswer": {"@type": "Answer", "text": "Identity Stitching Replay Setting in CJA What is Replay Stitching? Replay stitching is the second pass that stitching makes on your data (after live stitching). It replays historical data based on updated identities \u2014 either from unique person IDs (field-based stitching) or from the identity graph (graph-based stitching). This is where hits from previously unknown devices (persistent IDs) become stitched, as the identity resolution process has had time to resolve the identity for a namespace. Why Replay is Needed During live stitching, hits from devices that are new to the dataset (have never authenticated) are typically not stitched at that moment. Replay stitching goes back and re-processes those previously unstitched events once more identity information becomes available. Two Key Parameters Replay stitching is controlled by two parameters: | Parameter | Description | |---|---| | Frequency | How often the replay process runs | | Lookback Window | How far back in time the replay re-processes data | Available Replay Options Adobe offers the following combinations of frequency and lookback window: 1. Daily Lookback on a Daily Frequency - Replays: Every day - Lookback window: 24 hours - \u2705 Advantage: Replays are much more frequent, so stitching is more up-to-date - \u26a0\ufe0f Limitation: Unauthenticated profiles must authenticate the same day they visit your site to be stitched 2. Weekly Lookback on a Weekly Frequency - Replays: Once a week - Lookback window: 7 days (one week) - \u2705 Advantage: Unauthenticated sessions have a more lenient time window to authenticate - \u26a0\ufe0f Limitation: Unstitched data less than a week old is not reprocessed until the next weekly replay 3. Biweekly Lookback on a Weekly Frequency - Replays: Once a week - Lookback window: 14 days (two weeks) - \u2705 Advantage: Unauthenticated sessions have an even more lenient time window to authenticate - \u26a0\ufe0f Limitation: Unstitched data less than two weeks old is not reprocessed until the next weekly replay 4. Monthly\u2026"}}]}</script></div>
+  </body>
+</html>

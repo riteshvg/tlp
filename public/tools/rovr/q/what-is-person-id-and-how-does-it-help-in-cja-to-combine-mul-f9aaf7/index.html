@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/png" href="/tools/rovr/rovrlogo.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="build-date" content="2026-06-10" />
+    
+    
+    <script src="https://assets.adobedtm.com/204118644db8/290ae1adb65a/launch-e5ec7bf1a1ef-development.min.js" async></script>
+    <script type="module" crossorigin src="/tools/rovr/assets/index-D5c-fCgB.js"></script>
+    <link rel="stylesheet" crossorigin href="/tools/rovr/assets/index-Bt-UJ01-.css">
+  <title>What is person ID and how does it help in CJA to combine multiple datasets? | Rovr</title>
+<meta name="description" content="Person ID in CJA What is Person ID? Person ID is a unique identifier that represents an individual customer across all your datasets in Customer Journey…" />
+<link rel="canonical" href="https://thelearningproject.in/tools/rovr/q/what-is-person-id-and-how-does-it-help-in-cja-to-combine-mul-f9aaf7" />
+<meta property="og:title" content="What is person ID and how does it help in CJA to combine multiple datasets?" />
+<meta property="og:description" content="Person ID in CJA What is Person ID? Person ID is a unique identifier that represents an individual customer across all your datasets in Customer Journey…" />
+<meta property="og:url" content="https://thelearningproject.in/tools/rovr/q/what-is-person-id-and-how-does-it-help-in-cja-to-combine-mul-f9aaf7" />
+<meta property="og:type" content="article" />
+<meta property="og:image" content="https://thelearningproject.in/tools/rovr/rovrlogo.png" />
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="What is person ID and how does it help in CJA to combine multiple datasets?" />
+<meta name="twitter:description" content="Person ID in CJA What is Person ID? Person ID is a unique identifier that represents an individual customer across all your datasets in Customer Journey…" />
+</head>
+  <body>
+    <div id="root"><article><h1>What is person ID and how does it help in CJA to combine multiple datasets?</h1>
+<h2>Person ID in CJA</h2>
+<h3>What is Person ID?</h3>
+<p><strong>Person ID</strong> is a <strong>unique identifier</strong> that represents an individual customer across all your datasets in Customer Journey Analytics. It&#x27;s the foundation for combining multiple datasets and enabling cross-channel customer journey analysis.</p>
+<h4>Core Concept</h4>
+<p>The Person ID column is the <strong>critical linking mechanism</strong> that allows CJA to:</p>
+<ul>
+<li>Recognize when events belong to the same person across different datasets</li>
+<li>Combine data from web, mobile, CRM, call center, and offline sources into a single person-centric view</li>
+<li>Analyze complete customer journeys across channels and touchpoints</li>
+</ul>
+<h3>How Person ID Works Across Datasets</h3>
+<p>When you create a connection in CJA, you <strong>specify which field serves as the Person ID for each dataset</strong>:</p>
+<h4>Combined Dataset Merge</h4>
+<p>When multiple datasets are combined in a connection:</p>
+<p>1. <strong>Different field names can represent the same person</strong> — For example:</p>
+<ul>
+<li>Web analytics dataset uses `ecid` (Experience Cloud ID)</li>
+<li>CRM dataset uses `customer_id`</li>
+<li>Email dataset uses `email_address`</li>
+</ul>
+<p>2. <strong>All merge into one Person ID column</strong> — Regardless of the original field names, CJA merges them into a single Person ID column in the combined dataset</p>
+<p>3. <strong>Events are linked by person</strong> — All events with matching Person ID values are associated with the same person, even if they come from completely different data sources</p>
+<h4>Example: Multi-Channel Data Combination</h4>
+<p>| Original Dataset | Person ID Field | Value |</p>
+<p>|---|---|---|</p>
+<p>| Web analytics | `ecid` | `ABC123` |</p>
+<p>| CRM | `customer_id` | `CUST456` |</p>
+<p>| Call center | `caller_id` | `CALL789` |</p>
+<p><strong>After combining in CJA connection:</strong></p>
+<ul>
+<li>All three fields (if they represent the same person) are mapped to a single <strong>Person ID</strong> in the combined dataset</li>
+<li>Events from all three sources can be analyzed together for that person</li>
+</ul>
+<h3>Requirements for Effective Person ID</h3>
+<p>For successful data combination, ensure:</p>
+<p>✅ <strong>ID exists across all channels</strong> — The Person ID (or a related identifier) should be present in every dataset you want to combine</p>
+<p>✅ <strong>ID is populated on each row</strong> — The Person ID value should be included on every event row of data</p>
+<p>✅ <strong>Consistent format across sources</strong> — Use the same format, length, and hashing method across all datasets</p>
+<ul>
+<li>Example: If one dataset hashes emails with SHA-256, others should too</li>
+</ul>
+<p>✅ <strong>No PII required</strong> — You can use any ID, including <strong>hashed customer IDs</strong> (not personally identifiable information)</p>
+<ul>
+<li>Example: Hash of a customer ID works just as well as the raw ID</li>
+</ul>
+<h3>Person ID vs. Persistent ID</h3>
+<h4>Person ID</h4>
+<ul>
+<li>Represents an <strong>authenticated, known person</strong> (e.g., `customer_id`, `email`, `account_id`)</li>
+<li>Not always available on every event (especially for anonymous sessions)</li>
+<li>Used for <strong>identity stitching</strong> to connect authenticated and unauthenticated activities</li>
+</ul>
+<h4>Persistent ID</h4>
+<ul>
+<li>A <strong>device-level identifier</strong> (e.g., `cookie_id`, `ECID`, `AAID`)</li>
+<li>Present on every event (both authenticated and unauthenticated sessions)</li>
+<li>Ensures no data is lost even when Person ID is unavailable</li>
+</ul>
+<h3>Use Case: Cross-Channel Analysis</h3>
+<p><strong>Scenario:</strong> Combine online and offline customer data</p>
+<p>```</p>
+<p>Web events: ecid = ABC123 (anonymous browsing)</p>
+<p>CRM data: customer_id = CUST456 (known customer profile)</p>
+<p>Call center: caller_id = CALL789 (customer support interaction)</p>
+<p>```</p>
+<p><strong>With Person ID linking:</strong></p>
+<ul>
+<li>CJA recognizes CUST456, ABC123, and CALL789 all represent the same person</li>
+<li>You can see: This customer browsed products → called support → completed purchase</li>
+<li>Full journey visibility across all channels in a single Analysis Workspace report</li>
+</ul>
+<h3>Identity Stitching &amp; Person ID</h3>
+<p>When datasets don&#x27;t have a common Person ID on every event, <strong>identity stitching</strong> bridges the gap:</p>
+<ul>
+<li><strong>Field-based stitching</strong> uses event-level data to determine Person ID values</li>
+<li><strong>Graph-based stitching</strong> leverages the Experience Platform Identity Graph</li>
+<li>Stitching rekeying ensures the Person ID is available on more events, improving data quality for person-level analysis</li>
+</ul>
+<h3>Key Takeaway</h3>
+<p>Person ID is the <strong>connective tissue</strong> that transforms isolated, siloed datasets into a unified, person-centric data model. Without it, CJA cannot effectively combine data sources or analyze cross-channel customer journeys.</p>
+</article>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "What is person ID and how does it help in CJA to combine multiple datasets?", "acceptedAnswer": {"@type": "Answer", "text": "Person ID in CJA What is Person ID? Person ID is a unique identifier that represents an individual customer across all your datasets in Customer Journey Analytics. It's the foundation for combining multiple datasets and enabling cross-channel customer journey analysis. Core Concept The Person ID column is the critical linking mechanism that allows CJA to: - Recognize when events belong to the same person across different datasets - Combine data from web, mobile, CRM, call center, and offline sources into a single person-centric view - Analyze complete customer journeys across channels and touchpoints How Person ID Works Across Datasets When you create a connection in CJA, you specify which field serves as the Person ID for each dataset: Combined Dataset Merge When multiple datasets are combined in a connection: 1. Different field names can represent the same person \u2014 For example: - Web analytics dataset uses ecid (Experience Cloud ID) - CRM dataset uses customerid - Email dataset uses emailaddress 2. All merge into one Person ID column \u2014 Regardless of the original field names, CJA merges them into a single Person ID column in the combined dataset 3. Events are linked by person \u2014 All events with matching Person ID values are associated with the same person, even if they come from completely different data sources Example: Multi-Channel Data Combination | Original Dataset | Person ID Field | Value | |---|---|---| | Web analytics | ecid | ABC123 | | CRM | customerid | CUST456 | | Call center | callerid | CALL789 | After combining in CJA connection: - All three fields (if they represent the same person) are mapped to a single Person ID in the combined dataset - Events from all three sources can be analyzed together for that person Requirements for Effective Person ID For successful data combination, ensure: \u2705 ID exists across all channels \u2014 The Person ID (or a related identifier) should be present in every dataset you want to combine \u2705 ID is populated on each row \u2014\u2026"}}]}</script></div>
+  </body>
+</html>

@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/png" href="/tools/rovr/rovrlogo.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="build-date" content="2026-06-10" />
+    
+    
+    <script src="https://assets.adobedtm.com/204118644db8/290ae1adb65a/launch-e5ec7bf1a1ef-development.min.js" async></script>
+    <script type="module" crossorigin src="/tools/rovr/assets/index-D5c-fCgB.js"></script>
+    <link rel="stylesheet" crossorigin href="/tools/rovr/assets/index-Bt-UJ01-.css">
+  <title>What is identityStitching and what are the different types of stitching methods available? | Rovr</title>
+<meta name="description" content="Identity Stitching in CJA What is Identity Stitching? Identity stitching (or simply &quot;stitching&quot;) is a process that rekeys identities within a dataset&#x27;s rows…" />
+<link rel="canonical" href="https://thelearningproject.in/tools/rovr/q/what-is-identitystitching-and-what-are-the-different-types-o-99a7da" />
+<meta property="og:title" content="What is identityStitching and what are the different types of stitching methods available?" />
+<meta property="og:description" content="Identity Stitching in CJA What is Identity Stitching? Identity stitching (or simply &quot;stitching&quot;) is a process that rekeys identities within a dataset&#x27;s rows…" />
+<meta property="og:url" content="https://thelearningproject.in/tools/rovr/q/what-is-identitystitching-and-what-are-the-different-types-o-99a7da" />
+<meta property="og:type" content="article" />
+<meta property="og:image" content="https://thelearningproject.in/tools/rovr/rovrlogo.png" />
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="What is identityStitching and what are the different types of stitching methods available?" />
+<meta name="twitter:description" content="Identity Stitching in CJA What is Identity Stitching? Identity stitching (or simply &quot;stitching&quot;) is a process that rekeys identities within a dataset&#x27;s rows…" />
+</head>
+  <body>
+    <div id="root"><article><h1>What is identityStitching and what are the different types of stitching methods available?</h1>
+<h2>Identity Stitching in CJA</h2>
+<h3>What is Identity Stitching?</h3>
+<p><strong>Identity stitching</strong> (or simply &quot;stitching&quot;) is a process that rekeys identities within a dataset&#x27;s rows to ensure the desired person ID information is available on as many events as possible.</p>
+<h4>How It Works</h4>
+<p>Stitching looks at user data from both <strong>authenticated and unauthenticated sessions</strong> to determine a common person ID value that can be used across events. This rekeying resolves disparate records to a <strong>single person ID for analysis at the person level</strong>, rather than at the device or cookie level.</p>
+<ul>
+<li>If a common person ID value <strong>can be determined</strong>, it&#x27;s used for stitching</li>
+<li>If a common person ID value <strong>cannot be determined</strong>, the persistent ID value is used instead</li>
+</ul>
+<h4>Goals of Stitching</h4>
+<p>Stitching elevates your event dataset&#x27;s suitability for cross-channel analysis by allowing you to:</p>
+<p>1. <strong>Create person-centric reports</strong> while not leaving out anonymous people</p>
+<p>2. <strong>Connect multiple devices</strong> to a single person</p>
+<p>3. <strong>Connect a person across channels</strong></p>
+<h3>Where Stitching is Available</h3>
+<ul>
+<li>✅ <strong>Person-based connections</strong> — Identity stitching is available</li>
+<li>❌ <strong>Account-based connections</strong> — Identity stitching is NOT available</li>
+</ul>
+<h3>Stitching Methods</h3>
+<p>There are <strong>two types of stitching methods</strong> available in CJA:</p>
+<h4>1. Field-Based Stitching (FBS)</h4>
+<p><strong>How it works:</strong></p>
+<ul>
+<li>You specify an <strong>event dataset</strong>, a <strong>persistent ID</strong> (like a cookie), and a <strong>person ID</strong> (like an email)</li>
+<li>FBS attempts to make the person ID information available for CJA data analysis on any anonymous events coming with a specific persistent ID</li>
+<li>That information is retrieved from rows that have a person ID for that specific persistent ID</li>
+<li>If person ID info cannot be retrieved for an event, the persistent ID is used instead for that <em>unstitched</em> event</li>
+</ul>
+<p><strong>Use case:</strong></p>
+<ul>
+<li>When using CJA as a standalone solution without access to the Experience Platform Identity Service</li>
+<li>When you don&#x27;t want to use the available identity graph</li>
+</ul>
+<p><img src="https://raw.githubusercontent.com/AdobeDocs/analytics-platform.en/main/help/stitching/assets/fbs.png" alt="Field-based stitching diagram"></p>
+<h4>2. Graph-Based Stitching (GBS)</h4>
+<p><strong>How it works:</strong></p>
+<ul>
+<li>Uses the <strong>Experience Platform Identity Graph</strong> to resolve identities</li>
+<li>Leverages the identity relationships already built in Experience Platform</li>
+<li>Follows <strong>last-auth attribution</strong> — attributes all unknown activity from a shared device to the user who last authenticated</li>
+<li>The Experience Platform Identity Service builds the graph based on last-auth attribution, which is then used in graph-based stitching</li>
+</ul>
+<p><strong>Use case:</strong></p>
+<ul>
+<li>When you have access to the Experience Platform Identity Service</li>
+<li>When you want to leverage your existing identity graph setup</li>
+<li>For more sophisticated identity resolution across multiple identity namespaces</li>
+</ul>
+<h3>Attribution Methods Within Stitching</h3>
+<h4>Last-Auth Attribution</h4>
+<p><strong>Last-auth attributes</strong> all unknown activity from a shared device to the <strong>user who last authenticated</strong>.</p>
+<p><strong>Example:</strong></p>
+<p>| Timestamp | Page name | Device ID | Email | Stitched ID |</p>
+<p>|---|---|---|---|---|</p>
+<p>| 2023-05-12 12:01 | Home page | `1234` | | `cassidy@a.com`|</p>
+<p>| 2023-05-12 12:02 | Product page  | `1234` | |`cassidy@a.com` |</p>
+<p>| 2023-05-12 12:03 | Order success | `1234` | `ryan@a.com` | `cassidy@a.com` |</p>
+<p>| 2023-05-12 12:07 | Product page  | `1234`  | | `cassidy@a.com` |</p>
+<p>| 2023-05-12 12:08 | Order success | `1234` |  `cassidy@a.com` | `cassidy@a.com` |</p>
+<p>| 2023-05-13 11:08 | Home page | `1234` | | `cassidy@a.com` |</p>
+<p>In this example, even though `ryan@a.com` authenticated on 5/12 at 12:03, subsequent events are attributed to `cassidy@a.com` because she was the last to authenticate on that device.</p>
+<h4>Device-Split Attribution</h4>
+<p>Device-split is another attribution approach (mentioned in the documentation but not fully detailed in the available context).</p>
+<h3>Stitching in Connections: Live Pass</h3>
+<p>Stitching makes a <strong>minimum of two passes</strong> on data:</p>
+<p><strong>Live Stitching:</strong></p>
+<ul>
+<li>Attempts to stitch each hit (event) as it comes in</li>
+<li>Uses the persistent ID to look up the person ID for the selected namespace by querying the identity graph</li>
+<li>If the person ID is available from the lookup, it&#x27;s immediately stitched</li>
+</ul>
+<p><a href="https://experienceleague.adobe.com/en/docs/customer-journey-analytics-learn/tutorials/visitor-id/stitching-enablement-and-validation">▶ Watch: Stitching enablement and validation</a></p>
+<h2>Sources</h2>
+<ul>
+<li><a href="https://experienceleague.adobe.com/en/docs/experience-platform/segmentation/types/overview">Audience types</a></li>
+<li><a href="https://experienceleague.adobe.com/en/docs/experience-platform/segmentation/methods/overview">Audience evaluation methods</a></li>
+</ul></article>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "What is identityStitching and what are the different types of stitching methods available?", "acceptedAnswer": {"@type": "Answer", "text": "Identity Stitching in CJA What is Identity Stitching? Identity stitching (or simply \"stitching\") is a process that rekeys identities within a dataset's rows to ensure the desired person ID information is available on as many events as possible. How It Works Stitching looks at user data from both authenticated and unauthenticated sessions to determine a common person ID value that can be used across events. This rekeying resolves disparate records to a single person ID for analysis at the person level, rather than at the device or cookie level. - If a common person ID value can be determined, it's used for stitching - If a common person ID value cannot be determined, the persistent ID value is used instead Goals of Stitching Stitching elevates your event dataset's suitability for cross-channel analysis by allowing you to: 1. Create person-centric reports while not leaving out anonymous people 2. Connect multiple devices to a single person 3. Connect a person across channels Where Stitching is Available - \u2705 Person-based connections \u2014 Identity stitching is available - \u274c Account-based connections \u2014 Identity stitching is NOT available Stitching Methods There are two types of stitching methods available in CJA: 1. Field-Based Stitching (FBS) How it works: - You specify an event dataset, a persistent ID (like a cookie), and a person ID (like an email) - FBS attempts to make the person ID information available for CJA data analysis on any anonymous events coming with a specific persistent ID - That information is retrieved from rows that have a person ID for that specific persistent ID - If person ID info cannot be retrieved for an event, the persistent ID is used instead for that unstitched event Use case: - When using CJA as a standalone solution without access to the Experience Platform Identity Service - When you don't want to use the available identity graph !Field-based stitching\u2026"}}]}</script></div>
+  </body>
+</html>

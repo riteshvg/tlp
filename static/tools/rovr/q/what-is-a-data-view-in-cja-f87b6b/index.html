@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/png" href="/tools/rovr/rovrlogo.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="build-date" content="2026-06-10" />
+    
+    
+    <script src="https://assets.adobedtm.com/204118644db8/290ae1adb65a/launch-e5ec7bf1a1ef-development.min.js" async></script>
+    <script type="module" crossorigin src="/tools/rovr/assets/index-D5c-fCgB.js"></script>
+    <link rel="stylesheet" crossorigin href="/tools/rovr/assets/index-Bt-UJ01-.css">
+  <title>What is a data view in CJA? | Rovr</title>
+<meta name="description" content="What is a Data View in CJA? Definition A data view is a container specific to Customer Journey Analytics that lets you determine how to interpret data from a…" />
+<link rel="canonical" href="https://thelearningproject.in/tools/rovr/q/what-is-a-data-view-in-cja-f87b6b" />
+<meta property="og:title" content="What is a data view in CJA?" />
+<meta property="og:description" content="What is a Data View in CJA? Definition A data view is a container specific to Customer Journey Analytics that lets you determine how to interpret data from a…" />
+<meta property="og:url" content="https://thelearningproject.in/tools/rovr/q/what-is-a-data-view-in-cja-f87b6b" />
+<meta property="og:type" content="article" />
+<meta property="og:image" content="https://thelearningproject.in/tools/rovr/rovrlogo.png" />
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="What is a data view in CJA?" />
+<meta name="twitter:description" content="What is a Data View in CJA? Definition A data view is a container specific to Customer Journey Analytics that lets you determine how to interpret data from a…" />
+</head>
+  <body>
+    <div id="root"><article><h1>What is a data view in CJA?</h1>
+<h2>What is a Data View in CJA?</h2>
+<h3>Definition</h3>
+<p>A <strong>data view</strong> is a <strong>container specific to Customer Journey Analytics</strong> that lets you determine how to interpret data from a connection. It specifies all dimensions and metrics available in Analysis Workspace and which columns those dimensions and metrics obtain their data from.</p>
+<p>Data views are defined in preparation for reporting in Analysis Workspace and are similar to <strong>Virtual Report Suites in Adobe Analytics</strong>.</p>
+<h3>Core Purpose</h3>
+<p>Data views allow you to <strong>configure the data</strong> that comes into CJA so that it can be most useful for your reporting and analysis.</p>
+<p><a href="https://video.tv.adobe.com/v/35110/?quality=12&amp;learn=on">▶ Watch: Data Views Overview</a></p>
+<h3>Key Characteristics</h3>
+<h4>Non-Destructive</h4>
+<ul>
+<li>Any settings you select or change in a data view are <strong>retroactive and non-destructive</strong></li>
+<li>Changes do <strong>not permanently alter</strong> your underlying data</li>
+<li>You can adjust settings over time without fear of data loss</li>
+</ul>
+<h4>Flexible &amp; Multi-Use</h4>
+<ul>
+<li>You can create <strong>different data views for the same connection</strong>, with very different sets of components (dimensions/metrics)</li>
+<li>Create data views with <strong>different settings</strong> for visit timeout, attribution, etc.</li>
+<li>Example: One data view with all dimensions set to Last Touch, another with First Touch — simultaneously, based on the same dataset</li>
+</ul>
+<h4>Foundation for Analysis</h4>
+<ul>
+<li>Workspace projects in Customer Journey Analytics are <strong>based on data views</strong></li>
+<li>Each data view is a specific configuration for how to interpret connection data</li>
+</ul>
+<h3>Data View Limits</h3>
+<p>| Limit | Value |</p>
+<p>|---|---|</p>
+<p>| <strong>Metrics per data view</strong> | Up to 5,000 |</p>
+<p>| <strong>Dimensions per data view</strong> | Up to 5,000 |</p>
+<h3>What a Data View Does</h3>
+<p>A data view:</p>
+<p>✅ Can be based on Customer Journey Analytics segments</p>
+<p>✅ Can be applied to both historical and new data in a <strong>non-destructive manner</strong></p>
+<p>✅ Allows you to <strong>create one or many virtual views</strong> on top of a CJA connection for use by different business teams</p>
+<p>✅ May be used to <strong>control access and curate</strong> different kinds of data for different users in CJA</p>
+<p>✅ Provides powerful <strong>non-destructive transformation options</strong> for data coming into CJA through a connection</p>
+<p>✅ Is based on <strong>report-time processing</strong> capabilities of CJA</p>
+<p>✅ Allows users to <strong>create a custom definition for &quot;session&quot;</strong></p>
+<p>✅ Is applied at <strong>report runtime</strong> (after source data is written to the data lake and ingested into CJA)</p>
+<p>✅ Allows for <strong>unlimited variables</strong>, although curation can limit which variables are exposed to users</p>
+<p>✅ Allows for <strong>custom naming</strong> of Event, Session &amp; Person containers</p>
+<p>✅ Supports <strong>custom calendar options</strong></p>
+<h3>What a Data View Does NOT Do</h3>
+<p>❌ Does not directly provide a means for <strong>combining report suites or datasets</strong></p>
+<p>Instead, datasets are combined in a <strong>CJA connection</strong>. The combined data from the connection is available for use in all data views based on that connection.</p>
+<h3>The Relationship: Connection → Data View → Workspace</h3>
+<p>```</p>
+<p>Connection (combines multiple datasets)</p>
+<p>↓</p>
+<p>Data View (configures how to interpret the connection)</p>
+<p>↓</p>
+<p>Analysis Workspace (reports and analysis)</p>
+<p>```</p>
+<h3>Creating a Data View</h3>
+<p>To create a data view:</p>
+<p>1. In the Customer Journey Analytics UI, select <strong>[!UICONTROL Data views]</strong>, optionally from <strong>[!UICONTROL Data management]</strong>, in the top menu.</p>
+<p>2. Select <strong>[!UICONTROL Create new data view]</strong>.</p>
+<p>3. In the <strong>[!UICONTROL Configure]</strong> step:</p>
+<ul>
+<li>Select your connection from the <strong>[!UICONTROL Connection]</strong> list</li>
+<li>Name and (optionally) describe your data view</li>
+<li>Select <strong>[!UICONTROL Save and continue]</strong></li>
+</ul>
+<p>4. In the <strong>[!UICONTROL Components]</strong> step:</p>
+<ul>
+<li>Add schema fields and/or standard components to the <strong>[!UICONTROL METRICS]</strong> or <strong>[!UICONTROL DIMENSIONS]</strong> boxes</li>
+<li>Select <strong>[!UICONTROL Save and continue]</strong></li>
+</ul>
+<p>5. In the <strong>[!UICONTROL Settings]</strong> step:</p>
+<ul>
+<li>Leave settings as desired</li>
+<li>Select <strong>[!UICONTROL Save and finish]</strong></li>
+</ul>
+<h3>Common Data View Configurations</h3>
+<p>| Use Case | Example |</p>
+<p>|---|---|</p>
+<p>| <strong>Different business teams</strong> | Marketing team data view vs. Product team data view — same connection, different metrics/dimensions exposed |</p>
+<p>| <strong>Attribution models</strong> | Last Touch data view vs. First Touch data view — different attribution rules applied |</p>
+<p>| <strong>Session definitions</strong> | Standard 30-min timeout vs. custom 15-min timeout for fast-paced interactions |</p>
+<p>| <strong>Data governance</strong> | Public data view (all metrics visible) vs. Restricted data view (sensitive metrics hidden) |</p>
+<h3>Key Takeaway</h3>
+<p>Data views are the <strong>configuration layer</strong> between your raw connection data and your Analysis Workspace reports. They enable flexibility, governance, and business-specific customization without touching the underlying data.</p>
+<h2>Sources</h2>
+<ul>
+<li><a href="https://experienceleague.adobe.com/en/docs/analytics-platform/using/cja-usecases/data-views/bi-extension/connect-and-validate">Connect And Validate</a></li>
+</ul></article>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "What is a data view in CJA?", "acceptedAnswer": {"@type": "Answer", "text": "What is a Data View in CJA? Definition A data view is a container specific to Customer Journey Analytics that lets you determine how to interpret data from a connection. It specifies all dimensions and metrics available in Analysis Workspace and which columns those dimensions and metrics obtain their data from. Data views are defined in preparation for reporting in Analysis Workspace and are similar to Virtual Report Suites in Adobe Analytics. Core Purpose Data views allow you to configure the data that comes into CJA so that it can be most useful for your reporting and analysis. \u25b6 Watch: Data Views Overview(https://video.tv.adobe.com/v/35110/?quality=12&learn=on) Key Characteristics Non-Destructive - Any settings you select or change in a data view are retroactive and non-destructive - Changes do not permanently alter your underlying data - You can adjust settings over time without fear of data loss Flexible & Multi-Use - You can create different data views for the same connection, with very different sets of components (dimensions/metrics) - Create data views with different settings for visit timeout, attribution, etc. - Example: One data view with all dimensions set to Last Touch, another with First Touch \u2014 simultaneously, based on the same dataset Foundation for Analysis - Workspace projects in Customer Journey Analytics are based on data views - Each data view is a specific configuration for how to interpret connection data Data View Limits | Limit | Value | |---|---| | Metrics per data view | Up to 5,000 | | Dimensions per data view | Up to 5,000 | What a Data View Does A data view: \u2705 Can be based on Customer Journey Analytics segments \u2705 Can be applied to both historical and new data in a non-destructive manner \u2705 Allows you to create one or many virtual views on top of a CJA connection for use by different business teams \u2705 May be used to control access and curate different kinds of data for different users in CJA \u2705 Provides powerful non-destructive\u2026"}}]}</script></div>
+  </body>
+</html>
