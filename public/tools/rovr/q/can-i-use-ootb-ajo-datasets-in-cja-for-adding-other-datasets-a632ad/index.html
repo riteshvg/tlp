@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/png" href="/tools/rovr/rovrlogo.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="build-date" content="2026-06-10" />
+    
+    
+    <script src="https://assets.adobedtm.com/204118644db8/290ae1adb65a/launch-e5ec7bf1a1ef-development.min.js" async></script>
+    <script type="module" crossorigin src="/tools/rovr/assets/index-D5c-fCgB.js"></script>
+    <link rel="stylesheet" crossorigin href="/tools/rovr/assets/index-Bt-UJ01-.css">
+  <title>can i use OOTB AJO datasets in CJA for adding other datasets? | Rovr</title>
+<meta name="description" content="Using Out-of-the-Box AJO Datasets in CJA Yes! You can use Adobe Journey Optimizer (AJO) out-of-the-box datasets in Customer Journey Analytics (CJA) and join…" />
+<link rel="canonical" href="https://thelearningproject.in/tools/rovr/q/can-i-use-ootb-ajo-datasets-in-cja-for-adding-other-datasets-a632ad" />
+<meta property="og:title" content="can i use OOTB AJO datasets in CJA for adding other datasets?" />
+<meta property="og:description" content="Using Out-of-the-Box AJO Datasets in CJA Yes! You can use Adobe Journey Optimizer (AJO) out-of-the-box datasets in Customer Journey Analytics (CJA) and join…" />
+<meta property="og:url" content="https://thelearningproject.in/tools/rovr/q/can-i-use-ootb-ajo-datasets-in-cja-for-adding-other-datasets-a632ad" />
+<meta property="og:type" content="article" />
+<meta property="og:image" content="https://thelearningproject.in/tools/rovr/rovrlogo.png" />
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="can i use OOTB AJO datasets in CJA for adding other datasets?" />
+<meta name="twitter:description" content="Using Out-of-the-Box AJO Datasets in CJA Yes! You can use Adobe Journey Optimizer (AJO) out-of-the-box datasets in Customer Journey Analytics (CJA) and join…" />
+</head>
+  <body>
+    <div id="root"><article><h1>can i use OOTB AJO datasets in CJA for adding other datasets?</h1>
+<h2>Using Out-of-the-Box AJO Datasets in CJA</h2>
+<p>Yes! You can use Adobe Journey Optimizer (AJO) out-of-the-box datasets in Customer Journey Analytics (CJA) and join them with other datasets.</p>
+<h3>How It Works</h3>
+<p>AJO automatically generates <strong>Journey Step Event</strong> datasets that can be ingested directly into CJA. The key to linking these with other datasets is the <strong>identity field</strong>.</p>
+<h4>Key Identity Field: `profileID`</h4>
+<ul>
+<li>The <strong>`profileID`</strong> field in the <strong>&quot;Journey Step Event schema for Journey Orchestration&quot;</strong> is defined as an <strong>Identity field</strong></li>
+<li>In CJA, this field acts as the <strong>person-based identifier</strong></li>
+<li>Any other dataset that shares the <strong>same value</strong> in its person identifier can be linked to the AJO Journey Step Event dataset</li>
+</ul>
+<h3>General Workflow</h3>
+<p>1. <strong>AJO generates</strong> the &quot;Journey Step Event&quot; dataset automatically (OOTB)</p>
+<p>2. <strong>CJA ingests</strong> the Journey Step Event dataset via a Connection</p>
+<p>3. <strong>Link datasets</strong> — using the `profileID` as the common identity, you can join the AJO dataset with any other dataset in CJA (e.g., web analytics, CRM, call center data)</p>
+<p>4. <strong>Build a Connection</strong> in CJA that includes the AJO dataset alongside your other datasets</p>
+<p>5. <strong>Create a Data View</strong> on top of that connection to expose the combined data for analysis</p>
+<h3>Use Case: Cross-Channel Journey Analysis</h3>
+<p>This setup is particularly powerful for <strong>cross-channel journey analysis</strong> — combining AJO journey data with other touchpoints to get a complete view of the customer experience across devices and channels.</p>
+<h4>Additional Tips</h4>
+<ul>
+<li>Use <strong>Data Prep</strong> if you need to resolve schema differences or field mapping conflicts between datasets</li>
+<li>Enable <strong>Stitching</strong> in CJA if your datasets use different ID namespaces, to resolve them into a single unified customer ID</li>
+</ul>
+</article>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "can i use OOTB AJO datasets in CJA for adding other datasets?", "acceptedAnswer": {"@type": "Answer", "text": "Using Out-of-the-Box AJO Datasets in CJA Yes! You can use Adobe Journey Optimizer (AJO) out-of-the-box datasets in Customer Journey Analytics (CJA) and join them with other datasets. How It Works AJO automatically generates Journey Step Event datasets that can be ingested directly into CJA. The key to linking these with other datasets is the identity field. Key Identity Field: profileID - The profileID field in the \"Journey Step Event schema for Journey Orchestration\" is defined as an Identity field - In CJA, this field acts as the person-based identifier - Any other dataset that shares the same value in its person identifier can be linked to the AJO Journey Step Event dataset General Workflow 1. AJO generates the \"Journey Step Event\" dataset automatically (OOTB) 2. CJA ingests the Journey Step Event dataset via a Connection 3. Link datasets \u2014 using the profileID as the common identity, you can join the AJO dataset with any other dataset in CJA (e.g., web analytics, CRM, call center data) 4. Build a Connection in CJA that includes the AJO dataset alongside your other datasets 5. Create a Data View on top of that connection to expose the combined data for analysis Use Case: Cross-Channel Journey Analysis This setup is particularly powerful for cross-channel journey analysis \u2014 combining AJO journey data with other touchpoints to get a complete view of the customer experience across devices and channels. Additional Tips - Use Data Prep if you need to resolve schema differences or field mapping conflicts between datasets - Enable Stitching in CJA if your datasets use different ID namespaces, to resolve them into a single unified customer ID"}}]}</script></div>
+  </body>
+</html>
