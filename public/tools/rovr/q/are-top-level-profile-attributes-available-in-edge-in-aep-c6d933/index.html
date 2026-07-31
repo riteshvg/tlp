@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/png" href="/tools/rovr/rovrlogo.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="build-date" content="2026-06-10" />
+    
+    
+    <script src="https://assets.adobedtm.com/204118644db8/290ae1adb65a/launch-e5ec7bf1a1ef-development.min.js" async></script>
+    <script type="module" crossorigin src="/tools/rovr/assets/index-D5c-fCgB.js"></script>
+    <link rel="stylesheet" crossorigin href="/tools/rovr/assets/index-Bt-UJ01-.css">
+  <title>are top level profile attributes available in edge in AEP | Rovr</title>
+<meta name="description" content="Top-Level Profile Attributes on the Edge in AEP Yes, top-level profile attributes are available on the Edge Network in Adobe Experience Platform, though with…" />
+<link rel="canonical" href="https://thelearningproject.in/tools/rovr/q/are-top-level-profile-attributes-available-in-edge-in-aep-c6d933" />
+<meta property="og:title" content="are top level profile attributes available in edge in AEP" />
+<meta property="og:description" content="Top-Level Profile Attributes on the Edge in AEP Yes, top-level profile attributes are available on the Edge Network in Adobe Experience Platform, though with…" />
+<meta property="og:url" content="https://thelearningproject.in/tools/rovr/q/are-top-level-profile-attributes-available-in-edge-in-aep-c6d933" />
+<meta property="og:type" content="article" />
+<meta property="og:image" content="https://thelearningproject.in/tools/rovr/rovrlogo.png" />
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="are top level profile attributes available in edge in AEP" />
+<meta name="twitter:description" content="Top-Level Profile Attributes on the Edge in AEP Yes, top-level profile attributes are available on the Edge Network in Adobe Experience Platform, though with…" />
+</head>
+  <body>
+    <div id="root"><article><h1>are top level profile attributes available in edge in AEP</h1>
+<h2>Top-Level Profile Attributes on the Edge in AEP</h2>
+<p>Yes, <strong>top-level profile attributes are available on the Edge Network</strong> in Adobe Experience Platform, though with some important context and constraints.</p>
+<hr>
+<h3>How Edge Profiles Work</h3>
+<p>Edge profiles are <strong>lightweight versions</strong> of the full Real-Time Customer Profile that are distributed across Edge Network locations geographically closer to end users. They are designed specifically for <strong>speed and real-time personalization</strong>, rather than the full comprehensiveness of the hub-based profile.</p>
+<p>According to the documentation, the data that lives on the Edge Network includes:</p>
+<ul>
+<li><strong>Audience memberships</strong></li>
+<li><strong>Profile identities</strong></li>
+<li><strong>Attributes necessary for personalization</strong></li>
+</ul>
+<p>So profile attributes are available on the edge — but only those <strong>projected to the edge</strong> for personalization use cases, not the full set of historical and rich profile attributes stored at the hub.</p>
+<hr>
+<h3>Viewing Edge Attributes in the UI</h3>
+<p>You can verify which attributes are available on the edge directly in the AEP Profile UI:</p>
+<p>1. Navigate to a specific profile in <strong>[!UICONTROL Real-Time Customer Profile]</strong></p>
+<p>2. Select the <strong>[!UICONTROL Attributes]</strong> tab</p>
+<p>3. Use the <strong>data location selector</strong> and choose <strong>[!UICONTROL Edge]</strong></p>
+<p>This will display only the attributes currently available on the edge for that profile.</p>
+<p><img src="https://raw.githubusercontent.com/AdobeDocs/experience-platform.en/main/help/profile/ui/../../dashboards/images/profiles/dashboard-overview.png" alt="The data location selector within the attributes tab is highlighted."></p>
+<hr>
+<h3>Key Requirements for Edge Attribute Availability</h3>
+<p>For profile attributes to be available and used correctly on the edge, you need to ensure:</p>
+<p>1. <strong>Datastream configuration</strong>: When configuring your datastream in Data Collection UI, ensure <strong>[!UICONTROL Edge Segmentation]</strong> and <strong>[!UICONTROL Personalization Destinations]</strong> are enabled under Adobe Experience Platform settings.</p>
+<p>2. <strong>Active-On-Edge Merge Policy</strong>: You must create and set an <strong>[!UICONTROL Active-On-Edge Merge Policy]</strong> as default. Edge destinations only support audiences that use this merge policy — without it, attributes and audiences will not be evaluated at the edge.</p>
+<p>3. <strong>Personalization Destination connection</strong>: A destination such as <strong>Custom Personalization</strong> or <strong>Adobe Target</strong> must be configured to send profile attributes to the Edge Network.</p>
+<hr>
+<h3>Hub vs. Edge: Key Distinction</h3>
+<p>| Aspect | Hub | Edge Network |</p>
+<p>|---|---|---|</p>
+<p>| Data completeness | Full historical + rich profile data | Lightweight — only what&#x27;s needed for personalization |</p>
+<p>| Use case priority | <strong>Thoroughness</strong> | <strong>Speed / real-time</strong> |</p>
+<p>| Attribute availability | All ingested profile attributes | Attributes projected/necessary for personalization |</p>
+<p>| Segmentation | Batch + Streaming | Edge segmentation |</p>
+<hr>
+<h3>Summary</h3>
+<p>Top-level profile attributes <strong>are</strong> available on the edge, but only the subset that has been projected to the edge for real-time personalization. The full richness of the hub profile is not replicated to the edge. Proper configuration of your <strong>datastream</strong>, <strong>Active-On-Edge merge policy</strong>, and <strong>personalization destination</strong> are prerequisites for those attributes to be accessible at the edge.</p>
+</article>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "are top level profile attributes available in edge in AEP", "acceptedAnswer": {"@type": "Answer", "text": "Top-Level Profile Attributes on the Edge in AEP Yes, top-level profile attributes are available on the Edge Network in Adobe Experience Platform, though with some important context and constraints. --- How Edge Profiles Work Edge profiles are lightweight versions of the full Real-Time Customer Profile that are distributed across Edge Network locations geographically closer to end users. They are designed specifically for speed and real-time personalization, rather than the full comprehensiveness of the hub-based profile. According to the documentation, the data that lives on the Edge Network includes: - Audience memberships - Profile identities - Attributes necessary for personalization So profile attributes are available on the edge \u2014 but only those projected to the edge for personalization use cases, not the full set of historical and rich profile attributes stored at the hub. --- Viewing Edge Attributes in the UI You can verify which attributes are available on the edge directly in the AEP Profile UI: 1. Navigate to a specific profile in !UICONTROL Real-Time Customer Profile 2. Select the !UICONTROL Attributes tab 3. Use the data location selector and choose !UICONTROL Edge This will display only the attributes currently available on the edge for that profile. !The data location selector within the attributes tab is highlighted.(https://raw.githubusercontent.com/AdobeDocs/experience-platform.en/main/help/profile/ui/../../dashboards/images/profiles/dashboard-overview.png) --- Key Requirements for Edge Attribute Availability For profile attributes to be available and used correctly on the edge, you need to ensure: 1. Datastream configuration: When configuring your datastream in Data Collection UI, ensure !UICONTROL Edge Segmentation and !UICONTROL Personalization Destinations are enabled under Adobe Experience Platform settings. 2. Active-On-Edge Merge Policy: You must create and set an !UICONTROL Active-On-Edge Merge Policy as default. Edge destinations only\u2026"}}]}</script></div>
+  </body>
+</html>

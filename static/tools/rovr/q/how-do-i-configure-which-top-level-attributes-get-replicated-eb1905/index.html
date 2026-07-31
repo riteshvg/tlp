@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/png" href="/tools/rovr/rovrlogo.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="build-date" content="2026-06-10" />
+    
+    
+    <script src="https://assets.adobedtm.com/204118644db8/290ae1adb65a/launch-e5ec7bf1a1ef-development.min.js" async></script>
+    <script type="module" crossorigin src="/tools/rovr/assets/index-D5c-fCgB.js"></script>
+    <link rel="stylesheet" crossorigin href="/tools/rovr/assets/index-Bt-UJ01-.css">
+  <title>How do I configure which top-level attributes get replicated to Edge Network? | Rovr</title>
+<meta name="description" content="Based on the retrieved documentation context, I can give you a partial answer, but I want to be transparent about what&#x27;s fully covered. --- Configuring…" />
+<link rel="canonical" href="https://thelearningproject.in/tools/rovr/q/how-do-i-configure-which-top-level-attributes-get-replicated-eb1905" />
+<meta property="og:title" content="How do I configure which top-level attributes get replicated to Edge Network?" />
+<meta property="og:description" content="Based on the retrieved documentation context, I can give you a partial answer, but I want to be transparent about what&#x27;s fully covered. --- Configuring…" />
+<meta property="og:url" content="https://thelearningproject.in/tools/rovr/q/how-do-i-configure-which-top-level-attributes-get-replicated-eb1905" />
+<meta property="og:type" content="article" />
+<meta property="og:image" content="https://thelearningproject.in/tools/rovr/rovrlogo.png" />
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="How do I configure which top-level attributes get replicated to Edge Network?" />
+<meta name="twitter:description" content="Based on the retrieved documentation context, I can give you a partial answer, but I want to be transparent about what&#x27;s fully covered. --- Configuring…" />
+</head>
+  <body>
+    <div id="root"><article><h1>How do I configure which top-level attributes get replicated to Edge Network?</h1>
+<p>Based on the retrieved documentation context, I can give you a partial answer, but I want to be transparent about what&#x27;s fully covered.</p>
+<hr>
+<h3>Configuring Profile Attributes for Replication to the Edge Network</h3>
+<p>The primary mechanism documented for <strong>controlling which profile attributes get projected to the Edge Network</strong> is through the <strong>Custom Personalization With Attributes</strong> destination connection in AEP.</p>
+<hr>
+<h3>Steps to Configure Attribute Replication to Edge</h3>
+<h4>Prerequisites</h4>
+<ul>
+<li>A configured <strong>Datastream</strong> with Adobe Experience Platform enabled as a service</li>
+<li>A <strong>Web SDK</strong>, <strong>Mobile SDK</strong>, or <strong>Edge Network API</strong> implementation</li>
+<li>Required permissions: <strong>[!UICONTROL View Destinations]</strong>, <strong>[!UICONTROL Activate Destinations]</strong>, <strong>[!UICONTROL View Profiles]</strong>, and <strong>[!UICONTROL View Segments]</strong></li>
+</ul>
+<p>&gt; <strong>Important</strong>: For attribute-based personalization (not just audience membership), you <strong>must</strong> use the <strong>Edge Network API</strong> with an authenticated server-side integration. Web SDK and Mobile SDK alone only support personalization based on audience membership.</p>
+<hr>
+<h4>Step 1: Create a Custom Personalization With Attributes Destination</h4>
+<p>1. In the AEP UI, navigate to <strong>[!UICONTROL Destinations]</strong> and create a new connection</p>
+<p>2. Select <strong>[!UICONTROL Custom Personalization With Attributes]</strong></p>
+<p>3. In the <strong>[!UICONTROL Datastream ID]</strong> field, select the datastream you want to use</p>
+<p>4. Set an <strong>[!UICONTROL Integration alias]</strong> to help identify this connection later</p>
+<p><img src="https://raw.githubusercontent.com/AdobeDocs/experience-platform.en/main/help/destinations/catalog/personalization/../../assets/ui/activate-edge-profile-lookup/destination-config.png" alt="Experience Platform UI image showing the Custom Personalization With Attributes configuration screen."></p>
+<hr>
+<h4>Step 2: Activate Audiences and Map Attributes</h4>
+<p>Once the destination connection is created:</p>
+<p>1. Navigate to the destination and begin the <strong>audience activation workflow</strong></p>
+<p>2. Select the audiences you want to activate to the edge</p>
+<p>3. Proceed to the <strong>[!UICONTROL Mapping]</strong> step</p>
+<p>4. In the <strong>[!UICONTROL Source field]</strong> column, select <strong>[!UICONTROL Add new field]</strong> and search or navigate to the <strong>XDM attribute field</strong> you want projected to the edge</p>
+<p>5. Map the source attribute to a <strong>[!UICONTROL Target attribute]</strong></p>
+<p>6. Repeat for each attribute you want available on the edge</p>
+<p>&gt; <strong>Note</strong>: Adding attributes in the mapping step is optional — if you skip it, personalization will still occur based on <strong>audience membership and identity map qualifications</strong> only. Attributes are only replicated to the edge when explicitly mapped here.</p>
+<hr>
+<h3>Important Behavioral Note</h3>
+<p>When you map an attribute to this destination:</p>
+<ul>
+<li>If the <strong>value of that attribute changes</strong> on a profile, that profile will be re-evaluated and re-activated to the personalization destination</li>
+<li>If a <strong>new attribute is added</strong> to a profile that matches the mapping, that profile will also become active and be pushed to the edge</li>
+</ul>
+<hr>
+<h3>What&#x27;s Not Fully Covered in the Documentation I Have</h3>
+<p>The retrieved context does not detail:</p>
+<ul>
+<li><strong>Limits on the number of attributes</strong> that can be projected to the edge</li>
+<li>Whether there are <strong>attribute type restrictions</strong> (e.g., array vs. scalar values)</li>
+<li>Any <strong>latency characteristics</strong> specific to attribute projection (beyond the general ~1 hour audience propagation time noted for edge segmentation)</li>
+</ul>
+<p>For those specifics, I&#x27;d recommend consulting the <strong>Activate audiences to edge personalization destinations</strong> guide directly in Adobe Experience League, or reaching out to your Adobe representative.</p>
+<h2>Sources</h2>
+<ul>
+<li><a href="https://experienceleague.adobe.com/en/docs/experience-platform/collection/use-cases/client-state">Client state management</a></li>
+<li><a href="https://experienceleague.adobe.com/en/docs/experience-platform/destinations/destinations-faq">Frequently asked questions</a></li>
+<li><a href="https://experienceleague.adobe.com/en/docs/experience-platform/destinations/catalog/personalization/custom-personalization">Custom Personalization Connection</a></li>
+<li><a href="https://experienceleague.adobe.com/en/docs/experience-platform/destinations/catalog/personalization/adobe-target-connection">Adobe Target connection</a></li>
+<li><a href="https://experienceleague.adobe.com/en/docs/experience-platform/tags/extensions/server/core/overview">Core Event Forwarding Extension Overview</a></li>
+</ul></article>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "How do I configure which top-level attributes get replicated to Edge Network?", "acceptedAnswer": {"@type": "Answer", "text": "Based on the retrieved documentation context, I can give you a partial answer, but I want to be transparent about what's fully covered. --- Configuring Profile Attributes for Replication to the Edge Network The primary mechanism documented for controlling which profile attributes get projected to the Edge Network is through the Custom Personalization With Attributes destination connection in AEP. --- Steps to Configure Attribute Replication to Edge Prerequisites - A configured Datastream with Adobe Experience Platform enabled as a service - A Web SDK, Mobile SDK, or Edge Network API implementation - Required permissions: !UICONTROL View Destinations, !UICONTROL Activate Destinations, !UICONTROL View Profiles, and !UICONTROL View Segments Important: For attribute-based personalization (not just audience membership), you must use the Edge Network API with an authenticated server-side integration. Web SDK and Mobile SDK alone only support personalization based on audience membership. --- Step 1: Create a Custom Personalization With Attributes Destination 1. In the AEP UI, navigate to !UICONTROL Destinations and create a new connection 2. Select !UICONTROL Custom Personalization With Attributes 3. In the !UICONTROL Datastream ID field, select the datastream you want to use 4. Set an !UICONTROL Integration alias to help identify this connection later !Experience Platform UI image showing the Custom Personalization With Attributes configuration screen.(https://raw.githubusercontent.com/AdobeDocs/experience-platform.en/main/help/destinations/catalog/personalization/../../assets/ui/activate-edge-profile-lookup/destination-config.png) --- Step 2: Activate Audiences and Map Attributes Once the destination connection is created: 1. Navigate to the destination and begin the audience activation workflow 2. Select the audiences you want to activate to the edge 3. Proceed to the !UICONTROL Mapping step 4. In the !UICONTROL Source field column, select !UICONTROL Add new field and\u2026"}}]}</script></div>
+  </body>
+</html>
