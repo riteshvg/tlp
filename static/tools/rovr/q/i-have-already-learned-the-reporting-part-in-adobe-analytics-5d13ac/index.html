@@ -1,0 +1,168 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/png" href="/tools/rovr/rovrlogo.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="build-date" content="2026-06-10" />
+    
+    
+    <script src="https://assets.adobedtm.com/204118644db8/290ae1adb65a/launch-e5ec7bf1a1ef-development.min.js" async></script>
+    <script type="module" crossorigin src="/tools/rovr/assets/index-D5c-fCgB.js"></script>
+    <link rel="stylesheet" crossorigin href="/tools/rovr/assets/index-Bt-UJ01-.css">
+  <title>i have already learned the reporting part in adobe analytics 
+i want to learn adobe launch from scratch | Rovr</title>
+<meta name="description" content="Learning Adobe Launch (Adobe Data Collection / Tags) from Scratch Adobe Launch is now officially called Adobe Tags (part of Adobe Data Collection in Adobe…" />
+<link rel="canonical" href="https://thelearningproject.in/tools/rovr/q/i-have-already-learned-the-reporting-part-in-adobe-analytics-5d13ac" />
+<meta property="og:title" content="i have already learned the reporting part in adobe analytics 
+i want to learn adobe launch from scratch" />
+<meta property="og:description" content="Learning Adobe Launch (Adobe Data Collection / Tags) from Scratch Adobe Launch is now officially called Adobe Tags (part of Adobe Data Collection in Adobe…" />
+<meta property="og:url" content="https://thelearningproject.in/tools/rovr/q/i-have-already-learned-the-reporting-part-in-adobe-analytics-5d13ac" />
+<meta property="og:type" content="article" />
+<meta property="og:image" content="https://thelearningproject.in/tools/rovr/rovrlogo.png" />
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="i have already learned the reporting part in adobe analytics 
+i want to learn adobe launch from scratch" />
+<meta name="twitter:description" content="Learning Adobe Launch (Adobe Data Collection / Tags) from Scratch Adobe Launch is now officially called Adobe Tags (part of Adobe Data Collection in Adobe…" />
+</head>
+  <body>
+    <div id="root"><article><h1>i have already learned the reporting part in adobe analytics 
+i want to learn adobe launch from scratch</h1>
+<h2>Learning Adobe Launch (Adobe Data Collection / Tags) from Scratch</h2>
+<p>Adobe Launch is now officially called <strong>Adobe Tags</strong> (part of <strong>Adobe Data Collection</strong> in Adobe Experience Platform). Here is a structured learning path from scratch:</p>
+<hr>
+<h3>What is Adobe Launch/Tags?</h3>
+<p>Adobe Launch is a <strong>tag management system (TMS)</strong> that allows you to deploy and manage marketing and analytics tags on your website or mobile app — <strong>without hard-coding</strong> every tool directly into your site. It acts as a central hub for:</p>
+<ul>
+<li>Deploying <strong>Adobe Analytics</strong></li>
+<li>Deploying <strong>Adobe Target</strong></li>
+<li>Deploying <strong>Adobe Experience Platform Web SDK</strong></li>
+<li>Deploying <strong>third-party tags</strong> (Google, Meta, etc.)</li>
+</ul>
+<hr>
+<h3>Core Concepts to Understand First</h3>
+<p>Before touching the UI, make sure you understand these building blocks:</p>
+<p>| Concept | Description |</p>
+<p>|---|---|</p>
+<p>| <strong>Properties</strong> | A container for all your tags for a specific website or app |</p>
+<p>| <strong>Extensions</strong> | Pre-built connectors (e.g., Adobe Analytics extension, Core extension) |</p>
+<p>| <strong>Data Elements</strong> | Variables that capture data from your website (e.g., page name, product ID) |</p>
+<p>| <strong>Rules</strong> | Logic that defines WHEN to fire a tag and WHAT to do (Event → Condition → Action) |</p>
+<p>| <strong>Environments</strong> | Development, Staging, and Production — where your library is published |</p>
+<p>| <strong>Libraries</strong> | A bundle of rules, data elements, and extensions that gets published to an environment |</p>
+<hr>
+<h3>Step-by-Step Learning Path</h3>
+<hr>
+<h4>Step 1: Access Adobe Data Collection</h4>
+<p>1. Log in to <strong><a href="https://experience.adobe.com">experience.adobe.com</a></strong></p>
+<p>2. Click on <strong>Data Collection</strong> from the app switcher</p>
+<p>3. You will land on the <strong>Tags</strong> interface (formerly Launch)</p>
+<p>4. Make sure you have the correct <strong>permissions</strong> — ask your admin to grant you access to at least one <strong>Property</strong></p>
+<hr>
+<h4>Step 2: Create Your First Property</h4>
+<p>1. In <strong>Data Collection</strong>, click <strong>Tags</strong> in the left navigation</p>
+<p>2. Click <strong>New Property</strong></p>
+<p>3. Enter a <strong>Name</strong> for your property (e.g., &quot;My Website - Dev&quot;)</p>
+<p>4. Select <strong>Web</strong> as the platform</p>
+<p>5. Enter your <strong>domain</strong> (e.g., `example.com`)</p>
+<p>6. Click <strong>Save</strong></p>
+<p>&gt; A Property is your working container — think of it as your project folder.</p>
+<hr>
+<h4>Step 3: Explore Extensions</h4>
+<p>1. Open your newly created property</p>
+<p>2. Click <strong>Extensions</strong> in the left navigation</p>
+<p>3. You will see the <strong>Core</strong> extension already installed by default</p>
+<p>4. Click <strong>Catalog</strong> to browse available extensions</p>
+<p>5. Install the <strong>Adobe Analytics extension</strong>:</p>
+<ul>
+<li>Click <strong>Install</strong> next to Adobe Analytics</li>
+<li>Enter your <strong>Report Suite ID</strong></li>
+<li>Configure general settings</li>
+<li>Click <strong>Save</strong></li>
+</ul>
+<hr>
+<h4>Step 4: Create Data Elements</h4>
+<p>Data Elements are the <strong>variables</strong> that pull data from your website.</p>
+<p>1. Click <strong>Data Elements</strong> in the left navigation</p>
+<p>2. Click <strong>Create New Data Element</strong></p>
+<p>3. Give it a name (e.g., `Page Name`)</p>
+<p>4. Select <strong>Extension</strong>: Core</p>
+<p>5. Select <strong>Data Element Type</strong>: Page Info → Page Name</p>
+<p>6. Click <strong>Save</strong></p>
+<p>&gt; Common data elements to create: Page Name, Page URL, User ID, Product Name, Form Name</p>
+<hr>
+<h4>Step 5: Create Rules</h4>
+<p>Rules define the <strong>logic</strong> for when and how your tags fire. Every rule has three parts:</p>
+<ul>
+<li><strong>Events</strong> — what triggers the rule (e.g., page load, button click)</li>
+<li><strong>Conditions</strong> — optional filters (e.g., only on homepage)</li>
+<li><strong>Actions</strong> — what happens (e.g., send an Adobe Analytics beacon)</li>
+</ul>
+<p><strong>To create your first rule:</strong></p>
+<p>1. Click <strong>Rules</strong> in the left navigation</p>
+<p>2. Click <strong>Create New Rule</strong></p>
+<p>3. Name your rule (e.g., `Page View - All Pages`)</p>
+<p>4. Under <strong>Events</strong>, click <strong>Add</strong>:</p>
+<ul>
+<li>Extension: <strong>Core</strong></li>
+<li>Event Type: <strong>Page Bottom</strong> (or Window Loaded)</li>
+<li>Click <strong>Keep Changes</strong></li>
+</ul>
+<p>5. Under <strong>Actions</strong>, click <strong>Add</strong>:</p>
+<ul>
+<li>Extension: <strong>Adobe Analytics</strong></li>
+<li>Action Type: <strong>Send Beacon</strong></li>
+<li>Select <strong>s.t()</strong> (page view)</li>
+<li>Click <strong>Keep Changes</strong></li>
+</ul>
+<p>6. Click <strong>Save</strong></p>
+<hr>
+<h4>Step 6: Build and Publish a Library</h4>
+<p>After creating rules and data elements, you need to <strong>bundle and publish</strong> them:</p>
+<p>1. Click <strong>Publishing Flow</strong> in the left navigation</p>
+<p>2. Click <strong>Add Library</strong></p>
+<p>3. Name the library (e.g., `v1.0 Initial Build`)</p>
+<p>4. Select <strong>Development</strong> environment</p>
+<p>5. Click <strong>Add All Changed Resources</strong></p>
+<p>6. Click <strong>Save and Build to Development</strong></p>
+<p>7. Once built, click <strong>Submit for Approval</strong> → <strong>Approve</strong> → <strong>Build and Publish to Production</strong></p>
+<hr>
+<h4>Step 7: Install the Launch Embed Code on Your Website</h4>
+<p>1. Go to <strong>Environments</strong> in the left navigation</p>
+<p>2. Click the <strong>box icon</strong> next to the <strong>Development</strong> environment</p>
+<p>3. Copy the `&lt;script&gt;` tag provided</p>
+<p>4. Paste it in the `&lt;head&gt;` section of your website HTML</p>
+<p>5. Repeat for <strong>Staging</strong> and <strong>Production</strong> environments with their respective embed codes</p>
+<hr>
+<h4>Step 8: Validate Your Implementation</h4>
+<p>Use these tools to verify tags are firing correctly:</p>
+<p>| Tool | Purpose |</p>
+<p>|---|---|</p>
+<p>| <strong>Adobe Experience Platform Debugger</strong> (Chrome Extension) | Inspect what Adobe tags are firing on a page |</p>
+<p>| <strong>Browser Developer Tools (Console/Network tab)</strong> | Check network requests going to Adobe servers |</p>
+<p>| <strong>Launch&#x27;s built-in Debug mode</strong> | Step through rule execution in the browser |</p>
+<p><strong>To use AEP Debugger:</strong></p>
+<p>1. Install the <strong>Adobe Experience Platform Debugger</strong> Chrome extension</p>
+<p>2. Open your website</p>
+<p>3. Click the Debugger extension icon</p>
+<p>4. Navigate to the <strong>Analytics</strong> or <strong>Launch</strong> tab to see what is firing</p>
+<hr>
+<h3>Recommended Learning Order (Summary)</h3>
+<p>| # | Topic | Focus |</p>
+<p>|---|---|---|</p>
+<p>| 1 | Properties | Create and configure your container |</p>
+<p>| 2 | Extensions | Install Adobe Analytics, Core, and others |</p>
+<p>| 3 | Data Elements | Capture page/user/product data |</p>
+<p>| 4 | Rules | Define trigger logic (events, conditions, actions) |</p>
+<p>| 5 | Publishing Flow | Dev → Staging → Production |</p>
+<p>| 6 | Embed Code | Deploy on your website |</p>
+<p>| 7 | Debugging | Validate with AEP Debugger |</p>
+<p>| 8 | Web SDK (Advanced) | Learn the modern implementation method |</p>
+<hr>
+<h3>Next Step After Launch Basics</h3>
+<p>Once you are comfortable with Adobe Tags, the next evolution is learning the <strong>Adobe Experience Platform Web SDK (alloy.js)</strong>, which is the <strong>modern, recommended</strong> way to send data to Adobe Analytics, Adobe Target, and AEP — all through a single tag and a <strong>Datastream</strong>.</p>
+<p>Would you like me to walk you through any specific step in more detail, or move on to <strong>Web SDK implementation</strong>?</p>
+</article>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "i have already learned the reporting part in adobe analytics \ni want to learn adobe launch from scratch", "acceptedAnswer": {"@type": "Answer", "text": "Learning Adobe Launch (Adobe Data Collection / Tags) from Scratch Adobe Launch is now officially called Adobe Tags (part of Adobe Data Collection in Adobe Experience Platform). Here is a structured learning path from scratch: --- What is Adobe Launch/Tags? Adobe Launch is a tag management system (TMS) that allows you to deploy and manage marketing and analytics tags on your website or mobile app \u2014 without hard-coding every tool directly into your site. It acts as a central hub for: - Deploying Adobe Analytics - Deploying Adobe Target - Deploying Adobe Experience Platform Web SDK - Deploying third-party tags (Google, Meta, etc.) --- Core Concepts to Understand First Before touching the UI, make sure you understand these building blocks: | Concept | Description | |---|---| | Properties | A container for all your tags for a specific website or app | | Extensions | Pre-built connectors (e.g., Adobe Analytics extension, Core extension) | | Data Elements | Variables that capture data from your website (e.g., page name, product ID) | | Rules | Logic that defines WHEN to fire a tag and WHAT to do (Event \u2192 Condition \u2192 Action) | | Environments | Development, Staging, and Production \u2014 where your library is published | | Libraries | A bundle of rules, data elements, and extensions that gets published to an environment | --- Step-by-Step Learning Path --- Step 1: Access Adobe Data Collection 1. Log in to experience.adobe.com(https://experience.adobe.com) 2. Click on Data Collection from the app switcher 3. You will land on the Tags interface (formerly Launch) 4. Make sure you have the correct permissions \u2014 ask your admin to grant you access to at least one Property --- Step 2: Create Your First Property 1. In Data Collection, click Tags in the left navigation 2. Click New Property 3. Enter a Name for your property (e.g., \"My Website - Dev\") 4. Select Web as the platform 5. Enter your domain (e.g., example.com) 6. Click Save A Property is your working container \u2014 think of it as\u2026"}}]}</script></div>
+  </body>
+</html>
