@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/png" href="/tools/rovr/rovrlogo.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="build-date" content="2026-06-10" />
+    
+    
+    <script src="https://assets.adobedtm.com/204118644db8/290ae1adb65a/launch-e5ec7bf1a1ef-development.min.js" async></script>
+    <script type="module" crossorigin src="/tools/rovr/assets/index-D5c-fCgB.js"></script>
+    <link rel="stylesheet" crossorigin href="/tools/rovr/assets/index-Bt-UJ01-.css">
+  <title>are all records in first level object array can be made available in edge in AEP | Rovr</title>
+<meta name="description" content="Based on the retrieved context, I can see references to edge profile lookups and array handling in AEP, but the context does not fully address the specific…" />
+<link rel="canonical" href="https://thelearningproject.in/tools/rovr/q/are-all-records-in-first-level-object-array-can-be-made-avai-570fb3" />
+<meta property="og:title" content="are all records in first level object array can be made available in edge in AEP" />
+<meta property="og:description" content="Based on the retrieved context, I can see references to edge profile lookups and array handling in AEP, but the context does not fully address the specific…" />
+<meta property="og:url" content="https://thelearningproject.in/tools/rovr/q/are-all-records-in-first-level-object-array-can-be-made-avai-570fb3" />
+<meta property="og:type" content="article" />
+<meta property="og:image" content="https://thelearningproject.in/tools/rovr/rovrlogo.png" />
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="are all records in first level object array can be made available in edge in AEP" />
+<meta name="twitter:description" content="Based on the retrieved context, I can see references to edge profile lookups and array handling in AEP, but the context does not fully address the specific…" />
+</head>
+  <body>
+    <div id="root"><article><h1>are all records in first level object array can be made available in edge in AEP</h1>
+<p>Based on the retrieved context, I can see references to edge profile lookups and array handling in AEP, but the context does <strong>not fully address</strong> the specific question of whether <strong>all records in a first-level object array can be made available at the Edge Network</strong> in AEP.</p>
+<p>Here&#x27;s what the retrieved context <strong>does cover</strong> related to your question:</p>
+<hr>
+<h3>What the Context Tells Us</h3>
+<h4>Edge Profile Lookup</h4>
+<ul>
+<li>The Edge Network supports <strong>edge profile attribute lookups</strong> via `activation:pull` handle types</li>
+<li>The response includes `attributes` (an array of edge profile attributes) and `segments` (activated audiences) for a given <strong>Custom Personalization</strong> destination connection</li>
+<li>Events are received from the client <strong>as arrays</strong>, and their order is preserved</li>
+</ul>
+<h4>Array Access &amp; Functions Available</h4>
+<p>For array data in AEP (e.g., in destinations/Data Prep), the following are supported:</p>
+<ul>
+<li><strong>Index-based access</strong>: `purchaseTime[0]`, `purchaseTime[1]`, etc. to access individual array elements</li>
+<li><strong>`first()` / `last()`</strong> functions to retrieve first or last elements</li>
+<li><strong>`size_of()`</strong> to get array length</li>
+<li><strong>`coalesce()`</strong>, <strong>`add_to_array()`</strong>, <strong>`join_arrays()`</strong>, <strong>`to_array()`</strong> for array manipulation</li>
+</ul>
+<hr>
+<h3>What&#x27;s Not Covered in This Context</h3>
+<p>The context does <strong>not explicitly answer</strong>:</p>
+<ul>
+<li>Whether <strong>all elements</strong> of a first-level object array within an XDM profile schema are fully materialized and queryable at the <strong>Edge Network</strong></li>
+<li>Any size/record limits on object arrays stored at the edge</li>
+<li>Whether nested object arrays (beyond scalar arrays) are fully supported for edge personalization lookups</li>
+</ul>
+<hr>
+<h3>Clarifying Question</h3>
+<p>Could you provide more detail on your use case? For example:</p>
+<ul>
+<li>Are you trying to use a <strong>profile array attribute</strong> (e.g., a list of purchased products) for <strong>real-time edge personalization</strong> via Web SDK?</li>
+<li>Or are you asking about <strong>exporting</strong> full array contents to a destination?</li>
+</ul>
+<p>This will help me give you a precise answer. The edge profile store does have <strong>storage and attribute limitations</strong> that may affect how deeply nested or large object arrays are handled, but I&#x27;d need the right context to confirm specifics.</p>
+<h2>Sources</h2>
+<ul>
+<li><a href="https://experienceleague.adobe.com/en/docs/experience-platform/data-prep/functions">Data Prep Mapping Functions</a></li>
+</ul></article>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "are all records in first level object array can be made available in edge in AEP", "acceptedAnswer": {"@type": "Answer", "text": "Based on the retrieved context, I can see references to edge profile lookups and array handling in AEP, but the context does not fully address the specific question of whether all records in a first-level object array can be made available at the Edge Network in AEP. Here's what the retrieved context does cover related to your question: --- What the Context Tells Us Edge Profile Lookup - The Edge Network supports edge profile attribute lookups via activation:pull handle types - The response includes attributes (an array of edge profile attributes) and segments (activated audiences) for a given Custom Personalization destination connection - Events are received from the client as arrays, and their order is preserved Array Access & Functions Available For array data in AEP (e.g., in destinations/Data Prep), the following are supported: - Index-based access: purchaseTime0, purchaseTime1, etc. to access individual array elements - first() / last() functions to retrieve first or last elements - sizeof() to get array length - coalesce(), addtoarray(), joinarrays(), toarray() for array manipulation --- What's Not Covered in This Context The context does not explicitly answer: - Whether all elements of a first-level object array within an XDM profile schema are fully materialized and queryable at the Edge Network - Any size/record limits on object arrays stored at the edge - Whether nested object arrays (beyond scalar arrays) are fully supported for edge personalization lookups --- Clarifying Question Could you provide more detail on your use case? For example: - Are you trying to use a profile array attribute (e.g., a list of purchased products) for real-time edge personalization via Web SDK? - Or are you asking about exporting full array contents to a destination? This will help me give you a precise answer. The edge profile store does have storage and attribute limitations that may affect how deeply nested or large object arrays are handled, but I'd need the right\u2026"}}]}</script></div>
+  </body>
+</html>
