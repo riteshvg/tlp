@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/png" href="/tools/rovr/rovrlogo.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="build-date" content="2026-06-10" />
+    
+    
+    <script src="https://assets.adobedtm.com/204118644db8/290ae1adb65a/launch-e5ec7bf1a1ef-development.min.js" async></script>
+    <script type="module" crossorigin src="/tools/rovr/assets/index-D5c-fCgB.js"></script>
+    <link rel="stylesheet" crossorigin href="/tools/rovr/assets/index-Bt-UJ01-.css">
+  <title>can we compare the streaming schema data with batching schema data in a streaming Audience in AEP? | Rovr</title>
+<meta name="description" content="Based on the retrieved documentation context, I can give you a clear and direct answer to this question. --- Comparing Streaming Schema Data with Batch Schema…" />
+<link rel="canonical" href="https://thelearningproject.in/tools/rovr/q/can-we-compare-the-streaming-schema-data-with-batching-schem-1bbebf" />
+<meta property="og:title" content="can we compare the streaming schema data with batching schema data in a streaming Audience in AEP?" />
+<meta property="og:description" content="Based on the retrieved documentation context, I can give you a clear and direct answer to this question. --- Comparing Streaming Schema Data with Batch Schema…" />
+<meta property="og:url" content="https://thelearningproject.in/tools/rovr/q/can-we-compare-the-streaming-schema-data-with-batching-schem-1bbebf" />
+<meta property="og:type" content="article" />
+<meta property="og:image" content="https://thelearningproject.in/tools/rovr/rovrlogo.png" />
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="can we compare the streaming schema data with batching schema data in a streaming Audience in AEP?" />
+<meta name="twitter:description" content="Based on the retrieved documentation context, I can give you a clear and direct answer to this question. --- Comparing Streaming Schema Data with Batch Schema…" />
+</head>
+  <body>
+    <div id="root"><article><h1>can we compare the streaming schema data with batching schema data in a streaming Audience in AEP?</h1>
+<p>Based on the retrieved documentation context, I can give you a clear and direct answer to this question.</p>
+<hr>
+<h3>Comparing Streaming Schema Data with Batch Schema Data in a Streaming Audience</h3>
+<h4>Short Answer: <strong>Not Directly — But It Is Possible via Segment of Segments</strong></h4>
+<hr>
+<h3>What Changed (Important Update)</h3>
+<p>Prior to a recent platform update, you <strong>could</strong> create a streaming audience definition that <strong>combined both batch and streaming data sources</strong> directly.</p>
+<p>However, with the <strong>latest update</strong>:</p>
+<p>&gt; Creating an audience with <strong>both batch and streaming data sources</strong> will now be evaluated using <strong>batch segmentation</strong> — not streaming segmentation.</p>
+<hr>
+<h3>How to Achieve This While Keeping Streaming Evaluation</h3>
+<p>If you need a segment definition evaluated using <strong>streaming or edge segmentation</strong> that combines both data types, you must follow this approach:</p>
+<h4>Step-by-Step Approach: Segment of Segments</h4>
+<p><strong>Prerequisites:</strong></p>
+<ul>
+<li>One audience built on a <strong>Profile schema</strong> (batch source)</li>
+<li>One audience built on an <strong>Experience Event schema</strong> (streaming source)</li>
+<li>The batch ruleset <strong>must</strong> be based on a <strong>profile schema</strong></li>
+</ul>
+<hr>
+<h4>Step 1: Create the Batch Audience (Profile Schema)</h4>
+<p>Build your batch audience separately. For example:</p>
+<p>| Audience | Schema | Source Type | Query Definition |</p>
+<p>|---|---|---|---|</p>
+<p>| California Residents | Profile | Batch | Home address is in the state of California |</p>
+<hr>
+<h4>Step 2: Create the Streaming Audience (Experience Event Schema)</h4>
+<p>Build your streaming audience separately. For example:</p>
+<p>| Audience | Schema | Source Type | Query Definition |</p>
+<p>|---|---|---|---|</p>
+<p>| Recent Checkouts | Experience Event | Streaming | Has at least one checkout in the last 24 hours |</p>
+<hr>
+<h4>Step 3: Combine Using Segment of Segments</h4>
+<p>Create a <strong>third audience</strong> that references both using `inSegment()` logic combined with streaming event rules:</p>
+<p>```</p>
+<p>inSegment(&quot;e3be6d7f-1727-401f-a41e-c296b45f607a&quot;) and</p>
+<p>CHAIN(xEvent, timestamp, [C0: WHAT(eventType.equals(&quot;commerce.checkouts&quot;, false))</p>
+<p>WHEN(&lt;= 24 hours before now)])</p>
+<p>```</p>
+<ul>
+<li>The `inSegment()` call references the <strong>batch audience by its Audience ID</strong></li>
+<li>The `CHAIN` expression handles the <strong>streaming event condition</strong></li>
+<li>The resulting audience <strong>will be evaluated using streaming segmentation</strong> because it leverages batch audience membership by reference rather than directly mixing data sources</li>
+</ul>
+<hr>
+<h3>Key Rules to Remember</h3>
+<p>| Scenario | Evaluation Method |</p>
+<p>|---|---|</p>
+<p>| Streaming data only | Streaming segmentation ✅ |</p>
+<p>| Batch data only | Batch segmentation ✅ |</p>
+<p>| Batch + Streaming combined directly | Forced to <strong>batch segmentation</strong> ⚠️ |</p>
+<p>| Batch audience referenced via `inSegment()` + Streaming event rules | <strong>Streaming segmentation</strong> ✅ |</p>
+<p>| Two event-based audiences combined | Must use `inSegment()` for both — cannot just combine two events directly |</p>
+<hr>
+<h3>Additional Important Note</h3>
+<p>&gt; If you want to combine <strong>two audiences that both contain event data</strong>, you <strong>cannot</strong> simply combine the two events in one rule. You must:</p>
+<p>&gt; 1. Create each as a <strong>separate audience</strong></p>
+<p>&gt; 2. Create a <strong>third audience</strong> that uses `inSegment()` to refer to both</p>
+<hr>
+<h3>Summary</h3>
+<p>You <strong>cannot directly compare</strong> streaming schema data with batch schema data in a single streaming audience rule without losing streaming evaluation. The correct approach is to <strong>separate the concerns into individual audiences</strong> and then <strong>combine them using Segment of Segments</strong> with `inSegment()`, which preserves streaming segmentation evaluation.</p>
+</article>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "can we compare the streaming schema data with batching schema data in a streaming Audience in AEP?", "acceptedAnswer": {"@type": "Answer", "text": "Based on the retrieved documentation context, I can give you a clear and direct answer to this question. --- Comparing Streaming Schema Data with Batch Schema Data in a Streaming Audience Short Answer: Not Directly \u2014 But It Is Possible via Segment of Segments --- What Changed (Important Update) Prior to a recent platform update, you could create a streaming audience definition that combined both batch and streaming data sources directly. However, with the latest update: Creating an audience with both batch and streaming data sources will now be evaluated using batch segmentation \u2014 not streaming segmentation. --- How to Achieve This While Keeping Streaming Evaluation If you need a segment definition evaluated using streaming or edge segmentation that combines both data types, you must follow this approach: Step-by-Step Approach: Segment of Segments Prerequisites: - One audience built on a Profile schema (batch source) - One audience built on an Experience Event schema (streaming source) - The batch ruleset must be based on a profile schema --- Step 1: Create the Batch Audience (Profile Schema) Build your batch audience separately. For example: | Audience | Schema | Source Type | Query Definition | |---|---|---|---| | California Residents | Profile | Batch | Home address is in the state of California | --- Step 2: Create the Streaming Audience (Experience Event Schema) Build your streaming audience separately. For example: | Audience | Schema | Source Type | Query Definition | |---|---|---|---| | Recent Checkouts | Experience Event | Streaming | Has at least one checkout in the last 24 hours | --- Step 3: Combine Using Segment of Segments Create a third audience that references both using inSegment() logic combined with streaming event rules: inSegment(\"e3be6d7f-1727-401f-a41e-c296b45f607a\") and CHAIN(xEvent, timestamp, C0: WHAT(eventType.equals(\"commerce.checkouts\", false)) WHEN(<= 24 hours before now)) - The inSegment() call references the batch audience by its\u2026"}}]}</script></div>
+  </body>
+</html>
