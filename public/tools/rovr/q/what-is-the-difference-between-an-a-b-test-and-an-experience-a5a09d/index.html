@@ -1,0 +1,130 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/png" href="/tools/rovr/rovrlogo.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="build-date" content="2026-06-10" />
+    
+    
+    <script src="https://assets.adobedtm.com/204118644db8/290ae1adb65a/launch-e5ec7bf1a1ef-development.min.js" async></script>
+    <script type="module" crossorigin src="/tools/rovr/assets/index-D5c-fCgB.js"></script>
+    <link rel="stylesheet" crossorigin href="/tools/rovr/assets/index-Bt-UJ01-.css">
+  <title>What is the difference between an A/B test and an Experience Targeting (XT) test in Adobe Target?
+How long do you typically run a Target/Optimization test for, and what factors determine the sample size or duration?
+How many primary and secondary success metrics can you set in Adobe Target goals/settings?
+When do you use Adobe Target versus Adobe Analytics as a reporting source (A4T vs. Target reporting)?
+What is a Multivariate Test (MVT), and in what scenarios would you recommend it over standard A/B testing | Rovr</title>
+<meta name="description" content="Adobe Target: A/B vs. XT, Test Duration, Metrics, Reporting Sources &amp; MVT --- 1. Difference Between A/B Test and Experience Targeting (XT) | Dimension | A/B…" />
+<link rel="canonical" href="https://thelearningproject.in/tools/rovr/q/what-is-the-difference-between-an-a-b-test-and-an-experience-a5a09d" />
+<meta property="og:title" content="What is the difference between an A/B test and an Experience Targeting (XT) test in Adobe Target?
+How long do you typically run a Target/Optimization test for, and what factors determine the sample size or duration?
+How many primary and secondary success metrics can you set in Adobe Target goals/settings?
+When do you use Adobe Target versus Adobe Analytics as a reporting source (A4T vs. Target reporting)?
+What is a Multivariate Test (MVT), and in what scenarios would you recommend it over standard A/B testing" />
+<meta property="og:description" content="Adobe Target: A/B vs. XT, Test Duration, Metrics, Reporting Sources &amp; MVT --- 1. Difference Between A/B Test and Experience Targeting (XT) | Dimension | A/B…" />
+<meta property="og:url" content="https://thelearningproject.in/tools/rovr/q/what-is-the-difference-between-an-a-b-test-and-an-experience-a5a09d" />
+<meta property="og:type" content="article" />
+<meta property="og:image" content="https://thelearningproject.in/tools/rovr/rovrlogo.png" />
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="What is the difference between an A/B test and an Experience Targeting (XT) test in Adobe Target?
+How long do you typically run a Target/Optimization test for, and what factors determine the sample size or duration?
+How many primary and secondary success metrics can you set in Adobe Target goals/settings?
+When do you use Adobe Target versus Adobe Analytics as a reporting source (A4T vs. Target reporting)?
+What is a Multivariate Test (MVT), and in what scenarios would you recommend it over standard A/B testing" />
+<meta name="twitter:description" content="Adobe Target: A/B vs. XT, Test Duration, Metrics, Reporting Sources &amp; MVT --- 1. Difference Between A/B Test and Experience Targeting (XT) | Dimension | A/B…" />
+</head>
+  <body>
+    <div id="root"><article><h1>What is the difference between an A/B test and an Experience Targeting (XT) test in Adobe Target?
+How long do you typically run a Target/Optimization test for, and what factors determine the sample size or duration?
+How many primary and secondary success metrics can you set in Adobe Target goals/settings?
+When do you use Adobe Target versus Adobe Analytics as a reporting source (A4T vs. Target reporting)?
+What is a Multivariate Test (MVT), and in what scenarios would you recommend it over standard A/B testing</h1>
+<h2>Adobe Target: A/B vs. XT, Test Duration, Metrics, Reporting Sources &amp; MVT</h2>
+<hr>
+<h3>1. Difference Between A/B Test and Experience Targeting (XT)</h3>
+<p>| Dimension | A/B Test | Experience Targeting (XT) |</p>
+<p>|---|---|---|</p>
+<p>| <strong>Assignment method</strong> | Random traffic allocation across experiences | Deterministic — rule-based audience matching |</p>
+<p>| <strong>Purpose</strong> | Discover which experience performs best through statistical testing | Deliver specific experiences to specific audiences based on known criteria |</p>
+<p>| <strong>Traffic control</strong> | You control the percentage split (e.g., 50/50) across experiences | You <strong>cannot</strong> control the percentage split of an experience across multiple audiences |</p>
+<p>| <strong>Typical use case</strong> | When you want to learn what resonates most with your broad audience | When you already know a segment responds better to a specific experience and want to act on that insight |</p>
+<p>| <strong>Relationship</strong> | Often the starting point | XT is commonly a <strong>next step after A/B testing</strong> |</p>
+<h4>The Natural Progression</h4>
+<p>A marketer typically runs an A/B test first. If reporting audiences reveal that a specific segment converts significantly better with a challenger experience (e.g., 4x more), <strong>Experience Targeting</strong> lets the marketer lock in that experience for that segment long-term — switching from learning to action.</p>
+<p>&gt; XT is a first step into personalization; A/B is the discovery engine that feeds it.</p>
+<hr>
+<h3>2. Test Duration &amp; Sample Size</h3>
+<h4>Key Principle</h4>
+<p>It is tempting to stop an activity early when one offer appears to perform better, but when the number of observations is low, positive or negative lift is likely observed <strong>by chance</strong> — conversion rates only converge toward their true values with sufficient data.</p>
+<p>&gt; Stopping an activity prematurely is one of the <strong>ten significant pitfalls</strong> of A/B testing.</p>
+<h4>Factors That Determine Duration &amp; Sample Size</h4>
+<ul>
+<li><strong>Desired conversion rate lift</strong> — Smaller expected lifts require larger sample sizes</li>
+<li><strong>Baseline conversion rate</strong> — Lower baseline rates require more visitors</li>
+<li><strong>Traffic volume</strong> — Higher site traffic shortens the calendar duration needed</li>
+<li><strong>Statistical confidence threshold</strong> — Higher confidence requirements (e.g., 99% vs. 95%) demand more data</li>
+<li><strong>Number of experiences/variations</strong> — More variations require more traffic to reach significance</li>
+</ul>
+<h4>Adobe Target Tools to Help</h4>
+<ul>
+<li><strong>Sample Size Calculator</strong> — Built into Target to help estimate required visitors</li>
+<li><strong>Auto-Allocate</strong> — Automatically shifts traffic toward the winning experience as data accumulates, reducing the risk of running a test too long on a losing experience</li>
+</ul>
+<hr>
+<h3>3. Primary and Secondary Success Metrics</h3>
+<p>The <strong>Goals &amp; Settings</strong> page (available in both A/B and XT activities) is where you define success metrics. The available settings include:</p>
+<ul>
+<li><strong>Primary Goal metric</strong> — The single main success metric that determines the winner (e.g., conversion, revenue, engagement)</li>
+<li><strong>Additional Metrics</strong> — You can define multiple secondary/additional metrics beyond the primary goal to track supplementary outcomes</li>
+<li><strong>Dependent Success Metrics</strong> — You can configure advanced settings specifying which success metric must be reached <em>before</em> incrementing another metric</li>
+</ul>
+<p>The retrieved documentation confirms the Goals &amp; Settings page includes:</p>
+<ul>
+<li>`Activity Settings`</li>
+<li>`Reporting Settings` (including goal metrics, success metrics, dependent success metrics)</li>
+<li>`Other Metadata`</li>
+</ul>
+<p>&gt; The exact numeric limit on additional metrics is not specified in the retrieved documentation — the docs confirm multiple additional metrics are supported but do not state a hard cap.</p>
+<hr>
+<h3>4. Adobe Target Reporting vs. Analytics as Reporting Source (A4T)</h3>
+<p>The <strong>Goals &amp; Settings</strong> page explicitly notes: <em>&quot;The available settings depend on whether you use Target or Analytics as the reporting source.&quot;</em></p>
+<p>| Consideration | Target Reporting | Analytics for Target (A4T) |</p>
+<p>|---|---|---|</p>
+<p>| <strong>Data source</strong> | Target&#x27;s own data collection | Adobe Analytics data |</p>
+<p>| <strong>When to use</strong> | Simpler setups; when Analytics is not deployed or integrated | When your organization uses Adobe Analytics and wants unified reporting across channels |</p>
+<p>| <strong>Benefit of A4T</strong> | Leverage full Analytics segmentation, breakdowns, and dimensions in Target reporting | Consistent metrics across your Analytics and Target workflows |</p>
+<p>| <strong>Metric alignment</strong> | Target-native metrics | Analytics-defined metrics and segments |</p>
+<p>Both options are supported in A/B Test and Experience Targeting (XT) activity goals and settings configuration.</p>
+<hr>
+<h3>5. Multivariate Testing (MVT) vs. Standard A/B Testing</h3>
+<h4>What is MVT?</h4>
+<p><strong>Multivariate Testing (MVT)</strong> compares <strong>all possible combinations of variations of elements</strong> on a page simultaneously — for example:</p>
+<ul>
+<li>3 different background images</li>
+<li>2 variations of copy</li>
+<li>2 different button colors</li>
+</ul>
+<p>This yields up to <strong>3 × 2 × 2 = 12 combinations</strong> tested at once. MVT determines:</p>
+<p>1. Which <strong>combination</strong> performs best for a specific audience</p>
+<p>2. Which <strong>individual element</strong> most impacts activity success</p>
+<h4>When to Recommend MVT Over A/B</h4>
+<p>| Scenario | Recommendation |</p>
+<p>|---|---|</p>
+<p>| You want to test <strong>one or two full experience variations</strong> | <strong>A/B Test</strong> |</p>
+<p>| You want to understand <strong>which page element</strong> (image, copy, CTA) drives the most lift | <strong>MVT</strong> |</p>
+<p>| You have <strong>high traffic volume</strong> and need statistically significant results across many combinations | <strong>MVT</strong> |</p>
+<p>| You want to optimize a <strong>complex page</strong> with multiple components simultaneously | <strong>MVT</strong> |</p>
+<p>| Traffic is limited and you need results quickly | <strong>A/B Test</strong> (MVT requires significant traffic to test all combinations) |</p>
+<h4>Important MVT Constraint</h4>
+<p>The documentation notes a practical limitation: MVT is <strong>not feasible</strong> for testing more than <strong>25 combinations</strong> in a reasonable amount of time due to the traffic requirements needed to reach statistical significance across all combinations.</p>
+<h4>Summary Recommendation</h4>
+<ul>
+<li>Use <strong>A/B</strong> when you have a clear hypothesis about two or more full experiences</li>
+<li>Use <strong>XT</strong> when you&#x27;ve already learned what works for a segment and want to deliver it consistently</li>
+<li>Use <strong>MVT</strong> when you need to isolate which specific page <em>element</em> drives performance and have sufficient traffic to support the combinatorial testing load</li>
+</ul>
+</article>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "What is the difference between an A/B test and an Experience Targeting (XT) test in Adobe Target?\nHow long do you typically run a Target/Optimization test for, and what factors determine the sample size or duration?\nHow many primary and secondary success metrics can you set in Adobe Target goals/settings?\nWhen do you use Adobe Target versus Adobe Analytics as a reporting source (A4T vs. Target reporting)?\nWhat is a Multivariate Test (MVT), and in what scenarios would you recommend it over standard A/B testing", "acceptedAnswer": {"@type": "Answer", "text": "Adobe Target: A/B vs. XT, Test Duration, Metrics, Reporting Sources & MVT --- 1. Difference Between A/B Test and Experience Targeting (XT) | Dimension | A/B Test | Experience Targeting (XT) | |---|---|---| | Assignment method | Random traffic allocation across experiences | Deterministic \u2014 rule-based audience matching | | Purpose | Discover which experience performs best through statistical testing | Deliver specific experiences to specific audiences based on known criteria | | Traffic control | You control the percentage split (e.g., 50/50) across experiences | You cannot control the percentage split of an experience across multiple audiences | | Typical use case | When you want to learn what resonates most with your broad audience | When you already know a segment responds better to a specific experience and want to act on that insight | | Relationship | Often the starting point | XT is commonly a next step after A/B testing | The Natural Progression A marketer typically runs an A/B test first. If reporting audiences reveal that a specific segment converts significantly better with a challenger experience (e.g., 4x more), Experience Targeting lets the marketer lock in that experience for that segment long-term \u2014 switching from learning to action. XT is a first step into personalization; A/B is the discovery engine that feeds it. --- 2. Test Duration & Sample Size Key Principle It is tempting to stop an activity early when one offer appears to perform better, but when the number of observations is low, positive or negative lift is likely observed by chance \u2014 conversion rates only converge toward their true values with sufficient data. Stopping an activity prematurely is one of the ten significant pitfalls of A/B testing. Factors That Determine Duration & Sample Size - Desired conversion rate lift \u2014 Smaller expected lifts require larger sample sizes - Baseline conversion rate \u2014 Lower baseline rates require more visitors - Traffic volume \u2014 Higher site traffic\u2026"}}]}</script></div>
+  </body>
+</html>
