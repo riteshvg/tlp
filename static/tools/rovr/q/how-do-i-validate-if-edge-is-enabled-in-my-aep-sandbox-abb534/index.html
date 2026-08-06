@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/png" href="/tools/rovr/rovrlogo.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="build-date" content="2026-06-10" />
+    
+    
+    <script src="https://assets.adobedtm.com/204118644db8/290ae1adb65a/launch-e5ec7bf1a1ef-development.min.js" async></script>
+    <script type="module" crossorigin src="/tools/rovr/assets/index-D5c-fCgB.js"></script>
+    <link rel="stylesheet" crossorigin href="/tools/rovr/assets/index-Bt-UJ01-.css">
+  <title>How do i validate if Edge is enabled in my AEP sandbox | Rovr</title>
+<meta name="description" content="Based on the retrieved documentation context available to me, I don&#x27;t have specific step-by-step documentation on a dedicated &quot;Edge enablement validation&quot;…" />
+<link rel="canonical" href="https://thelearningproject.in/tools/rovr/q/how-do-i-validate-if-edge-is-enabled-in-my-aep-sandbox-abb534" />
+<meta property="og:title" content="How do i validate if Edge is enabled in my AEP sandbox" />
+<meta property="og:description" content="Based on the retrieved documentation context available to me, I don&#x27;t have specific step-by-step documentation on a dedicated &quot;Edge enablement validation&quot;…" />
+<meta property="og:url" content="https://thelearningproject.in/tools/rovr/q/how-do-i-validate-if-edge-is-enabled-in-my-aep-sandbox-abb534" />
+<meta property="og:type" content="article" />
+<meta property="og:image" content="https://thelearningproject.in/tools/rovr/rovrlogo.png" />
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="How do i validate if Edge is enabled in my AEP sandbox" />
+<meta name="twitter:description" content="Based on the retrieved documentation context available to me, I don&#x27;t have specific step-by-step documentation on a dedicated &quot;Edge enablement validation&quot;…" />
+</head>
+  <body>
+    <div id="root"><article><h1>How do i validate if Edge is enabled in my AEP sandbox</h1>
+<p>Based on the retrieved documentation context available to me, I don&#x27;t have specific step-by-step documentation on a dedicated &quot;Edge enablement validation&quot; feature within AEP sandbox settings.</p>
+<p>However, based on my knowledge of the Adobe Experience Platform and Data Collection ecosystem, here are the key areas where you can validate Edge is enabled and functioning in your AEP sandbox:</p>
+<hr>
+<h3>1. Validate via Datastream Configuration</h3>
+<p><strong>Prerequisites:</strong> Access to Adobe Experience Platform Data Collection UI</p>
+<p>1. Navigate to <strong>Adobe Experience Platform Data Collection</strong> → <strong>Datastreams</strong></p>
+<p>2. Select your <strong>Datastream</strong> tied to your sandbox</p>
+<p>3. Confirm the following services are <strong>enabled</strong>:</p>
+<ul>
+<li><strong>Adobe Experience Platform</strong> service is toggled <strong>ON</strong></li>
+<li><strong>Edge Segmentation</strong> toggle is <strong>enabled</strong></li>
+<li><strong>Personalization Destinations</strong> (if applicable) are configured</li>
+</ul>
+<p>4. Confirm the correct <strong>sandbox</strong> is mapped to the Datastream</p>
+<hr>
+<h3>2. Validate Edge Segmentation is Enabled on Segment Definitions</h3>
+<p>1. Navigate to <strong>AEP</strong> → <strong>Segmentation</strong> → <strong>Segments</strong></p>
+<p>2. Open a specific segment definition</p>
+<p>3. Under <strong>Evaluation Methods</strong>, check if <strong>Edge Segmentation</strong> is listed as enabled</p>
+<p>4. In the API response, look for:</p>
+<p>```json</p>
+<p>&quot;evaluationInfo&quot;: {</p>
+<p>&quot;synchronous&quot;: {</p>
+<p>&quot;enabled&quot;: true</p>
+<p>}</p>
+<p>}</p>
+<p>```</p>
+<p>This confirms <strong>edge (synchronous) evaluation</strong> is active for that segment.</p>
+<hr>
+<h3>3. Validate via Adobe Experience Platform Debugger</h3>
+<p>1. Install the <strong>Adobe Experience Platform Debugger</strong> Chrome extension</p>
+<p>2. Navigate to your website or property</p>
+<p>3. Open the Debugger and check:</p>
+<ul>
+<li><strong>Edge Network requests</strong> are firing to `edge.adobedc.net`</li>
+<li><strong>Datastream ID</strong> is correctly referenced in the request</li>
+<li><strong>Identity stitching</strong> (ECID) is present in the Edge request payload</li>
+</ul>
+<p>4. Under the <strong>AEP</strong> section of the debugger, confirm:</p>
+<ul>
+<li>Responses include <strong>handle payloads</strong> (e.g., `identity:result`, `personalization:decisions`)</li>
+</ul>
+<hr>
+<h3>4. Validate Edge Profile via API</h3>
+<p>You can query the Edge Profile directly using the <strong>AEP Profile Lookup API</strong>:</p>
+<p>```http</p>
+<p>GET /entities?schema.name=_xdm.context.profile&amp;entityId={ECID}&amp;entityIdNS=ECID</p>
+<p>```</p>
+<ul>
+<li>A successful response with profile attributes confirms the profile is being <strong>projected to Edge</strong></li>
+<li>If no Edge profile exists, the profile may not yet be projected or the Datastream may not be correctly configured</li>
+</ul>
+<hr>
+<h3>5. Validate Merge Policy for Edge</h3>
+<p>1. Navigate to <strong>AEP</strong> → <strong>Profiles</strong> → <strong>Merge Policies</strong></p>
+<p>2. Confirm the <strong>Active-On-Edge Merge Policy</strong> is set and enabled for your sandbox</p>
+<p>3. The active-on-edge merge policy determines <strong>which profile attributes are projected to Edge</strong></p>
+<hr>
+<h3>Summary Checklist</h3>
+<p>| Validation Area | What to Check |</p>
+<p>|---|---|</p>
+<p>| Datastream | AEP service enabled, correct sandbox mapped |</p>
+<p>| Segment Definitions | Edge segmentation toggle enabled |</p>
+<p>| AEP Debugger | Edge Network requests firing, handle payloads returned |</p>
+<p>| Profile API | Edge profile attributes returned on lookup |</p>
+<p>| Merge Policy | Active-on-Edge merge policy configured |</p>
+<p>If any of these checks fail, that would indicate Edge is either not fully configured or not enabled for your specific sandbox. I&#x27;d recommend verifying each area systematically.</p>
+<h2>Sources</h2>
+<ul>
+<li><a href="https://experienceleague.adobe.com/en/docs/experience-platform/segmentation/api/segment-definitions">Segment Definitions API Endpoint</a></li>
+</ul></article>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "How do i validate if Edge is enabled in my AEP sandbox", "acceptedAnswer": {"@type": "Answer", "text": "Based on the retrieved documentation context available to me, I don't have specific step-by-step documentation on a dedicated \"Edge enablement validation\" feature within AEP sandbox settings. However, based on my knowledge of the Adobe Experience Platform and Data Collection ecosystem, here are the key areas where you can validate Edge is enabled and functioning in your AEP sandbox: --- 1. Validate via Datastream Configuration Prerequisites: Access to Adobe Experience Platform Data Collection UI 1. Navigate to Adobe Experience Platform Data Collection \u2192 Datastreams 2. Select your Datastream tied to your sandbox 3. Confirm the following services are enabled: - Adobe Experience Platform service is toggled ON - Edge Segmentation toggle is enabled - Personalization Destinations (if applicable) are configured 4. Confirm the correct sandbox is mapped to the Datastream --- 2. Validate Edge Segmentation is Enabled on Segment Definitions 1. Navigate to AEP \u2192 Segmentation \u2192 Segments 2. Open a specific segment definition 3. Under Evaluation Methods, check if Edge Segmentation is listed as enabled 4. In the API response, look for: json \"evaluationInfo\": { \"synchronous\": { \"enabled\": true } } This confirms edge (synchronous) evaluation is active for that segment. --- 3. Validate via Adobe Experience Platform Debugger 1. Install the Adobe Experience Platform Debugger Chrome extension 2. Navigate to your website or property 3. Open the Debugger and check: - Edge Network requests are firing to edge.adobedc.net - Datastream ID is correctly referenced in the request - Identity stitching (ECID) is present in the Edge request payload 4. Under the AEP section of the debugger, confirm: - Responses include handle payloads (e.g., identity:result, personalization:decisions) --- 4. Validate Edge Profile via API You can query the Edge Profile directly using the AEP Profile Lookup API: http GET /entities?schema.name=xdm.context.profile&entityId={ECID}&entityIdNS=ECID - A successful response\u2026"}}]}</script></div>
+  </body>
+</html>
