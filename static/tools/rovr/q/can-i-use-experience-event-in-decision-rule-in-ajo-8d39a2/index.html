@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/png" href="/tools/rovr/rovrlogo.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="build-date" content="2026-06-10" />
+    
+    
+    <script src="https://assets.adobedtm.com/204118644db8/290ae1adb65a/launch-e5ec7bf1a1ef-development.min.js" async></script>
+    <script type="module" crossorigin src="/tools/rovr/assets/index-D5c-fCgB.js"></script>
+    <link rel="stylesheet" crossorigin href="/tools/rovr/assets/index-Bt-UJ01-.css">
+  <title>Can I use experience event in decision rule in ajo | Rovr</title>
+<meta name="description" content="Using Experience Events in Decision Rules in AJO Based on the retrieved documentation, event-based offers are currently not supported in Adobe Journey…" />
+<link rel="canonical" href="https://thelearningproject.in/tools/rovr/q/can-i-use-experience-event-in-decision-rule-in-ajo-8d39a2" />
+<meta property="og:title" content="Can I use experience event in decision rule in ajo" />
+<meta property="og:description" content="Using Experience Events in Decision Rules in AJO Based on the retrieved documentation, event-based offers are currently not supported in Adobe Journey…" />
+<meta property="og:url" content="https://thelearningproject.in/tools/rovr/q/can-i-use-experience-event-in-decision-rule-in-ajo-8d39a2" />
+<meta property="og:type" content="article" />
+<meta property="og:image" content="https://thelearningproject.in/tools/rovr/rovrlogo.png" />
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="Can I use experience event in decision rule in ajo" />
+<meta name="twitter:description" content="Using Experience Events in Decision Rules in AJO Based on the retrieved documentation, event-based offers are currently not supported in Adobe Journey…" />
+</head>
+  <body>
+    <div id="root"><article><h1>Can I use experience event in decision rule in ajo</h1>
+<h3>Using Experience Events in Decision Rules in AJO</h3>
+<p>Based on the retrieved documentation, <strong>event-based offers are currently not supported in Adobe Journey Optimizer&#x27;s Decision Management (Offer Management)</strong>.</p>
+<p>&gt; ⚠️ <strong>Important Limitation:</strong></p>
+<p>&gt; If you create a decision rule based on an <a href="https://experienceleague.adobe.com/docs/experience-platform/segmentation/ui/segment-builder.html#events">event</a>, you will <strong>not</strong> be able to leverage it in an offer within Journey Optimizer&#x27;s legacy Decision Management capability.</p>
+<hr>
+<h3>What You Can Use Instead</h3>
+<p>While direct experience event-based decision rules are not supported in offers, you have alternative approaches:</p>
+<h4>1. <strong>Audiences (Segments)</strong></h4>
+<ul>
+<li>Build an Adobe Experience Platform audience that incorporates experience event logic (e.g., &quot;customers who viewed product X in the last 7 days&quot;) using the Segment Builder</li>
+<li>Apply that <strong>audience</strong> as an eligibility constraint on your offer</li>
+<li>Note: The audience is computed periodically and may not always reflect the absolute latest state at decision time</li>
+</ul>
+<h4>2. <strong>Computed Attributes</strong></h4>
+<ul>
+<li>Use <strong>computed attributes</strong> — profile-level attributes derived from aggregating experience event data over time (e.g., &quot;total purchases in last 30 days&quot;)</li>
+<li>These are stored at the profile level and can be referenced in decision rules since they are profile attributes, not raw events</li>
+</ul>
+<h4>3. <strong>Decision Rules with Dataset Lookup (Experience Decisioning)</strong></h4>
+<ul>
+<li>In the newer <strong>Experience Decisioning</strong> capability (available via code-based experience and email channels), you can use <strong>Adobe Experience Platform dataset attributes</strong> in decision rules</li>
+<li>This allows dynamic, external data to drive eligibility criteria</li>
+</ul>
+<hr>
+<h3>Key Distinction: Audiences vs. Decision Rules</h3>
+<p>| | Audiences | Decision Rules |</p>
+<p>|---|---|---|</p>
+<p>| Based on | Profile attributes + experience events | Profile attributes (no raw events) |</p>
+<p>| Evaluated | Periodically (batch) | Every time a decision is made (real-time) |</p>
+<p>| Use in offers | ✅ Supported | ⚠️ Events not supported |</p>
+<hr>
+<h3>Recommendation</h3>
+<p>If your use case requires experience event logic (e.g., &quot;user clicked X today&quot;), consider:</p>
+<p>1. Building an <strong>AEP audience</strong> with that event logic and using it as the offer eligibility constraint</p>
+<p>2. Using <strong>computed attributes</strong> that summarize the event behavior into a profile attribute</p>
+<p>3. Exploring <strong>Experience Decisioning</strong> (the newer capability) for more advanced rule configurations</p>
+</article>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Can I use experience event in decision rule in ajo", "acceptedAnswer": {"@type": "Answer", "text": "Using Experience Events in Decision Rules in AJO Based on the retrieved documentation, event-based offers are currently not supported in Adobe Journey Optimizer's Decision Management (Offer Management). \u26a0\ufe0f Important Limitation: If you create a decision rule based on an event(https://experienceleague.adobe.com/docs/experience-platform/segmentation/ui/segment-builder.htmlevents), you will not be able to leverage it in an offer within Journey Optimizer's legacy Decision Management capability. --- What You Can Use Instead While direct experience event-based decision rules are not supported in offers, you have alternative approaches: 1. Audiences (Segments) - Build an Adobe Experience Platform audience that incorporates experience event logic (e.g., \"customers who viewed product X in the last 7 days\") using the Segment Builder - Apply that audience as an eligibility constraint on your offer - Note: The audience is computed periodically and may not always reflect the absolute latest state at decision time 2. Computed Attributes - Use computed attributes \u2014 profile-level attributes derived from aggregating experience event data over time (e.g., \"total purchases in last 30 days\") - These are stored at the profile level and can be referenced in decision rules since they are profile attributes, not raw events 3. Decision Rules with Dataset Lookup (Experience Decisioning) - In the newer Experience Decisioning capability (available via code-based experience and email channels), you can use Adobe Experience Platform dataset attributes in decision rules - This allows dynamic, external data to drive eligibility criteria --- Key Distinction: Audiences vs. Decision Rules | | Audiences | Decision Rules | |---|---|---| | Based on | Profile attributes + experience events | Profile attributes (no raw events) | | Evaluated | Periodically (batch) | Every time a decision is made (real-time) | | Use in offers | \u2705 Supported | \u26a0\ufe0f Events not supported | --- Recommendation If your use case\u2026"}}]}</script></div>
+  </body>
+</html>
