@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/png" href="/tools/rovr/rovrlogo.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="build-date" content="2026-06-10" />
+    
+    
+    <script src="https://assets.adobedtm.com/204118644db8/290ae1adb65a/launch-e5ec7bf1a1ef-development.min.js" async></script>
+    <script type="module" crossorigin src="/tools/rovr/assets/index-D5c-fCgB.js"></script>
+    <link rel="stylesheet" crossorigin href="/tools/rovr/assets/index-Bt-UJ01-.css">
+  <title>edge profile in AEP. how to validate , how to ingest, limitaions | Rovr</title>
+<meta name="description" content="Edge Profiles in Adobe Experience Platform What Are Edge Profiles? Edge profiles are lightweight profiles distributed throughout the Edge Network that serve…" />
+<link rel="canonical" href="https://thelearningproject.in/tools/rovr/q/edge-profile-in-aep-how-to-validate-how-to-ingest-limitaions-6b6f5a" />
+<meta property="og:title" content="edge profile in AEP. how to validate , how to ingest, limitaions" />
+<meta property="og:description" content="Edge Profiles in Adobe Experience Platform What Are Edge Profiles? Edge profiles are lightweight profiles distributed throughout the Edge Network that serve…" />
+<meta property="og:url" content="https://thelearningproject.in/tools/rovr/q/edge-profile-in-aep-how-to-validate-how-to-ingest-limitaions-6b6f5a" />
+<meta property="og:type" content="article" />
+<meta property="og:image" content="https://thelearningproject.in/tools/rovr/rovrlogo.png" />
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="edge profile in AEP. how to validate , how to ingest, limitaions" />
+<meta name="twitter:description" content="Edge Profiles in Adobe Experience Platform What Are Edge Profiles? Edge profiles are lightweight profiles distributed throughout the Edge Network that serve…" />
+</head>
+  <body>
+    <div id="root"><article><h1>edge profile in AEP. how to validate , how to ingest, limitaions</h1>
+<h2>Edge Profiles in Adobe Experience Platform</h2>
+<h3>What Are Edge Profiles?</h3>
+<p>Edge profiles are <strong>lightweight profiles</strong> distributed throughout the Edge Network that serve as the preferred option for real-time, time-sensitive use cases. While <strong>Real-Time Customer Profile</strong> is the single source of truth for all profile data (sitting in a central hub), edge profiles enable fast, real-time personalization use cases.</p>
+<p>Adobe applications like <strong>Adobe Target</strong>, <strong>Custom Personalization Destination</strong>, and <strong>Adobe Campaign</strong> use edges to provide personalized customer experiences in real-time.</p>
+<hr>
+<h3>How Data is Routed to the Edge</h3>
+<ul>
+<li>Data is routed to an edge by a <strong>projection</strong></li>
+<li>A <strong>projection destination</strong> defines which edge the data will be sent to</li>
+<li>You need an <strong>Active-On-Edge merge policy</strong> to ensure edge profiles use the correct profile data</li>
+</ul>
+<hr>
+<h3>Key Use Cases</h3>
+<ul>
+<li><strong>Real-Time Personalization</strong>: Quickly retrieve profile information from the edge profile to personalize a user&#x27;s experience on your website</li>
+<li><strong>Customer Support</strong>: Retrieve profile information in real-time when a customer calls a support center agent</li>
+</ul>
+<hr>
+<h3>How to Ingest Data into Edge Profiles</h3>
+<h4>Prerequisites / Components Required</h4>
+<p>| Component | Purpose |</p>
+<p>|---|---|</p>
+<p>| <strong>Datastreams</strong> | Receives incoming event data from Web SDK and responds with edge profile data |</p>
+<p>| <strong>Merge Policies</strong> | Create an <strong>Active-On-Edge</strong> merge policy to ensure correct profile data is used |</p>
+<p>| <strong>Custom Personalization Connection</strong> | Sends profile attributes to the Edge Network |</p>
+<p>| <strong>Edge Network API</strong> | Used for real-time retrieval of profile attributes via interactive data collection |</p>
+<h4>Ingestion Steps</h4>
+<p>1. Configure a <strong>Datastream</strong> to receive Web SDK event data</p>
+<p>2. Set up an <strong>Active-On-Edge merge policy</strong> in the segmentation UI</p>
+<p>3. Configure a <strong>Custom Personalization connection</strong> to send profile attributes to the Edge Network</p>
+<p>4. Use the <strong>Edge Network API</strong> interactive data collection endpoint to retrieve or push profile attributes in real-time</p>
+<hr>
+<h3>Audience Manager Data Latency to Edge (Reference)</h3>
+<p>If ingesting from <strong>Audience Manager</strong>, be aware of the following latency windows:</p>
+<p>| Data Type | Type | Latency |</p>
+<p>|---|---|---|</p>
+<p>| Real-time data | Events | <strong>&lt; 25 minutes</strong> (from Audience Manager Edge node to data lake) |</p>
+<p>| Real-time data | Profile updates | <strong>&lt; 10 minutes</strong> (to land in Real-Time Customer Profile) |</p>
+<p>| Real-time + onboarded data | Profile updates | <strong>24 to 36 hours</strong> (from DCS/PCS Edge + onboarded data to appearing in Real-Time Customer Profile) |</p>
+<p>&gt; <strong>Note:</strong> The 24–36 hour path for real-time + onboarded data does <strong>not</strong> land in the data lake directly. A <strong>Profile toggle</strong> can be enabled on Audience Manager Profile datasets to ingest this data directly into Real-Time Customer Profile.</p>
+<hr>
+<h3>How to Validate Edge Profiles</h3>
+<h4>Using Adobe Experience Platform Assurance — Edge Delivery View</h4>
+<p>The <strong>Edge Delivery</strong> view inside <strong>Adobe Experience Platform Assurance</strong> allows you to:</p>
+<ul>
+<li><strong>Inspect and validate AJO Inbound</strong> edge delivery of messages to your web and mobile apps</li>
+<li><strong>Troubleshoot</strong> the delivery of AJO Inbound web and mobile campaigns and journeys</li>
+</ul>
+<p><img src="https://raw.githubusercontent.com/AdobeDocs/experience-platform.en/main/help/assurance/views/images/edge-delivery/add-plugin.png" alt="Edge Delivery - Add Plugin"></p>
+<p><img src="https://raw.githubusercontent.com/AdobeDocs/experience-platform.en/main/help/assurance/views/images/edge-delivery/ajo-plugins.png" alt="AJO Plugins in Assurance"></p>
+<h4>Validation Steps</h4>
+<p>1. Open <strong>Adobe Experience Platform Assurance</strong></p>
+<p>2. Navigate to the <strong>Edge Delivery</strong> view</p>
+<p>3. Connect your web or mobile session</p>
+<p>4. Inspect the edge delivery events to confirm profile data is being correctly projected and served at the edge</p>
+<hr>
+<h3>Edge Segmentation (Related Capability)</h3>
+<p><strong>Edge segmentation</strong> allows you to evaluate audiences <strong>instantaneously on the edge</strong>, enabling:</p>
+<ul>
+<li><strong>Same-page personalization</strong></li>
+<li><strong>Next-page personalization</strong></li>
+</ul>
+<p>This works in conjunction with edge profiles to deliver real-time audience membership decisions without round-tripping to the central hub.</p>
+<hr>
+<h3>Limitations</h3>
+<p>Based on the retrieved documentation, the following limitations are noted:</p>
+<p>1. <strong>Audience Manager onboarded data</strong> (24–36 hr path) does <strong>not</strong> land in the data lake directly — it only goes to Real-Time Customer Profile unless the Profile toggle is explicitly enabled</p>
+<p>2. <strong>Edge profiles are lightweight</strong> — they are not a full replacement for the comprehensive Real-Time Customer Profile hub; they are optimized for speed, not completeness</p>
+<p>3. Edge profiles rely on correct <strong>merge policy configuration</strong> (Active-On-Edge) — incorrect merge policy setup will result in wrong data being served</p>
+<p>4. <strong>Projection destinations</strong> must be properly configured to route data to the correct edge region</p>
+<p>&gt; ⚠️ The retrieved documentation does not cover all exhaustive guardrails and limits (such as attribute count limits, storage size, or TTL on edge). For complete performance guardrails, refer to the <strong>Performance guardrails</strong> section of the Edge Profile documentation on Adobe Experience League.</p>
+<h2>Sources</h2>
+<ul>
+<li><a href="https://experienceleague.adobe.com/en/docs/experience-platform/sources/connectors/adobe-applications/audience-manager">Audience Manager Source Overview</a></li>
+</ul></article>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "edge profile in AEP. how to validate , how to ingest, limitaions", "acceptedAnswer": {"@type": "Answer", "text": "Edge Profiles in Adobe Experience Platform What Are Edge Profiles? Edge profiles are lightweight profiles distributed throughout the Edge Network that serve as the preferred option for real-time, time-sensitive use cases. While Real-Time Customer Profile is the single source of truth for all profile data (sitting in a central hub), edge profiles enable fast, real-time personalization use cases. Adobe applications like Adobe Target, Custom Personalization Destination, and Adobe Campaign use edges to provide personalized customer experiences in real-time. --- How Data is Routed to the Edge - Data is routed to an edge by a projection - A projection destination defines which edge the data will be sent to - You need an Active-On-Edge merge policy to ensure edge profiles use the correct profile data --- Key Use Cases - Real-Time Personalization: Quickly retrieve profile information from the edge profile to personalize a user's experience on your website - Customer Support: Retrieve profile information in real-time when a customer calls a support center agent --- How to Ingest Data into Edge Profiles Prerequisites / Components Required | Component | Purpose | |---|---| | Datastreams | Receives incoming event data from Web SDK and responds with edge profile data | | Merge Policies | Create an Active-On-Edge merge policy to ensure correct profile data is used | | Custom Personalization Connection | Sends profile attributes to the Edge Network | | Edge Network API | Used for real-time retrieval of profile attributes via interactive data collection | Ingestion Steps 1. Configure a Datastream to receive Web SDK event data 2. Set up an Active-On-Edge merge policy in the segmentation UI 3. Configure a Custom Personalization connection to send profile attributes to the Edge Network 4. Use the Edge Network API interactive data collection endpoint to retrieve or push profile attributes in real-time --- Audience Manager Data Latency to Edge (Reference) If ingesting from Audience\u2026"}}]}</script></div>
+  </body>
+</html>

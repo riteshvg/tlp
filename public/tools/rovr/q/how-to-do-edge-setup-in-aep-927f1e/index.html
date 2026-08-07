@@ -1,0 +1,206 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/png" href="/tools/rovr/rovrlogo.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="build-date" content="2026-06-10" />
+    
+    
+    <script src="https://assets.adobedtm.com/204118644db8/290ae1adb65a/launch-e5ec7bf1a1ef-development.min.js" async></script>
+    <script type="module" crossorigin src="/tools/rovr/assets/index-D5c-fCgB.js"></script>
+    <link rel="stylesheet" crossorigin href="/tools/rovr/assets/index-Bt-UJ01-.css">
+  <title>how to do edge setup in AEP | Rovr</title>
+<meta name="description" content="Edge Setup in Adobe Experience Platform Overview The Edge Network setup in AEP involves configuring several components that work together to collect…" />
+<link rel="canonical" href="https://thelearningproject.in/tools/rovr/q/how-to-do-edge-setup-in-aep-927f1e" />
+<meta property="og:title" content="how to do edge setup in AEP" />
+<meta property="og:description" content="Edge Setup in Adobe Experience Platform Overview The Edge Network setup in AEP involves configuring several components that work together to collect…" />
+<meta property="og:url" content="https://thelearningproject.in/tools/rovr/q/how-to-do-edge-setup-in-aep-927f1e" />
+<meta property="og:type" content="article" />
+<meta property="og:image" content="https://thelearningproject.in/tools/rovr/rovrlogo.png" />
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="how to do edge setup in AEP" />
+<meta name="twitter:description" content="Edge Setup in Adobe Experience Platform Overview The Edge Network setup in AEP involves configuring several components that work together to collect…" />
+</head>
+  <body>
+    <div id="root"><article><h1>how to do edge setup in AEP</h1>
+<h2>Edge Setup in Adobe Experience Platform</h2>
+<h3>Overview</h3>
+<p>The Edge Network setup in AEP involves configuring several components that work together to collect client-side customer experience data, send it to the <strong>Adobe Experience Platform Edge Network</strong>, where it can be enriched, transformed, and distributed to Adobe or non-Adobe destinations.</p>
+<hr>
+<h3>High-Level Architecture</h3>
+<p>```</p>
+<p>Your Website/App</p>
+<p>↓</p>
+<p>Web SDK (Tags/Launch Extension)</p>
+<p>↓</p>
+<p>Adobe Experience Platform Edge Network</p>
+<p>↓</p>
+<p>Datastream (routes data to services)</p>
+<p>↓</p>
+<p>AEP / Adobe Target / AJO / Analytics / etc.</p>
+<p>```</p>
+<hr>
+<h3>Prerequisites</h3>
+<p>Before starting the edge setup, ensure you have:</p>
+<ul>
+<li>Access to <strong>Adobe Experience Platform Data Collection UI</strong></li>
+<li>Access to <strong>Adobe Experience Platform</strong></li>
+<li>Appropriate admin/developer permissions</li>
+<li>A website or app where you can deploy the Web SDK</li>
+</ul>
+<hr>
+<h3>Step-by-Step Edge Setup</h3>
+<h4>Step 1: Create an XDM Schema</h4>
+<p>1. Navigate to <strong>Adobe Experience Platform UI</strong> → <strong>Schemas</strong></p>
+<p>2. Click <strong>Create Schema</strong></p>
+<p>3. Select the appropriate base class (<strong>XDM ExperienceEvent</strong> for behavioral data or <strong>XDM Individual Profile</strong> for profile data)</p>
+<p>4. Give your schema a <strong>name</strong></p>
+<p>5. Add the required <strong>field groups</strong> relevant to your use case (e.g., AEP Web SDK ExperienceEvent, IdentityMap, etc.)</p>
+<p>6. <strong>Enable the schema for Profile</strong> if you want data to flow into Real-Time Customer Profile</p>
+<p>7. Click <strong>Save</strong></p>
+<p><img src="https://raw.githubusercontent.com/AdobeDocs/experience-platform.en/main/help/collection/images/e2e/schemas.png" alt="Schema creation in AEP"></p>
+<p><img src="https://raw.githubusercontent.com/AdobeDocs/experience-platform.en/main/help/collection/images/e2e/add-field-group.png" alt="Add field group to schema"></p>
+<p><img src="https://raw.githubusercontent.com/AdobeDocs/experience-platform.en/main/help/collection/images/e2e/schema-structure.png" alt="Schema structure view"></p>
+<p><img src="https://raw.githubusercontent.com/AdobeDocs/experience-platform.en/main/help/collection/images/e2e/name-schema.png" alt="Naming your schema"></p>
+<hr>
+<h4>Step 2: Create a Dataset</h4>
+<p>1. Navigate to <strong>AEP UI</strong> → <strong>Datasets</strong></p>
+<p>2. Click <strong>Create Dataset from Schema</strong></p>
+<p>3. Select the schema you created in Step 1</p>
+<p>4. Name your dataset</p>
+<p>5. <strong>Enable the dataset for Profile</strong> if required</p>
+<p>6. Click <strong>Finish</strong></p>
+<hr>
+<h4>Step 3: Configure a Datastream</h4>
+<p>The <strong>Datastream</strong> tells the Edge Network where to route your incoming data.</p>
+<p>1. Navigate to <strong>Data Collection UI</strong> → <strong>Datastreams</strong></p>
+<p>2. Click <strong>New Datastream</strong></p>
+<p>3. Give it a <strong>name and description</strong></p>
+<p>4. Select the <strong>XDM Schema</strong> you created in Step 1</p>
+<p>5. Add <strong>services</strong> based on your use case:</p>
+<p>| Service | Purpose |</p>
+<p>|---|---|</p>
+<p>| <strong>Adobe Experience Platform</strong> | Send data to AEP datasets and Real-Time Profile |</p>
+<p>| <strong>Adobe Analytics</strong> | Forward data to Adobe Analytics |</p>
+<p>| <strong>Adobe Target</strong> | Enable personalization via Target |</p>
+<p>| <strong>Adobe Journey Optimizer</strong> | Enable AJO messaging and personalization |</p>
+<p>6. For each service, configure the relevant dataset mappings</p>
+<p>7. Click <strong>Save</strong></p>
+<hr>
+<h4>Step 4: Install and Configure Web SDK</h4>
+<h5>Option A: Via Tags (Recommended)</h5>
+<p>1. Navigate to <strong>Data Collection UI</strong> → <strong>Tags</strong></p>
+<p>2. <strong>Create a new Tag Property</strong> (or use an existing one):</p>
+<ul>
+<li>Name your property</li>
+<li>Select <strong>Web</strong> as the platform</li>
+<li>Enter your domain</li>
+</ul>
+<p>3. Inside the property, navigate to <strong>Extensions</strong></p>
+<p>4. Click <strong>Catalog</strong> and search for <strong>Adobe Experience Platform Web SDK</strong></p>
+<p>5. Click <strong>Install</strong></p>
+<p>6. In the Web SDK extension configuration:</p>
+<ul>
+<li>Set the <strong>Datastream</strong> to the one created in Step 3</li>
+<li>Configure the <strong>Identity namespace</strong> (typically ECID)</li>
+<li>Set <strong>Edge domain</strong> if using a custom first-party domain</li>
+</ul>
+<p>7. Click <strong>Save</strong></p>
+<hr>
+<h4>Step 5: Create an XDM Object Data Element</h4>
+<p>1. Inside your Tag Property, navigate to <strong>Data Elements</strong></p>
+<p>2. Click <strong>Create New Data Element</strong></p>
+<p>3. Name it (e.g., `XDM Object`)</p>
+<p>4. Select <strong>Extension</strong>: Adobe Experience Platform Web SDK</p>
+<p>5. Select <strong>Data Element Type</strong>: XDM Object</p>
+<p>6. Select your <strong>XDM Schema</strong> from the dropdown</p>
+<p>7. <strong>Map your website variables</strong> to the corresponding XDM fields</p>
+<p>8. Click <strong>Save</strong></p>
+<hr>
+<h4>Step 6: Create a Rule to Send Data</h4>
+<p>1. Inside your Tag Property, navigate to <strong>Rules</strong></p>
+<p>2. Click <strong>Create New Rule</strong></p>
+<p>3. Name it (e.g., `Send Page View Event`)</p>
+<p>4. Under <strong>Events</strong>, add:</p>
+<ul>
+<li><strong>Extension</strong>: Core</li>
+<li><strong>Event Type</strong>: Page Bottom (or DOM Ready / Library Loaded)</li>
+</ul>
+<p>5. Under <strong>Actions</strong>, add:</p>
+<ul>
+<li><strong>Extension</strong>: Adobe Experience Platform Web SDK</li>
+<li><strong>Action Type</strong>: Send Event</li>
+<li><strong>Type</strong>: `web.webpagedetails.pageViews`</li>
+<li><strong>XDM Data</strong>: Select the XDM Object data element you created</li>
+</ul>
+<p>6. Click <strong>Keep Changes</strong> → <strong>Save</strong></p>
+<hr>
+<h4>Step 7: Build and Publish the Library</h4>
+<p>1. Navigate to <strong>Publishing Flow</strong> in your Tag Property</p>
+<p>2. Click <strong>Add All Changed Resources</strong> to a new library</p>
+<p>3. Name the library (e.g., `Edge Setup v1.0`)</p>
+<p>4. Select <strong>Development</strong> environment</p>
+<p>5. Click <strong>Save &amp; Build to Development</strong></p>
+<p>6. After testing, promote through <strong>Staging</strong> → <strong>Production</strong></p>
+<hr>
+<h4>Step 8: Deploy the Embed Code</h4>
+<p>1. Navigate to <strong>Environments</strong> inside your Tag Property</p>
+<p>2. Click the <strong>install icon</strong> next to your environment</p>
+<p>3. Copy the <strong>embed code snippet</strong></p>
+<p>4. Paste it into the `&lt;head&gt;` section of your website</p>
+<p>5. Deploy to your web property</p>
+<hr>
+<h4>Step 9: Validate Your Edge Setup</h4>
+<h5>Using Browser Developer Tools</h5>
+<p>1. Open your website in a browser</p>
+<p>2. Open <strong>Developer Tools</strong> → <strong>Network</strong> tab</p>
+<p>3. Filter by `interact` in the search box</p>
+<p>4. Refresh the page</p>
+<p>5. You should see <strong>network calls from your website to the Adobe Edge Network</strong> populating</p>
+<h5>Using Adobe Experience Platform Assurance</h5>
+<p>1. Open <strong>AEP Assurance</strong></p>
+<p>2. Create a new <strong>Assurance session</strong></p>
+<p>3. Connect your browser/app session</p>
+<p>4. Navigate to the <strong>Edge Delivery</strong> view</p>
+<p>5. Use <strong>Send PageView Event</strong> to test</p>
+<p>6. Inspect incoming events to confirm:</p>
+<ul>
+<li>Data is reaching the Edge Network</li>
+<li>XDM payload is correctly structured</li>
+<li>Data is being routed to the correct services via the Datastream</li>
+</ul>
+<p>7. If failures occur, use the <strong>Assurance</strong> link to review failed events</p>
+<hr>
+<h3>Optional: Configure Edge Segmentation for Personalization</h3>
+<p>If you want to use <strong>real-time personalization</strong> via edge profiles:</p>
+<p>1. In <strong>AEP UI</strong> → <strong>Audiences</strong>, create your audience</p>
+<p>2. Enable <strong>Edge Segmentation</strong> on the audience so membership is evaluated in real-time at the edge</p>
+<p>3. Create an <strong>Active-On-Edge merge policy</strong> under <strong>Profiles</strong> → <strong>Merge Policies</strong></p>
+<p>4. Connect to an <strong>Adobe Target</strong> or <strong>Custom Personalization</strong> destination</p>
+<p>5. Activate your edge audiences to that destination</p>
+<hr>
+<h3>Component Summary</h3>
+<p>| Component | Role in Edge Setup |</p>
+<p>|---|---|</p>
+<p>| <strong>XDM Schema</strong> | Defines the data structure sent to the edge |</p>
+<p>| <strong>Dataset</strong> | Stores the ingested data in AEP |</p>
+<p>| <strong>Datastream</strong> | Routes edge data to downstream services |</p>
+<p>| <strong>Web SDK (Tag Extension)</strong> | Collects and sends data from the browser to the edge |</p>
+<p>| <strong>XDM Data Element</strong> | Maps website variables to XDM fields |</p>
+<p>| <strong>Tag Rule</strong> | Triggers when data is sent to the edge |</p>
+<p>| <strong>Tag Library</strong> | Packages all rules/data elements for deployment |</p>
+<p>| <strong>Assurance</strong> | Validates and troubleshoots edge data flow |</p>
+<p>| <strong>Edge Profiles</strong> | Lightweight profiles served at the edge for real-time use cases |</p>
+<p>| <strong>Edge Segmentation</strong> | Evaluates audience membership in real-time at the edge |</p>
+<hr>
+<h3>Important Notes</h3>
+<p>&gt; ⚠️ Even if you only want to use <strong>Event Forwarding</strong>, you must still install and configure the Web SDK first before configuring event forwarding.</p>
+<p>&gt; ⚠️ You can also install and configure the Web SDK using <strong>raw code</strong> instead of Tags if preferred — this is done via the `configure` command in the Web SDK JavaScript library.</p>
+<h2>Sources</h2>
+<ul>
+<li><a href="https://experienceleague.adobe.com/en/docs/experience-platform/xdm/troubleshooting-guide">XDM System Troubleshooting Guide</a></li>
+</ul></article>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "how to do edge setup in AEP", "acceptedAnswer": {"@type": "Answer", "text": "Edge Setup in Adobe Experience Platform Overview The Edge Network setup in AEP involves configuring several components that work together to collect client-side customer experience data, send it to the Adobe Experience Platform Edge Network, where it can be enriched, transformed, and distributed to Adobe or non-Adobe destinations. --- High-Level Architecture Your Website/App \u2193 Web SDK (Tags/Launch Extension) \u2193 Adobe Experience Platform Edge Network \u2193 Datastream (routes data to services) \u2193 AEP / Adobe Target / AJO / Analytics / etc. --- Prerequisites Before starting the edge setup, ensure you have: - Access to Adobe Experience Platform Data Collection UI - Access to Adobe Experience Platform - Appropriate admin/developer permissions - A website or app where you can deploy the Web SDK --- Step-by-Step Edge Setup Step 1: Create an XDM Schema 1. Navigate to Adobe Experience Platform UI \u2192 Schemas 2. Click Create Schema 3. Select the appropriate base class (XDM ExperienceEvent for behavioral data or XDM Individual Profile for profile data) 4. Give your schema a name 5. Add the required field groups relevant to your use case (e.g., AEP Web SDK ExperienceEvent, IdentityMap, etc.) 6. Enable the schema for Profile if you want data to flow into Real-Time Customer Profile 7. Click Save !Schema creation in AEP(https://raw.githubusercontent.com/AdobeDocs/experience-platform.en/main/help/collection/images/e2e/schemas.png) !Add field group to schema(https://raw.githubusercontent.com/AdobeDocs/experience-platform.en/main/help/collection/images/e2e/add-field-group.png) !Schema structure view(https://raw.githubusercontent.com/AdobeDocs/experience-platform.en/main/help/collection/images/e2e/schema-structure.png) !Naming your schema(https://raw.githubusercontent.com/AdobeDocs/experience-platform.en/main/help/collection/images/e2e/name-schema.png) --- Step 2: Create a Dataset 1. Navigate to AEP UI \u2192 Datasets 2. Click Create Dataset from Schema 3. Select the schema you created in Step 1\u2026"}}]}</script></div>
+  </body>
+</html>

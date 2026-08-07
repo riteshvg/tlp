@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/png" href="/tools/rovr/rovrlogo.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="build-date" content="2026-06-10" />
+    
+    
+    <script src="https://assets.adobedtm.com/204118644db8/290ae1adb65a/launch-e5ec7bf1a1ef-development.min.js" async></script>
+    <script type="module" crossorigin src="/tools/rovr/assets/index-D5c-fCgB.js"></script>
+    <link rel="stylesheet" crossorigin href="/tools/rovr/assets/index-Bt-UJ01-.css">
+  <title>is event dataset mandatory to set a edge in datastream? | Rovr</title>
+<meta name="description" content="Is an Event Dataset Mandatory When Setting Up a Datastream? No, an event dataset is not strictly mandatory to create and save a datastream. However, it…" />
+<link rel="canonical" href="https://thelearningproject.in/tools/rovr/q/is-event-dataset-mandatory-to-set-a-edge-in-datastream-f79bc1" />
+<meta property="og:title" content="is event dataset mandatory to set a edge in datastream?" />
+<meta property="og:description" content="Is an Event Dataset Mandatory When Setting Up a Datastream? No, an event dataset is not strictly mandatory to create and save a datastream. However, it…" />
+<meta property="og:url" content="https://thelearningproject.in/tools/rovr/q/is-event-dataset-mandatory-to-set-a-edge-in-datastream-f79bc1" />
+<meta property="og:type" content="article" />
+<meta property="og:image" content="https://thelearningproject.in/tools/rovr/rovrlogo.png" />
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="is event dataset mandatory to set a edge in datastream?" />
+<meta name="twitter:description" content="Is an Event Dataset Mandatory When Setting Up a Datastream? No, an event dataset is not strictly mandatory to create and save a datastream. However, it…" />
+</head>
+  <body>
+    <div id="root"><article><h1>is event dataset mandatory to set a edge in datastream?</h1>
+<h3>Is an Event Dataset Mandatory When Setting Up a Datastream?</h3>
+<p><strong>No, an event dataset is not strictly mandatory to create and save a datastream.</strong> However, it depends on which services you enable in the datastream.</p>
+<hr>
+<h4>When an Event Dataset IS Required</h4>
+<p>If you enable the <strong>Adobe Experience Platform</strong> service in your datastream, you <strong>must select an Event Dataset</strong>. This is because the AEP service needs to know which dataset to route your incoming event data to.</p>
+<p>Steps when adding AEP as a service:</p>
+<p>1. Create your datastream via <strong>Datastreams</strong> in the left navigation of the AEP or Data Collection UI.</p>
+<p>2. Select <strong>Add Service</strong> and choose <strong>Adobe Experience Platform</strong>.</p>
+<p>3. You are required to select an <strong>Event Dataset</strong> from the list before saving.</p>
+<p><img src="https://raw.githubusercontent.com/AdobeDocs/experience-platform.en/main/help/datastreams/assets/overview/datastreams-tab.png" alt="Datastreams Tab"></p>
+<hr>
+<h4>When an Event Dataset is NOT Required</h4>
+<p>If you are <strong>not enabling the Adobe Experience Platform service</strong> — for example, if your datastream only routes data to <strong>Adobe Analytics</strong>, <strong>Adobe Target</strong>, or <strong>Adobe Audience Manager</strong> — then an event dataset is <strong>not required</strong>. Each of those services has its own configuration requirements independent of AEP datasets.</p>
+<hr>
+<h4>Additional Notes on Event Datasets</h4>
+<ul>
+<li>You can also configure <strong>override event datasets</strong> on top of the primary one. These allow you to route specific events to different datasets without changing your implementation code.</li>
+<li>Dynamic datastream configurations (rules-based routing) also let you route events to different datasets based on event payload conditions — but a <strong>default primary dataset</strong> must still be configured for the AEP service as a fallback.</li>
+<li>Rule limits: you can have up to <strong>5 rules per service</strong> (e.g., 5 for AEP, 5 for Analytics, etc.) on the same datastream.</li>
+</ul>
+<hr>
+<p><strong>In summary:</strong> An event dataset is only mandatory if you add the <strong>Adobe Experience Platform</strong> service to your datastream. It is not required for the datastream itself to be created or for other services to function.</p>
+</article>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "is event dataset mandatory to set a edge in datastream?", "acceptedAnswer": {"@type": "Answer", "text": "Is an Event Dataset Mandatory When Setting Up a Datastream? No, an event dataset is not strictly mandatory to create and save a datastream. However, it depends on which services you enable in the datastream. --- When an Event Dataset IS Required If you enable the Adobe Experience Platform service in your datastream, you must select an Event Dataset. This is because the AEP service needs to know which dataset to route your incoming event data to. Steps when adding AEP as a service: 1. Create your datastream via Datastreams in the left navigation of the AEP or Data Collection UI. 2. Select Add Service and choose Adobe Experience Platform. 3. You are required to select an Event Dataset from the list before saving. !Datastreams Tab(https://raw.githubusercontent.com/AdobeDocs/experience-platform.en/main/help/datastreams/assets/overview/datastreams-tab.png) --- When an Event Dataset is NOT Required If you are not enabling the Adobe Experience Platform service \u2014 for example, if your datastream only routes data to Adobe Analytics, Adobe Target, or Adobe Audience Manager \u2014 then an event dataset is not required. Each of those services has its own configuration requirements independent of AEP datasets. --- Additional Notes on Event Datasets - You can also configure override event datasets on top of the primary one. These allow you to route specific events to different datasets without changing your implementation code. - Dynamic datastream configurations (rules-based routing) also let you route events to different datasets based on event payload conditions \u2014 but a default primary dataset must still be configured for the AEP service as a fallback. - Rule limits: you can have up to 5 rules per service (e.g., 5 for AEP, 5 for Analytics, etc.) on the same datastream. --- In summary: An event dataset is only mandatory if you add the Adobe Experience Platform service to your datastream. It is not required for the datastream itself to be created or for other services to function."}}]}</script></div>
+  </body>
+</html>
