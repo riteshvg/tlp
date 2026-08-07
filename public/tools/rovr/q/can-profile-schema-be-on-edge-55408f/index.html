@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/png" href="/tools/rovr/rovrlogo.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="build-date" content="2026-06-10" />
+    
+    
+    <script src="https://assets.adobedtm.com/204118644db8/290ae1adb65a/launch-e5ec7bf1a1ef-development.min.js" async></script>
+    <script type="module" crossorigin src="/tools/rovr/assets/index-D5c-fCgB.js"></script>
+    <link rel="stylesheet" crossorigin href="/tools/rovr/assets/index-Bt-UJ01-.css">
+  <title>Can profile schema be on edge? | Rovr</title>
+<meta name="description" content="Based on the retrieved documentation context, here is what is covered regarding Profile Schema on Edge: --- Yes, Profile Schema Can Be on Edge The retrieved…" />
+<link rel="canonical" href="https://thelearningproject.in/tools/rovr/q/can-profile-schema-be-on-edge-55408f" />
+<meta property="og:title" content="Can profile schema be on edge?" />
+<meta property="og:description" content="Based on the retrieved documentation context, here is what is covered regarding Profile Schema on Edge: --- Yes, Profile Schema Can Be on Edge The retrieved…" />
+<meta property="og:url" content="https://thelearningproject.in/tools/rovr/q/can-profile-schema-be-on-edge-55408f" />
+<meta property="og:type" content="article" />
+<meta property="og:image" content="https://thelearningproject.in/tools/rovr/rovrlogo.png" />
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="Can profile schema be on edge?" />
+<meta name="twitter:description" content="Based on the retrieved documentation context, here is what is covered regarding Profile Schema on Edge: --- Yes, Profile Schema Can Be on Edge The retrieved…" />
+</head>
+  <body>
+    <div id="root"><article><h1>Can profile schema be on edge?</h1>
+<p>Based on the retrieved documentation context, here is what is covered regarding <strong>Profile Schema on Edge</strong>:</p>
+<hr>
+<h3>Yes, Profile Schema Can Be on Edge</h3>
+<p>The retrieved documentation confirms that <strong>XDM Individual Profile schemas</strong> can be projected to Edge, but with specific requirements and conditions:</p>
+<hr>
+<h3>Requirements for Profile Schema to Be on Edge</h3>
+<h4>1. Schema Must Be Enabled for Real-Time Customer Profile</h4>
+<p>Before a profile schema can participate in Edge, it must first be enabled for <strong>Real-Time Customer Profile</strong>:</p>
+<p>1. Navigate to <strong>[!UICONTROL Schemas]</strong> in the left navigation</p>
+<p>2. Select the schema you want to enable</p>
+<p>3. Under <strong>[!UICONTROL Schema Properties]</strong> on the right rail, toggle <strong>[!UICONTROL Profile]</strong> to ON</p>
+<p>4. A confirmation popover appears — select <strong>[!UICONTROL Enable]</strong></p>
+<p><img src="https://raw.githubusercontent.com/AdobeDocs/journey-optimizer.en/main/help/using/building-journeys/assets/troubleshoot-inbound-profile-view-json.png" alt="Enable schema for profile"></p>
+<p>&gt; <strong>⚠️ Important:</strong> Once a schema is enabled for Profile and saved, <strong>it cannot be disabled</strong>. This is irreversible.</p>
+<hr>
+<h4>2. Schema Must Have a Primary Identity Field Defined</h4>
+<p>From the documentation:</p>
+<p>&gt; <em>&quot;In order to enable a schema for Profile, it must have a primary identity field defined.&quot;</em></p>
+<ul>
+<li>For <strong>event data</strong> captured via Experience Platform SDKs, identity maps are typical</li>
+<li>For <strong>profile attribute data</strong>, identity fields are labeled directly within the schema</li>
+<li>Common primary identities used:</li>
+<li><strong>Experience Cloud ID (ECID)</strong></li>
+<li><strong>CRM ID</strong></li>
+<li><strong>Email</strong></li>
+</ul>
+<hr>
+<h4>3. Active-On-Edge Merge Policy Must Be Configured</h4>
+<p>For profile schema data to be <strong>projected to Edge</strong>, an <strong>Active-On-Edge merge policy</strong> must be set up:</p>
+<ul>
+<li>Navigate to <strong>AEP</strong> → <strong>Profiles</strong> → <strong>Merge Policies</strong></li>
+<li>Ensure the merge policy is set to <strong>Active-On-Edge</strong></li>
+<li>This determines which profile attributes from the schema are <strong>projected and available on Edge</strong></li>
+</ul>
+<hr>
+<h4>4. Dataset Must Be Enabled for Profile</h4>
+<p>Even after enabling the schema, the <strong>dataset</strong> created from that schema must also be enabled for profile:</p>
+<p>1. Navigate to <strong>[!UICONTROL Datasets]</strong> in AEP</p>
+<p>2. Select the dataset built on your profile schema</p>
+<p>3. Enable the <strong>Profile toggle</strong> on the dataset</p>
+<p>4. Only then will data ingested into that dataset contribute to <strong>Real-Time Customer Profile</strong> and subsequently to <strong>Edge projection</strong></p>
+<hr>
+<h3>What Gets Stored on Edge from Profile Schema</h3>
+<p>Once all above conditions are met, the Edge profile stores:</p>
+<p>| Data Type | Description |</p>
+<p>|---|---|</p>
+<p>| <strong>Profile Attributes</strong> | Fields from XDM Individual Profile schema (name, preferences, consent, etc.) |</p>
+<p>| <strong>Profile IDs</strong> | Primary and secondary identity values |</p>
+<p>| <strong>Qualified Audience IDs</strong> | Segment memberships evaluated at Edge |</p>
+<p>| <strong>`segmentMembership`</strong> | Namespace and status (`realized`, `exited`) for each qualified segment |</p>
+<hr>
+<h3>What Is NOT Supported</h3>
+<p>Based on the retrieved context:</p>
+<ul>
+<li><strong>Profile-enabled schemas cannot be disabled</strong> once saved — plan your schema carefully</li>
+<li><strong>Not all profile attributes</strong> may be projected to Edge — this is governed by the <strong>Active-On-Edge merge policy</strong> configuration</li>
+<li>There is a <strong>propagation delay of 15–30 minutes</strong> from Hub to Edge after a profile is updated</li>
+</ul>
+<hr>
+<h3>Summary</h3>
+<p>| Requirement | Status |</p>
+<p>|---|---|</p>
+<p>| Schema class must be XDM Individual Profile | ✅ Required |</p>
+<p>| Schema must be enabled for Real-Time Customer Profile | ✅ Required |</p>
+<p>| Primary identity field must be defined | ✅ Required |</p>
+<p>| Dataset must be enabled for Profile | ✅ Required |</p>
+<p>| Active-On-Edge Merge Policy must be configured | ✅ Required for Edge projection |</p>
+<p>| Profile attributes available on Edge within 15-30 mins | ⏱️ Propagation delay applies |</p>
+</article>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Can profile schema be on edge?", "acceptedAnswer": {"@type": "Answer", "text": "Based on the retrieved documentation context, here is what is covered regarding Profile Schema on Edge: --- Yes, Profile Schema Can Be on Edge The retrieved documentation confirms that XDM Individual Profile schemas can be projected to Edge, but with specific requirements and conditions: --- Requirements for Profile Schema to Be on Edge 1. Schema Must Be Enabled for Real-Time Customer Profile Before a profile schema can participate in Edge, it must first be enabled for Real-Time Customer Profile: 1. Navigate to !UICONTROL Schemas in the left navigation 2. Select the schema you want to enable 3. Under !UICONTROL Schema Properties on the right rail, toggle !UICONTROL Profile to ON 4. A confirmation popover appears \u2014 select !UICONTROL Enable !Enable schema for profile(https://raw.githubusercontent.com/AdobeDocs/journey-optimizer.en/main/help/using/building-journeys/assets/troubleshoot-inbound-profile-view-json.png) \u26a0\ufe0f Important: Once a schema is enabled for Profile and saved, it cannot be disabled. This is irreversible. --- 2. Schema Must Have a Primary Identity Field Defined From the documentation: \"In order to enable a schema for Profile, it must have a primary identity field defined.\" - For event data captured via Experience Platform SDKs, identity maps are typical - For profile attribute data, identity fields are labeled directly within the schema - Common primary identities used: - Experience Cloud ID (ECID) - CRM ID - Email --- 3. Active-On-Edge Merge Policy Must Be Configured For profile schema data to be projected to Edge, an Active-On-Edge merge policy must be set up: - Navigate to AEP \u2192 Profiles \u2192 Merge Policies - Ensure the merge policy is set to Active-On-Edge - This determines which profile attributes from the schema are projected and available on Edge --- 4. Dataset Must Be Enabled for Profile Even after enabling the schema, the dataset created from that schema must also be enabled for profile: 1. Navigate to !UICONTROL Datasets in AEP 2. Select the\u2026"}}]}</script></div>
+  </body>
+</html>
