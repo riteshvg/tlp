@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/png" href="/tools/rovr/rovrlogo.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="build-date" content="2026-06-10" />
+    
+    
+    <script src="https://assets.adobedtm.com/204118644db8/290ae1adb65a/launch-e5ec7bf1a1ef-development.min.js" async></script>
+    <script type="module" crossorigin src="/tools/rovr/assets/index-D5c-fCgB.js"></script>
+    <link rel="stylesheet" crossorigin href="/tools/rovr/assets/index-Bt-UJ01-.css">
+  <title>deterministic id in AEP | Rovr</title>
+<meta name="description" content="Deterministic ID in Adobe Experience Platform Deterministic ID refers to a non-random, predictable method of generating or linking identities based on…" />
+<link rel="canonical" href="https://thelearningproject.in/tools/rovr/q/deterministic-id-in-aep-ffb14e" />
+<meta property="og:title" content="deterministic id in AEP" />
+<meta property="og:description" content="Deterministic ID in Adobe Experience Platform Deterministic ID refers to a non-random, predictable method of generating or linking identities based on…" />
+<meta property="og:url" content="https://thelearningproject.in/tools/rovr/q/deterministic-id-in-aep-ffb14e" />
+<meta property="og:type" content="article" />
+<meta property="og:image" content="https://thelearningproject.in/tools/rovr/rovrlogo.png" />
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="deterministic id in AEP" />
+<meta name="twitter:description" content="Deterministic ID in Adobe Experience Platform Deterministic ID refers to a non-random, predictable method of generating or linking identities based on…" />
+</head>
+  <body>
+    <div id="root"><article><h1>deterministic id in AEP</h1>
+<h3>Deterministic ID in Adobe Experience Platform</h3>
+<p>Deterministic ID refers to a <strong>non-random, predictable method of generating or linking identities</strong> based on consistent input data. In AEP, deterministic ID matching is used in several key contexts:</p>
+<hr>
+<h4>1. <strong>ECID Generation with Deterministic Linking</strong></h4>
+<p>The Edge Network uses deterministic algorithms to link <strong>ECIDs</strong> (Experience Cloud IDs) and <strong>Demdex IDs</strong>:</p>
+<p>| Priority | Source | Behavior |</p>
+<p>| --- | --- | --- |</p>
+<p>| 1 | <strong>Demdex ID</strong> | If a Demdex ID is present, the ECID is seeded from it, producing a consistent ECID across domains sharing the same third-party cookie. |</p>
+<p>| 2 | <strong>FPID</strong> | If no Demdex ID exists but an FPID (First-Party Device ID) is present, the ECID is seeded from the FPID and a Demdex ID is derived from it. |</p>
+<p>| 3 | <strong>Random</strong> | If neither exists, a new random ECID is generated and a Demdex ID is derived from it. |</p>
+<p><strong>Key Point:</strong> ECIDs and Demdex IDs are <strong>cryptographically linked through a deterministic algorithm</strong>, meaning one can be derived from the other. This enables:</p>
+<ul>
+<li>Translation between first-party and third-party identity contexts without separate visitor handling logic</li>
+<li>Audience activation through third-party infrastructure using corresponding Demdex IDs</li>
+<li>Automatic linking of first-party identities to third-party contexts when browsers support third-party cookies</li>
+</ul>
+<hr>
+<h4>2. <strong>B2B Entity Resolution (Accounts &amp; Opportunities)</strong></h4>
+<p>As part of AEP&#x27;s architecture upgrade, Adobe introduced <strong>deterministic ID matching for B2B entity resolution</strong>:</p>
+<p><strong>Before:</strong> If an account&#x27;s DUNS number was updated in your CRM, the account ID would be linked to <strong>both the old and new DUNS numbers</strong> (historical approach).</p>
+<p><strong>After:</strong> With deterministic ID matching based on the <strong>latest data</strong>, the account ID is linked <strong>only to the new DUNS number</strong>, reflecting the current state more accurately.</p>
+<p><strong>How it works:</strong></p>
+<ul>
+<li><strong>Accounts</strong> are entity resolved using the `b2b_account` namespace</li>
+<li><strong>Opportunities</strong> are entity resolved using the `b2b_opportunity` namespace</li>
+<li>Resolution uses <strong>time-precedence based merging</strong> — the most recent data takes priority</li>
+<li>Entity resolution jobs run <strong>daily during batch segmentation</strong>, prior to evaluating multi-entity audiences with B2B attributes</li>
+<li>All other entities are unified with primary identity overlaps merged using time-precedence</li>
+</ul>
+<p><strong>Benefits:</strong></p>
+<ul>
+<li>Improved accuracy and consistency of account and opportunity data</li>
+<li>More reliable segmentation, activation, and analytics for B2B use cases</li>
+<li>You can view the latest merge profiles using the Profile Access APIs once daily jobs complete</li>
+</ul>
+<hr>
+<h4>3. <strong>When to Use Deterministic IDs</strong></h4>
+<p>Deterministic IDs are ideal when you:</p>
+<ul>
+<li>Have consistent, reliable identifying data (like DUNS numbers, customer IDs, email addresses)</li>
+<li>Need predictable, reproducible identity resolution</li>
+<li>Want to avoid random ID generation that could fragment customer profiles</li>
+<li>Require stable cross-domain identity tracking</li>
+</ul>
+<hr>
+<p><strong>In summary:</strong> Deterministic ID in AEP ensures identities are resolved based on consistent, predictable logic rather than randomness, enabling accurate identity matching, profile unification, and reliable cross-channel activation.</p>
+<h2>Sources</h2>
+<ul>
+<li><a href="https://experienceleague.adobe.com/en/docs/experience-platform/xdm/troubleshooting-guide">XDM System Troubleshooting Guide</a></li>
+<li><a href="https://experienceleague.adobe.com/en/docs/experience-platform/collection/identity/unified-identity-support">Unified identity support in Data Collection</a></li>
+<li><a href="https://experienceleague.adobe.com/en/docs/experience-platform/data-governance/labels/dataset-api">Manage Data Usage Labels for Datasets Using APIs</a></li>
+<li><a href="https://experienceleague.adobe.com/en/docs/experience-platform/datastreams/overrides">Configure datastream overrides</a></li>
+<li><a href="https://experienceleague.adobe.com/en/docs/experience-platform/profile/api/entities">Entities (Profile Access) API Endpoint</a></li>
+</ul></article>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "deterministic id in AEP", "acceptedAnswer": {"@type": "Answer", "text": "Deterministic ID in Adobe Experience Platform Deterministic ID refers to a non-random, predictable method of generating or linking identities based on consistent input data. In AEP, deterministic ID matching is used in several key contexts: --- 1. ECID Generation with Deterministic Linking The Edge Network uses deterministic algorithms to link ECIDs (Experience Cloud IDs) and Demdex IDs: | Priority | Source | Behavior | | --- | --- | --- | | 1 | Demdex ID | If a Demdex ID is present, the ECID is seeded from it, producing a consistent ECID across domains sharing the same third-party cookie. | | 2 | FPID | If no Demdex ID exists but an FPID (First-Party Device ID) is present, the ECID is seeded from the FPID and a Demdex ID is derived from it. | | 3 | Random | If neither exists, a new random ECID is generated and a Demdex ID is derived from it. | Key Point: ECIDs and Demdex IDs are cryptographically linked through a deterministic algorithm, meaning one can be derived from the other. This enables: - Translation between first-party and third-party identity contexts without separate visitor handling logic - Audience activation through third-party infrastructure using corresponding Demdex IDs - Automatic linking of first-party identities to third-party contexts when browsers support third-party cookies --- 2. B2B Entity Resolution (Accounts & Opportunities) As part of AEP's architecture upgrade, Adobe introduced deterministic ID matching for B2B entity resolution: Before: If an account's DUNS number was updated in your CRM, the account ID would be linked to both the old and new DUNS numbers (historical approach). After: With deterministic ID matching based on the latest data, the account ID is linked only to the new DUNS number, reflecting the current state more accurately. How it works: - Accounts are entity resolved using the b2baccount namespace - Opportunities are entity resolved using the b2bopportunity namespace - Resolution uses time-precedence based merging \u2014\u2026"}}]}</script></div>
+  </body>
+</html>
