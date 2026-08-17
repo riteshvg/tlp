@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/png" href="/tools/rovr/rovrlogo.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="build-date" content="2026-06-10" />
+    
+    
+    <script src="https://assets.adobedtm.com/204118644db8/290ae1adb65a/launch-e5ec7bf1a1ef-development.min.js" async></script>
+    <script type="module" crossorigin src="/tools/rovr/assets/index-D5c-fCgB.js"></script>
+    <link rel="stylesheet" crossorigin href="/tools/rovr/assets/index-Bt-UJ01-.css">
+  <title>Finding Your Batch ID
+If you don&#x27;t know the exact Batch ID of your 2-month-old batch:
+
+Go to Monitoring → Batch end-to-end in the AEP UI
+Filter or scroll to find batches from ~2 months ago
+Note the Batch ID from the listing — it will appear alongside ingestion start/end times, record counts, and dataset name
+
+This option is not there | Rovr</title>
+<meta name="description" content="You&#x27;re right, I apologize for that. The retrieved documentation I have only covers: - Viewing batch details (records ingested, file size, ingestion start/end…" />
+<link rel="canonical" href="https://thelearningproject.in/tools/rovr/q/finding-your-batch-id-if-you-don-t-know-the-exact-batch-id-o-367196" />
+<meta property="og:title" content="Finding Your Batch ID
+If you don&#x27;t know the exact Batch ID of your 2-month-old batch:
+
+Go to Monitoring → Batch end-to-end in the AEP UI
+Filter or scroll to find batches from ~2 months ago
+Note the Batch ID from the listing — it will appear alongside ingestion start/end times, record counts, and dataset name
+
+This option is not there" />
+<meta property="og:description" content="You&#x27;re right, I apologize for that. The retrieved documentation I have only covers: - Viewing batch details (records ingested, file size, ingestion start/end…" />
+<meta property="og:url" content="https://thelearningproject.in/tools/rovr/q/finding-your-batch-id-if-you-don-t-know-the-exact-batch-id-o-367196" />
+<meta property="og:type" content="article" />
+<meta property="og:image" content="https://thelearningproject.in/tools/rovr/rovrlogo.png" />
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="Finding Your Batch ID
+If you don&#x27;t know the exact Batch ID of your 2-month-old batch:
+
+Go to Monitoring → Batch end-to-end in the AEP UI
+Filter or scroll to find batches from ~2 months ago
+Note the Batch ID from the listing — it will appear alongside ingestion start/end times, record counts, and dataset name
+
+This option is not there" />
+<meta name="twitter:description" content="You&#x27;re right, I apologize for that. The retrieved documentation I have only covers: - Viewing batch details (records ingested, file size, ingestion start/end…" />
+</head>
+  <body>
+    <div id="root"><article><h1>Finding Your Batch ID
+If you don&#x27;t know the exact Batch ID of your 2-month-old batch:
+
+Go to Monitoring → Batch end-to-end in the AEP UI
+Filter or scroll to find batches from ~2 months ago
+Note the Batch ID from the listing — it will appear alongside ingestion start/end times, record counts, and dataset name
+
+This option is not there</h1>
+<p>You&#x27;re right, I apologize for that. The retrieved documentation I have only covers:</p>
+<ul>
+<li>Viewing batch details (records ingested, file size, ingestion start/end times)</li>
+<li>Deleting a batch via the <strong>Delete batch</strong> button in the Batch overview dashboard</li>
+<li>Monitoring batch statuses (successful, failed, in progress)</li>
+</ul>
+<p>It <strong>does not cover</strong> filtering or searching batches by date range in the Monitoring UI.</p>
+<hr>
+<h3>What I Can Confirm from Documentation</h3>
+<p>To find your Batch ID, the documentation only mentions:</p>
+<p>1. Go to <strong>Monitoring</strong> in the left navigation of the AEP UI</p>
+<p>2. Select <strong>Batch end-to-end</strong></p>
+<p>3. A list of previously ingested batches is shown — you can <strong>select any batch</strong> for more detailed information including the Batch ID, ingestion times, dataset name, and record counts</p>
+<p><img src="https://raw.githubusercontent.com/AdobeDocs/experience-platform.en/main/help/ingestion/quality/../images/quality/monitor-data-flows/streams.png" alt="Batch monitoring listing"></p>
+<hr>
+<h3>My Recommendation</h3>
+<p>For finding batches by date, I&#x27;d suggest:</p>
+<ul>
+<li>Using the <strong>Catalog Service API</strong> (`GET /batches`) with `created` timestamp filters to programmatically find batches from 2 months ago</li>
+<li>Reaching out to <strong>Adobe Customer Support</strong> for guidance on date-based batch filtering in the UI</li>
+</ul>
+<p>Would you like help constructing the Catalog API call to find batches by date?</p>
+<h2>Sources</h2>
+<ul>
+<li><a href="https://experienceleague.adobe.com/en/docs/experience-platform/ingestion/quality/monitor-data-ingestion">Monitoring Data Ingestion</a></li>
+</ul></article>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Finding Your Batch ID\nIf you don't know the exact Batch ID of your 2-month-old batch:\n\nGo to Monitoring \u2192 Batch end-to-end in the AEP UI\nFilter or scroll to find batches from ~2 months ago\nNote the Batch ID from the listing \u2014 it will appear alongside ingestion start/end times, record counts, and dataset name\n\nThis option is not there", "acceptedAnswer": {"@type": "Answer", "text": "You're right, I apologize for that. The retrieved documentation I have only covers: - Viewing batch details (records ingested, file size, ingestion start/end times) - Deleting a batch via the Delete batch button in the Batch overview dashboard - Monitoring batch statuses (successful, failed, in progress) It does not cover filtering or searching batches by date range in the Monitoring UI. --- What I Can Confirm from Documentation To find your Batch ID, the documentation only mentions: 1. Go to Monitoring in the left navigation of the AEP UI 2. Select Batch end-to-end 3. A list of previously ingested batches is shown \u2014 you can select any batch for more detailed information including the Batch ID, ingestion times, dataset name, and record counts !Batch monitoring listing(https://raw.githubusercontent.com/AdobeDocs/experience-platform.en/main/help/ingestion/quality/../images/quality/monitor-data-flows/streams.png) --- My Recommendation For finding batches by date, I'd suggest: - Using the Catalog Service API (GET /batches) with created timestamp filters to programmatically find batches from 2 months ago - Reaching out to Adobe Customer Support for guidance on date-based batch filtering in the UI Would you like help constructing the Catalog API call to find batches by date?"}}]}</script></div>
+  </body>
+</html>

@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/png" href="/tools/rovr/rovrlogo.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="build-date" content="2026-06-10" />
+    
+    
+    <script src="https://assets.adobedtm.com/204118644db8/290ae1adb65a/launch-e5ec7bf1a1ef-development.min.js" async></script>
+    <script type="module" crossorigin src="/tools/rovr/assets/index-D5c-fCgB.js"></script>
+    <link rel="stylesheet" crossorigin href="/tools/rovr/assets/index-Bt-UJ01-.css">
+  <title>How do I delete AEP dataset batches that are 2 months old | Rovr</title>
+<meta name="description" content="Deleting AEP Dataset Batches by Age Based on the retrieved documentation, there are a few important things to clarify about your use case: Important…" />
+<link rel="canonical" href="https://thelearningproject.in/tools/rovr/q/how-do-i-delete-aep-dataset-batches-that-are-2-months-old-f9edd2" />
+<meta property="og:title" content="How do I delete AEP dataset batches that are 2 months old" />
+<meta property="og:description" content="Deleting AEP Dataset Batches by Age Based on the retrieved documentation, there are a few important things to clarify about your use case: Important…" />
+<meta property="og:url" content="https://thelearningproject.in/tools/rovr/q/how-do-i-delete-aep-dataset-batches-that-are-2-months-old-f9edd2" />
+<meta property="og:type" content="article" />
+<meta property="og:image" content="https://thelearningproject.in/tools/rovr/rovrlogo.png" />
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="How do I delete AEP dataset batches that are 2 months old" />
+<meta name="twitter:description" content="Deleting AEP Dataset Batches by Age Based on the retrieved documentation, there are a few important things to clarify about your use case: Important…" />
+</head>
+  <body>
+    <div id="root"><article><h1>How do I delete AEP dataset batches that are 2 months old</h1>
+<h2>Deleting AEP Dataset Batches by Age</h2>
+<p>Based on the retrieved documentation, there are a few important things to clarify about your use case:</p>
+<h3>Important Limitations to Know First</h3>
+<p>&gt; <strong>Data Lifecycle does not support batch deletion.</strong> The Advanced Data Lifecycle Management API works at the <strong>dataset level</strong> (full dataset expiration) or <strong>record/row level</strong> (by primary identity) — not at the individual batch level by age.</p>
+<p>Additionally, <strong>datasets created and used by Adobe applications</strong> (such as Adobe Analytics, Adobe Audience Manager, or Offer Decisioning) <strong>cannot be deleted</strong>.</p>
+<hr>
+<h3>Your Available Options</h3>
+<h4>Option 1: Schedule Full Dataset Expiration (Dataset Level)</h4>
+<p>If you want to delete an entire dataset after a period of time, use the <strong>Data Hygiene API</strong> `/ttl` endpoint to schedule a dataset expiration:</p>
+<ul>
+<li>A dataset expiration is a <strong>delayed delete operation</strong></li>
+<li>After the scheduled expiry time, there may be up to <strong>24 hours of delay</strong> before deletion begins</li>
+<li>Once initiated, it can take up to <strong>7 days</strong> to remove all traces from Experience Platform systems</li>
+<li>Deletion affects the <strong>data lake, Identity Service, and Real-Time Customer Profile</strong> separately</li>
+<li>You can cancel or reschedule the expiry <strong>before</strong> deletion begins (once it reaches `executing` status, it cannot be modified)</li>
+</ul>
+<p>&gt; ⚠️ Before scheduling deletion, <strong>manually update any dataflows ingesting into that dataset</strong> to avoid breaking downstream workflows.</p>
+<p>You can also manage dataset expirations through the <strong>Experience Platform UI</strong> under <strong>Data Lifecycle</strong> management.</p>
+<hr>
+<h4>Option 2: Delete Individual Records by Identity (Row Level)</h4>
+<p>If you want to remove specific records (e.g., records belonging to users from 2 months ago) rather than full batches, use the <strong>`/workorder` endpoint</strong> of the Data Hygiene API to delete rows by <strong>primary identity</strong>.</p>
+<hr>
+<h4>Option 3: Delete a Profile-Enabled Dataset via UI</h4>
+<p>If your dataset is Profile-enabled, deleting it through the UI will remove it from:</p>
+<ul>
+<li>The <strong>data lake</strong></li>
+<li><strong>Identity Service</strong></li>
+<li>The <strong>Profile store</strong></li>
+</ul>
+<p><strong>Steps:</strong></p>
+<p>1. Navigate to <strong>Datasets</strong> in the Experience Platform UI and open the <strong>Browse</strong> tab</p>
+<p>2. Locate the dataset you wish to delete</p>
+<p>3. Select the <strong>ellipsis (...)</strong> next to the dataset name</p>
+<p><img src="https://raw.githubusercontent.com/AdobeDocs/experience-platform.en/main/help/catalog/datasets/../images/datasets/user-guide/browse-datasets.png" alt="Dataset browse with ellipsis highlighted"></p>
+<p>4. Select <strong>Delete</strong> from the dropdown menu</p>
+<p>5. Confirm deletion in the confirmation dialog</p>
+<hr>
+<h3>Recommendation</h3>
+<p>If your goal is to <strong>purge older data on a rolling basis</strong>, the closest supported approach is to:</p>
+<ul>
+<li><strong>Partition your data into separate datasets by time period</strong> (e.g., one dataset per month), then use <strong>dataset expiration</strong> via the `/ttl` endpoint or the Data Lifecycle UI to schedule deletion of the older dataset.</li>
+</ul>
+<p>There is no native &quot;delete batches older than X days&quot; filter — batch-level age-based deletion is <strong>not supported</strong> by Data Lifecycle management.</p>
+</article>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "How do I delete AEP dataset batches that are 2 months old", "acceptedAnswer": {"@type": "Answer", "text": "Deleting AEP Dataset Batches by Age Based on the retrieved documentation, there are a few important things to clarify about your use case: Important Limitations to Know First Data Lifecycle does not support batch deletion. The Advanced Data Lifecycle Management API works at the dataset level (full dataset expiration) or record/row level (by primary identity) \u2014 not at the individual batch level by age. Additionally, datasets created and used by Adobe applications (such as Adobe Analytics, Adobe Audience Manager, or Offer Decisioning) cannot be deleted. --- Your Available Options Option 1: Schedule Full Dataset Expiration (Dataset Level) If you want to delete an entire dataset after a period of time, use the Data Hygiene API /ttl endpoint to schedule a dataset expiration: - A dataset expiration is a delayed delete operation - After the scheduled expiry time, there may be up to 24 hours of delay before deletion begins - Once initiated, it can take up to 7 days to remove all traces from Experience Platform systems - Deletion affects the data lake, Identity Service, and Real-Time Customer Profile separately - You can cancel or reschedule the expiry before deletion begins (once it reaches executing status, it cannot be modified) \u26a0\ufe0f Before scheduling deletion, manually update any dataflows ingesting into that dataset to avoid breaking downstream workflows. You can also manage dataset expirations through the Experience Platform UI under Data Lifecycle management. --- Option 2: Delete Individual Records by Identity (Row Level) If you want to remove specific records (e.g., records belonging to users from 2 months ago) rather than full batches, use the /workorder endpoint of the Data Hygiene API to delete rows by primary identity. --- Option 3: Delete a Profile-Enabled Dataset via UI If your dataset is Profile-enabled, deleting it through the UI will remove it from: - The data lake - Identity Service - The Profile store Steps: 1. Navigate to Datasets in the Experience\u2026"}}]}</script></div>
+  </body>
+</html>

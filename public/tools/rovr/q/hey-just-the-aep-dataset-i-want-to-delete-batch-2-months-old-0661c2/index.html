@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/png" href="/tools/rovr/rovrlogo.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="build-date" content="2026-06-10" />
+    
+    
+    <script src="https://assets.adobedtm.com/204118644db8/290ae1adb65a/launch-e5ec7bf1a1ef-development.min.js" async></script>
+    <script type="module" crossorigin src="/tools/rovr/assets/index-D5c-fCgB.js"></script>
+    <link rel="stylesheet" crossorigin href="/tools/rovr/assets/index-Bt-UJ01-.css">
+  <title>Hey, Just the AEP dataset, I want to delete batch 2 months old | Rovr</title>
+<meta name="description" content="Deleting a Specific Old Batch from an AEP Dataset Prerequisites Before proceeding, note this critical limitation: ⚠️ You can only delete batches from datasets…" />
+<link rel="canonical" href="https://thelearningproject.in/tools/rovr/q/hey-just-the-aep-dataset-i-want-to-delete-batch-2-months-old-0661c2" />
+<meta property="og:title" content="Hey, Just the AEP dataset, I want to delete batch 2 months old" />
+<meta property="og:description" content="Deleting a Specific Old Batch from an AEP Dataset Prerequisites Before proceeding, note this critical limitation: ⚠️ You can only delete batches from datasets…" />
+<meta property="og:url" content="https://thelearningproject.in/tools/rovr/q/hey-just-the-aep-dataset-i-want-to-delete-batch-2-months-old-0661c2" />
+<meta property="og:type" content="article" />
+<meta property="og:image" content="https://thelearningproject.in/tools/rovr/rovrlogo.png" />
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="Hey, Just the AEP dataset, I want to delete batch 2 months old" />
+<meta name="twitter:description" content="Deleting a Specific Old Batch from an AEP Dataset Prerequisites Before proceeding, note this critical limitation: ⚠️ You can only delete batches from datasets…" />
+</head>
+  <body>
+    <div id="root"><article><h1>Hey, Just the AEP dataset, I want to delete batch 2 months old</h1>
+<h2>Deleting a Specific Old Batch from an AEP Dataset</h2>
+<h3>Prerequisites</h3>
+<p>Before proceeding, note this critical limitation:</p>
+<p>&gt; ⚠️ <strong>You can only delete batches from datasets based on time-series schemas.</strong> Batches from <strong>record schema-based datasets cannot be deleted</strong> because record-type batches overwrite previous records and cannot be &quot;undone&quot;. To fix erroneous record-schema data, you must <strong>re-ingest with correct data</strong> to overwrite it.</p>
+<hr>
+<h3>Option 1: Delete via the UI</h3>
+<p>1. In the Experience Platform UI, select <strong>Monitoring</strong> in the left navigation</p>
+<p>2. Select either <strong>Batch end-to-end</strong> to view all batches</p>
+<p>3. Locate your 2-month-old batch in the listing</p>
+<p>4. Select the <strong>Batch ID</strong> to open the <strong>Batch overview</strong> dashboard</p>
+<p>5. Select <strong>Delete batch</strong> near the top right of the dashboard</p>
+<p>&gt; ⚠️ <strong>Note:</strong> If the ingested data has been enabled for Profile and already processed, deleting the batch <strong>will NOT delete that data from the Profile store.</strong></p>
+<hr>
+<h3>Option 2: Delete via API</h3>
+<p>Once you have your <strong>Batch ID</strong> and <strong>Dataset ID</strong>, make the following API call:</p>
+<p>```http</p>
+<p>POST /system/jobs</p>
+<p>```</p>
+<p>```shell</p>
+<p>curl -X POST \</p>
+<p>https://platform.adobe.io/data/core/ups/system/jobs \</p>
+<p>-H &#x27;Content-Type: application/json&#x27; \</p>
+<p>-H &#x27;Authorization: Bearer {ACCESS_TOKEN}&#x27; \</p>
+<p>-H &#x27;x-api-key: {API_KEY}&#x27; \</p>
+<p>-H &#x27;x-gw-ims-org-id: {ORG_ID}&#x27; \</p>
+<p>-H &#x27;x-sandbox-name: {SANDBOX_NAME}&#x27; \</p>
+<p>-d &#x27;{</p>
+<p>&quot;datasetId&quot;: &quot;YOUR_DATASET_ID&quot;,</p>
+<p>&quot;batchId&quot;: &quot;YOUR_BATCH_ID&quot;</p>
+<p>}&#x27;</p>
+<p>```</p>
+<hr>
+<h3>Finding Your Batch ID</h3>
+<p>If you don&#x27;t know the exact Batch ID of your 2-month-old batch:</p>
+<p>1. Go to <strong>Monitoring → Batch end-to-end</strong> in the AEP UI</p>
+<p>2. Filter or scroll to find batches from ~2 months ago</p>
+<p>3. Note the <strong>Batch ID</strong> from the listing — it will appear alongside ingestion start/end times, record counts, and dataset name</p>
+<h2>Sources</h2>
+<ul>
+<li><a href="https://experienceleague.adobe.com/en/docs/experience-platform/catalog/datasets/user-guide">Datasets UI Guide</a></li>
+</ul></article>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Hey, Just the AEP dataset, I want to delete batch 2 months old", "acceptedAnswer": {"@type": "Answer", "text": "Deleting a Specific Old Batch from an AEP Dataset Prerequisites Before proceeding, note this critical limitation: \u26a0\ufe0f You can only delete batches from datasets based on time-series schemas. Batches from record schema-based datasets cannot be deleted because record-type batches overwrite previous records and cannot be \"undone\". To fix erroneous record-schema data, you must re-ingest with correct data to overwrite it. --- Option 1: Delete via the UI 1. In the Experience Platform UI, select Monitoring in the left navigation 2. Select either Batch end-to-end to view all batches 3. Locate your 2-month-old batch in the listing 4. Select the Batch ID to open the Batch overview dashboard 5. Select Delete batch near the top right of the dashboard \u26a0\ufe0f Note: If the ingested data has been enabled for Profile and already processed, deleting the batch will NOT delete that data from the Profile store. --- Option 2: Delete via API Once you have your Batch ID and Dataset ID, make the following API call: http POST /system/jobs shell curl -X POST \\ https://platform.adobe.io/data/core/ups/system/jobs \\ -H 'Content-Type: application/json' \\ -H 'Authorization: Bearer {ACCESSTOKEN}' \\ -H 'x-api-key: {APIKEY}' \\ -H 'x-gw-ims-org-id: {ORGID}' \\ -H 'x-sandbox-name: {SANDBOXNAME}' \\ -d '{ \"datasetId\": \"YOURDATASETID\", \"batchId\": \"YOURBATCHID\" }' --- Finding Your Batch ID If you don't know the exact Batch ID of your 2-month-old batch: 1. Go to Monitoring \u2192 Batch end-to-end in the AEP UI 2. Filter or scroll to find batches from ~2 months ago 3. Note the Batch ID from the listing \u2014 it will appear alongside ingestion start/end times, record counts, and dataset name"}}]}</script></div>
+  </body>
+</html>
