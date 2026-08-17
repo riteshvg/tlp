@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/png" href="/tools/rovr/rovrlogo.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="build-date" content="2026-06-10" />
+    
+    
+    <script src="https://assets.adobedtm.com/204118644db8/290ae1adb65a/launch-e5ec7bf1a1ef-development.min.js" async></script>
+    <script type="module" crossorigin src="/tools/rovr/assets/index-D5c-fCgB.js"></script>
+    <link rel="stylesheet" crossorigin href="/tools/rovr/assets/index-Bt-UJ01-.css">
+  <title>how can i manage journey conflicts in AJO? | Rovr</title>
+<meta name="description" content="Managing Journey Conflicts in Adobe Journey Optimizer Adobe Journey Optimizer provides a comprehensive set of tools to help you identify, manage, and resolve…" />
+<link rel="canonical" href="https://thelearningproject.in/tools/rovr/q/how-can-i-manage-journey-conflicts-in-ajo-4b1457" />
+<meta property="og:title" content="how can i manage journey conflicts in AJO?" />
+<meta property="og:description" content="Managing Journey Conflicts in Adobe Journey Optimizer Adobe Journey Optimizer provides a comprehensive set of tools to help you identify, manage, and resolve…" />
+<meta property="og:url" content="https://thelearningproject.in/tools/rovr/q/how-can-i-manage-journey-conflicts-in-ajo-4b1457" />
+<meta property="og:type" content="article" />
+<meta property="og:image" content="https://thelearningproject.in/tools/rovr/rovrlogo.png" />
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="how can i manage journey conflicts in AJO?" />
+<meta name="twitter:description" content="Managing Journey Conflicts in Adobe Journey Optimizer Adobe Journey Optimizer provides a comprehensive set of tools to help you identify, manage, and resolve…" />
+</head>
+  <body>
+    <div id="root"><article><h1>how can i manage journey conflicts in AJO?</h1>
+<h2>Managing Journey Conflicts in Adobe Journey Optimizer</h2>
+<p>Adobe Journey Optimizer provides a comprehensive set of tools to help you identify, manage, and resolve conflicts across journeys and campaigns — preventing customer fatigue and ensuring the right messages reach your audience at the right time.</p>
+<hr>
+<h3>Conflict Management Tools Overview</h3>
+<p>AJO offers four main tools for conflict management and prioritization:</p>
+<p>1. <strong>Conflict Detection</strong> – Identify overlapping journeys and campaigns</p>
+<p>2. <strong>Priority Scores</strong> – Control which journey takes precedence</p>
+<p>3. <strong>Rule Sets</strong> – Limit frequency and entry across journeys</p>
+<p>4. <strong>Journey Arbitration</strong> – Suppress lower-priority journey entries</p>
+<hr>
+<h3>1. View Potential Conflicts</h3>
+<p>When authoring a journey or campaign, you can proactively check for overlaps with other active or scheduled journeys.</p>
+<p><strong>Steps:</strong></p>
+<p>1. Open your journey or campaign properties while authoring.</p>
+<p>2. Assign at least one of the following settings: <strong>Start / End Date</strong>, <strong>Audience</strong>, <strong>Channel</strong>, <strong>Channel Configuration</strong>, or <strong>Rule Set</strong>.</p>
+<p>3. Click <strong>Save</strong> to save those settings.</p>
+<p>4. Click the <strong>View Potential Conflicts</strong> button in the journey or campaign properties.</p>
+<p><img src="https://raw.githubusercontent.com/AdobeDocs/journey-optimizer.en/main/help/using/conflict-prioritization/assets/view-conflicts.png" alt="View Potential Conflicts button"></p>
+<p>5. The <strong>Potential Conflicts</strong> window opens, showing all overlapping journeys/campaigns.</p>
+<p><img src="https://raw.githubusercontent.com/AdobeDocs/journey-optimizer.en/main/help/using/conflict-prioritization/assets/potential-conflicts.png" alt="Potential conflicts panel"></p>
+<p>&gt; <strong>Note:</strong> The <strong>View Potential Conflicts</strong> button is only available for <strong>live and scheduled</strong> journeys/campaigns. It becomes selectable only after the required settings are saved.</p>
+<p>Conflicts are checked across:</p>
+<ul>
+<li>Overlapping <strong>audience</strong> targeting</li>
+<li>Concurrent <strong>timelines</strong> (start/end dates)</li>
+<li>Shared <strong>communication channels</strong></li>
+<li>Shared <strong>channel configurations</strong></li>
+<li>Shared <strong>rule sets</strong></li>
+</ul>
+<p><a href="https://video.tv.adobe.com/v/3435528/?learn=on&amp;enablevpops">▶ Watch: Identify Potential Conflicts</a></p>
+<hr>
+<h3>2. Priority Scores</h3>
+<p>When multiple journeys or campaigns target the same profile through the same channel, <strong>priority scores</strong> determine which one is delivered.</p>
+<ul>
+<li>Assign a score from <strong>0 to 100</strong> to each journey or campaign (higher = more important).</li>
+<li>For <strong>inbound channels</strong> (e.g., In-App, Web), the action with the highest priority score is shown.</li>
+<li>If two journeys/campaigns share the same priority score, the <strong>most recently modified</strong> one takes precedence.</li>
+</ul>
+<p><strong>Where to configure:</strong> In the journey properties under the <strong>Conflict Management</strong> section, set the <strong>Priority Score</strong> field.</p>
+<hr>
+<h3>3. Rule Sets (Frequency Capping &amp; Journey Entry Limits)</h3>
+<p>Rule sets allow you to define capping rules that restrict how many times a profile can enter journeys or receive messages.</p>
+<p>You can configure:</p>
+<ul>
+<li><strong>Journey frequency capping</strong> – Limit the number of journeys a profile can enter per day, week, or month, or the number of <strong>concurrent journeys</strong> running simultaneously.</li>
+<li><strong>Channel frequency capping</strong> – Set channel-specific limits (e.g., no more than 3 emails per week).</li>
+<li><strong>Communication type rules</strong> – Apply granular rules by type (e.g., Sales vs. Promotional) to avoid overloading customers with similar messages.</li>
+<li><strong>Quiet Hours</strong> – Define time windows during which no messages are sent (supports Email, SMS, Push, WhatsApp).</li>
+</ul>
+<p><strong>Where to configure:</strong> In the journey properties under <strong>Conflict Management</strong>, apply a <strong>Rule Set</strong> to the journey.</p>
+<hr>
+<h3>4. Journey Arbitration</h3>
+<p>Journey Arbitration allows you to <strong>suppress entry into lower-priority journeys</strong> when a customer qualifies for a higher-priority one simultaneously. This ensures customers are not pulled into multiple conflicting journeys at once.</p>
+<hr>
+<h3>Conflict Management Section in Journey Properties</h3>
+<p>All conflict tools are accessible directly from the <strong>Conflict Management</strong> section of the journey properties panel:</p>
+<p><img src="https://raw.githubusercontent.com/AdobeDocs/journey-optimizer.en/main/help/using/building-journeys/assets/new-journey-properties.png" alt="Journey properties"></p>
+<p>From here you can:</p>
+<ul>
+<li>Apply a <strong>Rule Set</strong> for capping</li>
+<li>Set a <strong>Priority Score</strong></li>
+<li>Click <strong>View Conflicts</strong> to check for overlaps</li>
+</ul>
+<hr>
+<h3>Using AI Assistant for Conflict Analysis</h3>
+<p>The <strong>Journey Analyze Agent</strong> in AI Assistant can also help you detect conflicts through natural language prompts, such as:</p>
+<ul>
+<li><em>&quot;Are there any scheduling conflicts for journey [Journey Name]?&quot;</em></li>
+<li><em>&quot;Show me audience overlap conflicts for journey [Journey Name]&quot;</em></li>
+<li><em>&quot;Which audiences are used in more than 5 journeys?&quot;</em></li>
+</ul>
+<p>This requires <strong>View Journeys</strong> and <strong>View Segments</strong> permissions.</p>
+<hr>
+<h3>Summary Table</h3>
+<p>| Tool | Purpose |</p>
+<p>|---|---|</p>
+<p>| <strong>View Potential Conflicts</strong> | Identify overlapping journeys/campaigns before launch |</p>
+<p>| <strong>Priority Scores</strong> | Determine which journey wins when profiles qualify for multiple |</p>
+<p>| <strong>Rule Sets</strong> | Cap frequency and concurrent journey entries per profile |</p>
+<p>| <strong>Journey Arbitration</strong> | Suppress lower-priority journeys automatically |</p>
+<p>| <strong>AI Assistant (Analyze)</strong> | Natural language conflict and overlap analysis |</p>
+<h2>Sources</h2>
+<ul>
+<li><a href="https://experienceleague.adobe.com/en/docs/journey-optimizer-learn/mobile-learning-hub/design-and-deliver">Design and deliver</a></li>
+<li><a href="https://experienceleague.adobe.com/en/docs/journey-optimizer/using/privacy/audit-logs">Audit actions on Journey Optimizer resources</a></li>
+</ul></article>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "how can i manage journey conflicts in AJO?", "acceptedAnswer": {"@type": "Answer", "text": "Managing Journey Conflicts in Adobe Journey Optimizer Adobe Journey Optimizer provides a comprehensive set of tools to help you identify, manage, and resolve conflicts across journeys and campaigns \u2014 preventing customer fatigue and ensuring the right messages reach your audience at the right time. --- Conflict Management Tools Overview AJO offers four main tools for conflict management and prioritization: 1. Conflict Detection \u2013 Identify overlapping journeys and campaigns 2. Priority Scores \u2013 Control which journey takes precedence 3. Rule Sets \u2013 Limit frequency and entry across journeys 4. Journey Arbitration \u2013 Suppress lower-priority journey entries --- 1. View Potential Conflicts When authoring a journey or campaign, you can proactively check for overlaps with other active or scheduled journeys. Steps: 1. Open your journey or campaign properties while authoring. 2. Assign at least one of the following settings: Start / End Date, Audience, Channel, Channel Configuration, or Rule Set. 3. Click Save to save those settings. 4. Click the View Potential Conflicts button in the journey or campaign properties. !View Potential Conflicts button(https://raw.githubusercontent.com/AdobeDocs/journey-optimizer.en/main/help/using/conflict-prioritization/assets/view-conflicts.png) 5. The Potential Conflicts window opens, showing all overlapping journeys/campaigns. !Potential conflicts panel(https://raw.githubusercontent.com/AdobeDocs/journey-optimizer.en/main/help/using/conflict-prioritization/assets/potential-conflicts.png) Note: The View Potential Conflicts button is only available for live and scheduled journeys/campaigns. It becomes selectable only after the required settings are saved. Conflicts are checked across: - Overlapping audience targeting - Concurrent timelines (start/end dates) - Shared communication channels - Shared channel configurations - Shared rule sets \u25b6 Watch: Identify Potential Conflicts(https://video.tv.adobe.com/v/3435528/?learn=on&enablevpops) --- 2.\u2026"}}]}</script></div>
+  </body>
+</html>
