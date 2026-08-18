@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/png" href="/tools/rovr/rovrlogo.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="build-date" content="2026-06-10" />
+    
+    
+    <script src="https://assets.adobedtm.com/204118644db8/290ae1adb65a/launch-e5ec7bf1a1ef-development.min.js" async></script>
+    <script type="module" crossorigin src="/tools/rovr/assets/index-D5c-fCgB.js"></script>
+    <link rel="stylesheet" crossorigin href="/tools/rovr/assets/index-Bt-UJ01-.css">
+  <title>how do we decide which attribute lands in edge and which attribute stays in profile hub of AEP? | Rovr</title>
+<meta name="description" content="How Attributes Are Decided Between Edge Profiles and Profile Hub in AEP Great question. The decision of which attributes land on the Edge Network versus…" />
+<link rel="canonical" href="https://thelearningproject.in/tools/rovr/q/how-do-we-decide-which-attribute-lands-in-edge-and-which-att-34ba9d" />
+<meta property="og:title" content="how do we decide which attribute lands in edge and which attribute stays in profile hub of AEP?" />
+<meta property="og:description" content="How Attributes Are Decided Between Edge Profiles and Profile Hub in AEP Great question. The decision of which attributes land on the Edge Network versus…" />
+<meta property="og:url" content="https://thelearningproject.in/tools/rovr/q/how-do-we-decide-which-attribute-lands-in-edge-and-which-att-34ba9d" />
+<meta property="og:type" content="article" />
+<meta property="og:image" content="https://thelearningproject.in/tools/rovr/rovrlogo.png" />
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="how do we decide which attribute lands in edge and which attribute stays in profile hub of AEP?" />
+<meta name="twitter:description" content="How Attributes Are Decided Between Edge Profiles and Profile Hub in AEP Great question. The decision of which attributes land on the Edge Network versus…" />
+</head>
+  <body>
+    <div id="root"><article><h1>how do we decide which attribute lands in edge and which attribute stays in profile hub of AEP?</h1>
+<h3>How Attributes Are Decided Between Edge Profiles and Profile Hub in AEP</h3>
+<p>Great question. The decision of which attributes land on the <strong>Edge Network</strong> versus staying in the <strong>Profile Hub</strong> is governed by a combination of <strong>merge policies</strong>, <strong>projection configurations</strong>, and the <strong>nature of the use case</strong>. Here&#x27;s a breakdown:</p>
+<hr>
+<h3>1. The Core Architectural Distinction</h3>
+<p>| | <strong>Profile Hub</strong> | <strong>Edge Network</strong> |</p>
+<p>|---|---|---|</p>
+<p>| <strong>Purpose</strong> | Thoroughness &amp; completeness | Speed &amp; real-time |</p>
+<p>| <strong>Data type</strong> | All historical data, rich profile context | Lightweight — only what&#x27;s needed for personalization |</p>
+<p>| <strong>Use cases</strong> | Batch/streaming segmentation, destinations, identity graph | Real-time personalization, edge segmentation |</p>
+<p>| <strong>Processing</strong> | Batch and streaming workflows | Behavioral/event-driven, real-time |</p>
+<p>The Edge Network only retains the <strong>audience memberships, profile identities, and attributes necessary for personalization</strong> — it is not a full copy of the hub profile.</p>
+<hr>
+<h3>2. What Controls Which Attributes Go to the Edge?</h3>
+<h4>Active-On-Edge Merge Policy</h4>
+<p>The primary control mechanism is the <strong>Active-On-Edge merge policy</strong>. You must configure a merge policy with the <strong>Active-On-Edge</strong> setting enabled. This merge policy determines which profile data is projected out to the edge nodes. Only attributes governed by this merge policy will be available on edge profiles.</p>
+<h4>Projection Destinations &amp; Projection Configurations</h4>
+<p>Data is routed to a specific edge via <strong>projections</strong>. A <strong>projection destination</strong> defines <em>which edge</em> (geographic node) the data will be sent to. The projection configuration determines <em>what data</em> gets sent. Only attributes explicitly included in the projection are replicated to edge profiles — everything else remains in the hub.</p>
+<h4>Custom Personalization Destination</h4>
+<p>When setting up real-time personalization use cases, you configure a <strong>Custom Personalization connection</strong> that specifies which <strong>profile attributes</strong> should be sent to the Edge Network. Only the attributes you select in that connection configuration will be available at the edge for decisioning and personalization.</p>
+<hr>
+<h3>3. Decision Framework: Edge vs. Hub</h3>
+<p>Use this framework to decide where an attribute belongs:</p>
+<p>| <strong>Criteria</strong> | <strong>Send to Edge</strong> | <strong>Keep in Hub Only</strong> |</p>
+<p>|---|---|---|</p>
+<p>| Needed for real-time personalization? | ✅ Yes | ❌ No |</p>
+<p>| Needed for next-click/same-session decisions? | ✅ Yes | ❌ No |</p>
+<p>| Heavily historical / aggregate data? | ❌ No | ✅ Yes |</p>
+<p>| Used in batch segmentation only? | ❌ No | ✅ Yes |</p>
+<p>| Sensitive/compliance-restricted data not needed at edge? | ❌ No | ✅ Yes |</p>
+<p>| Propensity scores or AI insights needed for on-site targeting? | ✅ Yes | ❌ (can stay in hub too) |</p>
+<hr>
+<h3>4. Practical Use Cases That Require Edge Attributes</h3>
+<ul>
+<li><strong>Real-Time Personalization</strong>: Attributes like `loyalty_tier`, `preferred_language`, or `last_product_viewed` that drive on-site content decisions need to be at the edge for low-latency retrieval.</li>
+<li><strong>Customer Support</strong>: Attributes like `account_status` or `recent_interaction` need to be pulled in real-time via the Edge Network API when a customer contacts support.</li>
+</ul>
+<hr>
+<h3>5. Key Takeaway</h3>
+<p>The edge profile is intentionally <strong>lightweight by design</strong>. You should only project attributes to the edge that are <strong>directly required for real-time, time-sensitive personalization or decisioning</strong>. All other rich profile data — historical events, identity graphs, complex segments computed in batch — lives in the <strong>hub</strong> and is accessed through non-real-time workflows.</p>
+<p>The levers you control are:</p>
+<p>1. <strong>Active-On-Edge merge policy</strong> — enables edge projection</p>
+<p>2. <strong>Projection configuration</strong> — defines what attributes are included</p>
+<p>3. <strong>Custom Personalization destination</strong> — surfaces specific attributes to the Edge Network for use in downstream real-time applications</p>
+<h2>Sources</h2>
+<ul>
+<li><a href="https://experienceleague.adobe.com/en/docs/experience-platform/segmentation/ui/audience-composition">Audiences UI Guide</a></li>
+</ul></article>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "how do we decide which attribute lands in edge and which attribute stays in profile hub of AEP?", "acceptedAnswer": {"@type": "Answer", "text": "How Attributes Are Decided Between Edge Profiles and Profile Hub in AEP Great question. The decision of which attributes land on the Edge Network versus staying in the Profile Hub is governed by a combination of merge policies, projection configurations, and the nature of the use case. Here's a breakdown: --- 1. The Core Architectural Distinction | | Profile Hub | Edge Network | |---|---|---| | Purpose | Thoroughness & completeness | Speed & real-time | | Data type | All historical data, rich profile context | Lightweight \u2014 only what's needed for personalization | | Use cases | Batch/streaming segmentation, destinations, identity graph | Real-time personalization, edge segmentation | | Processing | Batch and streaming workflows | Behavioral/event-driven, real-time | The Edge Network only retains the audience memberships, profile identities, and attributes necessary for personalization \u2014 it is not a full copy of the hub profile. --- 2. What Controls Which Attributes Go to the Edge? Active-On-Edge Merge Policy The primary control mechanism is the Active-On-Edge merge policy. You must configure a merge policy with the Active-On-Edge setting enabled. This merge policy determines which profile data is projected out to the edge nodes. Only attributes governed by this merge policy will be available on edge profiles. Projection Destinations & Projection Configurations Data is routed to a specific edge via projections. A projection destination defines which edge (geographic node) the data will be sent to. The projection configuration determines what data gets sent. Only attributes explicitly included in the projection are replicated to edge profiles \u2014 everything else remains in the hub. Custom Personalization Destination When setting up real-time personalization use cases, you configure a Custom Personalization connection that specifies which profile attributes should be sent to the Edge Network. Only the attributes you select in that connection configuration will be\u2026"}}]}</script></div>
+  </body>
+</html>
