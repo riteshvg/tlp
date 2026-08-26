@@ -1,0 +1,176 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/png" href="/tools/rovr/rovrlogo.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="build-date" content="2026-06-10" />
+    
+    
+    <script src="https://assets.adobedtm.com/204118644db8/290ae1adb65a/launch-e5ec7bf1a1ef-development.min.js" async></script>
+    <script type="module" crossorigin src="/tools/rovr/assets/index-D5c-fCgB.js"></script>
+    <link rel="stylesheet" crossorigin href="/tools/rovr/assets/index-Bt-UJ01-.css">
+  <title>can you show how to build a schema in postman? | Rovr</title>
+<meta name="description" content="Building a Schema in Adobe Experience Platform Using Postman Based on the retrieved documentation, here is a step-by-step walkthrough for building a schema…" />
+<link rel="canonical" href="https://thelearningproject.in/tools/rovr/q/can-you-show-how-to-build-a-schema-in-postman-2c1b57" />
+<meta property="og:title" content="can you show how to build a schema in postman?" />
+<meta property="og:description" content="Building a Schema in Adobe Experience Platform Using Postman Based on the retrieved documentation, here is a step-by-step walkthrough for building a schema…" />
+<meta property="og:url" content="https://thelearningproject.in/tools/rovr/q/can-you-show-how-to-build-a-schema-in-postman-2c1b57" />
+<meta property="og:type" content="article" />
+<meta property="og:image" content="https://thelearningproject.in/tools/rovr/rovrlogo.png" />
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="can you show how to build a schema in postman?" />
+<meta name="twitter:description" content="Building a Schema in Adobe Experience Platform Using Postman Based on the retrieved documentation, here is a step-by-step walkthrough for building a schema…" />
+</head>
+  <body>
+    <div id="root"><article><h1>can you show how to build a schema in postman?</h1>
+<h2>Building a Schema in Adobe Experience Platform Using Postman</h2>
+<p>Based on the retrieved documentation, here is a step-by-step walkthrough for building a schema using Postman.</p>
+<hr>
+<h3>Step 1: Authenticate — Get Your Access Token</h3>
+<p>Before building anything, you need a valid access token.</p>
+<p>1. In Postman, ensure your <strong>Environment</strong> is selected in the top-right dropdown (it should be named something like `--aepUserLdap-- OAuth Credential`)</p>
+<p><img src="https://raw.githubusercontent.com/AdobeDocs/analytics.en/main/src/pages/guides/use-cases/../../images/postman-oauth2-token.png" alt="Postman Environment Selection"></p>
+<p>2. In the <strong>Adobe IO - OAuth</strong> collection, select the request named <strong>POST - Get Access Token</strong></p>
+<p>3. Click <strong>Send</strong></p>
+<p>4. In the <strong>Body</strong> section of the response, you should see:</p>
+<p>| Key | Value |</p>
+<p>|---|---|</p>
+<p>| `token_type` | `bearer` |</p>
+<p>| `access_token` | `eyJhbGciOiJSU...` (long token string) |</p>
+<p>| `expires_in` | `86399` (valid for 24 hours) |</p>
+<p>&gt; <strong>Important:</strong> This token is valid for <strong>24 hours only</strong>. After expiry, re-run this request to generate a new one before making any further API calls.</p>
+<hr>
+<h3>Step 2: Import the Schema Registry API Collection</h3>
+<p>1. Go to the <a href="https://github.com/adobe/experience-platform-postman-samples/tree/master/apis/experience-platform">Experience Platform Postman Samples on GitHub</a></p>
+<p>2. Download the <strong>Schema Registry API</strong> collection JSON file to your local folder</p>
+<p>3. In Postman, click <strong>File &gt; Import</strong></p>
+<p>4. Select the downloaded file and click <strong>Import</strong></p>
+<p>5. Confirm the import when prompted</p>
+<hr>
+<h3>Step 3: Verify Your Setup — List Existing Schemas</h3>
+<p>Before creating a schema, confirm everything is working:</p>
+<p>1. Open <strong>Schema Registry API &gt; Schemas &gt; List schemas</strong></p>
+<p>2. Check the <strong>Params</strong> and <strong>Headers</strong> tabs — they should reference your environment variables automatically</p>
+<p>3. Confirm the <strong>Headers &gt; Accept</strong> value is set to:</p>
+<p>```</p>
+<p>application/vnd.adobe.xed-id+json</p>
+<p>```</p>
+<p>4. Click <strong>Send</strong></p>
+<p>5. A successful `200 OK` response returns a list of available XDM schemas</p>
+<hr>
+<h3>Step 4: Configure the Create Schema Request</h3>
+<h4>Set the Request Type and URL</h4>
+<p>1. In Postman, create a new request or locate <strong>Create schema</strong> in the Schema Registry API collection</p>
+<p>2. Set the method to <strong>POST</strong></p>
+<p>3. Set the URL to:</p>
+<p>```</p>
+<p>https://platform.adobe.io/data/foundation/schemaregistry/tenant/schemas</p>
+<p>```</p>
+<hr>
+<h4>Set the Headers</h4>
+<p>Go to the <strong>Headers</strong> tab and add the following:</p>
+<p>| Key | Value |</p>
+<p>|---|---|</p>
+<p>| `Authorization` | `Bearer {{ACCESS_TOKEN}}` |</p>
+<p>| `Content-Type` | `application/json` |</p>
+<p>| `x-api-key` | `{{API_KEY}}` |</p>
+<p>| `x-gw-ims-org-id` | `{{ORG_ID}}` |</p>
+<p>| `x-sandbox-name` | `{{SANDBOX_NAME}}` |</p>
+<p>&gt; The double curly braces `{{ }}` automatically pull values from your active Postman environment.</p>
+<hr>
+<h4>Set the Request Body</h4>
+<p>1. Go to the <strong>Body</strong> tab</p>
+<p>2. Select <strong>raw</strong> and choose <strong>JSON</strong> from the dropdown</p>
+<p>3. Enter your schema definition — choose the right class for your use case:</p>
+<h5>For a Profile Schema (customer attributes):</h5>
+<p>```json</p>
+<p>{</p>
+<p>&quot;title&quot;: &quot;My Customer Profile Schema&quot;,</p>
+<p>&quot;description&quot;: &quot;Stores customer attribute data.&quot;,</p>
+<p>&quot;type&quot;: &quot;object&quot;,</p>
+<p>&quot;allOf&quot;: [</p>
+<p>{</p>
+<p>&quot;$ref&quot;: &quot;https://ns.adobe.com/xdm/context/profile&quot;</p>
+<p>},</p>
+<p>{</p>
+<p>&quot;$ref&quot;: &quot;https://ns.adobe.com/xdm/context/profile-person-details&quot;</p>
+<p>},</p>
+<p>{</p>
+<p>&quot;$ref&quot;: &quot;https://ns.adobe.com/xdm/context/profile-personal-details&quot;</p>
+<p>}</p>
+<p>]</p>
+<p>}</p>
+<p>```</p>
+<h5>For an ExperienceEvent Schema (behavioral/time-series data):</h5>
+<p>```json</p>
+<p>{</p>
+<p>&quot;title&quot;: &quot;My Experience Event Schema&quot;,</p>
+<p>&quot;description&quot;: &quot;Tracks behavioral event data.&quot;,</p>
+<p>&quot;type&quot;: &quot;object&quot;,</p>
+<p>&quot;allOf&quot;: [</p>
+<p>{</p>
+<p>&quot;$ref&quot;: &quot;https://ns.adobe.com/xdm/context/experienceevent&quot;</p>
+<p>},</p>
+<p>{</p>
+<p>&quot;$ref&quot;: &quot;https://ns.adobe.com/xdm/context/experienceevent-person&quot;</p>
+<p>}</p>
+<p>]</p>
+<p>}</p>
+<p>```</p>
+<hr>
+<h3>Step 5: Send the Request and Review the Response</h3>
+<p>1. Click <strong>Send</strong></p>
+<p>2. A successful response returns <strong>HTTP 201 Created</strong> with the full schema definition, including a unique `$id` — <strong>save this value</strong>, you will need it to reference the schema later</p>
+<hr>
+<h3>Step 6: (Alternative) Upload a Schema from a JSON File</h3>
+<p>If you already have a schema defined as a JSON file, you can upload it directly:</p>
+<p>1. Set the method to <strong>POST</strong></p>
+<p>2. Set the URL to:</p>
+<p>```</p>
+<p>https://platform.adobe.io/data/foundation/conversion/schemas/upload</p>
+<p>```</p>
+<p>3. Go to the <strong>Body</strong> tab and select <strong>form-data</strong></p>
+<p>4. Add a key named `file`, change its type to <strong>File</strong>, and select your `.json` file</p>
+<p>5. Click <strong>Send</strong></p>
+<p>A successful response looks like:</p>
+<p>```json</p>
+<p>{</p>
+<p>&quot;id&quot;: &quot;292add3716daffabf14b14259afc8fab&quot;,</p>
+<p>&quot;version&quot;: 0,</p>
+<p>&quot;jsonSchema&quot;: {</p>
+<p>&quot;id&quot;: &quot;string&quot;,</p>
+<p>&quot;firstName&quot;: &quot;string&quot;,</p>
+<p>&quot;lastName&quot;: &quot;string&quot;</p>
+<p>}</p>
+<p>}</p>
+<p>```</p>
+<hr>
+<h3>Schema Building Reference</h3>
+<h4>Key Schema Classes</h4>
+<p>| Use Case | Class |</p>
+<p>|---|---|</p>
+<p>| Customer profile data | `XDM Individual Profile` |</p>
+<p>| Behavioral / event data | `XDM ExperienceEvent` |</p>
+<h4>Schema Components</h4>
+<p>| Component | Description |</p>
+<p>|---|---|</p>
+<p>| <strong>Class</strong> | Defines base behavior — record (Profile) or time-series (ExperienceEvent) |</p>
+<p>| <strong>Field Groups</strong> | Reusable sets of fields added to extend the schema |</p>
+<p>| <strong>Data Types</strong> | Reusable objects used across schemas regardless of class |</p>
+<p>| <strong>Fields</strong> | Lowest-level elements with a name and a data type |</p>
+<hr>
+<h3>Troubleshooting</h3>
+<p>| Error | Likely Cause | Fix |</p>
+<p>|---|---|---|</p>
+<p>| `401 Unauthorized` | Expired access token | Re-run <strong>POST - Get Access Token</strong> |</p>
+<p>| `403 Forbidden` | Insufficient permissions | Check API key permissions in Adobe Developer Console |</p>
+<p>| `400 Bad Request` | Malformed JSON body | Validate your JSON syntax and `$ref` values |</p>
+<p>| `404 Not Found` | Wrong sandbox name | Verify `SANDBOX_NAME` in your environment variables |</p>
+<h2>Sources</h2>
+<ul>
+<li><a href="https://developer.adobe.com/analytics-apis/docs/2.0/guides/use-cases/postman">Use Postman with Adobe Analytics</a></li>
+</ul></article>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "can you show how to build a schema in postman?", "acceptedAnswer": {"@type": "Answer", "text": "Building a Schema in Adobe Experience Platform Using Postman Based on the retrieved documentation, here is a step-by-step walkthrough for building a schema using Postman. --- Step 1: Authenticate \u2014 Get Your Access Token Before building anything, you need a valid access token. 1. In Postman, ensure your Environment is selected in the top-right dropdown (it should be named something like --aepUserLdap-- OAuth Credential) !Postman Environment Selection(https://raw.githubusercontent.com/AdobeDocs/analytics.en/main/src/pages/guides/use-cases/../../images/postman-oauth2-token.png) 2. In the Adobe IO - OAuth collection, select the request named POST - Get Access Token 3. Click Send 4. In the Body section of the response, you should see: | Key | Value | |---|---| | tokentype | bearer | | accesstoken | eyJhbGciOiJSU... (long token string) | | expiresin | 86399 (valid for 24 hours) | Important: This token is valid for 24 hours only. After expiry, re-run this request to generate a new one before making any further API calls. --- Step 2: Import the Schema Registry API Collection 1. Go to the Experience Platform Postman Samples on GitHub(https://github.com/adobe/experience-platform-postman-samples/tree/master/apis/experience-platform) 2. Download the Schema Registry API collection JSON file to your local folder 3. In Postman, click File Import 4. Select the downloaded file and click Import 5. Confirm the import when prompted --- Step 3: Verify Your Setup \u2014 List Existing Schemas Before creating a schema, confirm everything is working: 1. Open Schema Registry API Schemas List schemas 2. Check the Params and Headers tabs \u2014 they should reference your environment variables automatically 3. Confirm the Headers Accept value is set to: application/vnd.adobe.xed-id+json 4. Click Send 5. A successful 200 OK response returns a list of available XDM schemas --- Step 4: Configure the Create Schema Request Set the Request Type and URL 1. In Postman, create a new request or locate Create\u2026"}}]}</script></div>
+  </body>
+</html>
