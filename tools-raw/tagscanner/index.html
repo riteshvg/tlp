@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TagScanner — Free Chrome Extension for Adobe Tags (Launch) Audits</title>
+<meta name="description" content="TagScanner is a free Chrome extension that gives you an instant, complete view of any live Adobe Tags (Launch) property — rules, data elements, extensions, dependencies, and custom code. No API credentials, no backend access, no admin rights required.">
+<link rel="stylesheet" href="styles.css">
+<link rel="icon" type="image/png" href="assets/tagscanner-icon.png">
+</head>
+<body>
+
+<!-- ===== NAV ===== -->
+<header class="nav" id="nav">
+  <div class="container nav__inner">
+    <a href="#top" class="nav__logo">
+      <img class="nav__logo-mark" src="assets/tagscanner-icon.png" alt="TagScanner logo">
+      TagScanner
+    </a>
+    <nav class="nav__links" id="navLinks">
+      <a href="#features">Features</a>
+      <a href="#ai-features">AI Features</a>
+      <a href="#how-it-works">How it works</a>
+      <a href="#screenshots">Screenshots</a>
+      <a href="#reviews">Reviews</a>
+    </nav>
+    <div class="nav__actions">
+      <a href="https://chromewebstore.google.com/detail/tagscanner/mhejdbndckkddicchjjbaehfbmjjlmjn" target="_blank" rel="noopener" class="btn btn--primary btn--small">Add to Chrome — free</a>
+      <button class="nav__toggle" id="navToggle" aria-label="Toggle menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<main id="top">
+
+  <!-- ===== HERO ===== -->
+  <section class="hero">
+    <div class="container hero__inner">
+      <div class="hero__copy">
+        <span class="eyebrow">No API credentials, no backend access, no admin rights required</span>
+        <h1>Scan your Adobe Tags property — right from your browser.</h1>
+        <p class="hero__sub">
+          TagScanner is a free Chrome extension for anyone working with Adobe Tags (Launch). Open it on
+          any live site running Adobe Tags and get an instant, complete view of the property — rules,
+          data elements, extensions, dependencies, and custom code.
+        </p>
+        <div class="hero__ctas">
+          <a href="https://chromewebstore.google.com/detail/tagscanner/mhejdbndckkddicchjjbaehfbmjjlmjn" target="_blank" rel="noopener" class="btn btn--primary btn--large">Add to Chrome — free</a>
+          <a href="#demo" class="btn btn--ghost btn--large">
+            <span class="play-dot">▶</span> Watch 90-second demo
+          </a>
+        </div>
+        <div class="hero__trust">
+          <span>Built for</span>
+          <div class="hero__trust-logos">
+            <span class="logo-chip">Tag Managers</span>
+            <span class="logo-chip">Analytics Engineers</span>
+            <span class="logo-chip">MarTech Consultants</span>
+            <span class="logo-chip">Implementation Architects</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="hero__visual">
+        <div class="score-card" aria-hidden="true">
+          <div class="score-card__header">
+            <span class="dot dot--red"></span><span class="dot dot--yellow"></span><span class="dot dot--green"></span>
+            <span class="score-card__title">Property Health Report</span>
+          </div>
+          <div class="score-card__body">
+            <div class="grade-ring">
+              <svg viewBox="0 0 120 120">
+                <circle cx="60" cy="60" r="52" class="grade-ring__track"/>
+                <circle cx="60" cy="60" r="52" class="grade-ring__fill"/>
+              </svg>
+              <span class="grade-ring__letter">A-</span>
+            </div>
+            <ul class="score-card__stats">
+              <li><span>142</span> Rules audited</li>
+              <li><span>8</span> Ghost data elements found</li>
+              <li><span>23</span> Unused elements flagged</li>
+              <li><span>6</span> Extensions scanned</li>
+            </ul>
+          </div>
+          <div class="score-card__bars">
+            <div class="bar"><span style="width: 92%"></span></div>
+            <div class="bar"><span style="width: 78%"></span></div>
+            <div class="bar"><span style="width: 65%"></span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== DEMO VIDEO ===== -->
+  <section class="section" id="demo">
+    <div class="container">
+      <h2 class="section__title">See it in action</h2>
+      <p class="section__sub">From opening the extension to a full audit report in under two minutes — no setup required.</p>
+
+      <div class="video-embed">
+        <iframe
+          src="https://www.youtube.com/embed/F0AkmsKtycA"
+          title="TagScanner demo video"
+          frameborder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          allowfullscreen>
+        </iframe>
+      </div>
+      <p class="demo__note">
+        It reads directly from the <code>_satellite</code> container object that Adobe Tags injects into
+        every page. That object is always there — TagScanner just surfaces everything inside it.
+      </p>
+    </div>
+  </section>
+
+  <!-- ===== FEATURES ===== -->
+  <section class="section section--alt" id="features">
+    <div class="container">
+      <h2 class="section__title">Everything you need to keep a Tags property healthy</h2>
+      <p class="section__sub">Core features are fully available, free, with no sign-in required.</p>
+
+      <div class="grid grid--3">
+        <div class="feature-card">
+          <div class="feature-card__icon">🔍</div>
+          <h3>Audit</h3>
+          <p>Browse every rule with its events, conditions, actions, and custom code. Sortable, searchable, paginated — no more opening rules one by one in the Launch UI.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-card__icon">🕸️</div>
+          <h3>Analyse</h3>
+          <p>Full data element usage tracking: which rules reference each DE, which extensions use them, and DE-to-DE dependency chains. Deep Scan detects ghost dependencies referenced in custom code that don't exist in the compiled library.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-card__icon">🗺️</div>
+          <h3>Visualise</h3>
+          <p>Flow Diagram generates an interactive visual map of your entire property — data elements, rules, extensions, and the connections between them. Always reflects the current published library.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-card__icon">💻</div>
+          <h3>Search</h3>
+          <p>Global Code Search runs full-text search across every rule, data element, and extension — including all custom code blocks — with line-level match highlighting.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-card__icon">📤</div>
+          <h3>Export</h3>
+          <p>One-click .xlsx export of every rule, data element, and extension, including custom code — the export Launch itself can't give you.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-card__icon">🛠️</div>
+          <h3>Debug</h3>
+          <p>Environment Override redirects the live Tags library to dev or staging at the network level. No proxy tools, no test pages, no page changes required.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== AI FEATURES ===== -->
+  <section class="section" id="ai-features">
+    <div class="container">
+      <h2 class="section__title">AI-powered features <span class="beta-tag">Preview / Beta</span></h2>
+      <p class="section__sub">A manual audit that takes hours — TagScanner does it in under a minute.</p>
+
+      <div class="grid grid--3">
+        <div class="feature-card">
+          <div class="feature-card__icon">🩺</div>
+          <h3>AI Property Health Scan</h3>
+          <p>An A–F health score for your entire property, with an executive summary, category scores, critical issues, and ranked recommendations.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-card__icon">💡</div>
+          <h3>Custom Code Explanation</h3>
+          <p>A plain-English breakdown of any custom code block: what it does, what data it reads, what it returns, risks, and ready-to-run debug commands.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-card__icon">💬</div>
+          <h3>Ask AI</h3>
+          <p>Natural language questions about your live property — "Which rules fire on page load?", "What data elements use the data layer?" — answered instantly, with conversation persistence.</p>
+        </div>
+      </div>
+      <p class="ai-note">AI features are available on a best-effort basis and require Google OAuth. Core features above are fully available with no restrictions and no sign-in.</p>
+    </div>
+  </section>
+
+  <!-- ===== HOW IT WORKS ===== -->
+  <section class="section section--alt" id="how-it-works">
+    <div class="container">
+      <h2 class="section__title">Three steps. No credentials.</h2>
+      <div class="steps">
+        <div class="step">
+          <div class="step__number">1</div>
+          <h3>Install the extension</h3>
+          <p>Add TagScanner to Chrome for free. No sign-in required to use the core features.</p>
+        </div>
+        <div class="step">
+          <div class="step__number">2</div>
+          <h3>Open any page with Adobe Tags</h3>
+          <p>TagScanner reads the live <code>_satellite</code> container object straight from the page — no API tokens, backend access, or admin rights needed.</p>
+        </div>
+        <div class="step">
+          <div class="step__number">3</div>
+          <h3>Audit, visualise &amp; export</h3>
+          <p>Get an instant view of rules, data elements, dependencies, and custom code — then export a polished Excel report to share with your team.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== WHO IT'S FOR ===== -->
+  <section class="section" id="who-its-for">
+    <div class="container who-its-for">
+      <h2 class="section__title">Who it's for</h2>
+      <p class="section__sub">
+        Tag managers, analytics engineers, MarTech consultants, and implementation architects who audit,
+        document, or optimise Adobe Tags properties — and want to spend less time in the Launch UI and
+        more time on the actual work.
+      </p>
+    </div>
+  </section>
+
+  <!-- ===== SCREENSHOTS ===== -->
+  <section class="section section--alt" id="screenshots">
+    <div class="container">
+      <h2 class="section__title">A closer look</h2>
+      <p class="section__sub">Real report views from a TagScanner audit.</p>
+
+      <div class="grid grid--2 screenshots">
+        <figure class="shot">
+          <img src="assets/screenshot-home.png" alt="TagScanner property workspace overview showing all available inspection and analysis tools" tabindex="0" role="button" aria-label="Enlarge screenshot">
+          <figcaption>Property workspace &amp; feature overview</figcaption>
+        </figure>
+        <figure class="shot">
+          <img src="assets/screenshot-scan.png" alt="TagScanner AI health scan showing a Grade C score with critical issues and recommendations" tabindex="0" role="button" aria-label="Enlarge screenshot">
+          <figcaption>AI-powered health scan &amp; critical issues</figcaption>
+        </figure>
+        <figure class="shot">
+          <img src="assets/screenshot-flow.png" alt="TagScanner dependency flow diagram connecting data elements, rules, and extensions" tabindex="0" role="button" aria-label="Enlarge screenshot">
+          <figcaption>Visual dependency flow diagram</figcaption>
+        </figure>
+        <figure class="shot">
+          <img src="assets/screenshot-explain.png" alt="TagScanner custom code explanation showing data flow and risk flags for a data element" tabindex="0" role="button" aria-label="Enlarge screenshot">
+          <figcaption>Plain-English custom code explanation</figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== REVIEWS ===== -->
+  <section class="section" id="reviews">
+    <div class="container">
+      <h2 class="section__title">What users are saying</h2>
+      <p class="section__sub">Real feedback from TagScanner users.</p>
+
+      <div class="grid grid--2">
+        <blockquote class="review-card">
+          <div class="review-card__stars">★★★★★</div>
+          <p>"Love the functionality of this extension to debug our Adobe Tag property."</p>
+          <footer>
+            <span class="review-card__source">Chrome Web Store review</span>
+          </footer>
+        </blockquote>
+        <blockquote class="review-card">
+          <p>"This is pretty cool, I like the flow visualisation and the summary of unused components."</p>
+          <footer>
+            <span class="review-card__source">TagScanner user</span>
+          </footer>
+        </blockquote>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== FINAL CTA ===== -->
+  <section class="cta" id="get-started">
+    <div class="container cta__inner">
+      <h2>Ready to see what's hiding in your Tags property?</h2>
+      <p>Free. No sign-in required for core features. Google OAuth required for AI features only.</p>
+      <a href="https://chromewebstore.google.com/detail/tagscanner/mhejdbndckkddicchjjbaehfbmjjlmjn" target="_blank" rel="noopener" class="btn btn--primary btn--large">Add to Chrome — free</a>
+    </div>
+  </section>
+
+</main>
+
+<!-- ===== LIGHTBOX ===== -->
+<div class="lightbox" id="lightbox" aria-hidden="true">
+  <button class="lightbox__close" id="lightboxClose" aria-label="Close enlarged screenshot">&times;</button>
+  <img src="" alt="" id="lightboxImg">
+</div>
+
+<!-- ===== FOOTER ===== -->
+<footer class="footer">
+  <div class="container footer__inner">
+    <div class="footer__brand">
+      <img class="nav__logo-mark" src="assets/tagscanner-icon.png" alt="TagScanner logo"> TagScanner
+    </div>
+    <p class="footer__disclaimer">
+      TagScanner is an independent tool and is not affiliated with, sponsored by, or endorsed by Adobe.
+      Adobe, Adobe Tags, and Adobe Experience Platform Launch are trademarks of Adobe Inc.
+    </p>
+    <p class="footer__feedback">Feedback: <a href="mailto:tagscannerfeedback@gmail.com">tagscannerfeedback@gmail.com</a></p>
+    <p class="footer__copyright">&copy; 2026 TagScanner. All rights reserved.</p>
+  </div>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>

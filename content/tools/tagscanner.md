@@ -1,5 +1,6 @@
 ---
 title: 'TagScanner'
+layout: 'landing'
 date: 2026-05-31
 showDate: false
 showSocial: false
