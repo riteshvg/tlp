@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/png" href="/tools/rovr/rovrlogo.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="build-date" content="2026-06-10" />
+    
+    
+    <script src="https://assets.adobedtm.com/204118644db8/290ae1adb65a/launch-e5ec7bf1a1ef-development.min.js" async></script>
+    <script type="module" crossorigin src="/tools/rovr/assets/index-D5c-fCgB.js"></script>
+    <link rel="stylesheet" crossorigin href="/tools/rovr/assets/index-Bt-UJ01-.css">
+  <title>how to creating connection in CJA from aep. | Rovr</title>
+<meta name="description" content="Creating a Connection in Customer Journey Analytics from Adobe Experience Platform A connection integrates AEP datasets into CJA Workspace, enabling you to…" />
+<link rel="canonical" href="https://thelearningproject.in/tools/rovr/q/how-to-creating-connection-in-cja-from-aep-be42f3" />
+<meta property="og:title" content="how to creating connection in CJA from aep." />
+<meta property="og:description" content="Creating a Connection in Customer Journey Analytics from Adobe Experience Platform A connection integrates AEP datasets into CJA Workspace, enabling you to…" />
+<meta property="og:url" content="https://thelearningproject.in/tools/rovr/q/how-to-creating-connection-in-cja-from-aep-be42f3" />
+<meta property="og:type" content="article" />
+<meta property="og:image" content="https://thelearningproject.in/tools/rovr/rovrlogo.png" />
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="how to creating connection in CJA from aep." />
+<meta name="twitter:description" content="Creating a Connection in Customer Journey Analytics from Adobe Experience Platform A connection integrates AEP datasets into CJA Workspace, enabling you to…" />
+</head>
+  <body>
+    <div id="root"><article><h1>how to creating connection in CJA from aep.</h1>
+<h2>Creating a Connection in Customer Journey Analytics from Adobe Experience Platform</h2>
+<p>A connection integrates AEP datasets into CJA Workspace, enabling you to report and analyze your Experience Platform data.</p>
+<hr>
+<h3>Prerequisites</h3>
+<p>Before creating a connection, ensure you have:</p>
+<ul>
+<li>A configured <strong>schema</strong> in AEP</li>
+<li>At least one <strong>dataset</strong> created in AEP</li>
+<li>Access to the <strong>Customer Journey Analytics UI</strong></li>
+</ul>
+<hr>
+<h3>Step-by-Step Instructions</h3>
+<h4>Step 1: Navigate to Connections</h4>
+<p>1. In the <strong>Customer Journey Analytics UI</strong>, select <strong>[!UICONTROL Connections]</strong> (optionally under <strong>[!UICONTROL Data management]</strong>) from the top menu.</p>
+<p><img src="https://raw.githubusercontent.com/AdobeDocs/analytics-platform.en/main/help/connections/assets/list-view.png" alt="Connection List View"></p>
+<p>2. Select <strong>[!UICONTROL Create new connection]</strong>.</p>
+<hr>
+<h4>Step 2: Configure Connection Settings</h4>
+<p>In the <strong>[!UICONTROL Untitled connection]</strong> screen:</p>
+<ul>
+<li>Enter a <strong>Connection name</strong> and <strong>Connection description</strong> in the <strong>[!UICONTROL Connection Settings]</strong> section.</li>
+<li>Under <strong>[!UICONTROL Data settings]</strong>:</li>
+<li>Select the correct <strong>[!UICONTROL Sandbox]</strong> from the sandbox list.</li>
+<li>Select the appropriate <strong>[!UICONTROL Average number of daily events]</strong> (e.g., <em>less than 1 million</em>).</li>
+</ul>
+<hr>
+<h4>Step 3: Add Datasets</h4>
+<p>1. Select <strong>[!UICONTROL Add datasets]</strong>.</p>
+<p>2. In the <strong>[!UICONTROL Select datasets]</strong> step, select the AEP dataset(s) you want to include in this connection.</p>
+<p>3. Select <strong>[!UICONTROL Next]</strong>.</p>
+<p><img src="https://raw.githubusercontent.com/AdobeDocs/analytics-platform.en/main/help/connections/assets/datasets-included.png" alt="Datasets Included"></p>
+<hr>
+<h4>Step 4: Configure Dataset Settings</h4>
+<p>For <strong>each dataset</strong> added:</p>
+<ul>
+<li><strong>[!UICONTROL Person ID]</strong> — Select a Person ID from the available identities defined in the dataset&#x27;s schema in AEP. This is used for identity stitching.</li>
+<li><strong>[!UICONTROL Data source type]</strong> — Select the appropriate source type from the list. If selecting <strong>[!UICONTROL Other]</strong>, add a description for the data source.</li>
+<li><strong>[!UICONTROL Import all new data]</strong> — Toggle on/off based on whether you want ongoing new data to flow into CJA.</li>
+<li><strong>[!UICONTROL Dataset backfill existing data]</strong> — Toggle on/off based on whether you want to backfill historical data.</li>
+</ul>
+<p>Once configured for all datasets, select <strong>[!UICONTROL Add datasets]</strong>.</p>
+<hr>
+<h4>Step 5: Save the Connection</h4>
+<p>Select <strong>[!UICONTROL Save]</strong> to finalize and create the connection.</p>
+<p>&gt; <strong>Note:</strong> After creating your connection, it may take <strong>a few hours</strong> before your data becomes available in CJA for reporting and analysis.</p>
+<hr>
+<h3>What&#x27;s Next?</h3>
+<p>Once the connection is saved, you can proceed to:</p>
+<ul>
+<li><strong>Create a Data View</strong> — to define how the connected dataset fields appear in CJA Workspace.</li>
+<li><strong>Build Workspace Projects</strong> — to start analyzing your AEP data.</li>
+</ul>
+</article>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "how to creating connection in CJA from aep.", "acceptedAnswer": {"@type": "Answer", "text": "Creating a Connection in Customer Journey Analytics from Adobe Experience Platform A connection integrates AEP datasets into CJA Workspace, enabling you to report and analyze your Experience Platform data. --- Prerequisites Before creating a connection, ensure you have: - A configured schema in AEP - At least one dataset created in AEP - Access to the Customer Journey Analytics UI --- Step-by-Step Instructions Step 1: Navigate to Connections 1. In the Customer Journey Analytics UI, select !UICONTROL Connections (optionally under !UICONTROL Data management) from the top menu. !Connection List View(https://raw.githubusercontent.com/AdobeDocs/analytics-platform.en/main/help/connections/assets/list-view.png) 2. Select !UICONTROL Create new connection. --- Step 2: Configure Connection Settings In the !UICONTROL Untitled connection screen: - Enter a Connection name and Connection description in the !UICONTROL Connection Settings section. - Under !UICONTROL Data settings: - Select the correct !UICONTROL Sandbox from the sandbox list. - Select the appropriate !UICONTROL Average number of daily events (e.g., less than 1 million). --- Step 3: Add Datasets 1. Select !UICONTROL Add datasets. 2. In the !UICONTROL Select datasets step, select the AEP dataset(s) you want to include in this connection. 3. Select !UICONTROL Next. !Datasets Included(https://raw.githubusercontent.com/AdobeDocs/analytics-platform.en/main/help/connections/assets/datasets-included.png) --- Step 4: Configure Dataset Settings For each dataset added: - !UICONTROL Person ID \u2014 Select a Person ID from the available identities defined in the dataset's schema in AEP. This is used for identity stitching. - !UICONTROL Data source type \u2014 Select the appropriate source type from the list. If selecting !UICONTROL Other, add a description for the data source. - !UICONTROL Import all new data \u2014 Toggle on/off based on whether you want ongoing new data to flow into CJA. - !UICONTROL Dataset backfill existing data \u2014\u2026"}}]}</script></div>
+  </body>
+</html>

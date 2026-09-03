@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/png" href="/tools/rovr/rovrlogo.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="build-date" content="2026-06-10" />
+    
+    
+    <script src="https://assets.adobedtm.com/204118644db8/290ae1adb65a/launch-e5ec7bf1a1ef-development.min.js" async></script>
+    <script type="module" crossorigin src="/tools/rovr/assets/index-D5c-fCgB.js"></script>
+    <link rel="stylesheet" crossorigin href="/tools/rovr/assets/index-Bt-UJ01-.css">
+  <title>what is identity in customer journey analytics? | Rovr</title>
+<meta name="description" content="Identity in Customer Journey Analytics Identity is one of the most critical components of Customer Journey Analytics. It&#x27;s the foundation that allows you to…" />
+<link rel="canonical" href="https://thelearningproject.in/tools/rovr/q/what-is-identity-in-customer-journey-analytics-cc1c71" />
+<meta property="og:title" content="what is identity in customer journey analytics?" />
+<meta property="og:description" content="Identity in Customer Journey Analytics Identity is one of the most critical components of Customer Journey Analytics. It&#x27;s the foundation that allows you to…" />
+<meta property="og:url" content="https://thelearningproject.in/tools/rovr/q/what-is-identity-in-customer-journey-analytics-cc1c71" />
+<meta property="og:type" content="article" />
+<meta property="og:image" content="https://thelearningproject.in/tools/rovr/rovrlogo.png" />
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="what is identity in customer journey analytics?" />
+<meta name="twitter:description" content="Identity in Customer Journey Analytics Identity is one of the most critical components of Customer Journey Analytics. It&#x27;s the foundation that allows you to…" />
+</head>
+  <body>
+    <div id="root"><article><h1>what is identity in customer journey analytics?</h1>
+<h2>Identity in Customer Journey Analytics</h2>
+<p>Identity is one of the most critical components of Customer Journey Analytics. It&#x27;s the foundation that allows you to connect and stitch multiple data sources together to create a unified view of your customer.</p>
+<h3>Why Identity Matters</h3>
+<p>In Customer Journey Analytics, an identifier that exists across all your channels and the corresponding data allows you to:</p>
+<ul>
+<li>Stitch multiple data sources together</li>
+<li>Track customer journeys across channels and devices</li>
+<li>Create cross-channel visualizations</li>
+<li>Analyze complete customer interactions in a unified way</li>
+</ul>
+<h3>How Identity Works in CJA</h3>
+<p>When you set up a <a href="/help/connections/overview.md">connection</a>, you define a <strong>Person ID</strong> for each dataset. This Person ID is the identifier used to:</p>
+<ul>
+<li>Partition data in Experience Platform</li>
+<li>Serve as the primary key for analysis in Customer Journey Analytics</li>
+<li>Enable cross-channel analysis and stitching</li>
+</ul>
+<h3>Configuring Identity Options</h3>
+<p>When setting up your connection, you have two primary options for selecting your Person ID:</p>
+<p><strong>Use Primary Identity Namespace</strong></p>
+<ul>
+<li>Instructs Customer Journey Analytics to find the identity in the Identity Map marked with a `primary=true` attribute</li>
+<li>Uses that identity as the Person ID for each row</li>
+<li>This is the identity also used by Experience Platform for partitioning</li>
+</ul>
+<p><strong>Select a Specific Namespace</strong></p>
+<ul>
+<li>If you don&#x27;t use the primary identity, you can select a specific identity namespace</li>
+<li>Customer Journey Analytics will search each row&#x27;s Identity Map for this namespace key</li>
+<li>You must know which namespaces are present in your data; they are not auto-detected</li>
+<li>All possible namespaces appear in the dropdown menu</li>
+</ul>
+<h3>Important Identity Considerations</h3>
+<p>For your identities to work effectively across all channels, consider the following:</p>
+<ul>
+<li><strong>ID exists across sources</strong>: The ID must exist or be added to all data sources you want to bring into CJA</li>
+<li><strong>Populated on each row</strong>: The ID should be populated on each row of data</li>
+<li><strong>No PII</strong>: Don&#x27;t include personally identifiable information; apply hashing to anything sensitive</li>
+<li><strong>Consistent format</strong>: Use the same format across all sources (same length, same hashing method)</li>
+</ul>
+<h3>Cross-Channel Analysis</h3>
+<p>For datasets like Adobe Analytics where an identity may not exist on every row, you can use <a href="/help/stitching/overview.md">Cross-channel Analysis (Stitching)</a> to bridge the gap—for example, when a customer is identified only by their ECID and when an identity is collected after authentication.</p>
+<p><a href="https://video.tv.adobe.com/v/30750/?learn=on&amp;quality=12">▶ Watch: Understanding How Customer Journey Analytics Uses Identity</a></p>
+<h2>Sources</h2>
+<ul>
+<li><a href="https://experienceleague.adobe.com/en/docs/analytics-platform/using/cja-connections/create-connection">Create Or Edit A Connection</a></li>
+<li><a href="https://experienceleague.adobe.com/en/docs/analytics-platform/using/cja-components/audiences/publish">Create and publish audiences</a></li>
+</ul></article>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "what is identity in customer journey analytics?", "acceptedAnswer": {"@type": "Answer", "text": "Identity in Customer Journey Analytics Identity is one of the most critical components of Customer Journey Analytics. It's the foundation that allows you to connect and stitch multiple data sources together to create a unified view of your customer. Why Identity Matters In Customer Journey Analytics, an identifier that exists across all your channels and the corresponding data allows you to: - Stitch multiple data sources together - Track customer journeys across channels and devices - Create cross-channel visualizations - Analyze complete customer interactions in a unified way How Identity Works in CJA When you set up a connection(/help/connections/overview.md), you define a Person ID for each dataset. This Person ID is the identifier used to: - Partition data in Experience Platform - Serve as the primary key for analysis in Customer Journey Analytics - Enable cross-channel analysis and stitching Configuring Identity Options When setting up your connection, you have two primary options for selecting your Person ID: Use Primary Identity Namespace - Instructs Customer Journey Analytics to find the identity in the Identity Map marked with a primary=true attribute - Uses that identity as the Person ID for each row - This is the identity also used by Experience Platform for partitioning Select a Specific Namespace - If you don't use the primary identity, you can select a specific identity namespace - Customer Journey Analytics will search each row's Identity Map for this namespace key - You must know which namespaces are present in your data; they are not auto-detected - All possible namespaces appear in the dropdown menu Important Identity Considerations For your identities to work effectively across all channels, consider the following: - ID exists across sources: The ID must exist or be added to all data sources you want to bring into CJA - Populated on each row: The ID should be populated on each row of data - No PII: Don't include personally identifiable\u2026"}}]}</script></div>
+  </body>
+</html>

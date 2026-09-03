@@ -1,0 +1,147 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/png" href="/tools/rovr/rovrlogo.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="build-date" content="2026-06-10" />
+    
+    
+    <script src="https://assets.adobedtm.com/204118644db8/290ae1adb65a/launch-e5ec7bf1a1ef-development.min.js" async></script>
+    <script type="module" crossorigin src="/tools/rovr/assets/index-D5c-fCgB.js"></script>
+    <link rel="stylesheet" crossorigin href="/tools/rovr/assets/index-Bt-UJ01-.css">
+  <title>if the company gives evar , props data , can we build a schema using that data in aep , then which schema and what will the process to be taken? | Rovr</title>
+<meta name="description" content="Building AEP Schemas from Adobe Analytics eVar &amp; Prop Data Understanding the Context eVars and props are Adobe Analytics-specific constructs (custom…" />
+<link rel="canonical" href="https://thelearningproject.in/tools/rovr/q/if-the-company-gives-evar-props-data-can-we-build-a-schema-u-7257d2" />
+<meta property="og:title" content="if the company gives evar , props data , can we build a schema using that data in aep , then which schema and what will the process to be taken?" />
+<meta property="og:description" content="Building AEP Schemas from Adobe Analytics eVar &amp; Prop Data Understanding the Context eVars and props are Adobe Analytics-specific constructs (custom…" />
+<meta property="og:url" content="https://thelearningproject.in/tools/rovr/q/if-the-company-gives-evar-props-data-can-we-build-a-schema-u-7257d2" />
+<meta property="og:type" content="article" />
+<meta property="og:image" content="https://thelearningproject.in/tools/rovr/rovrlogo.png" />
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="if the company gives evar , props data , can we build a schema using that data in aep , then which schema and what will the process to be taken?" />
+<meta name="twitter:description" content="Building AEP Schemas from Adobe Analytics eVar &amp; Prop Data Understanding the Context eVars and props are Adobe Analytics-specific constructs (custom…" />
+</head>
+  <body>
+    <div id="root"><article><h1>if the company gives evar , props data , can we build a schema using that data in aep , then which schema and what will the process to be taken?</h1>
+<h2>Building AEP Schemas from Adobe Analytics eVar &amp; Prop Data</h2>
+<h3>Understanding the Context</h3>
+<p>eVars and props are <strong>Adobe Analytics-specific constructs</strong> (custom variables). When bringing this data into Adobe Experience Platform (AEP), you need to <strong>map and translate</strong> these variables into XDM (Experience Data Model) schema fields. AEP does not natively understand &quot;eVar1&quot; or &quot;prop5&quot; — you must represent them meaningfully in XDM.</p>
+<hr>
+<h3>Which Schema to Use?</h3>
+<p>For Adobe Analytics data flowing into AEP, you should use the <strong>Adobe Analytics ExperienceEvent Template</strong> schema, which is built on:</p>
+<p>| Schema Class | Field Group to Add |</p>
+<p>|---|---|</p>
+<p>| <strong>XDM ExperienceEvent</strong> (primary class) | Adobe Analytics ExperienceEvent Full Extension |</p>
+<p>| <strong>XDM ExperienceEvent</strong> | Adobe Experience Platform Web/Mobile SDK fields (if applicable) |</p>
+<p>The <strong>XDM ExperienceEvent</strong> class is the correct base class because:</p>
+<ul>
+<li>eVars and props are <strong>event-level data</strong> (captured per hit/event)</li>
+<li>ExperienceEvent tracks timestamped behavioral data</li>
+<li>It aligns with how Analytics collects hit data</li>
+</ul>
+<hr>
+<h3>Schema Composition Concepts You Need to Know</h3>
+<p>A schema in AEP is built from <strong>building blocks</strong>:</p>
+<p><img src="https://raw.githubusercontent.com/AdobeDocs/experience-platform.en/main/help/xdm/schema/../images/schema-composition/composition.png" alt="Schema Composition"></p>
+<ul>
+<li><strong>Class</strong> → Defines the behavioral type of data (ExperienceEvent or Individual Profile)</li>
+<li><strong>Field Groups</strong> → Reusable sets of fields added to the schema</li>
+<li><strong>Data Types</strong> → Reusable field structures used within field groups</li>
+<li><strong>Fields</strong> → Individual attributes</li>
+</ul>
+<p><img src="https://raw.githubusercontent.com/AdobeDocs/experience-platform.en/main/help/xdm/schema/../images/schema-composition/data-type.png" alt="Data Type Example"></p>
+<hr>
+<h3>Step-by-Step Process</h3>
+<h4>Prerequisites</h4>
+<ul>
+<li>Access to <strong>Adobe Experience Platform</strong> with Schema Editor permissions</li>
+<li>A mapping document listing all eVars/props and their <strong>business meaning</strong> (e.g., eVar1 = Campaign Name, prop5 = Page Name)</li>
+</ul>
+<hr>
+<h4>Step 1: Document Your eVar/Prop Mapping</h4>
+<p>Before building anything, create a mapping table:</p>
+<p>| Analytics Variable | Business Name | Data Type | Example Value |</p>
+<p>|---|---|---|---|</p>
+<p>| eVar1 | Campaign Name | String | &quot;Summer_Sale_2024&quot; |</p>
+<p>| eVar2 | Product Category | String | &quot;Electronics&quot; |</p>
+<p>| prop1 | Page Name | String | &quot;Home Page&quot; |</p>
+<p>| prop3 | Search Term | String | &quot;running shoes&quot; |</p>
+<hr>
+<h4>Step 2: Create a New Schema in AEP</h4>
+<p>1. Navigate to <strong>Adobe Experience Platform</strong> → <strong>Data Management</strong> → <strong>Schemas</strong></p>
+<p>2. Click <strong>Create Schema</strong></p>
+<p>3. Select <strong>XDM ExperienceEvent</strong> as the base class</p>
+<p>4. Give your schema a meaningful name (e.g., `Analytics Hit Data - eVar Props Schema`)</p>
+<hr>
+<h4>Step 3: Add the Adobe Analytics Field Group (for raw Analytics data ingestion)</h4>
+<p>If you are ingesting <strong>raw Adobe Analytics data via the Analytics Source Connector</strong>:</p>
+<p>1. In the schema editor, click <strong>Add</strong> under <strong>Field Groups</strong></p>
+<p>2. Search for and add <strong>Adobe Analytics ExperienceEvent Full Extension</strong></p>
+<ul>
+<li>This field group contains pre-built fields for `evar1–evar250` and `prop1–prop75` under the `_experience.analytics.customDimensions` path</li>
+</ul>
+<p>3. This allows the Analytics Source Connector to <strong>auto-map</strong> eVars and props into XDM</p>
+<hr>
+<h4>Step 4: Add Custom Field Groups for Semantic Meaning (Best Practice)</h4>
+<p>Raw eVar/prop field names are not human-readable. It is best practice to <strong>also create a custom field group</strong> with meaningful field names:</p>
+<p>1. In the schema editor, click <strong>Add</strong> → <strong>Create New Field Group</strong></p>
+<p>2. Name it (e.g., `Custom Analytics Variables`)</p>
+<p>3. Add fields with <strong>business-meaningful names</strong>:</p>
+<ul>
+<li>`campaignName` (String) → maps from eVar1</li>
+<li>`productCategory` (String) → maps from eVar2</li>
+<li>`pageName` (String) → maps from prop1</li>
+<li>`searchTerm` (String) → maps from prop3</li>
+</ul>
+<p>4. Save the field group and add it to your schema</p>
+<hr>
+<h4>Step 5: Define the Primary Identity</h4>
+<p>1. Identify your visitor identity field (e.g., ECID, CRM ID)</p>
+<p>2. In the schema, select that field and toggle <strong>Identity</strong> → mark as <strong>Primary Identity</strong></p>
+<p>3. Assign the correct <strong>Identity Namespace</strong> (e.g., `ECID`)</p>
+<p>&gt; ⚠️ A primary identity is <strong>required</strong> for the schema to be enabled for Real-Time Customer Profile.</p>
+<hr>
+<h4>Step 6: Enable Schema for Real-Time Customer Profile (Optional but Recommended)</h4>
+<p>1. In the schema editor, toggle <strong>Profile</strong> switch at the top right</p>
+<p>2. Confirm the prompt — this makes data from this schema contribute to unified profiles</p>
+<hr>
+<h4>Step 7: Data Ingestion &amp; Mapping</h4>
+<p>Depending on your data source:</p>
+<p>| Ingestion Method | Mapping Approach |</p>
+<p>|---|---|</p>
+<p>| <strong>Analytics Source Connector</strong> | Auto-maps eVars/props to `_experience.analytics.customDimensions.eVars.eVar1` etc. |</p>
+<p>| <strong>Batch Ingestion (CSV/JSON)</strong> | Use <strong>Data Prep</strong> (Mapper) to manually map eVar columns to XDM fields |</p>
+<p>| <strong>Web SDK / Tags</strong> | Map eVars/props in the <strong>Data Element</strong> and <strong>Data Stream mapping rules</strong> |</p>
+<p>| <strong>HTTP API / Streaming</strong> | POST XDM-formatted JSON directly with fields mapped |</p>
+<hr>
+<h4>Step 8: Validate the Schema</h4>
+<p>1. Use the <strong>Schema Editor preview</strong> to confirm all fields are correctly defined</p>
+<p>2. Use <strong>Data Prep</strong> to validate field mappings before ingestion</p>
+<p>3. After ingestion, check <strong>Datasets</strong> → <strong>Data Activity</strong> to confirm records landed correctly</p>
+<hr>
+<h3>Summary Flow</h3>
+<p>```</p>
+<p>eVar/Prop Data</p>
+<p>↓</p>
+<p>Document Business Meaning (Mapping Doc)</p>
+<p>↓</p>
+<p>Create XDM ExperienceEvent Schema</p>
+<p>↓</p>
+<p>Add Analytics ExperienceEvent Full Extension Field Group</p>
+<p>↓</p>
+<p>Add Custom Field Group (Semantic Names)</p>
+<p>↓</p>
+<p>Set Primary Identity + Enable Profile</p>
+<p>↓</p>
+<p>Ingest via Source Connector / Batch / Web SDK</p>
+<p>↓</p>
+<p>Validate in AEP Datasets</p>
+<p>```</p>
+<hr>
+<h3>Key Takeaway</h3>
+<p>&gt; The <strong>XDM ExperienceEvent</strong> class with the <strong>Adobe Analytics ExperienceEvent Full Extension</strong> field group is the recommended schema for eVar/prop data. Always pair it with a <strong>custom field group</strong> that gives business-meaningful names to your variables for downstream usability in CJA, AJO, and Real-Time CDP.</p>
+</article>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "if the company gives evar , props data , can we build a schema using that data in aep , then which schema and what will the process to be taken?", "acceptedAnswer": {"@type": "Answer", "text": "Building AEP Schemas from Adobe Analytics eVar & Prop Data Understanding the Context eVars and props are Adobe Analytics-specific constructs (custom variables). When bringing this data into Adobe Experience Platform (AEP), you need to map and translate these variables into XDM (Experience Data Model) schema fields. AEP does not natively understand \"eVar1\" or \"prop5\" \u2014 you must represent them meaningfully in XDM. --- Which Schema to Use? For Adobe Analytics data flowing into AEP, you should use the Adobe Analytics ExperienceEvent Template schema, which is built on: | Schema Class | Field Group to Add | |---|---| | XDM ExperienceEvent (primary class) | Adobe Analytics ExperienceEvent Full Extension | | XDM ExperienceEvent | Adobe Experience Platform Web/Mobile SDK fields (if applicable) | The XDM ExperienceEvent class is the correct base class because: - eVars and props are event-level data (captured per hit/event) - ExperienceEvent tracks timestamped behavioral data - It aligns with how Analytics collects hit data --- Schema Composition Concepts You Need to Know A schema in AEP is built from building blocks: !Schema Composition(https://raw.githubusercontent.com/AdobeDocs/experience-platform.en/main/help/xdm/schema/../images/schema-composition/composition.png) - Class \u2192 Defines the behavioral type of data (ExperienceEvent or Individual Profile) - Field Groups \u2192 Reusable sets of fields added to the schema - Data Types \u2192 Reusable field structures used within field groups - Fields \u2192 Individual attributes !Data Type Example(https://raw.githubusercontent.com/AdobeDocs/experience-platform.en/main/help/xdm/schema/../images/schema-composition/data-type.png) --- Step-by-Step Process Prerequisites - Access to Adobe Experience Platform with Schema Editor permissions - A mapping document listing all eVars/props and their business meaning (e.g., eVar1 = Campaign Name, prop5 = Page Name) --- Step 1: Document Your eVar/Prop Mapping Before building anything, create a mapping table:\u2026"}}]}</script></div>
+  </body>
+</html>
