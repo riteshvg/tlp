@@ -1,0 +1,134 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/png" href="/tools/rovr/rovrlogo.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="build-date" content="2026-06-10" />
+    
+    
+    <script src="https://assets.adobedtm.com/204118644db8/290ae1adb65a/launch-e5ec7bf1a1ef-development.min.js" async></script>
+    <script type="module" crossorigin src="/tools/rovr/assets/index-D5c-fCgB.js"></script>
+    <link rel="stylesheet" crossorigin href="/tools/rovr/assets/index-Bt-UJ01-.css">
+  <title>What features or capabilities in Adobe Analytics are not yet available in Customer Journey Analytics? | Rovr</title>
+<meta name="description" content="Features Not Yet Fully Available in Customer Journey Analytics Overview While Customer Journey Analytics has full support for most Adobe Analytics features,…" />
+<link rel="canonical" href="https://thelearningproject.in/tools/rovr/q/what-features-or-capabilities-in-adobe-analytics-are-not-yet-360e5e" />
+<meta property="og:title" content="What features or capabilities in Adobe Analytics are not yet available in Customer Journey Analytics?" />
+<meta property="og:description" content="Features Not Yet Fully Available in Customer Journey Analytics Overview While Customer Journey Analytics has full support for most Adobe Analytics features,…" />
+<meta property="og:url" content="https://thelearningproject.in/tools/rovr/q/what-features-or-capabilities-in-adobe-analytics-are-not-yet-360e5e" />
+<meta property="og:type" content="article" />
+<meta property="og:image" content="https://thelearningproject.in/tools/rovr/rovrlogo.png" />
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="What features or capabilities in Adobe Analytics are not yet available in Customer Journey Analytics?" />
+<meta name="twitter:description" content="Features Not Yet Fully Available in Customer Journey Analytics Overview While Customer Journey Analytics has full support for most Adobe Analytics features,…" />
+</head>
+  <body>
+    <div id="root"><article><h1>What features or capabilities in Adobe Analytics are not yet available in Customer Journey Analytics?</h1>
+<h2>Features Not Yet Fully Available in Customer Journey Analytics</h2>
+<h3>Overview</h3>
+<p>While Customer Journey Analytics has <strong>full support</strong> for most Adobe Analytics features, there are a small number of features that are either <strong>not yet available</strong> or have <strong>differences</strong> in how they work in CJA.</p>
+<hr>
+<h3>Features NOT Yet Available in CJA</h3>
+<h4>1. Activity Map</h4>
+<p>| Feature | Adobe Analytics | Customer Journey Analytics |</p>
+<p>|---|---|---|</p>
+<p>| Activity Map overlay | ✅ Available | ❌ Not yet available |</p>
+<p>| Link tracking visualization | ✅ Available | ❌ Not yet available |</p>
+<hr>
+<h4>2. Contribution Analysis</h4>
+<ul>
+<li><strong>Adobe Analytics</strong> — Full Contribution Analysis available natively</li>
+<li><strong>Customer Journey Analytics</strong> — Not fully available yet</li>
+<li>Adobe notes this as one of the key features requiring consideration during upgrade</li>
+</ul>
+<hr>
+<h4>3. Data Feeds</h4>
+<ul>
+<li><strong>Adobe Analytics</strong> — Full Data Feeds export functionality available</li>
+<li><strong>Customer Journey Analytics</strong> — No exact replacement yet, but <strong>similar functionality</strong> can be achieved through:</li>
+<li>📊 <strong>Full Table Export</strong> — Export complete Workspace tables to cloud storage</li>
+<li>🗄️ <strong>Experience Platform Dataset Export</strong> — Export raw datasets from AEP</li>
+<li>🔧 <strong>Experience Platform Data Access API</strong> — Programmatic data access</li>
+<li>📈 <strong>BI Tool Integration</strong> — Connect BI tools directly to CJA data</li>
+<li>🔌 <strong>Reporting API</strong> — Pull data programmatically</li>
+</ul>
+<hr>
+<h3>Features With Differences in CJA</h3>
+<h4>4. Calculated Metrics</h4>
+<p>| Aspect | Adobe Analytics | Customer Journey Analytics |</p>
+<p>|---|---|---|</p>
+<p>| Availability | ✅ Full support | ✅ Full support |</p>
+<p>| Migration | Native | <strong>Not automatically ported</strong> — must be recreated in CJA |</p>
+<hr>
+<h4>5. Marketing Channels</h4>
+<p>| Aspect | Adobe Analytics | Customer Journey Analytics |</p>
+<p>|---|---|---|</p>
+<p>| Native feature | ✅ Marketing Channels rules | ❌ Not a native feature |</p>
+<p>| CJA equivalent | N/A | <strong>Derived Fields</strong> within a Data View |</p>
+<p>| Migration path | Native setup | Must create a marketing channel derived field |</p>
+<hr>
+<h4>6. Classification Data</h4>
+<p>| Aspect | Adobe Analytics | Customer Journey Analytics |</p>
+<p>|---|---|---|</p>
+<p>| Native feature | ✅ Classification sets | ❌ Not directly available |</p>
+<p>| CJA equivalent | N/A | <strong>Lookup Datasets</strong> in AEP |</p>
+<p>| Migration path | Native setup | Must create a lookup dataset for each classified dimension |</p>
+<hr>
+<h4>7. eVars and Props</h4>
+<p>| Aspect | Adobe Analytics | Customer Journey Analytics |</p>
+<p>|---|---|---|</p>
+<p>| Custom variables | eVars, props, events | <strong>Not applicable</strong> |</p>
+<p>| CJA equivalent | N/A | XDM-based dimensions and metrics (unlimited) |</p>
+<p>| Merchandising eVars | ✅ Available | ✅ Supported via <strong>binding dimensions and binding metrics</strong> |</p>
+<hr>
+<h4>8. Components &amp; Projects Migration</h4>
+<p>| Aspect | Adobe Analytics | Customer Journey Analytics |</p>
+<p>|---|---|---|</p>
+<p>| Workspace projects | ✅ Native | Requires <strong>manual migration</strong> to CJA |</p>
+<p>| Segments | ✅ Native | Must be <strong>recreated as Filters</strong> in CJA |</p>
+<p>| Calculated metrics | ✅ Native | Must be <strong>recreated</strong> in CJA |</p>
+<hr>
+<h3>Features With FULL Support in CJA</h3>
+<p>For reference, here are key features that ARE fully supported:</p>
+<p>| Feature | CJA Support |</p>
+<p>|---|---|</p>
+<p>| Anomaly Detection | ✅ Full support |</p>
+<p>| Asset Transfer | ✅ Full support |</p>
+<p>| Attribution Models | ✅ Full support |</p>
+<p>| Bot Detection | ✅ Full support |</p>
+<p>| Custom Calendars | ✅ Full support |</p>
+<p>| Date Comparisons | ✅ Full support |</p>
+<p>| Date Ranges | ✅ Full support |</p>
+<p>| Dimensions (unlimited) | ✅ Full support |</p>
+<p>| GDPR Deletion | ✅ Full support |</p>
+<p>| Lift &amp; Confidence Reporting | ✅ Full support via Experimentation Panel |</p>
+<p>| List Variables / List Props | ✅ Full support via XDM string arrays |</p>
+<p>| Metrics (unlimited) | ✅ Full support |</p>
+<p>| CSV Download | ✅ Full support |</p>
+<p>| Calendar Events / Annotations | ✅ Full support |</p>
+<hr>
+<h3>Summary: Key Gaps to Plan For</h3>
+<p>If you are upgrading from Adobe Analytics to CJA, here are the <strong>critical gaps</strong> to address in your planning:</p>
+<p>| Gap | Recommended Action |</p>
+<p>|---|---|</p>
+<p>| <strong>Activity Map</strong> | Plan to retain Adobe Analytics access until available in CJA |</p>
+<p>| <strong>Contribution Analysis</strong> | Plan to retain Adobe Analytics access until available in CJA |</p>
+<p>| <strong>Data Feeds</strong> | Evaluate Full Table Export, AEP Dataset Export, or BI Tool integration as alternatives |</p>
+<p>| <strong>Marketing Channels</strong> | Recreate using Derived Fields in CJA Data Views |</p>
+<p>| <strong>Classifications</strong> | Recreate using Lookup Datasets in AEP |</p>
+<p>| <strong>Calculated Metrics</strong> | Manually recreate in CJA |</p>
+<p>| <strong>Segments</strong> | Recreate as Filters in CJA |</p>
+<p>| <strong>Workspace Projects</strong> | Migrate projects and components to CJA |</p>
+<hr>
+<h3>Important Note</h3>
+<p>Adobe explicitly states:</p>
+<p>&gt; <em>&quot;A small set of features are not yet fully available in Customer Journey Analytics. If you need access to these features, it might be necessary to use Adobe Analytics in conjunction with Customer Journey Analytics until these features are available.&quot;</em></p>
+<p>Would you like more detail on any specific feature gap or how to work around it in Customer Journey Analytics?</p>
+<h2>Sources</h2>
+<ul>
+<li><a href="https://experienceleague.adobe.com/en/docs/analytics/technotes/home">Analytics Tech Notes</a></li>
+<li><a href="https://experienceleague.adobe.com/en/docs/analytics-platform/using/cja-usecases/data-ingestion/marketo">Report on Marketo Engage data</a></li>
+</ul></article>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "What features or capabilities in Adobe Analytics are not yet available in Customer Journey Analytics?", "acceptedAnswer": {"@type": "Answer", "text": "Features Not Yet Fully Available in Customer Journey Analytics Overview While Customer Journey Analytics has full support for most Adobe Analytics features, there are a small number of features that are either not yet available or have differences in how they work in CJA. --- Features NOT Yet Available in CJA 1. Activity Map | Feature | Adobe Analytics | Customer Journey Analytics | |---|---|---| | Activity Map overlay | \u2705 Available | \u274c Not yet available | | Link tracking visualization | \u2705 Available | \u274c Not yet available | --- 2. Contribution Analysis - Adobe Analytics \u2014 Full Contribution Analysis available natively - Customer Journey Analytics \u2014 Not fully available yet - Adobe notes this as one of the key features requiring consideration during upgrade --- 3. Data Feeds - Adobe Analytics \u2014 Full Data Feeds export functionality available - Customer Journey Analytics \u2014 No exact replacement yet, but similar functionality can be achieved through: - \ud83d\udcca Full Table Export \u2014 Export complete Workspace tables to cloud storage - \ud83d\uddc4\ufe0f Experience Platform Dataset Export \u2014 Export raw datasets from AEP - \ud83d\udd27 Experience Platform Data Access API \u2014 Programmatic data access - \ud83d\udcc8 BI Tool Integration \u2014 Connect BI tools directly to CJA data - \ud83d\udd0c Reporting API \u2014 Pull data programmatically --- Features With Differences in CJA 4. Calculated Metrics | Aspect | Adobe Analytics | Customer Journey Analytics | |---|---|---| | Availability | \u2705 Full support | \u2705 Full support | | Migration | Native | Not automatically ported \u2014 must be recreated in CJA | --- 5. Marketing Channels | Aspect | Adobe Analytics | Customer Journey Analytics | |---|---|---| | Native feature | \u2705 Marketing Channels rules | \u274c Not a native feature | | CJA equivalent | N/A | Derived Fields within a Data View | | Migration path | Native setup | Must create a marketing channel derived field | --- 6. Classification Data | Aspect | Adobe Analytics | Customer Journey Analytics | |---|---|---| | Native feature | \u2705 Classification sets | \u274c\u2026"}}]}</script></div>
+  </body>
+</html>
