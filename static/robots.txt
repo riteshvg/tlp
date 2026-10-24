@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://thelearningproject.in/sitemap.xml
+Sitemap: https://thelearningproject.in/tools/rovr/sitemap.xml
