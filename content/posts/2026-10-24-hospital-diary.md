@@ -89,29 +89,9 @@ The meaning can lie elsewhere — in the researchers working towards better trea
 
 _The good is not in the cancer. The good is in what human beings do to fight it, treat it and care for one another through it._
 
-Friends want to reassure us. They say, _“Stay positive.” “You are strong.” “Medical science has advanced so much.”_
+Some people pray, visit temples, churches or mosques. Some pray quietly at home. Some who have rarely prayed find themselves folding their hands again. Others place their faith in medical science, their doctors, the treatment and the people who care.
 
-And they mean every word.
-
-Yet beneath the encouragement lies uncertainty. The patient may be frightened even while smiling. The family may appear strong while privately struggling to understand what lies ahead.
-
-So people pray.
-
-Some visit temples, churches or mosques. Some pray quietly at home. Some who have rarely prayed find themselves folding their hands again. Others place their faith in medical science, their doctors, the treatment and the people who care.
-
-_WhatsApp becomes more than a tool. It becomes a circle of hope._
-
-Someone shares a prayer. Someone recommends a doctor. Someone checks whether the patient has eaten. Another offers to accompany the family to an appointment. A friend who cannot be physically present makes sure to call.
-
-And the updates continue:
-
-_“The surgery went well.”_ — Relief.
-
-_“The doctors have advised further treatment.”_ — Questions return.
-
-_“The next scan is scheduled for next month.”_ — Anxiety finds its way back.
-
-The journey from diagnosis to recovery is rarely a straight line. Depending on the condition, it may involve surgery, chemotherapy, radiation, medication, rehabilitation and repeated follow-up appointments. There are days of optimism and days when even the smallest task feels exhausting.
+Everyone is on a journey. Depending on the condition, the journey may involve surgery, chemotherapy, radiation, medication, rehabilitation and repeated follow-up appointments. There are days of optimism and days when even the smallest task feels exhausting.
 
 The end of one procedure may simply mark the beginning of another phase of care.
 
