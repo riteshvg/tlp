@@ -53,13 +53,11 @@ _CANCER._
 
 Six letters. One word. Suddenly, life divides itself into a _before and an after._
 
-Until yesterday, there were office meetings, holidays, family plans, children's futures and ordinary worries. Today, there are scans, biopsies, reports, consultations and unfamiliar medical terms.
+Until yesterday, there were office meetings, holidays, family plans, children's futures and ordinary worries. Today, there are scans, biopsies, reports, consultations and unfamiliar medical terms. A diagnosis changes more than a medical record. It changes routines, priorities, relationships and the way we look at the future. Work may take a back seat. Plans may need to be postponed. Everyday activities become complicated by appointments, treatment schedules, fatigue and recovery.
+
+The patient tries to absorb the doctor's words while the mind races ahead with many questions. The family tries to remain composed, even as the ground beneath them seems to shift.
 
 _What stage is it? Has it spread? What are the treatment options? Will surgery be needed? What will life look like afterwards?_
-
-The patient tries to absorb the doctor's words while the mind races ahead. The family tries to remain composed, even as the ground beneath them seems to shift.
-
-A diagnosis changes more than a medical record. It changes routines, priorities, relationships and the way we look at the future. Work may take a back seat. Plans may need to be postponed. Everyday activities become complicated by appointments, treatment schedules, fatigue and recovery.
 
 And somewhere in the middle of all these questions, an even more fundamental question emerges:
 
@@ -81,9 +79,7 @@ And perhaps that is what makes cancer so difficult to accept. It doesn't disting
 
 _Biology does not promise fairness._
 
-We want to believe that if we live well, work hard, care for others and make the right choices, life will protect us in return. But illness does not follow such rules.
-
-Perhaps we don't need to invent a higher purpose for cancer or call it a blessing to find meaning in the way we respond to it.
+We want to believe that if we live well, work hard, care for others and make the right choices, life will protect us in return. But illness does not follow such rules. Perhaps we don't need to invent a higher purpose for cancer or call it a blessing to find meaning in the way we respond to it.
 
 The meaning can lie elsewhere — in the researchers working towards better treatments, the doctors striving to improve outcomes, the nurses comforting frightened patients, and the families and friends who refuse to let someone face the journey alone.
 
@@ -91,15 +87,7 @@ _The good is not in the cancer. The good is in what human beings do to fight it,
 
 Some people pray, visit temples, churches or mosques. Some pray quietly at home. Some who have rarely prayed find themselves folding their hands again. Others place their faith in medical science, their doctors, the treatment and the people who care.
 
-Everyone is on a journey. Depending on the condition, the journey may involve surgery, chemotherapy, radiation, medication, rehabilitation and repeated follow-up appointments. There are days of optimism and days when even the smallest task feels exhausting.
-
-The end of one procedure may simply mark the beginning of another phase of care.
-
-But somewhere along this journey, something begins to change — not necessarily the diagnosis, but the way we understand life.
-
-Courage begins to mean showing up for another appointment despite the fear. It means asking questions, making difficult decisions and allowing others to help.
-
-Families learn to celebrate smaller milestones: a reassuring report, a manageable day after treatment, a meal enjoyed without discomfort, a walk taken without assistance, or an evening spent laughing together without the illness occupying every conversation.
+There are days of optimism and days when even the smallest task feels exhausting. But families learn to celebrate smaller milestones: a reassuring report, a manageable day after treatment, a meal enjoyed without discomfort, a walk taken without assistance, or an evening spent laughing together without the illness occupying every conversation.
 
 And slowly, _acceptance_ finds its place.
 
@@ -109,17 +97,7 @@ Yet life can still hold meaning, joy, ambition, laughter, relationships and poss
 
 _Acceptance is not giving up on the future. It is learning to live meaningfully while the future remains uncertain._
 
-We can pursue the best available treatment, trust our doctors, pray for good outcomes and still acknowledge our fears. We can hope for recovery without pretending every day will be easy. We can appreciate the present without abandoning our dreams for tomorrow.
-
-Perhaps that is what the operating theatre and the corridors outside it reveal about us.
-
-In moments when we cannot control the outcome, we discover the importance of medical skill, human connection and the quiet courage of showing up for one another.
-
-We often take our health, routines and loved ones for granted. Illness brings into focus the conversations we've postponed, the visits we've delayed and the gratitude we've forgotten to express.
-
-It teaches us to be kinder, listen more carefully, and recognise that behind every medical report is a human being with dreams, fears, relationships and a life far bigger than the condition being treated.
-
-A person with cancer is not merely a patient or a diagnosis. They remain a parent, a partner, a friend, a professional, a dreamer — a person whose identity and worth extend far beyond an illness.
+And in moments when we cannot control the outcome, we discover the importance of medical skill, human connection and the quiet courage of showing up for one another. We often take our health, routines and loved ones for granted. Illness brings into focus the conversations we've postponed, the visits we've delayed and the gratitude we've forgotten to express. It teaches us to be kinder, listen more carefully, and recognise that behind every medical report is a human being with dreams, fears, relationships and a life far bigger than the condition being treated.
 
 _Cancer may change the course of a life, but it does not erase the value of that life._
 
@@ -131,4 +109,4 @@ Perhaps we cannot control every chapter of our lives. We cannot always choose wh
 
 We don't need to find a reason for every hardship. And we don't need to face every hardship alone.
 
-_We may not always be able to change what life brings our way, but together, we can make the journey a little less frightening, a little more bearable and a little more hopeful._ ❤️
+_We may not always be able to change what life brings our way, but together, we can make the journey a little less frightening, a little more bearable and a little more hopeful and a lot happy._ ❤️
