@@ -103,10 +103,4 @@ _Cancer may change the course of a life, but it does not erase the value of that
 
 Perhaps that is humanity at its best — always adapting, always fighting, but never giving up hope.
 
-❤️ _Life may not remain the same after a diagnosis. It may ask us to change our plans, redefine our priorities and discover strengths we never knew we possessed. But even through uncertainty, surgery, treatment and recovery, there can still be room for hope, connection and new beginnings._
-
-Perhaps we cannot control every chapter of our lives. We cannot always choose what happens to us, but we can choose how we face it — with courage, compassion, faith, the best available medical care and appreciation for the people who walk beside us.
-
-We don't need to find a reason for every hardship. And we don't need to face every hardship alone.
-
 _We may not always be able to change what life brings our way, but together, we can make the journey a little less frightening, a little more bearable and a little more hopeful and a lot happy._ ❤️
